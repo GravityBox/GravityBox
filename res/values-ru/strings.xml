@@ -78,6 +78,8 @@
     <string name="quick_settings_wifi_off">Wi-Fi выкл</string>
     <string name="quick_settings_wifi_not_connected">Не подключено</string>
     <string name="quick_settings_wifi_turning_on">Включение…</string>
+    <string name="quick_settings_nfc_on">NFC on</string>
+    <string name="quick_settings_nfc_off">NFC off</string>
     
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Иконки быстрых настроек в статусбаре</string>
@@ -108,6 +110,7 @@
     <string name="qs_tile_expanded_desktop">Расширенный рабочий стол</string>
 	<string name="qs_tile_stay_awake">Не засыпать</string>
     <string name="qs_tile_screenshot">Снимок экрана</string>
+    <string name="qs_tile_nfc">NFC</string>
     
      <!-- Color Picker -->
     <string name="dialog_color_picker">Выбор цвета</string>
@@ -744,5 +747,15 @@
     <!-- HW Key Actions: Home and Back actions -->
     <string name="hwkey_action_home">Домой</string>
     <string name="hwkey_action_back">Назад</string>
+    
+    <!-- Clear all recents bottom margin -->
+    <string name="pref_recent_clear_margin_bottom_title">Изменить нижний отступ</string>
+
+    <!-- Google Plus -->
+    <string name="pref_about_gplus_title">Google+ community</string>
+    <string name="pref_about_gplus_summary">Коснитесь для перехода в сообщество Google+</string>
+
+    <!-- Network mode tile: Allow LTE network mode -->
+    <string name="pref_network_mode_tile_lte_title">Разрешить режим LTE</string>
     
 </resources>
