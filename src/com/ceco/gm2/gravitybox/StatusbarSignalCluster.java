@@ -39,6 +39,7 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
     protected StatusBarIconManager mIconManager;
     protected Resources mResources;
     private Field mFldWifiGroup;
+    private ImageView mAirplaneModeIcon;
 
     protected static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -70,6 +71,15 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
                 log("Couldn't find WifiGroup field");
             }
         }
+        
+        try{
+        	mAirplaneModeIcon = (ImageView) XposedHelpers.getObjectField(mView, "mAirplane");
+        	if(DEBUG) log("mAirplane found");
+        }
+        catch (NoSuchFieldError nfe){
+        	log("Couldn't find mAirplane field");
+        }
+        
 
         if (mView != null) {
             try {
@@ -169,15 +179,14 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
 
     protected void updateAirplaneModeIcon() {
         try {
-            ImageView airplaneModeIcon = (ImageView) XposedHelpers.getObjectField(mView, "mAirplane");
-            if (airplaneModeIcon != null) {
-                Drawable d = airplaneModeIcon.getDrawable();
+            if (mAirplaneModeIcon != null) {
+                Drawable d = mAirplaneModeIcon.getDrawable();
                 if (mIconManager.isColoringEnabled()) {
                     d = mIconManager.applyColorFilter(d);
                 } else if (d != null) {
                     d.setColorFilter(null);
                 }
-                airplaneModeIcon.setImageDrawable(d);
+                mAirplaneModeIcon.setImageDrawable(d);
             }
         } catch (Throwable t) {
             XposedBridge.log(t);
