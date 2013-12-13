@@ -1225,6 +1225,11 @@
             android:summary="@string/pref_safe_media_volume_summary"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="swap_volume_buttons"
+            android:title="@string/swap_volume_buttons_title"
+            android:summary="@string/swap_volume_buttons_summary" />
+
         <CheckBoxPreference 
             android:key="pref_volume_panel_expandable"
             android:title="@string/pref_volume_panel_expandable_title"

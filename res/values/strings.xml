@@ -221,6 +221,10 @@
     <string name="pref_safe_media_volume_title">Safe headset media volume</string>
     <string name="pref_safe_media_volume_summary">Activates or deactivates safe headset media volume feature</string>
 
+    <!-- Swap volume buttons when the screen is rotated -->
+    <string name="swap_volume_buttons_title">Reorient volume buttons</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
+
     <!-- Disable charging LED -->
     <string name="pref_charging_led_disable_title">Disable charging LED</string>
     <string name="pref_charging_led_disable_summary">Disables LED while charging</string>
