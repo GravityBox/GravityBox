@@ -794,5 +794,4 @@
     <string name="fix_location_title">Corregir problema de ubicación</string>
     <string name="fix_location_summary">Actívalo si notas que la distancia no se calcula correctamente al usar aplicaciones deportivas de seguimiento (requiere reinicio)</string>
 
-
 </resources>
