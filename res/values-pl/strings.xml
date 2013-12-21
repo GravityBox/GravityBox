@@ -9,7 +9,6 @@
     <string name="battery_style_circle_percent">Koło z procentami</string>
     <string name="battery_style_kitkat">Wskaźnik baterii KitKat</string>
     <string name="battery_style_kitkat_percent">Procentowy wsk. baterii KitKat</string>
-    <string name="battery_style_percent">Tekstowy wskaźnik baterii</string>
     <string name="battery_style_none">Brak</string>
 
     <string name="vol_music_controls_title">Pomiń utwór przyciskiem głośności</string>
@@ -124,7 +123,7 @@
 
     <!--  Statusbar background color -->
     <string name="statusbar_bgcolor_title">Kolor tła paska statusu</string>
-    <string name="statusbar_bgcolor_summary">Umożliwia wybór tła i przezroczystości paska statusu</string>
+    <string name="statusbar_bgcolor_summary">Umożliwia wybór koloru tła paska statusu</string>
 
     <!--  Fix speech settings -->
     <string name="fix_tts_settings_title">Napraw ustawienia mowy</string>
@@ -202,7 +201,7 @@
     <string name="pref_ab_summary">Umożliwia ustawienie poziomu oświetlenia otoczenia oraz odpowiadających im wartości podświetlenia ekranu LCD</string>
     <string name="level">Poziom</string>
     <string name="pref_ab_lux_max_label">Lux max</string>
-    <string name="pref_ab_brighness_label">Jasność (%d – 255)</string>
+    <string name="pref_ab_brighness_label">Jasność (%d &#8211; 255)</string>
     <string name="pref_ab_number_error_general">Wybrana wartość jest niepoprawna</string>
     <string name="pref_ab_brightness_too_low">Nie jest zalecane, aby ustawić jasność poniżej %d</string>
     <string name="pref_ab_brightness_too_high">Jasność nie może być większa niż 255</string>
@@ -245,7 +244,7 @@
     <string name="pref_charging_led_disable_title">Wyłącz sygn. LED przy ładowaniu</string>
     <string name="pref_charging_led_disable_summary">Wyłącza sygnalizację LED podczas ładowania</string>
 
-   <!-- Hardware key actions -->
+    <!-- Hardware key actions -->
     <string name="pref_cat_hwkey_actions_title">Działanie przycisków sprzętowych</string>
     <string name="pref_cat_hwkey_actions_summary">Pozwala ustawić niestandardowe działania przycisków sprzętowych</string>
     <string name="hwkey_menu_longpress_dialog_title">Akcja długiego naciśnięcia MENU</string>
@@ -390,9 +389,9 @@
     <string name="pref_holo_bg_dither_title">Wygładzone tło Holo</string>
     <string name="pref_holo_bg_dither_summary">Zastępuje standardowe tło Holo wygładzonym (wymagany restart)</string>
 
-   <!-- Disable navigation keys for pie -->
-    <string name="pref_hwkeys_disable_title">Wyłącz klawisze sprzętowe</string>
-    <string name="pref_hwkeys_disable_summary">Wyłącza MENU, BACK, HOME gdy interfejs Pie jest włączony. Sprzętowe klawisze będą nadal działać. (w przypadku urządzeń posiadających klawisze sprzętowe)</string>
+    <!-- Disable navigation keys for pie -->
+    <string name="pref_hwkeys_disable_title">Wyłącz klawisze nawigacji</string>
+    <string name="pref_hwkeys_disable_summary">Wyłącza pojedyncze kliknięcie klawiszy gdy interfejs Pie jest włączony</string>
 
     <!-- Option for GB dark theme -->
     <string name="pref_gb_theme_dark_title">Użyj ciemnego motywu Holo</string>
@@ -564,7 +563,7 @@
     <string name="pref_mobile_data_slow2g_disable_summary">Wyłącza ostrzeżenie o małej prędkości danych dla karty SIM w trybie 2G podczas włączania danych mobilnych w Szybkich Ustawieniach</string>
  
     <!-- Follow stock battery color -->
-   <string name="pref_sbcolor_follow_stock_battery_title">Kopiowanie kolorów baterii</string>
+    <string name="pref_sbcolor_follow_stock_battery_title">Kopiowanie kolorów baterii</string>
     <string name="pref_sbcolor_follow_stock_battery_summary">Powoduje, że zegar, koło baterii i wskaźnik procentowy na pasku statusu używają typowych kolorów ikony baterii. Obowiązuje tylko, gdy kolorystyka icon jest wyłączona.</string>
 
     <!-- Network mode tile mode (2G/2G+3G/3G or 2G/2G+3G) -->
@@ -810,7 +809,7 @@
     <string name="hwkey_ls_torch_disabled">Wyłączona</string>
     <string name="hwkey_ls_torch_home_longpress">Przy długim naciśnięciu HOME</string>
     <string name="hwkey_ls_torch_voldown_longpress">Przy długim naciśnięciu Vol- </string>
-    
+
     <!-- QuickSettings management master switch -->
     <string name="pref_qs_management_enable_summary">Główny wyłącznik dla Zarządzania Szybkimi Ustawieniami (wymagany restart)</string>
 
@@ -836,7 +835,7 @@
     <string name="ringer_mode_vibrate">Wibracje</string>
     <string name="ringer_mode_sound">Dźwięk</string>
     <string name="ringer_mode_sound_vibrate">Dźwięk i Wibracje</string>
-    
+
     <!-- Fix location issue (Android 4.2.1 JIT bug) -->
     <string name="fix_location_title">Napraw problem lokalizacji GPS</string>
     <string name="fix_location_summary">Włącz w przypadku stwierdzenia, że odległość nie jest poprawnie obliczana przy użyciu aplikacji Sports Tracker (wymagny restart)</string>
@@ -855,5 +854,19 @@
     <string name="screen_off_effect_default">Domyślny systemu</string>
     <string name="screen_off_effect_crt">CRT</string>
     <string name="screen_off_effect_fade">Przygasanie</string>
+
+    <!-- Battery percent text -->
+    <string name="battery_percent_text_title">Tekstowy wskaźnik baterii</string>
+    <string name="battery_percent_text_size_title">Wielkość tekstowego wskaźnika baterii</string>
+    <string name="battery_percent_text_size_normal">Normalny</string>
+    <string name="battery_percent_text_size_smaller">Mały</string>
+    <string name="battery_percent_text_size_even_smaller">Mniejszy</string>
+    <string name="battery_percent_text_size_smallest">Najmniejszy</string>
+    <string name="battery_percent_text_style_title">Styl tekstowego wskaźnika baterii</string>
+    <string name="battery_percent_text_style_default">Domyślny</string>
+    <string name="battery_percent_text_style_numbers_only">Tylko cyfry (bez symbolu procentów)</string>
+  
+    <!-- Battery settings category -->
+    <string name="pref_cat_battery_settings_title">Ustawienia baterii</string>
 
 </resources>
