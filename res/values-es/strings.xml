@@ -138,10 +138,6 @@
     <string name="reboot_confirm_recovery">El %s se reiniciará en modo recuperación.</string>
     <string name="reboot_confirm_bootloader">El %s se reiniciará al bootloader.</string>
 
-    <!-- CRT effect screen off animation -->
-    <string name="crt_off_effect_title">Efecto apagado de pantalla CRT</string>
-    <string name="crt_off_effect_summary">Activa la animación que simula el antiguo efecto de apagado de pantallas CRT</string>
-
     <!-- Engineering mode shortcut -->
     <string name="engineering_mode_title">Modo ingeniería</string>
     <string name="engineering_mode_summary">Lanza la aplicación Modo ingeniería</string>
@@ -792,7 +788,22 @@
     <!-- Fix location issue (Android 4.2.1 JIT bug) -->
     <string name="fix_location_title">Corregir problema de ubicación</string>
     <string name="fix_location_summary">Actívalo si notas que la distancia no se calcula correctamente al usar aplicaciones deportivas de seguimiento (requiere reinicio)</string>
+    
+    <!-- Launcher tweaks -->
+    <string name="pref_cat_launcher_tweaks_title">Ajustes del lanzador</string>
+    <string name="pref_cat_launcher_tweaks_summary">Se aplica al lanzador predeterminado y a Google Experience Launcher</string>
+    <string name="pref_cat_launcher_desktop_grid_title">Cuadrícula del escritorio</string>
+    <string name="pref_launcher_desktop_grid_info_title">Cambiar los valores predeterminados podría desajustar la posición y/o tamaño de los widgets. Requiere reiniciar el lanzador.</string>
+    <string name="pref_launcher_desktop_grid_rows_title">Número de filas</string>
+    <string name="pref_launcher_desktop_grid_cols_title">Número de columnas</string>
+    <string name="desktop_grid_default">Predeterminado</string>
 
+    <!-- Screen off effects -->
+    <string name="screen_off_effect_title">Efecto de apagado de pantalla</string>
+    <string name="screen_off_effect_default">Predeterminado</string>
+    <string name="screen_off_effect_crt">CRT</string>
+    <string name="screen_off_effect_fade">Desvanecer</string>
+    
     <!-- Battery percent text -->
     <string name="battery_percent_text_title">Indicador de batería en porcentaje</string>
     <string name="battery_percent_text_size_title">Tamaño del texto del indicador</string>
