@@ -24,7 +24,6 @@
     <string name="battery_style_circle_percent">Circular con porcentaje</string>
     <string name="battery_style_kitkat">KitKat</string>
     <string name="battery_style_kitkat_percent">KitKat con porcentaje</string>
-    <string name="battery_style_percent">Porcentaje de batería en texto</string>
     <string name="battery_style_none">Ninguno</string>
 
     <string name="vol_music_controls_title">Botones de volumen cambian la canción</string>
@@ -794,4 +793,15 @@
     <string name="fix_location_title">Corregir problema de ubicación</string>
     <string name="fix_location_summary">Actívalo si notas que la distancia no se calcula correctamente al usar aplicaciones deportivas de seguimiento (requiere reinicio)</string>
 
+    <!-- Battery percent text -->
+    <string name="battery_percent_text_title">Indicador de batería en porcentaje</string>
+    <string name="battery_percent_text_size_title">Tamaño del texto del indicador</string>
+    <string name="battery_percent_text_size_normal">Normal</string>
+    <string name="battery_percent_text_size_smaller">Pequeño</string>
+    <string name="battery_percent_text_size_even_smaller">Muy pequeño</string>
+    <string name="battery_percent_text_size_smallest">Diminuto</string>
+    
+    <!-- Battery settings category -->
+    <string name="pref_cat_battery_settings_title">Ajustes de batería</string>
+    
 </resources>
