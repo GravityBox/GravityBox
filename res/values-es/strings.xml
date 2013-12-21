@@ -24,7 +24,6 @@
     <string name="battery_style_circle_percent">Circular con porcentaje</string>
     <string name="battery_style_kitkat">KitKat</string>
     <string name="battery_style_kitkat_percent">KitKat con porcentaje</string>
-    <string name="battery_style_percent">Porcentaje de batería en texto</string>
     <string name="battery_style_none">Ninguno</string>
 
     <string name="vol_music_controls_title">Botones de volumen cambian la canción</string>
@@ -824,7 +823,7 @@
     <!-- Screen off effects -->
     <string name="screen_off_effect_default">Predeterminado</string>
     <string name="screen_off_effect_crt">CRT</string>
-    <string name="screen_off_effect_fade">Difuminar</string>
+    <string name="screen_off_effect_fade">Desvanecer</string>
     
     <!-- Launcher tweaks -->
     <string name="pref_cat_launcher_tweaks_title">Ajustes del lanzador</string>
@@ -837,5 +836,16 @@
 
     <!-- HW Key Acctions: toggle screen recording -->
     <string name="hwkey_action_screen_recording">Activar/desactivar grabar pantalla</string>
+    
+    <!-- Battery percent text -->
+    <string name="battery_percent_text_title">Indicador de batería en porcentaje</string>
+    <string name="battery_percent_text_size_title">Tamaño del texto del indicador</string>
+    <string name="battery_percent_text_size_normal">Normal</string>
+    <string name="battery_percent_text_size_smaller">Pequeño</string>
+    <string name="battery_percent_text_size_even_smaller">Muy pequeño</string>
+    <string name="battery_percent_text_size_smallest">Diminuto</string>
+    
+    <!-- Battery settings category -->
+    <string name="pref_cat_battery_settings_title">Ajustes de batería</string>
     
 </resources>
