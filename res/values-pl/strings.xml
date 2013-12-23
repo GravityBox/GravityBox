@@ -116,7 +116,7 @@
     <string name="reboot_confirm_bootloader">Twój %s zostanie zrestartowany do trybu Bootloader.</string>
 
     <!-- Screen off effect -->
-    <string name="crt_off_effect_title">Efekt wygaszania ekranu</string>  
+    <string name="crt_off_effect_title">Efekt wygaszania ekranu</string>
 
     <!-- Engineering mode shortcut -->
     <string name="engineering_mode_title">Tryb inżynierski</string>
