@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">GravityBox [KK]</string>
 
@@ -9,7 +9,6 @@
     <string name="battery_style_circle_percent">Koło z procentami</string>
     <string name="battery_style_kitkat">Wskaźnik baterii KitKat</string>
     <string name="battery_style_kitkat_percent">Procentowy wsk. baterii KitKat</string>
-    <string name="battery_style_percent">Tekstowy wskaźnik baterii</string>
     <string name="battery_style_none">Brak</string>
 
     <string name="vol_music_controls_title">Pomiń utwór przyciskiem głośności</string>
@@ -39,7 +38,7 @@
     <string name="important">Ważne</string>
 
     <string name="caller_fullscreen_photo_title">Fotografia dzwoniącego na pełnym ekranie</string>
- 
+
     <!-- QuickSettings strings -->
     <string name="quick_settings_sync_on">Włączono synchronizację</string>
     <string name="quick_settings_sync_off">Wyłączono synchronizację</string>
@@ -48,8 +47,8 @@
     <string name="quick_settings_torch_on">Latarka włączona</string>
     <string name="quick_settings_torch_off">Latarka wyłączona</string>
     <string name="quick_settings_torch_off_notif">Dotknij aby wyłączyć</string>
-    <string name="quick_settings_qr_playing">Odtwarzam...</string>
-    <string name="quick_settings_qr_recording">Nagrywam...</string>
+    <string name="quick_settings_qr_playing">Odtwarzam&#8230;</string>
+    <string name="quick_settings_qr_recording">Nagrywam&#8230;</string>
     <string name="quick_settings_qr_recorded">Nagrano</string>
     <string name="quick_settings_qr_record">Przytrzymaj aby nagrać</string>
     <string name="quick_settings_qr_recording_notif">Dotknij aby zatrzymać</string>
@@ -95,7 +94,7 @@
 
     <!--  Statusbar background color -->
     <string name="statusbar_bgcolor_title">Kolor tła paska statusu</string>
-    <string name="statusbar_bgcolor_summary">Umożliwia wybór tła i przezroczystości paska statusu</string>
+    <string name="statusbar_bgcolor_summary">Umożliwia wybór koloru tła paska statusu</string>
 
     <!-- Main preference categories -->
     <string name="pref_cat_statusbar_title">Ustawienia paska statusu</string>
@@ -117,7 +116,7 @@
     <string name="reboot_confirm_bootloader">Twój %s zostanie zrestartowany do trybu Bootloader.</string>
 
     <!-- Screen off effect -->
-    <string name="crt_off_effect_title">Efekt wygaszania ekranu</string> 
+    <string name="crt_off_effect_title">Efekt wygaszania ekranu</string>  
 
     <!-- Engineering mode shortcut -->
     <string name="engineering_mode_title">Tryb inżynierski</string>
@@ -166,7 +165,7 @@
     <string name="pref_ab_summary">Umożliwia ustawienie poziomu oświetlenia otoczenia oraz odpowiadających im wartości podświetlenia ekranu LCD</string>
     <string name="level">Poziom</string>
     <string name="pref_ab_lux_max_label">Lux max</string>
-    <string name="pref_ab_brighness_label">Jasność (%d – 255)</string>
+    <string name="pref_ab_brighness_label">Jasność (%d &#8211; 255)</string>
     <string name="pref_ab_number_error_general">Wybrana wartość jest niepoprawna</string>
     <string name="pref_ab_brightness_too_low">Nie jest zalecane, aby ustawić jasność poniżej %d</string>
     <string name="pref_ab_brightness_too_high">Jasność nie może być większa niż 255</string>
@@ -315,9 +314,9 @@
     <string name="pref_disable_roaming_indicators_summary">Gdy wyłączone, wskaźnik R nie będzie widoczny podczas roamingu. Używaj rozważnie.</string>
 
     <!-- Battery status in pie controls -->
-    <string name="pie_battery_status_charging">Ładowanie (%d%%)</string>
+    <string name="pie_battery_status_charging">Ładowanie (<xliff:g id="percent">%d</xliff:g>%%)</string>
     <string name="pie_battery_status_full">Naładowana</string>
-    <string name="pie_battery_status_discharging">pozostało %d%%</string>
+    <string name="pie_battery_status_discharging"><xliff:g id="percent">%d</xliff:g>%% pozostało</string>
 
     <!-- Phone status in pie controls -->
     <string name="pie_phone_status_no_service">Brak usługi</string>
@@ -347,8 +346,8 @@
     <string name="pref_holo_bg_dither_summary">Zastępuje standardowe tło Holo wygładzonym (wymagany restart)</string>
 
     <!-- Disable navigation keys for pie -->
-    <string name="pref_hwkeys_disable_title">Wyłącz klawisze sprzętowe</string>
-    <string name="pref_hwkeys_disable_summary">Wyłącza MENU, BACK, HOME gdy interfejs Pie jest włączony. Sprzętowe klawisze będą nadal działać. (w przypadku urządzeń posiadających klawisze sprzętowe)</string>
+    <string name="pref_hwkeys_disable_title">Wyłącz klawisze nawigacji</string>
+    <string name="pref_hwkeys_disable_summary">Wyłącza pojedyncze kliknięcie klawiszy gdy interfejs Pie jest włączony</string>
 
     <!-- Option for GB dark theme -->
     <string name="pref_gb_theme_dark_title">Użyj ciemnego motywu Holo</string>
@@ -443,7 +442,7 @@
     <string name="pref_clock_link_summary">Link zegara na panelu powiadomień do aplikacji Zegara zamiast do ustawień Daty i Czasu</string>
 
     <!-- GravityBox settings startup handling -->
-    <string name="gb_startup_progress">Czekam na odpowiedź z GravityBox framework...</string>
+    <string name="gb_startup_progress">Czekam na odpowiedź z GravityBox framework&#8230;</string>
     <string name="gb_startup_error">GravityBox framework nie odpowiada. Kończenie.</string>
 
     <!-- National data roaming -->
@@ -594,9 +593,9 @@
 
     <!--  RAM Bar -->
     <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
-    <string name="service_background_processes">%1$s wolne</string>
+    <string name="service_background_processes"><xliff:g id="memory">%1$s</xliff:g> wolne</string>
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
-    <string name="service_foreground_processes">%1$s w użyciu</string>
+    <string name="service_foreground_processes"><xliff:g id="memory">%1$s</xliff:g> w użyciu</string>
     <string name="pref_rambar_title">Pasek RAM listy ostatnich aplikacji</string>
     <string name="rambar_off">Wyłączony</string>
     <string name="rambar_top">Na górze</string>
@@ -746,7 +745,7 @@
     <string name="app_picker_shortcut_cancelled">Tworzenie skrótu anulowane przez aplikację docelową</string>
 
     <!-- Navigation bar: swap back and recents key -->
-    <string name="pref_navbar_swap_keys_title">Zamień BACK z kl.Ostatnich Aplikacji</string>
+    <string name="pref_navbar_swap_keys_title">Zamień BACK z kl. Ostatnich Aplikacji</string>
 
     <!-- Unlock ring Torch -->
     <string name="pref_lockscreen_ring_torch_title">Włącz latarkę</string>
@@ -761,7 +760,7 @@
     <string name="ringer_mode_vibrate">Wibracje</string>
     <string name="ringer_mode_sound">Dźwięk</string>
     <string name="ringer_mode_sound_vibrate">Dźwięk i Wibracje</string>
-    
+
     <!-- Screen recording -->
     <string name="screenrecord_notif_ticker">Ekran jest nagrywany</string>
     <string name="screenrecord_notif_title">Nagrywanie ekranu</string>
@@ -794,10 +793,24 @@
 
     <!-- HW Key Acctions: toggle screen recording -->
     <string name="hwkey_action_screen_recording">Przełącz nagrywanie ekranu</string>
-    
+
     <!-- Full screen caller photo modes -->
     <string name="fullscreen_caller_disabled">Wyłączona</string>
     <string name="fullscreen_caller_partial">Fragment</string>
     <string name="fullscreen_caller_full">Pełna</string>
+
+    <!-- Battery percent text -->
+    <string name="battery_percent_text_title">Tekstowy wskaźnik baterii</string>
+    <string name="battery_percent_text_size_title">Wielkość tekstowego wskaźnika baterii</string>
+    <string name="battery_percent_text_size_normal">Normalny</string>
+    <string name="battery_percent_text_size_smaller">Mały</string>
+    <string name="battery_percent_text_size_even_smaller">Mniejszy</string>
+    <string name="battery_percent_text_size_smallest">Najmniejszy</string>
+    <string name="battery_percent_text_style_title">Styl tekstowego wskaźnika baterii</string>
+    <string name="battery_percent_text_style_default">Domyślny</string>
+    <string name="battery_percent_text_style_numbers_only">Tylko cyfry (bez symbolu procentów)</string>
+  
+    <!-- Battery settings category -->
+    <string name="pref_cat_battery_settings_title">Ustawienia baterii</string>
 
 </resources>
