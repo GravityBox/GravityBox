@@ -875,30 +875,30 @@
     <string name="screen_off_effect_crt">CRT effektus</string>
     <string name="screen_off_effect_fade">Elhalványulás</string>
 
-	<!-- Signal cluster -->
-	<string name="pref_cat_signal_cluster_title">Jelszint ikon beállítások</string>
-	<string name="pref_signal_cluster_connection_state_title">Csatlakozási állapot</string>
+    <!-- Signal cluster -->
+    <string name="pref_cat_signal_cluster_title">Jelszint ikon beállítások</string>
+    <string name="pref_signal_cluster_connection_state_title">Csatlakozási állapot</string>
     <string name="pref_signal_cluster_connection_state_summary">Csatlakozási állapoot részleges/teljes kijelzése (újraindítás szükséges)</string>
     <string name="pref_signal_cluster_data_activity_title">Adathasználat</string>
     <string name="pref_signal_cluster_data_activity_summary">Adathasználat kijelzése mobilinternet és WiFi kapcsolat alatt (újraindítás szükséges)</string>
 	
-	<!-- Battery percent text -->
-    <string name="battery_percent_text_size_title">Battery percent text size</string>
-    <string name="battery_percent_text_size_normal">Normal</string>
-    <string name="battery_percent_text_size_smaller">Smaller</string>
-    <string name="battery_percent_text_size_even_smaller">Even smaller</string>
-    <string name="battery_percent_text_size_smallest">Smallest</string>
-    <string name="battery_percent_text_style_title">Battery percent text style</string>
-    <string name="battery_percent_text_style_default">Default</string>
-    <string name="battery_percent_text_style_numbers_only">Numbers only (no percent sign)</string>
+    <!-- Battery percent text -->
+    <string name="battery_percent_text_size_title">Százalékos kijelzés szöveg mérete</string>
+    <string name="battery_percent_text_size_normal">Normál</string>
+    <string name="battery_percent_text_size_smaller">Kissebb</string>
+    <string name="battery_percent_text_size_even_smaller">Még kissebb</string>
+    <string name="battery_percent_text_size_smallest">Legkissebb</string>
+    <string name="battery_percent_text_style_title">Százalékos kijelzés szöveg stílusa</string>
+    <string name="battery_percent_text_style_default">Alapértelmezett</string>
+    <string name="battery_percent_text_style_numbers_only">Csak számok (% nélkül)</string>
 		
-	<!-- Advanced reboot menu: Allow on lockscreen -->
-	<string name="pref_reboot_allow_on_lockscreen_title">Enegedélyezés a zárképernyőn</string>
+    <!-- Advanced reboot menu: Allow on lockscreen -->
+    <string name="pref_reboot_allow_on_lockscreen_title">Enegedélyezés a zárképernyőn</string>
 	
-	<!-- Advanced reboot menu: require confirmation -->
+    <!-- Advanced reboot menu: require confirmation -->
     <string name="pref_reboot_confirm_required_title">Újraindítás jóváhagyása szükséges</string>
 	
-	<!-- Battery settings category -->
+    <!-- Battery settings category -->
     <string name="pref_cat_battery_settings_title">Akkumulátor beállítások</string>
 	
     <!-- Full screen caller photo modes -->
@@ -906,28 +906,28 @@
     <string name="fullscreen_caller_partial">Részleges</string>
     <string name="fullscreen_caller_full">Teljes</string>
 	
-	<!-- Show dialpad automatically -->
+    <!-- Show dialpad automatically -->
     <string name="pref_dialer_show_dialpad_title">Tárcsázó automatikus megjelenítése</string>
     <string name="pref_dialer_show_dialpad_summary">Automatikusan megjeleníti a tárcsázót a telefon alkalmazás indításakor</string>
 	
-	<!-- Volume rocker wake -->
+    <!-- Volume rocker wake -->
     <string name="pref_volume_rocker_wake_title">Hangerő gombra ébredés</string>
-	<string name="volume_rocker_wake_default">Alapértelmezett</string>
+    <string name="volume_rocker_wake_default">Alapértelmezett</string>
     <string name="volume_rocker_wake_enabled">Engedélyezve</string>
     <string name="volume_rocker_wake_disabled">Letiltva</string>
 	
-	<!-- Tiles: Hide on change -->
+    <!-- Tiles: Hide on change -->
     <string name="pref_qs_hide_on_change_title">Elrejtés változáskor</string>
     <string name="pref_qs_hide_on_change_summary">Gyorsbeállítások panel automatikus bezáráza csempe kiválasztása után. GravityBox - és rendszer csempékre vonatkozik amelyeknél felülíródott a rendszerbeállítás.</string>
 	
-	<!-- Network mode tile: CDMA support -->
+    <!-- Network mode tile: CDMA support -->
     <string name="pref_network_mode_tile_cdma_title">CDMA hálózati mód használata</string>
 	
-	<!-- Cursor control in navigation bar -->
+    <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">Kurzor mozgatás billentyűi</string>
     <string name="pref_navbar_cursor_control_summary">Megjeleníti a kurzor mozgatási billentyűit a navigációs sávban a billentyűzet használatakor</string>
 	
-	<!-- Navigation bar custom key (previously as App launcher key) -->
+    <!-- Navigation bar custom key (previously as App launcher key) -->
     <string name="pref_cat_navbar_custom_key_title">Egyéni gombok beállítása</string>
     <string name="pref_navbar_custom_key_enable_title">Egyéni gombok engedélyezése</string>
 
