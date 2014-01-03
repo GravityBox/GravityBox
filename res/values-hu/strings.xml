@@ -69,7 +69,7 @@
     <string name="quick_settings_expanded_desktop_disabled">Letiltva</string>
     <string name="quick_settings_expanded_desktop_normal">Normál</string>
     <string name="quick_settings_expanded_desktop_expanded">Kiterjesztett</string>
-	<string name="quick_settings_stay_awake_on">Ébrentartás bekapcsolva</string>
+    <string name="quick_settings_stay_awake_on">Ébrentartás bekapcsolva</string>
     <string name="quick_settings_stay_awake_off">Ébrentartás kikapcsolva</string>
 	
     <!--  QuickSettings settings -->
@@ -81,7 +81,7 @@
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">GPS</string>
-	<string name="qs_tile_gps_alt">GPS (CM stílus)</string>
+    <string name="qs_tile_gps_alt">GPS (CM stílus)</string>
     <string name="qs_tile_mobile_data">Mobil adatátvitel</string>
     <string name="qs_tile_network_mode">Hálózati üzemmód</string>
     <string name="qs_tile_data_usage">Adat használat</string>
@@ -94,9 +94,9 @@
     <string name="qs_tile_sleep">Alvás</string>
     <string name="qs_tile_quickrecord">Gyors Felvétel</string>
     <string name="qs_tile_settings">Beállítások</string>
-	<string name="qs_tile_volume">Hangerő</string>
+    <string name="qs_tile_volume">Hangerő</string>
     <string name="qs_tile_expanded_desktop">Kiterjesztett asztal</string>
-	<string name="qs_tile_stay_awake">Ébrentartás</string>
+    <string name="qs_tile_stay_awake">Ébrentartás</string>
     <string name="qs_tile_screenshot">Képernyőkép</string>
 	
     <!-- Color Picker -->
@@ -158,6 +158,8 @@
     <!--  Power tweaks category -->
     <string name="pref_cat_power_title">Energia beállítások</string>
     <string name="pref_cat_power_summary">Különböző energiával kapcsolatos módosításokat tartalmaz</string>
+    <string name="pref_cat_power_menu_title">Kikapcsoló menü</string>
+    <string name="pref_cat_power_other_title">Továbbiak</string>
 
     <!--  Low battery LED flashing -->
     <string name="pref_flashing_led_disable_title">Letiltja a LED villogást</string>
@@ -186,7 +188,7 @@
     <string name="pref_ab_values_set">Értékek %s-os megadása</string>
     <string name="pref_ab_config_saved">Új automatikus fényerő konfiguráció elmentve</string>
     <string name="pref_ab_config_cancelled">Automatikus fényerő konfiguráció NINCS elmentve</string>
-	<string name="pref_ab_button_set">Beállít</string>
+    <string name="pref_ab_button_set">Beállít</string>
 
     <!-- Lockscreen rotation -->
     <string name="pref_lockscreen_rotation_title">Zárképernyő elforgatás engedélyezése</string>
@@ -264,7 +266,7 @@
     <string name="pref_volume_panel_expandable_title">Bővített hangerő panel</string>
     <string name="pref_volume_panel_expandable_summary">Engedélyezi a bővített hangerő panelt a különböző hangfolyamokhoz tartozó értékek külön beállítási lehetőségével</string>
 
-	<!-- Fully expandable volume panel -->
+    <!-- Fully expandable volume panel -->
     <string name="pref_volume_panel_expandable_fully_title">Teljes bővített hangerő panel</string>
     <string name="pref_volume_panel_expandable_fully_summary">Lehetővé teszi, hogy a hangerő panel a teljes rendelkezésre álló helyet kitöltse</string>
 	
@@ -386,7 +388,7 @@
     <!-- GPS Tile (for non-MTK) -->
     <string name="qs_tile_gps_enabled">GPS bekapcsolva</string>
     <string name="qs_tile_gps_disabled">GPS kikapcsolva</string>
-	<string name="qs_tile_gps_locked">GPS csatlakozva</string>
+    <string name="qs_tile_gps_locked">GPS csatlakozva</string>
 
     <!-- Pie control: always show menu button -->
     <string name="pie_control_menu_title">Mindig mutassa a menü gombot</string>
@@ -408,7 +410,7 @@
 
     <!-- Transparency management -->
     <string name="pref_cat_transparency_manager_title">Átlátszóság menedzsment</string>
-	<string name="pref_cat_transparency_manager_summary">Állapotsáv és Navigációs sáv átlátszóságának kezelése</string>
+    <string name="pref_cat_transparency_manager_summary">Állapotsáv és Navigációs sáv átlátszóságának kezelése</string>
     <string name="pref_tm_statusbar_launcher_title">Állapotsáv Indítónál</string>
     <string name="pref_tm_statusbar_lockscreen_title">Állapotsáv Zárképernyőnél</string>
     <string name="pref_tm_navbar_launcher_title">Navigációs sáv Indítónál</string>
@@ -421,7 +423,7 @@
     <string name="pref_screen_dim_level_title">Képernyő elsötétedési érték</string>
     <string name="pref_screen_dim_level_summary">A fényerő értéke az elsötétedő képernyő állapotban - amikor a képernyő hamarosan kikapcsol (újraindítás szükséges)</string>
 
-	<!-- Device type -->
+    <!-- Device type -->
     <string name="device_phone">telefon</string>
     <string name="device_tablet">tablet</string>
 
@@ -429,7 +431,7 @@
     <string name="pref_cat_brightness_title">Fényerő beállítások</string>
     <string name="pref_brightness_master_switch_summary">Csak abban az esetben használd, ha az eszközöd támogotja a szabvány Android fényerő funkciókat. Fényerővel kapcsolatos hibák megjelenése esetén tiltsd le ezt a funkciót. (újraindítás szükséges)</string>
 
-	<!-- HW Key Action: Recent apps -->
+    <!-- HW Key Action: Recent apps -->
     <string name="hwkey_action_recent_apps">Nemrég használt alkalmazások megjelenítése</string>
 
     <!-- HW Key Action: Home long-press -->
@@ -438,7 +440,7 @@
     <!-- HW Key Action: Launch cutom app -->
     <string name="hwkey_action_custom_app">Egyéni alkalmazás 1 indítása</string>
     <string name="pref_hwkey_custom_app_title">Egyéni alkalmazás 1 beállítása</string>
-	<string name="hwkey_action_custom_app2">Egyéni alkalmazás 2 indítása</string>
+    <string name="hwkey_action_custom_app2">Egyéni alkalmazás 2 indítása</string>
     <string name="pref_hwkey_custom_app_title2">Egyéni alkalmazás 2 beállítása</string>
     <string name="hwkey_action_custom_app_none">Nincs engedélyezve egyéni alkalmazás!</string>
     <string name="hwkey_action_custom_app_missing">Az egyéni alkalmazás nem található!</string>
@@ -455,7 +457,7 @@
     <string name="pref_national_roaming_title">Hazai adat roaming (MVNO)</string>
     <string name="pref_national_roaming_summary">Csatlakozás adat szolgáltatáshoz hazai roaming esetén</string>
 	
-	 <!-- Expanded Desktop -->
+    <!-- Expanded Desktop -->
     <string name="pref_expanded_desktop_title">Kiterjesztett asztal üzemmód</string>
     <string name="expanded_desktop_disabled">Letiltva</string>
     <string name="expanded_desktop_navbar">Navigációs sáv elrejtése</string>
@@ -466,6 +468,8 @@
 
     <!-- Power menu screenshot -->
     <string name="screenshot">Képernyőkép</string>
+    <string name="action_screenrecord">Képernyőfelvétel</string>
+    <string name="pref_powermenu_screenrecord_title">Képernyőfelvétel a kikapcsoló menüben</string>
 
     <!-- HW Key Action: Show menu -->
     <string name="hwkey_action_menu">Menü mutatása</string>
@@ -482,7 +486,7 @@
     <string name="pref_navbar_enable_summary">Újraindítás szükséges</string>
     <string name="pref_navbar_height_title">Navigációs sáv magassága</string>
     <string name="pref_navbar_height_summary">Vízszintes navigációs sáv és Álló tájolás módra vonatkozik</string>
-	<string name="pref_navbar_height_landscape_summary">Vízszintes navigációs sáv és Fekvő tájolás módra vonatkozik</string>
+    <string name="pref_navbar_height_landscape_summary">Vízszintes navigációs sáv és Fekvő tájolás módra vonatkozik</string>
     <string name="pref_navbar_width_title">Navigációs sáv szélessége</string>
     <string name="pref_navbar_width_summary">Függőleges navigációs sávra vonatkozik</string>
     <string name="pref_navbar_menukey_title">Menü gomb állandó megjelenítése</string>
@@ -490,7 +494,7 @@
     <!-- Screenshot in power menu -->
     <string name="pref_powermenu_screenshot_title">Képernyőkép a kikapcsoló menüben</string>	
 	
-	<!-- Unlock ring settings -->
+    <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Feloldó kör beállítások</string>
     <string name="pref_lockscreen_ring_targets_enable_summary">Feloldó kör célpontok főkapcsoló</string>
     <string name="pref_lockscreen_ring_targets_app_title">Célpont alkalmazás %s</string>
@@ -538,18 +542,18 @@
     <string name="pref_volume_adjust_mute_title">Lenémítja a hangerő beállítás értesítő hangot</string>
     <string name="pref_volume_adjust_mute_summary">Letiltja a hangerő gombokkal történő hangerőszabályozáskor hallható hangot</string>
 
-	<!-- Call vibrations -->
+    <!-- Call vibrations -->
     <string name="pref_call_vibrations_title">Híváskori rezgések</string>
     <string name="call_vibration_connected">Hívás kapcsolódásakor</string>
     <string name="call_vibration_disconnected">Hívás megszakítasakor</string>
     <string name="call_vibration_waiting">Hívás várakozás során</string>
     <string name="call_vibration_periodic">Minden 45. másodpercben kimenő hívások közben</string>
 	
-	<!-- QuickSettings tile order -->
+    <!-- QuickSettings tile order -->
     <string name="pref_qs_tile_order_title">Csempék átrendezése</string>
     <string name="pref_qs_tile_order_summary">Lehetővé teszi a Gyorsbeállítások csempék átrendezését</string>
 	
-	<!-- Ongoing notifications -->
+    <!-- Ongoing notifications -->
     <string name="pref_ongoing_notifications_title">Folyamatban lévő értesítések blokkoló</string>
     <string name="pref_ongoing_notifications_summary">Lehetővé teszi kiválasztott folyamatban lévő értesítések blokkolását</string>
     <string name="ongoing_notif_info">A lista automatikusan bővítve lesz minden folyamatban lévő értesítéssel, ami felbukkan.
@@ -557,7 +561,7 @@
     <string name="ongoing_notif_reset_list">Lista visszaállítása</string>
     <string name="ongoing_notif_reset_alert">Biztosan vissza szeretné állítani a listát?
         Ez törölni fogja az aktuális listát és engedélyezni fogja az összes korábban blokkolt folyamatban lévő értesítést.</string>
-	<string name="ongoing_notif_list_empty">(a lista üres)</string>
+    <string name="ongoing_notif_list_empty">(a lista üres)</string>
 
     <!-- Quick unlock -->
     <string name="pref_lockscreen_quick_unlock_title">Gyors feloldás</string>
@@ -575,18 +579,22 @@
     <string name="sbl_policy_unlocked">Feloldva, ha a billentyűzár nincs engedélyezve</string>
     <string name="sbl_policy_locked">Zárolva</string>
 	
-	<!-- Data traffic monitor -->
+    <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Adatforgalom figyelő</string>
     <string name="pref_data_traffic_enable_summary">Adatforgalom figyelő automatikus mutatása aktív adatkapcsolat esetén</string>
     <string name="pref_data_traffic_position_title">Pozíció</string>
+    <string name="pref_data_traffic_inactivity_mode_title">Tétlenség alatt</string>
+    <string name="inactivity_mode_default">Alapértelmezett</string>
+    <string name="inactivity_mode_hide">Eljertés tétlenség alatt</string>
+    <string name="inactivity_mode_summary">Összegzés megjelenítése és eljertése</string>
     <string name="dt_position_auto">Automatikus (középen vagy jobbra az óra pozíciójától függően)</string>
     <string name="dt_position_left">Balra</string>
-	<string name="dt_position_right">Jobbra</string>
+    <string name="dt_position_right">Jobbra</string>
     <string name="pref_data_traffic_size_title">Méret</string>
     <string name="dt_size_normal">Normál</string>
     <string name="dt_size_smaller">Kisebb</string>
     <string name="dt_size_smallest">Legkisebb</string>
-	<string name="byte_abbr">B</string>
+    <string name="byte_abbr">B</string>
     <string name="kilobyte_abbr">KB</string>
     <string name="megabyte_abbr">MB</string>
     <string name="second_abbr">mp</string>
@@ -669,24 +677,24 @@
     <string name="caller_unknown_photo_result_successful">Fotó megváltoztatva</string>
     <string name="caller_unkown_photo_result_not_successful">Fotó nincs megváltoztatva</string>
 	
-	<!-- Minimum screen brightness warning -->
+    <!-- Minimum screen brightness warning -->
     <string name="screen_brightness_min_warning">Lehetséges, hogy a képernyő nem támogatja a 20 alatt beállított értéket. Ha a képernyő nem világít, 
 	tartsa  nyomva a hangerő + gombot legalább 7 másodpercig a fényerő beállítások alaphelyzetbe állításához, és utána állítsa be a fényerőt magasabb értékre.</string>
 
-	<!-- Navbar tweaks categories -->
+    <!-- Navbar tweaks categories -->
     <string name="pref_cat_navbar_general_title">Általános</string>
     <string name="pref_cat_navbar_keys_title">Navigációs gombok</string>
     <string name="pref_cat_navbar_color_title">Szín</string>
     <string name="pref_cat_navbar_dimen_title">Méret</string>
 	
-	<!-- Navigation bar colors -->
+    <!-- Navigation bar colors -->
     <string name="pref_navbar_color_enable_title">Navigációs bár színek engedélyezése</string>
     <string name="pref_navbar_color_enable_summary">A funkció letiltása után újraindítást igényelhet</string>
     <string name="pref_navbar_key_color_title">Navigációs gomb színe</string>
     <string name="pref_navbar_key_glow_color_title">Aktív navigációs gomb színe</string>
     <string name="pref_navbar_bg_color_title">Navigációs sáv háttérének színe</string>
 	
-	<!-- Transparency manager mode -->
+    <!-- Transparency manager mode -->
     <string name="pref_tm_mode_title">Átlátszóság menedzser mód</string>
     <string name="pref_tm_mode_summary">Újraindítás szükséges</string>
     <string name="tm_mode_disabled">Letiltva</string>
@@ -700,14 +708,21 @@
     <string name="pref_statusbar_data_activity_color_secondary_title">Másodlagos SIM adattevékenység színe</string>
     <string name="pref_statusbar_data_activity_color_secondary_summary">Beállítja a másodlagos adattevékenység jelzőikonok színét</string>
 
-    <string name="pref_lockscreen_ring_torch_title">Zseblámpa engedélyése</string>
+    <!-- Unlock ring Torch -->
+    <string name="pref_lockscreen_ring_torch_title">Zseblámpa bekapcsolása</string>
     <string name="pref_lockscreen_ring_torch_summary">Zseblámpa ki/be kapcsolása zárképernyőn nyomva tartott gyűrűnél</string>
-    <string name="pref_cat_signal_cluster_title">Térerő ikon beállítások</string>
+    
+    <!-- Signal cluster settings-->
+    <string name="pref_cat_signal_cluster_title">Jelszint ikon beállítások</string>
     <string name="pref_signal_cluster_connection_state_title">Csatlakozási állapot</string>
     <string name="pref_signal_cluster_connection_state_summary">Csatlakozási állapoot részleges/teljes kijelzése (újraindítás szükséges)</string>
     <string name="pref_signal_cluster_data_activity_title">Adathasználat</string>
     <string name="pref_signal_cluster_data_activity_summary">Adathasználat kijelzése mobilinternet és WiFi kapcsolat alatt (újraindítás szükséges)</string>
+    
+    <!-- Battery settings category -->
     <string name="pref_cat_battery_settings_title">Akkumulátor beállítások</string>
+    
+    <!-- Battery percent text -->
     <string name="battery_percent_text_size_title">Százalékos kijelzés szöveg mérete</string>
     <string name="battery_percent_text_size_normal">Normál</string>
     <string name="battery_percent_text_size_smaller">Kissebb</string>
@@ -716,50 +731,84 @@
     <string name="battery_percent_text_style_title">Százalékos kijelzés szöveg stílusa</string>
     <string name="battery_percent_text_style_default">Alapértelmezett</string>
     <string name="battery_percent_text_style_numbers_only" formatted="false">Csak számok (% nélkül)</string>
-    <string name="pref_data_traffic_inactivity_mode_title">Tétlenség alatt</string>
-    <string name="inactivity_mode_default">Alapértelmezett</string>
-    <string name="inactivity_mode_hide">Eljertés tétlenség alatt</string>
-    <string name="inactivity_mode_summary">Összegzés megjelenítése és eljertése</string>
-    <string name="action_screenrecord">Képernyőfelvétel</string>
-    <string name="pref_powermenu_screenrecord_title">Képernyőfelvétel a kikapcsoló menüben</string>
-    <string name="pref_cat_power_other_title">Továbbiak</string>
+    
+    <!-- Advanced reboot menu: Allow on lockscreen -->
     <string name="pref_reboot_allow_on_lockscreen_title">Enegedélyezés a zárképernyőn</string>
+    
+    <!-- Advanced reboot menu: require confirmation -->
     <string name="pref_reboot_confirm_required_title">Újraindítás jóváhagyása szükséges</string>
-    <string name="screen_off_effect_default">Alapértelmezett</string>
+    
+    <!-- Full screen caller photo modes -->
     <string name="fullscreen_caller_disabled">Letiltva</string>
     <string name="fullscreen_caller_partial">Részleges</string>
     <string name="fullscreen_caller_full">Teljes</string>
+    
+    <!-- Show dialpad automatically -->
     <string name="pref_dialer_show_dialpad_title">Tárcsázó automatikus megjelenítése</string>
     <string name="pref_dialer_show_dialpad_summary">Automatikusan megjeleníti a tárcsázót a telefon alkalmazás indításakor</string>
-    <string name="pref_volume_panel_timeout_title">Hangerő panel időkorlátja</string>
+    
+    <!-- Volume panel timeout -->
+    <string name="pref_volume_panel_timeout_title">Hangerő panel időtúllépés</string>
+    
+    <!-- Volume rocker wake -->
     <string name="pref_volume_rocker_wake_title">Hangerő gombra ébredés</string>
     <string name="volume_rocker_wake_default">Alapértelmezett</string>
     <string name="volume_rocker_wake_enabled">Engedélyezve</string>
     <string name="volume_rocker_wake_disabled">Letiltva</string>
-    <string name="pref_hwkey_lockscreen_torch_title">Zseblámpa a zárképernyőn</string>
+    
+    <!-- Lockscreen Torch -->
+    <string name="pref_hwkey_lockscreen_torch_title">Zseblámpa bekapcsolása zárképernyőn</string>
     <string name="hwkey_ls_torch_disabled">Letiltva</string>
-    <string name="hwkey_ls_torch_home_longpress">Home gomb nyomvatartásával</string>
-    <string name="hwkey_ls_torch_voldown_longpress">Hangerő le gomb nyomvatartásával</string>
+    <string name="hwkey_ls_torch_home_longpress">Kezdőlap gomb érintésére</string>
+    <string name="hwkey_ls_torch_voldown_longpress">Hangerő csökkentése gomb hosszú érintésére</string>
+    
+    <!-- Clear all recents bottom margin -->
     <string name="pref_recent_clear_margin_bottom_title">Alsó szegély beállítása</string>
-    <string name="pref_qs_management_enable_summary">Gyorsbeállítások panel főkapcsolója (újraindítás szükséges)</string>
+    
+    <!-- QuickSettings management master switch -->
+    <string name="pref_qs_management_enable_summary">Főkapcsoló a GyorsBeállítások módosításokhoz (újraindítás szükséges)</string>
+    
+    
+    <!-- Tiles: Hide on change -->
     <string name="pref_qs_hide_on_change_title">Elrejtés változáskor</string>
     <string name="pref_qs_hide_on_change_summary">Gyorsbeállítások panel automatikus bezáráza csempe kiválasztása után. GravityBox - és rendszer csempékre vonatkozik amelyeknél felülíródott a rendszerbeállítás.</string>
+    
+    <!-- Network mode tile: Allow LTE network mode -->
     <string name="pref_network_mode_tile_lte_title">LTE hálózati mód engedélyezése</string>
+    
+    <!-- Network mode tile: CDMA support -->
     <string name="pref_network_mode_tile_cdma_title">CDMA hálózati mód használata</string>
-    <string name="pref_qs_ringer_mode_title">Hang kapcsoló csempe</string>
+    
+    <!-- Ringer tile modes --> 
+    <string name="pref_qs_ringer_mode_title">Hang kapcsoló csempe beállítások</string>
     <string name="ringer_mode_silent">Néma</string>
     <string name="ringer_mode_vibrate">Rezgés</string>
     <string name="ringer_mode_sound">Hang</string>
     <string name="ringer_mode_sound_vibrate">Hang és rezgés</string>
-    <string name="pref_status_icon_style_title">Állapotjelző ikonok stílusa</string>
-    <string name="pref_status_icon_style_summary">Lehetővé teszi az állapotjelző ikonok stílusának megváltoztatását mint pl. a hang némítás, rezgés, ébresztő, stb.</string>
-    <string name="pref_about_gplus_summary">Érintse meg a GravityBox Google+ oldal meglátogatásához</string>
-    <string name="pref_navbar_swap_keys_title">Vissza és folyamatban lévő alkalmazások gombjának felcserélése</string>
+    
+    <!-- Status icon style -->
+    <string name="pref_status_icon_style_title">Állapot ikon stílus</string>
+    <string name="pref_status_icon_style_summary">Állapot ikonokra vonatkozik, mint néma, rezgés, ébresztés, stb.</string>
+    
+    <!-- Google Plus -->
+    <string name="pref_about_gplus_title">Google+ közösség</string>
+    <string name="pref_about_gplus_summary">Érintse meg a GravityBox Google+ közösségi oldal meglátogatásához</string>
+    
+    <!-- Navigation bar: swap back and recents key -->
+    <string name="pref_navbar_swap_keys_title">A Vissza és a Nemrég használt alkalmazások gombok felcserélése</string>
+    
+    <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">Kurzor mozgatás billentyűi</string>
     <string name="pref_navbar_cursor_control_summary">Megjeleníti a kurzor mozgatás billentyűit a navigációs sávban a billentyűzet használatakor</string>
+    
+    <!-- Navigation bar custom key (previously as App launcher key) -->
     <string name="pref_cat_navbar_custom_key_title">Egyéni gombok beállítása</string>
     <string name="pref_navbar_custom_key_enable_title">Egyéni gombok engedélyezése</string>
-    <string name="screen_off_effect_fade">Elsötétít</string>
-    <string name="pref_cat_power_menu_title">Kikapcsoló menü</string>
+    
+    <!-- Screen off effects -->
+    <string name="screen_off_effect_title">Képernyő kikapcsolási effektus</string>
+    <string name="screen_off_effect_default">Gyári beállítás</string>
+    <string name="screen_off_effect_crt">CRT effektus</string>
+    <string name="screen_off_effect_fade">Elhalványulás</string>
 
 </resources>
