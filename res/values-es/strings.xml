@@ -486,7 +486,7 @@
     <string name="pref_cat_navigation_bar_title">Ajustes de la barra de navegación</string>
     <string name="pref_cat_navigation_bar_summary">Contiene diversos ajustes relacionados con la barra de navegación</string>
     <string name="pref_navbar_override_title">Sobreescribir ajustes predeterminados</string>
-    <string name="pref_navbar_override_summary">Interruptor principal para ajustes de la barra de navegación (requiere reinicio)</string>
+    <string name="pref_navbar_override_summary">Activador de los ajustes de la barra de navegación (requiere reinicio)</string>
     <string name="pref_navbar_enable_title">Habilitar barra de navegación</string>
     <string name="pref_navbar_enable_summary">Requiere reinicio</string>
     <string name="pref_navbar_height_title">Altura de la barra de navegación</string>
@@ -502,7 +502,7 @@
     <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Ajustes del anillo de desbloqueo</string>
     <string name="pref_lockscreen_ring_targets_enable_title">Habilitar disparadores en anillo de desbloqueo</string>
-    <string name="pref_lockscreen_ring_targets_enable_summary">Interruptor principal para los disparadores del anillo de desbloqueo</string>
+    <string name="pref_lockscreen_ring_targets_enable_summary">Activador de los disparadores del anillo de desbloqueo</string>
     <string name="pref_lockscreen_ring_targets_app_title">Aplicación destino %s</string>
     <string name="pref_lockscreen_ring_vertical_offset_title">Unlock ring vertical offset</string>
     <string name="pref_lockscreen_ring_horizontal_offset_title">Unlock ring horizontal offset</string>
@@ -754,7 +754,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">Con pulsación larga en botón de bajar volumen</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Interruptor principal de la gestión de ajustes rápidos (requiere reinicio)</string>
+    <string name="pref_qs_management_enable_summary">Activador de la gestión de ajustes rápidos (requiere reinicio)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Aplicaciones</string>
@@ -888,5 +888,10 @@
     <string name="hwkey_action_show_power_menu">Mostrar menú de apagado</string>
     <string name="hwkey_action_expand_notifications">Expandir panel de notificaciones</string>
     <string name="hwkey_action_expand_quicksettings">Expandir panel de de ajustes rápidos</string>
+
+    <!-- Navigation bar ring targets -->
+    <string name="pref_cat_navbar_ring_targets_title">Objetivos en anillo de barra de navegación</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Activador de objetivos en el anillo de barra de navegación (requiere reinicio)</string>
+    <string name="pref_navbar_ring_target_title">Objetivo de anillo %d</string>
 
 </resources>
