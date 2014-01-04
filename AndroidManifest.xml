@@ -51,6 +51,19 @@
             android:label="@string/pref_qs_tile_order_title" >
         </activity>
 
+        <activity
+            android:name="com.ceco.kitkat.gravitybox.shortcuts.ShortcutActivity"
+            android:label="@string/shortcut_activity_title"
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:launchMode="singleTop"
+            android:excludeFromRecents="true"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <service android:name="com.ceco.kitkat.gravitybox.GravityBoxService">
             <intent-filter>
                 <action android:name="gravitybox.intent.action.TOGGLE_SYNC" />
