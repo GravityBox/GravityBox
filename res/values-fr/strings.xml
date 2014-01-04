@@ -890,4 +890,7 @@
     <string name="pref_navbar_ring_targets_enable_summary">Interrupteur principal pour les cibles de l\'anneau de navigation (redémarrage nécessaire)</string>
     <string name="pref_navbar_ring_target_title">Cible %d sur l\'anneau</string>
 
+    <!-- Shortcut activity title -->
+    <string name="shortcut_activity_title">Les actions de GravityBox</string>
+
 </resources>
