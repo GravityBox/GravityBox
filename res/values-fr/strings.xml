@@ -111,7 +111,7 @@
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_wifi_alt">Wi-Fi (style CM)</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
-    <string name="qs_tile_gps">GPS</string>
+    <string name="qs_tile_gps">Localisation</string>
     <string name="qs_tile_gps_alt">GPS (style CM)</string>
     <string name="qs_tile_mobile_data">Connexion de données</string>
     <string name="qs_tile_network_mode">Mode réseau</string>
