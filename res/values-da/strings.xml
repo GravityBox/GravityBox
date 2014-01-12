@@ -29,6 +29,8 @@
     <string name="vol_key_cursor_control_off">Slået fra</string>
     <string name="vol_key_cursor_control_on">Volumen op/ned bevæger markøren til venstre/højre</string>
     <string name="vol_key_cursor_control_on_reverse">Volumen op/ned bevæger markøren til højre/venstre</string>
+    <string name="swap_volume_buttons_title">Ombyt lydstyrkeknapper</string>
+    <string name="swap_volume_buttons_summary">Ombyt lydstyrkeknapper, når skærmen roteres</string>
 
     <string name="recents_clear_all_title">Ryd alle seneste apps</string>
 

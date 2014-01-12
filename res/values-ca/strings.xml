@@ -29,6 +29,8 @@
     <string name="vol_key_cursor_control_off">Desactivat</string>
     <string name="vol_key_cursor_control_on">Volum superior/inferior mou el cursor esquerra/dreta</string>
     <string name="vol_key_cursor_control_on_reverse">Volum superior/inferior mou el cursor dreta/esquerra</string>
+    <string name="swap_volume_buttons_title">Intercanvia els botons de volum</string>
+    <string name="swap_volume_buttons_summary">Intercanvia els botons de volum quan la pantalla estigui rotada</string>
 
     <string name="recents_clear_all_title">Suprimir totes les tasques recents</string>
 

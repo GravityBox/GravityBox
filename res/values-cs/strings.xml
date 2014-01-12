@@ -30,6 +30,8 @@
     <string name="vol_key_cursor_control_off">Vypnuté</string>
     <string name="vol_key_cursor_control_on">Tlačítko nahoru/dolů pohybuje kurzorem doleva/doprava</string>
     <string name="vol_key_cursor_control_on_reverse">Tlačítko nahoru/dolů pohybuje kurzorem doprava/doleva</string>
+    <string name="swap_volume_buttons_title">Převrátit smysl tlačítek hlasistosti</string>
+    <string name="swap_volume_buttons_summary">V případě otočení obrazovky bude převrácen i smysl tlačítek hlasitosti</string>
 
     <string name="recents_clear_all_title">Ukončení aktuálních aplikací</string>
 
