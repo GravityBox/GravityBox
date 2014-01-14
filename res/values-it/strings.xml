@@ -1015,5 +1015,8 @@
     <!-- Swap volume keys when the screen is rotated -->
     <string name="pref_vol_swap_keys_title">Inverti tasti volume</string>
     <string name="pref_vol_swap_keys_summary">Inverti tasti volume quando lo schermo è ruotato</string>
-
+    
+     <!-- Lockscreen: custom background blur effect -->
+    <string name="pref_lockscreen_bg_blur_effect_title">Effetto sfocatura</string>
+    
 </resources>
