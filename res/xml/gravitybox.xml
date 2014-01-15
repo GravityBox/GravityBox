@@ -1548,7 +1548,7 @@
                 maximum="60"
                 interval="1"
                 monitorBoxEnabled="true"
-                monitorBoxUnit="m"
+                monitorBoxUnit="min"
                 android:defaultValue="10" />
 
         </PreferenceCategory>
