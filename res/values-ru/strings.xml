@@ -18,16 +18,16 @@
 
     <string name="app_name">GravityBox</string>
 
-    <string name="battery_style_title">Вид индикатора заряда</string>	
-    <string name="battery_style_stock">Стоковый индикатор</string>
-    <string name="battery_style_circle">Круглый индикатор</string>
-    <string name="battery_style_circle_percent">Круглый индикатор с процентами</string>
+    <string name="battery_style_title">Стиль батареи</string>
+    <string name="battery_style_stock">Стоковая батарея</string>
+    <string name="battery_style_circle">Круглая батарея</string>
+    <string name="battery_style_circle_percent">Круглая с процентами</string>
     <string name="battery_style_kitkat">Батарея KitKat</string>
     <string name="battery_style_kitkat_percent">Батарея KitKat с процентами</string>
     <string name="battery_style_none">Не показывать</string>
 
-    <string name="vol_music_controls_title">Пропуск трека с помощь клавиш громкости</string>
-    <string name="vol_music_controls_summary">Пропускать треки длинным нажатием клавиш громкости при выключенном экране</string>
+    <string name="vol_music_controls_title">Переключение треков</string>
+    <string name="vol_music_controls_summary">Переключать треки удержанием клавиш громкости при выключенном экране</string>
 
     <string name="low_battery_warning_policy_title">Предупреждение о низком заряде</string>
     <string name="low_battery_warning_full">Уведомление и звук</string>
@@ -37,44 +37,44 @@
 
     <string name="reboot_required">Изменения вступят в силу после перезагрузки</string>
 
-    <string name="signal_icon_autohide_title">Автоматически скрывать иконку антенны</string>
-    <string name="signal_icon_autohide_summary">Автоматически скрывает иконку антенны для выбранного SIM-слота когда SIM-карта в этом слоте отсутствует, отключает уведомление \"Отсутствует SIM\"</string>
-    <string name="sim_slot_1">Скрывать первый слот</string>
-    <string name="sim_slot_2">Скрывать второй слот</string>
-    <string name="sim_disable_notifications">Отключить уведомления</string>
+    <string name="signal_icon_autohide_title">Скрывать значки сигнала</string>
+    <string name="signal_icon_autohide_summary">Автоматически скрывать значки сигнала для выбранных SIM, если SIM-карта не установлена, при этом отключаются уведомления \"Отсутствует SIM\"</string>
+    <string name="sim_slot_1">Скрывать SIM 1</string>
+    <string name="sim_slot_2">Скрывать SIM 2</string>
+    <string name="sim_disable_notifications">Откл уведомления</string>
     <string name="sim_disable_notifications_summary">Уведомления \"Отсутствует SIM\" отключены</string>
 
-    <string name="poweroff_advanced_title">Расширенное меню перезагрузки</string>
-    <string name="poweroff_advanced_summary">Включает расширенное меню перезагрузки с возможностью перезагрузки в Recovery</string>
-    <string name="poweroff_recovery">Recovery</string>
-    <string name="poweroff_bootloader">Bootloader</string>    
+    <string name="poweroff_advanced_title">Расширенная перезагрузка</string>
+    <string name="poweroff_advanced_summary">Включение расширенного меню перезагрузки с возможностью перезагрузки в режим восстановления</string>
+    <string name="poweroff_recovery">Режим восстановления</string>
+    <string name="poweroff_bootloader">Загрузчик</string>    
 
-    <string name="vol_key_cursor_control_title">Управление курсором клавишами громкости</string>
-    <string name="vol_key_cursor_control_summary">Позволяет управлять курсором в текстовых полях клавишами громкости</string>
+    <string name="vol_key_cursor_control_title">Управление курсором</string>
+    <string name="vol_key_cursor_control_summary">Управление курсором в текстовых полях клавишами громкости</string>
     <string name="vol_key_cursor_control_off">Отключено</string>
-    <string name="vol_key_cursor_control_on">Звук вверх/вниз для перемещения курсора влево/вправо</string>
-    <string name="vol_key_cursor_control_on_reverse">Звук вверх/вниз для перемещения курсора вправо/влево</string>
+    <string name="vol_key_cursor_control_on">Громкость вверх/вниз для перемещения курсора влево/вправо</string>
+    <string name="vol_key_cursor_control_on_reverse">Громкость вверх/вниз для перемещения курсора вправо/влево</string>
 
     <string name="recents_clear_all_title">Закрыть все текущие задачи</string>
 
-    <string name="fix_datetime_crash_title">Падения диалога Дата и время</string>
-    <string name="fix_datetime_crash_summary">Включить, если при входе в настройки Даты и времени происходит падение (Необходима перезагрузка)</string>
+    <string name="fix_datetime_crash_title">Исправить сбой даты и времени</string>
+    <string name="fix_datetime_crash_summary">Включить в случае сбоя при входе в настройки даты и времени (необходима перезагрузка)</string>
 
-    <string name="fix_caller_id_phone_title">Определения номера для звонка</string>
-    <string name="fix_caller_id_phone_summary">Включить, если номер звонящего не сопоставляется с контактом при входящем звонке (Необходима перезагрузка)</string>
-    <string name="fix_caller_id_phone_alert">После перезагрузки необходимо удалить и заново добавить контакты, чтобы изменения вступили в силу! Используйте Настройки - Приложения - Хранилище контактов - Стереть данные.</string>
+    <string name="fix_caller_id_phone_title">Исправить ID вызывающего (тлф)</string>
+    <string name="fix_caller_id_phone_summary">Включить в случае несовпадения контакта при получении вызова (необходима перезагрузка)</string>
+    <string name="fix_caller_id_phone_alert">После перезагрузки, необходимо очистить и заново добавить контакты для применения изменений! Используйте Настройки / Приложения / Все - для очистки данных поставщика контактов.</string>
 
-    <string name="fix_caller_id_mms_title">Определителя номера для сообщений</string>
-    <string name="fix_caller_id_mms_summary">Включить, если наблюдается проблема нескольких веток сообщений для одного контакта (Необходима перезагрузка)</string>
-    <string name="fix_caller_id_mms_alert">После перезагрузки необходимо удалить все раздельные ветки в приложении Сообщения, чтобы изменения вступили в силу!</string>
+    <string name="fix_caller_id_mms_title">Исправить ID вызывающего (сообщ)</string>
+    <string name="fix_caller_id_mms_summary">Включить в случае разрыва цепочек сообщений для одного и того же контакта (необходима перезагрузка)</string>
+    <string name="fix_caller_id_mms_alert">После перезагрузки, необходимо удалить все разделённые цепочки в приложении сообщений для применения изменений!</string>
 
-    <string name="fix_calendar_title">Приложение Календарь</string>
-    <string name="fix_calendar_summary">Включить, если есть проблема с периодически включающимся экраном в спящем режиме</string>
+    <string name="fix_calendar_title">Исправить календарь</string>
+    <string name="fix_calendar_summary">Включить в случае периодических самопроизвольгых поворотов экрана (необходима перезагрузка)</string>
 
     <string name="important">Важно</string>
 
-    <string name="caller_fullscreen_photo_title">Фото звонящего на весь экран</string>
-    <string name="caller_fullscreen_photo_summary">Отображать фото звонящего на весь экран при вызовах</string>
+    <string name="caller_fullscreen_photo_title">Фото вызывающего на весь экран</string>
+    <string name="caller_fullscreen_photo_summary">Отображение полноэкранной фотографии вызывающего на экраневходящего вызова</string>
 
     <!-- QuickSettings strings -->
     <string name="quick_settings_sync_on">Синхр. вкл.</string>
@@ -87,142 +87,147 @@
     <string name="quick_settings_qr_playing">Воспроизведение&#8230;</string>
     <string name="quick_settings_qr_recording">Запись&#8230;</string>
     <string name="quick_settings_qr_recorded">Записано</string>
-    <string name="quick_settings_qr_record">Удержите для записи</string>
-    <string name="quick_settings_qr_recording_notif">Коснитесь чтобы остановить запись</string>
+    <string name="quick_settings_qr_record">Удерживайте для записи</string>
+    <string name="quick_settings_qr_recording_notif">Коснитесь для остановки записи</string>
     <string name="quick_settings_expanded_desktop_disabled">Отключено</string>
     <string name="quick_settings_expanded_desktop_normal">Нормальный</string>
     <string name="quick_settings_expanded_desktop_expanded">Расширенный</string>
-    <string name="quick_settings_stay_awake_on">Не засыпать вкл.</string>
-    <string name="quick_settings_stay_awake_off">Не засыпать выкл.</string>
+    <string name="quick_settings_stay_awake_on">Бодрствование вкл.</string>
+    <string name="quick_settings_stay_awake_off">Бодрствование выкл.</string>
     <string name="quick_settings_wifi">Wi-Fi</string>
     <string name="quick_settings_wifi_off">Wi-Fi выкл</string>
     <string name="quick_settings_wifi_not_connected">Не подключено</string>
     <string name="quick_settings_wifi_turning_on">Включение&#8230;</string>
-    <string name="quick_settings_nfc_on">NFC on</string>
-    <string name="quick_settings_nfc_off">NFC off</string>
+    <string name="quick_settings_nfc_on">NFC вкл</string>
+    <string name="quick_settings_nfc_off">NFC выкл</string>
     <string name="quick_settings_camera_error_connect">Не удалось подключиться к камере</string>
+    <string name="quick_settings_usb_tether_off">Отключено</string>
+    <string name="quick_settings_usb_tether_connected">Раздача выкл</string>
+    <string name="quick_settings_usb_tether_on">Раздача</string>
     
     <!--  QuickSettings settings -->
-    <string name="quick_settings_title">Иконки быстрых настроек в статусбаре</string>
-    <string name="quick_settings_summary">Позволяет включать/отключать иконки быстрых настроек в статусбаре</string>
+    <string name="quick_settings_title">Плитки в панели уведомлений</string>
+    <string name="quick_settings_summary">Включение/отключение плиток быстрых настроек для панели уведомлений</string>
     <string name="qs_tile_user_profile">Профиль пользователя</string>
-    <string name="qs_tile_airplane_mode">Режим полета</string>
-    <string name="qs_tile_battery">Заряд батареи</string>
+    <string name="qs_tile_airplane_mode">Режим полёта</string>
+    <string name="qs_tile_battery">Состояние батареи</string>
     <string name="qs_tile_wifi">Wi-Fi</string>
-    <string name="qs_tile_wifi_alt">Wi-Fi (CM style)</string>
+    <string name="qs_tile_wifi_alt">Wi-Fi (стиль CM)</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">GPS</string>
-    <string name="qs_tile_gps_alt">GPS (CM style)</string>
-    <string name="qs_tile_mobile_data">Мобильный интернет</string>
-    <string name="qs_tile_network_mode">Режим сети (2g/3g)</string>
-    <string name="qs_tile_data_usage">Передача данных (статистика)</string>
-    <string name="qs_tile_audio">Профили звука</string>
+    <string name="qs_tile_gps_alt">GPS (стиль CM)</string>
+    <string name="qs_tile_mobile_data">Моб. данные</string>
+    <string name="qs_tile_network_mode">Режим сети</string>
+    <string name="qs_tile_data_usage">Использование данных</string>
+    <string name="qs_tile_audio">Аудиопрофили</string>
     <string name="qs_tile_brightness">Яркость</string>
-    <string name="qs_tile_screen_timeout">Таймер отключения экрана</string>
+    <string name="qs_tile_screen_timeout">Задержка откл. экрана</string>
     <string name="qs_tile_autorotation">Автоповорот</string>
     <string name="qs_tile_sync">Синхронизация</string>
-    <string name="qs_tile_wifi_ap">Точка доступа Wi-Fi</string>
+    <string name="qs_tile_wifi_ap">ТД Wi-Fi</string>
     <string name="qs_tile_torch">Фонарик</string>
     <string name="qs_tile_gravitybox">GravityBox</string>
     <string name="qs_tile_sleep">Сон</string>
     <string name="qs_tile_quickrecord">Быстрая запись</string>
     <string name="qs_tile_settings">Настройки</string>
     <string name="qs_tile_volume">Звук</string>
-    <string name="qs_tile_expanded_desktop">Расширенный рабочий стол</string>
-	<string name="qs_tile_stay_awake">Не засыпать</string>
+    <string name="qs_tile_expanded_desktop">Расш. рабочий стол</string>
+    <string name="qs_tile_stay_awake">Бодрствование</string>
     <string name="qs_tile_screenshot">Снимок экрана</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Камера</string>
-    
-     <!-- Color Picker -->
+    <string name="qs_tile_usb_tethering">Раздача по USB</string>
+
+    <!-- Color Picker -->
     <string name="dialog_color_picker">Выбор цвета</string>
     <string name="press_color_to_apply">Нажмите на цвет для применения</string>
 
     <!--  Statusbar background color -->
     <string name="statusbar_bgcolor_title">Цвет панели уведомлений</string>
-    <string name="statusbar_bgcolor_summary">Позволяет задать цвет панели уведомлений</string>
+    <string name="statusbar_bgcolor_summary">Установка цвета панели уведомлений</string>
 
     <!--  Fix speech settings -->
-    <string name="fix_tts_settings_title">Исправление речевых настроек</string>
-    <string name="fix_tts_settings_summary">Разблокирует голосовой поиск и распознавание речи в настройках Язык и ввод (Необходима перезагрузка)</string>
+    <string name="fix_tts_settings_title">Исправление голос. настроек</string>
+    <string name="fix_tts_settings_summary">Разблокировка голосового поиска и настроек текст-речь в меню Язык и ввод (необходима перезагрузка)</string>
 
     <!--  Advanced developer options -->
-    <string name="fix_dev_opts_title">Расширенные параметры Для разработчика</string>
-    <string name="fix_dev_opts_summary">Разблокирует расширенные параметры Для разработчика (Необходима перезагрузка)</string>
+    <string name="fix_dev_opts_title">Опции для разработчиков</string>
+    <string name="fix_dev_opts_summary">Разблокировка дополнительных опций для разработчиков (необходима перезагрузка)</string>
 
     <!-- Main preference categories -->
-    <string name="pref_cat_statusbar_title">Настройки статусбара</string>
-    <string name="pref_cat_statusbar_summary">Содержит некоторые настройки статусбара</string>
-    <string name="pref_cat_misc_title">Различные настройки</string>
-    <string name="pref_cat_misc_summary">Содержит настройки, не относящиеся к другим категориям</string>
-    <string name="pref_cat_fixes_title">Общие настройки</string>
-    <string name="pref_cat_fixes_summary">Содержит общие настройки, относящиеся к MTK6589. Использовать только при необходимости.</string>
+    <string name="pref_cat_statusbar_title">Настройки строки состояния</string>
+    <string name="pref_cat_statusbar_summary">Различные настройки строки состояния</string>
+    <string name="pref_cat_misc_title">Прочие настройки</string>
+    <string name="pref_cat_misc_summary">Настройки, не относящиеся к другим категориям</string>
+    <string name="pref_cat_fixes_title">Общие исправления</string>
+    <string name="pref_cat_fixes_summary">Общие исправления, специфичные для MTK6589. Используйте только при необходимсти.</string>
 
     <!-- About -->
     <string name="pref_cat_about_title">О программе</string>
-    <string name="about_gb_summary">Coded by C3C076@XDA. Нажмите для перехода к официальной теме.</string>
+    <string name="about_gb_summary">Разработка C3C076@XDA. Нажмите для перехода в официальный форум.</string>
     <string name="about_xposed_title">Xposed framework</string>
-    <string name="about_xposed_summary">Coded by rovo89@XDA. Нажмите для перехода к официальной теме.</string>
+    <string name="about_xposed_summary">Разработка rovo89@XDA. Нажмите для перехода в официальный форум.</string>
     <string name="about_donate_title">Пожертвовать</string>
-    <string name="about_donate_summary">Пожертвуйте, если считаете, что приложение стоит того! Также задумайтесь о пожертвовании rovo89 за его великолепный Xposed framework.</string>
+    <string name="about_donate_summary">Пожертвуйте через PayPal для поддержки разработки</string>
 
     <!-- Reboot confirmation -->
     <string name="reboot_confirm">%s будет перезагружен.</string>
-    <string name="reboot_confirm_recovery">%s будет перезагружен в recovery.</string>
-    <string name="reboot_confirm_bootloader">%s будет перезагружен в bootloader.</string>
+    <string name="reboot_confirm_recovery">%s будет перезагружен в режим восстановления.</string>
+    <string name="reboot_confirm_bootloader">%s будет перезагружен в загрузчик.</string>
 
     <!-- Engineering mode shortcut -->
-    <string name="engineering_mode_title">Инженерное меню</string>
-    <string name="engineering_mode_summary">Позволяет запустить Инженерное меню</string>
+    <string name="engineering_mode_title">Инженерный режим</string>
+    <string name="engineering_mode_summary">Запуск приложения в инженерном режиме</string>
 
     <!-- Dual SIM ringer -->
     <string name="dual_sim_ringer_title">Мелодия звонка для 2-х SIM</string>
-    <string name="dual_sim_ringer_summary">Запускает приложение, которое позволяет установить мелодию звонка и уведомлений отдельно для каждой SIM-карты</string>
+    <string name="dual_sim_ringer_summary">Запуск приложения, которое позволяет установить мелодию звонка и уведомлений отдельно для каждой SIM-карты</string>
 
     <!--  Lockscreen tweaks -->
     <string name="pref_cat_lockscreen_title">Настройки экрана блокировки</string>
-    <string name="pref_cat_lockscreen_summary">Содержит различные настройки экрана блокировки</string>
+    <string name="pref_cat_lockscreen_summary">Различные настройки экрана блокировки</string>
     <string name="pref_cat_lockscreen_background_title">Фон экрана блокировки</string>
     <string name="pref_lockscreen_background_title">Стиль фона</string>
     <string name="lockscreen_bg_default">Стандартные обои</string>
     <string name="lockscreen_bg_color">Заполнение цветом</string>
     <string name="lockscreen_bg_image">Пользовательское изображение</string>
+    <string name="lockscreen_bg_last_screen">Последний экран</string>
     <string name="pref_lockscreen_bg_color_title">Задать цвет</string>
-    <string name="pref_lockscreen_bg_color_summary">Позволяет задать цвет фона для экрана блокировки</string>
+    <string name="pref_lockscreen_bg_color_summary">Установка цвета фона для экрана блокировки</string>
     <string name="pref_lockscreen_bg_image_title">Задать изображение</string>
-    <string name="pref_lockscreen_bg_image_summary">Позволяет установить пользовательское изображение для экрана блокировки</string>
-    <string name="lockscreen_background_result_successful">Фон изменен</string>
-    <string name="lockscreen_background_result_not_successful">Фон не изменен</string>
-    <string name="pref_cat_lockscreen_other_title">Другие</string>
+    <string name="pref_lockscreen_bg_image_summary">Установка пользовательского изображения для экрана блокировки</string>
+    <string name="lockscreen_background_result_successful">Фон изменён</string>
+    <string name="lockscreen_background_result_not_successful">Фон не изменён</string>
+    <string name="pref_cat_lockscreen_other_title">Другое</string>
     <string name="pref_lockscreen_maximize_widgets_title">Развернуть виджеты</string>
     <string name="pref_lockscreen_maximize_widgets_summary">Когда включено, виджеты будут максимизированы по умолчанию</string>
 
     <!--  Power tweaks category -->
     <string name="pref_cat_power_title">Настройки питания</string>
-    <string name="pref_cat_power_summary">Содержит различные настройки, связанные с зарядом</string>
+    <string name="pref_cat_power_summary">Различные настройки, связанные с питанием</string>
 
     <!--  Low battery LED flashing -->
     <string name="pref_flashing_led_disable_title">Отключить вспышку</string>
-    <string name="pref_flashing_led_disable_summary">Отключает вспышку при малом заряде батареи и отключенном зарядном устройстве</string>
+    <string name="pref_flashing_led_disable_summary">Отключение вспышки при низком заряде батареи и отключенном зарядном устройстве</string>
 
     <!-- Display tweaks category -->
     <string name="pref_cat_display_title">Настройки экрана</string>
-    <string name="pref_cat_display_summary">Содержит различные настройки экрана</string>
+    <string name="pref_cat_display_summary">Различные настройки экрана</string>
 
     <!-- Minimum brightness level -->
     <string name="pref_brightness_min_title">Минимальный уровень яркости</string>
-    <string name="pref_brightness_min_summary">Позволяет установить минимальный уровень яркости. Применимо к ручной настройке яркости. (Необходима перезагрузка)</string>
+    <string name="pref_brightness_min_summary">Установка минимального уровня яркости при ручной настройке (необходима перезагрузка)</string>
 
     <!--  Autobrightness levels -->
     <string name="pref_ab_title">Уровни автояркости</string>
-    <string name="pref_ab_summary">Позволяет настроить уровни яркости подсветки в зависимости от внешней освещенности</string>
+    <string name="pref_ab_summary">Настройка уровней яркости подсветки в зависимости от внешней освещенности</string>
     <string name="level">Уровень</string>
     <string name="pref_ab_lux_max_label">Максимальная освещенность</string>
     <string name="pref_ab_brighness_label">Яркость (%d &#8211; 255)</string>
     <string name="pref_ab_number_error_general">Некорректное значение</string>
-    <string name="pref_ab_brightness_too_low">Не рекомендуется устнавливать яркость ниже %d</string>
+    <string name="pref_ab_brightness_too_low">Не рекомендуется устанавливать яркость ниже %d</string>
     <string name="pref_ab_brightness_too_high">Яркость не может быть выше 255</string>
-    <string name="pref_ab_number_error_negative">Значение не должно быть меньше 0</string>
+    <string name="pref_ab_number_error_negative">Значение не должно быть меньше или равным 0</string>
     <string name="pref_ab_number_not_ascending">Значение на нижнем уровне не может быть выше значений на верхних уровнях</string>
     <string name="pref_ab_number_not_descending">Значение на верхнем уровне не может быть ниже значений на нижних уровнях</string>
     <string name="pref_ab_values_set">Значения для %s установлено</string>
@@ -231,63 +236,63 @@
     <string name="pref_ab_button_set">Установить</string>
 
     <!-- Lockscreen rotation -->
-    <string name="pref_lockscreen_rotation_title">Включить поворот экрана блокировки</string>
-    <string name="pref_lockscreen_rotation_summary">ВНИМАНИЕ: может переместить цели для кольца разблокировки на некоторых девайсах в случае, если экран блокировки из AOSP был изменен производителем</string>
+    <string name="pref_lockscreen_rotation_title">Включить поворот экрана</string>
+    <string name="pref_lockscreen_rotation_summary">ВНИМАНИЕ: возможно смещение ярлыков кольца разблокировки на некоторых устройствах в случае, если экран блокировки из AOSP был изменен производителем</string>
 
     <!-- Lockscreen menu key -->
-    <string name="pref_lockscreen_menu_key_title">Включить "Меню"</string>
-    <string name="pref_lockscreen_menu_key_summary">Позволяет быстро разблокировать устройство с экрана блокировки клавишей "Меню" (Необходима перезагрузка)</string>
+    <string name="pref_lockscreen_menu_key_title">Включить кнопку меню</string>
+    <string name="pref_lockscreen_menu_key_summary">Быстрая разблокировка устройства с экрана блокировки кнопкой меню (необходима перезагрузка)</string>
 
     <!-- Fix messaging wakelock -->
-    <string name="pref_mms_fix_wakelock_title">Исправление просыпания пир входящих сообщениях</string>
-    <string name="pref_mms_fix_wakelock_summary">Предотвращает включение экрана при входящих сообщениях (Необходима перезагрузка)</string>
+    <string name="pref_mms_fix_wakelock_title">Исправление вэйклока сообщений</string>
+    <string name="pref_mms_fix_wakelock_summary">Предотвращение включения экрана при входящем сообщении (необходима перезагрузка)</string>
 
     <!-- Statusbar center clock -->
     <string name="pref_statusbar_center_clock_title">Часы в центре</string>
 
     <!-- Media tweaks category -->
     <string name="pref_cat_media_title">Настройки мультимедиа</string>
-    <string name="pref_cat_media_summary">Содержит различные настройки для медиа- и аудиосистемы</string>
+    <string name="pref_cat_media_summary">Различные настройки для медиа- и аудиосистемы</string>
 
     <!-- More music volume steps -->
-    <string name="pref_music_volume_steps_title">Больше уровней громкости для музыки</string>
-    <string name="pref_music_volume_steps_summary">Добавляет больше шагов для изменения громкости музыки (Необходима перезагрузка)</string>
+    <string name="pref_music_volume_steps_title">Больше уровней громкости</string>
+    <string name="pref_music_volume_steps_summary">Добавление дополнительных уровней для изменения громкости музыки (необходима перезагрузка)</string>
 
     <!-- Safe headset media volume -->
-    <string name="pref_safe_media_volume_title">Безопасный звук в наушниках</string>
-    <string name="pref_safe_media_volume_summary">Позволяет включить или выключить функцию безопасного звука в наушниках</string>
+    <string name="pref_safe_media_volume_title">Безопасная громкость</string>
+    <string name="pref_safe_media_volume_summary">Включение или выключение функции безопасной громкости звука в наушниках</string>
 
     <!-- Disable charging LED -->
-    <string name="pref_charging_led_disable_title">Отключить диод зарядки</string>
-    <string name="pref_charging_led_disable_summary">Позволяет отключить диод во время заряда</string>
+    <string name="pref_charging_led_disable_title">Отключить индикацию</string>
+    <string name="pref_charging_led_disable_summary">Отключение светодиода индикации во время зарядки</string>
     
     <!-- Hardware key actions -->
-    <string name="pref_cat_hwkey_actions_title">Действия кнопок</string>
-    <string name="pref_cat_hwkey_actions_summary">Позволяет задать свои действия для кнопок телефона</string>
-    <string name="hwkey_menu_longpress_dialog_title">Долгое нажатие Меню</string>
+    <string name="pref_cat_hwkey_actions_title">Физические кнопки</string>
+    <string name="pref_cat_hwkey_actions_summary">Установка своих действий для физических кнопок телефона</string>
+    <string name="hwkey_menu_longpress_dialog_title">Удержание Меню</string>
     <string name="hwkey_menu_doubletap_dialog_title">Двойное нажатие Меню</string>
-    <string name="hwkey_back_longpress_dialog_title">Долгое нажатие Назад</string>
+    <string name="hwkey_back_longpress_dialog_title">Удержание Назад</string>
     <string name="hwkey_action_default">Действие по умолчанию</string>
     <string name="hwkey_action_search">Поиск</string>
     <string name="hwkey_action_voice_search">Голосовой поиск</string>
-    <string name="hwkey_action_prev_app">Переключится на предыдущее приложение</string>
-    <string name="hwkey_action_kill">Закрыть текущее приложение</string>
+    <string name="hwkey_action_prev_app">Переключиться на предыдущее приложение</string>
+    <string name="hwkey_action_kill">Завершить текущее приложение</string>
     <string name="hwkey_action_sleep">Отключить экран</string>
-    <string name="pref_hwkey_kill_delay_title">Задержка долгого нажатия для закрытия приложения</string>
-    <string name="pref_hwkey_kill_delay_summary">Применимо к кнопке Закрыть текущее приложение. Определяет, как долго нужно держать кнопку чтобы закрыть приложение</string>
+    <string name="pref_hwkey_kill_delay_title">Задержка удержания для закрытия приложения</string>
+    <string name="pref_hwkey_kill_delay_summary">Применимо к действию Завершить текущее приложение. Определяет, как долго нужно удерживать нажатие на кнопке, чтобы завершить приложение</string>
     <string name="pref_hwkey_doubletap_speed_title">Скорость двойного нажатия</string>
-    <string name="pref_hwkey_doubletap_speed_summary">Примениму к двойному нажатию Меню. Определяет, как быстро нужно нажать на кнопку Меню для срабатывания двойного нажатия.</string>
-    <string name="app_killed">Приложение %s закрыто</string>
-    <string name="nothing_to_kill">Нечего закрывать</string>
+    <string name="pref_hwkey_doubletap_speed_summary">Применимо к двойному нажатию Меню. Определяет, как быстро нужно нажать на кнопку для срабатывания двойного нажатия.</string>
+    <string name="app_killed">Приложение %s завершено</string>
+    <string name="nothing_to_kill">Нет приложений для завершения</string>
     <string name="no_previous_app_found">Предыдущее приложение не найдено</string>
 
     <!--  Phone tweaks category -->
     <string name="pref_cat_phone_title">Настройки телефонии</string>
-    <string name="pref_cat_phone_summary">Содержит различные настройки телефона</string>
+    <string name="pref_cat_phone_summary">Различные настройки телефонии</string>
 
     <!-- Flip action while ringing -->
     <string name="pref_phone_flip_title">Переворот во время звонка</string>
-    <string name="pref_phone_flip_summary">Позволяет задать действие при переворачивании телефона во время входящего звонка</string>
+    <string name="pref_phone_flip_summary">Установка действия при переворачивании телефона во время входящего звонка</string>
     <string name="phone_flip_action_none">Ничего не делать</string>
     <string name="phone_flip_action_mute">Выключить звук</string>
     <string name="phone_flip_action_dismiss">Сбросить звонок</string>
@@ -296,55 +301,55 @@
     <string name="reboot_soft">Мягкая перезагрузка</string>
 
     <!--  Solid black Holo background -->
-    <string name="pref_holo_bg_solid_black_title">Черный задний фон</string>
-    <string name="pref_holo_bg_solid_black_summary">Использовать черный фон для ситемной Holo-темы по умолчанию вместо темно-серого градиента (Необходима перезагрузка)</string>
+    <string name="pref_holo_bg_solid_black_title">Чёрный задний фон</string>
+    <string name="pref_holo_bg_solid_black_summary">Использовать сплошной чёрный фон для системной Holo-темы по умолчанию вместо темно-серого градиента (необходима перезагрузка)</string>
 
     <!-- QuickSettings tiles per row -->
-    <string name="pref_qs_tiles_per_row_title">Иконок в ряд</string>
-    <string name="pref_qs_tiles_per_row_summary">Определяет, как много иконок быстрых настроек будет показано в одном ряду. Размеры изменятся соответственно. Применимо к портретному режиму.</string>
+    <string name="pref_qs_tiles_per_row_title">Количество плиток в ряду</string>
+    <string name="pref_qs_tiles_per_row_summary">Установка количества плиток быстрых настроек в одном ряду. Размеры изменятся соответственно (применимо к портретному режиму на телефонах или любому на планшетах)</string>
 
     <!--  Status bar clock - show day of week -->
     <string name="pref_statusbar_clock_dow_title">Отображать день недели</string>
     
      <!-- Expandable volume panel -->
-    <string name="pref_volume_panel_expandable_title">Расширяемая звуковая панель</string>
-    <string name="pref_volume_panel_expandable_summary">Включает расширяемую звуковую панель, на которой можно менять звук для разных потоков</string>
+    <string name="pref_volume_panel_expandable_title">Расширяемая панель</string>
+    <string name="pref_volume_panel_expandable_summary">Включение расширяемой панели громкости, на которой можно менять уровни для разных потоков</string>
 
     <!-- Fully expandable volume panel -->
-    <string name="pref_volume_panel_expandable_fully_title">Полностью расширяемая панель громкости</string>
-    <string name="pref_volume_panel_expandable_fully_summary">Позволяет ползунку громкости занимать все доступное пространство</string>
+    <string name="pref_volume_panel_expandable_fully_title">Полное расширение</string>
+    <string name="pref_volume_panel_expandable_fully_summary">Расширение панели громкости на всё доступное пространство</string>
     
     <!-- Link ringtone & notifications volumes -->
-    <string name="pref_link_volumes_title">Связать громкость рингтона и уведомлений</string>
+    <string name="pref_link_volumes_title">Связать громкость</string>
     <string name="pref_link_volumes_summary">Когда отключено, громкость уведомлений и рингтона можно задавать независимо</string>
 
     <!-- Auto-switch QuickSettings -->
-    <string name="pref_auto_switch_qs_title">Автовключение быстрых настроек</string>
-    <string name="pref_auto_switch_qs_summary">Быстрые настройки будут показаны автоматически (если нет уведомлений) при вытягивании статусбара</string>
+    <string name="pref_auto_switch_qs_title">Автовключение настроек</string>
+    <string name="pref_auto_switch_qs_summary">Быстрые настройки будут показаны автоматически (если нет уведомлений) при вытягивании строки состояния</string>
 
     <!-- Quick pulldown -->
     <string name="pref_quick_pulldown_title">Быстрое вытягивание</string>
-    <string name="pref_quick_pulldown_summary">За край статусбара можно вытянуть быстрые настройки</string>
+    <string name="pref_quick_pulldown_summary">Вытягивание быстрых настроек из края строки состояния</string>
     <string name="quick_pulldown_off">Выключено</string>
     <string name="quick_pulldown_right">Справа</string>
     <string name="quick_pulldown_left">Слева</string>
 
     <!-- Statusbar colors category -->
-    <string name="pref_cat_statusbar_colors_title">Цвета статусбара</string>
+    <string name="pref_cat_statusbar_colors_title">Цвета строки состояния</string>
 
     <!-- Enable icon colors -->
-    <string name="pref_statusbar_icon_color_enable_title">Включить цвета иконок</string>
+    <string name="pref_statusbar_icon_color_enable_title">Включить цвета значков</string>
 
     <!-- Statusbar icon color -->
-    <string name="pref_statusbar_icon_color_title">Цвет иконок статусбара</string>
-    <string name="pref_statusbar_icon_color_summary">Задает цвета для иконок статусбара и часов</string>
+    <string name="pref_statusbar_icon_color_title">Цвет значков</string>
+    <string name="pref_statusbar_icon_color_summary">Установка цвета для значков строки состояния и часов</string>
 
     <!-- Statusbar data activity color -->
     <string name="pref_statusbar_data_activity_color_title">Цвет активности данных</string>
-    <string name="pref_statusbar_data_activity_color_summary">Задает цвета для индикаторов активности данных</string>
+    <string name="pref_statusbar_data_activity_color_summary">Установка цвета для индикаторов активности данных</string>
 
     <!-- QuickSettings management category -->
-    <string name="pref_cat_statusbar_qs_title">Управление Быстрыми настройками</string>
+    <string name="pref_cat_statusbar_qs_title">Быстрые настройки</string>
     
     <!-- Notification drawer style -->
     <string name="pref_cat_notification_drawer_style_title">Стиль шторки уведомлений</string>
@@ -364,22 +369,22 @@
 
     <!-- Disable roaming indicators -->
     <string name="pref_disable_roaming_indicators_title">Отключить индикатор роуминга</string>
-    <string name="pref_disable_roaming_indicators_summary">При отключении R-индикатор не будет отображаться. Используйте с осторожностью.</string>
+    <string name="pref_disable_roaming_indicators_summary">При отключении, R-индикатор не будет отображаться. Используйте с осторожностью.</string>
 
     <!-- Battery status in pie controls -->
     <string name="pie_battery_status_charging">Зарядка (<xliff:g id="percent">%d</xliff:g>%%)</string>
-    <string name="pie_battery_status_full">Заряжен</string>
+    <string name="pie_battery_status_full">Заряжено</string>
     <string name="pie_battery_status_discharging"><xliff:g id="percent">%d</xliff:g>%% осталось</string>
 
     <!-- Phone status in pie controls -->
     <string name="pie_phone_status_no_service">Нет сети</string>
-    <string name="pie_phone_status_airplane_mode">Режим полета</string>
-    <string name="pie_phone_status_emergency_only">Только экстренные</string>
+    <string name="pie_phone_status_airplane_mode">Режим полёта вкл</string>
+    <string name="pie_phone_status_emergency_only">Только экстренные вызовы</string>
 
     <!-- Pie Controls settings -->
     <string name="pie_control_title">Веерное меню</string>
     <string name="pie_control_enable_title">Включить веерное меню</string>
-    <string name="pie_control_size_title">Размер навигационных кнопок</string>
+    <string name="pie_control_size_title">Размер нав. кнопок</string>
     <string name="pie_control_trigger_positions_title">Позиция переключателей</string>
     <string name="pie_control_trigger_left">Левая граница</string>
     <string name="pie_control_trigger_bottom">Нижняя граница</string>
@@ -392,23 +397,23 @@
     <string name="button_backlight_mode_disable">Отключить подсветку</string>
     <string name="button_backlight_mode_always_on">Включать всегда, когда включен экран</string>
     <string name="pref_button_backlight_notifications_title">Уведомления подсветкой клавиш</string>
-    <string name="pref_button_backlight_notifications_summary">ЭКСПЕРИМЕНТАЛЬНО! Моргающая подсветка клавиш при уведомлениях. Использовать только в случае отсутствия LED индикатора. Может привести к ухудшению жизни батареи.</string>
+    <string name="pref_button_backlight_notifications_summary">ЭКСПЕРИМЕНТАЛЬНАЯ ФУНКЦИЯ! Мигающая подсветка клавиш при уведомлениях. Использовать при отсутствии на устройстве светодиода. Может привести к расходу батареи.</string>
 
     <!-- Hide navigation bar for pie -->
-    <string name="pref_navbar_disable_title">Скрыть панель навигации</string>
-    <string name="pref_navbar_disable_summary">Скрывает панель навигации, когда включено веерное меню (для устройств с программными кнопками навигации, необходима перезагрузка)</string>
+    <string name="pref_navbar_disable_title">Скрыть нав. панель</string>
+    <string name="pref_navbar_disable_summary">Скрытие навигационной панели при включенном веерном меню (для устройств с нав. панелью, необходима перезагрузка)</string>
 
     <!--  Dithered Holo background -->
     <string name="pref_holo_bg_dither_title">Сглаженный Holo фон</string>
-    <string name="pref_holo_bg_dither_summary">Заменяет стандартный фон на сглаженный для избежания неплавного градиента (необходима перезагрузка)</string>
+    <string name="pref_holo_bg_dither_summary">Замена стандартного фона на сглаженный для устранения полосок градиента (необходима перезагрузка)</string>
 
-    <!-- Disable hardware keys for pie -->
-    <string name="pref_hwkeys_disable_title">Отключить железные кнопки</string>
-    <string name="pref_hwkeys_disable_summary">Отключает кнопки НАЗАД, ДОМОЙ, МЕНЮ при включенном веерном меню. Нестандартные действия этих кнопок по прежнему будут работать. (Для устройств с железными кнопками)</string>
+    <!-- Disable navigation keys for pie -->
+    <string name="pref_hwkeys_disable_title">Отключить нав. кнопки</string>
+    <string name="pref_hwkeys_disable_summary">Отключение одиночных нажатий на навигационных кнопках при включенном веерном меню.</string>
 
     <!-- Option for GB dark theme -->
     <string name="pref_gb_theme_dark_title">Использовать тему Holo Dark</string>
-    <string name="pref_gb_theme_dark_summary">Переключает тему интерфейса GravityBox со светлой на темную</string>
+    <string name="pref_gb_theme_dark_summary">Переключение темы интерфейса GravityBox со светлой на тёмную</string>
 
     <!-- Clear all recents positions -->
     <string name="recent_clear_off">Выключено</string>
@@ -421,21 +426,21 @@
     <string name="pref_recent_clear_margin_top_title">Настроить отступ сверху</string>
 
     <!-- Disable roaming warnings -->
-    <string name="pref_roaming_warning_disable_title">Отключить предупреждения о роуминге</string>
-    <string name="pref_roaming_warning_disable_summary">Отключить предупреждения о роуминге при отправке сообщений или совершении звонков в роуминге</string>
+    <string name="pref_roaming_warning_disable_title">Откл предупреждения о роуминге</string>
+    <string name="pref_roaming_warning_disable_summary">Отключение предупреждений о роуминге при отправке сообщений или совершении вызовов в роуминге</string>
 
     <!-- AppPickerPreference -->
     <string name="app_picker_search">Поиск</string>
-    <string name="app_picker_none">(нет)</string>
+    <string name="app_picker_none">(Нет)</string>
 
     <!-- QuickApp tile settings -->
     <string name="qs_tile_quickapp">Быстрый запуск</string>
-    <string name="pref_cat_quickapp_tile_title">Настройки тайла Быстрого запуска</string>
+    <string name="pref_cat_quickapp_tile_title">Плитка быстрого запуска</string>
     <string name="pref_quickapp_default_title">Основное приложение</string>
-    <string name="pref_quickapp_slot1_title">Долгий тап, слот 1</string>
-    <string name="pref_quickapp_slot2_title">Долгий тап, слот 2</string>
-    <string name="pref_quickapp_slot3_title">Долгий тап, слот 3</string>
-    <string name="pref_quickapp_slot4_title">Долгий тап, слот 4</string>
+    <string name="pref_quickapp_slot1_title">Удержание, слот 1</string>
+    <string name="pref_quickapp_slot2_title">Удержание, слот 2</string>
+    <string name="pref_quickapp_slot3_title">Удержание, слот 3</string>
+    <string name="pref_quickapp_slot4_title">Удержание, слот 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
     <string name="qs_tile_gps_enabled">GPS вкл</string>
@@ -443,7 +448,7 @@
     <string name="qs_tile_gps_locked">GPS блок</string>
 
     <!-- Pie control: always show menu button -->
-    <string name="pie_control_menu_title">Всегда показывать "Меню"</string>
+    <string name="pie_control_menu_title">Всегда показывать меню</string>
 
     <!-- Ringer mode tile (for non-MTK) -->
     <string name="qs_tile_ringer_mode">Режим звонка</string>
@@ -452,21 +457,21 @@
     <string name="pref_cat_clock_settings_title">Настройки часов</string>
 
     <!-- Clock: hide am/pm -->
-    <string name="pref_clock_ampm_hide_title">Прятать AM/PM</string>
+    <string name="pref_clock_ampm_hide_title">Скрыть AM/PM</string>
 
     <!-- Clock: hide clock -->
-    <string name="pref_clock_hide_title">Прятать часы</string>
+    <string name="pref_clock_hide_title">Скрыть часы</string>
 
     <!-- Pie trigger size -->
-    <string name="pie_control_trigger_size_title">Размер переключателей</string>
+    <string name="pie_control_trigger_size_title">Размер триггера</string>
 
     <!-- Transparency management -->
-    <string name="pref_cat_transparency_manager_title">Управление прозрачностью</string>
-    <string name="pref_cat_transparency_manager_summary">Управляет прозрачностью статусбара и панели навигации</string>
-    <string name="pref_tm_statusbar_launcher_title">Статусбар для ланчера</string>
-    <string name="pref_tm_statusbar_lockscreen_title">Статусбара для экрана блокировки</string>
-    <string name="pref_tm_navbar_launcher_title">Панель навиг. для ланчера</string>
-    <string name="pref_tm_navbar_lockscreen_title">Панель навиг. для экрана блокировки</string>
+    <string name="pref_cat_transparency_manager_title">Прозрачность</string>
+    <string name="pref_cat_transparency_manager_summary">Настройка прозрачности строки состояния и панели навигации</string>
+    <string name="pref_tm_statusbar_launcher_title">Стр.состояния в лончере</string>
+    <string name="pref_tm_statusbar_lockscreen_title">Стр.состояния на экр.блокировки</string>
+    <string name="pref_tm_navbar_launcher_title">Панель навиг. для лончера</string>
+    <string name="pref_tm_navbar_lockscreen_title">Панель навиг. на экр.блокировки</string>
 
     <!-- Hide alarm icon -->
     <string name="pref_alarm_icon_hide_title">Спрятать значок будильника</string>
@@ -475,20 +480,20 @@
     <string name="pref_screen_dim_level_title">Уровень затухания подсветки</string>
     <string name="pref_screen_dim_level_summary">Яркость для приглушенной подсветки - когда экран почти выключился (необходима перезагрузка)</string>
 
-	<!-- Device type -->
-    <string name="device_phone">Телефон</string>
-    <string name="device_tablet">Планшет</string>
+    <!-- Device type -->
+    <string name="device_phone">телефон</string>
+    <string name="device_tablet">планшет</string>
 
     <!-- Brightness preference category -->
     <string name="pref_cat_brightness_title">Настройки яркости</string>
-    <string name="pref_brightness_master_switch_title">Включить настройку яркости</string>
-    <string name="pref_brightness_master_switch_summary">Включить только в случае, если устройство использует стандартный механизм Android для регулировки яркости. Оставьте выключенным, если есть проблемы, как-то связанные с яркостью. (Необходима перезагрузка)</string>
+    <string name="pref_brightness_master_switch_title">Включение настроек яркости</string>
+    <string name="pref_brightness_master_switch_summary">Включать только в случае, если устройство использует стандартный механизм Андроид для регулировки яркости. Оставьте выключенным, если есть проблемы с яркостью (необходима перезагрузка)</string>
 
     <!-- HW Key Action: Recent apps -->
     <string name="hwkey_action_recent_apps">Показать недавние приложения</string>
 
     <!-- HW Key Action: Home long-press -->
-    <string name="hwkey_home_longpress_dialog_title">Действие по долгому нажатию Home</string>
+    <string name="hwkey_home_longpress_dialog_title">Удержание Домой</string>
 
     <!-- HW Key Action: Launch cutom app -->
     <string name="hwkey_action_custom_app">Запустить приложение 1</string>
@@ -499,8 +504,8 @@
     <string name="hwkey_action_custom_app_missing">Приложение не найдено!</string>
 
     <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Приложение-часы для панели уведомлений</string>
-    <string name="pref_clock_link_summary">Связывает часы на статусбаре с выбранным приложением вместо настроек Даты и времени</string>
+    <string name="pref_clock_link_title">Приложение для часов</string>
+    <string name="pref_clock_link_summary">Связывает часы в строке состояния с выбранным приложением вместо настроек даты и времени</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Ожидание отклика от системного фреймворка GravityBox&#8230;</string>
@@ -513,12 +518,12 @@
     <!-- Expanded Desktop -->
     <string name="pref_expanded_desktop_title">Расширенный рабочий стол</string>
     <string name="expanded_desktop_disabled">Отключено</string>
-    <string name="expanded_desktop_statusbar">Спрятать статусбар</string>
-    <string name="expanded_desktop_navbar">Спрятать панель навигации</string>
-    <string name="expanded_desktop_both">Прятать все</string>
+    <string name="expanded_desktop_statusbar">Скрыть строку состояния</string>
+    <string name="expanded_desktop_navbar">Скрыть панель навигации</string>
+    <string name="expanded_desktop_both">Скрыть обе</string>
     <string name="action_expanded_desktop_title">Расширенный рабочий стол</string>
-    <string name="action_expanded_desktop_on">Расшренный рабочий стол ВКЛЮЧЕН</string>
-    <string name="action_expanded_desktop_off">Расшренный рабочий стол ВЫКЛЮЧЕН</string>
+    <string name="action_expanded_desktop_on">Расширенный рабочий стол ВКЛ</string>
+    <string name="action_expanded_desktop_off">Расширенный рабочий стол ВЫКЛ</string>
 
     <!-- Power menu screenshot -->
     <string name="screenshot">Снимок экрана</string>
@@ -527,60 +532,60 @@
     <string name="hwkey_action_menu">Показать меню</string>
 
     <!-- HW Key Action: Expanded desktop -->
-    <string name="hwkey_action_expanded_desktop">Включить расширенный рабочий стол</string>
+    <string name="hwkey_action_expanded_desktop">Вкл расширенный рабочий стол</string>
     <string name="hwkey_action_expanded_desktop_disabled">Расширенный рабочий стол отключен!</string>
 
     <!-- Navigation bar tweaks category -->
     <string name="pref_cat_navigation_bar_title">Настройки панели навигации</string>
-    <string name="pref_cat_navigation_bar_summary">Содержит различные настройки панели навигации</string>
-    <string name="pref_navbar_override_title">Переписать настройки по умолчанию</string>
-    <string name="pref_navbar_override_summary">Позволяет включить все твики панели навигации (Необходима перезагрузка)</string>
+    <string name="pref_cat_navigation_bar_summary">Различные настройки панели навигации</string>
+    <string name="pref_navbar_override_title">Изменение значений по умолчанию</string>
+    <string name="pref_navbar_override_summary">Включить все твики панели навигации (необходима перезагрузка)</string>
     <string name="pref_navbar_enable_title">Включить панель навигации</string>
     <string name="pref_navbar_enable_summary">Необходима перезагрузка</string>
     <string name="pref_navbar_height_title">Высота панели навигации</string>
-    <string name="pref_navbar_height_summary">Применимо к портретной ориентации</string>
-    <string name="pref_navbar_height_landscape_summary">Применять для горизонтальной и вертикальной ориентаций</string>
+    <string name="pref_navbar_height_summary">Применимо для горизонтальной панели и портретной ориентации</string>
+    <string name="pref_navbar_height_landscape_summary">Применимо для горизонтальной и вертикальной ориентаций</string>
     <string name="pref_navbar_width_title">Ширина панели навигации</string>
-    <string name="pref_navbar_width_summary">Применимо к ландшафтной ориентации</string>
-    <string name="pref_navbar_menukey_title">Всегда показывать кнопку меню</string>
+    <string name="pref_navbar_width_summary">Применимо к вертикальной панели</string>
+    <string name="pref_navbar_menukey_title">Всегда показывать меню</string>
 
     <!-- Screenshot in power menu -->
-    <string name="pref_powermenu_screenshot_title">Скриншот в меню выключения</string>
-    
-	<!-- Unlock ring settings -->
-    <string name="pref_cat_lockscreen_ring_settings_title">Цели экрана блокировки</string>
-    <string name="pref_lockscreen_ring_targets_enable_title">Включить цели экрана блокировки</string>
-    <string name="pref_lockscreen_ring_targets_enable_summary">Общий переключатель целей экрана блокировки</string>
+    <string name="pref_powermenu_screenshot_title">Снимок экрана в меню</string>
+
+    <!-- Unlock ring settings -->
+    <string name="pref_cat_lockscreen_ring_settings_title">Ярлыки кольца блокировки</string>
+    <string name="pref_lockscreen_ring_targets_enable_title">Включение ярлыков кольца блокировки</string>
+    <string name="pref_lockscreen_ring_targets_enable_summary">Включение ярлыков кольца блокировки</string>
     <string name="pref_lockscreen_ring_targets_app_title">Целевое приложение %s</string>
-    <string name="pref_lockscreen_ring_vertical_offset_title">Вертикальное смещение кольца разблокировки</string>
-    <string name="pref_lockscreen_ring_horizontal_offset_title">Горизонтальное смещение</string>
+    <string name="pref_lockscreen_ring_vertical_offset_title">Вертик. смещение кольца</string>
+    <string name="pref_lockscreen_ring_horizontal_offset_title">Гориз. смещение кольца</string>
 
     <!-- Statusbar brightness control -->
     <string name="pref_statusbar_brightness_title">Включить контроль яркости</string>
-    <string name="pref_statusbar_brightness_summary">Менять яркость слайдом вдоль статусбара</string>
+    <string name="pref_statusbar_brightness_summary">Настройка яркости перемещением пальца вдоль строки состояния (необходимо, чтобы автоматическая яркость была отключена)</string>
 
     <!-- Phone tweaks categories -->
     <string name="pref_cat_phone_telephony_title">Телефония</string>
     <string name="pref_cat_phone_messaging_title">Сообщения</string>
-    <string name="pref_cat_phone_mobile_data_title">Передача данных</string>
+    <string name="pref_cat_phone_mobile_data_title">Мобильные данные</string>
 
     <!-- Messaging: Strip unicode -->
-    <string name="pref_mms_unicode_stripping_title">Изменять unicode</string>
-    <string name="pref_mms_unicode_stripping_summary">Конвертирует unicode символы в обычные символы. Уменьшает общий размер сообщения.</string>
-    <string name="unicode_stripping_leave_intact">Не изменять символы</string>
-    <string name="unicode_stripping_non_encodable">Изменять некодируемые символы</string>
-    <string name="unicode_stripping_all">Изменять все unicode символы</string>
+    <string name="pref_mms_unicode_stripping_title">Заменять юникод</string>
+    <string name="pref_mms_unicode_stripping_summary">Преобразование символов юникода в обычные символы. Уменьшает общий размер сообщения.</string>
+    <string name="unicode_stripping_leave_intact">Не менять символы</string>
+    <string name="unicode_stripping_non_encodable">Заменять некодируемые символы</string>
+    <string name="unicode_stripping_all">Заменять все символы юникода</string>
 
     <!-- Disable slow 2G data warning -->
-    <string name="pref_mobile_data_slow2g_disable_title">Отключить 2g предупреждение</string>
-    <string name="pref_mobile_data_slow2g_disable_summary">Отключает предупреждение о низкойскорости передачи данных когда в быстрых настройках включен режим 2g для SIM-карты</string>
+    <string name="pref_mobile_data_slow2g_disable_title">Откл предупреждение о медленном 2G</string>
+    <string name="pref_mobile_data_slow2g_disable_summary">Отключение предупреждения о медленной скорости передачи данных при включении мобильного интернета в быстрых настройкахля SIM в режиме 2G</string>
 
     <!-- Follow stock battery color -->
-    <string name="pref_sbcolor_follow_stock_battery_title">Следовать цвету батареи</string>
-    <string name="pref_sbcolor_follow_stock_battery_summary">Позволяет часам в статусбаре, батарее и тексту с процентами использовать цвет стоковой батареи. Работает при выключенном изменении цветов иконок.</string>
+    <string name="pref_sbcolor_follow_stock_battery_title">Цвет стоковой батареи</string>
+    <string name="pref_sbcolor_follow_stock_battery_summary">Цвет часов строки состояния, проценты и круглая батарея будут использовать цвет значка стоковой батареи. Применимо, если цвет значков отключен.</string>
 
     <!-- Network mode tile mode (2G/2G+3G/3G or 2G/2G+3G) -->
-    <string name="pref_network_mode_tile_mode_title">Режим тайла "Режим сети"</string>
+    <string name="pref_network_mode_tile_mode_title">Плитка режима сети</string>
     <string name="nm_tile_mode1">2G/2G+3G/3G/(LTE)</string>
     <string name="nm_tile_mode2">2G/2G+3G/(LTE)</string>
     <string name="nm_tile_mode3">2G/3G/(LTE)</string>
@@ -589,57 +594,57 @@
     <string name="pref_display_allow_all_rotations_title">Разрешить все повороты</string>
     
     <!-- QuickSettings: override AOSP tile behaviour -->
-    <string name="pref_qs_tile_behaviour_override_title">Заменить стандартное поведение тайлов</string>
-    <string name="pref_qs_tile_behaviour_override_summary">Заменяет поведение касания/долгого касания для выбранных тайлов (необходима перезагрузка) </string>
+    <string name="pref_qs_tile_behaviour_override_title">Заменить стандартное поведение</string>
+    <string name="pref_qs_tile_behaviour_override_summary">Изменение поведения плиток при нажатии/удержании и добавление поддержки функции\'Скрыть при изменении\' для выбранных плиток (необходима перезагрузка)</string>
     
     <!-- QuickSettings: SIM Slot for network mode tile -->
-    <string name="pref_qs_network_mode_sim_slot_title">Слот SIM для тайла Режим сети</string>
-    <string name="pref_qs_network_mode_sim_slot_summary">Определяет слот, для которого работает тайл Режим сети (%s)</string>
-    <string name="sim_slot1">SIM slot 1</string>
-    <string name="sim_slot2">SIM slot 2</string>
+    <string name="pref_qs_network_mode_sim_slot_title">SIM для режима сети</string>
+    <string name="pref_qs_network_mode_sim_slot_summary">Определение SIM, для которой работает плитка режима сети (%s)</string>
+    <string name="sim_slot1">SIM 1</string>
+    <string name="sim_slot2">SIM 2</string>
 
     <!-- Intelligent pie -->
     <string name="pie_controls_disabled">Никогда</string>
     <string name="pie_controls_enabled_always">Всегда</string>
-    <string name="pie_controls_enabled_expanded">При включенном расширенном дисплее</string>
-    <string name="pie_controls_enabled_expanded_navbar">Когда расширенный дисплей без панели навигации</string>
-    
+    <string name="pie_controls_enabled_expanded">При вкл расш.рабочем столе</string>
+    <string name="pie_controls_enabled_expanded_navbar">Когда расширенный раб.стол без панели навигации</string>
+
     <!-- Icon coloring: preserve stock battery icon -->
-    <string name="pref_statusbar_color_skip_battery_title">Не трогать значок батареи</string>
-    <string name="pref_statusbar_color_skip_battery_summary">Использовать в случа замены стокового значка батареи сторонним модом</string>
+    <string name="pref_statusbar_color_skip_battery_title">Не применять к стоковому значку батареи</string>
+    <string name="pref_statusbar_color_skip_battery_summary">Использовать в случае замены стокового значка батареи сторонними модификациями</string>
 
     <!-- Unplug turns on screen -->
     <string name="pref_unplug_turns_on_screen_title">Вкл. экран при подключении</string>
-    <string name="pref_unplug_turns_on_screen_summary">Если включено, экран будет вклчаться при подключении/отключении USB/наушников (необходима перезагрузка)</string>
+    <string name="pref_unplug_turns_on_screen_summary">Если включено, экран будет включаться при подключении/отключении USB/зарядного устройства, другого оборудования (необходима перезагрузка)</string>
 
     <!-- Mute volume adjust sound -->
     <string name="pref_volume_adjust_mute_title">Откл. звук рег. громкости</string>
-    <string name="pref_volume_adjust_mute_summary">Отключает звук, проигрываемы при регулировке громкости</string>
+    <string name="pref_volume_adjust_mute_summary">Отключение звука, воспроизводимого при регулировке громкости</string>
 
     <!-- Call vibrations -->
-    <string name="pref_call_vibrations_title">Вибрация звонка</string>
-    <string name="call_vibration_connected">В начале звонка</string>
-    <string name="call_vibration_disconnected">В конце звонка</string>
-    <string name="call_vibration_waiting">При ожидании звонка</string>
-    <string name="call_vibration_periodic">Каждые 45 секунд при исходящем</string>
+    <string name="pref_call_vibrations_title">Вибрация при вызове</string>
+    <string name="call_vibration_connected">В начале вызова</string>
+    <string name="call_vibration_disconnected">В конце вызова</string>
+    <string name="call_vibration_waiting">При ожидании вызова</string>
+    <string name="call_vibration_periodic">Каждые 45 с при исходящем</string>
     
     <!-- QuickSettings tile order -->
-    <string name="pref_qs_tile_order_title">Сортировка тайлов</string>
-    <string name="pref_qs_tile_order_summary">Позволяет сортировать тайлы</string>
+    <string name="pref_qs_tile_order_title">Перемещение плиток</string>
+    <string name="pref_qs_tile_order_summary">Изменение расположения плиток</string>
     
     <!-- Ongoing notifications -->
     <string name="pref_ongoing_notifications_title">Блокировка уведомлений</string>
-    <string name="pref_ongoing_notifications_summary">Позволяет блокировать выбранные уведомления</string>
+    <string name="pref_ongoing_notifications_summary">Блокировка выбранных уведомлений</string>
     <string name="ongoing_notif_info">Список формируется автоматически при появлении уведомления.
         Вы можете решить позже, какое уведомление блокировать. Используйте с осторожностью.</string>
     <string name="ongoing_notif_reset_list">Сбросить список</string>
     <string name="ongoing_notif_reset_alert">Вы уверены, что хотите сбросить список? 
-        Это очистит список и разблокирует все текущие уведомления.</string>
+        Это очистит список и разблокирует все текущие уведомления, ранее заблокированные.</string>
     <string name="ongoing_notif_list_empty">(список пуст)</string>
 
     <!-- Quick unlock -->
     <string name="pref_lockscreen_quick_unlock_title">Быстрая разблокировка</string>
-    <string name="pref_lockscreen_quick_unlock_summary">Разблокировать автоматически при вводе верного PIN/пароля.</string>
+    <string name="pref_lockscreen_quick_unlock_summary">Автоматическая разблокировка при вводе верного PIN/пароля.</string>
 
     <!-- Clock Day Of Week style -->
     <string name="clock_dow_disabled">Отключено</string>
@@ -648,87 +653,87 @@
     <string name="clock_dow_uppercase">ЗАГЛАВНЫМИ</string>
 
     <!-- Statusbar expand policy -->
-    <string name="pref_statusbar_lock_policy_title">Правила блокировки статусбара</string>
+    <string name="pref_statusbar_lock_policy_title">Блокировка строки состояния</string>
     <string name="sbl_policy_default">По умолчанию</string>
-    <string name="sbl_policy_unlocked">Разблокирован if keyguard insecured</string>
-    <string name="sbl_policy_locked">Заблокирован</string>
+    <string name="sbl_policy_unlocked">Разблокирована, если нет защиты</string>
+    <string name="sbl_policy_locked">Заблокирована</string>
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Монитор трафика</string>
-    <string name="pref_data_traffic_enable_title">Включить мониторинг</string>
-    <string name="pref_data_traffic_enable_summary">Показывает трафик всегда, когда включена передача данных</string>
+    <string name="pref_data_traffic_enable_title">Вкл мониторинг</string>
+    <string name="pref_data_traffic_enable_summary">Автоматическое отображение трафика всегда, когда включена передача данных</string>
     <string name="pref_data_traffic_position_title">Позиция</string>
-    <string name="dt_position_auto">Автоматически (в центре или справа в зависимости от позиции часов)</string>
+    <string name="dt_position_auto">Автоматически (в центре или справа в зависимости от положения часов)</string>
     <string name="dt_position_left">Слева</string>
     <string name="dt_position_right">Справа</string>
     <string name="pref_data_traffic_size_title">Размер</string>
     <string name="dt_size_normal">Обычный</string>
     <string name="dt_size_smaller">Маленький</string>
     <string name="dt_size_smallest">Очень маленький</string>
-    <string name="byte_abbr">B</string>
-    <string name="kilobyte_abbr">KB</string>
-    <string name="megabyte_abbr">MB</string>
-    <string name="second_abbr">s</string>
+    <string name="byte_abbr">Б</string>
+    <string name="kilobyte_abbr">КБ</string>
+    <string name="megabyte_abbr">МБ</string>
+    <string name="second_abbr">с</string>
 
     <!-- Disable lockscreen widget limit -->
-    <string name="pref_lockscreen_widget_limit_disable_title">Отключить ограничение виджетов</string>
-    <string name="pref_lockscreen_widget_limit_disable_summary">Позволяет получить неограниченное количество виджетов экрана блокировки</string>
+    <string name="pref_lockscreen_widget_limit_disable_title">Отключить ограничение</string>
+    <string name="pref_lockscreen_widget_limit_disable_summary">Неограниченное количество виджетов экрана блокировки</string>
 
     <!--  RAM Bar -->
     <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
     <string name="service_background_processes"><xliff:g id="memory">%1$s</xliff:g> свободно</string>
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
     <string name="service_foreground_processes"><xliff:g id="memory">%1$s</xliff:g> использовано</string>
-    <string name="pref_rambar_title">Панель памяти текущих задач</string>
-    <string name="rambar_off">выключено</string>
-    <string name="rambar_top">сверху</string>
-    <string name="rambar_bottom">снизу</string>
+    <string name="pref_rambar_title">Панель памяти в недавних</string>
+    <string name="rambar_off">Выключено</string>
+    <string name="rambar_top">Сверху</string>
+    <string name="rambar_bottom">Снизу</string>
 
     <!-- HW Key actions for recents button -->
-    <string name="hwkey_recents_singletap_dialog_title">Действие по одиночному касанию</string>
-    <string name="hwkey_recents_longpress_dialog_title">Дейтсвие по долгому касанию</string>
+    <string name="hwkey_recents_singletap_dialog_title">Нажатие Недавних</string>
+    <string name="hwkey_recents_longpress_dialog_title">Удержание Недавних</string>
 
     <!-- Lockscreen battery arc -->
     <string name="pref_lockscreen_battery_arc_title">Статус батареи</string>
-    <string name="pref_lockscreen_battery_arc_summary">Показывать арку батареи, нарисованную вокруг кольца разблокировки</string>
+    <string name="pref_lockscreen_battery_arc_summary">Показывать арку батареи вокруг кольца разблокировки</string>
     
     <!-- HW Key Actions: toggle torch -->
     <string name="hwkey_action_torch">Включить фонарик</string>
 
     <!-- Volume panel: Show expanded -->
     <string name="pref_volume_panel_autoexpand_title">Расширять автоматически</string>
-    
-	<!-- HW Key Actions: Preference screen arrangement -->
+
+    <!-- HW Key Actions: Preference screen arrangement -->
     <string name="pref_cat_hwkey_menu_title">Кнопка Меню</string>
     <string name="pref_cat_hwkey_home_title">Кнопка Домой</string>
     <string name="pref_cat_hwkey_back_title">Кнопка Назад</string>
     <string name="pref_cat_hwkey_recents_title">Кнопка Недавние</string>
     <string name="pref_cat_hwkey_volume_title">Кнопки громкости</string>
     <string name="pref_cat_hwkey_actions_others">Другие настройки</string>
-    <string name="pref_hwkey_longpress_title">Действие по долгому нажатию</string>
-    <string name="pref_hwkey_singletap_title">Дейтсвие по одному нажатию</string>
-    <string name="pref_hwkey_doubletap_title">Действие по двойному касанию</string>
+    <string name="pref_hwkey_longpress_title">Действие при удержании</string>
+    <string name="pref_hwkey_singletap_title">Действие при нажатии</string>
+    <string name="pref_hwkey_doubletap_title">Действие при двойном нажатии</string>
 
     <!-- Disable double-tap (e.g. for Home Key on Android 4.3+) -->
-    <string name="pref_hwkey_doubletap_disable_title">Отключить двойное касание</string>
+    <string name="pref_hwkey_doubletap_disable_title">Отключить двойное нажатие</string>
 
     <!-- Color mode for statusbar signal icons -->
     <string name="pref_statusbar_signal_color_mode_title">Режим цвета сигнала</string>
-    <string name="signal_color_mode_gb">Использовать иконки GB (с поддержкой уровня)</string>
-    <string name="signal_color_mode_stock">Использовать станд. иконки (без поддержки уровня)</string>
+    <string name="signal_color_mode_gb">Использовать значки GravityBox</string>
+    <string name="signal_color_mode_stock">Использовать стандартные значки</string>
     <string name="signal_color_mode_disabled">Не применять цвет</string>
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Запуск приложений</string>
-    <string name="pref_cat_app_launcher_summary">Диалог, позволяющий выбрать до 8 приложений, которые можно назначить для действий кнопок или поместить на панель навигации</string>
+    <string name="pref_cat_app_launcher_summary">Диалог, позволяющий выбрать до 8 приложений, которые можно назначить для действий физических кнопок или использовать в качестве дополнительной кнопки на панели навигации</string>
     <string name="pref_app_launcher_slot_title">Слот приложения %d</string>
-    <string name="app_launcher_no_apps">Приложения не выбраны. Используйте GravityBox / Запуск приложений для выбора приложений.</string>
+    <string name="app_launcher_no_apps">Приложения не выбраны. Используйте меню GravityBox / Запуск приложений для выбора приложений.</string>
 
     <!-- HW Key Actions: application launcher -->
-    <string name="hwkey_action_app_launcher">Запустить приложение</string>
+    <string name="hwkey_action_app_launcher">Показать запуск приложений</string>
 
     <!-- Pie custom key -->
-    <string name="pref_pie_control_custom_key_title">Показать пользовательскую кнопку</string>
+    <string name="pref_pie_control_custom_key_title">Показать свою кнопку</string>
     <string name="pie_custom_key_off">Отключено</string>
     <string name="pie_custom_key_search">Поиск</string>
     <string name="pie_custom_key_app_launcher">Запуск приложений</string>
@@ -743,13 +748,13 @@
     <string name="pref_pie_color_reset_title">Сбросить цвета</string>
 
     <!-- Custom unknown caller photo -->
-    <string name="pref_caller_unknown_photo_enable_title">Включить фото неизвестного звонящего</string>
+    <string name="pref_caller_unknown_photo_enable_title">Включить фото неизвестного</string>
     <string name="pref_caller_unknown_photo_title">Задать фото</string>
     <string name="caller_unknown_photo_result_successful">Фото изменено</string>
     <string name="caller_unkown_photo_result_not_successful">Фото не изменено</string>
 
     <!-- Minimum screen brightness warning -->
-    <string name="screen_brightness_min_warning">Ваш экран может не поддерживать значения меньше 20. Если ваш экран не засветится,
+    <string name="screen_brightness_min_warning">Ваш экран может не поддерживать значения меньше 20. Если Ваш экран не загорается,
         зажмите кнопку Громкость+ как минимум на 7 секунд для сброса яркости и затем исправьте значение яркости на большее.</string>
     
     <!-- Navbar tweaks categories -->
@@ -759,33 +764,33 @@
     <string name="pref_cat_navbar_dimen_title">Размеры</string>
 
     <!-- Navigation bar colors -->
-    <string name="pref_navbar_color_enable_title">Включить цвета панели навигации</string>
+    <string name="pref_navbar_color_enable_title">Включить цвета панели</string>
     <string name="pref_navbar_color_enable_summary">Может потребоваться перезагрузка после отключения</string>
     <string name="pref_navbar_key_color_title">Цвет кнопок навигации</string>
     <string name="pref_navbar_key_glow_color_title">Цвет тени кнопок навигации</string>
     <string name="pref_navbar_bg_color_title">Цвет фона панели навигации</string>
 
     <!-- Disable lockscreen shade -->
-    <string name="pref_lockscreen_shade_disable_title">Отключить тень экрана блокировки</string>
-    <string name="pref_lockscreen_shade_disable_summary">Удаляет темный оттенок с экрана блокировки</string>
-    
+    <string name="pref_lockscreen_shade_disable_title">Откл тень экр.блокировки</string>
+    <string name="pref_lockscreen_shade_disable_summary">Удаление тёмного оттенка с экрана блокировки</string>
+
     <!-- Transparency manager mode -->
     <string name="pref_tm_mode_title">Режим настройки прозрачности</string>
     <string name="pref_tm_mode_summary">Необходима перезагрузка</string>
     <string name="tm_mode_disabled">Отключено</string>
-    <string name="tm_mode_statusbar">Статусбар</string>
+    <string name="tm_mode_statusbar">Строка состояния</string>
     <string name="tm_mode_navbar">Панель навигации</string>
-    <string name="tm_mode_full">Оба</string>
+    <string name="tm_mode_full">Обе</string>
 
     <!-- Secondary signal icon color for MTK Dual SIMs -->
-    <string name="pref_statusbar_icon_color_secondary_title">Цвет вторичного значка сигнала</string>
-    <string name="pref_statusbar_icon_color_secondary_summary">Заменяет стандартный оранжевый цвет значка</string>
+    <string name="pref_statusbar_icon_color_secondary_title">Цвет второго сигнала</string>
+    <string name="pref_statusbar_icon_color_secondary_summary">Замена стандартного оранжевого цвета значка</string>
     <string name="pref_statusbar_data_activity_color_secondary_title">Цвет активности данных</string>
-    <string name="pref_statusbar_data_activity_color_secondary_summary">Задает увет для индикатора активности данных</string>
+    <string name="pref_statusbar_data_activity_color_secondary_summary">Цвет для индикатора активности данных</string>
     
     <!-- Status icon style -->
-    <string name="pref_status_icon_style_title">Стиль значков статусбара</string>
-    <string name="pref_status_icon_style_summary">Применяется ко всем значкам статусбара беззвучный, вибрация и т.д.</string>
+    <string name="pref_status_icon_style_title">Стиль значков стр.состояния</string>
+    <string name="pref_status_icon_style_summary">Применяется ко всем значкам строки состояния: беззвучный, вибрация, будильник и т.д.</string>
     <string name="icon_style_jb">JellyBean</string>
     <string name="icon_style_kk">KitKat</string>
 
@@ -795,128 +800,129 @@
     <!-- HW Key Actions: Home and Back actions -->
     <string name="hwkey_action_home">Домой</string>
     <string name="hwkey_action_back">Назад</string>
-    
-    <!-- QS Tile Style -->
-    <string name="pref_qs_tile_style_title">Стиль тайлов</string>
-    <string name="pref_qs_tile_style_summary">Применимо только для тайлов из GravityBox (не коснется стоковых тайлов)</string>
 
+    <!-- QS Tile Style -->
+    <string name="pref_qs_tile_style_title">Стиль плиток</string>
+    <string name="pref_qs_tile_style_summary">Применимо только для плиток GravityBox (не затрагивает стоковые плитки)</string>
+    
     <!-- Clear all recents bottom margin -->
-    <string name="pref_recent_clear_margin_bottom_title">Настроить нижний отступ</string>
+    <string name="pref_recent_clear_margin_bottom_title">Изменить нижний отступ</string>
 
     <!-- Google Plus -->
-    <string name="pref_about_gplus_title">Google+ community</string>
-    <string name="pref_about_gplus_summary">Коснитесь для перехода в сообщество Google+</string>
+    <string name="pref_about_gplus_title">Сообщество Google+</string>
+    <string name="pref_about_gplus_summary">Нажмите для перехода в сообщество Google+</string>
 
     <!-- Network mode tile: Allow LTE network mode -->
     <string name="pref_network_mode_tile_lte_title">Разрешить режим LTE</string>
     
     <!-- Disable data network type icons -->
-    <string name="pref_disable_data_network_type_icons_title">Отключить индикаторы типа сети</string>
-    <string name="pref_disable_data_network_type_icons_summary">Позволяет отключить индикаторы 3G/G рядом с лесенкой сигнала</string>
-    
-    <!-- HW Keys Navigation Bar warning -->
-    <string name="hwkey_navbar_warning">При включении поддержки действия для панели навигации необходимо 
-        переписать настройки по умолчанию в меню настройки панели навигации</string>
+    <string name="pref_disable_data_network_type_icons_title">Откл индикаторы типа сети</string>
+
+<string name="pref_disable_data_network_type_icons_summary">Отключение индикаторов 3G/G рядом с сигналом</string>
+                        <!-- HW Keys Navigation Bar warning -->
+    <string name="hwkey_navbar_warning">Для включения поддержки действий для панели навигации, необходимо 
+        переписать системные умолчания в меню настроек навигационной панели</string>
     
     <!-- Lockscreen Torch -->
     <string name="pref_hwkey_lockscreen_torch_title">Фонарик на экране блокировки</string>
     <string name="hwkey_ls_torch_disabled">Отключен</string>
-    <string name="hwkey_ls_torch_home_longpress">По долгому нажатию Home</string>
-    <string name="hwkey_ls_torch_voldown_longpress">По долгому нажатию Громкость-</string>
+    <string name="hwkey_ls_torch_home_longpress">При удержании Домой</string>
+    <string name="hwkey_ls_torch_voldown_longpress">При удержании громкости-</string>
     
-	<!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Общий переключатель Быстрых Настроек (необходима перезагрузка)</string>
+    <!-- QuickSettings management master switch -->
+    <string name="pref_qs_management_enable_summary">Включение быстрых настроек (необходима перезагрузка)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Приложения</string>
-    <string name="app_picker_shortcuts">Ссылки</string>
-    <string name="app_picker_shortcut_null_intent">Невозможно создать запускаемую ссылку, потому что активность не вернула intent для ссылки</string>
+    <string name="app_picker_shortcuts">Ярлыки</string>
+    <string name="app_picker_shortcut_null_intent">Невозможно создать запускаемый ярлык, потому что действие не получило ответ для ссылки</string>
     <string name="app_picker_shortcut_cancelled">Создание ссылки отменено приложением</string>
 
     <!-- Navigation bar: swap back and recents key -->
-    <string name="pref_navbar_swap_keys_title">Кнопки Назад и Недавние</string>
+    <string name="pref_navbar_swap_keys_title">Поменять Назад и Недавние</string>
 
     <!-- Unlock ring Torch -->
     <string name="pref_lockscreen_ring_torch_title">Включить фонарик</string>
-    <string name="pref_lockscreen_ring_torch_summary">Включает фонарик при нажатии на кольцо разблокировки</string>
+    <string name="pref_lockscreen_ring_torch_summary">Включение фонарика при нажатии на кольцо разблокировки</string>
 
     <!-- Volume panel timeout -->
     <string name="pref_volume_panel_timeout_title">Задержка панели громкости</string>
 
     <!-- Ringer tile modes -->
-    <string name="pref_qs_ringer_mode_title">Настройки тайла "Режим звонка"</string>
+    <string name="pref_qs_ringer_mode_title">Настройки режима звонка"</string>
     <string name="ringer_mode_silent">Беззвучный</string>
     <string name="ringer_mode_vibrate">Вибрация</string>
     <string name="ringer_mode_sound">Звук</string>
     <string name="ringer_mode_sound_vibrate">Звук и вибрация</string>
 
     <!-- Fix location issue (Android 4.2.1 JIT bug) -->
-    <string name="fix_location_title">Исправить проблемы с положением</string>
-    <string name="fix_location_summary">Включите если дистанция некорректно определяется спортивными приложениями (необходима перезагрузка)</string>
-
+    <string name="fix_location_title">Исправить местоположение</string>
+    <string name="fix_location_summary">Включить, если при использовании спортивных приложений для трекинга растояние вычисляется некорректно(необходима перезагрузка)</string>
+    
     <!-- Launcher tweaks -->
-    <string name="pref_cat_launcher_tweaks_title">Настройки ланчера</string>
-    <string name="pref_cat_launcher_tweaks_summary">Применимо только для ланчера Google Experience</string>
+    <string name="pref_cat_launcher_tweaks_title">Настройки лончера</string>
+    <string name="pref_cat_launcher_tweaks_summary">Только для лончера Google Experience</string>
     <string name="pref_cat_launcher_desktop_grid_title">Сетка рабочего стола</string>
-    <string name="pref_launcher_desktop_grid_info_title">Использование значений, отличных от значений по умолчанию, может привести к проблемам с виджетами. Используйте с осторожностью. Изменения требуют перезапуска ланчера.</string>
+    <string name="pref_launcher_desktop_grid_info_title">Использование значений, отличных от значений по умолчанию, может привести к проблемам с виджетами. Используйте с осторожностью. Изменения требуют перезапуска лончера.</string>
     <string name="pref_launcher_desktop_grid_rows_title">Количество строк</string>
     <string name="pref_launcher_desktop_grid_cols_title">Количество столбцов</string>
     <string name="desktop_grid_default">По умолчанию</string>
 
     <!-- Screen off effects -->
-    <string name="screen_off_effect_title">Эффект выключения экрана</string>
-    <string name="screen_off_effect_default">По умолчанию</string>
+    <string name="screen_off_effect_title">Эффект отключения экрана</string>
+	<string name="screen_off_effect_default">По умолчанию</string>
     <string name="screen_off_effect_crt">CRT</string>
     <string name="screen_off_effect_fade">Затемнение</string>
 
     <!-- Battery percent text -->
-    <string name="battery_percent_text_title">Текст процентов заряда</string>
-    <string name="battery_percent_text_size_title">Размер</string>
+    <string name="battery_percent_text_title">Проценты заряда</string>
+    <string name="battery_percent_text_size_title">Размер текста</string>
+    <string name="battery_percent_text_size_larger">Больше</string>
     <string name="battery_percent_text_size_normal">Обычный</string>
     <string name="battery_percent_text_size_smaller">Меньше</string>
     <string name="battery_percent_text_size_even_smaller">Еще меньше</string>
     <string name="battery_percent_text_size_smallest">Самый маленький</string>
     <string name="battery_percent_text_style_title">Стиль текста</string>
     <string name="battery_percent_text_style_default">По умолчанию</string>
-    <string name="battery_percent_text_style_numbers_only">Цифры (без символа "процент")</string>
+    <string name="battery_percent_text_style_numbers_only">Цифры (без символа процента)</string>
 
     <!-- Battery settings category -->
     <string name="pref_cat_battery_settings_title">Параметры батареи</string>
 
     <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">Кнопки управления курсором</string>
-    <string name="pref_navbar_cursor_control_summary">Включить кнопки управления курсором в панели навигации пока включена клавиатура</string>
+    <string name="pref_navbar_cursor_control_summary">Включение кнопок управления курсором в панели навигации при включенной клавиатуре</string>
 
     <!-- Volume rocker wake -->
-    <string name="pref_volume_rocker_wake_title">Пробуждение качелькой громкости</string>
-    <string name="volume_rocker_wake_default">По умолчания</string>
+    <string name="pref_volume_rocker_wake_title">Пробуждение громкостью</string>
+    <string name="volume_rocker_wake_default">По умолчанию</string>
     <string name="volume_rocker_wake_enabled">Включено</string>
     <string name="volume_rocker_wake_disabled">Выключено</string>
 
     <!-- Advanced reboot menu: require confirmation -->
-    <string name="pref_reboot_confirm_required_title">Необходима перезагрузка</string>
+    <string name="pref_reboot_confirm_required_title">Подтверждение перезагрузки</string>
 
     <!-- Tiles: Hide on change -->
-    <string name="pref_qs_hide_on_change_title">Прятать после изменения</string>
-    <string name="pref_qs_hide_on_change_summary">Скрывает статусбар по одиночному нажатию на тайл. Применимо к тайлам GravityBox и измененным системным.</string>
+    <string name="pref_qs_hide_on_change_title">Скрыть после изменения</string>
+    <string name="pref_qs_hide_on_change_summary">Скрытие строки состояния по одиночному нажатию на плитке. Применимо к плиткам GravityBox и изменённым системным.</string>
 
     <!-- Power tweaks categories -->
     <string name="pref_cat_power_menu_title">Меню выключения</string>
-    <string name="pref_cat_power_other_title">Другие</string>
+    <string name="pref_cat_power_other_title">Другое</string>
 
     <!-- Advanced reboot menu: Allow on lockscreen -->
-    <string name="pref_reboot_allow_on_lockscreen_title">Разрешить на экране блокировки</string>
+    <string name="pref_reboot_allow_on_lockscreen_title">На экране блокировки</string>
 
     <!-- Data traffic monitor enhancements -->
     <string name="pref_data_traffic_inactivity_mode_title">Неактивный режим</string>
     <string name="inactivity_mode_default">По умолчанию</string>
-    <string name="inactivity_mode_hide">Прятать при неактивности</string>
-    <string name="inactivity_mode_summary">Показывать итог и прятать</string>
+    <string name="inactivity_mode_hide">Скрыть при бездействии</string>
+    <string name="inactivity_mode_summary">Показать итог и скрыть</string>
 
     <!-- Navigation bar custom key (previously as App launcher key) -->
-    <string name="pref_cat_navbar_custom_key_title">Настройки пользовательской кнопки</string>
+    <string name="pref_cat_navbar_custom_key_title">Пользовательская кнопка</string>
     <string name="pref_navbar_custom_key_enable_title">Включить пользовательскую кнопку</string>
-
+    
     <!-- Network mode tile: CDMA support -->
     <string name="pref_network_mode_tile_cdma_title">Использовать режимы сети CDMA</string>
 
@@ -925,5 +931,116 @@
     <string name="hwkey_action_auto_rotation_enabled">Автоповорот включен</string>
     <string name="hwkey_action_auto_rotation_disabled">Автоповорот выключен</string>
     
-</resources>
+    <!-- Allow any widget on Lockscreen -->
+    <string name="pref_lockscreen_allow_any_widget_title">Разрешить любые виджеты</string>
+    <string name="pref_lockscreen_allow_any_widget_summary">Разрешить виджеты, которые обычно могут использоваться только в лончере</string>
 
+    <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
+    <string name="hwkey_action_show_power_menu">Показать меню выключения</string>
+    <string name="hwkey_action_expand_notifications">Развернуть панель уведомлений</string>
+    <string name="hwkey_action_expand_quicksettings">Развернуть панель быстрых настроек</string>
+
+    <!-- Navigation bar ring targets -->
+    <string name="pref_cat_navbar_ring_targets_title">Ярлыки нав.кольца</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Включение ярлыков навигационного кольца (необходима перезагрузка)</string>
+    <string name="pref_navbar_ring_target_title">Ярлык кольца %d</string>
+
+    <!-- Shortcut activity title -->
+    <string name="shortcut_activity_title">Действия GravityBox</string>
+
+    <!-- Network mode shortcut -->
+    <string name="shortcut_network_mode">Переключение режима сети</string>
+
+    <!-- Toggle mobile data shortcut -->
+    <string name="shortcut_mobile_data">Включение моб. данных</string>
+
+    <!-- Toggle WiFi shortcut -->
+    <string name="shortcut_wifi">Включение WiFi</string>
+
+    <!-- Toggle Bluetooth shortcut -->
+    <string name="shortcut_bluetooth">Включение Bluetooth</string>
+
+    <!-- Toggle WiFi AP shortcut -->
+    <string name="shortcut_wifi_ap">Включение ТД WiFi</string>
+
+    <!-- Toggle NFC shortcut -->
+    <string name="shortcut_nfc">Включение NFC</string>
+
+    <!-- Toggle GPS shortcut -->
+    <string name="shortcut_gps">Включение GPS</string>
+
+    <!-- Navigation bar ring targets background style -->
+    <string name="pref_navbar_ring_targets_bg_style_title">Стиль фона ярлыка</string>
+    <string name="nrt_bg_style_none">Нет</string>
+    <string name="nrt_bg_style_light">Светлый</string>
+    <string name="nrt_bg_style_dark">Тёмный</string>
+    <string name="nrt_bg_style_black">Чёрный</string>
+
+    <!-- Smart Radio -->
+    <string name="smart_radio_action_do_nothing">Ничего не делать</string>
+    <string name="smart_radio_action_summary">Переключиться на %s</string>
+    <string name="pref_cat_smart_radio_title">Умный радиомодуль</string>
+    <string name="pref_smart_radio_experimental_summary">ЭКСПЕРИМЕНТАЛЬНАЯ ФУНКЦИЯ! Может стать причиной некорректного переключения режима сети вручную</string>
+    <string name="pref_smart_radio_on_data_enabled_title">Мобильные данные вкл</string>
+    <string name="pref_smart_radio_on_data_disabled_title">Мобильные данные выкл</string>
+
+    <!-- Pie category summary -->
+    <string name="pie_control_summary">Настройки веерного меню</string>
+
+    <!-- Shortcut for Google Now -->
+    <string name="shortcut_google_now">Google Now</string>
+
+    <!-- Lockscreen background opacity -->
+    <string name="pref_lockscreen_bg_opacity_title">Непрозрачность фона</string>
+
+    <!-- GB Actions: Media control shorctut -->
+    <string name="shortcut_media_control">Управление медиа</string>
+    <string name="shortcut_media_play_pause">Воспр/пауза</string>
+    <string name="shortcut_media_previous">Пред</string>
+    <string name="shortcut_media_next">След</string>
+
+    <!-- Battery percent text: charging indication -->
+    <string name="battery_percent_text_charging_title">Индикация зарядки</string>
+    <string name="bpt_charging_none">Нет</string>
+    <string name="bpt_charging_static">Статичная</string>
+    <string name="bpt_charging_animated">Анимированная</string>
+
+    <!-- Lockscreen statusbar clock visibility -->
+    <string name="pref_lockscreen_sb_clock_title">Часы в строке состояния</string>
+    <string name="lockscreen_sb_clock_hide_on_widget">Скрывать при использовании известных виджетов часов</string>
+    <string name="lockscreen_sb_clock_always_hide">Скрывать всегда</string>
+    <string name="lockscreen_sb_clock_always_show">Показывать всегда</string>
+
+    <!-- QuickApp Tile #2 -->
+    <string name="pref_cat_quickapp_tile_2_title">Доп.плитка быстрого запуска</string>
+    <string name="qs_tile_quickapp_2">Быстрый запуск 2</string>
+
+    <!-- Force music volume control -->
+    <string name="pref_vol_force_music_control_title">Принуд. управление музыкой</string>
+    <string name="pref_vol_force_music_control_summary">Если включено, кнопки громкости управляют уровнем звука музыки вместо уровня громкости вызова</string>
+
+    <!-- Misc tweaks: category for recents panel related tweaks -->
+    <string name="pref_cat_misc_recents_panel_title">Панель недавних</string>
+
+    <!-- Misc tweaks: category for other settings -->
+    <string name="pref_cat_misc_other_title">Другие настройки</string>
+
+    <!-- Disable fullscreen keyboard -->
+    <string name="pref_ime_fullscreen_disable_title">Без клавиатуры на полн.экр.</string>
+
+    <!-- Torch auto-off -->
+    <string name="pref_torch_auto_off_title">Автоотключение фонарика</string>
+    <string name="pref_torch_auto_off_summary">Отключение фонарика через определённый промежуток времени. Установите 0 для деактивации функции (не рекомендуется)</string>
+
+    <!-- Swap volume keys when the screen is rotated -->
+    <string name="pref_vol_swap_keys_title">Поменять кнопки громкости</string>
+    <string name="pref_vol_swap_keys_summary">Кнопки громкости при повороте экрана меняются местами</string>
+
+    <!-- Lockscreen: custom background blur effect -->
+    <string name="pref_lockscreen_bg_blur_effect_title">Эффект размытия</string>
+
+    <!-- Tiles: Disable tile spanning -->
+    <string name="pref_qs_tile_span_disable_title">Откл расширение плиток</string>
+    <string name="pref_qs_tile_span_disable_summary">Предотвращение расширения плиток пользователя, яркости и настроек в ландшафтном режиме</string>
+
+</resources>
