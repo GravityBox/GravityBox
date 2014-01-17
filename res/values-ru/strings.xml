@@ -1003,4 +1003,8 @@
     <string name="pref_force_overflow_menu_button_title">Принуд. троеточие меню</string>
     <string name="pref_force_overflow_menu_button_summary">Необходима перезагрузка</string>
 
+    <!-- Navbar: always on bottom -->
+    <string name="pref_navbar_always_on_bottom_title">Всегда внизу</string>
+    <string name="pref_navbar_always_on_bottom_summary">Навигационная панель остаётся внизу в ландшафтном режиме (необходима перезагрузка)</string>
+
 </resources>
