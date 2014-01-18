@@ -520,7 +520,7 @@ public class ModLockscreen {
 
                         try {
                             Method m = XposedHelpers.findMethodExact(
-                                    kgViewMediatorClass, "isAssistantAvailable");
+                                    kgViewMediatorClass, "isAssistantAvailable", new Object[0]);
                             if (!(Boolean) m.invoke(param.thisObject)) {
                                 flags |= STATUSBAR_DISABLE_SEARCH;
                             }
