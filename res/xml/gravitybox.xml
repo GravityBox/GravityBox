@@ -1127,6 +1127,11 @@
             android:title="@string/pref_button_backlight_notifications_title"
             android:summary="@string/pref_button_backlight_notifications_summary"
             android:defaultValue="false" />
+        
+        <CheckBoxPreference
+            android:key="pref_enable_transparency"
+            android:title="@string/pref_enable_transparency_title"
+            android:defaultValue="true" />
 
     </PreferenceScreen>
 
