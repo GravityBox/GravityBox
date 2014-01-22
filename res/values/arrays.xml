@@ -769,5 +769,16 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+	
+    <string-array name="transparent_bars_entries" translatable="false">
+        <item>@string/transparent_bars_default</item>
+        <item>@string/transparent_bars_enabled</item>
+        <item>@string/transparent_bars_disabled</item>
+    </string-array>
 
+    <string-array name="transparent_bars_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

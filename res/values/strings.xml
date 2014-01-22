@@ -362,7 +362,10 @@
     <string name="pref_button_backlight_notifications_summary">EXPERIMENTAL! Blinks button backlight when there is a notification. Use in case your device lacks notification LED. May consume battery.</string>
 
     <!-- Transparent Notification Bars -->
-    <string name="pref_enable_transparency_title">Use transparent notification bars</string>
+    <string name="pref_transparent_bars_title">Use transparent notification bars</string>
+	<string name="transparent_bars_default">System default</string>
+    <string name="transparent_bars_enabled">Enabled</string>
+    <string name="transparent_bars_disabled">Disabled</string>
 
     <!--  Dithered Holo background -->
     <string name="pref_holo_bg_dither_title">Dithered Holo background</string>

@@ -1128,10 +1128,12 @@
             android:summary="@string/pref_button_backlight_notifications_summary"
             android:defaultValue="false" />
         
-        <CheckBoxPreference
-            android:key="pref_enable_transparency"
-            android:title="@string/pref_enable_transparency_title"
-            android:defaultValue="true" />
+        <ListPreference 
+            android:key="pref_transparent_bars"
+            android:title="@string/pref_transparent_bars_title"
+            android:entries="@array/transparent_bars_entries"
+            android:entryValues="@array/transparent_bars_values"
+            android:defaultValue="0" />
 
     </PreferenceScreen>
 
