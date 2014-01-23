@@ -365,12 +365,6 @@
     <string name="pref_holo_bg_dither_title">Dithered Holo background</string>
     <string name="pref_holo_bg_dither_summary">Replaces standard Holo background with dithered one to suppress color banding (requires reboot)</string>
 
-    <!-- Translucent decor options -->
-    <string name="pref_translucent_decor_title">Enable Translucent Decor</string>
-    <string name="pref_translucent_decor_default">System Default</string>
-    <string name="pref_translucent_decor_enabled">Enabled</string>
-    <string name="pref_translucent_decor_disabled">Disabled</string>
-
     <!-- Disable navigation keys for pie -->
     <string name="pref_hwkeys_disable_title">Disable navigation keys</string>
     <string name="pref_hwkeys_disable_summary">Disables single-tap on keys while Pie Controls are enabled</string>
