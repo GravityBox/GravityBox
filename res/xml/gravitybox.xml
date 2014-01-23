@@ -1176,6 +1176,13 @@
             android:summary="@string/pref_button_backlight_notifications_summary"
             android:defaultValue="false" />
 
+        <ListPreference
+            android:key="pref_translucent_decor"
+            android:title="@string/pref_translucent_decor_title"
+            android:entries="@array/pref_translucent_decor_entries"
+            android:entryValues="@array/pref_translucent_decor_values"
+            android:defaultValue="default" />
+
     </PreferenceScreen>
 
     <PreferenceScreen 

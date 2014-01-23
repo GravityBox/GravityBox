@@ -229,6 +229,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_AUTOBRIGHTNESS = "pref_autobrightness";
     public static final String PREF_KEY_HOLO_BG_SOLID_BLACK = "pref_holo_bg_solid_black";
     public static final String PREF_KEY_HOLO_BG_DITHER = "pref_holo_bg_dither";
+    public static final String PREF_KEY_TRANSLUCENT_DECOR = "pref_translucent_decor";
 
     public static final String PREF_CAT_KEY_MEDIA = "pref_cat_media";
     public static final String PREF_KEY_VOL_MUSIC_CONTROLS = "pref_vol_music_controls";
@@ -622,6 +623,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             PREF_KEY_MUSIC_VOLUME_STEPS,
             PREF_KEY_HOLO_BG_SOLID_BLACK,
             PREF_KEY_HOLO_BG_DITHER,
+            PREF_KEY_TRANSLUCENT_DECOR,
             PREF_KEY_SCREEN_DIM_LEVEL,
             PREF_KEY_BRIGHTNESS_MASTER_SWITCH,
             PREF_KEY_NAVBAR_OVERRIDE,
