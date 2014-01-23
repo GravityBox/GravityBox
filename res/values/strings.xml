@@ -1045,4 +1045,10 @@
     <string name="pref_pie_menu_longpress_title">Menu key</string>
     <string name="pref_pie_app_longpress_title">App launcher key</string>
 
+    <!-- Translucent decor options -->
+    <string name="pref_translucent_decor_title">Translucent decor</string>
+    <string name="pref_translucent_decor_default">System default</string>
+    <string name="pref_translucent_decor_enabled">Enabled</string>
+    <string name="pref_translucent_decor_disabled">Disabled</string>
+
 </resources>
