@@ -54,6 +54,7 @@ public class ModClearAllRecents {
 
     private static XSharedPreferences mPrefs;
     private static ImageView mRecentsClearButton;
+    private static int mClearRecentsMode;
 
     // RAM bar
     private static TextView mBackgroundProcessText;
@@ -137,7 +138,7 @@ public class ModClearAllRecents {
                             ViewGroup mRecentsContainer = (ViewGroup) XposedHelpers.getObjectField(
                                     param.thisObject, "mRecentsContainer");
                             // passing null parameter in this case is our action flag to remove all views
-                            mPreserveCurrentTask = false;
+                            mPreserveCurrentTask = (mClearRecentsMode == 1);
                             mRecentsContainer.removeViewInLayout(null);
                         }
                     });
@@ -147,7 +148,7 @@ public class ModClearAllRecents {
                             ViewGroup mRecentsContainer = (ViewGroup) XposedHelpers.getObjectField(
                                     param.thisObject, "mRecentsContainer");
                             // passing null parameter in this case is our action flag to remove all views
-                            mPreserveCurrentTask = true;
+                            mPreserveCurrentTask = (mClearRecentsMode == 0);
                             mRecentsContainer.removeViewInLayout(null);
                             return true;
                         }
@@ -230,6 +231,8 @@ public class ModClearAllRecents {
 
     private static void updateButtonLayout(View container) {
         if (mRecentsClearButton == null) return;
+        
+        mClearRecentsMode = Integer.valueOf(mPrefs.getString(GravityBoxSettings.PREF_KEY_CLEAR_RECENTS_MODE, "0"));
 
         final Context context = mRecentsClearButton.getContext();
         int gravity = Integer.valueOf(mPrefs.getString(

@@ -1587,6 +1587,13 @@
                 android:defaultValue="53" />
 
             <ListPreference 
+                android:key="pref_clear_recents_mode"
+                android:title="@string/pref_clear_recents_mode_title"
+                android:entries="@array/pref_clear_recents_mode_entries"
+                android:entryValues="@array/pref_clear_recents_mode_values"
+                android:defaultValue="0" />
+
+            <ListPreference 
                 android:key="pref_rambar"
                 android:title="@string/pref_rambar_title"
                 android:entries="@array/rambar_entries"

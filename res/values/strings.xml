@@ -1045,4 +1045,9 @@
     <string name="pref_translucent_decor_enabled">Enabled</string>
     <string name="pref_translucent_decor_disabled">Disabled</string>
 
+    <!--  Clear recents modes -->
+    <string name="pref_clear_recents_mode_title">Clear all recent tasks behaviour</string>
+    <string name="pref_clear_recents_mode_0">Tap to clear all, long-press to clear all but current</string>
+    <string name="pref_clear_recents_mode_1">Tap to clear all but current, long-press to clear all</string>
+
 </resources>

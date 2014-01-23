@@ -119,6 +119,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final int VOL_KEY_CURSOR_CONTROL_ON_REVERSE = 2;
 
     public static final String PREF_KEY_RECENTS_CLEAR_ALL = "pref_recents_clear_all2";
+    public static final String PREF_KEY_CLEAR_RECENTS_MODE = "pref_clear_recents_mode";
     public static final String PREF_KEY_RAMBAR = "pref_rambar";
     public static final String PREF_KEY_RECENTS_CLEAR_MARGIN_TOP = "pref_recent_clear_margin_top";
     public static final String PREF_KEY_RECENTS_CLEAR_MARGIN_BOTTOM = "pref_recent_clear_margin_bottom";
@@ -880,6 +881,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
         private ListPreference mPrefPieAppLongpress;
         private CheckBoxPreference mPrefGbThemeDark;
         private ListPreference mPrefRecentClear;
+        private ListPreference mPrefClearRecentMode;
         private ListPreference mPrefRambar;
         private PreferenceScreen mPrefCatPhone;
         private SeekBarPreference mPrefBrightnessMin;
@@ -1088,6 +1090,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             mPrefGbThemeDark.setChecked(file.exists());
 
             mPrefRecentClear = (ListPreference) findPreference(PREF_KEY_RECENTS_CLEAR_ALL);
+            mPrefClearRecentMode = (ListPreference) findPreference(PREF_KEY_CLEAR_RECENTS_MODE);
             mPrefRambar = (ListPreference) findPreference(PREF_KEY_RAMBAR);
 
             mPrefCatPhone = (PreferenceScreen) findPreference(PREF_CAT_KEY_PHONE);
@@ -1541,6 +1544,10 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
 
             if (key == null || key.equals(PREF_KEY_RECENTS_CLEAR_ALL)) {
                 mPrefRecentClear.setSummary(mPrefRecentClear.getEntry());
+            }
+
+            if (key == null || key.equals(PREF_KEY_CLEAR_RECENTS_MODE)) {
+                mPrefClearRecentMode.setSummary(mPrefClearRecentMode.getEntry());
             }
 
             if (key == null || key.equals(PREF_KEY_RAMBAR)) {
