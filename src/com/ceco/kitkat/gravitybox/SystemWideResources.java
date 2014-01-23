@@ -29,7 +29,7 @@ public class SystemWideResources {
             Resources systemRes = XResources.getSystem();
 
             XModuleResources modRes = XModuleResources.createInstance(GravityBox.MODULE_PATH, null);
-            
+
             int translucentDecor = Integer.valueOf(prefs.getString(GravityBoxSettings.PREF_KEY_TRANSLUCENT_DECOR, "0"));
             if (translucentDecor != 0) {
             	XResources.setSystemWideReplacement("android", "bool", "config_enableTranslucentDecor", translucentDecor == 1);

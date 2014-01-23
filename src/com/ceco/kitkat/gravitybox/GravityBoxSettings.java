@@ -1637,13 +1637,9 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             if (key == null || key.equals(PREF_KEY_CRT_OFF_EFFECT)) {
                 mPrefCrtOff.setSummary(mPrefCrtOff.getEntry());
             }
-            
-            if (key == null || key.equals(PREF_KEY_TRANSLUCENT_DECOR)) {
-            	mPrefTranclucentDecor.setSummary(mPrefTranclucentDecor.getEntry());
-            }
 
             if (key == null || key.equals(PREF_KEY_TRANSLUCENT_DECOR)) {
-                mPrefTranclucentDecor.setSummary(mPrefTranclucentDecor.getEntry());
+            	mPrefTranclucentDecor.setSummary(mPrefTranclucentDecor.getEntry());
             }
 
             if (key == null || key.equals(PREF_KEY_LAUNCHER_DESKTOP_GRID_ROWS)) {
