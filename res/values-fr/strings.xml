@@ -1035,7 +1035,7 @@
     <string name="pref_qs_tile_span_disable_summary">Désactive l\'élargissement des touches utilisateur, luminosité, et paramètres en orientation paysage</string>
 
     <!-- Force overflow menu button -->
-    <string name="pref_force_overflow_menu_button_title">Forcer le dépassement du bouton menu</string>
+    <string name="pref_force_overflow_menu_button_title">Forcer le bouton menu de débordement</string>
     <string name="pref_force_overflow_menu_button_summary">Nécessite un redémarrage</string>
 
     <!-- Navbar: always on bottom -->
