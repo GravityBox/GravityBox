@@ -1073,4 +1073,9 @@
     <!-- Blur effect intensity -->
     <string name="pref_lockscreen_bg_blur_intensity_title">Интенсивность размытия</string>
 
+    <!-- Smart radio: independent delay for screen off power save event -->
+    <string name="pref_smart_radio_screen_off_delay_title">Задержка экономн.режима</string>
+    <string name="pref_smart_radio_screen_off_delay_summary">Задержка переключения в экономный режим при отключении экрана. 
+        Изменяет задержку смены режима по умолчанию, ели величина не равна нулю.</string>
+
 </resources>
