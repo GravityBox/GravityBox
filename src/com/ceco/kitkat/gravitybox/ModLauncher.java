@@ -30,6 +30,8 @@ public class ModLauncher {
     private static final String TAG = "GB:ModLauncher";
 
     private static final String CLASS_DYNAMIC_GRID = "com.android.launcher3.DynamicGrid";
+    private static final String CLASS_APP_WIDGET_HOST_VIEW = "android.appwidget.AppWidgetHostView";
+    
     private static final boolean DEBUG = false;
 
     private static void log(String message) {
@@ -39,7 +41,8 @@ public class ModLauncher {
     public static void init(final XSharedPreferences prefs, final ClassLoader classLoader) {
         try {
             final Class<?> classDynamicGrid = XposedHelpers.findClass(CLASS_DYNAMIC_GRID, classLoader);
-
+            final Class<?> classAppWidgetHostView = XposedHelpers.findClass(CLASS_APP_WIDGET_HOST_VIEW, classLoader);
+            
             XposedBridge.hookAllConstructors(classDynamicGrid, new XC_MethodHook() { 
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
@@ -61,6 +64,22 @@ public class ModLauncher {
                     }
                 }
             });
+			
+            XposedHelpers.findAndHookMethod(classAppWidgetHostView, "getAppWidgetInfo", new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                    if (prefs.getBoolean(
+                            GravityBoxSettings.PREF_KEY_LAUNCHER_RESIZE_WIDGET, false)) {
+                        Object info = XposedHelpers.getObjectField(param.thisObject, "mInfo");
+                        if (info != null) {
+                            XposedHelpers.setIntField(info, "resizeMode", 3);
+                            XposedHelpers.setIntField(info, "minResizeWidth", 40);
+                            XposedHelpers.setIntField(info, "minResizeHeight", 40);
+                        }
+                    }
+                }
+            });
+			
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

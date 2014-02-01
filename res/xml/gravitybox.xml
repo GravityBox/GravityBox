@@ -1454,6 +1454,18 @@
                 android:defaultValue="0" />
 
         </PreferenceCategory>
+        
+        <PreferenceCategory 
+            android:key="pref_cat_launcher_other"
+            android:title="@string/pref_cat_launcher_other_title">
+				
+            <CheckBoxPreference 
+                android:key="pref_launcher_resize_widget"
+                android:title="@string/pref_launcher_resize_widget_title"
+                android:summary="@string/pref_launcher_resize_widget_summary"
+                android:defaultValue="false" />
+                
+        </PreferenceCategory>
 
     </PreferenceScreen>
 

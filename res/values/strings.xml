@@ -812,6 +812,9 @@
     <string name="pref_launcher_desktop_grid_rows_title">Number of rows</string>
     <string name="pref_launcher_desktop_grid_cols_title">Number of columns</string>
     <string name="desktop_grid_default">Default</string>
+    <string name="pref_cat_launcher_other_title">Other</string>
+    <string name="pref_launcher_resize_widget_title">Resize any widget</string>
+    <string name="pref_launcher_resize_widget_summary">Resize any widget to any size on the homescreen</string>
 
     <!-- HW Key Acctions: toggle screen recording -->
     <string name="hwkey_action_screen_recording">Toggle screen recording</string>

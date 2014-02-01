@@ -592,6 +592,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_CAT_LAUNCHER_TWEAKS = "pref_cat_launcher_tweaks";
     public static final String PREF_KEY_LAUNCHER_DESKTOP_GRID_ROWS = "pref_launcher_desktop_grid_rows";
     public static final String PREF_KEY_LAUNCHER_DESKTOP_GRID_COLS = "pref_launcher_desktop_grid_cols";
+    public static final String PREF_KEY_LAUNCHER_RESIZE_WIDGET = "pref_launcher_resize_widget";
 
     public static final String PREF_KEY_SIGNAL_CLUSTER_CONNECTION_STATE = "pref_signal_cluster_connection_state";
     public static final String PREF_KEY_SIGNAL_CLUSTER_DATA_ACTIVITY = "pref_signal_cluster_data_activity";
