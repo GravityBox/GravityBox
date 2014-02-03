@@ -80,7 +80,7 @@
     <string name="quick_settings_sync_on">Sincronización activada</string>
     <string name="quick_settings_sync_off">Sincronización desactivada</string>
     <string name="quick_settings_wifi_ap_on">Compartir Wi-Fi activado</string>
-    <string name="quick_settings_wifi_ap_off">No se comparte Wi-Fi</string>
+    <string name="quick_settings_wifi_ap_off">Compartir Wi-Fi apagado</string>
     <string name="quick_settings_torch_on">Linterna activada</string>
     <string name="quick_settings_torch_off">Linterna desactivada</string>
     <string name="quick_settings_torch_off_notif">Toca para desactivar</string>
@@ -550,9 +550,9 @@
     <string name="pref_cat_lockscreen_ring_settings_title">Ajustes del anillo de desbloqueo</string>
     <string name="pref_lockscreen_ring_targets_enable_title">Habilitar disparadores en anillo de desbloqueo</string>
     <string name="pref_lockscreen_ring_targets_enable_summary">Interruptor principal para los disparadores del anillo de desbloqueo</string>
-    <string name="pref_lockscreen_ring_targets_app_title">Destino desde el anillo %s</string>
-    <string name="pref_lockscreen_ring_vertical_offset_title">Unlock ring vertical offset</string>
-    <string name="pref_lockscreen_ring_horizontal_offset_title">Unlock ring horizontal offset</string>
+    <string name="pref_lockscreen_ring_targets_app_title">App para la posición %s del anillo</string>
+ +    <string name="pref_lockscreen_ring_vertical_offset_title">Desplaz. Vertical del anillo</string>
+ +    <string name="pref_lockscreen_ring_horizontal_offset_title">Desplaz. Horiz. del anillo</string>
 
     <!-- Statusbar brightness control -->
     <string name="pref_statusbar_brightness_title">Habilitar control de brillo</string>
@@ -565,10 +565,10 @@
 
     <!-- Messaging: Strip unicode -->
     <string name="pref_mms_unicode_stripping_title">Strip unicode</string> <!-- STILL UNTRANSLATED -->
-    <string name="pref_mms_unicode_stripping_summary">Converts unicode characters to normal characters. Decreases overall message size.</string> <!-- STILL UNTRANSLATED -->
-    <string name="unicode_stripping_leave_intact">Leave characters intact</string> <!-- STILL UNTRANSLATED -->
+    <string name="pref_mms_unicode_stripping_summary">Convertir caracteres unicode a normales. Disminuye el tamaño total de mensajes.</string> <!-- STILL UNTRANSLATED -->
+    <string name="unicode_stripping_leave_intact">Deja caracteres intactos</string> <!-- STILL UNTRANSLATED -->
     <string name="unicode_stripping_non_encodable">Strip non-encodable characters</string> <!-- STILL UNTRANSLATED -->
-    <string name="unicode_stripping_all">Strip all unicode characters</string> <!-- STILL UNTRANSLATED -->
+    <string name="unicode_stripping_all">Strip los caracteres unicode</string> <!-- STILL UNTRANSLATED -->
 
     <!-- Disable slow 2G data warning -->
     <string name="pref_mobile_data_slow2g_disable_title">Desactivar aviso de red 2G lenta</string>
