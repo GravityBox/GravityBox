@@ -63,6 +63,8 @@ public class Utils {
     private static Boolean mIsMtkDevice = null;
     private static Boolean mIsXperiaDevice = null;
     private static Boolean mHasLenovoCustomUI = null;
+    private static Boolean mLenovoUIisVIBE = null;
+    private static Boolean mLenovoIsROW = null;
     private static Boolean mIsWifiOnly = null;
     private static String mDeviceCharacteristics = null;
     
@@ -170,6 +172,22 @@ public class Utils {
         File f = new File("/system/framework/lenovo-res.apk");
         mHasLenovoCustomUI = f.exists();
         return mHasLenovoCustomUI;
+    }
+
+    public static boolean lenovoUIisVIBE() {
+        if (mLenovoUIisVIBE != null) return mLenovoUIisVIBE;
+
+        File f = new File("/system/framework/lenovosystemuiadapter.jar");
+        mLenovoUIisVIBE = f.exists();
+        return mLenovoUIisVIBE;
+    }
+    
+    public static boolean lenovoIsROW() {
+        //Lenovo releases ROW (Rest Of the World) firmware for European versions of their devices
+        if (mLenovoIsROW != null) return mLenovoIsROW;
+
+        mLenovoIsROW = SystemProp.get("ro.product.device").toUpperCase(Locale.US).endsWith("_ROW");
+        return mLenovoIsROW;
     }
 
     public static boolean hasGeminiSupport() {
