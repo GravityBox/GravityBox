@@ -66,7 +66,12 @@ public class ModStatusBar {
     private static final String CLASS_STATUSBAR_NOTIF = Build.VERSION.SDK_INT > 17 ?
             "android.service.notification.StatusBarNotification" :
             "com.android.internal.statusbar.StatusBarNotification";
-    private static final String CLASS_PLUGINFACTORY = "com.mediatek.systemui.ext.PluginFactory";
+    private static final String CLASS_PLUGINFACTORY = Utils.lenovoUIisVIBE() ?
+            "com.android.systemui.lenovo.ext.PluginFactory" :
+            "com.mediatek.systemui.ext.PluginFactory";
+    private static final String CLASS_NETWORKTYPE = Utils.lenovoUIisVIBE() ?
+            "com.android.systemui.lenovo.ext.NetworkType" :
+            "com.mediatek.systemui.ext.NetworkType";
     private static final String CLASS_NETWORK_CONTROLLER = Utils.hasGeminiSupport() ? 
             "com.android.systemui.statusbar.policy.NetworkControllerGemini" :
             "com.android.systemui.statusbar.policy.NetworkController";
@@ -753,7 +758,7 @@ public class ModStatusBar {
 
                     if (mGetDataNetworkTypeIconGeminiHook == null) {
                         mGetDataNetworkTypeIconGeminiHook = XposedHelpers.findAndHookMethod(mStatusBarPlugin.getClass(),
-                                "getDataNetworkTypeIconGemini", "com.mediatek.systemui.ext.NetworkType", int.class, new XC_MethodHook() {
+                                "getDataNetworkTypeIconGemini", CLASS_NETWORKTYPE, int.class, new XC_MethodHook() {
                             @Override
                             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                                 if (mDisableDataNetworkTypeIcons)

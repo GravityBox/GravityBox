@@ -44,6 +44,10 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
         XposedBridge.log("GB:Is MTK device: " + Utils.isMtkDevice());
         XposedBridge.log("GB:Is Xperia device: " + Utils.isXperiaDevice());
         XposedBridge.log("GB:Has Lenovo custom UI: " + Utils.hasLenovoCustomUI());
+        if (Utils.hasLenovoCustomUI()) {
+            XposedBridge.log("GB:Lenovo UI is VIBE: " + Utils.lenovoUIisVIBE());
+            XposedBridge.log("GB:Lenovo ROM is ROW: " + Utils.lenovoIsROW());
+        }
         XposedBridge.log("GB:Has telephony support: " + Utils.hasTelephonySupport());
         XposedBridge.log("GB:Has Gemini support: " + Utils.hasGeminiSupport());
         XposedBridge.log("GB:Android SDK: " + Build.VERSION.SDK_INT);
@@ -76,7 +80,8 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
         if (Build.VERSION.SDK_INT > 16) {
             FixTraceFlood.initZygote();
             ModElectronBeam.initZygote(prefs);
-            ModLockscreen.initZygote(prefs);
+            if (!Utils.lenovoUIisVIBE())
+                ModLockscreen.initZygote(prefs);
 
             // PermissionGranter init goes here because so far its only purpose
             // is to grant permissions needed by QuickSettings camera tile
@@ -178,6 +183,7 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
 
             if (Build.VERSION.SDK_INT > 16
                     && Utils.hasGeminiSupport()
+                    && !Utils.hasLenovoCustomUI()
                     && lpparam.packageName.equals(ModMtkToolbar.PACKAGE_NAME)) {
                 ModMtkToolbar.init(prefs, lpparam.classLoader);
             }
