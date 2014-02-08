@@ -93,8 +93,8 @@ public class ModQuickSettings {
     private static final String CLASS_ROTATION_POLICY = "com.android.internal.view.RotationPolicy";
     private static final boolean DEBUG = false;
 
-    private static final float STATUS_BAR_SETTINGS_FLIP_PERCENTAGE_RIGHT = 0.15f;
-    private static final float STATUS_BAR_SETTINGS_FLIP_PERCENTAGE_LEFT = 0.85f;
+    private static final float STATUS_BAR_SETTINGS_FLIP_PERCENTAGE_RIGHT = 0.41f;
+    private static final float STATUS_BAR_SETTINGS_FLIP_PERCENTAGE_LEFT = 0.59f;
     private static final float STATUS_BAR_SWIPE_VERTICAL_MAX_PERCENTAGE = 0.025f;
     private static final float STATUS_BAR_SWIPE_TRIGGER_PERCENTAGE = 0.05f;
     private static final float STATUS_BAR_SWIPE_MOVE_PERCENTAGE = 0.2f;
