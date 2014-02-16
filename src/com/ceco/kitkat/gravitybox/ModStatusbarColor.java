@@ -84,7 +84,12 @@ public class ModStatusbarColor {
             if (DEBUG) log("received broadcast: " + intent.toString());
             if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_STATUSBAR_COLOR_CHANGED)) {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_BG_COLOR)) {
-                    mStatusbarBgColor = intent.getIntExtra(GravityBoxSettings.EXTRA_SB_BG_COLOR, Color.BLACK);
+                	try {
+                		mStatusbarBgColor = (int)Long.parseLong(intent.getStringExtra(
+                       			GravityBoxSettings.EXTRA_SB_BG_COLOR).replaceFirst("#", ""), 16);
+                    } catch(Exception e) {                  	
+                       	mStatusbarBgColor = intent.getIntExtra(GravityBoxSettings.EXTRA_SB_BG_COLOR, Color.BLACK);
+                    }
                     setStatusbarBgColor();
                 }
             }

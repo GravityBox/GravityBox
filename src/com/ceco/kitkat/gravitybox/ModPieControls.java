@@ -134,24 +134,49 @@ public class ModPieControls {
                     mPieController.setMenuVisibility(mShowMenuItem | mAlwaysShowMenuItem);
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_COLOR_BG)) {
-                    mPieController.setBackgroundColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_BG,
-                            mGbContext.getResources().getColor(R.color.pie_background_color)));
+                    try {
+                    	mPieController.setBackgroundColor((int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_PIE_COLOR_BG).replaceFirst("#", ""), 16));
+                    } catch(Exception e) {                  	
+                    	mPieController.setBackgroundColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_BG,
+                    			mGbContext.getResources().getColor(R.color.pie_background_color)));
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_COLOR_FG)) {
-                    mPieController.setForegroundColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_FG,
-                            mGbContext.getResources().getColor(R.color.pie_foreground_color)));
+                    try {
+                    	mPieController.setForegroundColor((int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_PIE_COLOR_FG).replaceFirst("#", ""), 16));
+                    } catch(Exception e) {                 	
+                    	mPieController.setForegroundColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_FG,
+                    			mGbContext.getResources().getColor(R.color.pie_foreground_color)));
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_COLOR_OUTLINE)) {
-                    mPieController.setOutlineColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_OUTLINE,
-                            mGbContext.getResources().getColor(R.color.pie_outline_color)));
+                    try {
+                    	mPieController.setOutlineColor((int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_PIE_COLOR_OUTLINE).replaceFirst("#", ""), 16));
+                    } catch(Exception e) {                   	
+                    	mPieController.setOutlineColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_OUTLINE,
+                    			mGbContext.getResources().getColor(R.color.pie_outline_color)));
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_COLOR_SELECTED)) {
-                    mPieController.setSelectedColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_SELECTED,
-                            mGbContext.getResources().getColor(R.color.pie_selected_color)));
+                    try {
+                    	mPieController.setSelectedColor((int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_PIE_COLOR_SELECTED).replaceFirst("#", ""), 16));
+                    } catch(Exception e) {                 	
+                    	mPieController.setSelectedColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_SELECTED,
+                    			mGbContext.getResources().getColor(R.color.pie_selected_color)));
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_COLOR_TEXT)) {
-                    mPieController.setTextColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_TEXT,
-                            mGbContext.getResources().getColor(R.color.pie_text_color)));
+                    try {
+                    	mPieController.setTextColor((int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_PIE_COLOR_TEXT).replaceFirst("#", ""), 16));
+                    } catch(Exception e) {                 	
+                    	mPieController.setTextColor(intent.getIntExtra(GravityBoxSettings.EXTRA_PIE_COLOR_TEXT,
+                    			mGbContext.getResources().getColor(R.color.pie_text_color)));
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_BUTTON) &&
                         intent.hasExtra(GravityBoxSettings.EXTRA_PIE_LONGPRESS_ACTION)) {

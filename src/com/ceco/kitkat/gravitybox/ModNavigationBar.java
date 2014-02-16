@@ -147,18 +147,33 @@ public class ModNavigationBar {
                     setCustomKeyVisibility();
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_KEY_COLOR)) {
-                    mKeyColor = intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_NAVBAR_KEY_COLOR, mKeyDefaultColor);
+                    try {
+                    	mKeyColor = (int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_NAVBAR_KEY_COLOR).replaceFirst("#", ""), 16);
+                    } catch(Exception e) {                	
+	                    mKeyColor = intent.getIntExtra(
+	                            GravityBoxSettings.EXTRA_NAVBAR_KEY_COLOR, mKeyDefaultColor);
+                    }
                     setKeyColor();
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_KEY_GLOW_COLOR)) {
-                    mKeyGlowColor = intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_NAVBAR_KEY_GLOW_COLOR, mKeyDefaultGlowColor);
+                    try {
+                    	mKeyGlowColor = (int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_NAVBAR_KEY_GLOW_COLOR).replaceFirst("#", ""), 16);
+                    } catch(Exception e) {                  	
+	                    mKeyGlowColor = intent.getIntExtra(
+	                            GravityBoxSettings.EXTRA_NAVBAR_KEY_GLOW_COLOR, mKeyDefaultGlowColor);
+                    }
                     setKeyColor();
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_BG_COLOR)) {
-                    mNavbarBgColor = intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_NAVBAR_BG_COLOR, mNavbarDefaultBgColor);
+                    try {
+                    	mNavbarBgColor = (int)Long.parseLong(intent.getStringExtra(
+                    			GravityBoxSettings.EXTRA_NAVBAR_BG_COLOR).replaceFirst("#", ""), 16);
+                    } catch(Exception e) {                  	
+	                    mNavbarBgColor = intent.getIntExtra(
+	                            GravityBoxSettings.EXTRA_NAVBAR_BG_COLOR, mNavbarDefaultBgColor);
+                    }
                     setNavbarBgColor();
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_COLOR_ENABLE)) {

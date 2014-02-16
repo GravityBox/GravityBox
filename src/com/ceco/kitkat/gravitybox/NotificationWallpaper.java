@@ -226,7 +226,12 @@ class NotificationWallpaper extends FrameLayout implements BroadcastSubReceiver 
                 setType(intent.getStringExtra(GravityBoxSettings.EXTRA_BG_TYPE));
             }
             if (intent.hasExtra(GravityBoxSettings.EXTRA_BG_COLOR)) {
-                setColor(intent.getIntExtra(GravityBoxSettings.EXTRA_BG_COLOR, Color.BLACK));
+                try {
+                	setColor((int)Long.parseLong(intent.getStringExtra(
+                			GravityBoxSettings.EXTRA_BG_COLOR).replaceFirst("#", ""), 16));
+                } catch(Exception e) {             	
+                	setColor(intent.getIntExtra(GravityBoxSettings.EXTRA_BG_COLOR, Color.BLACK));
+                }
             }
             if (intent.hasExtra(GravityBoxSettings.EXTRA_BG_ALPHA)) {
                 setAlpha(intent.getIntExtra(GravityBoxSettings.EXTRA_BG_ALPHA, 0));

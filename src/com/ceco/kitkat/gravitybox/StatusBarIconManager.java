@@ -177,22 +177,42 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
     public void onBroadcastReceived(Context context, Intent intent) {
         if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_STATUSBAR_COLOR_CHANGED)) {
             if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_ICON_COLOR)) {
-                setIconColor(intent.getIntExtra(
-                        GravityBoxSettings.EXTRA_SB_ICON_COLOR, getDefaultIconColor()));
+                try {
+                	setIconColor((int)Long.parseLong(intent.getStringExtra(
+                			GravityBoxSettings.EXTRA_SB_ICON_COLOR).replaceFirst("#", ""), 16));
+                } catch(Exception e) {              	
+                	setIconColor(intent.getIntExtra(
+                			GravityBoxSettings.EXTRA_SB_ICON_COLOR, getDefaultIconColor()));
+                }
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_ICON_STYLE)) {
                 setIconStyle(intent.getIntExtra(GravityBoxSettings.EXTRA_SB_ICON_STYLE, 0));
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_ICON_COLOR_SECONDARY)) {
-                setIconColor(1, intent.getIntExtra(
-                        GravityBoxSettings.EXTRA_SB_ICON_COLOR_SECONDARY, 
-                        getDefaultIconColor()));
+                try {
+                	setIconColor(1, (int)Long.parseLong(intent.getStringExtra(
+                			GravityBoxSettings.EXTRA_SB_ICON_COLOR_SECONDARY).replaceFirst("#", ""), 16));
+                } catch(Exception e) {             	
+                	setIconColor(1, intent.getIntExtra(
+                			GravityBoxSettings.EXTRA_SB_ICON_COLOR_SECONDARY, 
+                			getDefaultIconColor()));
+                }
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR)) {
-                setDataActivityColor(intent.getIntExtra(
-                        GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR, 
-                        StatusBarIconManager.DEFAULT_DATA_ACTIVITY_COLOR));
+                try {
+                	setDataActivityColor((int)Long.parseLong(intent.getStringExtra(
+                			GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR).replaceFirst("#", ""), 16));
+                } catch(Exception e) {              	
+                	setDataActivityColor(intent.getIntExtra(
+                			GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR, 
+                			StatusBarIconManager.DEFAULT_DATA_ACTIVITY_COLOR));
+                }
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY)) {
-                setDataActivityColor(1, intent.getIntExtra(
-                        GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY, 
-                        StatusBarIconManager.DEFAULT_DATA_ACTIVITY_COLOR));
+                try {
+                	setDataActivityColor(1, (int)Long.parseLong(intent.getStringExtra(
+                			GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY).replaceFirst("#", ""), 16));
+                } catch(Exception e) {             	
+                	setDataActivityColor(1, intent.getIntExtra(
+                			GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY, 
+                			StatusBarIconManager.DEFAULT_DATA_ACTIVITY_COLOR));
+                }
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_ICON_COLOR_ENABLE)) {
                 setColoringEnabled(intent.getBooleanExtra(
                         GravityBoxSettings.EXTRA_SB_ICON_COLOR_ENABLE, false));
