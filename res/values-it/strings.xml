@@ -1216,4 +1216,34 @@
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Dimensione bordo visualizzazione rapida</string>
     
+    <!-- Screen recording options -->
+    <string name="pref_cat_screenrecord_options_title">Registrazione schermo</string>
+    <string name="pref_cat_screenrecord_options_summary">Contiene opzioni per la registrazione schermo</string>
+    <string name="pref_screenrecord_size_title">Proporzioni video</string>
+    <string name="scr_size_default">Predefinite del dispositivo</string>
+    <string name="scr_size_sd">SD (360x640px)</string>
+    <string name="scr_size_hd">HD (720x1280px)</string>
+    <string name="scr_size_full_hd">Full HD (1080x1920px)</string>
+    <string name="pref_screenrecord_bitrate_title">Bitrate video</string>
+    <string name="pref_screenrecord_timelimit_title">Limite tempo</string>
+    <string name="pref_screenrecord_rotate_title">Ruota video</string>
+    <string name="pref_screenrecord_rotate_summary">Ruota l'output di 90 gradi</string>
+    <string name="pref_screenrecord_microphone_title">Usa microfono</string>
+    <string name="pref_screenrecord_microphone_summary">Usa il microfono come sorgente audio della registrazione</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Doppio-tap spegne schermo</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Fare doppio-tap sull\'anello di sblocco spegnerà lo schermo</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Riproduci suono al collegamento</string>
+    <string name="pref_charger_plugged_sound_summary">Riproduce un suono quando il caricabatterie viene collegato/scollegato</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Attiva/disattiva Modem intelligente</string>
+
 </resources>
