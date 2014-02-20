@@ -57,12 +57,12 @@
 
     <string name="recents_clear_all_title">Bersihkan semua tugas baru</string>
 
-    <string name="fix_datetime_crash_title">Perbaiki crash setting Tanggal&amp;Waktu</string>
-    <string name="fix_datetime_crash_summary">Hidupkan jika anda mengalami crash ketika masuk ke setting Tanggal&amp;Waktu (membutuhkan reboot)</string>
+    <string name="fix_datetime_crash_title">Perbaiki crash pengaturan Tanggal&amp;Waktu</string>
+    <string name="fix_datetime_crash_summary">Hidupkan jika anda mengalami crash ketika masuk ke pengaturan Tanggal&amp;Waktu (membutuhkan reboot)</string>
 
     <string name="fix_caller_id_phone_title">Perbaiki caller ID pada telepon</string>
     <string name="fix_caller_id_phone_summary">Hidupkan jika kontak anda tidak cocok ketika menerima panggilan (membutuhkan reboot)</string>
-    <string name="fix_caller_id_phone_alert">Setelah reboot, harap bersihkan data dan mengisi ulang kontak ada agar perubahan bisa berjalan! Masuk ke Settings / Applications / All - untuk membersihkan data Contacts provider.</string>
+    <string name="fix_caller_id_phone_alert">Setelah reboot, harap bersihkan data dan mengisi ulang kontak ada agar perubahan bisa berjalan! Masuk ke Pengaturan / Aplikasi / Semua - untuk membersihkan data Contacts provider.</string>
 
     <string name="fix_caller_id_mms_title">Perbaiki caller ID pada pesan</string>
     <string name="fix_caller_id_mms_summary">Hidupkan jika anda mengalami percakapan yang terpisah-pisah untuk 1 kontak yang sama (membutuhkan reboot)</string>
@@ -77,12 +77,12 @@
     <string name="caller_fullscreen_photo_summary">Tampilkan foto pemanggil secara fullscreen pada layar panggilan masuk</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">Sinkron hidup</string>
-    <string name="quick_settings_sync_off">Sync Mati</string>
-    <string name="quick_settings_wifi_ap_on">Wi-Fi AP on</string>
-    <string name="quick_settings_wifi_ap_off">Wi-Fi AP off</string>
-    <string name="quick_settings_torch_on">Senter hidup</string>
-    <string name="quick_settings_torch_off">Senter mati</string>
+    <string name="quick_settings_sync_on">Sinkron Hidup</string>
+    <string name="quick_settings_sync_off">Sinkron Mati</string>
+    <string name="quick_settings_wifi_ap_on">Wi-Fi AP Hidup</string>
+    <string name="quick_settings_wifi_ap_off">Wi-Fi AP Mati</string>
+    <string name="quick_settings_torch_on">Senter Hidup</string>
+    <string name="quick_settings_torch_off">Senter Mati</string>
     <string name="quick_settings_torch_off_notif">Sentuh untuk mematikan</string>
     <string name="quick_settings_qr_playing">Memainkan&#8230;</string>
     <string name="quick_settings_qr_recording">Merekam&#8230;</string>
@@ -92,51 +92,54 @@
     <string name="quick_settings_expanded_desktop_disabled">Dimatikan</string>
     <string name="quick_settings_expanded_desktop_normal">Normal</string>
     <string name="quick_settings_expanded_desktop_expanded">Diperluas</string>
-    <string name="quick_settings_stay_awake_on">Tetap menyala hidup</string>
-    <string name="quick_settings_stay_awake_off">Tetap menyala mati</string>
+    <string name="quick_settings_stay_awake_on">Tetap Menyala Hidup</string>
+    <string name="quick_settings_stay_awake_off">Tetap Menyala Mati</string>
     <string name="quick_settings_wifi">Wi-Fi</string>
-    <string name="quick_settings_wifi_off">Wi-Fi mati</string>
-    <string name="quick_settings_wifi_not_connected">Tidak terkoneksi</string>
+    <string name="quick_settings_wifi_off">Wi-Fi Mati</string>
+    <string name="quick_settings_wifi_not_connected">Tidak Terkoneksi</string>
     <string name="quick_settings_wifi_turning_on">Menghidupkan&#8230;</string>
-    <string name="quick_settings_nfc_on">NFC hidup</string>
-    <string name="quick_settings_nfc_off">NFC mati</string>
+    <string name="quick_settings_nfc_on">NFC Hidup</string>
+    <string name="quick_settings_nfc_off">NFC Mati</string>
     <string name="quick_settings_camera_error_connect">Tidak terkoneksi dengan kamera</string>
     <string name="quick_settings_usb_tether_off">Terputus</string>
-    <string name="quick_settings_usb_tether_connected">Penambatan mati</string>
+    <string name="quick_settings_usb_tether_connected">Penambatan Mati</string>
     <string name="quick_settings_usb_tether_on">Menambatkan</string>
+    <string name="quick_settings_smart_radio_on">Radio Pintar Hidup</string>
+    <string name="quick_settings_smart_radio_off">Radio Pintar Mati</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Kotak-kotak QuickSettings Statusbar</string>
     <string name="quick_settings_summary">Membolehkan kotak-kotak QuickSettings di statusbar untuk di tampil/sembunyikan</string>
-    <string name="qs_tile_user_profile">Profil pengguna</string>
-    <string name="qs_tile_airplane_mode">Mode pesawat terbang</string>
-    <string name="qs_tile_battery">Status baterai</string>
+    <string name="qs_tile_user_profile">Profil Pengguna</string>
+    <string name="qs_tile_airplane_mode">Mode Pesawat Terbang</string>
+    <string name="qs_tile_battery">Status Baterai</string>
     <string name="qs_tile_wifi">Wi-Fi</string>
-    <string name="qs_tile_wifi_alt">Wi-Fi (CM style)</string>
+    <string name="qs_tile_wifi_alt">Wi-Fi (Gaya CM)</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">GPS</string>
-    <string name="qs_tile_gps_alt">GPS (CM style)</string>
+    <string name="qs_tile_gps_alt">GPS (Gaya CM)</string>
     <string name="qs_tile_mobile_data">Data Paket</string>
-    <string name="qs_tile_network_mode">Mode jaringan</string>
+    <string name="qs_tile_network_mode">Mode Jaringan</string>
     <string name="qs_tile_data_usage">Penggunaan Data</string>
     <string name="qs_tile_audio">Profil Suara</string>
     <string name="qs_tile_brightness">Kecerahan</string>
-    <string name="qs_tile_screen_timeout">Screen timeout</string>
+    <string name="qs_tile_screen_timeout">Timeout Layar</string>
     <string name="qs_tile_autorotation">Rotasi otomatis</string>
     <string name="qs_tile_sync">Sinkronisasi</string>
     <string name="qs_tile_wifi_ap">Akses Poin Wi-Fi</string>
     <string name="qs_tile_torch">Senter</string>
     <string name="qs_tile_gravitybox">GravityBox</string>
-    <string name="qs_tile_sleep">Matikan layar</string>
+    <string name="qs_tile_sleep">Matikan Layar</string>
     <string name="qs_tile_quickrecord">Rekam Cepat</string>
-    <string name="qs_tile_settings">Setting</string>
+    <string name="qs_tile_settings">Pengaturan</string>
     <string name="qs_tile_volume">Volume</string>
     <string name="qs_tile_expanded_desktop">Perluasan Desktop</string>
-    <string name="qs_tile_stay_awake">Tetap menyala</string>
+    <string name="qs_tile_stay_awake">Tetap Menyala</string>
     <string name="qs_tile_screenshot">Screenshot</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Kamera</string>
     <string name="qs_tile_usb_tethering">Penambatan USB</string>
+    <string name="qs_tile_smart_radio">Radio Pintar</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Pilihan Warna</string>
@@ -147,8 +150,8 @@
     <string name="statusbar_bgcolor_summary">Membolehkan untuk men-set warna latar statusbar</string>
 
     <!--  Fix speech settings -->
-    <string name="fix_tts_settings_title">Perbaiki setting Bicara</string>
-    <string name="fix_tts_settings_summary">Membuka kunci setting pencarian suara dan text-to-speech di setting Bahasa&amp;Masukan (membutuhkan reboot)</string>
+    <string name="fix_tts_settings_title">Perbaiki pengaturan bicara</string>
+    <string name="fix_tts_settings_summary">Membuka kunci pengaturan pencarian suara dan text-to-speech di pengaturan Bahasa&amp;Masukan (membutuhkan reboot)</string>
 
     <!--  Advanced developer options -->
     <string name="fix_dev_opts_title">Opsi pengembang tingkat lanjut</string>
@@ -216,7 +219,7 @@
 
     <!-- Minimum brightness level -->
     <string name="pref_brightness_min_title">Nilai kecerahan minimal</string>
-    <string name="pref_brightness_min_summary">Membolehkan anda untuk men-set nilai minimal kecerahan layar. Berjalan hanya untuk setting kecerahan manual. (membutuhkan reboot)</string>
+    <string name="pref_brightness_min_summary">Membolehkan anda untuk men-set nilai minimal kecerahan layar. Berjalan hanya untuk pengaturan kecerahan manual. (membutuhkan reboot)</string>
 
     <!--  Autobrightness levels -->
     <string name="pref_ab_title">Level Autobrightness</string>
@@ -442,18 +445,18 @@
     <string name="pref_quickapp_slot4_title">Aplikasi long-press slot 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
-    <string name="qs_tile_gps_enabled">GPS hidup</string>
-    <string name="qs_tile_gps_disabled">GPS mati</string>
-    <string name="qs_tile_gps_locked">GPS terkunci</string>
+    <string name="qs_tile_gps_enabled">GPS Hidup</string>
+    <string name="qs_tile_gps_disabled">GPS Mati</string>
+    <string name="qs_tile_gps_locked">GPS Terkunci</string>
 
     <!-- Pie control: always show menu button -->
     <string name="pie_control_menu_title">Selalu tampilkan tombol menu</string>
 
     <!-- Ringer mode tile (for non-MTK) -->
-    <string name="qs_tile_ringer_mode">Mode ringtone</string>
+    <string name="qs_tile_ringer_mode">Mode Ringtone</string>
 
     <!-- Clock settings category -->
-    <string name="pref_cat_clock_settings_title">Setting jam</string>
+    <string name="pref_cat_clock_settings_title">Pengaturan jam</string>
 
     <!-- Clock: hide am/pm -->
     <string name="pref_clock_ampm_hide_title">Sembunyikan AM/PM</string>
@@ -502,9 +505,12 @@
     <string name="hwkey_action_custom_app_none">Tidak ada aplikasi kustom yang ditetapkan!</string>
     <string name="hwkey_action_custom_app_missing">Aplikasi kustom tidak ditemukan!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Sambungkan ke DeskClock</string>
-    <string name="pref_clock_link_summary">Sambungkan jam di panel notifikasi ke aplikasi DeskClock daripada ke pengaturan Tanggal&amp;Waktu</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">Jam di Status bar</string>
+    <string name="pref_cat_notif_panel_clock_title">Jam panel notifikasi</string>
+    <string name="pref_clock_link_title">Aplikasi ketika jam disentuh sekali</string>
+    <string name="pref_clock_link_summary">Sambungkan jam di panel notifikasi ke aplikasi yang ditentukan daripada ke pengaturan Tanggal&amp;Waktu</string>
+    <string name="pref_clock_longpress_link_title">Aplikasi ketika jam ditahan</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Menunggu respon dari GravityBox system framework&#8230;</string>
@@ -1049,7 +1055,7 @@
 
     <!-- Smart Radio -->
     <string name="smart_radio_action_undefined">Tidak ditentukan</string>
-    <string name="pref_cat_smart_radio_title">Radio pintar</string>
+    <string name="pref_cat_smart_radio_title">Radio Pintar</string>
     <string name="pref_smart_radio_enable_summary">Hal ini akan secara otomatis mengubah mode radio ke mode penghematan daya atau normal sesuai yang ditetapkan pengguna 
         bergantung pada kondisi koneksi paket data dan WiFi (membutuhkan restart)</string>
     <string name="pref_smart_radio_normal_mode_title">Mode jarinagan normal</string>
@@ -1161,6 +1167,7 @@
     <string name="pref_cat_launcher_other_title">Lainnya</string>
     <string name="pref_launcher_resize_widget_title">Ubah ukuran semua widget</string>
     <string name="pref_launcher_resize_widget_summary">Rubah ukuran semua widget ke semua ukuran di homescreen (Membutuhkan Launcher untuk di restart)</string>
+<<<<<<< HEAD
 
     <!-- Icon picker -->
     <string name="icon_picker_choose_icon_title">Pilih ikon</string>
@@ -1256,5 +1263,36 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Ukuran tarikan ke bawah menuju QuickSettings</string>
+=======
+    <!-- Icon picker -->    <string name="icon_picker_choose_icon_title">Pilih ikon</string>    <string name="shortcuts_icon_picker_alarm">Alarm</string>    <string name="shortcuts_icon_picker_andy">Andy</string>    <string name="shortcuts_icon_picker_battery">Baterai</string>    <string name="shortcuts_icon_picker_browser">Peramban</string>    <string name="shortcuts_icon_picker_calendar">Kalender</string>    <string name="shortcuts_icon_picker_camera">Kamera</string>    <string name="shortcuts_icon_picker_cloud">Awan</string>    <string name="shortcuts_icon_picker_contact">Kontak</string>    <string name="shortcuts_icon_picker_directdial">Panggil Langsung</string>    <string name="shortcuts_icon_picker_directmessage">Pesan Langsung</string>    <string name="shortcuts_icon_picker_drive">Drive</string>    <string name="shortcuts_icon_picker_dropbox">Dropbox</string>    <string name="shortcuts_icon_picker_email">Email</string>    <string name="shortcuts_icon_picker_email2">Email Alternatif</string>    <string name="shortcuts_icon_picker_evernote">Evernote</string>    <string name="shortcuts_icon_picker_facebook">Facebook</string>    <string name="shortcuts_icon_picker_favorite">Favorit</string>    <string name="shortcuts_icon_picker_file_browser">Peramban Berkas</string>    <string name="shortcuts_icon_picker_file_browser2">Peramban Berkas Alternatif</string>    <string name="shortcuts_icon_picker_fitness">Fitness</string>    <string name="shortcuts_icon_picker_gallery">Galeri</string>    <string name="shortcuts_icon_picker_gears">Gears</string>    <string name="shortcuts_icon_picker_google_small">Google</string>    <string name="shortcuts_icon_picker_gplus">Google Plus</string>    <string name="shortcuts_icon_picker_gtalk">Hangouts</string>    <string name="shortcuts_icon_picker_help">Bantuan</string>    <string name="shortcuts_icon_picker_joystick">Joystik</string>    <string name="shortcuts_icon_picker_key">Kunci/Akun</string>    <string name="shortcuts_icon_picker_laptop">Laptop</string>    <string name="shortcuts_icon_picker_notes">Catatan</string>    <string name="shortcuts_icon_picker_luggage">Perjalanan</string>    <string name="shortcuts_icon_picker_maps">Peta</string>    <string name="shortcuts_icon_picker_market">Pasar</string>    <string name="shortcuts_icon_picker_movie">Film</string>    <string name="shortcuts_icon_picker_music">Musik</string>    <string name="shortcuts_icon_picker_nav">Navigasi</string>    <string name="shortcuts_icon_picker_phone">Ponsel</string>    <string name="shortcuts_icon_picker_package">Paket</string>    <string name="shortcuts_icon_picker_pinterest">Pinterest</string>    <string name="shortcuts_icon_picker_play">Play</string>    <string name="shortcuts_icon_picker_pocket">Saku</string>    <string name="shortcuts_icon_picker_quicksettings">Quick Settings</string>    <string name="shortcuts_icon_picker_rss">RSS Feed</string>    <string name="shortcuts_icon_picker_sdcard">Kartu SD</string>    <string name="shortcuts_icon_picker_search">Pencarian</string>    <string name="shortcuts_icon_picker_sms">Perpesanan</string>    <string name="shortcuts_icon_picker_tasks">Tugas</string>    <string name="shortcuts_icon_picker_terminal">Terminal</string>    <string name="shortcuts_icon_picker_transit">Transit</string>    <string name="shortcuts_icon_picker_tv">TV</string>    <string name="shortcuts_icon_picker_twitter">Twitter</string>    <string name="shortcuts_icon_picker_unlock">Buka kunci</string>    <!-- Lockscreen: Slide before unlock -->    <string name="pref_lockscreen_slide_before_unlock_title">Geser sebelum membuka kunci</string>    <string name="pref_lockscreen_slide_before_unlock_summary">Memungkinkan untuk menggunakan tantangan menggeser dengan target cincin bersamaan dengan kunci pengaman</string>    <!-- Lockscreen tweaks: option categories -->    <string name="pref_cat_lockscreen_widgets_title">Widgets</string>    <string name="pref_cat_lockscreen_sliding_challenge_title">Tantangan menggeser</string>    <string name="pref_cat_lockscreen_statusbar_title">Status bar</string>    <!-- Quick settings: Auto-switch extended -->    <string name="qs_auto_switch_disabled">Dimatikan</string>    <string name="qs_auto_switch_mode1">Ketika tidak ada notifikasi</string>    <string name="qs_auto_switch_mode2">Ketika tidak ada notifikasi yang bisa dihapus</string>    <!-- Statusbar: Double-tap to sleep -->    <string name="pref_statusbar_dt2s_title">Hidupkan tekan dua kali untuk mematikan layar</string>    <string name="pref_statusbar_dt2s_summary">Tekan statusbar dua kali untuk mematikan perangkat</string>    <!-- Animation scales -->    <string name="animation_scale0">Matikan animasi</string>    <string name="animation_scale1">Skala animasi .25x</string>    <string name="animation_scale2">Skala animasi .5x</string>    <string name="animation_scale3">Skala animasi 1x</string>    <string name="animation_scale4">Skala animasi 1.5x</string>    <string name="animation_scale5">Skala animasi 2x</string>    <string name="animation_scale6">Skala animasi 5x</string>    <string name="animation_scale7">Skala animasi 10x</string>    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Gaya label kotak</string>
+    <string name="tile_label_style_normal">Normal</string>
+    <string name="tile_label_style_allcaps">Kapital Semua</string>
+    <string name="tile_label_style_hidden">Disembunyikan</string>
+
+    <!-- Key Actions: Show brightness dialog -->    <string name="hwkey_action_brightness_dialog">Tunjukkan dialog kecerahan</string>    <!-- Navbar ring: Haptic feedback -->    <string name="pref_navbar_ring_haptic_feedback_title">Umpan-balik sentuhan</string>    <string name="navring_haptic_feedback_default">Bawaan</string>    <string name="navring_haptic_feedback_enabled">Hidupkan</string>    <string name="navring_haptic_feedback_disabled">Matikan</string>    <!-- Quick pull down size -->    <string name="pref_quick_pulldown_size_title">Ukuran tarikan ke bawah menuju QuickSettings</string>    <!-- Stay Awake Tile modes -->
+    <string name="stay_awake_15s">15dtk</string>
+    <string name="stay_awake_30s">30dtk</string>
+    <string name="stay_awake_1m">1mnt</string>
+    <string name="stay_awake_2m">2mnt</string>
+    <string name="stay_awake_5m">5mnt</string>
+    <string name="stay_awake_10m">10mnt</string>
+    <string name="stay_awake_30m">30mnt</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Hidupkan sentuh dua kali untuk mematikan layar</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Sentuh dua kali cincin unlock akan mematikan layar perangkat</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Suara ketika charger terpasang</string>
+    <string name="pref_charger_plugged_sound_summary">Mainkan suara ketika charger terpasang/terlepas</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Hidup/Matikan Radio Pintar</string>
+>>>>>>> Updated Indonesian Translation
 
 </resources>
