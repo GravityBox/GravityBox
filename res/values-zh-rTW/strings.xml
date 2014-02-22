@@ -508,8 +508,8 @@
     <!-- Notification panel clock -->
     <string name="pref_cat_statusbar_clock_title">狀態列時鐘</string>
     <string name="pref_cat_notif_panel_clock_title">通知面板時鐘</string>
-    <string name="pref_clock_link_title">单按時鐘應用程式</string>
-    <string name="pref_clock_link_summary">启用后通知面板的時間将連結到指定應用而不是日期与时间設定</string>
+    <string name="pref_clock_link_title">單擊時鐘應用程式</string>
+    <string name="pref_clock_link_summary">啟用後通知面板的時間將連結到指定應用程式而不是日期與時間設定</string>
     <string name="pref_clock_longpress_link_title">長按時鐘應用程式</string>
 
     <!-- GravityBox settings startup handling -->
@@ -1249,10 +1249,10 @@
     <string name="animation_scale7">動畫刻度 10x</string>
 
     <!-- QS Tiles: Tile label style -->
-    <string name="pref_qs_tile_label_style_title">瓷砖標籤文字風格</string>
+    <string name="pref_qs_tile_label_style_title">慈貼標籤文字風格</string>
     <string name="tile_label_style_normal">正常</string>
     <string name="tile_label_style_allcaps">所有</string>
-    <string name="tile_label_style_hidden">隐藏</string>
+    <string name="tile_label_style_hidden">隱藏</string>
 
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">顯示亮度對話框</string>
