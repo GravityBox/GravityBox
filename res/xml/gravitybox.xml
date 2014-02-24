@@ -86,7 +86,7 @@
 
                 <SwitchPreference 
                     android:key="pref_lockscreen_ring_targets_enable"
-                    android:title=""
+                    android:title="@string/pref_masterswitch_title"
                     android:summary="@string/pref_lockscreen_ring_targets_enable_summary"
                     android:defaultValue="false" />
 
@@ -248,7 +248,7 @@
 
             <SwitchPreference
                 android:key="pref_qs_management_enable"
-                android:title=""
+                android:title="@string/pref_masterswitch_title"
                 android:summary="@string/pref_qs_management_enable_summary"
                 android:defaultValue="true" />
 
@@ -680,7 +680,7 @@
 
             <SwitchPreference 
                 android:key="pref_data_traffic_enable"
-                android:title=""
+                android:title="@string/pref_masterswitch_title"
                 android:summary="@string/pref_data_traffic_enable_summary"
                 android:defaultValue="false" />
 
@@ -825,7 +825,7 @@
 
                 <SwitchPreference 
                     android:key="pref_navbar_ring_targets_enable"
-                    android:title=""
+                    android:title="@string/pref_masterswitch_title"
                     android:summary="@string/pref_navbar_ring_targets_enable_summary"
                     android:defaultValue="false" />
 
@@ -1390,7 +1390,7 @@
 
                 <SwitchPreference
                     android:key="pref_smart_radio_enable"
-                    android:title=""
+                    android:title="@string/pref_masterswitch_title"
                     android:summary="@string/pref_smart_radio_enable_summary"
                     android:defaultValue="false" />
 
