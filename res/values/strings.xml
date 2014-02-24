@@ -496,10 +496,13 @@
     <string name="hwkey_action_expanded_desktop">Toggle expanded desktop</string>
     <string name="hwkey_action_expanded_desktop_disabled">Expanded desktop mode is disabled!</string>
 
+    <!-- master switch title -->
+    <string name="pref_masterswitch_title">Master switch</string>
+    
     <!-- Navigation bar tweaks category -->
     <string name="pref_cat_navigation_bar_title">Navigation bar tweaks</string>
     <string name="pref_cat_navigation_bar_summary">Contains various navigation bar related tweaks</string>
-    <string name="pref_navbar_override_summary">Master switch for navigation bar tweaks (requires reboot)</string>
+    <string name="pref_navbar_override_summary">Toggles navigation bar tweaks (requires reboot)</string>
     <string name="pref_navbar_enable_title">Enable navigation bar</string>
     <string name="pref_navbar_enable_summary">Requires reboot</string>
     <string name="pref_navbar_height_title">Navigation bar height</string>
@@ -514,7 +517,7 @@
 
     <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Unlock ring targets</string>
-    <string name="pref_lockscreen_ring_targets_enable_summary">Master switch for unlock ring targets</string>
+    <string name="pref_lockscreen_ring_targets_enable_summary">Toggles unlock ring targets</string>
     <string name="pref_lockscreen_ring_targets_app_title">Ring target %s</string>
     <string name="pref_lockscreen_ring_vertical_offset_title">Unlock ring vertical offset</string>
     <string name="pref_lockscreen_ring_horizontal_offset_title">Unlock ring horizontal offset</string>
@@ -765,7 +768,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">On volume down long-press</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Master switch for QuickSettings management (requires reboot)</string>
+    <string name="pref_qs_management_enable_summary">Toggles QuickSettings management (requires reboot)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Applications</string>
@@ -903,7 +906,7 @@
 
     <!-- Navigation bar ring targets -->
     <string name="pref_cat_navbar_ring_targets_title">Navigation ring targets</string>
-    <string name="pref_navbar_ring_targets_enable_summary">Master switch for navigation ring targets (requires reboot)</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Toggles navigation ring targets (requires reboot)</string>
     <string name="pref_navbar_ring_target_title">Ring target %d</string>
 
     <!-- Shortcut activity title -->
