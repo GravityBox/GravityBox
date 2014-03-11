@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2013 Peter Gregus for GravityBox Project (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">GravityBox [KK]</string>
@@ -580,7 +594,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">資料流量監控</string>
-    <string name="pref_data_traffic_enable_summary">當裝置有資料連結時在狀態列顯示資料流量監控</string>
     <string name="pref_data_traffic_position_title">顯示位置</string>
     <string name="dt_position_auto">自動 (居中或靠右取決於時鐘的位置)</string>
     <string name="dt_position_left">左</string>
@@ -870,10 +883,6 @@
     <string name="hwkey_action_auto_rotation">切換自動旋轉</string>
     <string name="hwkey_action_auto_rotation_enabled">自動旋轉已啟用</string>
     <string name="hwkey_action_auto_rotation_disabled">自動旋轉已停用</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">允許任小何工具</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">允許鎖定畫面桌面小工具，僅可使用於一般桌面啟動器</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">顯示電源選單</string>
@@ -1229,5 +1238,66 @@
 
     <!-- GB Actions: Toggle Smart Radio -->
     <string name="shortcut_smart_radio_toggle">切換 Smart Radio</string>
+    
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">主控開關</string>
+
+    <!-- Mute volume adjust vibrate -->
+       <string name="pref_volume_adjust_vibrate_mute_title">停用音量調節震動</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">停用當使用音量鍵調整通知/鈴聲音量時產生振動</string>
+    
+    <!-- ScreenRecord: use stock binary -->
+    <string name="pref_screenrecord_use_stock_title">使用預設二進制文件</string>
+    <string name="pref_screenrecord_use_stock_summary">當啟用, 預設的二進制文件將被用於錄影. 
+        使用在替代二進制文件引起的問題情況下. 請注意，使用預設二進制文件將無法錄製超過三分鐘的音訊與視訊檔案.</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">切換狀態列時鐘設定 (需要重新啟動)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">週數大小</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">上午/下午 大小</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">海苔條環</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">停用導航環</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">資料流量監控的風格</string>
+    <string name="dt_mode_off">停用</string>
+    <string name="dt_mode_simple">簡單風格</string>
+    <string name="dt_mode_omni">全面風格</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">監控模式</string>
+    <string name="dt_omni_mode_in">下載</string>
+    <string name="dt_omni_mode_out">上載</string>
+    <string name="dt_omni_mode_in_out">下載與上載</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">顯示圖示</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculator</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">瓷貼特定設定</string>
+    <string name="pref_cat_qs_tile_settings_summary">包含瓷磚的特定設定</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">網路模式瓷貼設定</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">時鐘瓷貼設定</string>
+    <string name="pref_qs_alarm_singletap_app_title">單擊 應用程式</string>
+    <string name="alarm_singletap_app_default">預設應用程式</string>
+    <string name="pref_qs_alarm_longpress_app_title">長按 應用程式app</string>
     
 </resources>

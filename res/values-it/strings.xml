@@ -599,7 +599,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Contatore traffico dati</string>
-    <string name="pref_data_traffic_enable_summary">Mostra automaticamente un contatore del traffico dati appena la connessione dati viene attivata</string>
     <string name="pref_data_traffic_position_title">Posizione</string>
     <string name="dt_position_auto">Auto (centrata o a destra, a seconda della posizione dell\'orologio)</string>
     <string name="dt_position_left">Sinistra</string>
@@ -891,11 +890,7 @@
     <string name="hwkey_action_auto_rotation">Rotazione automatica on/off</string>
     <string name="hwkey_action_auto_rotation_enabled">Rotazione automatica abilitata</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotazione automatica disabilitata</string>
- 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permetti qualsiasi widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permette di aggiungere alla schermata di blocco quei widget che normalmente si trovano solo nel launcher</string>
- 
+
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Visualizza menù spegnimento</string>
     <string name="hwkey_action_expand_notifications">Espandi barra notifiche</string>

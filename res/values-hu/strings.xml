@@ -580,7 +580,6 @@
 	
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Adatforgalom figyelő</string>
-    <string name="pref_data_traffic_enable_summary">Adatforgalom figyelő automatikus mutatása aktív adatkapcsolat esetén</string>
     <string name="pref_data_traffic_position_title">Pozíció</string>
     <string name="pref_data_traffic_inactivity_mode_title">Tétlenség alatt</string>
     <string name="inactivity_mode_default">Alapértelmezett</string>

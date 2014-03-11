@@ -602,7 +602,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Datenverbrauchsanzeige</string>
-    <string name="pref_data_traffic_enable_summary">Blendet automatisch die Datenverbrauchsanzeige ein, sobald die Datenverbindung aktiv ist</string>
     <string name="pref_data_traffic_position_title">Position</string>
     <string name="dt_position_auto">Auto (zentriert oder rechts, abhängig von der Uhrposition)</string>
     <string name="dt_position_left">Links</string>
@@ -889,10 +888,6 @@
     <string name="hwkey_action_auto_rotation">Autorotation an-/ausschalten</string>
     <string name="hwkey_action_auto_rotation_enabled">Autorotation an</string>
     <string name="hwkey_action_auto_rotation_disabled">Autorotation aus</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Alle Widgets erlauben</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Erlaubt Launcher-Widgets auf dem Sperrbildschirm</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Ausschaltmenü anzeigen</string>

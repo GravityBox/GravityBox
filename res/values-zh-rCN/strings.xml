@@ -82,6 +82,8 @@
     <string name="quick_settings_music_pause">暂停</string>
     <string name="quick_settings_smart_radio_on">智能网络已开启</string>
     <string name="quick_settings_smart_radio_off">智能网络已关闭</string>
+	<string name="quick_settings_lock_screen_on">锁屏已开启</string>
+    <string name="quick_settings_lock_screen_off">锁屏已关闭</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">状态栏快速设置</string>
@@ -114,6 +116,8 @@
     <string name="qs_tile_usb_tethering">USB 共享</string>
     <string name="qs_tile_music">音乐</string>
     <string name="qs_tile_smart_radio">智能网络</string>
+	<string name="qs_tile_alarm">闹钟</string>
+    <string name="qs_tile_lock_screen">锁屏</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">颜色选择器</string>
@@ -599,7 +603,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">数据通信监控</string>
-    <string name="pref_data_traffic_enable_summary">当连接处于活动状态时自动显示监测数据</string>
     <string name="pref_data_traffic_position_title">位置</string>
     <string name="dt_position_auto">自动（中心或右，取决于时钟的位置）</string>
     <string name="dt_position_left">左</string>
@@ -891,10 +894,6 @@
     <string name="hwkey_action_auto_rotation">切换自动旋转</string>
     <string name="hwkey_action_auto_rotation_enabled">自动旋转已启用</string>
     <string name="hwkey_action_auto_rotation_disabled">自动旋转已停用</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">允许任何小部件</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">允许在锁屏界面显示，一般仅适用于启动器的小部件</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">显示电源键菜单</string>
@@ -1222,7 +1221,7 @@
     <string name="animation_scale7">动画缩放 10x</string>
 
     <!-- QS Tiles: Tile label style -->
-    <string name="pref_qs_tile_label_style_title">瓷砖标签文字风格</string>
+    <string name="pref_qs_tile_label_style_title">磁贴标签文字风格</string>
     <string name="tile_label_style_normal">正常</string>
     <string name="tile_label_style_allcaps">所有</string>
     <string name="tile_label_style_hidden">隐藏</string>
@@ -1240,6 +1239,7 @@
     <string name="pref_quick_pulldown_size_title">快速下拉栏大小</string>
     
     <!-- Stay Awake Tile modes -->
+	<string name="pref_qs_stay_awake_title">保持唤醒磁贴模式</string>
     <string name="stay_awake_15s">15秒</string>
     <string name="stay_awake_30s">30秒</string>
     <string name="stay_awake_1m">1分钟</string>
@@ -1247,6 +1247,7 @@
     <string name="stay_awake_5m">5分钟</string>
     <string name="stay_awake_10m">10分钟</string>
     <string name="stay_awake_30m">30分钟</string>
+	<string name="stay_awake_on">保持唤醒</string>
 
     <!-- Screen recording options -->
     <string name="pref_cat_screenrecord_options_title">屏幕录制</string>
@@ -1255,7 +1256,7 @@
     <string name="scr_size_default">设备默认</string>
     <string name="scr_size_sd">标清(360x640px)</string>
     <string name="scr_size_hd">高清(720x1280px)</string>
-    <string name="scr_size_full_hd">全高清 (1080x1920px)</string>
+    <string name="scr_size_full_hd">全高清(1080x1920px)</string>
     <string name="pref_screenrecord_bitrate_title">视频比特率</string>
     <string name="pref_screenrecord_timelimit_title">限时</string>
     <string name="pref_screenrecord_rotate_title">旋转视频</string>
@@ -1304,5 +1305,44 @@
 
     <!-- Navbar ring: option to disable -->
     <string name="pref_navbar_ring_disable_title">禁用导航环</string>
+	
+	<!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">数据流量监控风格</string>
+    <string name="dt_mode_off">禁用</string>
+    <string name="dt_mode_simple">简约风格</string>
+    <string name="dt_mode_omni">Omni风格</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">监控模式</string>
+    <string name="dt_omni_mode_in">下载</string>
+    <string name="dt_omni_mode_out">上传</string>
+    <string name="dt_omni_mode_in_out">下载和上传</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">显示图标</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">计算器</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">磁贴特定设置</string>
+    <string name="pref_cat_qs_tile_settings_summary">磁贴包含特定设置</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">网络模式磁贴设置</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">闹钟磁贴设置</string>
+    <string name="pref_qs_alarm_singletap_app_title">单击应用</string>
+    <string name="alarm_singletap_app_default">默认应用</string>
+    <string name="pref_qs_alarm_longpress_app_title">长按应用</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">仅在下载激活</string>
+    <string name="pref_data_traffic_active_dl_only_summary">只有正在下载并通过标准Android下载管理器才显示流量计</string>
+	
 
 </resources>

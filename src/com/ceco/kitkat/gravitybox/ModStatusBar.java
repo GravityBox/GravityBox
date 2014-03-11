@@ -19,6 +19,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ceco.kitkat.gravitybox.TrafficMeterAbstract.TrafficMeterMode;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
@@ -90,7 +92,8 @@ public class ModStatusBar {
     private static Object mPhoneStatusBarPolicy;
     private static SettingsObserver mSettingsObserver;
     private static String mOngoingNotif;
-    private static TrafficMeter mTrafficMeter;
+    private static TrafficMeterAbstract mTrafficMeter;
+    private static TrafficMeterMode mTrafficMeterMode = TrafficMeterMode.OFF;
     private static ViewGroup mSbContents;
     private static boolean mClockInSbContents = false;
     private static TextView mCarrierTextView;
@@ -100,6 +103,7 @@ public class ModStatusBar {
     private static GestureDetector mDoubletapGesture;
     private static View mIconMergerView;
     private static String mClockLongpressLink;
+    private static XSharedPreferences mPrefs;
 
     // Brightness control
     private static boolean mBrightnessControlEnabled;
@@ -123,6 +127,11 @@ public class ModStatusBar {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DEBUG) log("Broadcast received: " + intent.toString());
+
+            for (BroadcastSubReceiver bsr : mBroadcastSubReceivers) {
+                bsr.onBroadcastReceived(context, intent);
+            }
+
             if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_CLOCK_CHANGED)) {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_CENTER_CLOCK)) {
                     setClockPosition(intent.getBooleanExtra(GravityBoxSettings.EXTRA_CENTER_CLOCK, false));
@@ -162,25 +171,18 @@ public class ModStatusBar {
                             SETTING_ONGOING_NOTIFICATIONS, "");
                     if (DEBUG) log("Ongoing notifications list reset");
                 }
-            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_DATA_TRAFFIC_CHANGED)
-                    && mTrafficMeter != null) {
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_ENABLE)) {
-                    mTrafficMeter.setTrafficMeterEnabled(intent.getBooleanExtra(
-                            GravityBoxSettings.EXTRA_DT_ENABLE, false));
-                    updateTrafficMeterPosition();
+            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_DATA_TRAFFIC_CHANGED)) {
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_MODE)) {
+                    try {
+                        TrafficMeterMode mode = TrafficMeterMode.valueOf(
+                            intent.getStringExtra(GravityBoxSettings.EXTRA_DT_MODE));
+                        setTrafficMeterMode(mode);
+                    } catch (Throwable t) {
+                        XposedBridge.log(t);
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_POSITION)) {
-                    mTrafficMeter.setTrafficMeterPosition(intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_DT_POSITION,
-                            GravityBoxSettings.DT_POSITION_AUTO));
                     updateTrafficMeterPosition();
-                }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_SIZE)) {
-                    mTrafficMeter.setTextSize(1, intent.getIntExtra(GravityBoxSettings.EXTRA_DT_SIZE, 14));
-                }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_INACTIVITY_MODE)) {
-                    mTrafficMeter.setInactivityMode(intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_DT_INACTIVITY_MODE, 0));
                 }
             } else if (intent.getAction().equals(ACTION_START_SEARCH_ASSIST)) {
                 startSearchAssist();
@@ -194,10 +196,6 @@ public class ModStatusBar {
             } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_STATUSBAR_DT2S_CHANGED) &&
                     intent.hasExtra(GravityBoxSettings.EXTRA_SB_DT2S)) {
                 mDt2sEnabled = intent.getBooleanExtra(GravityBoxSettings.EXTRA_SB_DT2S, false);
-            }
-
-            for (BroadcastSubReceiver bsr : mBroadcastSubReceivers) {
-                bsr.onBroadcastReceived(context, intent);
             }
         }
     };
@@ -282,44 +280,6 @@ public class ModStatusBar {
                     if (DEBUG) log("mLayoutClock injected");
                     setClockPosition(prefs.getBoolean(
                             GravityBoxSettings.PREF_KEY_STATUSBAR_CENTER_CLOCK, false));
-
-                    // insert Traffic meter
-                    mTrafficMeter = new TrafficMeter(liparam.view.getContext());
-                    LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
-                            LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-                    mTrafficMeter.setLayoutParams(lParams);
-                    mTrafficMeter.setGravity(Gravity.CENTER_VERTICAL);
-                    mTrafficMeter.setTextAppearance(liparam.view.getContext(), 
-                            liparam.view.getContext().getResources().getIdentifier(
-                            "TextAppearance.StatusBar.Clock", "style", PACKAGE_NAME));
-                    int position = GravityBoxSettings.DT_POSITION_AUTO;
-                    try {
-                        position = Integer.valueOf(prefs.getString(
-                                GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_POSITION, "0"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_POSITION");
-                    }
-                    mTrafficMeter.setTrafficMeterPosition(position);
-                    int size = 14;
-                    try {
-                        size = Integer.valueOf(prefs.getString(
-                                GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_SIZE, "14"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_SIZE");
-                    }
-                    mTrafficMeter.setTextSize(1, size);
-                    int inactivityMode = 0;
-                    try {
-                        inactivityMode = Integer.valueOf(prefs.getString(
-                                GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE, "0"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE");
-                    }
-                    mTrafficMeter.setInactivityMode(inactivityMode);
-                    ModStatusbarColor.registerIconManagerListener(mTrafficMeter);
-                    mTrafficMeter.setTrafficMeterEnabled(prefs.getBoolean(
-                            GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_ENABLE, false));
-                    updateTrafficMeterPosition();
                 }
             });
         } catch (Throwable t) {
@@ -329,6 +289,8 @@ public class ModStatusBar {
 
     public static void init(final XSharedPreferences prefs, final ClassLoader classLoader) {
         try {
+            mPrefs = prefs;
+
             final Class<?> phoneStatusBarClass =
                     XposedHelpers.findClass(CLASS_PHONE_STATUSBAR, classLoader);
             final Class<?> tickerClass =
@@ -411,6 +373,14 @@ public class ModStatusBar {
                     mMinBrightness = res.getInteger(res.getIdentifier(
                             "config_screenBrightnessDim", "integer", "android"));
                     BRIGHTNESS_ON = XposedHelpers.getStaticIntField(powerManagerClass, "BRIGHTNESS_ON");
+
+                    try {
+                        TrafficMeterMode mode = TrafficMeterMode.valueOf(
+                                prefs.getString(GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_MODE, "OFF"));
+                        setTrafficMeterMode(mode);
+                    } catch (Throwable t) {
+                        XposedBridge.log(t);
+                    }
 
                     IntentFilter intentFilter = new IntentFilter();
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_CLOCK_CHANGED);
@@ -749,34 +719,68 @@ public class ModStatusBar {
         mClockCentered = center;
     }
 
+    private static void setTrafficMeterMode(TrafficMeterMode mode) {
+        if (mTrafficMeterMode == mode) return;
+
+        mTrafficMeterMode = mode;
+
+        removeTrafficMeterView();
+        if (mTrafficMeter != null) {
+            if (mBroadcastSubReceivers.contains(mTrafficMeter)) {
+                mBroadcastSubReceivers.remove(mTrafficMeter);
+            }
+            ModStatusbarColor.unregisterIconManagerListener(mTrafficMeter);
+            mTrafficMeter = null;
+        }
+
+        if (mTrafficMeterMode != TrafficMeterMode.OFF) {
+            mTrafficMeter = TrafficMeterAbstract.create(mContext, mTrafficMeterMode);
+            mTrafficMeter.initialize(mPrefs);
+            updateTrafficMeterPosition();
+            ModStatusbarColor.registerIconManagerListener(mTrafficMeter);
+            mBroadcastSubReceivers.add(mTrafficMeter);
+        }
+    }
+
+    private static void removeTrafficMeterView() {
+        if (mTrafficMeter != null) {
+            if (mSbContents != null) {
+                mSbContents.removeView(mTrafficMeter);
+            }
+            if (mLayoutClock != null) {
+                mLayoutClock.removeView(mTrafficMeter);
+            }
+            if (mIconArea != null) {
+                mIconArea.removeView(mTrafficMeter);
+            }
+        }
+    }
+
     private static void updateTrafficMeterPosition() {
-        if (mTrafficMeter == null || mSbContents == null ||
-            mLayoutClock == null || mIconArea == null) return;
+        removeTrafficMeterView();
 
-        mSbContents.removeView(mTrafficMeter);
-        mLayoutClock.removeView(mTrafficMeter);
-        mIconArea.removeView(mTrafficMeter);
-
-        if (mTrafficMeter.getTrafficMeterEnabled()) {
+        if (mTrafficMeterMode != TrafficMeterMode.OFF && mTrafficMeter != null) {
             switch(mTrafficMeter.getTrafficMeterPosition()) {
                 case GravityBoxSettings.DT_POSITION_AUTO:
                     if (mClockCentered) {
-                        if (mClockInSbContents) {
+                        if (mClockInSbContents && mSbContents != null) {
                             mSbContents.addView(mTrafficMeter);
-                        } else {
+                        } else if (mIconArea != null) {
                             mIconArea.addView(mTrafficMeter, 0);
                         }
-                    } else {
+                    } else if (mLayoutClock != null) {
                         mLayoutClock.addView(mTrafficMeter);
                     }
                     break;
                 case GravityBoxSettings.DT_POSITION_LEFT:
-                    mSbContents.addView(mTrafficMeter, 0);
+                    if (mSbContents != null) {
+                        mSbContents.addView(mTrafficMeter, 0);
+                    }
                     break;
                 case GravityBoxSettings.DT_POSITION_RIGHT:
-                    if (mClockInSbContents) {
+                    if (mClockInSbContents && mSbContents != null) {
                         mSbContents.addView(mTrafficMeter);
-                    } else {
+                    } else if (mIconArea != null) {
                         mIconArea.addView(mTrafficMeter, 0);
                     }
                     break;

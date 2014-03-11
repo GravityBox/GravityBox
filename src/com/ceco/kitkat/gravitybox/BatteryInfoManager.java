@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import de.robv.android.xposed.XposedBridge;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.BatteryManager;
 import android.telephony.TelephonyManager;
 
@@ -77,14 +80,14 @@ public class BatteryInfoManager {
         if (mBatteryData.level != newLevel || mBatteryData.charging != newCharging ||
                 mBatteryData.powerSource != newPowerSource) {
             if (mChargedSoundEnabled && newLevel == 100 && mBatteryData.level == 99) {
-                playSound(R.raw.battery_charged);
+                playSound("battery_charged.ogg");
             }
 
             if (mPluggedSoundEnabled && mBatteryData.powerSource != newPowerSource) {
                 if (newPowerSource == 0) {
-                    playSound(R.raw.charger_unplugged);
+                    playSound("charger_unplugged.ogg");
                 } else if (newPowerSource != BatteryManager.BATTERY_PLUGGED_WIRELESS) {
-                    playSound(R.raw.charger_plugged);
+                    playSound("charger_plugged.ogg");
                 }
             }
 
@@ -103,11 +106,18 @@ public class BatteryInfoManager {
         mPluggedSoundEnabled = enabled;
     }
 
-    private void playSound(int soundResId) {
+    private void playSound(String fileName) {
         if (!isPhoneIdle()) return;
         try {
-            MediaPlayer mp = MediaPlayer.create(mGbContext, soundResId);
-            mp.start();
+            final String filePath = mGbContext.getFilesDir().getAbsolutePath() + "/" + fileName;
+            final Uri soundUri = Uri.parse("file://" + filePath);
+            if (soundUri != null) {
+                final Ringtone sfx = RingtoneManager.getRingtone(mGbContext, soundUri);
+                if (sfx != null) {
+                    sfx.setStreamType(AudioManager.STREAM_NOTIFICATION);
+                    sfx.play();
+                }
+            }
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

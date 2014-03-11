@@ -82,6 +82,8 @@
     <string name="quick_settings_music_pause">Pause</string>
     <string name="quick_settings_smart_radio_on">Ondes Radio Intelligentes On</string>
     <string name="quick_settings_smart_radio_off">Ondes Radio Intelligentes Off</string>
+    <string name="quick_settings_lock_screen_on">Écran de Déverrouillage On</string>
+    <string name="quick_settings_lock_screen_off">Écran de Déverrouillage Off</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Touches des paramètres rapides</string>
@@ -114,6 +116,8 @@
     <string name="qs_tile_usb_tethering">Partage de Connexion USB</string>
     <string name="qs_tile_music">Musique</string>
     <string name="qs_tile_smart_radio">Ondes Radio Intelligentes</string>
+    <string name="qs_tile_alarm">Alarme</string>
+    <string name="qs_tile_lock_screen">Écran de Déverrouillage</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Sélecteur de couleur</string>
@@ -599,7 +603,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitoring du flux de données</string>
-    <string name="pref_data_traffic_enable_summary">Affiche le contrôleur du flux de données à chaque fois que la connexion de données est active</string>
     <string name="pref_data_traffic_position_title">Position</string>
     <string name="dt_position_auto">Auto (centré ou à droite en fonction de la position de l\'horloge)</string>
     <string name="dt_position_left">À gauche</string>
@@ -891,10 +894,6 @@
     <string name="hwkey_action_auto_rotation">Interrupteur rotation auto</string>
     <string name="hwkey_action_auto_rotation_enabled">Rotation auto activée</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotation auto désactivée</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Autoriser tous les widgets</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Autorise tous les widgets qui ne sont habituellement utilisés que dans le lanceur</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Afficher le menu d\'extinction</string>
@@ -1240,6 +1239,7 @@
     <string name="pref_quick_pulldown_size_title">Taille de la zone d\'accès rapide</string>
 
     <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Mode de la touche Rester Allumé</string>
     <string name="stay_awake_15s">15 s</string>
     <string name="stay_awake_30s">30 s</string>
     <string name="stay_awake_1m">1 min</string>
@@ -1247,6 +1247,7 @@
     <string name="stay_awake_5m">5 min</string>
     <string name="stay_awake_10m">10 min</string>
     <string name="stay_awake_30m">30 min</string>
+    <string name="stay_awake_on">Rester Allumé On</string>
 
     <!-- Screen recording options -->
     <string name="pref_cat_screenrecord_options_title">Enregistrement de l\'écran</string>
@@ -1304,5 +1305,44 @@
 
     <!-- Navbar ring: option to disable -->
     <string name="pref_navbar_ring_disable_title">Désactiver l\'anneau de la barre de navigation</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Style monitoring du flux de données</string>
+    <string name="dt_mode_off">Désactivé</string>
+    <string name="dt_mode_simple">Style simple</string>
+    <string name="dt_mode_omni">Style Omni</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Mode de monitoring</string>
+    <string name="dt_omni_mode_in">Download</string>
+    <string name="dt_omni_mode_out">Upload</string>
+    <string name="dt_omni_mode_in_out">Download et upload</string>
+    <string name="byte_per_sec_abbr">o/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Afficher l\'icône</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculatrice</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Paramètres spécifiques aux touches</string>
+    <string name="pref_cat_qs_tile_settings_summary">Regroupe les paramètres spécifiques aux touches</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Paramètres de la touche Mode Réseau</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Paramètres de la touche Alarme</string>
+    <string name="pref_qs_alarm_singletap_app_title">Appli simple appui</string>
+    <string name="alarm_singletap_app_default">Appli par défaut</string>
+    <string name="pref_qs_alarm_longpress_app_title">Appli appui long</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Uniquement lorsque le téléchargement est actif</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Affiche le compteur de flux de données uniquement lorsqu\'il y a un téléchargement en cours via 
+        le gestionnaire standard de téléchargement d\'Android</string>
 
 </resources>

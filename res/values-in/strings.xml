@@ -578,7 +578,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor lalu-lintas paket data</string>
-    <string name="pref_data_traffic_enable_summary">Menunjukkan monitor lalu-lintas paket data kapanpun paket data sedang aktif</string>
     <string name="pref_data_traffic_position_title">Posisi</string>
     <string name="dt_position_auto">Otomatis (tengah atau kanan, bergantung posisi jam)</string>
     <string name="dt_position_left">Kiri</string>

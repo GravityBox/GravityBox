@@ -114,6 +114,7 @@
     <string name="qs_tile_usb_tethering">Tethering por USB</string>
     <string name="qs_tile_music">Música</string>
     <string name="qs_tile_smart_radio">Modo de red inteligente</string>
+    <string name="qs_tile_alarm">Alarma</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Selector de color</string>
@@ -598,7 +599,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor de tráfico de datos</string>
-    <string name="pref_data_traffic_enable_summary">Muestra el monitor de tráfico automáticamente cuando se activa una conexión de datos</string>
     <string name="pref_data_traffic_position_title">Posición</string>
     <string name="dt_position_auto">Automática (centro o derecha dependiendo de la posición del reloj)</string>
     <string name="dt_position_left">Izquierda</string>
@@ -890,10 +890,6 @@
     <string name="hwkey_action_auto_rotation">Alternar rotación automática</string>
     <string name="hwkey_action_auto_rotation_enabled">Rotación automática activada</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotación automática desactivada</string>
-    
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permitir cualquier widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permite colocar en la pantalla de bloqueo los widgets que solo pueden ser usados en el lanzador</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Mostrar menú de apagado</string>
@@ -1302,4 +1298,38 @@
 
     <!-- Navbar ring: option to disable -->
     <string name="pref_navbar_ring_disable_title">Desactivar anillo de la barra de navegación</string>
+    
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Estilo de monitor de tráfico de datos</string>
+    <string name="dt_mode_off">Desactivado</string>
+    <string name="dt_mode_simple">Estilo simple</string>
+    <string name="dt_mode_omni">Estilo omni</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Modo de monitorización</string>
+    <string name="dt_omni_mode_in">Descargar</string>
+    <string name="dt_omni_mode_out">Cargar</string>
+    <string name="dt_omni_mode_in_out">Cargar y descargar</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Mostrar icono</string>
+ 
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculadora</string>
+    
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Ajustes específicos de casilla</string>
+    <string name="pref_cat_qs_tile_settings_summary">Contiene ajustes específicos de casilla</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Ajustes de casilla de modo de red</string>
+    
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Ajustes de casilla de alarma</string>
+    <string name="pref_qs_alarm_singletap_app_title">App al pulsar</string>
+    <string name="alarm_singletap_app_default">App predeterminada</string>
+    <string name="pref_qs_alarm_longpress_app_title">App con pulsación larga</string>
 </resources>
