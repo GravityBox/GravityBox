@@ -571,7 +571,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor de tráfego de dados</string>
-    <string name="pref_data_traffic_enable_summary">Mostra um monitor de tráfego sempre que uma conexão for encontrada</string>
     <string name="pref_data_traffic_position_title">Posição</string>
     <string name="dt_position_auto">Auto (centro ou direita, dependendo da posição do relógio)</string>
     <string name="dt_position_left">Esquerda</string>
@@ -863,11 +862,7 @@
     <string name="hwkey_action_auto_rotation">Alternar rotação automática</string>
     <string name="hwkey_action_auto_rotation_enabled">Habilitada</string>
     <string name="hwkey_action_auto_rotation_disabled">Desabilitada</string>
-    
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permitir qualquer widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permite aqueles widgets que, normalmente não podem ser usados, a serem usados na tela de bloqueio</string>
-    
+
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Mostrar menu de energia</string>
     <string name="hwkey_action_expand_notifications">Expandir painel de notificações</string>

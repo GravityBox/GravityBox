@@ -384,6 +384,16 @@ public class Utils {
         }
     }
 
+    public static String intArrayToString(int[] array) {
+        String buf = "[";
+        for (int i = 0; i < array.length; i++) {
+            if (buf.length() > 1) buf += ",";
+            buf += array[i];
+        }
+        buf += "]";
+        return buf;
+    }
+
     static class SystemProp extends Utils {
         
         private SystemProp() {

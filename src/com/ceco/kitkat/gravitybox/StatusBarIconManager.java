@@ -36,7 +36,6 @@ import android.graphics.drawable.Drawable;
 public class StatusBarIconManager implements BroadcastSubReceiver {
     private static final String TAG = "GB:StatusBarIconManager";
     private static final boolean DEBUG = false;
-    public static final int DEFAULT_DATA_ACTIVITY_COLOR = Color.WHITE;
 
     public static final int SI_MODE_GB = 0;
     public static final int SI_MODE_STOCK = 1;
@@ -164,7 +163,8 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
         mColorInfo.coloringEnabled = false;
         mColorInfo.defaultIconColor = getDefaultIconColor();
         mColorInfo.iconColor = new int[2];
-        mColorInfo.defaultDataActivityColor = DEFAULT_DATA_ACTIVITY_COLOR;
+        mColorInfo.defaultDataActivityColor = mGbResources.getInteger(
+                R.integer.signal_cluster_data_activity_icon_color);
         mColorInfo.dataActivityColor = new int[2];
         mColorInfo.signalIconMode = SI_MODE_STOCK;
         mColorInfo.lowProfile = false;
@@ -188,11 +188,11 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR)) {
                 setDataActivityColor(intent.getIntExtra(
                         GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR, 
-                        StatusBarIconManager.DEFAULT_DATA_ACTIVITY_COLOR));
+                        mColorInfo.defaultDataActivityColor));
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY)) {
                 setDataActivityColor(1, intent.getIntExtra(
                         GravityBoxSettings.EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY, 
-                        StatusBarIconManager.DEFAULT_DATA_ACTIVITY_COLOR));
+                        mColorInfo.defaultDataActivityColor));
             } else if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_ICON_COLOR_ENABLE)) {
                 setColoringEnabled(intent.getBooleanExtra(
                         GravityBoxSettings.EXTRA_SB_ICON_COLOR_ENABLE, false));
@@ -223,9 +223,16 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
     public void registerListener(IconManagerListener listener) {
         if (!mListeners.contains(listener)) {
             mListeners.add(listener);
+            listener.onIconManagerStatusChanged(FLAG_ALL, mColorInfo);
         }
         if (listener instanceof BatteryStatusListener) {
             mBatteryInfo.registerListener((BatteryStatusListener) listener);
+        }
+    }
+
+    public void unregisterListener(IconManagerListener listener) {
+        if (mListeners.contains(listener)) {
+            mListeners.remove(listener);
         }
     }
 
@@ -280,6 +287,10 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
 
     public int getIconColor() {
         return getIconColor(0);
+    }
+
+    public int getDataActivityColor() {
+        return getDataActivityColor(0);
     }
 
     public int getDataActivityColor(int index) {

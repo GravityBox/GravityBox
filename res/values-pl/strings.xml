@@ -67,6 +67,8 @@
     <string name="quick_settings_music_pause">Pauza</string>
     <string name="quick_settings_smart_radio_on">Smart Radio Włączone</string>
     <string name="quick_settings_smart_radio_off">Smart Radio Wyłączone</string>
+    <string name="quick_settings_lock_screen_on">Ekran Blokady Włączony</string>
+    <string name="quick_settings_lock_screen_off">Ekran Blokady Wyłączony</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Kafelki Szybkich Ustawień</string>
@@ -99,6 +101,8 @@
     <string name="qs_tile_usb_tethering">Tethering USB</string>
     <string name="qs_tile_music">Muzyka</string>
     <string name="qs_tile_smart_radio">Smart Radio</string>
+    <string name="qs_tile_alarm">Alarm</string>
+    <string name="qs_tile_lock_screen">Ekran blokady</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Wybór koloru</string>
@@ -582,7 +586,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor transmisji danych</string>
-    <string name="pref_data_traffic_enable_summary">Pokazuje prędkość transmisji danych gdy połączenie danych jest aktywne</string>
     <string name="pref_data_traffic_position_title">Pozycja</string>
     <string name="dt_position_auto">Automatycznie (centralnie lub po prawej w zależności od położenia zegara)</string>
     <string name="dt_position_left">Po lewej</string>
@@ -869,10 +872,6 @@
     <string name="hwkey_action_auto_rotation_enabled">Auto-obracanie włączone</string>
     <string name="hwkey_action_auto_rotation_disabled">Auto-obracanie wyłączone</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Dozwolony dowolny widżet</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Pozwala umieścić na Ekranie Blokady widżety, które normalnie mogą być używane tylko na ekranie Startera Aplikacji</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Pokaż menu Zasilania</string>
     <string name="hwkey_action_expand_notifications">Rozwiń panel Powiadomień</string>
@@ -1149,7 +1148,7 @@
     <string name="shortcuts_icon_picker_phone">Telefon</string>
     <string name="shortcuts_icon_picker_package">Paczka</string>
     <string name="shortcuts_icon_picker_pinterest">Pinterest</string>
-    <string name="shortcuts_icon_picker_play">Odtwórz</string>
+    <string name="shortcuts_icon_picker_play">Google Play</string>
     <string name="shortcuts_icon_picker_pocket">Kieszeń</string>
     <string name="shortcuts_icon_picker_quicksettings">Szybkie ustawienia</string>
     <string name="shortcuts_icon_picker_rss">Kanał RSS</string>
@@ -1214,6 +1213,7 @@
     <string name="pref_quick_pulldown_size_title">Rozmiar aktywnego obszaru</string>
 
     <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Tryb kafelka Blokowania Uśpienia</string>
     <string name="stay_awake_15s">15s</string>
     <string name="stay_awake_30s">30s</string>
     <string name="stay_awake_1m">1m</string>
@@ -1221,6 +1221,7 @@
     <string name="stay_awake_5m">5m</string>
     <string name="stay_awake_10m">10m</string>
     <string name="stay_awake_30m">30m</string>
+    <string name="stay_awake_on">Blokowanie Uśpienia Włączone</string>
 
     <!-- Screen recording options -->
     <string name="pref_cat_screenrecord_options_title">Nagrywanie ekranu</string>
@@ -1277,5 +1278,43 @@
 
     <!-- Navbar ring: option to disable -->
     <string name="pref_navbar_ring_disable_title">Wyłącz pierścień paska nawigacji</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Styl monitora transmisji danych</string>
+    <string name="dt_mode_off">Wyłączony</string>
+    <string name="dt_mode_simple">Prosty</string>
+    <string name="dt_mode_omni">Omni</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Tryb monitorowania</string>
+    <string name="dt_omni_mode_in">Pobieranie</string>
+    <string name="dt_omni_mode_out">Wysyłanie</string>
+    <string name="dt_omni_mode_in_out">Pobieranie i wysyłanie</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Pokaż ikonę</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Kalkulator</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Specyficzne ustawienia kafelka</string>
+    <string name="pref_cat_qs_tile_settings_summary">Zawiera specyficzne ustawienia kafelka</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Ustawienia kefelka Trybu Sieci</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Ustawienia kefelka Alarmu</string>
+    <string name="pref_qs_alarm_singletap_app_title">Apl. pojedynczego kliknięcia</string>
+    <string name="alarm_singletap_app_default">Domyślna aplikacja</string>
+    <string name="pref_qs_alarm_longpress_app_title">Apl. długiego naciśnięcia</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Tylko przy Menedżerze Pobierania</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Pokazuje miernik ruchu sieciowego tylko, gdy trwa pobranie za pośrednictwem standardowego Menedżera Pobierania systemu Android</string>
 
 </resources>

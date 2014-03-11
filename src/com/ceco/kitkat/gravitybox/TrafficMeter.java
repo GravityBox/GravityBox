@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 CyanKang Project
- * Copyright (C) 2013 Peter Gregus for GravityBox Project (C3C076@xda)
+ * Copyright (C) 2014 Peter Gregus for GravityBox Project (C3C076@xda)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,13 @@
 
 package com.ceco.kitkat.gravitybox;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.net.TrafficStats;
+import android.os.Handler;
 import android.os.SystemClock;
-import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
-import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -36,31 +33,22 @@ import java.io.FileReader;
 import java.io.File;
 
 import com.ceco.kitkat.gravitybox.R;
-import com.ceco.kitkat.gravitybox.StatusBarIconManager.ColorInfo;
-import com.ceco.kitkat.gravitybox.StatusBarIconManager.IconManagerListener;
 
-import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XSharedPreferences;
 
-public class TrafficMeter extends TextView implements IconManagerListener {
-    public static final String TAG = "GB:TrafficMeter";
-    private static final boolean DEBUG = false;
-
+public class TrafficMeter extends TrafficMeterAbstract {
     public static final int INACTIVITY_MODE_DEFAULT = 0;
     public static final int INACTIVITY_MODE_HIDDEN = 1;
     public static final int INACTIVITY_MODE_SUMMARY = 2;
 
-    Context mContext;
-    boolean mAttached;
-    boolean mTrafficMeterEnable;
-    boolean mTrafficMeterHide = false;
-    boolean mCanReadFromFile = true;
-    int mTrafficMeterSummaryTime = 0;
+    boolean mTrafficMeterHide;
+    boolean mCanReadFromFile;
+    int mTrafficMeterSummaryTime;
     long mTotalRxBytes;
     long mLastUpdateTime;
     long mTrafficBurstStartTime;
     long mTrafficBurstStartBytes;
     long mKeepOnUntil = Long.MIN_VALUE;
-    int mPosition = GravityBoxSettings.DT_POSITION_AUTO;
     String mB = "B";
     String mKB = "KB";
     String mMB = "MB";
@@ -69,25 +57,15 @@ public class TrafficMeter extends TextView implements IconManagerListener {
     NumberFormat mDecimalFormat = new DecimalFormat("##0.0");
     NumberFormat mIntegerFormat = NumberFormat.getIntegerInstance();
 
-    private static void log(String message) {
-        XposedBridge.log(TAG + ": " + message);
-    }
-
     public TrafficMeter(Context context) {
-        this(context, null);
+        super(context);
     }
 
-    public TrafficMeter(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public TrafficMeter(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        mContext = context;
+    @Override
+    protected void onInitialize(XSharedPreferences prefs) {
         mCanReadFromFile = canReadFromFile();
-
         try {
-            Context gbContext = mContext.createPackageContext(
+            Context gbContext = getContext().createPackageContext(
                     GravityBox.PACKAGE_NAME, Context.CONTEXT_IGNORE_SECURITY);
             mB = gbContext.getString(R.string.byte_abbr);
             mKB = gbContext.getString(R.string.kilobyte_abbr);
@@ -97,70 +75,43 @@ public class TrafficMeter extends TextView implements IconManagerListener {
             log(e.getMessage());
         }
 
-        updateState();
+        try {
+            int inactivityMode = Integer.valueOf(prefs.getString(
+                    GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE, "0"));
+            setInactivityMode(inactivityMode);
+        } catch (NumberFormatException nfe) {
+            log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE");
+        }
+
+        setTextSize(TypedValue.COMPLEX_UNIT_DIP, mSize);
     }
 
     @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        if (!mAttached) {
-            mAttached = true;
-            IntentFilter filter = new IntentFilter();
-            filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-            getContext().registerReceiver(mIntentReceiver, filter, null,
-                    getHandler());
-            if (DEBUG) log("attached to window");
+    protected void onPreferenceChanged(Intent intent) {
+        if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_SIZE)) {
+            setTextSize(TypedValue.COMPLEX_UNIT_DIP, mSize);
+        }
+        if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_INACTIVITY_MODE)) {
+            setInactivityMode(intent.getIntExtra(
+                    GravityBoxSettings.EXTRA_DT_INACTIVITY_MODE, 0));
         }
     }
 
     @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if (mAttached) {
-            stopTrafficUpdates();
-            getContext().unregisterReceiver(mIntentReceiver);
-            mAttached = false;
-            if (DEBUG) log("detached from window");
-        }
-    }
+    protected void startTrafficUpdates() {
+        mTotalRxBytes = getTotalReceivedBytes();
+        mLastUpdateTime = SystemClock.elapsedRealtime();
+        mTrafficBurstStartTime = Long.MIN_VALUE;
 
-    private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-                updateState();
-            }
-        }
-    };
+        getHandler().removeCallbacks(mRunnable);
+        getHandler().post(mRunnable);
+    }
 
     @Override
-    public void onScreenStateChanged(int screenState) {
-        if (screenState == SCREEN_STATE_OFF) {
-            stopTrafficUpdates();
-        } else {
-            startTrafficUpdates();
-        }
-        super.onScreenStateChanged(screenState);
-    }
-
-    private void stopTrafficUpdates() {
-        if (mAttached) {
-            getHandler().removeCallbacks(mRunnable);
-            setText("");
-            if (DEBUG) log("traffic updates stopped");
-        }
-    }
-
-    public void startTrafficUpdates() {
-        if (mAttached && getConnectAvailable()) {
-            mTotalRxBytes = getTotalReceivedBytes();
-            mLastUpdateTime = SystemClock.elapsedRealtime();
-            mTrafficBurstStartTime = Long.MIN_VALUE;
-
-            getHandler().removeCallbacks(mRunnable);
-            getHandler().post(mRunnable);
-            if (DEBUG) log("traffic updates started");
+    protected void stopTrafficUpdates() {
+        final Handler h = getHandler();
+        if (h != null && mRunnable != null) {
+            h.removeCallbacks(mRunnable);
         }
     }
 
@@ -188,23 +139,12 @@ public class TrafficMeter extends TextView implements IconManagerListener {
         }
     }
 
-    private boolean getConnectAvailable() {
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-
-            return connectivityManager.getActiveNetworkInfo().isConnected();
-        } catch (Exception ignored) {
-        }
-        return false;
-    }
-
     Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
             long td = SystemClock.elapsedRealtime() - mLastUpdateTime;
 
-            if (!mTrafficMeterEnable) {
+            if (!mAttached) {
                 return;
             }
 
@@ -257,22 +197,9 @@ public class TrafficMeter extends TextView implements IconManagerListener {
 
             mTotalRxBytes = (mCanReadFromFile && disconnected) ? mTotalRxBytes : currentRxBytes;
             mLastUpdateTime = SystemClock.elapsedRealtime();
-            getHandler().postDelayed(mRunnable, 1000);
+            getHandler().postDelayed(mRunnable, mInterval);
         }
     };
-
-    private void updateState() {
-        if (DEBUG) log("updating state");
-
-        if (mTrafficMeterEnable && getConnectAvailable()) {
-            setVisibility(View.VISIBLE);
-            startTrafficUpdates();
-        } else {
-            stopTrafficUpdates();
-            setVisibility(View.GONE);
-            setText("");
-        }
-    }
 
     private boolean canReadFromFile() {
         return new File("/proc/net/dev").exists();
@@ -313,24 +240,7 @@ public class TrafficMeter extends TextView implements IconManagerListener {
         return received;
     }
 
-    public void setTrafficMeterEnabled(boolean enabled) {
-        mTrafficMeterEnable = enabled;
-        updateState();
-    }
-
-    public boolean getTrafficMeterEnabled() {
-        return mTrafficMeterEnable;
-    }
-
-    public void setTrafficMeterPosition(int position) {
-        mPosition = position;
-    }
-
-    public int getTrafficMeterPosition() {
-        return mPosition;
-    }
-
-    public void setInactivityMode(int mode) {
+    private void setInactivityMode(int mode) {
         switch (mode) {
             case INACTIVITY_MODE_HIDDEN:
                 mTrafficMeterHide = true;
@@ -345,18 +255,6 @@ public class TrafficMeter extends TextView implements IconManagerListener {
                 mTrafficMeterHide = false;
                 mTrafficMeterSummaryTime = 0;
                 break;
-        }
-    }
-
-    @Override
-    public void onIconManagerStatusChanged(int flags, ColorInfo colorInfo) {
-        if ((flags & StatusBarIconManager.FLAG_ICON_COLOR_CHANGED) != 0) {
-            setTextColor(colorInfo.coloringEnabled ?
-                    colorInfo.iconColor[0] : colorInfo.defaultIconColor);
-        } else if ((flags & StatusBarIconManager.FLAG_LOW_PROFILE_CHANGED) != 0) {
-            setAlpha(colorInfo.lowProfile ? 0 : 1);
-        } else if ((flags & StatusBarIconManager.FLAG_ICON_ALPHA_CHANGED) != 0) {
-            setAlpha(colorInfo.alphaTextAndBattery);
         }
     }
 }

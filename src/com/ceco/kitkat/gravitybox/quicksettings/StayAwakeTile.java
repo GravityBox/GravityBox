@@ -15,13 +15,22 @@
 
 package com.ceco.kitkat.gravitybox.quicksettings;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import com.ceco.kitkat.gravitybox.GravityBoxSettings;
 import com.ceco.kitkat.gravitybox.R;
 
+import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.os.Handler;
 import android.provider.Settings;
@@ -48,6 +57,7 @@ public class StayAwakeTile extends BasicTile {
     private SettingsObserver mSettingsObserver;
     private int mCurrentTimeoutIndex;
     private int mPreviousTimeoutIndex;
+    private int mLongestTimeoutIndex;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -56,10 +66,12 @@ public class StayAwakeTile extends BasicTile {
     private static class ScreenTimeout {
         final int mMillis;
         final int mLabelResId;
+        boolean mEnabled;
 
         public ScreenTimeout(int millis, int labelResId) {
             mMillis = millis;
             mLabelResId = labelResId;
+            mEnabled = false;
         }
     }
 
@@ -78,14 +90,16 @@ public class StayAwakeTile extends BasicTile {
         mOnLongClick = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                if (mLongestTimeoutIndex < 0)
+                    return false;
                 if (Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.SCREEN_OFF_TIMEOUT,
-                            FALLBACK_SCREEN_TIMEOUT_VALUE) == NEVER_SLEEP) {
+                            FALLBACK_SCREEN_TIMEOUT_VALUE) == SCREEN_TIMEOUT[mLongestTimeoutIndex].mMillis) {
                     toggleStayAwake(mPreviousTimeoutIndex);
                 } else {
                     mPreviousTimeoutIndex = mCurrentTimeoutIndex == -1 ?
                             getIndexFromValue(FALLBACK_SCREEN_TIMEOUT_VALUE) : mCurrentTimeoutIndex;
-                    toggleStayAwake(getIndexFromValue(NEVER_SLEEP));
+                    toggleStayAwake(mLongestTimeoutIndex);
                 }
                 return true;
             }
@@ -94,8 +108,8 @@ public class StayAwakeTile extends BasicTile {
         mCurrentTimeoutIndex = getIndexFromValue(Settings.System.getInt(mContext.getContentResolver(), 
                 Settings.System.SCREEN_OFF_TIMEOUT, FALLBACK_SCREEN_TIMEOUT_VALUE));
 
-        mPreviousTimeoutIndex = mCurrentTimeoutIndex == -1 || 
-                SCREEN_TIMEOUT[mCurrentTimeoutIndex].mMillis == NEVER_SLEEP ?
+        mPreviousTimeoutIndex = mCurrentTimeoutIndex == -1 ||
+                SCREEN_TIMEOUT[mCurrentTimeoutIndex].mMillis == SCREEN_TIMEOUT[mLongestTimeoutIndex].mMillis ?
                         getIndexFromValue(FALLBACK_SCREEN_TIMEOUT_VALUE) : mCurrentTimeoutIndex;
 
         if (DEBUG) log("mCurrentTimeoutIndex = " + mCurrentTimeoutIndex +
@@ -128,22 +142,93 @@ public class StayAwakeTile extends BasicTile {
         super.updateTile();
     }
 
+    @Override
+    public void onPreferenceInitialize(XSharedPreferences prefs) {
+        Set<String> smodes = prefs.getStringSet(
+                GravityBoxSettings.PREF_STAY_AWAKE_TILE_MODE,
+                new HashSet<String>(Arrays.asList(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" })));
+        List<String> lmodes = new ArrayList<String>(smodes);
+        Collections.sort(lmodes);
+        int modes[] = new int[lmodes.size()];
+        for (int i = 0; i < lmodes.size(); i++) {
+            modes[i] = Integer.valueOf(lmodes.get(i));
+        }
+        if (DEBUG) log("onPreferenceInitialize: modes=" + modes);
+        updateSettings(modes);
+
+        super.onPreferenceInitialize(prefs);
+    }
+
+    @Override
+    public void onBroadcastReceived(Context context, Intent intent) {
+        if (DEBUG) log("Received broadcast: " + intent.toString());
+
+        if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_QUICKSETTINGS_CHANGED)
+                && intent.hasExtra(GravityBoxSettings.EXTRA_SA_MODE)) {
+            int[] modes = intent.getIntArrayExtra(GravityBoxSettings.EXTRA_SA_MODE);
+            if (DEBUG) log("onBroadcastReceived: modes=" + modes);
+            updateSettings(modes);
+        }
+
+        super.onBroadcastReceived(context, intent);
+    }
+
+    private void updateSettings(int[] modes) {
+        for (ScreenTimeout s : SCREEN_TIMEOUT) {
+            s.mEnabled = false;
+        }
+        if (modes != null && modes.length > 0) {
+            for (int i=0; i<modes.length; i++) {
+                int index = modes[i];
+                ScreenTimeout s = index < SCREEN_TIMEOUT.length ? SCREEN_TIMEOUT[index] : null;
+                if (s != null) {
+                    s.mEnabled = true;
+                    mLongestTimeoutIndex = index;
+                }
+            }
+        } else {
+            mCurrentTimeoutIndex = getIndexFromValue(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SCREEN_OFF_TIMEOUT, FALLBACK_SCREEN_TIMEOUT_VALUE));
+            mLongestTimeoutIndex = -1;
+        }
+    }
+
     private void toggleStayAwake() {
         toggleStayAwake(-1);
     }
 
     private void toggleStayAwake(int index) {
-        if (index != -1) {
-            mCurrentTimeoutIndex = index;
-        } else {
-            if (++mCurrentTimeoutIndex >= SCREEN_TIMEOUT.length) {
-                mCurrentTimeoutIndex = 0;
+        if (mLongestTimeoutIndex < 0)
+            return;
+        final int startIndex = mCurrentTimeoutIndex;
+        int i = 0;
+        do {
+            if (index != -1) {
+                if (index == mLongestTimeoutIndex) {
+                    mCurrentTimeoutIndex = mLongestTimeoutIndex;
+                } else if (SCREEN_TIMEOUT[index].mEnabled) {
+                    mCurrentTimeoutIndex = index;
+                } else {
+                    mCurrentTimeoutIndex = i++;
+                    index = i;
+                }
+            } else {
+                if (++mCurrentTimeoutIndex >= SCREEN_TIMEOUT.length) {
+                    mCurrentTimeoutIndex = 0;
+                }
             }
-        }
+        } while(!SCREEN_TIMEOUT[mCurrentTimeoutIndex].mEnabled &&
+                    startIndex != mCurrentTimeoutIndex);
         if (DEBUG) log("mCurrentTimeoutIndex = " + mCurrentTimeoutIndex);
-        Settings.System.putInt(mContext.getContentResolver(), 
-                Settings.System.SCREEN_OFF_TIMEOUT,
-                    SCREEN_TIMEOUT[mCurrentTimeoutIndex].mMillis);
+
+        if (startIndex != mCurrentTimeoutIndex) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.SCREEN_OFF_TIMEOUT,
+                        SCREEN_TIMEOUT[mCurrentTimeoutIndex].mMillis);
+        } else {
+            mCurrentTimeoutIndex = getIndexFromValue(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SCREEN_OFF_TIMEOUT, FALLBACK_SCREEN_TIMEOUT_VALUE));
+        }
     }
 
     private int getIndexFromValue(int value) {

@@ -592,7 +592,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">ניטור מהירות העברת נתונים</string>
-    <string name="pref_data_traffic_enable_summary">מציג מהירות תעבורה של נתונים בכל פעם שיש חיבור לאינטרנט</string>
     <string name="pref_data_traffic_position_title">מיקום</string>
     <string name="dt_position_auto">אוטומטי (באמצע או בצד ימין - תלוי במיקום השעון)</string>
     <string name="dt_position_left">שמאל</string>
@@ -884,10 +883,6 @@
     <string name="hwkey_action_auto_rotation">הפעל/כבה סיבוב אוטומטי</string>
     <string name="hwkey_action_auto_rotation_enabled">סיבוב אוטומטי מופעל</string>
     <string name="hwkey_action_auto_rotation_disabled">סיבוב אוטומטי מבוטל</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">אפשר כל ווידג\'ט</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">מאפשר להציג על גבי מסך נעילה גם את הווידג\'טים אשר מיועדים להצגה במסכי לאונצ\'ר בלבד</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">הצג תפריט הפעלה/כיבוי</string>

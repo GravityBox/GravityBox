@@ -119,6 +119,8 @@
         <item>@string/qs_tile_camera</item>
         <item>@string/qs_tile_usb_tethering</item>
         <item>@string/qs_tile_music</item>
+        <item>@string/qs_tile_alarm</item>
+        <item>@string/qs_tile_lock_screen</item>
     </string-array>
 
     <string-array name="qs_tile_aosp_values_kk" translatable="false">
@@ -152,6 +154,8 @@
         <item>camera_tileview</item>
         <item>usb_tether_tileview</item>
         <item>music_tileview</item>
+        <item>alarm_textview</item>
+        <item>lock_screen_tileview</item>
     </string-array>
 
     <string-array name="qs_tile_override_entries" translatable="false">
@@ -892,6 +896,52 @@
         <item>360x640</item>
         <item>720x1280</item>
         <item>1080x1920</item>
+    </string-array>
+
+    <string-array name="data_traffic_mode_entries" translatable="false">
+        <item>@string/dt_mode_off</item>
+        <item>@string/dt_mode_simple</item>
+        <item>@string/dt_mode_omni</item>
+    </string-array>
+
+    <string-array name="data_traffic_mode_values" translatable="false">
+        <item>OFF</item>
+        <item>SIMPLE</item>
+        <item>OMNI</item>
+    </string-array>
+
+    <string-array name="data_traffic_omni_mode_entries" translatable="false">
+        <item>@string/dt_omni_mode_in</item>
+        <item>@string/dt_omni_mode_out</item>
+        <item>@string/dt_omni_mode_in_out</item>
+    </string-array>
+
+    <string-array name="data_traffic_omni_mode_values" translatable="false">
+        <item>IN</item>
+        <item>OUT</item>
+        <item>IN_OUT</item>
+    </string-array>
+
+    <string-array name="stay_awake_entries" translatable="false">
+        <item>@string/stay_awake_15s</item>
+        <item>@string/stay_awake_30s</item>
+        <item>@string/stay_awake_1m</item>
+        <item>@string/stay_awake_2m</item>
+        <item>@string/stay_awake_5m</item>
+        <item>@string/stay_awake_10m</item>
+        <item>@string/stay_awake_30m</item>
+        <item>@string/stay_awake_on</item>
+    </string-array>
+
+    <string-array name="stay_awake_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 
 </resources>

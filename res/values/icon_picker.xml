@@ -22,6 +22,7 @@
         <item>@string/shortcuts_icon_picker_andy</item>
         <item>@string/shortcuts_icon_picker_battery</item>
         <item>@string/shortcuts_icon_picker_browser</item>
+        <item>@string/shortcuts_icon_picker_calculator</item>
         <item>@string/shortcuts_icon_picker_calendar</item>
         <item>@string/shortcuts_icon_picker_camera</item>
         <item>@string/shortcuts_icon_picker_cloud</item>
@@ -63,6 +64,7 @@
         <item>@string/shortcuts_icon_picker_rss</item>
         <item>@string/shortcuts_icon_picker_sdcard</item>
         <item>@string/shortcuts_icon_picker_search</item>
+        <item>@string/shortcuts_icon_picker_skype</item>
         <item>@string/shortcuts_icon_picker_sms</item>
         <item>@string/shortcuts_icon_picker_tapatalk</item>
         <item>@string/shortcuts_icon_picker_tasks</item>
@@ -71,6 +73,7 @@
         <item>@string/shortcuts_icon_picker_tv</item>
         <item>@string/shortcuts_icon_picker_twitter</item>
         <item>@string/shortcuts_icon_picker_unlock</item>
+        <item>@string/shortcuts_icon_picker_viber</item>
         <item>@string/shortcuts_icon_picker_whatsapp</item>
     </string-array>
 
@@ -79,6 +82,7 @@
         <item>@drawable/ic_shortcut_andy</item>
         <item>@drawable/ic_shortcut_battery</item>
         <item>@drawable/ic_shortcut_browser</item>
+        <item>@drawable/ic_shortcut_calculator</item>
         <item>@drawable/ic_shortcut_calendar</item>
         <item>@drawable/ic_shortcut_camera</item>
         <item>@drawable/ic_shortcut_cloud</item>
@@ -120,6 +124,7 @@
         <item>@drawable/ic_shortcut_rss</item>
         <item>@drawable/ic_shortcut_sdcard</item>
         <item>@drawable/ic_shortcut_search</item>
+        <item>@drawable/ic_shortcut_skype</item>
         <item>@drawable/ic_shortcut_sms</item>
         <item>@drawable/ic_shortcut_tapatalk</item>
         <item>@drawable/ic_shortcut_tasks</item>
@@ -128,6 +133,7 @@
         <item>@drawable/ic_shortcut_tv</item>
         <item>@drawable/ic_shortcut_twitter</item>
         <item>@drawable/ic_shortcut_unlock</item>
+        <item>@drawable/ic_shortcut_viber</item>
         <item>@drawable/ic_shortcut_whatsapp</item>
     </string-array>
 

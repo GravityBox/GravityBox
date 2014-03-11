@@ -53,7 +53,6 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Display;
-import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.Toast;
 import android.app.Activity;
@@ -151,15 +150,17 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_NATIONAL_ROAMING = "pref_national_roaming";
     public static final String PREF_CAT_KEY_STATUSBAR = "pref_cat_statusbar";
     public static final String PREF_CAT_KEY_STATUSBAR_QS = "pref_cat_statusbar_qs";
+    public static final String PREF_CAT_KEY_QS_TILE_SETTINGS = "pref_cat_qs_tile_settings";
+    public static final String PREF_CAT_KEY_QS_NM_TILE_SETTINGS = "pref_cat_qs_nm_tile_settings";
     public static final String PREF_CAT_KEY_STATUSBAR_COLORS = "pref_cat_statusbar_colors";
     public static final String PREF_KEY_STATUSBAR_BGCOLOR = "pref_statusbar_bgcolor2";
     public static final String PREF_KEY_STATUSBAR_ICON_COLOR_ENABLE = "pref_statusbar_icon_color_enable";
     public static final String PREF_KEY_STATUSBAR_ICON_COLOR = "pref_statusbar_icon_color";
     public static final String PREF_KEY_STATUS_ICON_STYLE = "pref_status_icon_style";
     public static final String PREF_KEY_STATUSBAR_ICON_COLOR_SECONDARY = "pref_statusbar_icon_color_secondary";
-    public static final String PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR = "pref_statusbar_data_activity_color";
+    public static final String PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR = "pref_signal_cluster_data_activity_color";
     public static final String PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR_SECONDARY = 
-            "pref_statusbar_data_activity_color_secondary";
+            "pref_signal_cluster_data_activity_color_secondary";
     public static final String PREF_KEY_STATUSBAR_SIGNAL_COLOR_MODE = "pref_statusbar_signal_color_mode";
     public static final String PREF_KEY_STATUSBAR_CENTER_CLOCK = "pref_statusbar_center_clock";
     public static final String PREF_KEY_STATUSBAR_CLOCK_DOW = "pref_statusbar_clock_dow2";
@@ -221,7 +222,6 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_LOCKSCREEN_RING_TORCH = "pref_lockscreen_ring_torch";
     public static final String PREF_KEY_LOCKSCREEN_MAXIMIZE_WIDGETS = "pref_lockscreen_maximize_widgets";
     public static final String PREF_KEY_LOCKSCREEN_WIDGET_LIMIT_DISABLE = "pref_lockscreen_widget_limit_disable";
-    public static final String PREF_KEY_LOCKSCREEN_ALLOW_ANY_WIDGET = "pref_lockscreen_allow_any_widget";
     public static final String PREF_KEY_LOCKSCREEN_ROTATION = "pref_lockscreen_rotation";
     public static final String PREF_KEY_LOCKSCREEN_MENU_KEY = "pref_lockscreen_menu_key";
     public static final String PREF_KEY_LOCKSCREEN_QUICK_UNLOCK = "pref_lockscreen_quick_unlock";
@@ -585,12 +585,18 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_NETWORK_MODE_TILE_LTE = "pref_network_mode_tile_lte";
     public static final String PREF_KEY_NETWORK_MODE_TILE_CDMA = "pref_network_mode_tile_cdma";
     public static final String PREF_KEY_RINGER_MODE_TILE_MODE = "pref_qs_ringer_mode";
+    public static final String PREF_STAY_AWAKE_TILE_MODE = "pref_qs_stay_awake";
     public static final String PREF_KEY_QS_TILE_SPAN_DISABLE = "pref_qs_tile_span_disable";
+    public static final String PREF_KEY_QS_ALARM_SINGLETAP_APP = "pref_qs_alarm_singletap_app";
+    public static final String PREF_KEY_QS_ALARM_LONGPRESS_APP = "pref_qs_alarm_longpress_app";
     public static final String EXTRA_NMT_MODE = "networkModeTileMode";
     public static final String EXTRA_NMT_LTE = "networkModeTileLte";
     public static final String EXTRA_NMT_CDMA = "networkModeTileCdma";
     public static final String EXTRA_RMT_MODE = "ringerModeTileMode";
+    public static final String EXTRA_SA_MODE = "stayAwakeTileMode";
     public static final String EXTRA_QS_TILE_SPAN_DISABLE = "qsTileSpanDisable";
+    public static final String EXTRA_QS_ALARM_SINGLETAP_APP = "qsAlarmSingletapApp";
+    public static final String EXTRA_QS_ALARM_LONGPRESS_APP = "qsAlarmLongpressApp";
 
     public static final String PREF_KEY_DISPLAY_ALLOW_ALL_ROTATIONS = "pref_display_allow_all_rotations";
     public static final String ACTION_PREF_DISPLAY_ALLOW_ALL_ROTATIONS_CHANGED = 
@@ -611,19 +617,25 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String EXTRA_ONGOING_NOTIF_RESET = "ongoingNotifReset";
 
     public static final String PREF_CAT_KEY_DATA_TRAFFIC = "pref_cat_data_traffic";
-    public static final String PREF_KEY_DATA_TRAFFIC_ENABLE = "pref_data_traffic_enable";
+    public static final String PREF_KEY_DATA_TRAFFIC_MODE = "pref_data_traffic_mode";
+    public static final String PREF_KEY_DATA_TRAFFIC_ACTIVE_DL_ONLY = "pref_data_traffic_active_dl_only";
     public static final String PREF_KEY_DATA_TRAFFIC_POSITION = "pref_data_traffic_position";
     public static final int DT_POSITION_AUTO = 0;
     public static final int DT_POSITION_LEFT = 1;
     public static final int DT_POSITION_RIGHT = 2;
     public static final String PREF_KEY_DATA_TRAFFIC_SIZE = "pref_data_traffic_size";
     public static final String PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE = "pref_data_traffic_inactivity_mode";
+    public static final String PREF_KEY_DATA_TRAFFIC_OMNI_MODE = "pref_data_traffic_omni_mode";
+    public static final String PREF_KEY_DATA_TRAFFIC_OMNI_SHOW_ICON = "pref_data_traffic_omni_show_icon";
     public static final String ACTION_PREF_DATA_TRAFFIC_CHANGED = 
             "gravitybox.intent.action.DATA_TRAFFIC_CHANGED";
-    public static final String EXTRA_DT_ENABLE = "dtEnable";
+    public static final String EXTRA_DT_MODE = "dtMode";
+    public static final String EXTRA_DT_ACTIVE_DL_ONLY = "dtActiveDownloadOnly";
     public static final String EXTRA_DT_POSITION = "dtPosition";
     public static final String EXTRA_DT_SIZE = "dtSize";
     public static final String EXTRA_DT_INACTIVITY_MODE = "dtInactivityMode";
+    public static final String EXTRA_DT_OMNI_MODE = "dtOmniMode";
+    public static final String EXTRA_DT_OMNI_SHOW_ICON = "dtOmniShowIcon";
 
     public static final String PREF_CAT_KEY_APP_LAUNCHER = "pref_cat_app_launcher";
     public static final List<String> PREF_KEY_APP_LAUNCHER_SLOT = new ArrayList<String>(Arrays.asList(
@@ -639,6 +651,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_LAUNCHER_DESKTOP_GRID_COLS = "pref_launcher_desktop_grid_cols";
     public static final String PREF_KEY_LAUNCHER_RESIZE_WIDGET = "pref_launcher_resize_widget";
 
+    public static final String PREF_CAT_KEY_SIGNAL_CLUSTER = "pref_cat_signal_cluster";
     public static final String PREF_KEY_SIGNAL_CLUSTER_CONNECTION_STATE = "pref_signal_cluster_connection_state";
     public static final String PREF_KEY_SIGNAL_CLUSTER_DATA_ACTIVITY = "pref_signal_cluster_data_activity";
 
@@ -832,15 +845,6 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             return;
         }
 
-        // prepare alternative screenrecord binary if doesn't exist yet
-        File srBinary = new File(getFilesDir() + "/screenrecord");
-        if (!srBinary.exists()) {
-            Utils.writeAssetToFile(this, "screenrecord", srBinary);
-        }
-        if (srBinary.exists()) {
-            srBinary.setExecutable(true);
-        }
-
         if (savedInstanceState == null || sSystemProperties == null) {
             mReceiver = new GravityBoxResultReceiver(new Handler());
             mReceiver.setReceiver(this);
@@ -1019,9 +1023,14 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
         private ListPreference mPrefQsTileLabelStyle;
         private ListPreference mPrefSbClockDow;
         private ListPreference mPrefSbLockPolicy;
+        private PreferenceScreen mPrefCatDataTraffic;
         private ListPreference mPrefDataTrafficPosition;
         private ListPreference mPrefDataTrafficSize;
+        private ListPreference mPrefDataTrafficMode;
         private ListPreference mPrefDataTrafficInactivityMode;
+        private ListPreference mPrefDataTrafficOmniMode;
+        private CheckBoxPreference mPrefDataTrafficOmniShowIcon;
+        private CheckBoxPreference mPrefDataTrafficActiveDlOnly;
         private CheckBoxPreference mPrefLinkVolumes;
         private CheckBoxPreference mPrefVolumePanelExpandable;
         private CheckBoxPreference mPrefVolumePanelFullyExpandable;
@@ -1068,6 +1077,9 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
         private Preference mPrefRestore;
         private EditTextPreference mPrefTransVerification;
         private ListPreference mPrefScreenrecordSize;
+        private PreferenceScreen mPrefCatSignalCluster;
+        private PreferenceScreen mPrefCatQsTileSettings;
+        private PreferenceScreen mPrefCatQsNmTileSettings;
 
         @SuppressWarnings("deprecation")
         @Override
@@ -1166,6 +1178,8 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
 
             mPrefCatStatusbar = (PreferenceScreen) findPreference(PREF_CAT_KEY_STATUSBAR);
             mPrefCatStatusbarQs = (PreferenceScreen) findPreference(PREF_CAT_KEY_STATUSBAR_QS);
+            mPrefCatQsTileSettings = (PreferenceScreen) findPreference(PREF_CAT_KEY_QS_TILE_SETTINGS);
+            mPrefCatQsNmTileSettings = (PreferenceScreen) findPreference(PREF_CAT_KEY_QS_NM_TILE_SETTINGS);
             mPrefCatStatusbarColors = (PreferenceScreen) findPreference(PREF_CAT_KEY_STATUSBAR_COLORS);
             mPrefAutoSwitchQs = (ListPreference) findPreference(PREF_KEY_QUICK_SETTINGS_AUTOSWITCH);
             mPrefQuickPulldown = (ListPreference) findPreference(PREF_KEY_QUICK_PULLDOWN);
@@ -1273,9 +1287,15 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
 
             mPrefSbClockDow = (ListPreference) findPreference(PREF_KEY_STATUSBAR_CLOCK_DOW);
             mPrefSbLockPolicy = (ListPreference) findPreference(PREF_KEY_STATUSBAR_LOCK_POLICY);
+
+            mPrefCatDataTraffic = (PreferenceScreen) findPreference(PREF_CAT_KEY_DATA_TRAFFIC);
             mPrefDataTrafficPosition = (ListPreference) findPreference(PREF_KEY_DATA_TRAFFIC_POSITION);
             mPrefDataTrafficSize = (ListPreference) findPreference(PREF_KEY_DATA_TRAFFIC_SIZE);
+            mPrefDataTrafficMode = (ListPreference) findPreference(PREF_KEY_DATA_TRAFFIC_MODE);
             mPrefDataTrafficInactivityMode = (ListPreference) findPreference(PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE);
+            mPrefDataTrafficOmniMode = (ListPreference) findPreference(PREF_KEY_DATA_TRAFFIC_OMNI_MODE);
+            mPrefDataTrafficOmniShowIcon = (CheckBoxPreference) findPreference(PREF_KEY_DATA_TRAFFIC_OMNI_SHOW_ICON);
+            mPrefDataTrafficActiveDlOnly = (CheckBoxPreference) findPreference(PREF_KEY_DATA_TRAFFIC_ACTIVE_DL_ONLY);
 
             mPrefCatAppLauncher = (PreferenceScreen) findPreference(PREF_CAT_KEY_APP_LAUNCHER);
             mPrefAppLauncherSlot = new AppPickerPreference[PREF_KEY_APP_LAUNCHER_SLOT.size()];
@@ -1339,6 +1359,8 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
 
             mPrefScreenrecordSize = (ListPreference) findPreference(PREF_KEY_SCREENRECORD_SIZE);
 
+            mPrefCatSignalCluster = (PreferenceScreen) findPreference(PREF_CAT_KEY_SIGNAL_CLUSTER);
+
             // Remove Phone specific preferences on Tablet devices
             if (sSystemProperties.isTablet) {
                 mPrefCatStatusbarQs.removePreference(mPrefAutoSwitchQs);
@@ -1370,9 +1392,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             if (Utils.isWifiOnly(getActivity())) {
                 // Remove preferences that don't apply to wifi-only devices
                 getPreferenceScreen().removePreference(mPrefCatPhone);
-                mPrefCatStatusbarQs.removePreference(mPrefNetworkModeTileMode);
-                mPrefCatStatusbarQs.removePreference(mPrefNetworkModeTileLte);
-                mPrefCatStatusbarQs.removePreference(mPrefNetworkModeTileCdma);
+                mPrefCatQsTileSettings.removePreference(mPrefCatQsNmTileSettings);
                 mPrefCatStatusbar.removePreference(mPrefDisableRoamingIndicators);
                 mPrefCatStatusbarQs.removePreference(mPrefQsNetworkModeSimSlot);
                 mPrefCatNotifDrawerStyle.removePreference(mPrefNotifCarrierText);
@@ -1384,16 +1404,16 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                 mPrefCatStatusbar.removePreference(mPrefDisableRoamingIndicators);
                 mPrefCatStatusbarQs.removePreference(mPrefQsNetworkModeSimSlot);
                 mPrefCatStatusbarColors.removePreference(mPrefSbIconColorSecondary);
-                mPrefCatStatusbarColors.removePreference(mPrefSbDaColorSecondary);
+                mPrefCatSignalCluster.removePreference(mPrefSbDaColorSecondary);
             } else {
                 // Remove Gemini specific preferences for non-Gemini MTK devices
                 if (!sSystemProperties.hasGeminiSupport) {
                     mPrefCatStatusbar.removePreference(mPrefDisableRoamingIndicators);
                     mPrefCatStatusbarQs.removePreference(mPrefQsNetworkModeSimSlot);
                     mPrefCatStatusbarColors.removePreference(mPrefSbIconColorSecondary);
-                    mPrefCatStatusbarColors.removePreference(mPrefSbDaColorSecondary);
+                    mPrefCatSignalCluster.removePreference(mPrefSbDaColorSecondary);
                 }
-                mPrefCatStatusbarQs.removePreference(mPrefQsTileBehaviourOverride);
+                mPrefCatQsTileSettings.removePreference(mPrefQsTileBehaviourOverride);
             }
 
             // TODO: rework for KitKat compatibility
@@ -1401,8 +1421,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             mPrefCatDisplay.removePreference(mPrefButtonBacklightNotif);
 
             // Features not relevant for KitKat but keep them for potential future use
-            mPrefCatStatusbarColors.removePreference(mPrefSbDaColor);
-            mPrefCatStatusbarColors.removePreference(mPrefSbDaColorSecondary);
+            mPrefCatSignalCluster.removePreference(mPrefSbDaColorSecondary);
 
             // Remove more music volume steps option if necessary
             if (!Utils.shouldAllowMoreVolumeSteps()) {
@@ -1658,10 +1677,8 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
 
             if (key == null || key.equals(PREF_KEY_STATUSBAR_ICON_COLOR_ENABLE)) {
                 mPrefSbIconColor.setEnabled(mPrefSbIconColorEnable.isChecked());
-                mPrefSbDaColor.setEnabled(mPrefSbIconColorEnable.isChecked());
                 mPrefSbSignalColorMode.setEnabled(mPrefSbIconColorEnable.isChecked());
                 mPrefSbIconColorSecondary.setEnabled(mPrefSbIconColorEnable.isChecked());
-                mPrefSbDaColorSecondary.setEnabled(mPrefSbIconColorEnable.isChecked());
             }
 
             if (key == null || key.equals(PREF_KEY_NOTIF_BACKGROUND)) {
@@ -1828,6 +1845,10 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                 mPrefVolumeRockerWake.setSummary(mPrefVolumeRockerWake.getEntry());
             }
 
+            if (key == null || key.equals(PREF_KEY_DATA_TRAFFIC_OMNI_MODE)) {
+                mPrefDataTrafficOmniMode.setSummary(mPrefDataTrafficOmniMode.getEntry());
+            }
+
             if (key == null || key.equals(PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE)) {
                 mPrefDataTrafficInactivityMode.setSummary(mPrefDataTrafficInactivityMode.getEntry());
             }
@@ -1920,6 +1941,29 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             if (key == null || key.equals(PREF_KEY_SCREENRECORD_SIZE)) {
                 mPrefScreenrecordSize.setSummary(mPrefScreenrecordSize.getEntry());
             }
+
+            if (key == null || key.equals(PREF_KEY_DATA_TRAFFIC_MODE)) {
+                mPrefDataTrafficMode.setSummary(mPrefDataTrafficMode.getEntry());
+                mPrefCatDataTraffic.removePreference(mPrefDataTrafficPosition);
+                mPrefCatDataTraffic.removePreference(mPrefDataTrafficSize);
+                mPrefCatDataTraffic.removePreference(mPrefDataTrafficInactivityMode);
+                mPrefCatDataTraffic.removePreference(mPrefDataTrafficOmniMode);
+                mPrefCatDataTraffic.removePreference(mPrefDataTrafficOmniShowIcon);
+                mPrefCatDataTraffic.removePreference(mPrefDataTrafficActiveDlOnly);
+                String mode = mPrefDataTrafficMode.getValue();
+                if (mode.equals("SIMPLE")) {
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficActiveDlOnly);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficPosition);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficSize);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficInactivityMode);
+                } else if (mode.equals("OMNI")) {
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficActiveDlOnly);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficPosition);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficSize);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficOmniMode);
+                    mPrefCatDataTraffic.addPreference(mPrefDataTrafficOmniShowIcon);
+                }
+            }
         }
 
         @Override
@@ -1996,11 +2040,13 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             } else if (key.equals(PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR)) {
                 intent.setAction(ACTION_PREF_STATUSBAR_COLOR_CHANGED);
                 intent.putExtra(EXTRA_SB_DATA_ACTIVITY_COLOR,
-                        prefs.getInt(PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR, Color.WHITE));
+                        prefs.getInt(PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR, 
+                        getResources().getInteger(R.integer.signal_cluster_data_activity_icon_color)));
             } else if (key.equals(PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR_SECONDARY)) {
                 intent.setAction(ACTION_PREF_STATUSBAR_COLOR_CHANGED);
                 intent.putExtra(EXTRA_SB_DATA_ACTIVITY_COLOR_SECONDARY,
-                        prefs.getInt(PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR_SECONDARY, Color.WHITE));
+                        prefs.getInt(PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR_SECONDARY, 
+                        getResources().getInteger(R.integer.signal_cluster_data_activity_icon_color)));
             } else if (key.equals(PREF_KEY_STATUSBAR_SIGNAL_COLOR_MODE)) {
                 intent.setAction(ACTION_PREF_STATUSBAR_COLOR_CHANGED);
                 intent.putExtra(EXTRA_SB_SIGNAL_COLOR_MODE,
@@ -2411,10 +2457,29 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                     imodes[i] = Integer.valueOf(lmodes.get(i));
                 }
                 intent.putExtra(EXTRA_RMT_MODE, imodes);
+            } else if (key.equals(PREF_STAY_AWAKE_TILE_MODE)) {
+                intent.setAction(ACTION_PREF_QUICKSETTINGS_CHANGED);
+                Set<String> sAModes = prefs.getStringSet(PREF_STAY_AWAKE_TILE_MODE,
+                        new HashSet<String>(Arrays.asList(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" })));
+                List<String> sALmodes = new ArrayList<String>(sAModes);
+                Collections.sort(sALmodes);
+                int[] sAImodes = new int[sALmodes.size()];
+                for (int i = 0; i < sALmodes.size(); i++) {
+                    sAImodes[i] = Integer.valueOf(sALmodes.get(i));
+                }
+                intent.putExtra(EXTRA_SA_MODE, sAImodes);
             } else if (key.equals(PREF_KEY_QS_TILE_SPAN_DISABLE)) {
                 intent.setAction(ACTION_PREF_QUICKSETTINGS_CHANGED);
                 intent.putExtra(EXTRA_QS_TILE_SPAN_DISABLE,
                         prefs.getBoolean(PREF_KEY_QS_TILE_SPAN_DISABLE, false));
+            } else if (key.equals(PREF_KEY_QS_ALARM_SINGLETAP_APP)) {
+                intent.setAction(ACTION_PREF_QUICKSETTINGS_CHANGED);
+                intent.putExtra(EXTRA_QS_ALARM_SINGLETAP_APP,
+                        prefs.getString(PREF_KEY_QS_ALARM_SINGLETAP_APP, null));
+            } else if (key.equals(PREF_KEY_QS_ALARM_LONGPRESS_APP)) {
+                intent.setAction(ACTION_PREF_QUICKSETTINGS_CHANGED);
+                intent.putExtra(EXTRA_QS_ALARM_LONGPRESS_APP,
+                        prefs.getString(PREF_KEY_QS_ALARM_LONGPRESS_APP, null));
             } else if (key.equals(PREF_KEY_DISPLAY_ALLOW_ALL_ROTATIONS)) {
                 intent.setAction(ACTION_PREF_DISPLAY_ALLOW_ALL_ROTATIONS_CHANGED);
                 intent.putExtra(EXTRA_ALLOW_ALL_ROTATIONS, 
@@ -2423,9 +2488,16 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                 intent.setAction(ACTION_PREF_QS_NETWORK_MODE_SIM_SLOT_CHANGED);
                 intent.putExtra(EXTRA_SIM_SLOT, Integer.valueOf(
                         prefs.getString(PREF_KEY_QS_NETWORK_MODE_SIM_SLOT, "0")));
-            } else if (key.equals(PREF_KEY_DATA_TRAFFIC_ENABLE)) {
+            } else if (key.equals(PREF_KEY_DATA_TRAFFIC_MODE)) {
                 intent.setAction(ACTION_PREF_DATA_TRAFFIC_CHANGED);
-                intent.putExtra(EXTRA_DT_ENABLE, prefs.getBoolean(PREF_KEY_DATA_TRAFFIC_ENABLE, false));
+                intent.putExtra(EXTRA_DT_MODE, prefs.getString(PREF_KEY_DATA_TRAFFIC_MODE, "OFF"));
+            } else if (key.equals(PREF_KEY_DATA_TRAFFIC_OMNI_MODE)) {
+                intent.setAction(ACTION_PREF_DATA_TRAFFIC_CHANGED);
+                intent.putExtra(EXTRA_DT_OMNI_MODE, prefs.getString(PREF_KEY_DATA_TRAFFIC_OMNI_MODE, "IN_OUT"));
+            } else if (key.equals(PREF_KEY_DATA_TRAFFIC_OMNI_SHOW_ICON)) {
+                intent.setAction(ACTION_PREF_DATA_TRAFFIC_CHANGED);
+                intent.putExtra(EXTRA_DT_OMNI_SHOW_ICON, 
+                        prefs.getBoolean(PREF_KEY_DATA_TRAFFIC_OMNI_SHOW_ICON, true));
             } else if (key.equals(PREF_KEY_DATA_TRAFFIC_POSITION)) {
                 intent.setAction(ACTION_PREF_DATA_TRAFFIC_CHANGED);
                 intent.putExtra(EXTRA_DT_POSITION, Integer.valueOf(
@@ -2438,6 +2510,10 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                 intent.setAction(ACTION_PREF_DATA_TRAFFIC_CHANGED);
                 intent.putExtra(EXTRA_DT_INACTIVITY_MODE, Integer.valueOf(
                         prefs.getString(PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE, "0")));
+            } else if (key.equals(PREF_KEY_DATA_TRAFFIC_ACTIVE_DL_ONLY)) {
+                intent.setAction(ACTION_PREF_DATA_TRAFFIC_CHANGED);
+                intent.putExtra(EXTRA_DT_ACTIVE_DL_ONLY,
+                        prefs.getBoolean(PREF_KEY_DATA_TRAFFIC_ACTIVE_DL_ONLY, false));
             } else if (key.equals(PREF_KEY_SMART_RADIO_NORMAL_MODE)) {
                 intent.setAction(ACTION_PREF_SMART_RADIO_CHANGED);
                 intent.putExtra(EXTRA_SR_NORMAL_MODE,
@@ -2485,6 +2561,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                         prefs.getBoolean(PREF_KEY_NATIONAL_ROAMING, false));
             }
             if (intent.getAction() != null) {
+                mPrefs.edit().commit();
                 getActivity().sendBroadcast(intent);
             }
 

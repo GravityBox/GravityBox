@@ -512,14 +512,30 @@ public class ModDisplay {
                 mDisplayPowerController, "mUseSoftwareAutoBrightnessConfig");
 
         if (useSwAutobrightness) {
+            // brightness array must have one more element than lux array
+            int[] brightnessAdj = new int[lux.length+1];
+            for (int i = 0; i < brightnessAdj.length; i++) {
+                if (i < brightness.length) {
+                    brightnessAdj[i] = brightness[i];
+                } else {
+                    brightnessAdj[i] = 255;
+                }
+            }
+            if (DEBUG) log("updateAutobrightnessConfig: lux=" + Utils.intArrayToString(lux) + 
+                    "; brightnessAdj=" + Utils.intArrayToString(brightnessAdj));
+
             Object autoBrightnessSpline = XposedHelpers.callMethod(
-                    mDisplayPowerController, "createAutoBrightnessSpline", lux, brightness);
+                    mDisplayPowerController, "createAutoBrightnessSpline", lux, brightnessAdj);
             XposedHelpers.setObjectField(mDisplayPowerController, 
                     "mScreenAutoBrightnessSpline", autoBrightnessSpline);
             if (autoBrightnessSpline != null) {
-                if (brightness[0] < screenBrightnessMinimum) {
-                    screenBrightnessMinimum = brightness[0];
+                if (brightnessAdj[0] < screenBrightnessMinimum) {
+                    screenBrightnessMinimum = brightnessAdj[0];
                 }
+            } else {
+                XposedHelpers.setBooleanField(mDisplayPowerController, "mUseSoftwareAutoBrightnessConfig", false);
+                log("Error computing auto-brightness spline: lux=" + Utils.intArrayToString(lux) + 
+                        "; brightnessAdj=" + Utils.intArrayToString(brightnessAdj));
             }
         }
 

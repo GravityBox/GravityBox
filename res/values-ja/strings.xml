@@ -582,7 +582,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">データ通信量モニター</string>
-    <string name="pref_data_traffic_enable_summary">データ通信をしているときにデータ通信量モニターを表示します。</string>
     <string name="pref_data_traffic_position_title">位置</string>
     <string name="dt_position_auto">自動(時計の位置に従う)</string>
     <string name="dt_position_left">左</string>
@@ -863,10 +862,6 @@
     <string name="hwkey_action_auto_rotation">自動回転トグル</string>
     <string name="hwkey_action_auto_rotation_enabled">自動回転オン</string>
     <string name="hwkey_action_auto_rotation_disabled">自動回転オフ</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">全てのウィジェットを許可</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">ホームアプリで使えるウィジェットをロック画面にもおけるようにします。</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">電源メニューを表示</string>

@@ -584,7 +584,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitorização de tráfego de dados</string>
-    <string name="pref_data_traffic_enable_summary">Permite monitorizar o tráfego de dados automaticamente sempre que exista uma ligação de dados estabelecida</string>
     <string name="pref_data_traffic_position_title">Posicionamento</string>
     <string name="dt_position_auto">Automático (centrado ou alinhado à direita, dependendo do posicionamento do relógio)</string>
     <string name="dt_position_left">Alinhado à esquerda</string>
@@ -871,10 +870,6 @@
     <string name="hwkey_action_auto_rotation">Comutar rotação automática</string>
     <string name="hwkey_action_auto_rotation_enabled">Rotação automática ativada</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotação automática desativada</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permitir qualquer widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permite a colocação de qualquer tipo de widget no ecrã de bloqueio, mesmo aqueles que normalmente só podem ser utilizados no inicializador</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Mostrar Menu Desligar</string>

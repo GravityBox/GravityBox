@@ -82,6 +82,8 @@
     <string name="quick_settings_music_pause">Pause</string>
     <string name="quick_settings_smart_radio_on">Smart Radio On</string>
     <string name="quick_settings_smart_radio_off">Smart Radio Off</string>
+    <string name="quick_settings_lock_screen_on">Lock Screen On</string>
+    <string name="quick_settings_lock_screen_off">Lock Screen Off</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Statusbar QuickSettings tiles</string>
@@ -114,6 +116,8 @@
     <string name="qs_tile_usb_tethering">USB Tethering</string>
     <string name="qs_tile_music">Music</string>
     <string name="qs_tile_smart_radio">Smart Radio</string>
+    <string name="qs_tile_alarm">Alarm</string>
+    <string name="qs_tile_lock_screen">Lock screen</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -600,7 +604,6 @@
 
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Data traffic monitor</string>
-    <string name="pref_data_traffic_enable_summary">Shows data traffic monitor automatically whenever data connection is active</string>
     <string name="pref_data_traffic_position_title">Position</string>
     <string name="dt_position_auto">Auto (center or right depending on clock position)</string>
     <string name="dt_position_left">Left</string>
@@ -892,10 +895,6 @@
     <string name="hwkey_action_auto_rotation">Toggle auto rotation</string>
     <string name="hwkey_action_auto_rotation_enabled">Auto rotation enabled</string>
     <string name="hwkey_action_auto_rotation_disabled">Auto rotation disabled</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Allow any widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Allows those widgets on lockscreen that can normally be used within launcher only</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Show power menu</string>
@@ -1241,6 +1240,7 @@
     <string name="pref_quick_pulldown_size_title">Quick pulldown size</string>
 
     <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Stay awake tile mode</string>
     <string name="stay_awake_15s">15s</string>
     <string name="stay_awake_30s">30s</string>
     <string name="stay_awake_1m">1m</string>
@@ -1248,6 +1248,7 @@
     <string name="stay_awake_5m">5m</string>
     <string name="stay_awake_10m">10m</string>
     <string name="stay_awake_30m">30m</string>
+    <string name="stay_awake_on">Stay awake on</string>
 
     <!-- Screen recording options -->
     <string name="pref_cat_screenrecord_options_title">Screen recording</string>
@@ -1305,5 +1306,44 @@
 
     <!-- Navbar ring: option to disable -->
     <string name="pref_navbar_ring_disable_title">Disable navigation ring</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Data traffic monitor style</string>
+    <string name="dt_mode_off">Disabled</string>
+    <string name="dt_mode_simple">Simple style</string>
+    <string name="dt_mode_omni">Omni style</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Monitoring  mode</string>
+    <string name="dt_omni_mode_in">Download</string>
+    <string name="dt_omni_mode_out">Upload</string>
+    <string name="dt_omni_mode_in_out">Download and upload</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Show icon</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculator</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Tile specific settings</string>
+    <string name="pref_cat_qs_tile_settings_summary">Contains tile specific settings</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Network mode tile settings</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Alarm tile settings</string>
+    <string name="pref_qs_alarm_singletap_app_title">Single-tap app</string>
+    <string name="alarm_singletap_app_default">Default app</string>
+    <string name="pref_qs_alarm_longpress_app_title">Long-press app</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Download Manager only</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Shows traffic meter only while there are ongoing downloads via 
+        standard Android\'s Download Manager</string>
 
 </resources>

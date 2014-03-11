@@ -110,6 +110,7 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
                     imageDataOut = mGbResources.getDrawable(R.drawable.stat_sys_signal_out);
                     imageDataInOut = mGbResources.getDrawable(R.drawable.stat_sys_signal_inout);
                 }
+                updateDataActivityColor();
             }
         }
 
@@ -124,33 +125,36 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
             activityOut = out;
 
             // partially/fully connected state
-            if (mConnectionStateEnabled &&
-                    !(mIconManager.isColoringEnabled() &&
+            if (mConnectionStateEnabled) {
+                if (!(mIconManager.isColoringEnabled() &&
                         mIconManager.getSignalIconMode() != StatusBarIconManager.SI_MODE_DISABLED)) {
-                ImageView signalIcon = signalType == SignalType.WIFI ?
-                        (ImageView) mFldWifiView.get(mView) : (ImageView) mFldMobileView.get(mView);
-                if (signalIcon != null && signalIcon.getDrawable() != null) {
-                    Drawable d = signalIcon.getDrawable().mutate();
-                    if (!fullyConnected) {
-                        d.setColorFilter(Color.rgb(244, 145, 85), PorterDuff.Mode.SRC_ATOP);
-                    } else {
-                        d.clearColorFilter();
-                    }
-                    signalIcon.setImageDrawable(d);
-                }
-                if (signalType == SignalType.MOBILE) {
-                    ImageView dataTypeIcon = (ImageView) mFldMobileTypeView.get(mView);
-                    if (dataTypeIcon != null && dataTypeIcon.getDrawable() != null) {
-                        Drawable dti = dataTypeIcon.getDrawable().mutate();
+                    ImageView signalIcon = signalType == SignalType.WIFI ?
+                            (ImageView) mFldWifiView.get(mView) : (ImageView) mFldMobileView.get(mView);
+                    if (signalIcon != null && signalIcon.getDrawable() != null) {
+                        Drawable d = signalIcon.getDrawable().mutate();
                         if (!fullyConnected) {
-                            dti.setColorFilter(Color.rgb(244, 145, 85), PorterDuff.Mode.SRC_ATOP);
+                            d.setColorFilter(Color.rgb(244, 145, 85), PorterDuff.Mode.SRC_ATOP);
                         } else {
-                            dti.clearColorFilter();
+                            d.clearColorFilter();
                         }
-                        dataTypeIcon.setImageDrawable(dti);
+                        signalIcon.setImageDrawable(d);
                     }
+                    if (signalType == SignalType.MOBILE) {
+                        ImageView dataTypeIcon = (ImageView) mFldMobileTypeView.get(mView);
+                        if (dataTypeIcon != null && dataTypeIcon.getDrawable() != null) {
+                            Drawable dti = dataTypeIcon.getDrawable().mutate();
+                            if (!fullyConnected) {
+                                dti.setColorFilter(Color.rgb(244, 145, 85), PorterDuff.Mode.SRC_ATOP);
+                            } else {
+                                dti.clearColorFilter();
+                            }
+                            dataTypeIcon.setImageDrawable(dti);
+                        }
+                    }
+                    if (DEBUG) log("SignalActivity: " + signalType + ": connection state updated");
+                } else {
+                    apply();
                 }
-                if (DEBUG) log("SignalActivity: " + signalType + ": connection state updated");
             }
 
             // in/out activity
@@ -165,6 +169,18 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
                 activityView.setVisibility(activityIn || activityOut ?
                         View.VISIBLE : View.GONE);
                 if (DEBUG) log("SignalActivity: " + signalType + ": data activity indicators updated");
+            }
+        }
+
+        public void updateDataActivityColor() {
+            if (imageDataIn != null) {
+                imageDataIn = mIconManager.applyDataActivityColorFilter(imageDataIn);
+            }
+            if (imageDataOut != null) {
+                imageDataOut = mIconManager.applyDataActivityColorFilter(imageDataInOut);
+            }
+            if (imageDataInOut != null) {
+                imageDataInOut = mIconManager.applyDataActivityColorFilter(imageDataInOut);
             }
         }
     } 
@@ -401,6 +417,15 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
                 StatusBarIconManager.FLAG_DATA_ACTIVITY_COLOR_CHANGED |
                 StatusBarIconManager.FLAG_ICON_COLOR_SECONDARY_CHANGED |
                 StatusBarIconManager.FLAG_SIGNAL_ICON_MODE_CHANGED)) != 0) {
+            if ((flags & StatusBarIconManager.FLAG_DATA_ACTIVITY_COLOR_CHANGED) != 0 &&
+                    mDataActivityEnabled) {
+                if (mWifiActivity != null) {
+                    mWifiActivity.updateDataActivityColor();
+                }
+                if (mMobileActivity != null) {
+                    mMobileActivity.updateDataActivityColor();
+                }
+            }
             update();
         }
     }
