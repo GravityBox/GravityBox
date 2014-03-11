@@ -382,6 +382,7 @@
     <string name="recent_clear_top_right">Top right</string>
     <string name="recent_clear_bottom_left">Bottom left</string>
     <string name="recent_clear_bottom_right">Bottom right</string>
+    <string name="recent_clear_navigation_bar">Navigation bar</string>
 
     <!-- Clear all recents top margin -->
     <string name="pref_recent_clear_margin_top_title">Adjust top margin</string>

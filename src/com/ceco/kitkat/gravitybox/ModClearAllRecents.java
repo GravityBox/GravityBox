@@ -15,11 +15,15 @@
 
 package com.ceco.kitkat.gravitybox;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -70,11 +74,24 @@ public class ModClearAllRecents {
     private static int mRamUsageBarHorizontalMargin;
     private static boolean mPreserveCurrentTask;
     private static boolean mNavbarAlwaysOnBottom;
+    private static View mRecentsPanelView;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
     }
 
+    private static BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (DEBUG) log("Broadcast received: " + intent.toString());
+            if (intent.getAction().equals(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_SINGLETAP)) {
+                clearAll(false);
+            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_LONGPRESS)) {
+                clearAll(true);
+            }
+        }
+    };
+    
     public static void init(final XSharedPreferences prefs, ClassLoader classLoader) {
         try {
             mPrefs = prefs;
@@ -92,8 +109,8 @@ public class ModClearAllRecents {
             XposedBridge.hookAllConstructors(recentPanelViewClass, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                    final View v = (View) param.thisObject;
-                    Context context = v.getContext();
+                    mRecentsPanelView = (View) param.thisObject;
+                    Context context = mRecentsPanelView.getContext();
                     mGbContext = context.createPackageContext(GravityBox.PACKAGE_NAME, Context.CONTEXT_IGNORE_SECURITY);
                     mHandler = new Handler();
                     mAm = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -111,6 +128,12 @@ public class ModClearAllRecents {
                     mRamUsageBarHorizontalMargin = (int) TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP, 10, res.getDisplayMetrics());
                     if (DEBUG) log("Recents panel view constructed");
+
+                    IntentFilter intentFilter = new IntentFilter();
+                    intentFilter.addAction(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_SINGLETAP);
+                    intentFilter.addAction(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_LONGPRESS);
+                    context.registerReceiver(mBroadcastReceiver, intentFilter);
+                    if (DEBUG) log("Broadcast receiver registered");
                 }
             });
 
@@ -135,21 +158,13 @@ public class ModClearAllRecents {
                     mRecentsClearButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ViewGroup mRecentsContainer = (ViewGroup) XposedHelpers.getObjectField(
-                                    param.thisObject, "mRecentsContainer");
-                            // passing null parameter in this case is our action flag to remove all views
-                            mPreserveCurrentTask = (mClearRecentsMode == 1);
-                            mRecentsContainer.removeViewInLayout(null);
+                            clearAll(false);
                         }
                     });
                     mRecentsClearButton.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
-                            ViewGroup mRecentsContainer = (ViewGroup) XposedHelpers.getObjectField(
-                                    param.thisObject, "mRecentsContainer");
-                            // passing null parameter in this case is our action flag to remove all views
-                            mPreserveCurrentTask = (mClearRecentsMode == 0);
-                            mRecentsContainer.removeViewInLayout(null);
+                            clearAll(true);
                             return true;
                         }
                     });
@@ -217,17 +232,29 @@ public class ModClearAllRecents {
     private static XC_MethodHook recentsPanelViewShowHook = new XC_MethodHook() {
         @Override
         protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-            try { 
-                if ((Boolean) param.args[0]) {
+            try {
+                Boolean show = (Boolean) param.args[0];
+                if (show) {
                     mPrefs.reload();
                     updateButtonLayout((View) param.thisObject);
                     updateRamBarLayout();
                 }
+                List<?> recentTaskDescriptions = (List<?>) XposedHelpers.getObjectField(param.thisObject, "mRecentTaskDescriptions");
+                boolean visible = (recentTaskDescriptions != null && recentTaskDescriptions.size() > 0);
+                int gravity = Integer.valueOf(mPrefs.getString(GravityBoxSettings.PREF_KEY_RECENTS_CLEAR_ALL, "53"));
+                setRecentsClearAll(show && visible && gravity == GravityBoxSettings.RECENT_CLEAR_NAVIGATION_BAR, (View) param.thisObject);
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
         }
     };
+
+    private static void setRecentsClearAll(Boolean show, View container) {
+        Intent intent = new Intent();
+        intent.setAction(GravityBoxSettings.NAVBAR_RECENTS_CLEAR_ALL);
+        intent.putExtra(GravityBoxSettings.EXTRA_NAVBAR_RECENTS_CLEAR_ALL, show);
+        container.getContext().sendBroadcast(intent);
+    }
 
     private static void updateButtonLayout(View container) {
         if (mRecentsClearButton == null) return;
@@ -240,7 +267,7 @@ public class ModClearAllRecents {
         List<?> recentTaskDescriptions = (List<?>) XposedHelpers.getObjectField(
                 container, "mRecentTaskDescriptions");
         boolean visible = (recentTaskDescriptions != null && recentTaskDescriptions.size() > 0);
-        if (gravity != GravityBoxSettings.RECENT_CLEAR_OFF && visible) {
+        if (gravity != GravityBoxSettings.RECENT_CLEAR_OFF && gravity != GravityBoxSettings.RECENT_CLEAR_NAVIGATION_BAR && visible) {
             final Resources res = mRecentsClearButton.getResources();
             final int orientation = res.getConfiguration().orientation;
             FrameLayout.LayoutParams lparams = 
@@ -405,4 +432,24 @@ public class ModClearAllRecents {
             if (DEBUG) log("RAM bar values updated");
         }
     };
+    
+    private static final void clearAll(boolean longPress) {
+        try {
+            if (mRecentsPanelView != null) {
+                Method m = XposedHelpers.findMethodExact(mRecentsPanelView.getClass(), "isShowing");
+                Boolean isShowing = (Boolean) m.invoke(mRecentsPanelView);
+                if (isShowing) {
+                    ViewGroup recentsContainer = (ViewGroup) XposedHelpers.getObjectField(mRecentsPanelView, "mRecentsContainer");
+                    if (!longPress) {
+                        mPreserveCurrentTask = (mClearRecentsMode == 1);
+                    } else {
+                        mPreserveCurrentTask = (mClearRecentsMode == 0);
+                   }
+                   recentsContainer.removeViewInLayout(null);
+                }
+            }
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
 }
