@@ -27,7 +27,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Formatter;
 import android.util.TypedValue;
@@ -214,7 +213,7 @@ public class ModClearAllRecents {
             XposedHelpers.findAndHookMethod(recentPanelViewClass, "refreshViews", 
                     updateRambarHook);
 
-            XposedHelpers.findAndHookMethod(recentActivityClass, "onResume", Bundle.class, new XC_MethodHook() {
+            XposedHelpers.findAndHookMethod(recentActivityClass, "onResume", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
                     IntentFilter intentFilter = new IntentFilter();
