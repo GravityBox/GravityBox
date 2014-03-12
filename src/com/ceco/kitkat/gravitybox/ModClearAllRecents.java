@@ -19,6 +19,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Formatter;
 import android.util.TypedValue;
@@ -54,6 +56,7 @@ public class ModClearAllRecents {
     public static final String CLASS_RECENT_VERTICAL_SCROLL_VIEW = "com.android.systemui.recent.RecentsVerticalScrollView";
     public static final String CLASS_RECENT_HORIZONTAL_SCROLL_VIEW = "com.android.systemui.recent.RecentsHorizontalScrollView";
     public static final String CLASS_RECENT_PANEL_VIEW = "com.android.systemui.recent.RecentsPanelView";
+    public static final String CLASS_RECENT_ACTIVITY = "com.android.systemui.recent.RecentsActivity";
     private static final boolean DEBUG = false;
 
     private static XSharedPreferences mPrefs;
@@ -96,6 +99,7 @@ public class ModClearAllRecents {
         try {
             mPrefs = prefs;
             Class<?> recentPanelViewClass = XposedHelpers.findClass(CLASS_RECENT_PANEL_VIEW, classLoader);
+            Class<?> recentActivityClass = XposedHelpers.findClass(CLASS_RECENT_ACTIVITY, classLoader);
             Class<?> recentVerticalScrollView = XposedHelpers.findClass(CLASS_RECENT_VERTICAL_SCROLL_VIEW, classLoader);
             Class<?> recentHorizontalScrollView = XposedHelpers.findClass(CLASS_RECENT_HORIZONTAL_SCROLL_VIEW, classLoader);
 
@@ -128,12 +132,6 @@ public class ModClearAllRecents {
                     mRamUsageBarHorizontalMargin = (int) TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP, 10, res.getDisplayMetrics());
                     if (DEBUG) log("Recents panel view constructed");
-
-                    IntentFilter intentFilter = new IntentFilter();
-                    intentFilter.addAction(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_SINGLETAP);
-                    intentFilter.addAction(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_LONGPRESS);
-                    context.registerReceiver(mBroadcastReceiver, intentFilter);
-                    if (DEBUG) log("Broadcast receiver registered");
                 }
             });
 
@@ -215,6 +213,25 @@ public class ModClearAllRecents {
                     View.class, updateRambarHook);
             XposedHelpers.findAndHookMethod(recentPanelViewClass, "refreshViews", 
                     updateRambarHook);
+
+            XposedHelpers.findAndHookMethod(recentActivityClass, "onResume", Bundle.class, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
+                    IntentFilter intentFilter = new IntentFilter();
+                    intentFilter.addAction(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_SINGLETAP);
+                    intentFilter.addAction(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_LONGPRESS);
+                    ((Activity)param.thisObject).registerReceiver(mBroadcastReceiver, intentFilter);
+                    if (DEBUG) log("Broadcast receiver registered");
+                }
+            });
+
+            XposedHelpers.findAndHookMethod(recentActivityClass, "onPause", new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                    ((Activity)param.thisObject).unregisterReceiver(mBroadcastReceiver);
+                    if (DEBUG) log("Broadcast receiver unregistered");
+                }
+            });
         } catch (Throwable t) {
             XposedBridge.log(t);
         }
