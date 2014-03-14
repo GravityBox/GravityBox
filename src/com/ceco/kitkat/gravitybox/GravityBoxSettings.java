@@ -140,6 +140,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final int RECENT_CLEAR_TOP_RIGHT = 53;
     public static final int RECENT_CLEAR_BOTTOM_LEFT = 83;
     public static final int RECENT_CLEAR_BOTTOM_RIGHT = 85;
+    public static final int RECENT_CLEAR_NAVIGATION_BAR = 1;
 
     public static final String PREF_CAT_KEY_PHONE = "pref_cat_phone";
     public static final String PREF_KEY_CALLER_FULLSCREEN_PHOTO = "pref_caller_fullscreen_photo2";
@@ -332,6 +333,8 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final int HWKEY_ACTION_VOLUME_PANEL = 21;
     public static final int HWKEY_ACTION_LAUNCHER_DRAWER = 22;
     public static final int HWKEY_ACTION_BRIGHTNESS_DIALOG = 23;
+    public static final int HWKEY_ACTION_CLEAR_ALL_RECENTS_SINGLETAP = 101;
+    public static final int HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS = 102;
     public static final int HWKEY_DOUBLETAP_SPEED_DEFAULT = 400;
     public static final int HWKEY_KILL_DELAY_DEFAULT = 1000;
     public static final int HWKEY_TORCH_DISABLED = 0;
@@ -554,6 +557,10 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String EXTRA_NAVBAR_CUSTOM_KEY_DOUBLETAP = "navbarCustomKeyDoubletap";
     public static final String EXTRA_NAVBAR_CUSTOM_KEY_SWAP = "navbarCustomKeySwap";
     public static final String EXTRA_NAVBAR_RING_DISABLE = "navbarRingDisable";
+    public static final String NAVBAR_RECENTS_CLEAR_ALL = "navbarRecentsClearAll";
+    public static final String EXTRA_NAVBAR_RECENTS_CLEAR_ALL = "navbarRecentsClearAllShow";
+    public static final String ACTION_RECENTS_CLEAR_ALL_SINGLETAP = "gravitybox.intent.action.ACTION_RECENTS_CLEARALL";
+    public static final String ACTION_RECENTS_CLEAR_ALL_LONGPRESS = "gravitybox.intent.action.ACTION_RECENTS_CLEARALL_LONGPRESS";
 
     public static final String PREF_KEY_LOCKSCREEN_TARGETS_ENABLE = "pref_lockscreen_ring_targets_enable";
     public static final String PREF_KEY_LOCKSCREEN_TARGETS_APP[] = new String[] {

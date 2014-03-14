@@ -16,6 +16,7 @@
 package com.ceco.kitkat.gravitybox;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -76,6 +77,8 @@ public class ModNavigationBar {
     private static View mNavigationBarView;
     private static Object[] mRecentsKeys;
     private static HomeKeyInfo[] mHomeKeys;
+    private static int mRecentsSingletapActionBck = 0;
+    private static int mRecentsLongpressActionBck = 0;
     private static int mRecentsSingletapAction = 0;
     private static int mRecentsLongpressAction = 0;
     private static int mHomeLongpressAction = 0;
@@ -111,6 +114,11 @@ public class ModNavigationBar {
     private static BgStyle mRingTargetsBgStyle;
     private static RingHapticFeedback mRingHapticFeedback;
     private static Integer mRingVibrateDurationOrig;
+    
+    private static Drawable mRecentIcon, mRecentLandIcon;
+    private static Drawable mRecentAltIcon, mRecentAltLandIcon;
+    private static boolean mRecentAlt = false;
+    private static ImageView mRecentBtn = null;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -217,6 +225,18 @@ public class ModNavigationBar {
                             intent.getStringExtra(GravityBoxSettings.EXTRA_RING_HAPTIC_FEEDBACK));
                     setRingHapticFeedback();
                 }
+            } else if (intent.getAction().equals(GravityBoxSettings.NAVBAR_RECENTS_CLEAR_ALL)) {
+                Boolean recentAltCurrent = mRecentAlt;
+            	if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_RECENTS_CLEAR_ALL)) {
+                	mRecentAlt = intent.getBooleanExtra(GravityBoxSettings.EXTRA_NAVBAR_RECENTS_CLEAR_ALL, false);
+                }
+                else {
+                	mRecentAlt = false;
+                }
+                if (DEBUG) log("mRecentAlt = " + mRecentAlt);
+                if (recentAltCurrent != mRecentAlt) {
+            	    setRecentAlt(context);
+                }
             }
         }
     };
@@ -277,6 +297,8 @@ public class ModNavigationBar {
                         prefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_RECENTS_SINGLETAP, "0"));
                 mRecentsLongpressAction = Integer.valueOf(
                         prefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_RECENTS_LONGPRESS, "0"));
+                mRecentsSingletapActionBck = mRecentsSingletapAction;
+                mRecentsLongpressActionBck = mRecentsLongpressAction;
                 mHomeLongpressAction = Integer.valueOf(
                         prefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_HOME_LONGPRESS, "0"));
             } catch (NumberFormatException nfe) {
@@ -324,6 +346,7 @@ public class ModNavigationBar {
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_HWKEY_HOME_LONGPRESS_CHANGED);
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_PIE_CHANGED);
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_NAVBAR_SWAP_KEYS);
+                    intentFilter.addAction(GravityBoxSettings.NAVBAR_RECENTS_CLEAR_ALL);
                     if (mRingTargetsEnabled) {
                         intentFilter.addAction(GravityBoxSettings.ACTION_PREF_NAVBAR_RING_TARGET_CHANGED);
                     }
@@ -459,10 +482,25 @@ public class ModNavigationBar {
                 }
             });
 
+            XposedHelpers.findAndHookMethod(navbarViewClass, "getIcons", Resources.class, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    mRecentIcon = (Drawable) XposedHelpers.getObjectField(param.thisObject, "mRecentIcon");
+                    mRecentLandIcon = (Drawable) XposedHelpers.getObjectField(param.thisObject, "mRecentLandIcon");
+
+                	if (mGbContext == null) return;
+                	final Resources gbRes = mGbContext.getResources();
+                	mRecentAltIcon = gbRes.getDrawable(R.drawable.ic_sysbar_recent_clear);
+                    mRecentAltLandIcon = gbRes.getDrawable(R.drawable.ic_sysbar_recent_clear_land);
+                }
+            });
+
             XposedHelpers.findAndHookMethod(navbarViewClass, "setNavigationIconHints",
                     int.class, boolean.class, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    final Context context = ((View) param.thisObject).getContext();
+
                     if (mNavbarColorsEnabled) {
                         final int navigationIconHints = XposedHelpers.getIntField(
                                 param.thisObject, "mNavigationIconHints");
@@ -471,6 +509,15 @@ public class ModNavigationBar {
                         }
                     }
                     setDpadKeyVisibility();
+                    
+                    try {
+                        Method m = XposedHelpers.findMethodExact(navbarViewClass, "getRecentsButton");
+                        mRecentBtn = (ImageView) m.invoke(param.thisObject);
+                    } catch(NoSuchMethodError nme) {
+                        if (DEBUG) log("getRecentsButton method doesn't exist");
+                    }
+               	    mNavbarVertical = XposedHelpers.getBooleanField(param.thisObject, "mVertical");
+                    setRecentAlt(context);
                 }
             });
 
@@ -791,6 +838,36 @@ public class ModNavigationBar {
             log("Error setting menu key visibility");
         }
         
+    }
+
+    private static void setRecentAlt(Context context) {
+        if (mRecentBtn == null || context == null) return;
+        
+        if (mRecentAlt) {
+            mRecentBtn.setImageDrawable(mNavbarVertical ? mRecentAltLandIcon : mRecentAltIcon);
+            mRecentsSingletapActionBck = mRecentsSingletapAction;
+            mRecentsLongpressActionBck = mRecentsLongpressAction;
+            broadcastRecentsActions(context, GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_SINGLETAP, GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS);
+        }
+        else {
+            mRecentBtn.setImageDrawable(mNavbarVertical ? mRecentLandIcon : mRecentIcon);
+            broadcastRecentsActions(context, mRecentsSingletapActionBck, mRecentsLongpressActionBck);
+        }
+    }
+    
+    private static void broadcastRecentsActions(Context context, int singleTapAction, int longPressAction) {
+        if (context == null) return;
+        
+        Intent intent;
+        intent = new Intent();
+        intent.setAction(GravityBoxSettings.ACTION_PREF_HWKEY_RECENTS_SINGLETAP_CHANGED);
+        intent.putExtra(GravityBoxSettings.EXTRA_HWKEY_VALUE, singleTapAction);
+        context.sendBroadcast(intent);
+
+        intent = new Intent();
+        intent.setAction(GravityBoxSettings.ACTION_PREF_HWKEY_RECENTS_LONGPRESS_CHANGED);
+        intent.putExtra(GravityBoxSettings.EXTRA_HWKEY_VALUE, longPressAction);
+        context.sendBroadcast(intent);
     }
 
     private static void setDpadKeyVisibility() {

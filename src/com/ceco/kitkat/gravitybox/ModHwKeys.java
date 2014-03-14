@@ -1035,6 +1035,10 @@ public class ModHwKeys {
             showLauncherDrawer();
         } else if (action == GravityBoxSettings.HWKEY_ACTION_BRIGHTNESS_DIALOG) {
             showBrightnessDialog();
+        } else if (action == GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_SINGLETAP) {
+            clearAllRecents(false);
+        } else if (action == GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS) {
+            clearAllRecents(true);
         }
     }
 
@@ -1473,6 +1477,20 @@ public class ModHwKeys {
             mContext.sendBroadcast(intent);
         } catch (Throwable t) {
             log("Error executing showLauncherDrawer: " + t.getMessage());
+        }
+    }
+
+    private static void clearAllRecents(boolean longPress) {
+        try {
+            Intent intent;
+            if (!longPress) {
+                intent = new Intent(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_SINGLETAP);
+            } else {
+                intent = new Intent(GravityBoxSettings.ACTION_RECENTS_CLEAR_ALL_LONGPRESS);
+            }
+            mContext.sendBroadcast(intent);
+        } catch (Throwable t) {
+            log("Error executing clearAllRecents(" + longPress + "): " + t.getMessage());
         }
     }
 

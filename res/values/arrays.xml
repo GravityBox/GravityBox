@@ -446,6 +446,7 @@
         <item>@string/recent_clear_top_right</item>
         <item>@string/recent_clear_bottom_left</item>
         <item>@string/recent_clear_bottom_right</item>
+        <item>@string/recent_clear_navigation_bar</item>
     </string-array>
 
     <string-array name="recents_clear_values" translatable="false">
@@ -454,6 +455,7 @@
         <item>53</item>
         <item>83</item>
         <item>85</item>
+        <item>1</item>
     </string-array>
 
     <string-array name="expanded_desktop_entries" translatable="false">
