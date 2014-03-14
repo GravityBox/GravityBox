@@ -665,7 +665,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Παρακολούθηση κίνησης δεδομένων</string>
     <string name="pref_data_traffic_enable_title">Ενεργοποίηση παρακολούθησης</string>
-    <string name="pref_data_traffic_enable_summary">Προβάλει την παρακολούθηση κίνησης δεδομένων αυτομάτως μόλις ενεργοποιηθεί η κίνηση δεδομένων</string>
     <string name="pref_data_traffic_position_title">Θέση</string>
     <string name="dt_position_auto">Αυτόματα (κεντρικά ή δεξιά αναλόγως τη θέση του ρολογιού)</string>
     <string name="dt_position_left">Αριστερά</string>
@@ -925,10 +924,6 @@
     <string name="hwkey_action_auto_rotation">Εναλλαγή αυτόμ. περιστροφής</string>
     <string name="hwkey_action_auto_rotation_enabled">Η αυτόμ. περιστροφή ενεργοποιήθηκε</string>
     <string name="hwkey_action_auto_rotation_disabled">Η αυτόμ. περιστροφή απενεργοποιήθηκε</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Επιτρέπονται όλα τα widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Επιτρέπει την χρήση widget αρχικής οθόνης στο κλείδωμα οθόνης</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Εμφάνιση μενού λειτουργίας</string>

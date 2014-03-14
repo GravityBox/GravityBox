@@ -53,6 +53,7 @@ public class ModVolumePanel {
     private static boolean mVolumesLinked;
     private static Unhook mViewGroupAddViewHook;
     private static boolean mVolumeAdjustMuted;
+    private static boolean mVolumeAdjustVibrateMuted;
     private static boolean mVoiceCapable;
     private static boolean mExpandable;
     private static boolean mExpandFully;
@@ -83,6 +84,9 @@ public class ModVolumePanel {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_MUTED)) {
                     mVolumeAdjustMuted = intent.getBooleanExtra(GravityBoxSettings.EXTRA_MUTED, false);
                 }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_VIBRATE_MUTED)) {
+                    mVolumeAdjustVibrateMuted = intent.getBooleanExtra(GravityBoxSettings.EXTRA_VIBRATE_MUTED, false);
+                }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_TIMEOUT)) {
                     mTimeout = intent.getIntExtra(GravityBoxSettings.EXTRA_TIMEOUT, 3000);
                 }
@@ -103,6 +107,7 @@ public class ModVolumePanel {
             final Class<?> classViewGroup = XposedHelpers.findClass(CLASS_VIEW_GROUP, classLoader);
 
             mVolumeAdjustMuted = prefs.getBoolean(GravityBoxSettings.PREF_KEY_VOLUME_ADJUST_MUTE, false);
+            mVolumeAdjustVibrateMuted = prefs.getBoolean(GravityBoxSettings.PREF_KEY_VOLUME_ADJUST_VIBRATE_MUTE, false);
 
             XposedBridge.hookAllConstructors(classVolumePanel, new XC_MethodHook() {
 
@@ -294,6 +299,15 @@ public class ModVolumePanel {
                     }
                 }
                 
+            });
+
+            XposedHelpers.findAndHookMethod(classVolumePanel, "onVibrate", new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                    if (mVolumeAdjustVibrateMuted) {
+                        param.setResult(null);
+                    }
+                }
             });
         } catch (Throwable t) {
             XposedBridge.log(t);

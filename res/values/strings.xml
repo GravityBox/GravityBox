@@ -77,52 +77,56 @@
     <string name="caller_fullscreen_photo_summary">Displays fullscreen caller photo on incoming call screen</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">Sync on</string>
-    <string name="quick_settings_sync_off">Sync off</string>
-    <string name="quick_settings_wifi_ap_on">Wi-Fi AP on</string>
-    <string name="quick_settings_wifi_ap_off">Wi-Fi AP off</string>
-    <string name="quick_settings_torch_on">Torch on</string>
-    <string name="quick_settings_torch_off">Torch off</string>
+    <string name="quick_settings_sync_on">Sync On</string>
+    <string name="quick_settings_sync_off">Sync Off</string>
+    <string name="quick_settings_wifi_ap_on">Wi-Fi AP On</string>
+    <string name="quick_settings_wifi_ap_off">Wi-Fi AP Off</string>
+    <string name="quick_settings_torch_on">Torch On</string>
+    <string name="quick_settings_torch_off">Torch Off</string>
     <string name="quick_settings_torch_off_notif">Touch to turn off</string>
     <string name="quick_settings_qr_playing">Playing&#8230;</string>
     <string name="quick_settings_qr_recording">Recording&#8230;</string>
     <string name="quick_settings_qr_recorded">Recorded</string>
-    <string name="quick_settings_qr_record">Long Press To Record</string>
+    <string name="quick_settings_qr_record">Long Press to Record</string>
     <string name="quick_settings_qr_recording_notif">Touch to stop recording</string>
     <string name="quick_settings_expanded_desktop_disabled">Disabled</string>
     <string name="quick_settings_expanded_desktop_normal">Normal</string>
     <string name="quick_settings_expanded_desktop_expanded">Expanded</string>
-    <string name="quick_settings_stay_awake_on">Stay awake on</string>
-    <string name="quick_settings_stay_awake_off">Stay awake off</string>
+    <string name="quick_settings_stay_awake_on">Stay Awake On</string>
+    <string name="quick_settings_stay_awake_off">Stay Awake Off</string>
     <string name="quick_settings_wifi">Wi-Fi</string>
-    <string name="quick_settings_wifi_off">Wi-Fi off</string>
+    <string name="quick_settings_wifi_off">Wi-Fi Off</string>
     <string name="quick_settings_wifi_not_connected">Not connected</string>
     <string name="quick_settings_wifi_turning_on">Turning on&#8230;</string>
-    <string name="quick_settings_nfc_on">NFC on</string>
-    <string name="quick_settings_nfc_off">NFC off</string>
+    <string name="quick_settings_nfc_on">NFC On</string>
+    <string name="quick_settings_nfc_off">NFC Off</string>
     <string name="quick_settings_camera_error_connect">Can\'t connect to camera</string>
     <string name="quick_settings_usb_tether_off">Disconnected</string>
-    <string name="quick_settings_usb_tether_connected">Tethering off</string>
+    <string name="quick_settings_usb_tether_connected">Tethering Off</string>
     <string name="quick_settings_usb_tether_on">Tethering</string>
+    <string name="quick_settings_smart_radio_on">Smart Radio On</string>
+    <string name="quick_settings_smart_radio_off">Smart Radio Off</string>
+    <string name="quick_settings_lock_screen_on">Lock Screen On</string>
+    <string name="quick_settings_lock_screen_off">Lock Screen Off</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Statusbar QuickSettings tiles</string>
     <string name="quick_settings_summary">Allows to show or hide QuickSettings tiles in statusbar</string>
-    <string name="qs_tile_user_profile">User profile</string>
-    <string name="qs_tile_airplane_mode">Airplane mode</string>
-    <string name="qs_tile_battery">Battery status</string>
+    <string name="qs_tile_user_profile">User Profile</string>
+    <string name="qs_tile_airplane_mode">Airplane Mode</string>
+    <string name="qs_tile_battery">Battery Status</string>
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_wifi_alt">Wi-Fi (CM style)</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">GPS</string>
     <string name="qs_tile_gps_alt">GPS (CM style)</string>
-    <string name="qs_tile_mobile_data">Mobile data</string>
-    <string name="qs_tile_network_mode">Network mode</string>
-    <string name="qs_tile_data_usage">Data usage</string>
-    <string name="qs_tile_audio">Audio profiles</string>
+    <string name="qs_tile_mobile_data">Mobile Data</string>
+    <string name="qs_tile_network_mode">Network Mode</string>
+    <string name="qs_tile_data_usage">Data Usage</string>
+    <string name="qs_tile_audio">Audio Profiles</string>
     <string name="qs_tile_brightness">Brightness</string>
-    <string name="qs_tile_screen_timeout">Screen timeout</string>
-    <string name="qs_tile_autorotation">Auto rotation</string>
+    <string name="qs_tile_screen_timeout">Screen Timeout</string>
+    <string name="qs_tile_autorotation">Auto Rotation</string>
     <string name="qs_tile_sync">Synchronization</string>
     <string name="qs_tile_wifi_ap">Wi-Fi Access Point</string>
     <string name="qs_tile_torch">Torch</string>
@@ -131,12 +135,15 @@
     <string name="qs_tile_quickrecord">Quick Record</string>
     <string name="qs_tile_settings">Settings</string>
     <string name="qs_tile_volume">Volume</string>
-    <string name="qs_tile_expanded_desktop">Expanded desktop</string>
-    <string name="qs_tile_stay_awake">Stay awake</string>
+    <string name="qs_tile_expanded_desktop">Expanded Desktop</string>
+    <string name="qs_tile_stay_awake">Stay Awake</string>
     <string name="qs_tile_screenshot">Screenshot</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Camera</string>
     <string name="qs_tile_usb_tethering">USB Tethering</string>
+    <string name="qs_tile_smart_radio">Smart Radio</string>
+    <string name="qs_tile_alarm">Alarm</string>
+    <string name="qs_tile_lock_screen">Lock screen</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -442,15 +449,15 @@
     <string name="pref_quickapp_slot4_title">Long-press app slot 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
-    <string name="qs_tile_gps_enabled">GPS on</string>
-    <string name="qs_tile_gps_disabled">GPS off</string>
-    <string name="qs_tile_gps_locked">GPS locked</string>
+    <string name="qs_tile_gps_enabled">GPS On</string>
+    <string name="qs_tile_gps_disabled">GPS Off</string>
+    <string name="qs_tile_gps_locked">GPS Locked</string>
 
     <!-- Pie control: always show menu button -->
     <string name="pie_control_menu_title">Always show menu button</string>
 
     <!-- Ringer mode tile (for non-MTK) -->
-    <string name="qs_tile_ringer_mode">Ringer mode</string>
+    <string name="qs_tile_ringer_mode">Ringer Mode</string>
 
     <!-- Clock settings category -->
     <string name="pref_cat_clock_settings_title">Clock settings</string>
@@ -502,9 +509,12 @@
     <string name="hwkey_action_custom_app_none">No custom app assigned!</string>
     <string name="hwkey_action_custom_app_missing">Custom app not found!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Notification panel clock app</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">Status bar clock</string>
+    <string name="pref_cat_notif_panel_clock_title">Notification panel clock</string>
+    <string name="pref_clock_link_title">Clock single-tap app</string>
     <string name="pref_clock_link_summary">Links notification panel clock to a specified app instead of Date&amp;Time settings</string>
+    <string name="pref_clock_longpress_link_title">Clock long-press app</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Waiting for response from GravityBox system framework&#8230;</string>
@@ -538,7 +548,7 @@
     <string name="pref_cat_navigation_bar_title">Navigation bar tweaks</string>
     <string name="pref_cat_navigation_bar_summary">Contains various navigation bar related tweaks</string>
     <string name="pref_navbar_override_title">Override system defaults</string>
-    <string name="pref_navbar_override_summary">Master switch for navigation bar tweaks (requires reboot)</string>
+    <string name="pref_navbar_override_summary">Toggles navigation bar tweaks (requires reboot)</string>
     <string name="pref_navbar_enable_title">Enable navigation bar</string>
     <string name="pref_navbar_enable_summary">Requires reboot</string>
     <string name="pref_navbar_height_title">Navigation bar height</string>
@@ -553,7 +563,7 @@
 
     <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Unlock ring targets</string>
-    <string name="pref_lockscreen_ring_targets_enable_summary">Master switch for unlock ring targets</string>
+    <string name="pref_lockscreen_ring_targets_enable_summary">Toggles unlock ring targets</string>
     <string name="pref_lockscreen_ring_targets_app_title">Ring target %s</string>
     <string name="pref_lockscreen_ring_vertical_offset_title">Unlock ring vertical offset</string>
     <string name="pref_lockscreen_ring_horizontal_offset_title">Unlock ring horizontal offset</string>
@@ -659,7 +669,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Data traffic monitor</string>
     <string name="pref_data_traffic_enable_title">Enable monitoring</string>
-    <string name="pref_data_traffic_enable_summary">Shows data traffic monitor automatically whenever data connection is active</string>
     <string name="pref_data_traffic_position_title">Position</string>
     <string name="dt_position_auto">Auto (center or right depending on clock position)</string>
     <string name="dt_position_left">Left</string>
@@ -828,7 +837,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">On volume down long-press</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Master switch for QuickSettings management (requires reboot)</string>
+    <string name="pref_qs_management_enable_summary">Toggles QuickSettings management (requires reboot)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Applications</string>
@@ -929,10 +938,6 @@
     <string name="hwkey_action_auto_rotation_enabled">Auto rotation enabled</string>
     <string name="hwkey_action_auto_rotation_disabled">Auto rotation disabled</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Allow any widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Allows those widgets on lockscreen that can normally be used within launcher only</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Show power menu</string>
     <string name="hwkey_action_expand_notifications">Expand notifications panel</string>
@@ -940,7 +945,7 @@
 
     <!-- Navigation bar ring targets -->
     <string name="pref_cat_navbar_ring_targets_title">Navigation ring targets</string>
-    <string name="pref_navbar_ring_targets_enable_summary">Master switch for navigation ring targets (requires reboot)</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Toggles navigation ring targets (requires reboot)</string>
     <string name="pref_navbar_ring_target_title">Ring target %d</string>
 
     <!-- Shortcut activity title -->
@@ -1245,6 +1250,12 @@
     <string name="animation_scale6">Animation scale 5x</string>
     <string name="animation_scale7">Animation scale 10x</string>
 
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Tile label style</string>
+    <string name="tile_label_style_normal">Normal</string>
+    <string name="tile_label_style_allcaps">All capitals</string>
+    <string name="tile_label_style_hidden">Hidden</string>
+
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">Show brightness dialog</string>
 
@@ -1256,5 +1267,92 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Quick pulldown size</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Stay awake tile mode</string>
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+    <string name="stay_awake_on">Stay awake on</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Enable double-tap to sleep</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Double-tap on unlock ring puts device to sleep</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Charger plugged sound</string>
+    <string name="pref_charger_plugged_sound_summary">Plays sound when charger is plugged/unplugged</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Toggle Smart Radio</string>
+
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">Master switch</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">Disable volume adjust vibrate</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">Disables vibrate when adjusting notification/ringtone volume using volume keys</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">Toggles status bar clock settings (requires reboot)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">Day of week size</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">AM/PM size</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">Navigation bar ring</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">Disable navigation ring</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Data traffic monitor style</string>
+    <string name="dt_mode_off">Disabled</string>
+    <string name="dt_mode_simple">Simple style</string>
+    <string name="dt_mode_omni">Omni style</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Monitoring  mode</string>
+    <string name="dt_omni_mode_in">Download</string>
+    <string name="dt_omni_mode_out">Upload</string>
+    <string name="dt_omni_mode_in_out">Download and upload</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Show icon</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculator</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Tile specific settings</string>
+    <string name="pref_cat_qs_tile_settings_summary">Contains tile specific settings</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Network mode tile settings</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Alarm tile settings</string>
+    <string name="pref_qs_alarm_singletap_app_title">Single-tap app</string>
+    <string name="alarm_singletap_app_default">Default app</string>
+    <string name="pref_qs_alarm_longpress_app_title">Long-press app</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Only while download active</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Shows traffic meter only while there are ongoing downloads via 
+        standard Android\'s Download Manager</string>
 
 </resources>

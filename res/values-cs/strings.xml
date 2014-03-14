@@ -88,6 +88,10 @@
     <string name="quick_settings_usb_tether_off">Odpojeno</string>
     <string name="quick_settings_usb_tether_connected">Sdílení vyp</string>
     <string name="quick_settings_usb_tether_on">Sdílení zap</string>
+    <string name="quick_settings_smart_radio_on">Smart Radio zap</string>
+    <string name="quick_settings_smart_radio_off">Smart Radio vyp</string>
+    <string name="quick_settings_lock_screen_on">Obrazovka uzamčení zap</string>
+    <string name="quick_settings_lock_screen_off">Obrazovka uzamčení vyp</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Dlaždice QuickSettings panelu</string>
@@ -120,6 +124,9 @@
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Fotoaparát</string>
     <string name="qs_tile_usb_tethering">USB přístupový bod</string>
+    <string name="qs_tile_smart_radio">Smart Radio</string>
+    <string name="qs_tile_alarm">Budík</string>
+    <string name="qs_tile_lock_screen">Obrazovka uzamčení</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Výběr barvy</string>
@@ -477,8 +484,11 @@
     <string name="hwkey_action_custom_app_missing">Aplikace nebyla nalezena!</string>
 
     <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Aplikace hodin notifikačního panelu</string>
+    <string name="pref_cat_statusbar_clock_title">Hodiny stavové lišty</string>
+    <string name="pref_cat_notif_panel_clock_title">Hodiny panelu oznámení</string>
+    <string name="pref_clock_link_title">Aplikace na ťuknutí</string>
     <string name="pref_clock_link_summary">Naváže hodiny notifikačního panelu na zvolenou aplikaci namísto nastavení data a času</string>
+    <string name="pref_clock_longpress_link_title">Aplikace na dlouhé podržení</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Čekám na odpověď ze systémového modulu GravityBox&#8230;</string>
@@ -631,7 +641,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor datového toku</string>
     <string name="pref_data_traffic_enable_title">Zapnout sledování</string>
-    <string name="pref_data_traffic_enable_summary">Zobrazí monitor datového toku automaticky, pokud je aktivní datové spojení</string>
     <string name="pref_data_traffic_position_title">Pozice</string>
     <string name="dt_position_auto">Auto (uprostřed nebo vpravo, na základě aktuální pozice hodin)</string>
     <string name="dt_position_left">Vlevo</string>
@@ -891,10 +900,6 @@
     <string name="hwkey_action_auto_rotation">Přepnout auto rotaci</string>
     <string name="hwkey_action_auto_rotation_enabled">Auto rotace zapnuta</string>
     <string name="hwkey_action_auto_rotation_disabled">Auto rotace vypnuta</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Povolit všechny widgety</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Povolí i ty widgety na obrazovce uzamčení, které mohou být použity pouze vrámci spouštěče</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Zobrazit nabídku napájení</string>
@@ -1201,6 +1206,12 @@
     <string name="animation_scale6">Měřítko animace 5x</string>
     <string name="animation_scale7">Měřítko animace 10x</string>
 
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Styl textu dlaždice</string>
+    <string name="tile_label_style_normal">Normální</string>
+    <string name="tile_label_style_allcaps">Velká písmena</string>
+    <string name="tile_label_style_hidden">Skrýt</string>
+
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">Otevřít nastavení jasu</string>
 
@@ -1212,5 +1223,92 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Šířka aktivního okraje</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Nastavení dlaždice Bdít</string>
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+    <string name="stay_awake_on">Bdít</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Uspat dvojitým klepnutím</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Poklepání na odemykací prstenec uspí zařízení</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Zvuk připojení napájení</string>
+    <string name="pref_charger_plugged_sound_summary">Přehraje zvuk při připojení/odpojení napájení</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Přepnout Smart Radio</string>
+
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">Hlavní přepínač</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">Vypnout vibrace nastavení hlasitosti</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">Vypne vibrace při změně režimu hlasitosti vyzvánění/oznámení tlačítky ovládání hlasitosti</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">Hlavní přepínač pro nastavení hodin (vyžaduje restart)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">Velikost dne v týdnu</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">Velikost AM/PM</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">Prstenec navigační lišty</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">Vypnout prstenec</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Styl monitoru datového toku</string>
+    <string name="dt_mode_off">Vypnuto</string>
+    <string name="dt_mode_simple">Jenoduchý styl</string>
+    <string name="dt_mode_omni">Omni styl</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Režim monitorování</string>
+    <string name="dt_omni_mode_in">Download</string>
+    <string name="dt_omni_mode_out">Upload</string>
+    <string name="dt_omni_mode_in_out">Download a upload</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Zobrazit ikonu</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Kalkulačka</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Nastavení dlaždic</string>
+    <string name="pref_cat_qs_tile_settings_summary">Obsahuje nastavení specifické pro jednotlivé dlaždice</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Nastavení dlaždice Typ sítě</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Nastavení dlaždice Budík</string>
+    <string name="pref_qs_alarm_singletap_app_title">Aplikace na ťuknutí</string>
+    <string name="alarm_singletap_app_default">Výchozí</string>
+    <string name="pref_qs_alarm_longpress_app_title">Aplikace na dlouhé podržení</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Pouze pro Download Manager</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Zobrazí monitor průtoku dat jen v případě aktivních 
+         downloadů přes standardní Android Download Manager</string>
 
 </resources>

@@ -112,6 +112,7 @@
         <item>@string/qs_tile_gps_alt</item>
         <item>@string/qs_tile_mobile_data</item>
         <item>@string/qs_tile_network_mode</item>
+        <item>@string/qs_tile_smart_radio</item>
         <item>@string/qs_tile_data_usage</item>
         <item>@string/qs_tile_audio</item>
         <item>@string/qs_tile_ringer_mode</item>
@@ -132,6 +133,8 @@
         <item>@string/qs_tile_gravitybox</item>
         <item>@string/qs_tile_camera</item>
         <item>@string/qs_tile_usb_tethering</item>
+        <item>@string/qs_tile_alarm</item>
+        <item>@string/qs_tile_lock_screen</item>
     </string-array>
 
     <string-array name="qs_tile_values" translatable="false">
@@ -146,6 +149,7 @@
         <item>gps_tileview</item>
         <item>data_conn_textview</item>
         <item>network_mode_tileview</item>
+        <item>smart_radio_tileview</item>
         <item>rssi_textview</item>
         <item>audio_profile_textview</item>
         <item>ringer_mode_tileview</item>
@@ -166,6 +170,8 @@
         <item>gravitybox_tileview</item>
         <item>camera_tileview</item>
         <item>usb_tether_tileview</item>
+        <item>alarm_textview</item>
+        <item>lock_screen_tileview</item>
     </string-array>
 
     <string-array name="qs_tile_aosp_entries" translatable="false">
@@ -183,6 +189,7 @@
         <item>@string/qs_tile_ringer_mode</item>
         <item>@string/qs_tile_volume</item>
         <item>@string/qs_tile_network_mode</item>
+        <item>@string/qs_tile_smart_radio</item>
         <item>@string/qs_tile_sync</item>
         <item>@string/qs_tile_wifi_ap</item>
         <item>@string/qs_tile_torch</item>
@@ -196,6 +203,8 @@
         <item>@string/qs_tile_gravitybox</item>
         <item>@string/qs_tile_camera</item>
         <item>@string/qs_tile_usb_tethering</item>
+        <item>@string/qs_tile_alarm</item>
+        <item>@string/qs_tile_lock_screen</item>
     </string-array>
 
     <string-array name="qs_tile_aosp_values" translatable="false">
@@ -213,6 +222,7 @@
         <item>ringer_mode_tileview</item>
         <item>volume_tileview</item>
         <item>network_mode_tileview</item>
+        <item>smart_radio_tileview</item>
         <item>sync_tileview</item>
         <item>wifi_ap_tileview</item>
         <item>torch_tileview</item>
@@ -226,6 +236,8 @@
         <item>gravitybox_tileview</item>
         <item>camera_tileview</item>
         <item>usb_tether_tileview</item>
+        <item>alarm_textview</item>
+        <item>lock_screen_tileview</item>
     </string-array>
 
     <string-array name="qs_tile_override_entries" translatable="false">
@@ -235,6 +247,8 @@
         <item>@string/qs_tile_airplane_mode</item>
         <item>@string/qs_tile_gps</item>
         <item>@string/qs_tile_autorotation</item>
+        <item>@string/qs_tile_settings</item>
+        <item>@string/qs_tile_brightness</item>
     </string-array>
 
     <string-array name="qs_tile_override_values" translatable="false">
@@ -244,6 +258,8 @@
         <item>airplane_mode_textview</item>
         <item>gps_textview</item>
         <item>auto_rotate_textview</item>
+        <item>settings</item>
+        <item>brightness_textview</item>
     </string-array>
 
     <string-array name="lockscreen_bg_entries" translatable="false">
@@ -906,6 +922,18 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="tile_label_style_entries" translatable="false">
+        <item>@string/tile_label_style_normal</item>
+        <item>@string/tile_label_style_allcaps</item>
+        <item>@string/tile_label_style_hidden</item>
+    </string-array>
+
+    <string-array name="tile_label_style_values" translatable="false">
+        <item>NORMAL</item>
+        <item>ALLCAPS</item>
+        <item>HIDDEN</item>
+    </string-array>
+
     <string-array name="navring_haptic_feedback_entries" translatable="false">
         <item>@string/navring_haptic_feedback_default</item>
         <item>@string/navring_haptic_feedback_enabled</item>
@@ -916,6 +944,52 @@
         <item>DEFAULT</item>
         <item>ENABLED</item>
         <item>DISABLED</item>
+    </string-array>
+
+    <string-array name="data_traffic_mode_entries" translatable="false">
+        <item>@string/dt_mode_off</item>
+        <item>@string/dt_mode_simple</item>
+        <item>@string/dt_mode_omni</item>
+    </string-array>
+
+    <string-array name="data_traffic_mode_values" translatable="false">
+        <item>OFF</item>
+        <item>SIMPLE</item>
+        <item>OMNI</item>
+    </string-array>
+
+    <string-array name="data_traffic_omni_mode_entries" translatable="false">
+        <item>@string/dt_omni_mode_in</item>
+        <item>@string/dt_omni_mode_out</item>
+        <item>@string/dt_omni_mode_in_out</item>
+    </string-array>
+
+    <string-array name="data_traffic_omni_mode_values" translatable="false">
+        <item>IN</item>
+        <item>OUT</item>
+        <item>IN_OUT</item>
+    </string-array>
+
+    <string-array name="stay_awake_entries" translatable="false">
+        <item>@string/stay_awake_15s</item>
+        <item>@string/stay_awake_30s</item>
+        <item>@string/stay_awake_1m</item>
+        <item>@string/stay_awake_2m</item>
+        <item>@string/stay_awake_5m</item>
+        <item>@string/stay_awake_10m</item>
+        <item>@string/stay_awake_30m</item>
+        <item>@string/stay_awake_on</item>
+    </string-array>
+
+    <string-array name="stay_awake_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 
 </resources>

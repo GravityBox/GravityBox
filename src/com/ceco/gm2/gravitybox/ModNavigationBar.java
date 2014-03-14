@@ -77,6 +77,7 @@ public class ModNavigationBar {
     private static boolean mDpadKeysVisible;
     private static boolean mAlwaysOnBottom;
     private static boolean mNavbarVertical;
+    private static boolean mNavbarRingDisabled;
 
     // Custom key
     private static boolean mCustomKeyEnabled;
@@ -169,6 +170,10 @@ public class ModNavigationBar {
                     mCustomKeySwapEnabled = intent.getBooleanExtra(
                             GravityBoxSettings.EXTRA_NAVBAR_CUSTOM_KEY_SWAP, false);
                     setCustomKeyVisibility();
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_RING_DISABLE)) {
+                    mNavbarRingDisabled = intent.getBooleanExtra(
+                            GravityBoxSettings.EXTRA_NAVBAR_RING_DISABLE, false);
                 }
             } else if (intent.getAction().equals(
                     GravityBoxSettings.ACTION_PREF_HWKEY_RECENTS_SINGLETAP_CHANGED)) {
@@ -278,6 +283,8 @@ public class ModNavigationBar {
                     GravityBoxSettings.PREF_KEY_NAVBAR_ALWAYS_ON_BOTTOM, false);
             mCustomKeySwapEnabled = prefs.getBoolean(
                     GravityBoxSettings.PREF_KEY_NAVBAR_CUSTOM_KEY_SWAP, false);
+            mNavbarRingDisabled = prefs.getBoolean(
+                    GravityBoxSettings.PREF_KEY_NAVBAR_RING_DISABLE, false);
 
             XposedBridge.hookAllConstructors(navbarViewClass, new XC_MethodHook() {
                 @Override
@@ -438,7 +445,7 @@ public class ModNavigationBar {
                     "shouldDisableNavbarGestures", new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                    if (mHomeLongpressAction != 0) {
+                    if (mNavbarRingDisabled || mHomeLongpressAction != 0) {
                         param.setResult(true);
                         return;
                     }

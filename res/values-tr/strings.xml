@@ -641,7 +641,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Veri kullanımı izleme</string>
     <string name="pref_data_traffic_enable_title">Veri kullanımı izlemeyi etkinleştir</string>
-    <string name="pref_data_traffic_enable_summary">Veri etkinleştirildiğinde otomatik olarak veri kullanımını gösterir</string>
     <string name="pref_data_traffic_position_title">Konum</string>
     <string name="dt_position_auto">Otomatik (saatin konumuna göre ortaya ve sağa)</string>
     <string name="dt_position_left">Sol</string>

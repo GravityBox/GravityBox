@@ -22,7 +22,7 @@
     <string name="url_web_service" translatable="false">http://gravitybox.ceco.sk.eu.org/service.php</string>
 
     <!-- Limits for screen brightness settings -->
-    <integer name="screen_brightness_min">5</integer>
-    <integer name="screen_brightness_dim_min">5</integer>
+    <integer name="screen_brightness_min">1</integer>
+    <integer name="screen_brightness_dim_min">1</integer>
 
 </resources>

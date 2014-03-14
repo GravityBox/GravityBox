@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class StatusbarSignalClusterMt6572 extends StatusbarSignalClusterMtk {
+public class StatusbarSignalClusterMt65x2 extends StatusbarSignalClusterMtk {
 
-    public StatusbarSignalClusterMt6572(LinearLayout view, StatusBarIconManager iconManager) {
+    public StatusbarSignalClusterMt65x2(LinearLayout view, StatusBarIconManager iconManager) {
         super(view, iconManager);
     }
 

@@ -91,7 +91,7 @@
 
                 <SwitchPreference 
                     android:key="pref_lockscreen_ring_targets_enable"
-                    android:title=""
+                    android:title="@string/pref_masterswitch_title"
                     android:summary="@string/pref_lockscreen_ring_targets_enable_summary"
                     android:defaultValue="false" />
 
@@ -120,6 +120,16 @@
                     android:title="@string/pref_lockscreen_ring_targets_app_title"
                     android:summary="@string/app_picker_none" />
 
+                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                    android:key="pref_lockscreen_ring_targets_app5"
+                    android:title="@string/pref_lockscreen_ring_targets_app_title"
+                    android:summary="@string/app_picker_none" />
+
+                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                    android:key="pref_lockscreen_ring_targets_app6"
+                    android:title="@string/pref_lockscreen_ring_targets_app_title"
+                    android:summary="@string/app_picker_none" />
+
             </PreferenceScreen>
 
             <CheckBoxPreference
@@ -138,6 +148,12 @@
                 android:key="pref_lockscreen_slide_before_unlock"
                 android:title="@string/pref_lockscreen_slide_before_unlock_title"
                 android:summary="@string/pref_lockscreen_slide_before_unlock_summary"
+                android:defaultValue="false" />
+
+            <CheckBoxPreference 
+                android:key="pref_lockscreen_ring_dt2s"
+                android:title="@string/pref_lockscreen_ring_dt2s_title"
+                android:summary="@string/pref_lockscreen_ring_dt2s_summary"
                 android:defaultValue="false" />
 
             <com.ceco.gm2.gravitybox.preference.SeekBarPreference
@@ -176,12 +192,6 @@
                 android:key="pref_lockscreen_widget_limit_disable"
                 android:title="@string/pref_lockscreen_widget_limit_disable_title"
                 android:summary="@string/pref_lockscreen_widget_limit_disable_summary"
-                android:defaultValue="false" />
-
-            <CheckBoxPreference 
-                android:key="pref_lockscreen_allow_any_widget"
-                android:title="@string/pref_lockscreen_allow_any_widget_title"
-                android:summary="@string/pref_lockscreen_allow_any_widget_summary"
                 android:defaultValue="false" />
 
         </PreferenceCategory>
@@ -252,7 +262,7 @@
 
             <SwitchPreference
                 android:key="pref_qs_management_enable"
-                android:title=""
+                android:title="@string/pref_masterswitch_title"
                 android:summary="@string/pref_qs_management_enable_summary"
                 android:defaultValue="true" />
 
@@ -262,6 +272,146 @@
                 android:summary="@string/quick_settings_summary"
                 android:defaultValue="@array/empty_array"
                 android:dependency="pref_qs_management_enable" />
+
+            <PreferenceScreen 
+                android:key="pref_cat_qs_tile_settings"
+                android:title="@string/pref_cat_qs_tile_settings_title"
+                android:summary="@string/pref_cat_qs_tile_settings_summary"
+                android:dependency="pref_qs_management_enable">
+
+                <MultiSelectListPreference 
+                    android:key="pref_qs_tile_behaviour_override"
+                    android:title="@string/pref_qs_tile_behaviour_override_title"
+                    android:summary="@string/pref_qs_tile_behaviour_override_summary"
+                    android:entries="@array/qs_tile_override_entries"
+                    android:entryValues="@array/qs_tile_override_values"
+                    android:defaultValue="@array/empty_array" />
+
+                <PreferenceScreen
+                    android:key="pref_cat_qs_alarm_tile_settings"
+                    android:title="@string/pref_cat_qs_alarm_tile_settings_title">
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_qs_alarm_singletap_app"
+                        android:title="@string/pref_qs_alarm_singletap_app_title"
+                        android:summary="@string/alarm_singletap_app_default"
+                        iconPickerEnabled="false" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_qs_alarm_longpress_app"
+                        android:title="@string/pref_qs_alarm_longpress_app_title"
+                        android:summary="@string/app_picker_none"
+                        iconPickerEnabled="false" />
+
+                </PreferenceScreen>
+
+                <PreferenceScreen
+                    android:key="pref_cat_quick_app_tile"
+                    android:title="@string/pref_cat_quickapp_tile_title">
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_default"
+                        android:title="@string/pref_quickapp_default_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot1"
+                        android:title="@string/pref_quickapp_slot1_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot2"
+                        android:title="@string/pref_quickapp_slot2_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot3"
+                        android:title="@string/pref_quickapp_slot3_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot4"
+                        android:title="@string/pref_quickapp_slot4_title"
+                        android:summary="@string/app_picker_none" />
+
+                </PreferenceScreen>
+
+                <PreferenceScreen
+                    android:key="pref_cat_quick_app_tile_2"
+                    android:title="@string/pref_cat_quickapp_tile_2_title">
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_default_2"
+                        android:title="@string/pref_quickapp_default_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot1_2"
+                        android:title="@string/pref_quickapp_slot1_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot2_2"
+                        android:title="@string/pref_quickapp_slot2_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot3_2"
+                        android:title="@string/pref_quickapp_slot3_title"
+                        android:summary="@string/app_picker_none" />
+
+                    <com.ceco.gm2.gravitybox.preference.AppPickerPreference
+                        android:key="pref_quickapp_slot4_2"
+                        android:title="@string/pref_quickapp_slot4_title"
+                        android:summary="@string/app_picker_none" />
+
+                </PreferenceScreen>
+
+                <PreferenceScreen 
+                    android:key="pref_cat_qs_nm_tile_settings"
+                    android:title="@string/pref_cat_qs_nm_tile_settings_title">
+
+                    <ListPreference
+                        android:key="pref_network_mode_tile_mode" 
+                        android:title="@string/pref_network_mode_tile_mode_title"
+                        android:entries="@array/network_mode_tile_mode_entries"
+                        android:entryValues="@array/network_mode_tile_mode_values"
+                        android:defaultValue="0" />
+
+                    <ListPreference
+                        android:key="pref_qs_network_mode_sim_slot" 
+                        android:title="@string/pref_qs_network_mode_sim_slot_title"
+                        android:entries="@array/network_mode_sim_slot_entries"
+                        android:entryValues="@array/network_mode_sim_slot_values"
+                        android:defaultValue="0" />
+
+                    <CheckBoxPreference 
+                        android:key="pref_network_mode_tile_lte"
+                        android:title="@string/pref_network_mode_tile_lte_title"
+                        android:defaultValue="false" />
+
+                    <CheckBoxPreference 
+                        android:key="pref_network_mode_tile_cdma"
+                        android:title="@string/pref_network_mode_tile_cdma_title"
+                        android:defaultValue="false" />
+
+                </PreferenceScreen>
+
+                <MultiSelectListPreference 
+                    android:key="pref_qs_ringer_mode"
+                    android:title="@string/pref_qs_ringer_mode_title"
+                    android:entries="@array/ringer_mode_entries"
+                    android:entryValues="@array/ringer_mode_values"
+                    android:defaultValue="@array/ringer_mode_values" />
+
+                <MultiSelectListPreference 
+                    android:key="pref_qs_stay_awake"
+                    android:title="@string/pref_qs_stay_awake_title"
+                    android:entries="@array/stay_awake_entries"
+                    android:entryValues="@array/stay_awake_values"
+                    android:defaultValue="@array/stay_awake_values" />
+
+            </PreferenceScreen>
 
             <Preference
                 android:key="pref_qs_tile_order"
@@ -288,6 +438,14 @@
                 android:defaultValue="0"
                 android:dependency="pref_qs_management_enable" />
 
+            <ListPreference
+                android:key="pref_qs_tile_label_style" 
+                android:title="@string/pref_qs_tile_label_style_title" 
+                android:entries="@array/tile_label_style_entries"
+                android:entryValues="@array/tile_label_style_values"
+                android:defaultValue="ALLCAPS"
+                android:dependency="pref_qs_management_enable" />
+
             <CheckBoxPreference 
                 android:key="pref_qs_hide_on_change"
                 android:title="@string/pref_qs_hide_on_change_title"
@@ -295,119 +453,11 @@
                 android:defaultValue="false"
                 android:dependency="pref_qs_management_enable" />
 
-            <MultiSelectListPreference 
-                android:key="pref_qs_tile_behaviour_override"
-                android:title="@string/pref_qs_tile_behaviour_override_title"
-                android:summary="@string/pref_qs_tile_behaviour_override_summary"
-                android:entries="@array/qs_tile_override_entries"
-                android:entryValues="@array/qs_tile_override_values"
-                android:defaultValue="@array/empty_array"
-                android:dependency="pref_qs_management_enable" />
-
-            <PreferenceScreen
-                android:key="pref_cat_quick_app_tile"
-                android:title="@string/pref_cat_quickapp_tile_title"
-                android:dependency="pref_qs_management_enable">
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_default"
-                    android:title="@string/pref_quickapp_default_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot1"
-                    android:title="@string/pref_quickapp_slot1_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot2"
-                    android:title="@string/pref_quickapp_slot2_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot3"
-                    android:title="@string/pref_quickapp_slot3_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot4"
-                    android:title="@string/pref_quickapp_slot4_title"
-                    android:summary="@string/app_picker_none" />
-
-            </PreferenceScreen>
-
-            <PreferenceScreen
-                android:key="pref_cat_quick_app_tile_2"
-                android:title="@string/pref_cat_quickapp_tile_2_title"
-                android:dependency="pref_qs_management_enable">
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_default_2"
-                    android:title="@string/pref_quickapp_default_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot1_2"
-                    android:title="@string/pref_quickapp_slot1_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot2_2"
-                    android:title="@string/pref_quickapp_slot2_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot3_2"
-                    android:title="@string/pref_quickapp_slot3_title"
-                    android:summary="@string/app_picker_none" />
-
-                <com.ceco.gm2.gravitybox.preference.AppPickerPreference
-                    android:key="pref_quickapp_slot4_2"
-                    android:title="@string/pref_quickapp_slot4_title"
-                    android:summary="@string/app_picker_none" />
-
-            </PreferenceScreen>
-
-            <ListPreference
-                android:key="pref_network_mode_tile_mode" 
-                android:title="@string/pref_network_mode_tile_mode_title"
-                android:entries="@array/network_mode_tile_mode_entries"
-                android:entryValues="@array/network_mode_tile_mode_values"
-                android:defaultValue="0"
-                android:dependency="pref_qs_management_enable" />
-
-            <CheckBoxPreference 
-                android:key="pref_network_mode_tile_lte"
-                android:title="@string/pref_network_mode_tile_lte_title"
-                android:defaultValue="false"
-                android:dependency="pref_qs_management_enable" />
-
-            <CheckBoxPreference 
-                android:key="pref_network_mode_tile_cdma"
-                android:title="@string/pref_network_mode_tile_cdma_title"
-                android:defaultValue="false"
-                android:dependency="pref_qs_management_enable" />
-
-            <MultiSelectListPreference 
-                android:key="pref_qs_ringer_mode"
-                android:title="@string/pref_qs_ringer_mode_title"
-                android:entries="@array/ringer_mode_entries"
-                android:entryValues="@array/ringer_mode_values"
-                android:defaultValue="@array/ringer_mode_values" />
-
             <CheckBoxPreference 
                 android:key="pref_qs_tile_span_disable"
                 android:title="@string/pref_qs_tile_span_disable_title"
                 android:summary="@string/pref_qs_tile_span_disable_summary"
                 android:defaultValue="false"
-                android:dependency="pref_qs_management_enable" />
-
-            <ListPreference
-                android:key="pref_qs_network_mode_sim_slot" 
-                android:title="@string/pref_qs_network_mode_sim_slot_title"
-                android:entries="@array/network_mode_sim_slot_entries"
-                android:entryValues="@array/network_mode_sim_slot_values"
-                android:defaultValue="0"
                 android:dependency="pref_qs_management_enable" />
 
             <ListPreference 
@@ -616,37 +666,88 @@
             android:key="pref_cat_clock_settings"
             android:title="@string/pref_cat_clock_settings_title">
 
-            <CheckBoxPreference 
-                android:key="pref_statusbar_center_clock"
-                android:title="@string/pref_statusbar_center_clock_title"
-                android:defaultValue="false" />
+            <PreferenceCategory 
+                android:key="pref_cat_statusbar_clock"
+                android:title="@string/pref_cat_statusbar_clock_title">
 
-            <ListPreference 
-                android:key="pref_statusbar_clock_dow2"
-                android:title="@string/pref_statusbar_clock_dow_title"
-                android:entries="@array/clock_dow_entries"
-                android:entryValues="@array/clock_dow_values"
-                android:defaultValue="0" />
+                <SwitchPreference 
+                    android:key="pref_sb_clock_masterswitch"
+                    android:title="@string/pref_masterswitch_title"
+                    android:summary="@string/pref_sb_clock_masterswitch_summary"
+                    android:defaultValue="true" />
 
-            <CheckBoxPreference 
-                android:key="pref_clock_ampm_hide"
-                android:title="@string/pref_clock_ampm_hide_title"
-                android:defaultValue="false" />
+                <CheckBoxPreference 
+                    android:key="pref_statusbar_center_clock"
+                    android:title="@string/pref_statusbar_center_clock_title"
+                    android:defaultValue="false"
+                    android:dependency="pref_sb_clock_masterswitch" />
 
-            <CheckBoxPreference 
-                android:key="pref_clock_hide"
-                android:title="@string/pref_clock_hide_title"
-                android:defaultValue="false" />
+                <ListPreference 
+                    android:key="pref_statusbar_clock_dow2"
+                    android:title="@string/pref_statusbar_clock_dow_title"
+                    android:entries="@array/clock_dow_entries"
+                    android:entryValues="@array/clock_dow_values"
+                    android:defaultValue="0"
+                    android:dependency="pref_sb_clock_masterswitch" />
 
-            <com.ceco.gm2.gravitybox.preference.AppPickerPreference 
-                android:key="pref_clock_link_app"
-                android:title="@string/pref_clock_link_title"
-                android:summary="@string/pref_clock_link_summary" />
+                <com.ceco.gm2.gravitybox.preference.SeekBarPreference
+                    android:key="pref_sb_clock_dow_size"
+                    android:title="@string/pref_sb_clock_dow_size_title"
+                    minimum="40"
+                    maximum="100"
+                    interval="1"
+                    monitorBoxEnabled="true"
+                    monitorBoxUnit="%"
+                    android:defaultValue="70"
+                    android:dependency="pref_sb_clock_masterswitch" />
 
-            <CheckBoxPreference 
-                android:key="pref_alarm_icon_hide"
-                android:title="@string/pref_alarm_icon_hide_title"
-                android:defaultValue="false" />
+                <CheckBoxPreference 
+                    android:key="pref_clock_ampm_hide"
+                    android:title="@string/pref_clock_ampm_hide_title"
+                    android:defaultValue="false"
+                    android:dependency="pref_sb_clock_masterswitch" />
+
+                <com.ceco.gm2.gravitybox.preference.SeekBarPreference
+                    android:key="pref_sb_clock_ampm_size"
+                    android:title="@string/pref_sb_clock_ampm_size_title"
+                    minimum="40"
+                    maximum="100"
+                    interval="1"
+                    monitorBoxEnabled="true"
+                    monitorBoxUnit="%"
+                    android:defaultValue="70"
+                    android:dependency="pref_sb_clock_masterswitch" />
+
+                <CheckBoxPreference 
+                    android:key="pref_clock_hide"
+                    android:title="@string/pref_clock_hide_title"
+                    android:defaultValue="false"
+                    android:dependency="pref_sb_clock_masterswitch" />
+
+                <CheckBoxPreference 
+                    android:key="pref_alarm_icon_hide"
+                    android:title="@string/pref_alarm_icon_hide_title"
+                    android:defaultValue="false" />
+
+            </PreferenceCategory>
+
+            <PreferenceCategory 
+                android:key="pref_cat_notif_panel_clock"
+                android:title="@string/pref_cat_notif_panel_clock_title">
+
+                <com.ceco.gm2.gravitybox.preference.AppPickerPreference 
+                    android:key="pref_clock_link_app"
+                    android:title="@string/pref_clock_link_title"
+                    android:summary="@string/pref_clock_link_summary"
+                    iconPickerEnabled="false" />
+
+                <com.ceco.gm2.gravitybox.preference.AppPickerPreference 
+                    android:key="pref_clock_longpress_link"
+                    android:title="@string/pref_clock_longpress_link_title"
+                    android:summary="@string/app_picker_none"
+                    iconPickerEnabled="false" />
+
+            </PreferenceCategory>
 
         </PreferenceScreen>
 
@@ -654,10 +755,17 @@
             android:key="pref_cat_data_traffic"
             android:title="@string/pref_cat_data_traffic_title">
 
-            <SwitchPreference 
-                android:key="pref_data_traffic_enable"
-                android:title=""
-                android:summary="@string/pref_data_traffic_enable_summary"
+            <ListPreference 
+                android:key="pref_data_traffic_mode"
+                android:title="@string/pref_data_traffic_mode_title"
+                android:entries="@array/data_traffic_mode_entries"
+                android:entryValues="@array/data_traffic_mode_values"
+                android:defaultValue="OFF" />
+
+            <CheckBoxPreference 
+                android:key="pref_data_traffic_active_dl_only"
+                android:title="@string/pref_data_traffic_active_dl_only_title"
+                android:summary="@string/pref_data_traffic_active_dl_only_summary"
                 android:defaultValue="false" />
 
             <ListPreference
@@ -665,24 +773,33 @@
                 android:title="@string/pref_data_traffic_position_title" 
                 android:entries="@array/data_traffic_position_entries"
                 android:entryValues="@array/data_traffic_position_values"
-                android:defaultValue="0"
-                android:dependency="pref_data_traffic_enable" />
+                android:defaultValue="0" />
 
             <ListPreference
                 android:key="pref_data_traffic_size"
                 android:title="@string/pref_data_traffic_size_title" 
                 android:entries="@array/data_traffic_size_entries"
                 android:entryValues="@array/data_traffic_size_values"
-                android:defaultValue="14"
-                android:dependency="pref_data_traffic_enable" />
+                android:defaultValue="14" />
 
             <ListPreference
                 android:key="pref_data_traffic_inactivity_mode"
                 android:title="@string/pref_data_traffic_inactivity_mode_title" 
                 android:entries="@array/data_traffic_inactivity_mode_entries"
                 android:entryValues="@array/data_traffic_inactivity_mode_values"
-                android:defaultValue="0"
-                android:dependency="pref_data_traffic_enable" />
+                android:defaultValue="0" />
+
+            <ListPreference 
+                android:key="pref_data_traffic_omni_mode"
+                android:title="@string/pref_data_traffic_omni_mode_title"
+                android:entries="@array/data_traffic_omni_mode_entries"
+                android:entryValues="@array/data_traffic_omni_mode_values"
+                android:defaultValue="IN_OUT" />
+
+            <CheckBoxPreference 
+                android:key="pref_data_traffic_omni_show_icon"
+                android:title="@string/pref_data_traffic_omni_show_icon_title"
+                android:defaultValue="true" />
 
         </PreferenceScreen>
 
@@ -735,7 +852,7 @@
 
             <SwitchPreference 
                 android:key="pref_navbar_override"
-                android:title=""
+                android:title="@string/pref_masterswitch_title"
                 android:summary="@string/pref_navbar_override_summary"
                 android:defaultValue="false" />
 
@@ -808,13 +925,26 @@
 
             </PreferenceScreen>
 
+        </PreferenceCategory>
+
+        <PreferenceCategory 
+            android:key="pref_cat_navbar_ring"
+            android:title="@string/pref_cat_navbar_ring_title">
+
+            <CheckBoxPreference 
+                android:key="pref_navbar_ring_disable"
+                android:title="@string/pref_navbar_ring_disable_title"
+                android:defaultValue="false"
+                android:disableDependentsState="true" />
+
             <PreferenceScreen 
                 android:key="pref_cat_navbar_ring_targets"
-                android:title="@string/pref_cat_navbar_ring_targets_title">
+                android:title="@string/pref_cat_navbar_ring_targets_title"
+                android:dependency="pref_navbar_ring_disable" >
 
                 <SwitchPreference 
                     android:key="pref_navbar_ring_targets_enable"
-                    android:title=""
+                    android:title="@string/pref_masterswitch_title"
                     android:summary="@string/pref_navbar_ring_targets_enable_summary"
                     android:defaultValue="false" />
 
@@ -1168,6 +1298,12 @@
                 android:defaultValue="false" />
 
             <CheckBoxPreference 
+                android:key="pref_charger_plugged_sound"
+                android:title="@string/pref_charger_plugged_sound_title"
+                android:summary="@string/pref_charger_plugged_sound_summary"
+                android:defaultValue="false" />
+
+            <CheckBoxPreference 
                 android:key="pref_flashing_led_disable"
                 android:title="@string/pref_flashing_led_disable_title"
                 android:summary="@string/pref_flashing_led_disable_summary"
@@ -1360,7 +1496,7 @@
 
                 <SwitchPreference
                     android:key="pref_smart_radio_enable"
-                    android:title=""
+                    android:title="@string/pref_masterswitch_title"
                     android:summary="@string/pref_smart_radio_enable_summary"
                     android:defaultValue="false" />
 
@@ -1414,7 +1550,7 @@
                     android:title="@string/pref_smart_radio_ignore_locked_title"
                     android:summary="@string/pref_smart_radio_ignore_locked_summary"
                     android:defaultValue="true"
-                    android:dependency="pref_smart_radio_enable" />
+                    android:dependency="pref_smart_radio_screen_off" />
 
             </PreferenceScreen>
 
@@ -1498,6 +1634,12 @@
             android:key="pref_volume_adjust_mute"
             android:title="@string/pref_volume_adjust_mute_title"
             android:summary="@string/pref_volume_adjust_mute_summary"
+            android:defaultValue="false" />
+
+         <CheckBoxPreference 
+            android:key="pref_volume_adjust_vibrate_mute"
+            android:title="@string/pref_volume_adjust_vibrate_mute_title"
+            android:summary="@string/pref_volume_adjust_vibrate_mute_summary"
             android:defaultValue="false" />
 
         <ListPreference
@@ -1671,12 +1813,14 @@
             <com.ceco.gm2.gravitybox.preference.AppPickerPreference
                 android:key="pref_hwkey_custom_app"
                 android:title="@string/pref_hwkey_custom_app_title"
-                android:summary="@string/app_picker_none" />
+                android:summary="@string/app_picker_none"
+                iconPickerEnabled="false" />
 
             <com.ceco.gm2.gravitybox.preference.AppPickerPreference
                 android:key="pref_hwkey_custom_app2"
                 android:title="@string/pref_hwkey_custom_app_title2"
-                android:summary="@string/app_picker_none" />
+                android:summary="@string/app_picker_none"
+                iconPickerEnabled="false" />
 
             <ListPreference
                 android:key="pref_hwkey_doubletap_speed"

@@ -77,15 +77,15 @@
     <string name="caller_fullscreen_photo_summary">在来电画面内全屏显示来电者的照片</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">同步开启</string>
-    <string name="quick_settings_sync_off">同步关闭</string>
-    <string name="quick_settings_wifi_ap_on">Wi-Fi AP开启</string>
-    <string name="quick_settings_wifi_ap_off">Wi-Fi AP关闭</string>
+    <string name="quick_settings_sync_on">同步已开启</string>
+    <string name="quick_settings_sync_off">同步已关闭</string>
+    <string name="quick_settings_wifi_ap_on">Wi-Fi AP已开启</string>
+    <string name="quick_settings_wifi_ap_off">Wi-Fi AP已关闭</string>
     <string name="quick_settings_torch_on">手电筒已开启</string>
     <string name="quick_settings_torch_off">手电筒已关闭</string>
     <string name="quick_settings_torch_off_notif">按下以关闭</string>
-    <string name="quick_settings_qr_playing">播放中&#8230;</string>
-    <string name="quick_settings_qr_recording">录音中&#8230;</string>
+    <string name="quick_settings_qr_playing">正在播放&#8230;</string>
+    <string name="quick_settings_qr_recording">正在录音&#8230;</string>
     <string name="quick_settings_qr_recorded">已录音</string>
     <string name="quick_settings_qr_record">长按以录音</string>
     <string name="quick_settings_qr_recording_notif">按下以停止录音</string>
@@ -95,15 +95,19 @@
     <string name="quick_settings_stay_awake_on">保持唤醒</string>
     <string name="quick_settings_stay_awake_off">唤醒关闭</string>
     <string name="quick_settings_wifi">Wi-Fi</string>
-    <string name="quick_settings_wifi_off">Wi-Fi关闭</string>
-    <string name="quick_settings_wifi_not_connected">未连接</string>
+    <string name="quick_settings_wifi_off">Wi-Fi已关闭</string>
+    <string name="quick_settings_wifi_not_connected">Wi-Fi未连接</string>
     <string name="quick_settings_wifi_turning_on">正在打开&#8230;</string>
-    <string name="quick_settings_nfc_on">NFC开启</string>
-    <string name="quick_settings_nfc_off">NFC关闭</string>
+    <string name="quick_settings_nfc_on">NFC已开启</string>
+    <string name="quick_settings_nfc_off">NFC已关闭</string>
     <string name="quick_settings_camera_error_connect">无法连接相机</string>
-    <string name="quick_settings_usb_tether_off">已断开</string>
-    <string name="quick_settings_usb_tether_connected">共享关闭</string>
-    <string name="quick_settings_usb_tether_on">共享</string>
+    <string name="quick_settings_usb_tether_off">共享已断开</string>
+    <string name="quick_settings_usb_tether_connected">共享已关闭</string>
+    <string name="quick_settings_usb_tether_on">正在共享</string>
+    <string name="quick_settings_smart_radio_on">智能网络已开启</string>
+    <string name="quick_settings_smart_radio_off">智能网络已关闭</string>
+	<string name="quick_settings_lock_screen_on">锁屏已开启</string>
+    <string name="quick_settings_lock_screen_off">锁屏已关闭</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">状态栏快速设置</string>
@@ -137,6 +141,9 @@
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">相机</string>
     <string name="qs_tile_usb_tethering">USB共享</string>
+    <string name="qs_tile_smart_radio">智能网络</string>
+	<string name="qs_tile_alarm">闹钟</string>
+    <string name="qs_tile_lock_screen">锁屏</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">颜色选择器</string>
@@ -199,8 +206,8 @@
     <string name="lockscreen_background_result_successful">背景已更改</string>
     <string name="lockscreen_background_result_not_successful">背景未更改</string>
     <string name="pref_cat_lockscreen_other_title">其它</string>
-    <string name="pref_lockscreen_maximize_widgets_title">最大化小工具</string>
-    <string name="pref_lockscreen_maximize_widgets_summary">若启用这个选项，锁屏画面的小工具默认都会被最大化</string>
+    <string name="pref_lockscreen_maximize_widgets_title">最大化小部件</string>
+    <string name="pref_lockscreen_maximize_widgets_summary">若启用这个选项，锁屏画面的小部件默认都会被最大化</string>
 
     <!--  Power tweaks category -->
     <string name="pref_cat_power_title">电源键调整</string>
@@ -276,12 +283,12 @@
     <string name="hwkey_action_voice_search">语音搜索</string>
     <string name="hwkey_action_prev_app">切换到上一个应用程序</string>
     <string name="hwkey_action_kill">结束前台应用程序</string>
-    <string name="hwkey_action_sleep">使设备休眠</string>
-    <string name="pref_hwkey_kill_delay_title">结束应用程序的长按延迟</string>
+    <string name="hwkey_action_sleep">使设备睡眠</string>
+    <string name="pref_hwkey_kill_delay_title">长按结束应用程序延迟</string>
     <string name="pref_hwkey_kill_delay_summary">适用于“结束正在使用的应用程序”动作，定义按键需要按下持续多久才会触发动作</string>
     <string name="pref_hwkey_doubletap_speed_title">双击速度</string>
     <string name="pref_hwkey_doubletap_speed_summary">定义按键需要在多少时间内连续按两下才会触发动作</string>
-    <string name="app_killed">%s应用程序已结束</string>
+    <string name="app_killed">已结束%s应用程序</string>
     <string name="nothing_to_kill">无应用程序可结束</string>
     <string name="no_previous_app_found">找不到上一个应用程序</string>
 
@@ -290,7 +297,7 @@
     <string name="pref_cat_phone_summary">包含各种与通话相关的调整选项</string>
 
     <!-- Flip action while ringing -->
-    <string name="pref_phone_flip_title">响铃时的手机翻转动作</string>
+    <string name="pref_phone_flip_title">响铃时手机翻转动作</string>
     <string name="pref_phone_flip_summary">可定义在响铃时，翻转使屏幕向下时执行的动作</string>
     <string name="phone_flip_action_none">无</string>
     <string name="phone_flip_action_mute">铃声静音</string>
@@ -305,14 +312,14 @@
 
     <!-- QuickSettings tiles per row -->
     <string name="pref_qs_tiles_per_row_title">每行磁贴数</string>
-    <string name="pref_qs_tiles_per_row_summary">定义快速设置内每行有几个磁贴，开关会根据您的设置自动缩放（适用于手机在纵向模式或平板上的任何方向模式）</string>
+    <string name="pref_qs_tiles_per_row_summary">定义快速设置内每行有几个磁贴，磁贴会根据您的设置自动缩放（适用于手机在纵向模式或平板上的任何方向模式）</string>
 
     <!--  Status bar clock - show day of week -->
-    <string name="pref_statusbar_clock_dow_title">显示周</string>
+    <string name="pref_statusbar_clock_dow_title">显示星期(周)</string>
 
     <!-- Expandable volume panel -->
     <string name="pref_volume_panel_expandable_title">可扩展音量面板</string>
-    <string name="pref_volume_panel_expandable_summary">启用此选项使你可以调整不同的媒体音量</string>
+    <string name="pref_volume_panel_expandable_summary">启用此选项使您可以调整不同的媒体音量</string>
 
     <!-- Fully expandable volume panel -->
     <string name="pref_volume_panel_expandable_fully_title">完整的可扩展音量面板</string>
@@ -320,7 +327,7 @@
 
     <!-- Link ringtone & notifications volumes -->
     <string name="pref_link_volumes_title">合并铃声音量与通知音量</string>
-    <string name="pref_link_volumes_summary">禁用时铃声音量与通知音量将可以分别调整</string>
+    <string name="pref_link_volumes_summary">禁用后铃声音量与通知音量将可以分别调整</string>
 
     <!-- Auto-switch QuickSettings -->
     <string name="pref_auto_switch_qs_title">自动切换快速菜单</string>
@@ -442,8 +449,8 @@
     <string name="pref_quickapp_slot4_title">长按应用槽 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
-    <string name="qs_tile_gps_enabled">开启GPS</string>
-    <string name="qs_tile_gps_disabled">关闭GPS</string>
+    <string name="qs_tile_gps_enabled">GPS已开启</string>
+    <string name="qs_tile_gps_disabled">GPS已关闭</string>
     <string name="qs_tile_gps_locked">GPS已定位</string>
 
     <!-- Pie control: always show menu button -->
@@ -502,13 +509,16 @@
     <string name="hwkey_action_custom_app_none">没有指定应用！</string>
     <string name="hwkey_action_custom_app_missing">未找到自定义应用！</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">通知面板时钟应用</string>
-    <string name="pref_clock_link_summary">启用后状态栏的时间将链接到指定应用而不是日期与时间设置</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">状态栏时钟</string>
+    <string name="pref_cat_notif_panel_clock_title">通知面板时钟</string>
+    <string name="pref_clock_link_title">单击时钟应用程序</string>
+    <string name="pref_clock_link_summary">启用后通知面板的时间将链接到指定应用而不是日期与时间设置</string>
+    <string name="pref_clock_longpress_link_title">长按时钟应用程序</string>
 
     <!-- GravityBox settings startup handling -->
-    <string name="gb_startup_progress">正在等待GravityBox系统框架的响应&#8230;</string>
-    <string name="gb_startup_error">GravityBoy系统框架未响应，退出中&#8230;</string>
+    <string name="gb_startup_progress">正在等待系统框架响应GravityBox&#8230;</string>
+    <string name="gb_startup_error">系统框架未响应GravityBoy，正在退出&#8230;</string>
 
     <!-- National data roaming -->
     <string name="pref_national_roaming_title">国内数据漫游</string>
@@ -613,7 +623,7 @@
 
     <!-- Unplug turns on screen -->
     <string name="pref_unplug_turns_on_screen_title">拔下电源线开启屏幕</string>
-    <string name="pref_unplug_turns_on_screen_summary">如果启用，当你插入或拔出USB线/电源线时会亮起屏幕（需要重新启动）</string>
+    <string name="pref_unplug_turns_on_screen_summary">如果启用，当您插入或拔出USB线/电源线时会亮起屏幕（需要重新启动）</string>
 
     <!-- Mute volume adjust sound -->
     <string name="pref_volume_adjust_mute_title">静音音量调节音效</string>
@@ -634,7 +644,7 @@
     <string name="pref_ongoing_notifications_title">应用通知拦截器</string>
     <string name="pref_ongoing_notifications_summary">允许拦截选定应用的通知</string>
     <string name="ongoing_notif_info">当一个应用的通知出现时，它将被添加到此列表中。
-        你可以决定当应用的通知下一次出现时是否将其拦截，请小心使用</string>
+        您可以决定当应用的通知下一次出现时是否将其拦截，请小心使用</string>
     <string name="ongoing_notif_reset_list">重置列表</string>
     <string name="ongoing_notif_reset_alert">是否确实要重置列表？
         这将清空当前列表，并且解除所有之前被拦截的应用通知</string>
@@ -659,7 +669,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">数据通信监控</string>
     <string name="pref_data_traffic_enable_title">开启监控</string>
-    <string name="pref_data_traffic_enable_summary">当连接处于活动状态时自动显示监测数据</string>
     <string name="pref_data_traffic_position_title">位置</string>
     <string name="dt_position_auto">自动（中心或右，取决于时钟的位置）</string>
     <string name="dt_position_left">左</string>
@@ -855,7 +864,7 @@
     
     <!-- Fix location issue (Android 4.2.1 JIT bug) -->
     <string name="fix_location_title">修复位置问题</string>
-    <string name="fix_location_summary">如果你发现运动跟踪应用程序不能正常使用请启用（需要重新启动）</string>
+    <string name="fix_location_summary">如果您发现运动跟踪应用程序不能正常使用请启用（需要重新启动）</string>
     
     <!-- Launcher tweaks -->
     <string name="pref_cat_launcher_tweaks_title">启动器调整</string>
@@ -928,11 +937,7 @@
     <string name="hwkey_action_auto_rotation">切换自动旋转</string>
     <string name="hwkey_action_auto_rotation_enabled">自动旋转已启用</string>
     <string name="hwkey_action_auto_rotation_disabled">自动旋转已停用</string>
-    
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">允许任何小部件</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">允许在锁屏显示小部件，一般可适用于桌面启动器</string>
-    
+
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">显示电源键菜单</string>
     <string name="hwkey_action_expand_notifications">展开通知面板</string>
@@ -975,7 +980,7 @@
     <string name="nrt_bg_style_black">黑</string>
 
     <!-- Pie category summary -->
-    <string name="pie_control_summary">包含各种与Pie控制相关的调整选项</string>
+    <string name="pie_control_summary">包含各种与Pie Controls控制相关的调整选项</string>
     
     <!-- Shortcut for Google Now -->
     <string name="shortcut_google_now">Google Now</string>
@@ -1007,7 +1012,7 @@
 
     <!-- Force music volume control -->
     <string name="pref_vol_force_music_control_title">强制媒体音量控制</string>
-    <string name="pref_vol_force_music_control_summary">当启用时音量键控制媒体的音量而不是铃声音量</string>
+    <string name="pref_vol_force_music_control_summary">启用后音量键控制媒体的音量而不是铃声音量</string>
     
     <!-- Misc tweaks: category for recents panel related tweaks -->
     <string name="pref_cat_misc_recents_panel_title">最近使用面板</string>
@@ -1050,7 +1055,7 @@
     <!-- Smart Radio -->
     <string name="smart_radio_action_undefined">未定义</string>
     <string name="pref_cat_smart_radio_title">智能网络</string>
-    <string name="pref_smart_radio_enable_summary">这会自动切换你的网络到用户自定义省电模式或正常模式 
+    <string name="pref_smart_radio_enable_summary">这会自动切换您的网络到用户自定义省电模式或正常模式 
         根据移动数据和无线网络连接状态（需要重新启动）</string>
     <string name="pref_smart_radio_normal_mode_title">正常网络模式</string>
     <string name="pref_smart_radio_power_saving_mode_title">省电网络模式</string>
@@ -1062,7 +1067,7 @@
     <string name="pref_smart_radio_mode_change_delay_summary">网络模式改变延迟指定秒</string>
     
     <!-- Lockscreen: custom carrier text -->
-    <string name="pref_lockscreen_carrier_text_title">自定义载体文字</string>
+    <string name="pref_lockscreen_carrier_text_title">自定义机主信息</string>
     <string name="carrier_text_default">默认</string>
     <string name="carrier_text_empty">空</string>
 
@@ -1089,7 +1094,7 @@
     <string name="pref_clear_recents_mode_1">单击清除目前所有，长按清除全部</string>
 
     <!-- Power menu: disable on lockscreen -->
-    <string name="pref_powermenu_disable_on_lockscreen_title">禁用锁屏上的电源菜单</string>
+    <string name="pref_powermenu_disable_on_lockscreen_title">在锁屏上禁用电源键菜单</string>
 
     <!-- Extended force overflow menu button option -->
     <string name="overflow_menu_default">系统默认</string>
@@ -1111,7 +1116,7 @@
         覆盖默认网络模式改变延迟，如果值不为零</string>
 
     <!-- Lockscreen: secondary custom carrier text (MTK only) -->
-    <string name="pref_lockscreen_carrier2_text_title">自定义二次载体文字</string>
+    <string name="pref_lockscreen_carrier2_text_title">自定义二次机主信息</string>
     
     <!-- Backup and restore settings -->
     <string name="pref_settings_backup_title">备份设置</string>
@@ -1120,7 +1125,7 @@
     <string name="settings_backup_no_prefs">首选项文件未找到</string>
     <string name="settings_backup_success">备份成功</string>
     <string name="settings_restore_no_backup">没有备份恢复</string>
-    <string name="settings_restore_confirm">您当前的设置将被替换，你确定吗？</string>
+    <string name="settings_restore_confirm">您当前的设置将被替换，您确定吗？</string>
     <string name="settings_restore_failed">恢复失败</string>
     <string name="settings_restore_success">恢复成功</string>
     <string name="settings_restore_reboot">请重新启动您的设备</string>
@@ -1140,8 +1145,8 @@
     <string name="wsc_trans_invalid">无法找到指定的交易ID记录</string>
     <string name="wsc_trans_violation">指定交易ID已经注册过很多次，请联系GravityBox开发者解决</string>
     <string name="wsc_trans_blocked">指定交易ID已被封锁，请联系GravityBox开发者解决</string>
-    <string name="pref_trans_verification_title">PayPal交易ID</string>
-    <string name="pref_trans_verification_summary">如果你已捐赠，你可以输入你的PayPal捐赠交易ID来解锁高级功能</string>
+    <string name="pref_trans_verification_title">PayPal 交易ID</string>
+    <string name="pref_trans_verification_summary">如果您已捐赠，您可以输入您的PayPal捐赠交易ID来解锁高级功能</string>
     <string name="wsc_trans_required_summary">此功能需要有效的PayPal交易ID</string>
 
     <!-- Pie: disable system info -->
@@ -1232,18 +1237,24 @@
     <string name="qs_auto_switch_mode2">当没有清除通知</string>
 
     <!-- Statusbar: Double-tap to sleep -->
-    <string name="pref_statusbar_dt2s_title">启用双击休眠</string>
-    <string name="pref_statusbar_dt2s_summary">在状态栏上双击将设备休眠</string>
+    <string name="pref_statusbar_dt2s_title">启用双击睡眠</string>
+    <string name="pref_statusbar_dt2s_summary">在状态栏上双击将设备睡眠</string>
 
     <!-- Animation scales -->
     <string name="animation_scale0">动画关闭</string>
-    <string name="animation_scale1">动画大小 .25x</string>
-    <string name="animation_scale2">动画大小 .5x</string>
-    <string name="animation_scale3">动画大小 1x</string>
-    <string name="animation_scale4">动画大小 1.5x</string>
-    <string name="animation_scale5">动画大小 2x</string>
-    <string name="animation_scale6">动画大小 5x</string>
-    <string name="animation_scale7">动画大小 10x</string>
+    <string name="animation_scale1">动画缩放 .25x</string>
+    <string name="animation_scale2">动画缩放 .5x</string>
+    <string name="animation_scale3">动画缩放 1x</string>
+    <string name="animation_scale4">动画缩放 1.5x</string>
+    <string name="animation_scale5">动画缩放 2x</string>
+    <string name="animation_scale6">动画缩放 5x</string>
+    <string name="animation_scale7">动画缩放 10x</string>
+    
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">磁贴标签文字风格</string>
+    <string name="tile_label_style_normal">正常</string>
+    <string name="tile_label_style_allcaps">所有</string>
+    <string name="tile_label_style_hidden">隐藏</string>
 
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">显示亮度对话框</string>
@@ -1253,5 +1264,95 @@
     <string name="navring_haptic_feedback_default">默认</string>
     <string name="navring_haptic_feedback_enabled">启用</string>
     <string name="navring_haptic_feedback_disabled">禁用</string>
+    
+    <!-- Quick pull down size -->
+    <string name="pref_quick_pulldown_size_title">快速下拉栏大小</string>
+    
+    <!-- Stay Awake Tile modes -->
+	<string name="pref_qs_stay_awake_title">保持唤醒磁贴模式</string>
+    <string name="stay_awake_15s">15秒</string>
+    <string name="stay_awake_30s">30秒</string>
+    <string name="stay_awake_1m">1分钟</string>
+    <string name="stay_awake_2m">2分钟</string>
+    <string name="stay_awake_5m">5分钟</string>
+    <string name="stay_awake_10m">10分钟</string>
+    <string name="stay_awake_30m">30分钟</string>
+	<string name="stay_awake_on">保持唤醒</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+    
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">启用双击睡眠</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">在解锁环上双击使设备睡眠</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">插入充电器声音</string>
+    <string name="pref_charger_plugged_sound_summary">充电器插入/拔出时播放声音</string>
+    
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">切换智能网络</string>
+    
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">总开关</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">禁用音量调整震动</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">禁止使用音量键调整通知/铃声音量时振动</string>
+    
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">切换状态栏时钟设置（需要重新启动）</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">星期大小(周)</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">上午/下午 大小</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">虚拟环</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">禁用虚拟环</string>
+	
+	<!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">数据流量监控风格</string>
+    <string name="dt_mode_off">禁用</string>
+    <string name="dt_mode_simple">简约风格</string>
+    <string name="dt_mode_omni">Omni风格</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">监控模式</string>
+    <string name="dt_omni_mode_in">下载</string>
+    <string name="dt_omni_mode_out">上传</string>
+    <string name="dt_omni_mode_in_out">下载和上传</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">显示图标</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">计算器</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">磁贴特定设置</string>
+    <string name="pref_cat_qs_tile_settings_summary">磁贴包含特定设置</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">网络模式磁贴设置</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">闹钟磁贴设置</string>
+    <string name="pref_qs_alarm_singletap_app_title">单击应用</string>
+    <string name="alarm_singletap_app_default">默认应用</string>
+    <string name="pref_qs_alarm_longpress_app_title">长按应用</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">仅在下载激活</string>
+    <string name="pref_data_traffic_active_dl_only_summary">只有正在下载并通过标准Android下载管理器才显示流量计</string>
+	
 
 </resources>

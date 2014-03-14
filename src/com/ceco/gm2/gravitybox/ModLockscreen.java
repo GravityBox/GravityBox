@@ -26,7 +26,6 @@ import com.ceco.gm2.gravitybox.shortcuts.ShortcutActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.appwidget.AppWidgetHostView;
-import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -53,6 +52,8 @@ import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View.OnLongClickListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Gravity;
@@ -87,7 +88,6 @@ public class ModLockscreen {
             CLASS_PATH + ".KeyguardUpdateMonitor.BatteryStatus";
     private static final String CLASS_KG_VIEW_BASE = CLASS_PATH + ".KeyguardViewBase";
     private static final String CLASS_KG_WIDGET_PAGER = CLASS_PATH + ".KeyguardWidgetPager";
-    private static final String CLASS_KG_ACTIVITY_LAUNCHER = CLASS_PATH + ".KeyguardActivityLauncher";
     private static final String CLASS_CARRIER_TEXT = Utils.isMtkDevice() ?
             CLASS_PATH + ".MediatekCarrierText" : CLASS_PATH + ".CarrierText";
     private static final String ENUM_SECURITY_MODE = CLASS_PATH + ".KeyguardSecurityModel.SecurityMode";
@@ -124,6 +124,7 @@ public class ModLockscreen {
     private static ImageView mLockScreenWallpaperImage;
     private static boolean mFirstRun;
     private static String mCarrierText[];
+    private static GestureDetector mDoubletapGesture;
 
     // Battery Arc
     private static HandleDrawable mHandleDrawable;
@@ -154,7 +155,6 @@ public class ModLockscreen {
             final Class<?> kgUpdateMonitorClass = XposedHelpers.findClass(CLASS_KG_UPDATE_MONITOR, null);
             final Class<?> kgViewBaseClass = XposedHelpers.findClass(CLASS_KG_VIEW_BASE, null);
             final Class<?> kgWidgetPagerClass = XposedHelpers.findClass(CLASS_KG_WIDGET_PAGER, null);
-            final Class<?> kgActivityLauncherClass = XposedHelpers.findClass(CLASS_KG_ACTIVITY_LAUNCHER, null);
             final Class<?> carrierTextClass = XposedHelpers.findClass(CLASS_CARRIER_TEXT, null);
             final Class<? extends Enum> kgSecurityModeEnum = 
                     (Class<? extends Enum>) XposedHelpers.findClass(ENUM_SECURITY_MODE, null);
@@ -326,13 +326,35 @@ public class ModLockscreen {
                     final Resources res = context.getResources();
                     mGlowPadView = (View) XposedHelpers.getObjectField(param.thisObject, "mGlowPadView");
                     mGlowPadViewClass = mGlowPadView.getClass();
-                    XposedHelpers.findAndHookMethod(mGlowPadViewClass, "showTargets",
-                            boolean.class, glowPadViewShowTargetsHook);
-                    XposedHelpers.findAndHookMethod(mGlowPadViewClass, "hideTargets",
-                            boolean.class, boolean.class, glowPadViewHideTargetsHook);
+                    try {
+                        XposedHelpers.findAndHookMethod(mGlowPadViewClass, "showTargets",
+                                boolean.class, glowPadViewShowTargetsHook);
+                    } catch(NoSuchMethodError nme) {
+                        if (DEBUG) log("showTargets method doesn't exist (ZTE modified lockscreen?)");
+                    }
+                    try {
+                        XposedHelpers.findAndHookMethod(mGlowPadViewClass, "hideTargets",
+                                boolean.class, boolean.class, glowPadViewHideTargetsHook);
+                    } catch(NoSuchMethodError nme) {
+                        if (DEBUG) log("hideTargets method doesn't exist (ZTE modified lockscreen?)");
+                    }
                     XposedHelpers.findAndHookMethod(mGlowPadViewClass, "switchToState", 
                             int.class, float.class, float.class, glowPadViewSwitchToStateHook);
+                    XposedHelpers.findAndHookMethod(mGlowPadViewClass, "onTouchEvent",
+                            MotionEvent.class, glowPadViewOnTouchEventHook);
                     mHandler = new Handler();
+
+                    if (mDoubletapGesture == null) {
+                        mDoubletapGesture = new GestureDetector(context, 
+                                new GestureDetector.SimpleOnGestureListener() {
+                            @Override
+                            public boolean onDoubleTap(MotionEvent e) {
+                                Intent intent = new Intent(ModHwKeys.ACTION_SLEEP);
+                                context.sendBroadcast(intent);
+                                return true;
+                            }
+                        });
+                    }
 
                     // apply custom bottom/right margin to shift unlock ring upwards/left
                     try {
@@ -385,75 +407,45 @@ public class ModLockscreen {
                     final ArrayList<Object> newTargets = new ArrayList<Object>();
                     final ArrayList<String> newDescriptions = new ArrayList<String>();
                     final ArrayList<String> newDirections = new ArrayList<String>();
-                    final ArrayList<AppInfo> appInfoList = new ArrayList<AppInfo>(5);
                     final int unlockDescResId = res.getIdentifier("description_target_unlock", 
                             "string", "android");
                     final int unlockDirecResId = res.getIdentifier("description_direction_right", 
                             "string", "android");
-
-                    // fill appInfoList helper with apps from preferences
-                    for (int i=0; i<=4; i++) {
-                        String app = prefs.getString(
-                                GravityBoxSettings.PREF_KEY_LOCKSCREEN_TARGETS_APP[i], null);
-                        if (app != null) {
-                            AppInfo appInfo = GlowPadHelper.getAppInfo(context, app);
-                            if (appInfo != null) {
-                                appInfoList.add(appInfo);
-                                if (DEBUG) log("appInfoList.add: " + app);
-                            }
-                        }
-                    }
 
                     // get target from position 0 supposing it's unlock ring
                     newTargets.add(targets.get(0));
                     newDescriptions.add(unlockDescResId == 0 ? null : res.getString(unlockDescResId));
                     newDirections.add(unlockDirecResId == 0 ? null : res.getString(unlockDirecResId));
 
-                    // create and fill custom targets with proper layout based on number of targets
-                    switch(appInfoList.size()) {
-                        case 1:
+                    // fill ring targets with apps from preferences
+                    AppInfo appInfo;
+                    for (int i=0; i<GravityBoxSettings.PREF_KEY_LOCKSCREEN_TARGETS_APP.length; i++) {
+                        appInfo = null;
+                        String app = prefs.getString(
+                                GravityBoxSettings.PREF_KEY_LOCKSCREEN_TARGETS_APP[i], null);
+                        if (app != null) {
+                            appInfo = GlowPadHelper.getAppInfo(context, app);
+                        }
+                        if (appInfo != null) {
+                            newTargets.add(GlowPadHelper.createTargetDrawable(context, appInfo, mGlowPadViewClass));
+                            newDescriptions.add(appInfo.name);
+                        } else {
                             newTargets.add(GlowPadHelper.createTargetDrawable(context, null, mGlowPadViewClass));
                             newDescriptions.add(null);
-                            newDirections.add(null);
-                            newTargets.add(GlowPadHelper.createTargetDrawable(context, appInfoList.get(0), mGlowPadViewClass));
-                            newDescriptions.add(appInfoList.get(0).name);
-                            newDirections.add(null);
-                            newTargets.add(GlowPadHelper.createTargetDrawable(context, null, mGlowPadViewClass));
-                            newDescriptions.add(null);
-                            newDirections.add(null);
-                            break;
-                        case 2:
-                            newTargets.add(GlowPadHelper.createTargetDrawable(context, appInfoList.get(0), mGlowPadViewClass));
-                            newDescriptions.add(appInfoList.get(0).name);
-                            newDirections.add(null);
-                            newTargets.add(GlowPadHelper.createTargetDrawable(context, appInfoList.get(1), mGlowPadViewClass));
-                            newDescriptions.add(appInfoList.get(1).name);
-                            newDirections.add(null);
-                            newTargets.add(GlowPadHelper.createTargetDrawable(context, null, mGlowPadViewClass));
-                            newDescriptions.add(null);
-                            newDirections.add(null);
-                            break;
-                        case 3:
-                        case 4:
-                        case 5:
-                            for (int i=0; i<=4; i++) {
-                                if (i >= appInfoList.size()) {
-                                    newTargets.add(GlowPadHelper.createTargetDrawable(context, null, mGlowPadViewClass));
-                                    newDescriptions.add(null);
-                                } else {
-                                    newTargets.add(GlowPadHelper.createTargetDrawable(context, appInfoList.get(i), mGlowPadViewClass));
-                                    newDescriptions.add(appInfoList.get(i).name);
-                                }
-                                newDirections.add(null);
-                            }
-                            break;
+                        }
+                        newDirections.add(null);
                     }
+
                     XposedHelpers.setObjectField(mGlowPadView, "mTargetDrawables", newTargets);
                     XposedHelpers.setObjectField(mGlowPadView, "mTargetDescriptions", newDescriptions);
                     XposedHelpers.setObjectField(mGlowPadView, "mDirectionDescriptions", newDirections);
                     if (res.getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                         XposedHelpers.setFloatField(mGlowPadView, "mFirstItemOffset", 0);
                     }
+
+                    // disable magnetic targets - targets won't snap to current touch position
+                    XposedHelpers.setBooleanField(mGlowPadView, "mMagneticTargets", false);
+
                     mGlowPadView.requestLayout();
 
                     // bring emergency button on slider lockscreen to front when keyguard is secured
@@ -610,15 +602,19 @@ public class ModLockscreen {
                 }
             });
 
-            XposedHelpers.findAndHookMethod(kgViewBaseClass, "resetBackground", new XC_MethodHook() {
-                @Override
-                protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                    if (mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_LOCKSCREEN_SHADE_DISABLE, false)) {
-                        ((View) param.thisObject).setBackground(null);
-                        param.setResult(null);
+            try {
+                XposedHelpers.findAndHookMethod(kgViewBaseClass, "resetBackground", new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                        if (mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_LOCKSCREEN_SHADE_DISABLE, false)) {
+                            ((View) param.thisObject).setBackground(null);
+                            param.setResult(null);
+                        }
                     }
-                }
-            });
+                });
+            } catch (Throwable t) {
+                log("resetBackground: No such method");
+            }
 
             XposedHelpers.findAndHookMethod(kgWidgetPagerClass, "onPageSwitched",
                     View.class, int.class, new XC_MethodHook() {
@@ -647,32 +643,18 @@ public class ModLockscreen {
                 }
             });
 
-            XposedHelpers.findAndHookMethod(kgActivityLauncherClass, "launchActivity",
-                    Intent.class, boolean.class, boolean.class, Handler.class, Runnable.class, new XC_MethodHook() {
-                @SuppressLint("InlinedApi")
-                @Override
-                protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                    Intent intent = (Intent) param.args[0];
-                    if ("android.appwidget.action.KEYGUARD_APPWIDGET_PICK".equals(intent.getAction()) &&
-                            prefs.getBoolean(GravityBoxSettings.PREF_KEY_LOCKSCREEN_ALLOW_ANY_WIDGET, false)) {
-                        intent.removeExtra("categoryFilter");
-                        intent.putExtra("categoryFilter", AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN);
-                        Bundle options = new Bundle();
-                        options.putInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY,
-                                AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN);
-                        intent.removeExtra(AppWidgetManager.EXTRA_APPWIDGET_OPTIONS);
-                        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_OPTIONS, options);
-                    }
-                }
-            });
-
             if (Utils.isMtkDevice()) {
                 if (Utils.hasGeminiSupport()) {
                     XposedHelpers.findAndHookMethod(carrierTextClass, "showOrHideCarrier", new XC_MethodHook() {
                         @Override
                         protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                            TextView carrierDivider = (TextView) XposedHelpers.getObjectField(
-                                    param.thisObject, "mCarrierDivider");
+                            TextView carrierDivider;
+                            Object divider = XposedHelpers.getObjectField(param.thisObject, "mCarrierDivider");
+                            if (divider instanceof TextView[]) {
+                                carrierDivider = (TextView) ((TextView[])divider)[0];
+                            } else {
+                                carrierDivider = (TextView) divider;
+                            }
                             mCarrierText = new String[] {
                                     prefs.getString(GravityBoxSettings.PREF_KEY_LOCKSCREEN_CARRIER_TEXT, ""),
                                     prefs.getString(GravityBoxSettings.PREF_KEY_LOCKSCREEN_CARRIER2_TEXT, "")};
@@ -690,9 +672,16 @@ public class ModLockscreen {
                             int.class, new XC_MethodHook() {
                         @Override
                         protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                            TextView carrierTextView[] = new TextView[] {
-                                    (TextView) XposedHelpers.getObjectField(param.thisObject, "mCarrierView"),
-                                    (TextView) XposedHelpers.getObjectField(param.thisObject, "mCarrierGeminiView")};
+                            TextView carrierTextView[] = new TextView[2];
+                            Object carrierView = XposedHelpers.getObjectField(param.thisObject, "mCarrierView");
+                            if (carrierView instanceof TextView[]) {
+                                carrierTextView[0] = (TextView) ((TextView[])carrierView)[0];
+                                carrierTextView[1] = (TextView) ((TextView[])carrierView)[1];
+                            } else {
+                                carrierTextView[0] = (TextView) carrierView;
+                                carrierTextView[1] = (TextView) XposedHelpers.getObjectField(
+                                        param.thisObject, "mCarrierGeminiView");
+                            }
 
                             int[] origVisibility = new int[] {
                                     carrierTextView[0] == null ? View.GONE : carrierTextView[0].getVisibility(),
@@ -708,11 +697,24 @@ public class ModLockscreen {
                                         if (mCarrierText[i].trim().isEmpty()) {
                                             carrierTextView[i].setText("");
                                             carrierTextView[i].setVisibility(View.GONE);
-                                            carrierTextView[i == 0 ? 1 : 0].setGravity(Gravity.CENTER);
                                         } else {
                                             carrierTextView[i].setText(mCarrierText[i]);
                                             carrierTextView[i].setVisibility(View.VISIBLE);
                                         }
+                                    }
+                                }
+                                if ((carrierTextView[0] != null &&
+                                     carrierTextView[0].getVisibility() == View.VISIBLE) &&
+                                    (carrierTextView[1] != null && 
+                                     carrierTextView[1].getVisibility() == View.VISIBLE)) {
+                                    carrierTextView[0].setGravity(Gravity.RIGHT);
+                                    carrierTextView[1].setGravity(Gravity.LEFT);
+                                } else {
+                                    if (carrierTextView[0] != null) {
+                                        carrierTextView[0].setGravity(Gravity.CENTER);
+                                    }
+                                    if (carrierTextView[1] != null) {
+                                        carrierTextView[1].setGravity(Gravity.CENTER);
                                     }
                                 }
                             }
@@ -836,6 +838,16 @@ public class ModLockscreen {
                     mHandler.removeCallbacks(mToggleTorchRunnable);
                 }
                 mPrevGlowPadState = state;
+            }
+        }
+    };
+
+    private static XC_MethodHook glowPadViewOnTouchEventHook = new XC_MethodHook() {
+        @Override
+        protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+            if (param.thisObject == mGlowPadView && mDoubletapGesture != null &&
+                    mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_LOCKSCREEN_RING_DT2S, false)) {
+                mDoubletapGesture.onTouchEvent((MotionEvent)param.args[0]);
             }
         }
     };

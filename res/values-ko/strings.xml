@@ -133,7 +133,7 @@
     <string name="pref_cat_fixes_title">MTK6589 수정 옵션</string>
     <string name="pref_cat_fixes_summary">MTK6589 칩셋에 관련된 수정 옵션들이 있습니다. 필요하시면 사용하세요.</string>
 
-    <string name="pref_cat_about_title">어플리케이션 정보</string>
+    <string name="pref_cat_about_title">애플리케이션 정보</string>
     <string name="about_gb_summary">C3C076@XDA가 개발함. 터치하여 공식 스레드로 이동해보세요.</string>
     <string name="about_xposed_title">Xposed 프레임워크</string>
     <string name="about_xposed_summary">rovo89@XDA가 개발함. 터치하여 공식 스레드로 이동해보세요.</string>
@@ -145,7 +145,7 @@
     <string name="reboot_confirm_bootloader">%s이(가) 곧 부트로더로 재시작됩니다.</string>
 
     <string name="engineering_mode_title">엔지니어링 모드</string>
-    <string name="engineering_mode_summary">엔지니어링 모드 어플리케이션을 실행합니다.</string>
+    <string name="engineering_mode_summary">엔지니어링 모드 애플리케이션을 실행합니다.</string>
 
     <string name="dual_sim_ringer_title">듀얼 SIM 벨소리</string>
     <string name="dual_sim_ringer_summary">SIM에 따라서 다른 벨소리 및 알림음이 나오도록 설정합니다.</string>
@@ -225,7 +225,7 @@
     <string name="hwkey_action_default">기본 액션</string>
     <string name="hwkey_action_search">검색</string>
     <string name="hwkey_action_voice_search">음성 검색</string>
-    <string name="hwkey_action_prev_app">이전 어플리케이션으로 전환</string>
+    <string name="hwkey_action_prev_app">이전 애플리케이션으로 전환</string>
     <string name="hwkey_action_kill">현재 앱 종료</string>
     <string name="hwkey_action_sleep">화면 끄기</string>
     <string name="pref_hwkey_kill_delay_title">앱 종료 지연시간</string>
@@ -233,8 +233,8 @@
     <string name="pref_hwkey_doubletap_speed_title">두 번 터치 속도</string>
     <string name="pref_hwkey_doubletap_speed_summary">두 번 터치를 인식하는 시간을 설정합니다</string>
     <string name="app_killed">%s 종료됨</string>
-    <string name="nothing_to_kill">종료 할 어플리케이션 없음</string>
-    <string name="no_previous_app_found">이전 어플리케이션이 없음</string>
+    <string name="nothing_to_kill">종료 할 애플리케이션 없음</string>
+    <string name="no_previous_app_found">이전 애플리케이션이 없음</string>
 
     <string name="pref_cat_phone_title">기기 트윅</string>
     <string name="pref_cat_phone_summary">기기 및 네트워크 망에 관련된 트윅들이 있습니다.</string>
@@ -248,7 +248,7 @@
     <string name="reboot_soft">빠른 재시작</string>
 
     <string name="pref_holo_bg_solid_black_title">단색 배경화면</string>
-    <string name="pref_holo_bg_solid_black_summary">Holo 테마를 사용하는 어플리케이션의 배경화면을 단색으로 변경합니다. (재시작 필요)</string>
+    <string name="pref_holo_bg_solid_black_summary">Holo 테마를 사용하는 애플리케이션의 배경화면을 단색으로 변경합니다. (재시작 필요)</string>
 
     <string name="pref_qs_tiles_per_row_title">한 줄당 표시할 타일</string>
     <string name="pref_qs_tiles_per_row_summary">한 줄당 표시될 퀵세팅 타일의 갯수를 선택합니다. (태블릿을 제외한 기기에서는 세로 화면만 적용.)</string>
@@ -354,7 +354,7 @@
 
     <string name="qs_tile_quickapp">앱 바로가기</string>
     <string name="pref_cat_quickapp_tile_title">앱 바로가기 타일 설정</string>
-    <string name="pref_quickapp_default_title">주요 어플리케이션</string>
+    <string name="pref_quickapp_default_title">주요 애플리케이션</string>
     <string name="pref_quickapp_slot1_title">길게 누르기 앱 슬롯 1</string>
     <string name="pref_quickapp_slot2_title">길게 누르기 앱 슬롯 2</string>
     <string name="pref_quickapp_slot3_title">길게 누르기 앱 슬롯 3</string>
@@ -407,7 +407,7 @@
     <string name="hwkey_action_custom_app_missing">사용자 지정 앱을 찾을 수 없습니다!</string>
 
     <string name="pref_clock_link_title">알림 패널 시계 설정</string>
-    <string name="pref_clock_link_summary">알림 패널에 있는 시계를 누를 때 연결되는 어플리케이션을 설정합니다.</string>
+    <string name="pref_clock_link_summary">알림 패널에 있는 시계를 누를 때 연결되는 애플리케이션을 설정합니다.</string>
 
     <string name="gb_startup_progress">GravityBox에서 사용할 시스템 프레임워크의 반응을 기다리는 중입니다.</string>
     <string name="gb_startup_error">GravityBox에서 사용해야 할 시스템 프레임워크가 반응이 없습니다. 앱이 종료됩니다.</string>
@@ -533,7 +533,6 @@
 
     <string name="pref_cat_data_traffic_title">데이터 트래픽 모니터</string>
     <string name="pref_data_traffic_enable_title">모니터링 활성화</string>
-    <string name="pref_data_traffic_enable_summary">데이터 트래픽이 감지되면 상단바에 트래픽 속도를 표시합니다.</string>
     <string name="pref_data_traffic_position_title">위치</string>
     <string name="dt_position_auto">자동 (시계의 위치에 따라 정해짐)</string>
     <string name="dt_position_left">왼쪽</string>
@@ -673,7 +672,7 @@
 
     <string name="pref_qs_management_enable_summary">GB에서 퀵세팅 설정을 담당하기 (재시작 필요)</string>
 
-    <string name="app_picker_applications">어플리케이션</string>
+    <string name="app_picker_applications">애플리케이션</string>
     <string name="app_picker_shortcuts">바로가기</string>
     <string name="app_picker_shortcut_null_intent">바로가기로 선택했을 때 Intent 정보를 넘겨줄 수 없기 때문에 실행이 불가능 할 수 있습니다.</string>
     <string name="app_picker_shortcut_cancelled">타겟 앱에 의해 바로가기 생성 취소</string>
@@ -752,9 +751,6 @@
     <string name="hwkey_action_auto_rotation_enabled">자동 회전 활성화</string>
     <string name="hwkey_action_auto_rotation_disabled">자동 회전 비활성화</string>
 
-    <string name="pref_lockscreen_allow_any_widget_title">모든 위젯 허용</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">홈 런처에서만 사용 가능한 위젯을 잠금 화면에서도 사용 가능하게 만듭니다.</string>
-
     <string name="hwkey_action_show_power_menu">전원 옵션 보이기</string>
     <string name="hwkey_action_expand_notifications">잠금 패널 확장</string>
     <string name="hwkey_action_expand_quicksettings">퀵세팅 패널 확장</string>
@@ -828,5 +824,218 @@
 
     <string name="pref_qs_tile_span_disable_title">타일 스패닝 비활성화</string>
     <string name="pref_qs_tile_span_disable_summary">사용자, 밝기, 설정 타일의 스패닝을 비활성화합니다.</string>
+    
+    <string name="pref_force_overflow_menu_button_title">강제로 오버플로 메뉴 버튼 보이기</string>
+    <string name="pref_force_overflow_menu_button_summary">재시작 필요</string>
+
+    <string name="pref_navbar_always_on_bottom_title">항상 하단에 배치</string>
+    <string name="pref_navbar_always_on_bottom_summary">네비게이션 바가 항상 하단에 배치되도록 설정합니다. (재시작 필요)</string>
+
+    <string name="pref_hwkey_home_longpress_disabled_summary">네비게이션 바의 고리 바로가기가 설정되어 있으면 이 기능을 사용하실 수 없습니다.</string>
+
+    <string name="pref_navbar_custom_key_swap_title">메뉴 키와 전환</string>
+
+    <string name="smart_radio_action_undefined">지정되지 않음</string>
+    <string name="pref_cat_smart_radio_title">스마트 라디오</string>
+    <string name="pref_smart_radio_enable_summary">Wi-Fi 및 모바일 데이터의 상태에 따라 통신망의 종류를 변경해줍니다.</string>
+    <string name="pref_smart_radio_normal_mode_title">기본 통신망 모드</string>
+    <string name="pref_smart_radio_power_saving_mode_title">전원 절약 통신망 모드</string>
+    <string name="pref_smart_radio_screen_off_title">화면이 꺼져있을 때</string>
+    <string name="pref_smart_radio_screen_off_summary">화면이 꺼져있으면 전원 절약 모드를 실행합니다.</string>
+    <string name="pref_smart_radio_ignore_locked_title">잠겨있을 때 무시</string>
+    <string name="pref_smart_radio_ignore_locked_summary">화면이 켜져있으도 잠금 화면에 의해 기기가 잠겨졌어도 전원 절약 모드를 끄지 않습니다.</string>
+    <string name="pref_smart_radio_mode_change_delay_title">통신망 모드 전환 딜레이</string>
+    <string name="pref_smart_radio_mode_change_delay_summary">통신망 모드를 전환하기 전 대기할 시간을 설정합니다.</string>
+
+    <string name="pref_lockscreen_carrier_text_title">사용자 지정 통신사 문구</string>
+    <string name="carrier_text_default">기본</string>
+    <string name="carrier_text_empty">지정되지 않음</string>
+
+    <string name="pref_battery_charged_sound_title">배터리 충전 완료 소리</string>
+    <string name="pref_battery_charged_sound_summary">배터리가 완전히 충전되었을 때 소리를 재생합니다.</string>
+
+    <string name="pref_cat_pie_long_press_title">길게 누르기 액션</string>
+    <string name="pref_pie_back_longpress_title">뒤로 가기 키</string>
+    <string name="pref_pie_home_longpress_title">홈 키</string>
+    <string name="pref_pie_recents_longpress_title">최근 앱 목록 키</string>
+    <string name="pref_pie_search_longpress_title">검색 키</string>
+    <string name="pref_pie_menu_longpress_title">메뉴 키</string>
+    <string name="pref_pie_app_longpress_title">앱 런처 키</string>
+
+    <string name="pref_pulse_notification_delay_title">알림 딜레이 펄스</string>
+    <string name="pref_pulse_notification_delay_summary">재시작 필요</string>
+
+    <string name="pref_clear_recents_mode_title">최근 앱 목록 지우기 행동</string>
+    <string name="pref_clear_recents_mode_0">짧게 누르면 전체를, 길게 누르면 현재 앱을 제외한 전체를 지우기</string>
+    <string name="pref_clear_recents_mode_1">짧게 누르면 현재 앱을 제외한 전체를, 길게 누르면 전체를 지우기</string>
+
+    <string name="pref_powermenu_disable_on_lockscreen_title">잠금 화면에서의 전원 옵션 비활성화</string>
+
+    <string name="overflow_menu_default">시스템 기본값</string>
+    <string name="overflow_menu_enabled">강제로 활성화</string>
+    <string name="overflow_menu_disabled">강제로 비활성화</string>
+
+    <string name="hwkey_action_screenshot">스크린샷 찍기</string>
+
+    <string name="hwkey_action_volume_panel">볼륨 패널 보이기</string>
+
+    <string name="pref_lockscreen_bg_blur_intensity_title">흐림 효과 강도</string>
+
+    <string name="pref_smart_radio_screen_off_delay_title">지연된 전원 절약 모드</string>
+    <string name="pref_smart_radio_screen_off_delay_summary">화면이 꺼졌을 때 잠깐의 시간이 지난 후에 전원 절약 모드를 시작합니다. 
+        통신망 전환 딜레이가 0이 아닐 경우에는 값이 덮어씌여집니다.</string>
+
+    <string name="pref_lockscreen_carrier2_text_title">사용자 지정 2번째 통신사 문구</string>
+
+    <string name="pref_settings_backup_title">설정 백업</string>
+    <string name="pref_settings_restore_title">설정 복구</string>
+    <string name="settings_backup_failed">백업 실패!</string>
+    <string name="settings_backup_no_prefs">설정 파일이 없습니다.</string>
+    <string name="settings_backup_success">백업 성공!</string>
+    <string name="settings_restore_no_backup">복구하기 위한 백업 파일이 없습니다.</string>
+    <string name="settings_restore_confirm">현재 설정이 전부 다 덮어씌어집니다. 계속 하시겠습니까?</string>
+    <string name="settings_restore_failed">복구 실패!</string>
+    <string name="settings_restore_success">복구 성공!</string>
+    <string name="settings_restore_reboot">기기를 재시작해야 값들이 적용됩니다.</string>
+
+    <string name="wsc_hash_creation_failed">특정 앱 해시 코드를 생성할 수 없습니다.</string>
+    <string name="wsc_parse_response_error">웹 서비스에서 가져온 데이터의 구문을 분석할 수 없습니다.</string>
+    <string name="wsc_hash_invalid">해시 코드가 일치하지 않아서 웹 서비스를 종료했습니다. 
+        이러한 경우는 제 3자에 의해 수정된 GravityBox APK 파일을 사용해서 그럴 수도 있습니다. Xposed 설치 도구로 재설치하세요.</string>
+    <string name="wsc_please_wait">잠시만 기다려주세요&#8230;</string>
+    <string name="wsc_error">웹 서비스와 통신 실패 : %s</string>
+    <string name="wsc_task_cancelled">웹 서비스 작업 실패</string>
+
+    <string name="wsc_trans_parse_response_error">웹 서비스에서 가져온 트랜젝션 데이터의 구문을 분석할 수 없습니다.</string>
+    <string name="wsc_trans_valid">트랜젝션 ID가 일치합니다. 프리미엄 기능들이 해제되었습니다. GravityBox를 다시 시작해 주세요.</string>
+    <string name="wsc_trans_invalid">특정 트랜젝션 ID를 가져올 수 없습니다.</string>
+    <string name="wsc_trans_violation">특정 트랜젝션 ID가 많은 시간동안 가입되었습니다. GravityBox 개발자 측으로 문의해 주세요. (영어)</string>
+    <string name="wsc_trans_blocked">특정 트랜젝션 ID가 차단되었습니다. GravityBox 개발자 측으로 문의해 주세요. (영어)</string>
+    <string name="pref_trans_verification_title">PayPal 트랜젝션 ID</string>
+    <string name="pref_trans_verification_summary">만약 기부를 했었다면, 여기에다가 PayPal 기부 트랜젝션 ID를 입력하여 프리미엄 기능을 해제할 수 있습니다.</string>
+    <string name="wsc_trans_required_summary">제대로 된 PayPal 트렌젝션 ID가 필요합니다.</string>
+
+    <string name="pref_pie_sysinfo_disable_title">시스템 정보 비활성화</string>
+
+    <string name="pref_pie_longpress_delay_title">길게 누르기 지연시간</string>
+    <string name="pie_longpress_delay_default">시스템 기본값</string>
+
+    <string name="shortcut_launcher_drawer">런처 앱 서랍</string>
+
+    <string name="hwkey_action_launcher_drawer">런처 앱 서랍 보이기</string>
+
+    <string name="pref_cat_launcher_other_title">기타</string>
+    <string name="pref_launcher_resize_widget_title">위젯 크기 조정</string>
+    <string name="pref_launcher_resize_widget_summary">런처 앱 전용 위젯들의 크기를 마음대로 조절합니다. (런처 재시작 필요)</string>
+
+    <string name="icon_picker_choose_icon_title">아이콘 고르기</string>
+    <string name="shortcuts_icon_picker_alarm">알람</string>
+    <string name="shortcuts_icon_picker_andy">Andy</string>
+    <string name="shortcuts_icon_picker_battery">배터리</string>
+    <string name="shortcuts_icon_picker_browser">브라우저</string>
+    <string name="shortcuts_icon_picker_calendar">달력</string>
+    <string name="shortcuts_icon_picker_camera">카메라</string>
+    <string name="shortcuts_icon_picker_cloud">클라우드</string>
+    <string name="shortcuts_icon_picker_contact">전화번호부</string>
+    <string name="shortcuts_icon_picker_directdial">직접 다이얼</string>
+    <string name="shortcuts_icon_picker_directmessage">직접 메세지</string>
+    <string name="shortcuts_icon_picker_drive">드라이브</string>
+    <string name="shortcuts_icon_picker_dropbox">드롭박스</string>
+    <string name="shortcuts_icon_picker_email">이메일</string>
+    <string name="shortcuts_icon_picker_email2">이메일 2</string>
+    <string name="shortcuts_icon_picker_evernote">에버노트</string>
+    <string name="shortcuts_icon_picker_facebook">페이스북</string>
+    <string name="shortcuts_icon_picker_favorite">즐겨찾기</string>
+    <string name="shortcuts_icon_picker_file_browser">파일 브라우저</string>
+    <string name="shortcuts_icon_picker_file_browser2">파일 브라우저 2</string>
+    <string name="shortcuts_icon_picker_fitness">Fitness</string>
+    <string name="shortcuts_icon_picker_gallery">갤러리</string>
+    <string name="shortcuts_icon_picker_gears">톱니바퀴</string>
+    <string name="shortcuts_icon_picker_google_small">구글</string>
+    <string name="shortcuts_icon_picker_gplus">구글 플러스</string>
+    <string name="shortcuts_icon_picker_gtalk">행아웃</string>
+    <string name="shortcuts_icon_picker_help">말풍선</string>
+    <string name="shortcuts_icon_picker_joystick">조이스틱</string>
+    <string name="shortcuts_icon_picker_key">키/계정</string>
+    <string name="shortcuts_icon_picker_laptop">랩탑</string>
+    <string name="shortcuts_icon_picker_notes">노트</string>
+    <string name="shortcuts_icon_picker_luggage">여행</string>
+    <string name="shortcuts_icon_picker_maps">지도</string>
+    <string name="shortcuts_icon_picker_market">마켓</string>
+    <string name="shortcuts_icon_picker_movie">동영상</string>
+    <string name="shortcuts_icon_picker_music">음악</string>
+    <string name="shortcuts_icon_picker_nav">네비게이션</string>
+    <string name="shortcuts_icon_picker_phone">폰</string>
+    <string name="shortcuts_icon_picker_package">패키지</string>
+    <string name="shortcuts_icon_picker_pinterest">클립</string>
+    <string name="shortcuts_icon_picker_play">플레이</string>
+    <string name="shortcuts_icon_picker_pocket">포켓</string>
+    <string name="shortcuts_icon_picker_quicksettings">빠른 설정</string>
+    <string name="shortcuts_icon_picker_rss">RSS 피드</string>
+    <string name="shortcuts_icon_picker_sdcard">SD 카드</string>
+    <string name="shortcuts_icon_picker_search">검색</string>
+    <string name="shortcuts_icon_picker_sms">SMS</string>
+    <string name="shortcuts_icon_picker_tasks">Tasks</string>
+    <string name="shortcuts_icon_picker_terminal">터미널</string>
+    <string name="shortcuts_icon_picker_transit">Transit</string>
+    <string name="shortcuts_icon_picker_tv">TV</string>
+    <string name="shortcuts_icon_picker_twitter">트위터</string>
+    <string name="shortcuts_icon_picker_unlock">잠금 해제</string>
+
+    <string name="pref_lockscreen_slide_before_unlock_title">잠금 해제 전 슬라이드</string>
+    <string name="pref_lockscreen_slide_before_unlock_summary">보안 잠금이 되있을 때 보안을 해제한 후 슬라이드하여 완벽하게 잠금을 해제합니다.</string>
+
+    <string name="pref_cat_lockscreen_widgets_title">위젯</string>
+    <string name="pref_cat_lockscreen_sliding_challenge_title">잠금 해제 고리</string>
+    <string name="pref_cat_lockscreen_statusbar_title">상단바</string>
+
+    <string name="qs_auto_switch_disabled">비활성화됨</string>
+    <string name="qs_auto_switch_mode1">알림이 없을 때</string>
+    <string name="qs_auto_switch_mode2">지울 수 있는 알림이 없을 때</string>
+
+    <string name="pref_statusbar_dt2s_title">두 번 터치하여 잠금</string>
+    <string name="pref_statusbar_dt2s_summary">상단바를 두 번 터치하여 화면을 끕니다.</string>
+
+    <string name="animation_scale0">애니메이션 없음</string>
+    <string name="animation_scale1">애니메이션 0.25 배속</string>
+    <string name="animation_scale2">애니메이션 0.5 배속</string>
+    <string name="animation_scale3">애니메이션 1 배속</string>
+    <string name="animation_scale4">애니메이션 1.5 배속</string>
+    <string name="animation_scale5">애니메이션 2 배속</string>
+    <string name="animation_scale6">애니메이션 5 배속</string>
+    <string name="animation_scale7">애니메이션 10 배속</string>
+
+    <string name="pref_qs_tile_label_style_title">타일 이름 스타일</string>
+    <string name="tile_label_style_normal">기본</string>
+    <string name="tile_label_style_allcaps">모두 대문자</string>
+    <string name="tile_label_style_hidden">숨기기</string>
+
+    <string name="hwkey_action_brightness_dialog">밝기 대화창 보이기</string>
+
+    <string name="pref_navbar_ring_haptic_feedback_title">햅틱 피드백</string>
+    <string name="navring_haptic_feedback_default">기본 값</string>
+    <string name="navring_haptic_feedback_enabled">활성화</string>
+    <string name="navring_haptic_feedback_disabled">비활성화</string>
+
+    <string name="pref_quick_pulldown_size_title">빠른 풀다운 크기</string>
+
+    <string name="stay_awake_15s">15초</string>
+    <string name="stay_awake_30s">30초</string>
+    <string name="stay_awake_1m">1분</string>
+    <string name="stay_awake_2m">2분</string>
+    <string name="stay_awake_5m">5분</string>
+    <string name="stay_awake_10m">10분</string>
+    <string name="stay_awake_30m">30분</string>
+
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">WhatsApp</string>
+
+    <string name="pref_lockscreen_ring_dt2s_title">두 번 터치하여 잠금</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">잠금 해제 고리를 두 번 터치하면 화면이 꺼집니다.</string>
+
+    <string name="pref_charger_plugged_sound_title">충전기 연결 소리</string>
+    <string name="pref_charger_plugged_sound_summary">충전기가 연결되거나 분리될 때 소리를 재생합니다.</string>
+
+    <string name="shortcut_smart_radio_toggle">스마트 라디오 전환</string>
 
 </resources>

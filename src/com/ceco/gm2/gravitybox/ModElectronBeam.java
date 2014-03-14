@@ -42,13 +42,6 @@ public class ModElectronBeam {
                     new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                    prefs.reload();
-                    try {
-                        mEbMode = Integer.valueOf(prefs.getString(GravityBoxSettings.PREF_KEY_SCREEN_OFF_EFFECT, "0"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid value for PREF_KEY_SCREEN_OFF_EFFECT preference");
-                        mEbMode = 0;
-                    }
                     if (mEbMode != 0) {
                         param.args[0] = mEbMode;
                         if (DEBUG) log("Screen off effect mode set to: " + mEbMode);
@@ -60,11 +53,21 @@ public class ModElectronBeam {
 
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                    ObjectAnimator oa = (ObjectAnimator) 
-                            XposedHelpers.getObjectField(param.thisObject, "mElectronBeamOffAnimator");
-                    if (oa != null && oa.getDuration() < 400) {
-                        oa.setDuration(400);
-                        if (DEBUG) log("Screen off effect duration set to: " + mEbMode);
+                    prefs.reload();
+                    try {
+                        mEbMode = Integer.valueOf(prefs.getString(GravityBoxSettings.PREF_KEY_SCREEN_OFF_EFFECT, "0"));
+                    } catch (NumberFormatException nfe) {
+                        log("Invalid value for PREF_KEY_SCREEN_OFF_EFFECT preference");
+                        mEbMode = 0;
+                    }
+
+                    if (mEbMode != 0) {
+                        ObjectAnimator oa = (ObjectAnimator) 
+                                XposedHelpers.getObjectField(param.thisObject, "mElectronBeamOffAnimator");
+                        if (oa != null && oa.getDuration() < 400) {
+                            oa.setDuration(400);
+                            if (DEBUG) log("Screen off effect duration set to: " + mEbMode);
+                        }
                     }
                 }
             });

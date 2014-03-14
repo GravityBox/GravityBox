@@ -28,6 +28,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.provider.Settings;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -37,6 +39,9 @@ public class ModSmartRadio {
     private static final String TAG = "GB:SmartRadio";
     public static final String PACKAGE_NAME = "com.android.systemui";
     private static final boolean DEBUG = false;
+
+    public static final String SETTING_SMART_RADIO_ENABLED = "gb_smart_radio_enabled";
+    public static final String ACTION_TOGGLE_SMART_RADIO = "gravitybox.intent.action.TOGGLE_SMART_RADIO";
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -56,6 +61,7 @@ public class ModSmartRadio {
     private static int mModeChangeDelay;
     private static KeyguardManager mKeyguardManager;
     private static int mScreenOffDelay;
+    private static boolean mSmartRadioEnabled;
 
     private static BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -123,6 +129,8 @@ public class ModSmartRadio {
                 if (shouldSwitchToNormalState()) {
                     switchToState(State.NORMAL);
                 }
+            } else if (intent.getAction().equals(ACTION_TOGGLE_SMART_RADIO)) {
+                toggleSmartRadio();
             }
 
             if (mNetworkModeChanger != null) {
@@ -210,8 +218,8 @@ public class ModSmartRadio {
                                    isMobileDataEnabled() &&
                                    !isWifiConnected();
         // additional rules
-        if (!isTetheringViaMobileNetwork()) {
-            shouldSwitch &= !(mIsScreenOff && mPowerSaveWhenScreenOff);
+        if (mPowerSaveWhenScreenOff && !isTetheringViaMobileNetwork()) {
+            shouldSwitch &= !mIsScreenOff;
             shouldSwitch &= !(isKeyguardLocked() && mIgnoreWhileLocked);
         }
 
@@ -223,7 +231,10 @@ public class ModSmartRadio {
     }
 
     private static void switchToState(State newState, boolean force) {
-        if (mCurrentState == newState && !force) {
+        if (!mSmartRadioEnabled) {
+            if (DEBUG) log("switchToState: Smart Radio is disabled - ignoring");
+            return;
+        } else if (mCurrentState == newState && !force) {
             if (DEBUG) log("switchToState: new state == previous state - ignoring");
             return;
         } else if (!isMobileNetworkAvailable()) {
@@ -258,6 +269,24 @@ public class ModSmartRadio {
             if (mCurrentState == state) {
                 switchToState(state, true);
             }
+        }
+    }
+
+    private static void toggleSmartRadio() {
+        try {
+            mSmartRadioEnabled = !mSmartRadioEnabled;
+            Settings.System.putInt(mContext.getContentResolver(),
+                    SETTING_SMART_RADIO_ENABLED, mSmartRadioEnabled ? 1 : 0);
+            if (mSmartRadioEnabled) {
+                if (shouldSwitchToNormalState()) {
+                    switchToState(State.NORMAL);
+                } else {
+                    switchToState(State.POWER_SAVING);
+                }
+            }
+            if (DEBUG) log("mSmartRadioEnabled=" + mSmartRadioEnabled);
+        } catch (Throwable t) {
+            XposedBridge.log(t);
         }
     }
 
@@ -361,6 +390,8 @@ public class ModSmartRadio {
                     if (mContext != null) {
                         if (DEBUG) log("Initializing SmartRadio");
 
+                        mSmartRadioEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                                SETTING_SMART_RADIO_ENABLED, 1) == 1;
                         mConnManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
                         mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                         mNetworkModeChanger = new NetworkModeChanger(mContext);
@@ -372,6 +403,7 @@ public class ModSmartRadio {
                         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
                         intentFilter.addAction(Intent.ACTION_USER_PRESENT);
                         intentFilter.addAction(NetworkModeChanger.ACTION_CHANGE_MODE_ALARM);
+                        intentFilter.addAction(ACTION_TOGGLE_SMART_RADIO);
                         mContext.registerReceiver(mBroadcastReceiver, intentFilter);
                     }
                 }

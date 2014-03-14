@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2013 Peter Gregus for GravityBox Project (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">GravityBox</string>
 
-    <string name="battery_style_title">電量指示器風格</string>	
+    <string name="battery_style_title">電量指示器風格</string>
     <string name="battery_style_stock">預設電量指示器</string>
     <string name="battery_style_circle">圓形電量指示器</string>
     <string name="battery_style_circle_percent">圓形電量指示器(包含電量百分比)</string>
@@ -49,7 +64,6 @@
     <string name="fix_caller_id_phone_summary">若您來電畫面上顯示的聯絡人與您的通訊錄不合，啟用這個選項（需要重新啟動）</string>
     <string name="fix_caller_id_phone_alert">為了讓更動生效，您應該在重新啟動後刪除並重新新增所有聯絡人！（請於 設定>應用程式>全部 分頁中找尋「聯絡人」應用程式並且選擇清除資料）</string>
 
-
     <string name="fix_caller_id_mms_title">修正簡訊的來電顯示</string>
     <string name="fix_caller_id_mms_summary">如果來自同一個人的簡訊被分成不同的會話串，啟用這個選項（需要重新啟動）</string>
     <string name="fix_caller_id_mms_alert">為了讓更動生效，您應該在重新啟動後，於「訊息」應用程式內刪除全部被拆散的會話串！</string>
@@ -87,6 +101,11 @@
     <string name="quick_settings_nfc_on">NFC 開啟</string>
     <string name="quick_settings_nfc_off">NFC 關閉</string>
     <string name="quick_settings_camera_error_connect">無法連結相機</string>
+    <string name="quick_settings_usb_tether_off">中斷連結</string>
+    <string name="quick_settings_usb_tether_connected">資料連結關閉</string>
+    <string name="quick_settings_usb_tether_on">資料連結</string>
+    <string name="quick_settings_smart_radio_on">智慧網路開啟</string>
+    <string name="quick_settings_smart_radio_off">智慧網路關閉</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">狀態列快速設定磁貼</string>
@@ -119,6 +138,8 @@
     <string name="qs_tile_screenshot">螢幕截圖</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">相機</string>
+    <string name="qs_tile_usb_tethering">USB 資料連結</string>
+    <string name="qs_tile_smart_radio">智慧網路</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">顏色選擇器</string>
@@ -173,6 +194,7 @@
     <string name="lockscreen_bg_default">預設桌布</string>
     <string name="lockscreen_bg_color">純色</string>
     <string name="lockscreen_bg_image">自訂圖片</string>
+    <string name="lockscreen_bg_last_screen">最后的畫像</string>
     <string name="pref_lockscreen_bg_color_title">設定自訂顏色</string>
     <string name="pref_lockscreen_bg_color_summary">可以為鎖定畫面設定自訂的背景顏色</string>
     <string name="pref_lockscreen_bg_image_title">設定自訂圖片</string>
@@ -352,9 +374,9 @@
     <string name="pref_disable_roaming_indicators_summary">當隱藏時，漫遊指示器上的 R 會消失，請小心使用</string>
 
     <!-- Battery status in pie controls -->
-    <string name="pie_battery_status_charging">充電中 (%d%%)</string>
+    <string name="pie_battery_status_charging">充電中: (%d%%)</string>
     <string name="pie_battery_status_full">電量已滿</string>
-    <string name="pie_battery_status_discharging"><xliff:g id="percent">%d</xliff:g>%% 漫遊中</string>
+    <string name="pie_battery_status_discharging">剩下電量:<xliff:g id="percent">%d</xliff:g>%%</string>
 
     <!-- Phone status in pie controls -->
     <string name="pie_phone_status_no_service">沒有服務</string>
@@ -387,7 +409,7 @@
     <string name="pref_holo_bg_dither_title">優化 Holo 背景</string>
     <string name="pref_holo_bg_dither_summary">取代原本不完美漸層的預設 Holo 黑-灰色背景（需要重新啟動）</string>
 
-    <!-- Disable hardware keys for pie -->
+    <!-- Disable navigation keys for pie -->
     <string name="pref_hwkeys_disable_title">關閉實體按鍵</string>
     <string name="pref_hwkeys_disable_summary">當 Pie 控制 啟用時將會關閉選單鍵、返回鍵與 HOME 鍵功能，但是實體按鍵功能仍可使用（如果您的裝置有實體按鍵）</string>
 
@@ -425,6 +447,7 @@
     <!-- GPS Tile (for non-MTK) -->
     <string name="qs_tile_gps_enabled">GPS 開啟</string>
     <string name="qs_tile_gps_disabled">GPS 關閉</string>
+    <string name="qs_tile_gps_locked">GPS 定位</string>
 
     <!-- Pie control: always show menu button -->
     <string name="pie_control_menu_title">總是顯示選單鍵</string>
@@ -482,9 +505,12 @@
     <string name="hwkey_action_custom_app_none">沒有指定應用程式!</string>
     <string name="hwkey_action_custom_app_missing">未找到自訂應用程式!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">與「時鐘」應用程式做連結</string>
-    <string name="pref_clock_link_summary">啟動此功能後通知欄的時間將與應用程式「時鐘」做連結而非預設的「日期與時間」設定</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">狀態列時鐘</string>
+    <string name="pref_cat_notif_panel_clock_title">通知面板時鐘</string>
+    <string name="pref_clock_link_title">單擊時鐘應用程式</string>
+    <string name="pref_clock_link_summary">啟用後通知面板的時間將連結到指定應用程式而不是日期與時間設定</string>
+    <string name="pref_clock_longpress_link_title">長按時鐘應用程式</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">正在等待 GravityBox 系統框架回應&#8230;</string>
@@ -545,7 +571,7 @@
     <!-- Phone tweaks categories -->
     <string name="pref_cat_phone_telephony_title">電話</string>
     <string name="pref_cat_phone_messaging_title">訊息</string>
-    <string name="pref_cat_phone_mobile_data_title">行動資料</string>
+    <string name="pref_cat_phone_mobile_data_title">行動數據</string>
 
     <!-- Messaging: Strip unicode -->
     <string name="pref_mms_unicode_stripping_title">去除 unicode 字符</string>
@@ -564,8 +590,9 @@
 
     <!-- Network mode tile mode (2G/2G+3G/3G or 2G/2G+3G) -->
     <string name="pref_network_mode_tile_mode_title">網路模式的瓷貼模式</string>
-    <string name="nm_tile_mode1">2G/2G+3G/3G</string>
-    <string name="nm_tile_mode2">2G/2G+3G</string>
+    <string name="nm_tile_mode1">2G/2G+3G/3G/(LTE)</string>
+    <string name="nm_tile_mode2">2G/2G+3G/(LTE)</string>
+    <string name="nm_tile_mode3">2G/3G/(LTE)</string>
 
     <!-- Display: allow all rotations -->
     <string name="pref_display_allow_all_rotations_title">允許螢幕可以所有角度的旋轉</string>
@@ -638,7 +665,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">資料流量監控</string>
     <string name="pref_data_traffic_enable_title">啟用監控</string>
-    <string name="pref_data_traffic_enable_summary">當裝置有資料連結時在狀態列顯示資料流量監控</string>
     <string name="pref_data_traffic_position_title">顯示位置</string>
     <string name="dt_position_auto">自動 (居中或靠右取決於時鐘的位置)</string>
     <string name="dt_position_left">左</string>
@@ -658,17 +684,17 @@
 
     <!--  RAM Bar -->
     <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
-    <string name="service_background_processes"><xliff:g id="memory">%1$s</xliff:g> 空閒</string>
+    <string name="service_background_processes">空閒:<xliff:g id="memory">%1$s</xliff:g></string>
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
-    <string name="service_foreground_processes"><xliff:g id="memory">%1$s</xliff:g> 已使用</string>
+    <string name="service_foreground_processes">已使用:<xliff:g id="memory">%1$s</xliff:g></string>
     <string name="pref_rambar_title">RAM 使用狀況欄</string>
     <string name="rambar_off">關閉</string>
     <string name="rambar_top">頂部</string>
-    <string name="rambar_bottom">按鍵</string>
-    
+    <string name="rambar_bottom">底部</string>
+
     <!-- HW Key actions for recents button -->
-    <string name="hwkey_recents_singletap_dialog_title">近期鍵單擊操作</string>
-    <string name="hwkey_recents_longpress_dialog_title">近期鍵長按操作</string>
+    <string name="hwkey_recents_singletap_dialog_title">多工鍵單擊操作</string>
+    <string name="hwkey_recents_longpress_dialog_title">多工鍵長按操作</string>
 
     <!-- Lockscreen battery arc -->
     <string name="pref_lockscreen_battery_arc_title">顯示電池狀態圓弧</string>
@@ -684,7 +710,7 @@
     <string name="pref_cat_hwkey_menu_title">選單鍵</string>
     <string name="pref_cat_hwkey_home_title">Home 鍵</string>
     <string name="pref_cat_hwkey_back_title">返回鍵</string>
-    <string name="pref_cat_hwkey_recents_title">近期鍵</string>
+    <string name="pref_cat_hwkey_recents_title">多工鍵</string>
     <string name="pref_cat_hwkey_volume_title">音量鍵</string>
     <string name="pref_cat_hwkey_actions_others">其他設定</string>
     <string name="pref_hwkey_longpress_title">長按操作</string>
@@ -766,7 +792,7 @@
 
     <!-- Status icon style -->
     <string name="pref_status_icon_style_title">狀態列圖示風格</string>
-    <string name="pref_status_icon_style_summary">套用於無聲，震動，報警等狀態圖示.</string>
+    <string name="pref_status_icon_style_summary">套用於無聲，震動，鬧鐘等狀態圖示.</string>
     <string name="icon_style_jb">JellyBean</string>
     <string name="icon_style_kk">KitKat</string>
 
@@ -797,43 +823,43 @@
 
     <!-- HW Keys Navigation Bar warning -->
     <string name="hwkey_navbar_warning">為了能夠支援海苔條操作控制，在海苔條調整選單中覆蓋系統預設值是必須的</string>
-    
+
     <!-- Lockscreen Torch -->
     <string name="pref_hwkey_lockscreen_torch_title">鎖定螢幕手電筒</string>
     <string name="hwkey_ls_torch_disabled">停用</string>
     <string name="hwkey_ls_torch_home_longpress">長按 Home 鍵</string>
     <string name="hwkey_ls_torch_voldown_longpress">音量鍵(下)長按</string>
-    
+
     <!-- QuickSettings management master switch -->
     <string name="pref_qs_management_enable_summary">切換快速設定總管 (需要重新啟動)</string>
-  
+
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">應用程式</string>
     <string name="app_picker_shortcuts">快捷方式</string>
     <string name="app_picker_shortcut_null_intent">無法建立可用的快捷方式，由於該活動不支援返回快捷方式</string>
     <string name="app_picker_shortcut_cancelled">目標程式快捷方式已經取消</string>
-  
+
     <!-- Navigation bar: swap back and recents key -->
-    <string name="pref_navbar_swap_keys_title">切換返回鍵與近期鍵</string>
-   
+    <string name="pref_navbar_swap_keys_title">切換返回鍵與多工鍵</string>
+
     <!-- Unlock ring Torch -->
     <string name="pref_lockscreen_ring_torch_title">啟用手電筒</string>
     <string name="pref_lockscreen_ring_torch_summary">當長按解鎖環時啟用手電筒</string>
-   
+
     <!-- Volume panel timeout -->
     <string name="pref_volume_panel_timeout_title">音量面板逾時時間</string>
-   
+
     <!-- Ringer tile modes -->
     <string name="pref_qs_ringer_mode_title">響鈴模式瓷貼模式</string>
     <string name="ringer_mode_silent">靜音</string>
     <string name="ringer_mode_vibrate">震動</string>
     <string name="ringer_mode_sound">聲音</string>
     <string name="ringer_mode_sound_vibrate">聲音與震動</string>
- 
+
     <!-- Fix location issue (Android 4.2.1 JIT bug) -->
     <string name="fix_location_title">修正位置問題</string>
     <string name="fix_location_summary">如果您發現您所安裝的運動應用程式計數器無法正確跟隨您的距離，請啟用此選項(需要重新啟動)</string>
- 
+
     <!-- Launcher tweaks -->
     <string name="pref_cat_launcher_tweaks_title">啟動器調整</string>
     <string name="pref_cat_launcher_tweaks_summary">包含各種僅套用於 Google 啟動器的個性化配置選項</string>
@@ -842,13 +868,13 @@
     <string name="pref_launcher_desktop_grid_rows_title">行數</string>
     <string name="pref_launcher_desktop_grid_cols_title">列數</string>
     <string name="desktop_grid_default">預設</string>
-    
+
     <!-- Screen off effects -->
     <string name="screen_off_effect_title">螢幕關閉效果</string>
     <string name="screen_off_effect_default">系統預設</string>
     <string name="screen_off_effect_crt">CRT</string>
     <string name="screen_off_effect_fade">淡出</string>
-    
+
     <!-- Battery percent text -->
     <string name="battery_percent_text_title">電池電量百分比文字</string>
     <string name="battery_percent_text_size_title">電池電量百分比文字大小</string>
@@ -860,11 +886,11 @@
     <string name="battery_percent_text_style_title">電池電量百分比風格</string>
     <string name="battery_percent_text_style_default">預設</string>
     <string name="battery_percent_text_style_numbers_only">只有數字 (無百分比符號)</string>
-    
+
     <!-- Battery settings category -->
     <string name="pref_cat_battery_settings_title">電池設定</string>
-    
-     <!-- Cursor control in navigation bar -->
+
+    <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">方向控制鍵</string>
     <string name="pref_navbar_cursor_control_summary">在海苔條上與鍵盤上啟用方向控制鍵</string>
 
@@ -897,53 +923,49 @@
     <!-- Navigation bar custom key (previously as App launcher key) -->
     <string name="pref_cat_navbar_custom_key_title">自訂按鍵設定</string>
     <string name="pref_navbar_custom_key_enable_title">啟用自訂按鍵</string>
-    
+
     <!-- Network mode tile: CDMA support -->
     <string name="pref_network_mode_tile_cdma_title">使用 CDMA 網路模式</string>
-    
+
     <!--  HW Key Action: Toggle auto rotation -->
     <string name="hwkey_action_auto_rotation">切換自動旋轉</string>
     <string name="hwkey_action_auto_rotation_enabled">自動旋轉已啟用</string>
     <string name="hwkey_action_auto_rotation_disabled">自動旋轉已停用</string>
-    
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">允許任何小工具</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">允許鎖定畫面桌面小工具，僅可使用於一般桌面啟動器</string>
-    
+
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">顯示電源選單</string>
     <string name="hwkey_action_expand_notifications">展開通知面板</string>
     <string name="hwkey_action_expand_quicksettings">展開快速設定面板</string>
-    
+
     <!-- Navigation bar ring targets -->
     <string name="pref_cat_navbar_ring_targets_title">導航環目標</string>
     <string name="pref_navbar_ring_targets_enable_summary">滑動導航環目標總管 (需要重新啟動)</string>
     <string name="pref_navbar_ring_target_title">導航環目標 %d</string>
-    
+
     <!-- Shortcut activity title -->
     <string name="shortcut_activity_title">GravityBox 操作</string>
-    
+
     <!-- Network mode shortcut -->
     <string name="shortcut_network_mode">切換網路模式</string>
-    
+
     <!-- Toggle mobile data shortcut -->
     <string name="shortcut_mobile_data">切換行動數據</string>
-    
+
     <!-- Toggle WiFi shortcut -->
     <string name="shortcut_wifi">切換 WiFi</string>
-    
+
     <!-- Toggle Bluetooth shortcut -->
     <string name="shortcut_bluetooth">切換藍牙</string>
-    
+
     <!-- Toggle WiFi AP shortcut -->
     <string name="shortcut_wifi_ap">切換 WiFi 行動熱點</string>
-    
+
     <!-- Toggle NFC shortcut -->
     <string name="shortcut_nfc">切換 NFC</string>
-    
-     <!-- Toggle GPS shortcut -->
+
+    <!-- Toggle GPS shortcut -->
     <string name="shortcut_gps">切換 GPS</string>
-    
+
     <!-- Navigation bar ring targets background style -->
     <string name="pref_navbar_ring_targets_bg_style_title">目標背景風格</string>
     <string name="nrt_bg_style_none">無</string>
@@ -987,7 +1009,7 @@
     <string name="pref_vol_force_music_control_summary">當啟用時，音量鍵將可控制音樂音量而不是鈴聲音量</string>
 
     <!-- Misc tweaks: category for recents panel related tweaks -->
-    <string name="pref_cat_misc_recents_panel_title">近期版面</string>
+    <string name="pref_cat_misc_recents_panel_title">多工版面</string>
 
     <!-- Misc tweaks: category for other settings -->
     <string name="pref_cat_misc_other_title">其他設定</string>
@@ -1023,10 +1045,10 @@
 
     <!-- Navbar custom key: swap with menu key -->
     <string name="pref_navbar_custom_key_swap_title">切換選單鍵</string>
-    
+
     <!-- Smart Radio -->
     <string name="smart_radio_action_undefined">未定義</string>
-    <string name="pref_cat_smart_radio_title">智慧無線</string>
+    <string name="pref_cat_smart_radio_title">智慧網路</string>
     <string name="pref_smart_radio_enable_summary">根據行動數據和無線網絡連接狀態，這會自動切換您自訂的省電模式或正常模式 (需要重新啟動)</string>
     <string name="pref_smart_radio_normal_mode_title">正常網路模式</string>
     <string name="pref_smart_radio_power_saving_mode_title">節省電力網路模式</string>
@@ -1038,7 +1060,7 @@
     <string name="pref_smart_radio_mode_change_delay_summary">設定指定的秒數來延遲變更網路模式</string>
 
     <!-- Lockscreen: custom carrier text -->
-    <string name="pref_lockscreen_carrier_text_title">自訂載體文字</string>
+    <string name="pref_lockscreen_carrier_text_title">自訂第一卡槽標題文字</string>
     <string name="carrier_text_default">預設</string>
     <string name="carrier_text_empty">空的</string>
 
@@ -1050,7 +1072,7 @@
     <string name="pref_cat_pie_long_press_title">長按操作</string>
     <string name="pref_pie_back_longpress_title">返回鍵</string>
     <string name="pref_pie_home_longpress_title">Home 鍵</string>
-    <string name="pref_pie_recents_longpress_title">近期鍵</string>
+    <string name="pref_pie_recents_longpress_title">多工鍵</string>
     <string name="pref_pie_search_longpress_title">搜尋鍵</string>
     <string name="pref_pie_menu_longpress_title">選單鍵</string>
     <string name="pref_pie_app_longpress_title">應用程式啟動器鍵</string>
@@ -1087,7 +1109,7 @@
       如果數值不為零，替代預設網路模式改變的延遲.</string>
 
     <!-- Lockscreen: secondary custom carrier text (MTK only) -->
-    <string name="pref_lockscreen_carrier2_text_title">自訂第二載波文字</string>
+    <string name="pref_lockscreen_carrier2_text_title">自訂第二卡槽標題文字</string>
 
     <!-- Backup and restore settings -->
     <string name="pref_settings_backup_title">備份設定</string>
@@ -1111,7 +1133,7 @@
     <string name="wsc_task_cancelled">Web 服務操作取消</string>
 
     <!-- Transaction verification -->
-    <string name="wsc_trans_parse_response_error">從Web服務獲得的錯誤剖析交易資料</string>
+    <string name="wsc_trans_parse_response_error">從 Web 服務獲得的錯誤剖析交易資料</string>
     <string name="wsc_trans_valid">交易ID驗證成功。 GravityBox重新啟動後的進階功能將被解鎖.</string>
     <string name="wsc_trans_invalid">無法找到指定的交易ID記錄</string>
     <string name="wsc_trans_violation">指定的交易ID已經註冊過很多次。請聯絡 GravityBox 開發者來解決.</string>
@@ -1137,5 +1159,180 @@
     <string name="pref_cat_launcher_other_title">其他</string>
     <string name="pref_launcher_resize_widget_title">調整任何小工具</string>
     <string name="pref_launcher_resize_widget_summary">調整主畫面上的任何小工具至任何大小 (需要重新啟動啟動器)</string>
- 
+
+    <!-- Icon picker -->
+    <string name="icon_picker_choose_icon_title">選擇圖示</string>
+    <string name="shortcuts_icon_picker_alarm">鬧鐘</string>
+    <string name="shortcuts_icon_picker_andy">Andy</string>
+    <string name="shortcuts_icon_picker_battery">電池</string>
+    <string name="shortcuts_icon_picker_browser">瀏覽器</string>
+    <string name="shortcuts_icon_picker_calendar">計算機</string>
+    <string name="shortcuts_icon_picker_camera">相機</string>
+    <string name="shortcuts_icon_picker_cloud">雲端</string>
+    <string name="shortcuts_icon_picker_contact">聯絡人</string>
+    <string name="shortcuts_icon_picker_directdial">直接撥號</string>
+    <string name="shortcuts_icon_picker_directmessage">直接訊息</string>
+    <string name="shortcuts_icon_picker_drive">Drive</string>
+    <string name="shortcuts_icon_picker_dropbox">Dropbox</string>
+    <string name="shortcuts_icon_picker_email">Email</string>
+    <string name="shortcuts_icon_picker_email2">Email Alternate</string>
+    <string name="shortcuts_icon_picker_evernote">Evernote</string>
+    <string name="shortcuts_icon_picker_facebook">Facebook</string>
+    <string name="shortcuts_icon_picker_favorite">Favorite</string>
+    <string name="shortcuts_icon_picker_file_browser">檔案管理</string>
+    <string name="shortcuts_icon_picker_file_browser2">File Browser Alternate</string>
+    <string name="shortcuts_icon_picker_fitness">Fitness</string>
+    <string name="shortcuts_icon_picker_gallery">圖片庫</string>
+    <string name="shortcuts_icon_picker_gears">Gears</string>
+    <string name="shortcuts_icon_picker_google_small">Google</string>
+    <string name="shortcuts_icon_picker_gplus">Google +</string>
+    <string name="shortcuts_icon_picker_gtalk">Hangouts</string>
+    <string name="shortcuts_icon_picker_help">幫助</string>
+    <string name="shortcuts_icon_picker_joystick">Joystick</string>
+    <string name="shortcuts_icon_picker_key">Keys/Accounts</string>
+    <string name="shortcuts_icon_picker_laptop">Laptop</string>
+    <string name="shortcuts_icon_picker_notes">Notes</string>
+    <string name="shortcuts_icon_picker_luggage">Travel</string>
+    <string name="shortcuts_icon_picker_maps">地圖</string>
+    <string name="shortcuts_icon_picker_market">市場</string>
+    <string name="shortcuts_icon_picker_movie">電影</string>
+    <string name="shortcuts_icon_picker_music">音樂</string>
+    <string name="shortcuts_icon_picker_nav">Navigation</string>
+    <string name="shortcuts_icon_picker_phone">電話</string>
+    <string name="shortcuts_icon_picker_package">安裝包</string>
+    <string name="shortcuts_icon_picker_pinterest">Pinterest</string>
+    <string name="shortcuts_icon_picker_play">Play</string>
+    <string name="shortcuts_icon_picker_pocket">Pocket</string>
+    <string name="shortcuts_icon_picker_quicksettings">快速設定</string>
+    <string name="shortcuts_icon_picker_rss">RSS Feed</string>
+    <string name="shortcuts_icon_picker_sdcard">SDCard</string>
+    <string name="shortcuts_icon_picker_search">搜尋</string>
+    <string name="shortcuts_icon_picker_sms">電子郵件</string>
+    <string name="shortcuts_icon_picker_tasks">任務</string>
+    <string name="shortcuts_icon_picker_terminal">Terminal</string>
+    <string name="shortcuts_icon_picker_transit">Transit</string>
+    <string name="shortcuts_icon_picker_tv">TV</string>
+    <string name="shortcuts_icon_picker_twitter">Twitter</string>
+    <string name="shortcuts_icon_picker_unlock">解鎖</string>
+
+    <!-- Lockscreen: Slide before unlock -->
+    <string name="pref_lockscreen_slide_before_unlock_title">解鎖前滑動</string>
+    <string name="pref_lockscreen_slide_before_unlock_summary">允許使用滑動難題與解鎖環目標安全鎖</string>
+
+    <!-- Lockscreen tweaks: option categories -->
+    <string name="pref_cat_lockscreen_widgets_title">小工具</string>
+    <string name="pref_cat_lockscreen_sliding_challenge_title">滑動難題</string>
+    <string name="pref_cat_lockscreen_statusbar_title">狀態列</string>
+
+    <!-- Quick settings: Auto-switch extended -->
+    <string name="qs_auto_switch_disabled">已停用</string>
+    <string name="qs_auto_switch_mode1">當沒有通知時</string>
+    <string name="qs_auto_switch_mode2">當沒有清除的通知時</string>
+
+    <!-- Statusbar: Double-tap to sleep -->
+    <string name="pref_statusbar_dt2s_title">啟用 雙擊 休眠</string>
+    <string name="pref_statusbar_dt2s_summary">雙擊狀態列來使裝置休眠</string>
+
+    <!-- Animation scales -->
+    <string name="animation_scale0">動畫關閉</string>
+    <string name="animation_scale1">動畫刻度 .25x</string>
+    <string name="animation_scale2">動畫刻度 .5x</string>
+    <string name="animation_scale3">動畫刻度 1x</string>
+    <string name="animation_scale4">動畫刻度 1.5x</string>
+    <string name="animation_scale5">動畫刻度 2x</string>
+    <string name="animation_scale6">動畫刻度 5x</string>
+    <string name="animation_scale7">動畫刻度 10x</string>
+
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">慈貼標籤文字風格</string>
+    <string name="tile_label_style_normal">正常</string>
+    <string name="tile_label_style_allcaps">所有</string>
+    <string name="tile_label_style_hidden">隱藏</string>
+
+    <!-- Key Actions: Show brightness dialog -->
+    <string name="hwkey_action_brightness_dialog">顯示亮度對話框</string>
+
+    <!-- Navbar ring: Haptic feedback -->
+    <string name="pref_navbar_ring_haptic_feedback_title">觸控反饋</string>
+    <string name="navring_haptic_feedback_default">預設</string>
+    <string name="navring_haptic_feedback_enabled">已啟用</string>
+    <string name="navring_haptic_feedback_disabled">已停用</string>
+
+    <!-- Quick pull down size -->
+    <string name="pref_quick_pulldown_size_title">快速下拉大小</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="stay_awake_15s">15秒</string>
+    <string name="stay_awake_30s">30秒</string>
+    <string name="stay_awake_1m">1分鐘</string>
+    <string name="stay_awake_2m">2分鐘</string>
+    <string name="stay_awake_5m">5分鐘</string>
+    <string name="stay_awake_10m">10分鐘</string>
+    <string name="stay_awake_30m">30分鐘</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">啟用 雙擊 休眠</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">雙點擊解鎖環使裝置進入休眠</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">充電器插入音效</string>
+    <string name="pref_charger_plugged_sound_summary">當充電器插入/拔除時播放音效</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">切換智慧網路</string>
+    
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">主控開關</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">停用音量調節震動</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">停用當使用音量鍵調整通知/鈴聲音量時產生振動</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">切換狀態列時鐘設定 (需要重新啟動)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">週數大小</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">上午/下午 大小</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">海苔條環</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">停用導航環</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">資料流量監控的風格</string>
+    <string name="dt_mode_off">停用</string>
+    <string name="dt_mode_simple">簡單風格</string>
+    <string name="dt_mode_omni">全面風格</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">監控模式</string>
+    <string name="dt_omni_mode_in">下載</string>
+    <string name="dt_omni_mode_out">上載</string>
+    <string name="dt_omni_mode_in_out">下載與上載</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">顯示圖示</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculator</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">瓷貼特定設定</string>
+    <string name="pref_cat_qs_tile_settings_summary">包含瓷磚的特定設定</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">網路模式瓷貼設定</string>
+
 </resources>

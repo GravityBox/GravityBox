@@ -410,7 +410,6 @@
     <string name="sbl_policy_locked">Заблокований</string>
     <string name="pref_cat_data_traffic_title">Монітор трафіку</string>
     <string name="pref_data_traffic_enable_title">Включити моніторинг</string>
-    <string name="pref_data_traffic_enable_summary">Показує трафік завжди, коли включена передача даних</string>
     <string name="pref_data_traffic_position_title">Позиція</string>
     <string name="dt_position_auto">Автоматично (у центрі або праворуч залежно від позиції годин)</string>
     <string name="dt_position_left">Зліва</string>

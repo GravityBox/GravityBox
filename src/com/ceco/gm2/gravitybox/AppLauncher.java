@@ -304,7 +304,9 @@ public class AppLauncher {
                     return;
                 }
                 final int mode = mIntent.getIntExtra("mode", AppPickerPreference.MODE_APP);
-                final int iconResId = mIntent.getIntExtra("iconResId", 0);
+                final int iconResId = mIntent.getStringExtra("iconResName") != null ?
+                        mGbResources.getIdentifier(mIntent.getStringExtra("iconResName"),
+                        "drawable", mGbContext.getPackageName()) : 0;
                 Bitmap appIcon = null;
                 if (mode == AppPickerPreference.MODE_APP) {
                     ActivityInfo ai = mPm.getActivityInfo(mIntent.getComponent(), 0);

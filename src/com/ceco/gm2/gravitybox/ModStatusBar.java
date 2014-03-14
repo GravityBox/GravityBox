@@ -15,11 +15,14 @@
 
 package com.ceco.gm2.gravitybox;
 
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ceco.gm2.gravitybox.TrafficMeterAbstract.TrafficMeterMode;
 
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -35,14 +38,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.database.ContentObserver;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.format.DateFormat;
-import android.text.style.RelativeSizeSpan;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
@@ -77,6 +77,7 @@ public class ModStatusBar {
             "com.android.systemui.statusbar.policy.NetworkControllerGemini" :
             "com.android.systemui.statusbar.policy.NetworkController";
     private static final String CLASS_PHONE_STATUSBAR_VIEW = "com.android.systemui.statusbar.phone.PhoneStatusBarView";
+    private static final String CLASS_ICON_MERGER = "com.android.systemui.statusbar.phone.IconMerger";
     private static final boolean DEBUG = false;
 
     private static final float BRIGHTNESS_CONTROL_PADDING = 0.15f;
@@ -91,7 +92,6 @@ public class ModStatusBar {
     private static ViewGroup mRootView;
     private static LinearLayout mLayoutClock;
     private static StatusbarClock mClock;
-    private static TextView mClockExpanded;
     private static Object mPhoneStatusBar;
     private static Object mStatusBarView;
     private static Context mContext;
@@ -99,15 +99,13 @@ public class ModStatusBar {
     private static int mAnimPushDownIn;
     private static int mAnimFadeIn;
     private static boolean mClockCentered = false;
-    private static int mClockShowDow = GravityBoxSettings.DOW_DISABLED;
-    private static boolean mAmPmHide = false;
-    private static boolean mClockHide = false;
     private static String mClockLink;
     private static boolean mAlarmHide = false;
     private static Object mPhoneStatusBarPolicy;
     private static SettingsObserver mSettingsObserver;
     private static String mOngoingNotif;
-    private static TrafficMeter mTrafficMeter;
+    private static TrafficMeterAbstract mTrafficMeter;
+    private static TrafficMeterMode mTrafficMeterMode = TrafficMeterMode.OFF;
     private static View mSpacer;
     private static LayoutParams mSpacerDefLayoutParams; 
     private static LayoutParams mSpacerAltLayoutParams; 
@@ -123,6 +121,9 @@ public class ModStatusBar {
     private static int[] mCarrierTextViewOrigGravity;
     private static boolean mDt2sEnabled;
     private static GestureDetector mDoubletapGesture;
+    private static View mIconMergerView;
+    private static String mClockLongpressLink;
+    private static XSharedPreferences mPrefs;
 
     // Brightness control
     private static boolean mBrightnessControlEnabled;
@@ -135,6 +136,8 @@ public class ModStatusBar {
     private static int BRIGHTNESS_ON = 255;
     private static VelocityTracker mVelocityTracker;
 
+    private static List<BroadcastSubReceiver> mBroadcastSubReceivers = new ArrayList<BroadcastSubReceiver>();
+
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
     }
@@ -144,35 +147,21 @@ public class ModStatusBar {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DEBUG) log("Broadcast received: " + intent.toString());
+
+            for (BroadcastSubReceiver bsr : mBroadcastSubReceivers) {
+                bsr.onBroadcastReceived(context, intent);
+            }
+
             if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_CLOCK_CHANGED)) {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_CENTER_CLOCK)) {
                     setClockPosition(intent.getBooleanExtra(GravityBoxSettings.EXTRA_CENTER_CLOCK, false));
                     updateTrafficMeterPosition();
                 }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_CLOCK_DOW)) {
-                    mClockShowDow = intent.getIntExtra(GravityBoxSettings.EXTRA_CLOCK_DOW,
-                            GravityBoxSettings.DOW_DISABLED);
-                    if (mClock != null) {
-                        XposedHelpers.callMethod(mClock.getView(), "updateClock");
-                    }
-                }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_AMPM_HIDE)) {
-                    mAmPmHide = intent.getBooleanExtra(GravityBoxSettings.EXTRA_AMPM_HIDE, false);
-                    if (mClock != null) {
-                        XposedHelpers.callMethod(mClock.getView(), "updateClock");
-                    }
-                    if (mClockExpanded != null) {
-                        XposedHelpers.callMethod(mClockExpanded, "updateClock");
-                    }
-                }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_CLOCK_HIDE)) {
-                    mClockHide = intent.getBooleanExtra(GravityBoxSettings.EXTRA_CLOCK_HIDE, false);
-                    if (mClock != null) {
-                        mClock.getView().setVisibility(mClockHide ? View.GONE : View.VISIBLE);
-                    }
-                }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_CLOCK_LINK)) {
                     mClockLink = intent.getStringExtra(GravityBoxSettings.EXTRA_CLOCK_LINK);
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_CLOCK_LONGPRESS_LINK)) {
+                    mClockLongpressLink = intent.getStringExtra(GravityBoxSettings.EXTRA_CLOCK_LONGPRESS_LINK);
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_ALARM_HIDE)) {
                     mAlarmHide = intent.getBooleanExtra(GravityBoxSettings.EXTRA_ALARM_HIDE, false);
@@ -207,24 +196,18 @@ public class ModStatusBar {
                             SETTING_ONGOING_NOTIFICATIONS, "");
                     if (DEBUG) log("Ongoing notifications list reset");
                 }
-            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_DATA_TRAFFIC_CHANGED)
-                    && mTrafficMeter != null) {
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_ENABLE)) {
-                    mTrafficMeter.setTrafficMeterEnabled(intent.getBooleanExtra(
-                            GravityBoxSettings.EXTRA_DT_ENABLE, false));
+            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_DATA_TRAFFIC_CHANGED)) {
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_MODE)) {
+                    try {
+                        TrafficMeterMode mode = TrafficMeterMode.valueOf(
+                            intent.getStringExtra(GravityBoxSettings.EXTRA_DT_MODE));
+                        setTrafficMeterMode(mode);
+                    } catch (Throwable t) {
+                        XposedBridge.log(t);
+                    }
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_POSITION)) {
-                    mTrafficMeter.setTrafficMeterPosition(intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_DT_POSITION,
-                            GravityBoxSettings.DT_POSITION_AUTO));
                     updateTrafficMeterPosition();
-                }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_SIZE)) {
-                    mTrafficMeter.setTextSize(1, intent.getIntExtra(GravityBoxSettings.EXTRA_DT_SIZE, 14));
-                }
-                if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_INACTIVITY_MODE)) {
-                    mTrafficMeter.setInactivityMode(intent.getIntExtra(
-                            GravityBoxSettings.EXTRA_DT_INACTIVITY_MODE, 0));
                 }
             } else if (intent.getAction().equals(ACTION_START_SEARCH_ASSIST)) {
                 startSearchAssist();
@@ -278,14 +261,8 @@ public class ModStatusBar {
 
                 @Override
                 public void handleLayoutInflated(LayoutInflatedParam liparam) throws Throwable {
-                    prefs.reload();
-                    mClockShowDow = Integer.valueOf(
-                            prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DOW, "0"));
-                    mAmPmHide = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_AMPM_HIDE, false);
-                    mClockHide = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_HIDE, false);
-                    mClockLink = prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_LINK, null);
-                    mAlarmHide = prefs.getBoolean(GravityBoxSettings.PREF_KEY_ALARM_ICON_HIDE, false);
-                    mDisableDataNetworkTypeIcons = prefs.getBoolean(GravityBoxSettings.PREF_KEY_DISABLE_DATA_NETWORK_TYPE_ICONS, false);
+                    mDisableDataNetworkTypeIcons = prefs.getBoolean(
+                            GravityBoxSettings.PREF_KEY_DISABLE_DATA_NETWORK_TYPE_ICONS, false);
 
                     String iconAreaId = Build.VERSION.SDK_INT > 16 ?
                             "system_icon_area" : "icons";
@@ -301,44 +278,52 @@ public class ModStatusBar {
                             (ViewGroup) liparam.view.findViewById(liparam.res.getIdentifier(
                                     "status_bar_contents", "id", PACKAGE_NAME)) : mIconArea;
 
-                    // find statusbar clock
-                    TextView clock = (TextView) mIconArea.findViewById(
-                            liparam.res.getIdentifier("clock", "id", PACKAGE_NAME));
-                    // the second attempt
-                    if (clock == null) {
-                        clock = (TextView) mSbContents.findViewById(
+                    if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_MASTER_SWITCH, true)) {
+                        // find statusbar clock
+                        TextView clock = (TextView) mIconArea.findViewById(
                                 liparam.res.getIdentifier("clock", "id", PACKAGE_NAME));
-                        mClockInSbContents = clock != null;
-                    }
-                    if (clock != null) {
-                        mClock = new StatusbarClock(clock);
-                        ModStatusbarColor.registerIconManagerListener(mClock);
-                        // use this additional field to identify the instance of Clock that resides in status bar
-                        XposedHelpers.setAdditionalInstanceField(mClock.getView(), "sbClock", true);
-                        if (mClockHide) {
-                            mClock.getView().setVisibility(View.GONE);
+                        // the second attempt
+                        if (clock == null && mSbContents != null) {
+                            clock = (TextView) mSbContents.findViewById(
+                                    liparam.res.getIdentifier("clock", "id", PACKAGE_NAME));
+                            mClockInSbContents = clock != null;
+                        }
+                        if (clock != null) {
+                            mClock = new StatusbarClock(prefs);
+                            mClock.setClock(clock);
+                            ModStatusbarColor.registerIconManagerListener(mClock);
+                            mBroadcastSubReceivers.add(mClock);
+                            // find notification panel clock
+                            String panelHolderId = Build.VERSION.SDK_INT > 16 ?
+                                    "panel_holder" : "notification_panel";
+                            final ViewGroup panelHolder = (ViewGroup) liparam.view.findViewById(
+                                    liparam.res.getIdentifier(panelHolderId, "id", PACKAGE_NAME));
+                            if (panelHolder != null) {
+                                TextView clockExpanded = (TextView) panelHolder.findViewById(
+                                        liparam.res.getIdentifier("clock", "id", PACKAGE_NAME));
+                                if (clockExpanded != null) {
+                                    mClock.setExpandedClock(clockExpanded);
+                                    if (Build.VERSION.SDK_INT < 17) {
+                                        clockExpanded.setClickable(true);
+                                        clockExpanded.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                launchClockApp();
+                                            }
+                                        });
+                                        clockExpanded.setOnLongClickListener(new View.OnLongClickListener() {
+                                            @Override
+                                            public boolean onLongClick(View v) {
+                                                launchClockLongpressApp();
+                                                return true;
+                                            }
+                                        });
+                                    }
+                                }
+                            }
                         }
                     }
 
-                    // find notification panel clock
-                    String panelHolderId = Build.VERSION.SDK_INT > 16 ?
-                            "panel_holder" : "notification_panel";
-                    final ViewGroup panelHolder = (ViewGroup) liparam.view.findViewById(
-                            liparam.res.getIdentifier(panelHolderId, "id", PACKAGE_NAME));
-                    if (panelHolder != null) {
-                        mClockExpanded = (TextView) panelHolder.findViewById(
-                                liparam.res.getIdentifier("clock", "id", PACKAGE_NAME));
-                        if (mClockExpanded != null && Build.VERSION.SDK_INT < 17) {
-                            mClockExpanded.setClickable(true);
-                            mClockExpanded.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    launchClockApp();
-                                }
-                            });
-                        }
-                    }
-                    
                     // inject new clock layout
                     mLayoutClock = new LinearLayout(liparam.view.getContext());
                     mLayoutClock.setLayoutParams(new LinearLayout.LayoutParams(
@@ -346,99 +331,8 @@ public class ModStatusBar {
                     mLayoutClock.setGravity(Gravity.CENTER);
                     mRootView.addView(mLayoutClock);
                     if (DEBUG) log("mLayoutClock injected");
-
-                    if (mClock != null) {
-                        XposedHelpers.findAndHookMethod(mClock.getView().getClass(), "getSmallTime", new XC_MethodHook() {
-                            @Override
-                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                                // is this a status bar Clock instance?
-                                // yes, if it contains our additional sbClock field
-                                if (DEBUG) log("getSmallTime() called. mAmPmHide=" + mAmPmHide);
-                                Object sbClock = XposedHelpers.getAdditionalInstanceField(param.thisObject, "sbClock");
-                                if (DEBUG) log("Is statusbar clock: " + (sbClock == null ? "false" : "true"));
-                                Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
-                                String clockText = param.getResult().toString();
-                                if (DEBUG) log("Original clockText: '" + clockText + "'");
-                                String amPm = calendar.getDisplayName(
-                                        Calendar.AM_PM, Calendar.SHORT, Locale.getDefault());
-                                if (DEBUG) log("Locale specific AM/PM string: '" + amPm + "'");
-                                int amPmIndex = clockText.indexOf(amPm);
-                                if (DEBUG) log("Original AM/PM index: " + amPmIndex);
-                                if (mAmPmHide && amPmIndex != -1) {
-                                    clockText = clockText.replace(amPm, "").trim();
-                                    if (DEBUG) log("AM/PM removed. New clockText: '" + clockText + "'");
-                                    amPmIndex = -1;
-                                } else if (!mAmPmHide 
-                                            && !DateFormat.is24HourFormat(mClock.getView().getContext()) 
-                                            && amPmIndex == -1) {
-                                    // insert AM/PM if missing
-                                    clockText += " " + amPm;
-                                    amPmIndex = clockText.indexOf(amPm);
-                                    if (DEBUG) log("AM/PM added. New clockText: '" + clockText + "'; New AM/PM index: " + amPmIndex);
-                                }
-                                CharSequence dow = "";
-                                // apply day of week only to statusbar clock, not the notification panel clock
-                                if (mClockShowDow != GravityBoxSettings.DOW_DISABLED && sbClock != null) {
-                                    dow = getFormattedDow(calendar.getDisplayName(
-                                            Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault())) + " ";
-                                }
-                                clockText = dow + clockText;
-                                SpannableStringBuilder sb = new SpannableStringBuilder(clockText);
-                                sb.setSpan(new RelativeSizeSpan(0.7f), 0, dow.length(), 
-                                        Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-                                if (amPmIndex > -1) {
-                                    int offset = Character.isWhitespace(clockText.charAt(dow.length() + amPmIndex - 1)) ?
-                                            1 : 0;
-                                    sb.setSpan(new RelativeSizeSpan(0.7f), dow.length() + amPmIndex - offset, 
-                                            dow.length() + amPmIndex + amPm.length(), 
-                                            Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-                                }
-                                if (DEBUG) log("Final clockText: '" + sb + "'");
-                                param.setResult(sb);
-                            }
-                        });
-    
-                        setClockPosition(prefs.getBoolean(
-                                GravityBoxSettings.PREF_KEY_STATUSBAR_CENTER_CLOCK, false));
-                    }
-
-                    // insert Traffic meter
-                    mTrafficMeter = new TrafficMeter(liparam.view.getContext());
-                    LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
-                            LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-                    mTrafficMeter.setLayoutParams(lParams);
-                    mTrafficMeter.setGravity(Gravity.CENTER_VERTICAL);
-                    mTrafficMeter.setTextAppearance(liparam.view.getContext(), 
-                            liparam.view.getContext().getResources().getIdentifier(
-                            "TextAppearance.StatusBar.Clock", "style", PACKAGE_NAME));
-                    int position = GravityBoxSettings.DT_POSITION_AUTO;
-                    try {
-                        position = Integer.valueOf(prefs.getString(
-                                GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_POSITION, "0"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_POSITION");
-                    }
-                    mTrafficMeter.setTrafficMeterPosition(position);
-                    int size = 14;
-                    try {
-                        size = Integer.valueOf(prefs.getString(
-                                GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_SIZE, "14"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_SIZE");
-                    }
-                    mTrafficMeter.setTextSize(1, size);
-                    int inactivityMode = 0;
-                    try {
-                        inactivityMode = Integer.valueOf(prefs.getString(
-                                GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE, "0"));
-                    } catch (NumberFormatException nfe) {
-                        log("Invalid preference value for PREF_KEY_DATA_TRAFFIC_INACTIVITY_MODE");
-                    }
-                    mTrafficMeter.setInactivityMode(inactivityMode);
-                    ModStatusbarColor.registerIconManagerListener(mTrafficMeter);
-                    updateTrafficMeterPosition();
-                    mTrafficMeter.setTrafficMeterEnabled(prefs.getBoolean(
-                            GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_ENABLE, false));
+                    setClockPosition(prefs.getBoolean(
+                            GravityBoxSettings.PREF_KEY_STATUSBAR_CENTER_CLOCK, false));
 
                     // MTK Dual SIMs: reduce space between wifi and signal icons
                     if (Utils.hasGeminiSupport()) {
@@ -466,19 +360,10 @@ public class ModStatusBar {
         }
     }
 
-    private static String getFormattedDow(String inDow) {
-        switch (mClockShowDow) {
-            case GravityBoxSettings.DOW_LOWERCASE: 
-                return inDow.toLowerCase(Locale.getDefault());
-            case GravityBoxSettings.DOW_UPPERCASE:
-                return inDow.toUpperCase(Locale.getDefault());
-            case GravityBoxSettings.DOW_STANDARD:
-            default: return inDow;
-        }
-    }
-
     public static void init(final XSharedPreferences prefs, final ClassLoader classLoader) {
         try {
+            mPrefs = prefs;
+
             final Class<?> phoneStatusBarClass =
                     XposedHelpers.findClass(CLASS_PHONE_STATUSBAR, classLoader);
             final Class<?> tickerClass =
@@ -493,6 +378,10 @@ public class ModStatusBar {
             loadAnimParamArgs[0] = int.class;
             loadAnimParamArgs[1] = Animation.AnimationListener.class;
 
+            mAlarmHide = prefs.getBoolean(GravityBoxSettings.PREF_KEY_ALARM_ICON_HIDE, false);
+            mClockLink = prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_LINK, null);
+            mClockLongpressLink = prefs.getString(
+                    GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_LONGPRESS_LINK, null);
             mBrightnessControlEnabled = prefs.getBoolean(
                     GravityBoxSettings.PREF_KEY_STATUSBAR_BRIGHTNESS, false);
             mOngoingNotif = prefs.getString(GravityBoxSettings.PREF_KEY_ONGOING_NOTIFICATIONS, "");
@@ -543,14 +432,37 @@ public class ModStatusBar {
                         mCarrierDividerImageView = (ImageView) carrierLabelGemini.findViewById(
                                 res.getIdentifier("carrier_divider", "id", PACKAGE_NAME));
                     } else {
-                        mCarrierTextView = new TextView[] {(TextView) XposedHelpers.getObjectField(
-                                param.thisObject, "mCarrierLabel")};
+                        Object o = XposedHelpers.getObjectField(param.thisObject, "mCarrierLabel");
+                        if (o instanceof TextView) {
+                            mCarrierTextView = new TextView[] {(TextView)o};
+                        }
+                    }
+
+                    if (Build.VERSION.SDK_INT > 16) {
+                        View dtView = (View) XposedHelpers.getObjectField(param.thisObject, "mDateTimeView");
+                        if (dtView != null) {
+                            dtView.setOnLongClickListener(new View.OnLongClickListener() {
+                                @Override
+                                public boolean onLongClick(View v) {
+                                    launchClockLongpressApp();
+                                    return true;
+                                }
+                            });
+                        }
                     }
 
                     mScreenWidth = (float) res.getDisplayMetrics().widthPixels;
                     mMinBrightness = res.getInteger(res.getIdentifier(
                             "config_screenBrightnessDim", "integer", "android"));
                     BRIGHTNESS_ON = XposedHelpers.getStaticIntField(powerManagerClass, "BRIGHTNESS_ON");
+
+                    try {
+                        TrafficMeterMode mode = TrafficMeterMode.valueOf(
+                                prefs.getString(GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_MODE, "OFF"));
+                        setTrafficMeterMode(mode);
+                    } catch (Throwable t) {
+                        XposedBridge.log(t);
+                    }
 
                     IntentFilter intentFilter = new IntentFilter();
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_CLOCK_CHANGED);
@@ -570,15 +482,16 @@ public class ModStatusBar {
                 }
             });
 
-            XposedHelpers.findAndHookMethod(phoneStatusBarClass, "showClock", boolean.class, new XC_MethodHook() {
-                @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    if (mClock == null) return;
-
-                    boolean visible = (Boolean) param.args[0] && !mClockHide;
-                    mClock.getView().setVisibility(visible ? View.VISIBLE : View.GONE);
-                }
-            });
+            if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_MASTER_SWITCH, true)) {
+                XposedHelpers.findAndHookMethod(phoneStatusBarClass, "showClock", boolean.class, new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        if (mClock != null) {
+                            mClock.setClockVisibility((Boolean)param.args[0]);
+                        }
+                    }
+                });
+            }
 
             if (Build.VERSION.SDK_INT > 16) {
                 XposedHelpers.findAndHookMethod(phoneStatusBarClass, "startActivityDismissingKeyguard", 
@@ -694,10 +607,16 @@ public class ModStatusBar {
                     if (mCarrierTextView == null || mCarrierText == null) return;
 
                     if (Utils.hasGeminiSupport()) {
-                        final String networkName = (String) XposedHelpers.getObjectField(
-                                param.thisObject, "mNetworkName");
-                        final String networkNameGemini = (String) XposedHelpers.getObjectField(
-                                param.thisObject, "mNetworkNameGemini");
+                        String networkName[] = new String[2];
+                        Object name = XposedHelpers.getObjectField(param.thisObject, "mNetworkName");
+                        if (name instanceof String[]) {
+                            networkName[0] = (String) ((String[])name)[0];
+                            networkName[1] = (String) ((String[])name)[1];
+                        } else {
+                            networkName[0] = (String) name;
+                            networkName[1] = (String) XposedHelpers.getObjectField(
+                                    param.thisObject, "mNetworkNameGemini");
+                        }
 
                         if (mCarrierTextViewOrigVisibility == null) {
                             mCarrierTextViewOrigVisibility = new int[] {
@@ -713,31 +632,42 @@ public class ModStatusBar {
                         }
 
                         for (int i=0; i<2; i++) {
+                            if (mCarrierTextView[i] == null) continue;
                             if (mCarrierText[i].isEmpty()) {
-                                mCarrierTextView[i].setText(i == 0 ? networkName : networkNameGemini);
+                                mCarrierTextView[i].setText(networkName[i]);
                                 mCarrierTextView[i].setVisibility(mCarrierTextViewOrigVisibility[i]);
                                 mCarrierTextView[i].setGravity(mCarrierTextViewOrigGravity[i]);
                             } else {
                                 if (mCarrierText[i].trim().isEmpty()) {
                                     mCarrierTextView[i].setText("");
                                     mCarrierTextView[i].setVisibility(View.GONE);
-                                    mCarrierTextView[i == 0 ? 1 : 0].setGravity(Gravity.CENTER);
-                                    mCarrierDividerImageView.setVisibility(View.GONE);
                                 } else {
                                     mCarrierTextView[i].setText(mCarrierText[i]);
                                     mCarrierTextView[i].setVisibility(View.VISIBLE);
                                 }
                             }
                         }
-                        if (mCarrierTextView[0].getVisibility() == View.VISIBLE &&
-                                mCarrierTextView[1].getVisibility() == View.VISIBLE) {
+                        if ((mCarrierTextView[0] != null &&
+                             mCarrierTextView[0].getVisibility() == View.VISIBLE) &&
+                             (mCarrierTextView[1] != null && 
+                              mCarrierTextView[1].getVisibility() == View.VISIBLE)) {
                             mCarrierTextView[0].setGravity(Gravity.RIGHT);
                             mCarrierTextView[1].setGravity(Gravity.LEFT);
-                            mCarrierDividerImageView.setVisibility(View.VISIBLE);
+                            if (mCarrierDividerImageView != null) {
+                                mCarrierDividerImageView.setVisibility(View.VISIBLE);
+                            }
                         } else {
-                            mCarrierDividerImageView.setVisibility(View.GONE);
+                            if (mCarrierDividerImageView != null) {
+                                mCarrierDividerImageView.setVisibility(View.GONE);
+                            }
+                            if (mCarrierTextView[0] != null) {
+                                mCarrierTextView[0].setGravity(Gravity.CENTER);
+                            }
+                            if (mCarrierTextView[1] != null) {
+                                mCarrierTextView[1].setGravity(Gravity.CENTER);
+                            }
                         }
-                    } else {
+                    } else if (mCarrierTextView[0] != null) {
                         if (mCarrierText[0].isEmpty()) return;
 
                         if (mCarrierText[0].trim().isEmpty()) {
@@ -778,6 +708,116 @@ public class ModStatusBar {
                     }
                 }
             });
+
+            // fragment that takes care of notification icon layout for center clock
+            try {
+                final Class<?> classIconMerger = XposedHelpers.findClass(CLASS_ICON_MERGER, classLoader);
+
+                XposedHelpers.findAndHookMethod(classIconMerger, "onMeasure", 
+                        int.class, int.class, new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        if (mIconMergerView == null) {
+                            mIconMergerView = (View) param.thisObject;
+                        }
+
+                        if ((mClock == null && mTrafficMeter == null) || 
+                                mContext == null || mLayoutClock == null || 
+                                    mLayoutClock.getChildCount() == 0) return;
+
+                        Resources res = mContext.getResources();
+                        int totalWidth = res.getDisplayMetrics().widthPixels;
+                        int iconSize = XposedHelpers.getIntField(param.thisObject, "mIconSize");
+                        Integer sbIconPad = (Integer) XposedHelpers.getAdditionalInstanceField(
+                                param.thisObject, "gbSbIconPad");
+                        if (sbIconPad == null) {
+                            sbIconPad = 0;
+                            int sbIconPadResId = res.getIdentifier("status_bar_icon_padding", "dimen", PACKAGE_NAME);
+                            if (sbIconPadResId != 0) {
+                                sbIconPad = res.getDimensionPixelSize(sbIconPadResId);
+                            }
+                            XposedHelpers.setAdditionalInstanceField(param.thisObject, "gbSbIconPad", sbIconPad);
+                        } else {
+                            sbIconPad = (Integer) XposedHelpers.getAdditionalInstanceField(
+                                    param.thisObject, "gbSbIconPad");
+                        }
+
+                        // use clock or traffic meter for basic measurement
+                        Paint p;
+                        String text;
+                        if (mClock != null) {
+                            p = mClock.getClock().getPaint();
+                            text = mClock.getClock().getText().toString();
+                        } else {
+                            p = mTrafficMeter.getPaint();
+                            text = "00000000"; // dummy text in case traffic meter is used for measurement
+                        }
+
+                        int clockWidth = (int) p.measureText(text) + iconSize;
+                        int availWidth = totalWidth/2 - clockWidth/2 - iconSize/2;
+                        XposedHelpers.setAdditionalInstanceField(param.thisObject, "gbAvailWidth", availWidth);
+                        int newWidth = availWidth - (availWidth % (iconSize + 2 * sbIconPad));
+
+                        Field fMeasuredWidth = View.class.getDeclaredField("mMeasuredWidth");
+                        fMeasuredWidth.setAccessible(true);
+                        Field fMeasuredHeight = View.class.getDeclaredField("mMeasuredHeight");
+                        fMeasuredHeight.setAccessible(true);
+                        Field fPrivateFlags = View.class.getDeclaredField("mPrivateFlags");
+                        fPrivateFlags.setAccessible(true); 
+                        fMeasuredWidth.setInt(param.thisObject, newWidth);
+                        fMeasuredHeight.setInt(param.thisObject, ((View)param.thisObject).getMeasuredHeight());
+                        int privateFlags = fPrivateFlags.getInt(param.thisObject);
+                        privateFlags |= 0x00000800;
+                        fPrivateFlags.setInt(param.thisObject, privateFlags);
+                    }
+                });
+
+                XposedHelpers.findAndHookMethod(classIconMerger, "checkOverflow",
+                        int.class, new XC_MethodReplacement() {
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                        if (mLayoutClock == null || mLayoutClock.getChildCount() == 0 ||
+                                XposedHelpers.getAdditionalInstanceField(param.thisObject, "gbAvailWidth") == null) {
+                            return XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
+                        }
+
+                        try {
+                            final View moreView = (View) XposedHelpers.getObjectField(param.thisObject, "mMoreView");
+                            if (moreView == null) return null;
+    
+                            int iconSize = XposedHelpers.getIntField(param.thisObject, "mIconSize");
+                            int availWidth = (Integer) XposedHelpers.getAdditionalInstanceField(
+                                    param.thisObject, "gbAvailWidth");
+                            int sbIconPad = (Integer) XposedHelpers.getAdditionalInstanceField(
+                                    param.thisObject, "gbSbIconPad");
+    
+                            LinearLayout layout = (LinearLayout) param.thisObject;
+                            final int N = layout.getChildCount();
+                            int visibleChildren = 0;
+                            for (int i=0; i<N; i++) {
+                                if (layout.getChildAt(i).getVisibility() != View.GONE) visibleChildren++;
+                            }
+    
+                            final boolean overflowShown = (moreView.getVisibility() == View.VISIBLE);
+                            final boolean moreRequired = visibleChildren * (iconSize + 2 * sbIconPad) > availWidth;
+                            if (moreRequired != overflowShown) {
+                                layout.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        moreView.setVisibility(moreRequired ? View.VISIBLE : View.GONE);
+                                    }
+                                });
+                            }
+                            return null;
+                        } catch (Throwable t) {
+                            log("Error in IconMerger.checkOverflow: " + t.getMessage());
+                            return XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
+                        }
+                    }
+                });
+            } catch (Throwable t) {
+                XposedBridge.log(t);;
+            }
         }
         catch (Throwable t) {
             XposedBridge.log(t);
@@ -819,27 +859,27 @@ public class ModStatusBar {
         }
 
         if (center) {
-            mClock.getView().setGravity(Gravity.CENTER);
-            mClock.getView().setLayoutParams(new LinearLayout.LayoutParams(
+            mClock.getClock().setGravity(Gravity.CENTER);
+            mClock.getClock().setLayoutParams(new LinearLayout.LayoutParams(
                     LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            mClock.getView().setPadding(0, 0, 0, 0);
+            mClock.getClock().setPadding(0, 0, 0, 0);
             if (mClockInSbContents) {
-                mSbContents.removeView(mClock.getView());
+                mSbContents.removeView(mClock.getClock());
             } else {
-                mIconArea.removeView(mClock.getView());
+                mIconArea.removeView(mClock.getClock());
             }
-            mLayoutClock.addView(mClock.getView());
+            mLayoutClock.addView(mClock.getClock());
             if (DEBUG) log("Clock set to center position");
         } else {
-            mClock.getView().setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-            mClock.getView().setLayoutParams(new LinearLayout.LayoutParams(
+            mClock.getClock().setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+            mClock.getClock().setLayoutParams(new LinearLayout.LayoutParams(
                     LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
             mClock.resetOriginalPaddingLeft();
-            mLayoutClock.removeView(mClock.getView());
+            mLayoutClock.removeView(mClock.getClock());
             if (mClockInSbContents) {
-                mSbContents.addView(mClock.getView());
+                mSbContents.addView(mClock.getClock());
             } else {
-                mIconArea.addView(mClock.getView());
+                mIconArea.addView(mClock.getClock());
             }
             if (DEBUG) log("Clock set to normal position");
         }
@@ -847,38 +887,78 @@ public class ModStatusBar {
         mClockCentered = center;
     }
 
+    private static void setTrafficMeterMode(TrafficMeterMode mode) {
+        if (mTrafficMeterMode == mode) return;
+
+        mTrafficMeterMode = mode;
+
+        removeTrafficMeterView();
+        if (mTrafficMeter != null) {
+            if (mBroadcastSubReceivers.contains(mTrafficMeter)) {
+                mBroadcastSubReceivers.remove(mTrafficMeter);
+            }
+            ModStatusbarColor.unregisterIconManagerListener(mTrafficMeter);
+            mTrafficMeter = null;
+        }
+
+        if (mTrafficMeterMode != TrafficMeterMode.OFF) {
+            mTrafficMeter = TrafficMeterAbstract.create(mContext, mTrafficMeterMode);
+            mTrafficMeter.initialize(mPrefs);
+            updateTrafficMeterPosition();
+            ModStatusbarColor.registerIconManagerListener(mTrafficMeter);
+            mBroadcastSubReceivers.add(mTrafficMeter);
+        }
+    }
+
+    private static void removeTrafficMeterView() {
+        if (mTrafficMeter != null) {
+            if (mSbContents != null) {
+                mSbContents.removeView(mTrafficMeter);
+            }
+            if (mLayoutClock != null) {
+                mLayoutClock.removeView(mTrafficMeter);
+            }
+            if (mIconArea != null) {
+                mIconArea.removeView(mTrafficMeter);
+            }
+        }
+    }
+
     private static void updateTrafficMeterPosition() {
-        if (mTrafficMeter == null || mSbContents == null ||
-            mLayoutClock == null || mIconArea == null) return;
+        removeTrafficMeterView();
 
-        mSbContents.removeView(mTrafficMeter);
-        mLayoutClock.removeView(mTrafficMeter);
-        mIconArea.removeView(mTrafficMeter);
-
-        switch(mTrafficMeter.getTrafficMeterPosition()) {
-            case GravityBoxSettings.DT_POSITION_AUTO:
-                if (mClockCentered) {
-                    if (mClockInSbContents) {
+        if (mTrafficMeterMode != TrafficMeterMode.OFF && mTrafficMeter != null) {
+            switch(mTrafficMeter.getTrafficMeterPosition()) {
+                case GravityBoxSettings.DT_POSITION_AUTO:
+                    if (mClockCentered) {
+                        if (mClockInSbContents && mSbContents != null) {
+                            mSbContents.addView(mTrafficMeter);
+                        } else if (mIconArea != null) {
+                            mIconArea.addView(mTrafficMeter, 0);
+                        }
+                    } else if (mLayoutClock != null) {
+                        mLayoutClock.addView(mTrafficMeter);
+                    }
+                    break;
+                case GravityBoxSettings.DT_POSITION_LEFT:
+                    if (mSbContents != null) {
+                        mSbContents.addView(mTrafficMeter, 0);
+                    }
+                    break;
+                case GravityBoxSettings.DT_POSITION_RIGHT:
+                    if (mClockInSbContents && mSbContents != null) {
                         mSbContents.addView(mTrafficMeter);
-                    } else {
+                    } else if (mIconArea != null) {
                         mIconArea.addView(mTrafficMeter, 
                                 Build.VERSION.SDK_INT > 16 ? 0 : 1);
                     }
-                } else {
-                    mLayoutClock.addView(mTrafficMeter);
-                }
-                break;
-            case GravityBoxSettings.DT_POSITION_LEFT:
-                mSbContents.addView(mTrafficMeter, 0);
-                break;
-            case GravityBoxSettings.DT_POSITION_RIGHT:
-                if (mClockInSbContents) {
-                    mSbContents.addView(mTrafficMeter);
-                } else {
-                    mIconArea.addView(mTrafficMeter, 
-                            Build.VERSION.SDK_INT > 16 ? 0 : 1);
-                }
-                break;
+                    break;
+            }
+        }
+
+        if (mIconMergerView != null) {
+            mIconMergerView.requestLayout();
+            mIconMergerView.invalidate();
         }
     }
 
@@ -1048,6 +1128,25 @@ public class ModStatusBar {
             }
         } catch (Throwable t) {
             log("Error updating carrier text view: " + t.getMessage());
+        }
+    }
+
+    private static void launchClockLongpressApp() {
+        if (mContext == null || mClockLongpressLink == null) return;
+
+        try {
+            final Intent intent = Intent.parseUri(mClockLongpressLink, 0);
+            if (intent != null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mContext.startActivity(intent);
+                if (mPhoneStatusBar != null) {
+                    XposedHelpers.callMethod(mPhoneStatusBar, "animateCollapsePanels");
+                }
+            }
+        } catch (ActivityNotFoundException e) {
+            log("Error launching assigned app for long-press on clock: " + e.getMessage());
+        } catch (Throwable t) {
+            XposedBridge.log(t);
         }
     }
 }

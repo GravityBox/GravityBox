@@ -138,7 +138,7 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
 
         // MTK Specific
         if (Utils.isMtkDevice()) {
-            if (Utils.hasGeminiSupport() && !Utils.isMt6572Device() &&
+            if (Utils.hasGeminiSupport() &&
                     lpparam.packageName.equals(ModSignalIconHide.PACKAGE_NAME)) {
                 ModSignalIconHide.init(prefs, lpparam.classLoader);
             }
@@ -262,6 +262,11 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
         if (lpparam.packageName.equals(ModSmartRadio.PACKAGE_NAME) &&
                 prefs.getBoolean(GravityBoxSettings.PREF_KEY_SMART_RADIO_ENABLE, false)) {
             ModSmartRadio.init(prefs, lpparam.classLoader);
+        }
+
+        if (Build.VERSION.SDK_INT > 17 &&
+                lpparam.packageName.equals(ModDownloadProvider.PACKAGE_NAME)) {
+            ModDownloadProvider.init(prefs, lpparam.classLoader);
         }
     }
 }

@@ -616,7 +616,9 @@ public class ModHwKeys {
                             } else if (areHwKeysEnabled() && !mIsBackDoubleTap && !mWasBackDoubleTap) {
                                 // inject BACK key event as it was previously eaten by us
                                 if (DEBUG) log("Triggering original DOWN/UP events for BACK key");
-                                injectKey(KeyEvent.KEYCODE_BACK);
+                                if (!event.isCanceled()) {
+                                    injectKey(KeyEvent.KEYCODE_BACK);
+                                }
                             } else {
                                 if (DEBUG) log("BACK KeyEvent coming from HW key and keys disabled; " +
                                 		"or pending double-tap. Ignoring.");
@@ -662,11 +664,12 @@ public class ModHwKeys {
                                     if (DEBUG) log("APP_SWITCH KeyEvent coming from HW key and keys disabled. Ignoring.");
                                     param.setResult(-1);
                                     return;
-                                }
-                                if (mRecentsSingletapAction != GravityBoxSettings.HWKEY_ACTION_DEFAULT) {
-                                    performAction(HwKeyTrigger.RECENTS_SINGLETAP);
-                                } else {
-                                    toggleRecentApps();
+                                } else if (!event.isCanceled()) {
+                                    if (mRecentsSingletapAction != GravityBoxSettings.HWKEY_ACTION_DEFAULT) {
+                                        performAction(HwKeyTrigger.RECENTS_SINGLETAP);
+                                    } else {
+                                        toggleRecentApps();
+                                    }
                                 }
                             }
                             mIsRecentsLongPressed = false;

@@ -36,6 +36,7 @@ public class ModSignalIconHide {
     private static final String TAG = "GB:ModSignalIconHide";
     public static final String PACKAGE_NAME = "com.android.systemui";
     private static final String CLASS_SIGNAL_CLUSTER_VIEW = "com.android.systemui.statusbar.SignalClusterViewGemini";
+    private static final String CLASS_SIM_HELPER = "com.android.systemui.statusbar.util.SIMHelper";
     private static final String CLASS_UICC_CONTROLLER = Build.VERSION.SDK_INT > 16 ?
             "com.android.internal.telephony.uicc.UiccController" :
             "com.android.internal.telephony.IccCard";
@@ -58,7 +59,8 @@ public class ModSignalIconHide {
             autohideSlot2 = (autoHidePrefs != null && autoHidePrefs.contains("sim2"));
             if (DEBUG) log("autohideSlot1 = " + autohideSlot1 + "; autohideSlot2 = " + autohideSlot2);
 
-            Class<?> signalClusterViewClass = XposedHelpers.findClass(CLASS_SIGNAL_CLUSTER_VIEW, classLoader);
+            final Class<?> signalClusterViewClass = XposedHelpers.findClass(CLASS_SIGNAL_CLUSTER_VIEW, classLoader);
+            final Class<?> SIMHelperClass = XposedHelpers.findClass(CLASS_SIM_HELPER, classLoader);
 
             XposedBridge.hookAllConstructors(signalClusterViewClass, new XC_MethodHook() {
 
@@ -95,20 +97,37 @@ public class ModSignalIconHide {
 
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    ViewGroup vgSlot1 = (ViewGroup) XposedHelpers.getObjectField(param.thisObject, "mMobileGroup");
-                    ViewGroup vgSlot2 = (ViewGroup) XposedHelpers.getObjectField(param.thisObject, "mMobileGroupGemini");
+                    Object mobileGroup = XposedHelpers.getObjectField(param.thisObject, "mMobileGroup");
+                    ViewGroup vgSlot1, vgSlot2;
+                    if (mobileGroup instanceof ViewGroup[]) {
+                        vgSlot1 = (ViewGroup) ((ViewGroup[])mobileGroup)[0];
+                        vgSlot2 = (ViewGroup) ((ViewGroup[])mobileGroup)[1];
+                    } else {
+                        vgSlot1 = (ViewGroup) mobileGroup;
+                        vgSlot2 = (ViewGroup) XposedHelpers.getObjectField(param.thisObject, "mMobileGroupGemini");
+                    }
+                    boolean isSim1Inserted = false;
+                    boolean isSim2Inserted = false;
 
                     if (vgSlot1 != null) {
-                        if (!(Boolean)XposedHelpers.callMethod(param.thisObject, "isSimInserted", 0) &&
-                                autohideSlot1)
+                        try {
+                            isSim1Inserted = (Boolean)XposedHelpers.callMethod(param.thisObject, "isSimInserted", 0);
+                        } catch (NoSuchMethodError nme) {
+                            isSim1Inserted = (Boolean)XposedHelpers.callStaticMethod(SIMHelperClass, "isSimInserted", 0);
+                        }
+                        if (!isSim1Inserted && autohideSlot1)
                             vgSlot1.setVisibility(View.GONE);
                         else
                             vgSlot1.setVisibility(View.VISIBLE);
                     }
 
                     if (vgSlot2 != null) { 
-                        if (!(Boolean)XposedHelpers.callMethod(param.thisObject, "isSimInserted", 1) &&
-                                autohideSlot2)
+                        try {
+                            isSim2Inserted = (Boolean)XposedHelpers.callMethod(param.thisObject, "isSimInserted", 1);
+                        } catch (NoSuchMethodError nme) {
+                            isSim2Inserted = (Boolean)XposedHelpers.callStaticMethod(SIMHelperClass, "isSimInserted", 1);
+                        }
+                        if (!isSim2Inserted && autohideSlot2)
                             vgSlot2.setVisibility(View.GONE);
                         else
                             vgSlot2.setVisibility(View.VISIBLE);

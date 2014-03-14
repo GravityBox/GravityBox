@@ -41,8 +41,8 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
     }
 
     public static StatusbarSignalCluster create(LinearLayout view, StatusBarIconManager iconManager) {
-        if (Utils.isMt6572Device()) {
-            return new StatusbarSignalClusterMt6572(view, iconManager);
+        if (Utils.isMt65x2Device()) {
+            return new StatusbarSignalClusterMt65x2(view, iconManager);
         } else if (Utils.isMtkDevice()) {
             return new StatusbarSignalClusterMtk(view, iconManager);
         } else {

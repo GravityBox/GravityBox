@@ -101,6 +101,11 @@
     <string name="quick_settings_nfc_on">NFC activado</string>
     <string name="quick_settings_nfc_off">NFC desactivado</string>
     <string name="quick_settings_camera_error_connect">Imposible conectar con la cámara</string>
+    <string name="quick_settings_usb_tether_off">Desconectado</string>
+    <string name="quick_settings_usb_tether_connected">Tethering desactivado</string>
+    <string name="quick_settings_usb_tether_on">Tethering activado</string>
+    <string name="quick_settings_smart_radio_on">Modo de red inteligente activado</string>
+    <string name="quick_settings_smart_radio_off">Modo de red inteligente desactivado</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Ajustes rápidos de la barra de estado</string>
@@ -133,6 +138,8 @@
     <string name="qs_tile_screenshot">Captura de pantalla</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Cámara</string>
+    <string name="qs_tile_usb_tethering">Tethering por USB</string>
+    <string name="qs_tile_smart_radio">Modo de red inteligente</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Selector de color</string>
@@ -497,9 +504,12 @@
     <string name="hwkey_action_custom_app_none">Aplicación no asignada</string>
     <string name="hwkey_action_custom_app_missing">Aplicación no encontrada</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">App del reloj del panel de notificaciones</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">Reloj de la barra de estado</string>
+    <string name="pref_cat_notif_panel_clock_title">Reloj del panel de notificaciones</string>
+    <string name="pref_clock_link_title">App al clickar el reloj</string>
     <string name="pref_clock_link_summary">Enlaza el reloj que hay en el panel de notificaciones a una app específica en lugar de a los ajustes de fecha y hora</string>
+    <string name="pref_clock_longpress_link_title">App manteniendo pulsado el reloj</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Esperando respuesta del framework del sistema GravityBox&#8230;</string>
@@ -547,7 +557,7 @@
     <string name="pref_powermenu_screenshot_title">Captura de pantalla en menú de apagado</string>
 
     <!-- Unlock ring settings -->
-    <string name="pref_cat_lockscreen_ring_settings_title">Ajustes del anillo de desbloqueo</string>
+    <string name="pref_cat_lockscreen_ring_settings_title">Apps en el anillo de desbloqueo</string>
     <string name="pref_lockscreen_ring_targets_enable_summary">Interruptor principal para los disparadores del anillo de desbloqueo</string>
     <string name="pref_lockscreen_ring_targets_app_title">App para la posición %s del anillo</string>
     <string name="pref_lockscreen_ring_vertical_offset_title">Desplaz. vertical del anillo</string>
@@ -654,7 +664,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor de tráfico de datos</string>
     <string name="pref_data_traffic_enable_title">Habilitar monitorización</string>
-    <string name="pref_data_traffic_enable_summary">Muestra el monitor de tráfico automáticamente cuando se activa una conexión de datos</string>
     <string name="pref_data_traffic_position_title">Posición</string>
     <string name="dt_position_auto">Automática (centro o derecha dependiendo de la posición del reloj)</string>
     <string name="dt_position_left">Izquierda</string>
@@ -924,10 +933,6 @@
     <string name="hwkey_action_auto_rotation_enabled">Rotación automática activada</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotación automática desactivada</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permitir cualquier widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permite colocar en la pantalla de bloqueo los widgets que solo pueden ser usados en el lanzador</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Mostrar menú de apagado</string>
     <string name="hwkey_action_expand_notifications">Expandir panel de notificaciones</string>
@@ -1049,7 +1054,7 @@
     <string name="pref_smart_radio_screen_off_title">Cuando la pantalla se apague</string>
     <string name="pref_smart_radio_screen_off_summary">Activa el modo de ahorro de energía cuando la pantalla se apague estén los datos móviles activados o no</string>
     <string name="pref_smart_radio_ignore_locked_title">Ignorar al estar bloqueado</string>
-    <string name="pref_smart_radio_ignore_locked_summary">Cuando la pantalla se encienda, el modo de ahorro de energía seguirá activo hasta hasta que se desbloquee el dispositivo</string>
+    <string name="pref_smart_radio_ignore_locked_summary">Cuando la pantalla se encienda, el modo de ahorro de energía seguirá activo hasta que se desbloquee el dispositivo</string>
     <string name="pref_smart_radio_mode_change_delay_title">Retraso al cambiar modo de red</string>
     <string name="pref_smart_radio_mode_change_delay_summary">Espera un número especificado de segundos al cambiar de modo de red</string>
 
@@ -1208,5 +1213,88 @@
     <string name="shortcuts_icon_picker_tv">TV</string>
     <string name="shortcuts_icon_picker_twitter">Twitter</string>
     <string name="shortcuts_icon_picker_unlock">Desbloquear</string>
+
+    <!-- Lockscreen: Slide before unlock -->
+    <string name="pref_lockscreen_slide_before_unlock_title">Slide before unlock</string>
+    <string name="pref_lockscreen_slide_before_unlock_summary">Allows using sliding challenge with ring targets together with security lock</string>
+
+    <!-- Lockscreen tweaks: option categories -->
+    <string name="pref_cat_lockscreen_widgets_title">Widgets</string>
+    <string name="pref_cat_lockscreen_sliding_challenge_title">Sliding challenge</string><!-- UNTRANSLATED -->
+    <string name="pref_cat_lockscreen_statusbar_title">Barra de estado</string>
+
+    <!-- Quick settings: Auto-switch extended -->
+    <string name="qs_auto_switch_disabled">Desactivado</string>
+    <string name="qs_auto_switch_mode1">Cuando no haya notificaciones</string>
+    <string name="qs_auto_switch_mode2">Cuando no haya notificaciones eliminables</string>
+
+    <!-- Statusbar: Double-tap to sleep -->
+    <string name="pref_statusbar_dt2s_title">Activar doble pulsación para suspender</string>
+    <string name="pref_statusbar_dt2s_summary">Suspende el dispositivo al realizar una doble pulsación en la barra de estado</string>
+
+    <!-- Animation scales -->
+    <string name="animation_scale0">Animation deasctivada</string>
+    <string name="animation_scale1">Escala de animación .25x</string>
+    <string name="animation_scale2">Escala de animación .5x</string>
+    <string name="animation_scale3">Escala de animación 1x</string>
+    <string name="animation_scale4">Escala de animación 1.5x</string>
+    <string name="animation_scale5">Escala de animación 2x</string>
+    <string name="animation_scale6">Escala de animación 5x</string>
+    <string name="animation_scale7">Escala de animación 10x</string>
+
+    <!-- Key Actions: Show brightness dialog -->
+    <string name="hwkey_action_brightness_dialog">Mostrar panel de ajuste de brillo</string>
+
+    <!-- Navbar ring: Haptic feedback -->
+    <string name="pref_navbar_ring_haptic_feedback_title">Respuesta háptica (vibración)</string>
+    <string name="navring_haptic_feedback_default">Predeterminada</string>
+    <string name="navring_haptic_feedback_enabled">Activada</string>
+    <string name="navring_haptic_feedback_disabled">Desactivada</string>
+
+    <!-- Quick pull down size -->
+    <string name="pref_quick_pulldown_size_title">Área para desplegar ajustes rápidos</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Activar doble pulsación para suspender</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Doble pulsación en el anillo de desbloqueo suspende el dispositivo</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Sonido al conectar cargador</string>
+    <string name="pref_charger_plugged_sound_summary">Reproduce un sonido cuando el cargador se conecta/desconecta</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Activar/desactivar modo de red inteligente</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">Desactivar vibración al ajustar volumen</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">Desactiva la vibración al ajustar el volumen de notificación/llamada usando los botones de volumen</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">Activa/desactiva los ajustes del reloj de la barra de estado (requiere reinicio)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">Tamaño del día de la semana</string>
+ 
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">Tamaño de AM/PM</string>
+ 
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">Anillo de la barra de navegación</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">Desactivar anillo de la barra de navegación</string>
 
 </resources>

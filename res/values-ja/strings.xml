@@ -89,6 +89,10 @@
     <string name="quick_settings_usb_tether_off">未接続</string>
     <string name="quick_settings_usb_tether_connected">テザリングオフ</string>
     <string name="quick_settings_usb_tether_on">テザリング</string>
+    <string name="quick_settings_smart_radio_on">スマートネットワークオン</string>
+    <string name="quick_settings_smart_radio_off">スマートネットワークオフ</string>
+    <string name="quick_settings_lock_screen_on">ロック画面オン</string>
+    <string name="quick_settings_lock_screen_off">ロック画面オフ</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">ステータスバークイック設定タイル</string>
@@ -121,6 +125,9 @@
     <string name="qs_tile_screenshot">スクリーンショット</string>
     <string name="qs_tile_camera">カメラ</string>
     <string name="qs_tile_usb_tethering">USBテザリング</string>
+    <string name="qs_tile_smart_radio">スマートネットワーク</string>
+    <string name="qs_tile_alarm">アラーム</string>
+    <string name="qs_tile_lock_screen">ロック画面</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">カラーピッカー</string>
@@ -486,9 +493,12 @@
     <string name="hwkey_action_custom_app_none">セットされていません!</string>
     <string name="hwkey_action_custom_app_missing">アプリが見つかりません!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">通知領域の時計でアプリ起動</string>
-    <string name="pref_clock_link_summary">通知領域の時計をタップした時に日付と時刻ではなく別のアプリを起動するようにします。</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">ステータスバーの時計</string>
+    <string name="pref_cat_notif_panel_clock_title">通知領域の時計</string>
+    <string name="pref_clock_link_title">タップで起動するアプリ</string>
+    <string name="pref_clock_link_summary">時計をタップしたときに日付と時刻設定ではなく指定したアプリを起動するようにします。</string>
+    <string name="pref_clock_longpress_link_title">長押しで起動するアプリ</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">GravityBoxフレームワークの応答を待っています&#8230;</string>
@@ -522,7 +532,7 @@
     <string name="pref_cat_navigation_bar_title">ナビバー設定</string>
     <string name="pref_cat_navigation_bar_summary">ナビバーに関連した設定を変更します。</string>
     <string name="pref_navbar_override_title">システムの初期値を上書き</string>
-    <string name="pref_navbar_override_summary">ナビバーの設定を有効化します。(要再起動)</string>
+    <string name="pref_navbar_override_summary">ナビバーの設定を有効/無効にします。(要再起動)</string>
     <string name="pref_navbar_enable_title">ナビバーの有効化</string>
     <string name="pref_navbar_enable_summary">再起動が必要です。</string>
     <string name="pref_navbar_height_title">ナビバーの高さ</string>
@@ -643,7 +653,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">データ通信量モニター</string>
     <string name="pref_data_traffic_enable_title">監視を有効にする</string>
-    <string name="pref_data_traffic_enable_summary">データ通信をしているときにデータ通信量モニターを表示します。</string>
     <string name="pref_data_traffic_position_title">位置</string>
     <string name="dt_position_auto">自動(時計の位置に従う)</string>
     <string name="dt_position_left">左</string>
@@ -906,10 +915,6 @@
     <string name="hwkey_action_auto_rotation">自動回転トグル</string>
     <string name="hwkey_action_auto_rotation_enabled">自動回転オン</string>
     <string name="hwkey_action_auto_rotation_disabled">自動回転オフ</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">全てのウィジェットを許可</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">ホームアプリで使えるウィジェットをロック画面にもおけるようにします。</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">電源メニューを表示</string>
@@ -1219,6 +1224,12 @@
     <string name="animation_scale6">アニメーション速度5倍</string>
     <string name="animation_scale7">アニメーション速度10倍</string>
 
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">タイルのラベルスタイル</string>
+    <string name="tile_label_style_normal">通常</string>
+    <string name="tile_label_style_allcaps">すべて大文字</string>
+    <string name="tile_label_style_hidden">非表示</string>
+
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">画面の明るさダイアログを表示</string>
 
@@ -1227,5 +1238,94 @@
     <string name="navring_haptic_feedback_default">デフォルト</string>
     <string name="navring_haptic_feedback_enabled">有効</string>
     <string name="navring_haptic_feedback_disabled">無効</string>
+    
+    <!-- Quick pull down size -->
+    <string name="pref_quick_pulldown_size_title">クイックプルダウンのサイズ</string>
+    
+    <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">常時点灯タイルのモード</string>
+    <string name="stay_awake_15s">15秒</string>
+    <string name="stay_awake_30s">30秒</string>
+    <string name="stay_awake_1m">1分</string>
+    <string name="stay_awake_2m">2分</string>
+    <string name="stay_awake_5m">5分</string>
+    <string name="stay_awake_10m">10分</string>
+    <string name="stay_awake_30m">30分</string>
+    <string name="stay_awake_on">常時点灯オン</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+    
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">ダブルタップで消灯を有効化</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">ロック解除リングをダブルタップすると画面を消灯するようにします。</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">充電器接続時の効果音</string>
+    <string name="pref_charger_plugged_sound_summary">充電器を接続/接続解除したときに効果音を再生します。</string>
+    
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">スマートネットワークトグル</string>
+    
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">有効/無効の切り替え</string>
+    
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">音量変更時のバイブを無効化</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">音量キーで音量を変更したときのバイブを無効化します。</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">ステータスバーの時計設定の有効/無効を切り替えます。(要再起動)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">曜日のサイズ</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">午前/午後のサイズ</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">ナビバーリング</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">ナビバーリングの無効化</string>
+    
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">データ通信量モニターのスタイル</string>
+    <string name="dt_mode_off">無効</string>
+    <string name="dt_mode_simple">シンプル</string>
+    <string name="dt_mode_omni">Omni風</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">監視モード</string>
+    <string name="dt_omni_mode_in">ダウンロード</string>
+    <string name="dt_omni_mode_out">アップロード</string>
+    <string name="dt_omni_mode_in_out">ダウンロードとアップロード</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">アイコンを表示</string>
+
+    <!-- Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">計算機</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">タイル個別設定</string>
+    <string name="pref_cat_qs_tile_settings_summary">タイル別の設定をします。</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">ネットワークモードタイル設定</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">アラームタイル設定</string>
+    <string name="pref_qs_alarm_singletap_app_title">タップで起動するアプリ</string>
+    <string name="alarm_singletap_app_default">デフォルトのアプリ</string>
+    <string name="pref_qs_alarm_longpress_app_title">長押しで起動するアプリ</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">ダウンロード中のみ</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Androidの標準ダウンロードマネージャでダウンロードしているときだけ表示するようにします。</string>
     
 </resources>

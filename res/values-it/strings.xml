@@ -62,12 +62,12 @@
     <string name="caller_fullscreen_photo_summary">Mostra la foto del chiamante a tutto schermo per le chiamate in arrivo</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">Sync on</string>
-    <string name="quick_settings_sync_off">Sync off</string>
-    <string name="quick_settings_wifi_ap_on">Wi-Fi AP on</string>
-    <string name="quick_settings_wifi_ap_off">Wi-Fi AP off</string>
-    <string name="quick_settings_torch_on">Torcia accesa</string>
-    <string name="quick_settings_torch_off">Torcia spenta</string>
+    <string name="quick_settings_sync_on">Sync On</string>
+    <string name="quick_settings_sync_off">Sync Off</string>
+    <string name="quick_settings_wifi_ap_on">Wi-Fi AP On</string>
+    <string name="quick_settings_wifi_ap_off">Wi-Fi AP Off</string>
+    <string name="quick_settings_torch_on">Torcia Accesa</string>
+    <string name="quick_settings_torch_off">Torcia Spenta</string>
     <string name="quick_settings_torch_off_notif">Tocca per spegnere</string>
     <string name="quick_settings_qr_playing">In riproduzione&#8230;</string>
     <string name="quick_settings_qr_recording">Registrazione&#8230;</string>
@@ -77,34 +77,39 @@
     <string name="quick_settings_expanded_desktop_disabled">Disattivato</string>
     <string name="quick_settings_expanded_desktop_normal">Normale</string>
     <string name="quick_settings_expanded_desktop_expanded">Esteso</string>
-    <string name="quick_settings_stay_awake_on">Rimane acceso ON</string>
-    <string name="quick_settings_stay_awake_off">Rimane spento OFF</string>
+    <string name="quick_settings_stay_awake_on">Sempre acceso On</string>
+    <string name="quick_settings_stay_awake_off">Sempre acceso Off</string>
     <string name="quick_settings_wifi">Wi-Fi</string>
     <string name="quick_settings_wifi_off">Wi-Fi off</string>
     <string name="quick_settings_wifi_not_connected">Non connesso</string>
     <string name="quick_settings_wifi_turning_on">Avvio&#8230;</string>
-    <string name="quick_settings_nfc_on">NFC on</string>
-    <string name="quick_settings_nfc_off">NFC off</string>
-    <string name="quick_settings_camera_error_connect">Impossibile avviare fotocamera</string>
+    <string name="quick_settings_nfc_on">NFC On</string>
+    <string name="quick_settings_nfc_off">NFC Off</string>
+    <string name="quick_settings_camera_error_connect">Fotocamera non trovata</string>
+    <string name="quick_settings_usb_tether_off">Disconnesso</string>
+    <string name="quick_settings_usb_tether_connected">Tethering Off</string>
+    <string name="quick_settings_usb_tether_on">Tethering On</string>
+    <string name="quick_settings_smart_radio_on">Modem Intelligente On</string>
+    <string name="quick_settings_smart_radio_off">Modem Intelligente Off</string>
 
     <!-- QuickSettings settings -->
     <string name="quick_settings_title">Caselle QuickSetting</string>
     <string name="quick_settings_summary">Permette di mostrare o nascondere la caselle QuickSetting nella barra di stato</string>
-    <string name="qs_tile_user_profile">Profilo utente</string>
+    <string name="qs_tile_user_profile">Profilo Utente</string>
     <string name="qs_tile_airplane_mode">Modalità Aereo</string>
-    <string name="qs_tile_battery">Stato batteria</string>
+    <string name="qs_tile_battery">Stato Batteria</string>
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_wifi_alt">Wi-Fi (CM stile)</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">GPS</string>
     <string name="qs_tile_gps_alt">GPS (stile CM)</string>
-    <string name="qs_tile_mobile_data">Dati mobili</string>
-    <string name="qs_tile_network_mode">Modalità rete</string>
-    <string name="qs_tile_data_usage">Utilizzo dati</string>
+    <string name="qs_tile_mobile_data">Dati Mobili</string>
+    <string name="qs_tile_network_mode">Modalità Rete</string>
+    <string name="qs_tile_data_usage">Utilizzo Dati</string>
     <string name="qs_tile_audio">Profili audio</string>
     <string name="qs_tile_brightness">Luminosità</string>
     <string name="qs_tile_screen_timeout">Timeout schermo</string>
-    <string name="qs_tile_autorotation">Rotazione auto</string>
+    <string name="qs_tile_autorotation">Rotazione Automatica</string>
     <string name="qs_tile_sync">Sincronizzazione</string>
     <string name="qs_tile_wifi_ap">Punto d\'accesso Wi-Fi</string>
     <string name="qs_tile_torch">Torcia</string>
@@ -113,11 +118,13 @@
     <string name="qs_tile_quickrecord">Registra</string>
     <string name="qs_tile_settings">Parametri</string>
     <string name="qs_tile_volume">Volume</string>
-    <string name="qs_tile_expanded_desktop">Desktop esteso</string>
-    <string name="qs_tile_stay_awake">Rimane acceso</string>
+    <string name="qs_tile_expanded_desktop">Desktop Esteso</string>
+    <string name="qs_tile_stay_awake">Timeout Display</string>
     <string name="qs_tile_screenshot">Screenshot</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Fotocamera</string>
+    <string name="qs_tile_usb_tethering">Tethering USB</string>
+    <string name="qs_tile_smart_radio">Modem Intelligente</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Scegli colore</string>
@@ -337,15 +344,15 @@
     <!-- Notification drawer background -->
     <string name="pref_notif_background_title">Sfondo pannello delle notifiche</string>
     <string name="notif_background_default">Sfondo predefinito</string>
-    <string name="notif_background_color_fill">Colore pieno</string>
+    <string name="notif_background_color_fill">Tinta unica</string>
     <string name="notif_background_custom_image">Immagine personalizzata</string>
     <string name="pref_notif_color_title">Imposta colore sfondo</string>
     <string name="pref_notif_image_portrait_title">Imposta immagine verticale</string>
     <string name="pref_notif_image_landscape_title">Imposta immagine orizzontale</string>
     <string name="pref_notif_background_alpha_title">Trasparenza sfondo</string>
     <string name="pref_notif_color_mode_title">Tipo di sfondo</string>
-    <string name="color_fill_overlay">sovrastante</string>
-    <string name="color_fill_underlay">sottostante</string>
+    <string name="color_fill_overlay">Sovrastante</string>
+    <string name="color_fill_underlay">Sottostante</string>
 
     <!-- Disable roaming indicators -->
     <string name="pref_disable_roaming_indicators_title">Disattiva indicatori roaming</string>
@@ -423,15 +430,15 @@
     <string name="pref_quickapp_slot4_title">Pressione prolungata slot 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
-    <string name="qs_tile_gps_enabled">GPS acceso</string>
-    <string name="qs_tile_gps_disabled">GPS spento</string>
-    <string name="qs_tile_gps_locked">GPS agganciato</string>
+    <string name="qs_tile_gps_enabled">GPS Acceso</string>
+    <string name="qs_tile_gps_disabled">GPS Spento</string>
+    <string name="qs_tile_gps_locked">GPS Agganciato</string>
 
     <!-- Pie control: always show menu button -->
     <string name="pie_control_menu_title">Mostra sempre tasto menù</string>
 
     <!-- Ringer mode tile (for non-MTK) -->
-    <string name="qs_tile_ringer_mode">Modo suoneria</string>
+    <string name="qs_tile_ringer_mode">Modalità Suoneria</string>
 
     <!-- Clock settings category -->
     <string name="pref_cat_clock_settings_title">Impostazioni orologio</string>
@@ -483,9 +490,12 @@
     <string name="hwkey_action_custom_app_none">Nessuna applicazione personale assegnata!</string>
     <string name="hwkey_action_custom_app_missing">Applicazione personalizzata non trovata!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Collegamento ad app Orologio</string>
-    <string name="pref_clock_link_summary">Collega l\'orologio del pannello notifiche all\'applicazione Orologio al posto dell\'app Impostazioni data&amp;ora</string>
+     <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">Orologio barra di stato</string>
+    <string name="pref_cat_notif_panel_clock_title">Orologio pannello delle notifiche</string>
+    <string name="pref_clock_link_title">Collegamento app orologio</string>
+    <string name="pref_clock_link_summary">Collega l\'orologio del pannello delle notifiche ad un\'app specifica invece delle impostazioni data&amp;ora</string>
+    <string name="pref_clock_longpress_link_title">Collegamento pressione prolungata orologio</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">In attesa di risposta dal modulo GravityBox&#8230;</string>
@@ -519,7 +529,7 @@
     <string name="pref_cat_navigation_bar_title">Barra di navigazione</string>
     <string name="pref_cat_navigation_bar_summary">Contiene varie ottimizzazioni relative alla barra di navigazione</string>
     <string name="pref_navbar_override_title">Sovrascrivi i valori standard di sistema</string>
-    <string name="pref_navbar_override_summary">Attivazione ottimizzaioni barra di navigazione (richiede riavvio)</string>
+    <string name="pref_navbar_override_summary">Attivazione ottimizzazioni barra di navigazione (richiede riavvio)</string>
     <string name="pref_navbar_enable_title">Abilita barra di navigazione</string>
     <string name="pref_navbar_enable_summary">Richiede riavvio</string>
     <string name="pref_navbar_height_title">Altezza Barra di navigazione nella visualizzazione verticale</string>
@@ -640,7 +650,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Contatore traffico dati</string>
     <string name="pref_data_traffic_enable_title">Abilita contatore traffico</string>
-    <string name="pref_data_traffic_enable_summary">Mostra automaticamente un contatore del traffico dati appena la connessione dati viene attivata</string>
     <string name="pref_data_traffic_position_title">Posizione</string>
     <string name="dt_position_auto">Auto (centrata o a destra, a seconda della posizione dell\'orologio)</string>
     <string name="dt_position_left">Sinistra</string>
@@ -743,7 +752,7 @@
     <string name="pref_cat_navbar_dimen_title">Dimensioni</string>
 
     <!-- Navigation bar colors -->
-    <string name="pref_navbar_color_enable_title">Attiva colori barra di navigazione</string>
+    <string name="pref_navbar_color_enable_title">Attiva colori barra navigazione</string>
     <string name="pref_navbar_color_enable_summary">Richiede il riavvio dopo la disattivazione</string>
     <string name="pref_navbar_key_color_title">Colore tasto navigazione</string>
     <string name="pref_navbar_key_glow_color_title">Colore tasto navigazione selezionato</string>
@@ -789,7 +798,7 @@
 
     <!-- Google Plus -->
     <string name="pref_about_gplus_title">Google+</string>
-    <string name="pref_about_gplus_summary">Tocca per entrare nella comunità GravityBox su Google+</string>
+    <string name="pref_about_gplus_summary">Tocca per entrare nella community di GravityBox su Google+</string>
 
     <!-- Network mode tile: Allow LTE network mode -->
     <string name="pref_network_mode_tile_lte_title">Consenti modalità di rete LTE</string>
@@ -809,7 +818,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">Tenendo premuto Volume -</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Interruttore principale per la gestione delle caselle Quicksetting (richiede riavvio)</string>
+    <string name="pref_qs_management_enable_summary">Attiva caselle Quicksetting (richiede riavvio)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Applicazioni</string>
@@ -818,7 +827,7 @@
     <string name="app_picker_shortcut_cancelled">La creazione della scorciatoia è stata annullata dall\'applicazione di destinazione</string>
 
     <!-- Navigation bar: swap back and recents key -->
-    <string name="pref_navbar_swap_keys_title">Scambia i tasti indietro e recenti</string>
+    <string name="pref_navbar_swap_keys_title">Scambia tasti Indietro e Recenti</string>
 
     <!-- Unlock ring Torch -->
     <string name="pref_lockscreen_ring_torch_title">Attiva la torcia</string>
@@ -856,11 +865,11 @@
     <!-- Battery percent text -->
     <string name="battery_percent_text_title">Mostra percentuale batteria</string>
     <string name="battery_percent_text_size_title">Dimensione percentuale batteria</string>
-    <string name="battery_percent_text_size_larger">Grande</string>
-    <string name="battery_percent_text_size_normal">Normale</string>
-    <string name="battery_percent_text_size_smaller">Piccolo</string>
-    <string name="battery_percent_text_size_even_smaller">Più piccolo</string>
-    <string name="battery_percent_text_size_smallest">Minuscolo</string>
+    <string name="battery_percent_text_size_larger">Enorme</string>
+    <string name="battery_percent_text_size_normal">Grande</string>
+    <string name="battery_percent_text_size_smaller">Normale</string>
+    <string name="battery_percent_text_size_even_smaller">Piccola</string>
+    <string name="battery_percent_text_size_smallest">Minuscola</string>
     <string name="battery_percent_text_style_title">Stile testo percentuale batteria</string>
     <string name="battery_percent_text_style_default">Predefinito</string>
     <string name="battery_percent_text_style_numbers_only">Solo numero no percentuale</string>
@@ -890,7 +899,7 @@
     <string name="pref_cat_power_other_title">Altro</string>
 
     <!-- Advanced reboot menu: Allow on lockscreen -->
-    <string name="pref_reboot_allow_on_lockscreen_title">Permetti su schermata di blocco</string>
+    <string name="pref_reboot_allow_on_lockscreen_title">Permetti in schermata di blocco</string>
 
     <!-- Data traffic monitor enhancements -->
     <string name="pref_data_traffic_inactivity_mode_title">Modalità inattiva</string>
@@ -910,18 +919,14 @@
     <string name="hwkey_action_auto_rotation_enabled">Auto-rotazione abilitata</string>
     <string name="hwkey_action_auto_rotation_disabled">Auto rotazione disabilitata</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permetti qualsiasi widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permetti questi widget nella schermata di blocco che normalmente sono usati solo nel launcher</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Visualizza menù spegnimento</string>
     <string name="hwkey_action_expand_notifications">Espandi barra notifiche</string>
     <string name="hwkey_action_expand_quicksettings">Espandi pannello QuickSettings</string>
 
     <!-- Navigation bar ring targets -->
-    <string name="pref_cat_navbar_ring_targets_title">Pulsanti su anello della barra di navigazione</string>
-    <string name="pref_navbar_ring_targets_enable_summary">Interruttore per abilitare i pulsanti su anello della barra di navigazione (necessario riavvio)</string>
+    <string name="pref_cat_navbar_ring_targets_title">Anello barra di navigazione</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Attiva pulsanti sull\'anello della barra di navigazione (richiede riavvio)</string>
     <string name="pref_navbar_ring_target_title">Destinazione per pulsante %d</string>
 
     <!-- Shortcut activity title -->
@@ -1226,6 +1231,12 @@
     <string name="animation_scale6">Scala animazione 5x</string>
     <string name="animation_scale7">Scala animazione 10x</string>
 
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Stile testo caselle</string>
+    <string name="tile_label_style_normal">Normale</string>
+    <string name="tile_label_style_allcaps">Tutto maiuscolo</string>
+    <string name="tile_label_style_hidden">Nascosto</string>
+
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">Mostra pannello luminosità</string>
 
@@ -1237,5 +1248,51 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Dimensione bordo visualizzazione rapida</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Doppio-tap spegne schermo</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Fare doppio-tap sull\'anello di sblocco spegnerà lo schermo</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Riproduci suono al collegamento</string>
+    <string name="pref_charger_plugged_sound_summary">Riproduce un suono quando il caricabatterie viene collegato/scollegato</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Attiva/disattiva Modem intelligente</string> 
+
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">Interruttore principale</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">Disattiva vibrazione regolazione volume</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">Disattiva la vibrazione durante la regolazione del volume</string>
+    
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">Attiva/disattiva impostazioni barra di stato (richiede riavvio)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">Dimensione giorno della settimana</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">Dimensione AM/PM</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">Anello barra di navigazione</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">Disabilita anello</string>
 
 </resources>

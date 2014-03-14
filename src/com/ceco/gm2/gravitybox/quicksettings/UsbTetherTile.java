@@ -97,11 +97,12 @@ public class UsbTetherTile extends BasicTile {
             if (mUsbTethered) {
                 mDrawableId = R.drawable.ic_qs_usb_tether_on;
                 mLabel = mGbContext.getString(R.string.quick_settings_usb_tether_on);
+                mTileColor = KK_COLOR_ON;
             } else {
                 mDrawableId = R.drawable.ic_qs_usb_tether_connected;
                 mLabel = mGbContext.getString(R.string.quick_settings_usb_tether_connected);
+                mTileColor = KK_COLOR_OFF;
             }
-            mTileColor = KK_COLOR_ON;
         } else {
             mDrawableId = R.drawable.ic_qs_usb_tether_off;
             mLabel = mGbContext.getString(R.string.quick_settings_usb_tether_off);

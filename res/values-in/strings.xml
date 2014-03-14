@@ -665,7 +665,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitor lalu-lintas paket data</string>
     <string name="pref_data_traffic_enable_title">Hidupkan monitor</string>
-    <string name="pref_data_traffic_enable_summary">Menunjukkan monitor lalu-lintas paket data kapanpun paket data sedang aktif</string>
     <string name="pref_data_traffic_position_title">Posisi</string>
     <string name="dt_position_auto">Otomatis (tengah atau kanan, bergantung posisi jam)</string>
     <string name="dt_position_left">Kiri</string>
@@ -934,10 +933,6 @@
     <string name="hwkey_action_auto_rotation">Hidup/matikan rotasi otomatis</string>
     <string name="hwkey_action_auto_rotation_enabled">Rotasi otomatis hidup</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotasi otomatis mati</string>
-
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Bolehkan widget apapun</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Membolehkan widget-widget yang biasanya hanya bisa digunakan di launcher untuk digunakan di lockscreen</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Tunjukkan menu power</string>
@@ -1252,6 +1247,12 @@
     <string name="animation_scale6">Skala animasi 5x</string>
     <string name="animation_scale7">Skala animasi 10x</string>
 
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Gaya label kotak</string>
+    <string name="tile_label_style_normal">Normal</string>
+    <string name="tile_label_style_allcaps">Kapital Semua</string>
+    <string name="tile_label_style_hidden">Disembunyikan</string>
+
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">Tunjukkan dialog kecerahan</string>
 
@@ -1263,6 +1264,7 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Ukuran tarikan ke bawah menuju QuickSettings</string>
+<<<<<<< HEAD
 =======
     <!-- Icon picker -->    <string name="icon_picker_choose_icon_title">Pilih ikon</string>    <string name="shortcuts_icon_picker_alarm">Alarm</string>    <string name="shortcuts_icon_picker_andy">Andy</string>    <string name="shortcuts_icon_picker_battery">Baterai</string>    <string name="shortcuts_icon_picker_browser">Peramban</string>    <string name="shortcuts_icon_picker_calendar">Kalender</string>    <string name="shortcuts_icon_picker_camera">Kamera</string>    <string name="shortcuts_icon_picker_cloud">Awan</string>    <string name="shortcuts_icon_picker_contact">Kontak</string>    <string name="shortcuts_icon_picker_directdial">Panggil Langsung</string>    <string name="shortcuts_icon_picker_directmessage">Pesan Langsung</string>    <string name="shortcuts_icon_picker_drive">Drive</string>    <string name="shortcuts_icon_picker_dropbox">Dropbox</string>    <string name="shortcuts_icon_picker_email">Email</string>    <string name="shortcuts_icon_picker_email2">Email Alternatif</string>    <string name="shortcuts_icon_picker_evernote">Evernote</string>    <string name="shortcuts_icon_picker_facebook">Facebook</string>    <string name="shortcuts_icon_picker_favorite">Favorit</string>    <string name="shortcuts_icon_picker_file_browser">Peramban Berkas</string>    <string name="shortcuts_icon_picker_file_browser2">Peramban Berkas Alternatif</string>    <string name="shortcuts_icon_picker_fitness">Fitness</string>    <string name="shortcuts_icon_picker_gallery">Galeri</string>    <string name="shortcuts_icon_picker_gears">Gears</string>    <string name="shortcuts_icon_picker_google_small">Google</string>    <string name="shortcuts_icon_picker_gplus">Google Plus</string>    <string name="shortcuts_icon_picker_gtalk">Hangouts</string>    <string name="shortcuts_icon_picker_help">Bantuan</string>    <string name="shortcuts_icon_picker_joystick">Joystik</string>    <string name="shortcuts_icon_picker_key">Kunci/Akun</string>    <string name="shortcuts_icon_picker_laptop">Laptop</string>    <string name="shortcuts_icon_picker_notes">Catatan</string>    <string name="shortcuts_icon_picker_luggage">Perjalanan</string>    <string name="shortcuts_icon_picker_maps">Peta</string>    <string name="shortcuts_icon_picker_market">Pasar</string>    <string name="shortcuts_icon_picker_movie">Film</string>    <string name="shortcuts_icon_picker_music">Musik</string>    <string name="shortcuts_icon_picker_nav">Navigasi</string>    <string name="shortcuts_icon_picker_phone">Ponsel</string>    <string name="shortcuts_icon_picker_package">Paket</string>    <string name="shortcuts_icon_picker_pinterest">Pinterest</string>    <string name="shortcuts_icon_picker_play">Play</string>    <string name="shortcuts_icon_picker_pocket">Saku</string>    <string name="shortcuts_icon_picker_quicksettings">Quick Settings</string>    <string name="shortcuts_icon_picker_rss">RSS Feed</string>    <string name="shortcuts_icon_picker_sdcard">Kartu SD</string>    <string name="shortcuts_icon_picker_search">Pencarian</string>    <string name="shortcuts_icon_picker_sms">Perpesanan</string>    <string name="shortcuts_icon_picker_tasks">Tugas</string>    <string name="shortcuts_icon_picker_terminal">Terminal</string>    <string name="shortcuts_icon_picker_transit">Transit</string>    <string name="shortcuts_icon_picker_tv">TV</string>    <string name="shortcuts_icon_picker_twitter">Twitter</string>    <string name="shortcuts_icon_picker_unlock">Buka kunci</string>    <!-- Lockscreen: Slide before unlock -->    <string name="pref_lockscreen_slide_before_unlock_title">Geser sebelum membuka kunci</string>    <string name="pref_lockscreen_slide_before_unlock_summary">Memungkinkan untuk menggunakan tantangan menggeser dengan target cincin bersamaan dengan kunci pengaman</string>    <!-- Lockscreen tweaks: option categories -->    <string name="pref_cat_lockscreen_widgets_title">Widgets</string>    <string name="pref_cat_lockscreen_sliding_challenge_title">Tantangan menggeser</string>    <string name="pref_cat_lockscreen_statusbar_title">Status bar</string>    <!-- Quick settings: Auto-switch extended -->    <string name="qs_auto_switch_disabled">Dimatikan</string>    <string name="qs_auto_switch_mode1">Ketika tidak ada notifikasi</string>    <string name="qs_auto_switch_mode2">Ketika tidak ada notifikasi yang bisa dihapus</string>    <!-- Statusbar: Double-tap to sleep -->    <string name="pref_statusbar_dt2s_title">Hidupkan tekan dua kali untuk mematikan layar</string>    <string name="pref_statusbar_dt2s_summary">Tekan statusbar dua kali untuk mematikan perangkat</string>    <!-- Animation scales -->    <string name="animation_scale0">Matikan animasi</string>    <string name="animation_scale1">Skala animasi .25x</string>    <string name="animation_scale2">Skala animasi .5x</string>    <string name="animation_scale3">Skala animasi 1x</string>    <string name="animation_scale4">Skala animasi 1.5x</string>    <string name="animation_scale5">Skala animasi 2x</string>    <string name="animation_scale6">Skala animasi 5x</string>    <string name="animation_scale7">Skala animasi 10x</string>    <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Gaya label kotak</string>
@@ -1271,6 +1273,9 @@
     <string name="tile_label_style_hidden">Disembunyikan</string>
 
     <!-- Key Actions: Show brightness dialog -->    <string name="hwkey_action_brightness_dialog">Tunjukkan dialog kecerahan</string>    <!-- Navbar ring: Haptic feedback -->    <string name="pref_navbar_ring_haptic_feedback_title">Umpan-balik sentuhan</string>    <string name="navring_haptic_feedback_default">Bawaan</string>    <string name="navring_haptic_feedback_enabled">Hidupkan</string>    <string name="navring_haptic_feedback_disabled">Matikan</string>    <!-- Quick pull down size -->    <string name="pref_quick_pulldown_size_title">Ukuran tarikan ke bawah menuju QuickSettings</string>    <!-- Stay Awake Tile modes -->
+=======
+    <!-- Stay Awake Tile modes -->
+>>>>>>> gb-origins/jellybean
     <string name="stay_awake_15s">15dtk</string>
     <string name="stay_awake_30s">30dtk</string>
     <string name="stay_awake_1m">1mnt</string>

@@ -193,9 +193,11 @@ public class RingerModeTile extends BasicTile {
             }
     
             // Set the desired state
-            ContentResolver resolver = mContext.getContentResolver();
-            Settings.System.putInt(resolver, SETTING_VIBRATE_WHEN_RINGING,
-                    r.mVibrateWhenRinging ? 1 : 0);
+            if (r.mRingerMode != AudioManager.RINGER_MODE_SILENT) {
+                ContentResolver resolver = mContext.getContentResolver();
+                Settings.System.putInt(resolver, SETTING_VIBRATE_WHEN_RINGING,
+                        r.mVibrateWhenRinging ? 1 : 0);
+            }
             mAudioManager.setRingerMode(r.mRingerMode);
         } else if (DEBUG) {
             log("No suitable ringer mode for toggling found");

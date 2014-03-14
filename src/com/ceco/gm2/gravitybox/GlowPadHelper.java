@@ -110,7 +110,9 @@ public class GlowPadHelper {
                 return null;
             }
             final int mode = appInfo.intent.getIntExtra("mode", AppPickerPreference.MODE_APP);
-            final int iconResId = appInfo.intent.getIntExtra("iconResId", 0);
+            final int iconResId = appInfo.intent.getStringExtra("iconResName") != null ?
+                    mGbResources.getIdentifier(appInfo.intent.getStringExtra("iconResName"),
+                    "drawable", GravityBox.PACKAGE_NAME) : 0;
             Bitmap appIcon = null;
             final Resources res = context.getResources();
             boolean isGbShortcut = false;
@@ -229,7 +231,7 @@ public class GlowPadHelper {
             }
 
             Paint paint = null;
-            if (appInfo.intent.getIntExtra("iconResId", 0) != 0) {
+            if (appInfo.intent.getStringExtra("iconResName") != null) {
                 paint = new Paint();
                 paint.setColorFilter(new LightingColorFilter(0xFF585858, 1));
             }

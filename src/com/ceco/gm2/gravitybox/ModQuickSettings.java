@@ -17,6 +17,7 @@ package com.ceco.gm2.gravitybox;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,6 +32,8 @@ import com.ceco.gm2.gravitybox.quicksettings.AQuickSettingsTile;
 import com.ceco.gm2.gravitybox.quicksettings.CameraTile;
 import com.ceco.gm2.gravitybox.quicksettings.ExpandedDesktopTile;
 import com.ceco.gm2.gravitybox.quicksettings.GpsTile;
+import com.ceco.gm2.gravitybox.quicksettings.GravityBoxTile;
+import com.ceco.gm2.gravitybox.quicksettings.LockScreenTile;
 import com.ceco.gm2.gravitybox.quicksettings.NetworkModeTile;
 import com.ceco.gm2.gravitybox.quicksettings.NfcTile;
 import com.ceco.gm2.gravitybox.quicksettings.QuickAppTile;
@@ -38,6 +41,7 @@ import com.ceco.gm2.gravitybox.quicksettings.QuickRecordTile;
 import com.ceco.gm2.gravitybox.quicksettings.RingerModeTile;
 import com.ceco.gm2.gravitybox.quicksettings.ScreenshotTile;
 import com.ceco.gm2.gravitybox.quicksettings.SleepTile;
+import com.ceco.gm2.gravitybox.quicksettings.SmartRadioTile;
 import com.ceco.gm2.gravitybox.quicksettings.StayAwakeTile;
 import com.ceco.gm2.gravitybox.quicksettings.TileOrderActivity;
 import com.ceco.gm2.gravitybox.quicksettings.TorchTile;
@@ -47,6 +51,7 @@ import com.ceco.gm2.gravitybox.quicksettings.UsbTetherTile;
 import com.ceco.gm2.gravitybox.quicksettings.VolumeTile;
 import com.ceco.gm2.gravitybox.quicksettings.WifiApTile;
 import com.ceco.gm2.gravitybox.quicksettings.WifiTile;
+import com.ceco.gm2.gravitybox.shortcuts.ShortcutActivity;
 
 import android.annotation.SuppressLint;
 
@@ -65,6 +70,7 @@ import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.IBinder;
+import android.provider.AlarmClock;
 import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -123,6 +129,10 @@ public class ModQuickSettings {
     private static XSharedPreferences mPrefs;
     private static boolean mHideOnChange;
     private static boolean mQsTileSpanDisable;
+    private static LabelStyle mQsTileLabelStyle = LabelStyle.ALLCAPS;
+    private enum LabelStyle { NORMAL, ALLCAPS, HIDDEN };
+    private static String mAlarmSingletapApp;
+    private static String mAlarmLongpressApp;
 
     private static float mGestureStartX;
     private static float mGestureStartY;
@@ -172,7 +182,9 @@ public class ModQuickSettings {
             R.id.nfc_tileview,
             R.id.camera_tileview,
             R.id.usb_tether_tileview,
-            R.id.quickapp_tileview_2
+            R.id.quickapp_tileview_2,
+            R.id.smart_radio_tileview,
+            R.id.lock_screen_tileview
         ));
         if (Utils.isMtkDevice()) {
             mCustomGbTileKeys.add(R.id.wifi_tileview);
@@ -188,6 +200,8 @@ public class ModQuickSettings {
         tmpMap.put("battery_textview", 7);
         tmpMap.put("airplane_mode_textview", 8);
         tmpMap.put("bluetooth_textview", 9);
+        tmpMap.put("gps_textview", 10);
+        tmpMap.put("alarm_textview", 11);
         mAospTileTags = Collections.unmodifiableMap(tmpMap);
 
         mAllTileViews = new HashMap<String, View>();
@@ -210,9 +224,7 @@ public class ModQuickSettings {
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_COLS)) {
                     mNumColumns = intent.getIntExtra(GravityBoxSettings.EXTRA_QS_COLS, 3);
-                    if (mContainerView != null) {
-                        XposedHelpers.callMethod(mContainerView, "updateResources");
-                    }
+                    updateResources();
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_AUTOSWITCH)) {
                     mAutoSwitch = intent.getIntExtra(GravityBoxSettings.EXTRA_QS_AUTOSWITCH, 0);
@@ -228,10 +240,21 @@ public class ModQuickSettings {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_TILE_SPAN_DISABLE)) {
                     mQsTileSpanDisable = intent.getBooleanExtra(GravityBoxSettings.EXTRA_QS_TILE_SPAN_DISABLE, false);
                 }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_TILE_LABEL_STYLE)) {
+                    mQsTileLabelStyle = LabelStyle.valueOf(
+                            intent.getStringExtra(GravityBoxSettings.EXTRA_QS_TILE_LABEL_STYLE));
+                    updateResources();
+                }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_QUICK_PULLDOWN_SIZE)) {
                     float size = intent.getIntExtra(GravityBoxSettings.EXTRA_QUICK_PULLDOWN_SIZE, 15) / 100f;
                     mQuickPulldownSize.set(1-size, size);
                     if (DEBUG) log("mQuickPulldownSize=" + mQuickPulldownSize);
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_ALARM_SINGLETAP_APP)) {
+                    mAlarmSingletapApp = intent.getStringExtra(GravityBoxSettings.EXTRA_QS_ALARM_SINGLETAP_APP);
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_ALARM_LONGPRESS_APP)) {
+                    mAlarmLongpressApp = intent.getStringExtra(GravityBoxSettings.EXTRA_QS_ALARM_LONGPRESS_APP);
                 }
             }
 
@@ -303,7 +326,13 @@ public class ModQuickSettings {
         }
 
         // trigger layout refresh
-        XposedHelpers.callMethod(mContainerView, "updateResources");
+        updateResources();
+    }
+
+    private static void updateResources() {
+        if (mContainerView != null) {
+            XposedHelpers.callMethod(mContainerView, "updateResources");
+        }
     }
 
     private static TextView findTileTextView(ViewGroup viewGroup) {
@@ -364,6 +393,12 @@ public class ModQuickSettings {
             }
         }
 
+        if (mQsTileLabelStyle == LabelStyle.HIDDEN) {
+            imgMarginTop += TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, textSize,
+                    res.getDisplayMetrics());
+            textSize = 0;
+        }
+
         for(int i = 0; i < tileCount; i++) {
             ViewGroup viewGroup = (ViewGroup) mContainerView.getChildAt(i);
             if (viewGroup != null) {
@@ -371,7 +406,7 @@ public class ModQuickSettings {
                 if (textView != null) {
                     textView.setTextSize(1, textSize);
                     textView.setSingleLine(false);
-                    textView.setAllCaps(true);
+                    textView.setAllCaps(mQsTileLabelStyle == LabelStyle.ALLCAPS);
                 }
 
                 // adjust layout in case it's AOSP 4.3 tile
@@ -449,6 +484,8 @@ public class ModQuickSettings {
                     mPrefs.getString(GravityBoxSettings.PREF_KEY_QUICK_SETTINGS_AUTOSWITCH, "0"));
             mHideOnChange = mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_QUICK_SETTINGS_HIDE_ON_CHANGE, false);
             mQsTileSpanDisable = mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_QS_TILE_SPAN_DISABLE, false);
+            mQsTileLabelStyle = LabelStyle.valueOf(
+                    prefs.getString(GravityBoxSettings.PREF_KEY_QUICK_SETTINGS_TILE_LABEL_STYLE, "ALLCAPS"));
 
             float size = mPrefs.getInt(GravityBoxSettings.PREF_KEY_QUICK_PULLDOWN_SIZE, 15) / 100f;
             mQuickPulldownSize.set(1-size, size);
@@ -459,6 +496,9 @@ public class ModQuickSettings {
             } catch (NumberFormatException e) {
                 log("Invalid preference for quick pulldown: " + e.getMessage());
             }
+
+            mAlarmSingletapApp = mPrefs.getString(GravityBoxSettings.PREF_KEY_QS_ALARM_SINGLETAP_APP, null);
+            mAlarmLongpressApp = mPrefs.getString(GravityBoxSettings.PREF_KEY_QS_ALARM_LONGPRESS_APP, null);
 
             final Class<?> quickSettingsClass = XposedHelpers.findClass(CLASS_QUICK_SETTINGS, classLoader);
             final Class<?> phoneStatusBarClass = XposedHelpers.findClass(CLASS_PHONE_STATUSBAR, classLoader);
@@ -475,7 +515,10 @@ public class ModQuickSettings {
                     phoneStatusBarClass, quickSettingsSetServiceHook);
             XposedHelpers.findAndHookMethod(quickSettingsClass, "addSystemTiles", 
                     ViewGroup.class, LayoutInflater.class, quickSettingsAddSystemTilesHook);
-            XposedHelpers.findAndHookMethod(quickSettingsClass, "updateResources", quickSettingsUpdateResourcesHook);
+            XposedHelpers.findAndHookMethod(quickSettingsClass, "updateResources",
+                    quickSettingsUpdateResourcesHook);
+            XposedHelpers.findAndHookMethod(quickSettingsClass, "setupQuickSettings",
+                    qsSetupQuickSettingsHook);
             XposedHelpers.findAndHookMethod(notifPanelViewClass, "onTouchEvent", 
                     MotionEvent.class, notificationPanelViewOnTouchEvent);
             XposedHelpers.findAndHookMethod(phoneStatusBarClass, "makeStatusBarView", 
@@ -680,15 +723,30 @@ public class ModQuickSettings {
                 utTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
                 mTiles.add(utTile);
 
+                if (mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_SMART_RADIO_ENABLE, false)) {
+                    SmartRadioTile srTile = new SmartRadioTile(mContext, mGbContext, mStatusBar, mPanelBar);
+                    srTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
+                    mTiles.add(srTile);
+                }
+
+                LockScreenTile lsTile = new LockScreenTile(mContext, mGbContext, mStatusBar, mPanelBar);
+                lsTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
+                mTiles.add(lsTile);
+
                 mBroadcastSubReceivers = new ArrayList<BroadcastSubReceiver>();
                 for (AQuickSettingsTile t : mTiles) {
                     mBroadcastSubReceivers.add(t);
                 }
-
-                updateTileOrderAndVisibility();
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
+        }
+    };
+
+    private static XC_MethodHook qsSetupQuickSettingsHook = new XC_MethodHook() {
+        @Override
+        protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
+            updateTileOrderAndVisibility();
         }
     };
 
@@ -1119,7 +1177,19 @@ public class ModQuickSettings {
                     CLASS_QS_TILEVIEW, CLASS_QS_MODEL_RCB, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                    ((View)param.args[0]).setTag(mAospTileTags.get("brightness_textview"));
+                    final View tile = (View) param.args[0];
+                    tile.setTag(mAospTileTags.get("brightness_textview"));
+                    if (mOverrideTileKeys.contains("brightness_textview")) {
+                        tile.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View v) {
+                                XposedHelpers.callMethod(mQuickSettings, "startSettingsActivity", 
+                                        android.provider.Settings.ACTION_DISPLAY_SETTINGS);
+                                tile.setPressed(false);
+                                return true;
+                            }
+                        });
+                    }
                 }
             });
         } catch (Throwable t) {
@@ -1131,7 +1201,26 @@ public class ModQuickSettings {
                     CLASS_QS_TILEVIEW, CLASS_QS_MODEL_RCB, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                    ((View)param.args[0]).setTag(mAospTileTags.get("settings"));
+                    final View tile = (View) param.args[0];
+                    tile.setTag(mAospTileTags.get("settings"));
+                    if (mOverrideTileKeys.contains("settings")) {
+	                    tile.setOnLongClickListener(new View.OnLongClickListener() {
+	                        @Override
+	                        public boolean onLongClick(View v) {
+	                            Intent i = new Intent();
+	                            i.setClassName(GravityBox.PACKAGE_NAME, GravityBoxSettings.class.getName());
+	                            try {
+	                                XposedHelpers.callMethod(mQuickSettings, "startSettingsActivity", i);
+	                            } catch (Throwable t) {
+	                                // fallback in case of troubles
+	                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	                                mContext.startActivity(i);
+	                            }
+	                            tile.setPressed(false);
+	                            return true;
+	                        }
+	                    });
+                    }
                 }
             });
         } catch (Throwable t) {
@@ -1259,6 +1348,15 @@ public class ModQuickSettings {
                                 }
                             }
                         });
+                        tile.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View v) {
+                                XposedHelpers.callMethod(mQuickSettings, "startSettingsActivity", 
+                                        android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                                tile.setPressed(false);
+                                return true;
+                            }
+                        });
                     }
                 }
             });
@@ -1306,6 +1404,15 @@ public class ModQuickSettings {
                                 if (mHideOnChange && mStatusBar != null) {
                                     XposedHelpers.callMethod(mStatusBar, "animateCollapsePanels");
                                 }
+                            }
+                        });
+                        tile.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View v) {
+                                XposedHelpers.callMethod(mQuickSettings, "startSettingsActivity", 
+                                        android.provider.Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+                                tile.setPressed(false);
+                                return true;
                             }
                         });
                     }
@@ -1387,6 +1494,63 @@ public class ModQuickSettings {
                             }
                         });
                     }
+                }
+            });
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+
+        try {
+            XposedHelpers.findAndHookMethod(classQsModel, "addAlarmTile",
+                    CLASS_QS_TILEVIEW, CLASS_QS_MODEL_RCB, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
+                    final View tile = (View) param.args[0];
+                    tile.setTag(mAospTileTags.get("alarm_textview"));
+                    tile.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                final Intent intent = mAlarmSingletapApp == null ?
+                                        new Intent("com.android.deskclock.ALARM_ALERT") :
+                                        Intent.parseUri(mAlarmSingletapApp, 0);
+                                if (ShortcutActivity.isGbBroadcastShortcut(intent)) {
+                                    Intent newIntent = new Intent(intent.getStringExtra(
+                                            ShortcutActivity.EXTRA_ACTION));
+                                    newIntent.putExtras(intent);
+                                    mContext.sendBroadcast(newIntent);
+                                } else {
+                                    XposedHelpers.callMethod(mQuickSettings, "startSettingsActivity",
+                                            intent);
+                                }
+                            } catch (Throwable t) {
+                                log("Error launching Alarm singletap app: " + t.getMessage());
+                            }
+                        }
+                    });
+                    tile.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+                            if (mAlarmLongpressApp == null) return false;
+                            try {
+                                final Intent intent = Intent.parseUri(mAlarmLongpressApp, 0);
+                                if (ShortcutActivity.isGbBroadcastShortcut(intent)) {
+                                    Intent newIntent = new Intent(intent.getStringExtra(
+                                            ShortcutActivity.EXTRA_ACTION));
+                                    newIntent.putExtras(intent);
+                                    mContext.sendBroadcast(newIntent);
+                                } else {
+                                    XposedHelpers.callMethod(mQuickSettings, "startSettingsActivity",
+                                            intent);
+                                }
+                                tile.setPressed(true);
+                                return true;
+                            } catch (Throwable t) {
+                                log("Error launching Alarm longpress app: " + t.getMessage());
+                                return false;
+                            }
+                        }
+                    });
                 }
             });
         } catch (Throwable t) {

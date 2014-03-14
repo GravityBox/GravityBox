@@ -658,7 +658,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Tốc độ truyền dữ liệu</string>
     <string name="pref_data_traffic_enable_title">Bật hiển thị tốc độ</string>
-    <string name="pref_data_traffic_enable_summary">Tự động hiện tốc độ truyền dữ liệu khi truyền tải dữ liệu</string>
     <string name="pref_data_traffic_position_title">Vị trí</string>
     <string name="dt_position_auto">Tự động (ở giữa hoặc bên phải tuỳ theo vị trí đồng hồ)</string>
     <string name="dt_position_left">Bên trái</string>
@@ -928,10 +927,6 @@
     <string name="hwkey_action_auto_rotation_enabled">Xoay tự động bật</string>
     <string name="hwkey_action_auto_rotation_disabled">Xoay tự động tắt</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Cho phép mọi widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Cho phép dùng các widget thường chỉ có thể dùng trong launcher xuất hiện trong màn hình khoá</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Hiện menu nguồn</string>
     <string name="hwkey_action_expand_notifications">Mở rộng thanh thông báo</string>
@@ -1045,5 +1040,244 @@
 
     <!-- Navbar custom key: swap with menu key -->
     <string name="pref_navbar_custom_key_swap_title">Đổi chỗ với nút Menu</string>
+
+
+    <!-- Smart Radio -->
+    <string name="smart_radio_action_undefined">Chưa đặt</string>
+    <string name="pref_cat_smart_radio_title">Sóng thông minh</string>
+    <string name="pref_smart_radio_enable_summary">Tự động chuyển sóng di động sang chế độ tiết kiệm năng lượng hoặc chế độ thường tuỳ theo trạng thái kết nối mạng dữ liệu và Wifi (cần khởi động lại)</string>
+    <string name="pref_smart_radio_normal_mode_title">Chế độ mạng thường</string>
+    <string name="pref_smart_radio_power_saving_mode_title">Chế độ mạng tiết kiệm năng lượng</string>
+    <string name="pref_smart_radio_screen_off_title">Khi màn hình tắt</string>
+    <string name="pref_smart_radio_screen_off_summary">Bật chế độ tiết kiệm năng lượng khi màn hình tắt, bất kể mạng dữ liệu đang bật hay tắt</string>
+    <string name="pref_smart_radio_ignore_locked_title">Bỏ qua khi khoá</string>
+    <string name="pref_smart_radio_ignore_locked_summary">Khi bật màn hình, chế độ tiết kiệm năng lượng sẽ không được kích hoạt cho đến khi máy được mở khoá</string>
+    <string name="pref_smart_radio_mode_change_delay_title">Độ trễ chuyển chế độ mạng</string>
+    <string name="pref_smart_radio_mode_change_delay_summary">Độ trễ khi chuyển chế độ mạng, tính bằng giây</string>
+
+    <!-- Lockscreen: custom carrier text -->
+    <string name="pref_lockscreen_carrier_text_title">Thông tin nhà mạng</string>
+    <string name="carrier_text_default">Mặc định</string>
+    <string name="carrier_text_empty">Trống</string>
+
+    <!-- Battery charged sound -->
+    <string name="pref_battery_charged_sound_title">Âm báo đầy pin</string>
+    <string name="pref_battery_charged_sound_summary">Phát âm báo khi pin đã được sạc đầy</string>
+
+    <!-- Pie long-press actions -->
+    <string name="pref_cat_pie_long_press_title">Chạm-giữ</string>
+    <string name="pref_pie_back_longpress_title">Nút Back</string>
+    <string name="pref_pie_home_longpress_title">Nút Home</string>
+    <string name="pref_pie_recents_longpress_title">Nút Recents</string>
+    <string name="pref_pie_search_longpress_title">Nút Search</string>
+    <string name="pref_pie_menu_longpress_title">Nút Menu</string>
+    <string name="pref_pie_app_longpress_title">Nút Ứng dụng nhanh</string>
+
+    <!-- Pulse notification delay -->
+    <string name="pref_pulse_notification_delay_title">Tốc độ chớp đèn báo</string>
+    <string name="pref_pulse_notification_delay_summary">Cần khởi động lại</string>
+
+    <!--  Clear recents modes -->
+    <string name="pref_clear_recents_mode_title">Thao tác đóng các ứng dụng mới mở</string>
+    <string name="pref_clear_recents_mode_0">Bấm để đóng hết, giữ để đóng hết trừ ứng dụng hiện hành</string>
+    <string name="pref_clear_recents_mode_1">Bấm để đóng hết trừ ứng dụng hiện thời, giữ để đóng hết</string>
+
+    <!-- Power menu: disable on lockscreen -->
+    <string name="pref_powermenu_disable_on_lockscreen_title">Không hiện menu nguồn trong màn hình khoá</string>
+
+    <!-- Extended force overflow menu button option -->
+    <string name="overflow_menu_default">Mặc định</string>
+    <string name="overflow_menu_enabled">Luôn hiện</string>
+    <string name="overflow_menu_disabled">Luôn ẩn</string>
+
+    <!-- Key Action: Take screenshot -->
+    <string name="hwkey_action_screenshot">Chụp ảnh màn hình</string>
+
+    <!-- Key Action: Show volume panel -->
+    <string name="hwkey_action_volume_panel">Hiện bảng chỉnh âm lượng</string>
+
+    <!-- Blur effect intensity -->
+    <string name="pref_lockscreen_bg_blur_intensity_title">Độ mờ nền</string>
+
+    <!-- Smart radio: independent delay for screen off power save event -->
+    <string name="pref_smart_radio_screen_off_delay_title">Độ trễ tiết kiệm năng lượng</string>
+    <string name="pref_smart_radio_screen_off_delay_summary">Thời gian chờ trước khi chuyển sang chế độ tiết kiệm năng lượng khi màn hình tắt. 
+        Thay thế thời gian chờ mặc định nếu khác 0.</string>
+
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Thông tin nhà mạng 2</string>
+
+    <!-- Backup and restore settings -->
+    <string name="pref_settings_backup_title">Sao lưu thiết lập</string>
+    <string name="pref_settings_restore_title">Khôi phục thiết lập</string>
+    <string name="settings_backup_failed">Sao lưu thất bại</string>
+    <string name="settings_backup_no_prefs">Không tìm thấy tập tin thiết lập</string>
+    <string name="settings_backup_success">Sao lưu thành công</string>
+    <string name="settings_restore_no_backup">Không có bản sao lưu nào để khôi phục</string>
+    <string name="settings_restore_confirm">Các thiết lập hiện tại sẽ bị thay thế. Bạn có chắc không?</string>
+    <string name="settings_restore_failed">Khôi phục thất bại</string>
+    <string name="settings_restore_success">Khôi phục thành công</string>
+    <string name="settings_restore_reboot">Vui lòng khởi động lại thiết bị</string>
+
+    <!-- Web service client strings -->
+    <string name="wsc_hash_creation_failed">Lỗi khi tạo mã hash riêng cho ứng dụng</string>
+    <string name="wsc_parse_response_error">Lỗi khi lấy dữ liệu từ dịch vụ web</string>
+    <string name="wsc_hash_invalid">Dịch vụ web từ chối liên lạc do không khớp mã hash. Việc này thường xảy ra khi bạn dùng GravityBox bản không chính thức hoặc bản đã có chỉnh sửa bởi bên thứ 3.</string>
+    <string name="wsc_please_wait">Vui lòng chờ&#8230;</string>
+    <string name="wsc_error">Lỗi khi liên lạc với dịch vụ web: %s</string>
+    <string name="wsc_task_cancelled">Bỏ yêu cầu liên lạc với dịch vụ web</string>
+
+    <!-- Transaction verification -->
+    <string name="wsc_trans_parse_response_error">Lỗi khi lấy dữ liệu giao dịch từ dịch vụ web</string>
+    <string name="wsc_trans_valid">Kiểm tra mã giao dịch thành công. Các tính năng trả phí sẽ được mở khi mở lại GravityBox.</string>
+    <string name="wsc_trans_invalid">Không tìm thấy thông tin về mã giao dịch này</string>
+    <string name="wsc_trans_violation">Mã giao dịch trên đã được dùng quá nhiều lần. Hãy liên hệ với  tác giả của GravityBox để giải quyết.</string>
+    <string name="wsc_trans_blocked">Mã giao dịch trên đã bị khoá. Hãy liên hệ với tác giả của GravityBox để giải quyết.</string>
+    <string name="pref_trans_verification_title">Mã giao dịch PayPal</string>
+    <string name="pref_trans_verification_summary">Trong trường hợp bạn đã quyên góp, bạ có thể điền mã giao dịch quyên góp bằng PayPal để mở khoá các tính năng trả phí</string>
+    <string name="wsc_trans_required_summary">Tính năng này yêu cầu mã giao dịch Paypal hợp lệ</string>
+
+    <!-- Pie: disable system info -->
+    <string name="pref_pie_sysinfo_disable_title">Ẩn thông tin hệ thống</string>
+
+    <!-- Pie: long press delay -->
+    <string name="pref_pie_longpress_delay_title">Thời gian giữ</string>
+    <string name="pie_longpress_delay_default">Mậc định</string>
+
+    <!-- GB Actions: Launcher drawer shortcut -->
+    <string name="shortcut_launcher_drawer">Ngăn kéo ứng dụng</string>
+
+    <!-- Key Actions: Show launcher drawer -->
+    <string name="hwkey_action_launcher_drawer">Mở ngăn kéo ứng dụng của launcher</string>
+
+    <!-- Launcher tweaks: resize any widget -->
+    <string name="pref_cat_launcher_other_title">Khác</string>
+    <string name="pref_launcher_resize_widget_title">Đổi kích cỡ widget</string>
+    <string name="pref_launcher_resize_widget_summary">Thay đổi kích cỡ của widget trên màn hình chủ (cần mở lại launcher)</string>
+
+    <!-- Icon picker -->
+    <string name="icon_picker_choose_icon_title">Chọn biểu tượng</string>
+    <string name="shortcuts_icon_picker_alarm">Báo thức</string>
+    <string name="shortcuts_icon_picker_andy">Andy</string>
+    <string name="shortcuts_icon_picker_battery">Pin</string>
+    <string name="shortcuts_icon_picker_browser">Trình duyệt</string>
+    <string name="shortcuts_icon_picker_calendar">Lịch</string>
+    <string name="shortcuts_icon_picker_camera">Camera</string>
+    <string name="shortcuts_icon_picker_cloud">Đám mây</string>
+    <string name="shortcuts_icon_picker_contact">Danh bạ</string>
+    <string name="shortcuts_icon_picker_directdial">Gọi trực tiếp</string>
+    <string name="shortcuts_icon_picker_directmessage">Nhắn tin trực tiếp</string>
+    <string name="shortcuts_icon_picker_drive">Ổ</string>
+    <string name="shortcuts_icon_picker_dropbox">Dropbox</string>
+    <string name="shortcuts_icon_picker_email">Email</string>
+    <string name="shortcuts_icon_picker_email2">Email khác</string>
+    <string name="shortcuts_icon_picker_evernote">Evernote</string>
+    <string name="shortcuts_icon_picker_facebook">Facebook</string>
+    <string name="shortcuts_icon_picker_favorite">Ưa thích</string>
+    <string name="shortcuts_icon_picker_file_browser">Trình mở tập tin</string>
+    <string name="shortcuts_icon_picker_file_browser2">Trình mở tập tin khác</string>
+    <string name="shortcuts_icon_picker_fitness">Thể hình</string>
+    <string name="shortcuts_icon_picker_gallery">Gallery</string>
+    <string name="shortcuts_icon_picker_gears">Đồ nghề</string>
+    <string name="shortcuts_icon_picker_google_small">Google</string>
+    <string name="shortcuts_icon_picker_gplus">Google Plus</string>
+    <string name="shortcuts_icon_picker_gtalk">Hangouts</string>
+    <string name="shortcuts_icon_picker_help">Trợ giúp</string>
+    <string name="shortcuts_icon_picker_joystick">Joystick</string>
+    <string name="shortcuts_icon_picker_key">Chìa khoá/Tài khoản</string>
+    <string name="shortcuts_icon_picker_laptop">Laptop</string>
+    <string name="shortcuts_icon_picker_notes">Ghi chú</string>
+    <string name="shortcuts_icon_picker_luggage">Du lịch</string>
+    <string name="shortcuts_icon_picker_maps">Bản đồ</string>
+    <string name="shortcuts_icon_picker_market">Chợ</string>
+    <string name="shortcuts_icon_picker_movie">Phim</string>
+    <string name="shortcuts_icon_picker_music">Nhạc</string>
+    <string name="shortcuts_icon_picker_nav">Chỉ đường</string>
+    <string name="shortcuts_icon_picker_phone">Điện thoại</string>
+    <string name="shortcuts_icon_picker_package">Gói hàng</string>
+    <string name="shortcuts_icon_picker_pinterest">Pinterest</string>
+    <string name="shortcuts_icon_picker_play">Phát</string>
+    <string name="shortcuts_icon_picker_pocket">Pocket</string>
+    <string name="shortcuts_icon_picker_quicksettings">Thiết lập nhanh</string>
+    <string name="shortcuts_icon_picker_rss">RSS Feed</string>
+    <string name="shortcuts_icon_picker_sdcard">Thẻ SD</string>
+    <string name="shortcuts_icon_picker_search">Tìm kiếm</string>
+    <string name="shortcuts_icon_picker_sms">Tin nhắn</string>
+    <string name="shortcuts_icon_picker_tasks">Công việc</string>
+    <string name="shortcuts_icon_picker_terminal">Nhà ga</string>
+    <string name="shortcuts_icon_picker_transit">Di chuyển</string>
+    <string name="shortcuts_icon_picker_tv">TV</string>
+    <string name="shortcuts_icon_picker_twitter">Twitter</string>
+    <string name="shortcuts_icon_picker_unlock">Mở khoá</string>
+
+    <!-- Lockscreen: Slide before unlock -->
+    <string name="pref_lockscreen_slide_before_unlock_title">Vuốt trước khi mở khoá</string>
+    <string name="pref_lockscreen_slide_before_unlock_summary">Cho phép kết hợp vuốt các điểm trên vòng khoá với khoá</string>
+
+    <!-- Lockscreen tweaks: option categories -->
+    <string name="pref_cat_lockscreen_widgets_title">Widget</string>
+    <string name="pref_cat_lockscreen_sliding_challenge_title">Vuốt</string>
+    <string name="pref_cat_lockscreen_statusbar_title">Thanh trạng thái</string>
+
+    <!-- Quick settings: Auto-switch extended -->
+    <string name="qs_auto_switch_disabled">Tắt</string>
+    <string name="qs_auto_switch_mode1">Khi không có thông báo</string>
+    <string name="qs_auto_switch_mode2">Khi không có thông báo nào xoá được</string>
+
+    <!-- Statusbar: Double-tap to sleep -->
+    <string name="pref_statusbar_dt2s_title">Bấm kép để tắt màn hình</string>
+    <string name="pref_statusbar_dt2s_summary">Bấm kép lên thanh trạng thái để tắt màn hình</string>
+
+    <!-- Animation scales -->
+    <string name="animation_scale0">Tắt hiệu ứng</string>
+    <string name="animation_scale1">Tốc độ hiệu ứng .25x</string>
+    <string name="animation_scale2">Tốc độ hiệu ứng .5x</string>
+    <string name="animation_scale3">Tốc độ hiệu ứng 1x</string>
+    <string name="animation_scale4">Tốc độ hiệu ứng 1.5x</string>
+    <string name="animation_scale5">Tốc độ hiệu ứng 2x</string>
+    <string name="animation_scale6">Tốc độ hiệu ứng 5x</string>
+    <string name="animation_scale7">Tốc độ hiệu ứng 10x</string>
+
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Kiểu nhãn ô</string>
+    <string name="tile_label_style_normal">Thường</string>
+    <string name="tile_label_style_allcaps">Viết hoa toàn bộ</string>
+    <string name="tile_label_style_hidden">Ẩn</string>
+
+    <!-- Key Actions: Show brightness dialog -->
+    <string name="hwkey_action_brightness_dialog">Hiện hộp thoại độ sáng</string>
+
+    <!-- Navbar ring: Haptic feedback -->
+    <string name="pref_navbar_ring_haptic_feedback_title">Phản hồi rung</string>
+    <string name="navring_haptic_feedback_default">Mặc định</string>
+    <string name="navring_haptic_feedback_enabled">Bật</string>
+    <string name="navring_haptic_feedback_disabled">Tắt</string>
+
+    <!-- Quick pull down size -->
+    <string name="pref_quick_pulldown_size_title">Kích cỡ bảng kéo nhanh</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Cho phép bấm kép để tắt màn hình</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Bấm kép lên vòng mở khoá để tắt màn hình</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Âm báo cắm sạc</string>
+    <string name="pref_charger_plugged_sound_summary">Phát âm báo khi cắm/rút sạc</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Bật/Tắt Mạng thông minh</string>
 
 </resources>

@@ -177,7 +177,7 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
         mIconCache = new HashMap<String, SoftReference<Drawable>>();
 
         initColorInfo();
-        mBatteryInfo = new BatteryInfoManager(gbContext);
+        mBatteryInfo = new BatteryInfoManager(context, gbContext);
 
         mListeners = new ArrayList<IconManagerListener>();
     }
@@ -251,10 +251,15 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
             }
         } else if (intent.getAction().equals(Intent.ACTION_BATTERY_CHANGED)) {
             mBatteryInfo.updateBatteryInfo(intent);
-        } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_BATTERY_CHARGED_SOUND_CHANGED) &&
-                intent.hasExtra(GravityBoxSettings.EXTRA_BATTERY_CHARGED_SOUND)) {
-            mBatteryInfo.setChargedSoundEnabled(intent.getBooleanExtra(
-                    GravityBoxSettings.EXTRA_BATTERY_CHARGED_SOUND, false));
+        } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_BATTERY_CHARGED_SOUND_CHANGED)) {
+            if (intent.hasExtra(GravityBoxSettings.EXTRA_BATTERY_CHARGED_SOUND)) {
+                mBatteryInfo.setChargedSoundEnabled(intent.getBooleanExtra(
+                        GravityBoxSettings.EXTRA_BATTERY_CHARGED_SOUND, false));
+            }
+            if (intent.hasExtra(GravityBoxSettings.EXTRA_CHARGER_PLUGGED_SOUND)) {
+                mBatteryInfo.setPluggedSoundEnabled(intent.getBooleanExtra(
+                        GravityBoxSettings.EXTRA_CHARGER_PLUGGED_SOUND, false));
+            }
         }
     }
 
@@ -265,9 +270,16 @@ public class StatusBarIconManager implements BroadcastSubReceiver {
     public void registerListener(IconManagerListener listener) {
         if (!mListeners.contains(listener)) {
             mListeners.add(listener);
+            listener.onIconManagerStatusChanged(FLAG_ALL, mColorInfo);
         }
         if (listener instanceof BatteryStatusListener) {
             mBatteryInfo.registerListener((BatteryStatusListener) listener);
+        }
+    }
+
+    public void unregisterListener(IconManagerListener listener) {
+        if (mListeners.contains(listener)) {
+            mListeners.remove(listener);
         }
     }
 

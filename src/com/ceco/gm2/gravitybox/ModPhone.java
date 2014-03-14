@@ -336,7 +336,7 @@ public class ModPhone {
                 XposedHelpers.findAndHookMethod(classCallNotifier, "onDisconnect",
                         CLASS_ASYNC_RESULT, onDisconnectHook);
             }
-            if (Utils.hasGeminiSupport() && !(Utils.isMt6572Device() || Utils.isMt6582Device())) {
+            if (Utils.hasGeminiSupport() && !(Utils.isMt65x2Device())) {
                 XposedHelpers.findAndHookMethod(classCallNotifier, "onNewRingingConnection",
                         CLASS_ASYNC_RESULT, int.class, onNewRingingConnectionHook);
             } else {

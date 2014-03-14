@@ -89,9 +89,13 @@
     <string name="quick_settings_usb_tether_off">Desligado</string>
     <string name="quick_settings_usb_tether_connected">Associação desativada</string>
     <string name="quick_settings_usb_tether_on">Associação ativada</string>
+    <string name="quick_settings_smart_radio_on">Rádio inteligente ativado</string>
+    <string name="quick_settings_smart_radio_off">Rádio inteligente desativado</string>
+    <string name="quick_settings_lock_screen_on">Bloqueio de ecrã ativado</string>
+    <string name="quick_settings_lock_screen_off">Bloqueio de ecrã desativado</string>
 
     <!-- QuickSettings settings -->
-    <string name="quick_settings_title">Definições rápidas na Barra de Status</string>
+    <string name="quick_settings_title">Definições rápidas na barra de status</string>
     <string name="quick_settings_summary">Permite mostrar ou ocultar definições rápidas</string>
     <string name="qs_tile_user_profile">Perfil de utilizador</string>
     <string name="qs_tile_airplane_mode">Modo de avião</string>
@@ -122,13 +126,16 @@
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Câmara</string>
     <string name="qs_tile_usb_tethering">Associação USB</string>
+    <string name="qs_tile_smart_radio">Rádio inteligente</string>
+    <string name="qs_tile_alarm">Alarme</string>
+    <string name="qs_tile_lock_screen">Bloqueio de ecrã</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Escolher cor</string>
     <string name="press_color_to_apply">Carregue na cor escolhida para aplicar</string>
 
     <!-- Statusbar background color -->
-    <string name="statusbar_bgcolor_title">Cor do fundo da Barra de Status</string>
+    <string name="statusbar_bgcolor_title">Cor do fundo da barra de status</string>
     <string name="statusbar_bgcolor_summary">Permite escolher a cor do fundo</string>
 
     <!-- Fix speech settings -->
@@ -140,8 +147,8 @@
     <string name="fix_dev_opts_summary">Desbloqueia as opções de programador avançadas nas definições (necessário reiniciar)</string>
 
     <!-- Main preference categories -->
-    <string name="pref_cat_statusbar_title">Ajustes da Barra de Status</string>
-    <string name="pref_cat_statusbar_summary">Contém vários ajustes relacionados com a Barra de Status</string>
+    <string name="pref_cat_statusbar_title">Ajustes da barra de status</string>
+    <string name="pref_cat_statusbar_summary">Contém vários ajustes relacionados com a barra de status</string>
     <string name="pref_cat_misc_title">Ajustes diversos</string>
     <string name="pref_cat_misc_summary">Contém todos os ajustes que não são classificados numa categoria específica</string>
     <string name="pref_cat_fixes_title">Ajustes gerais</string>
@@ -309,17 +316,17 @@
 
     <!-- Auto-switch QuickSettings -->
     <string name="pref_auto_switch_qs_title">Comutação automática das definições rápidas</string>
-    <string name="pref_auto_switch_qs_summary">Mostra as definições rápidas automaticamente quando a Barra de Status é deslizada para baixo e não existem notificações</string>
+    <string name="pref_auto_switch_qs_summary">Mostra as definições rápidas automaticamente quando a barra de status é deslizada para baixo e não existem notificações</string>
 
     <!-- Quick pulldown -->
     <string name="pref_quick_pulldown_title">Acesso rápido</string>
-    <string name="pref_quick_pulldown_summary">Acesso às definições rápidas a partir da borda da Barra de Status</string>
+    <string name="pref_quick_pulldown_summary">Acesso às definições rápidas a partir da borda da barra de status</string>
     <string name="quick_pulldown_off">Desligado</string>
     <string name="quick_pulldown_right">Direita</string>
     <string name="quick_pulldown_left">Esquerda</string>
 
     <!-- Statusbar colors category -->
-    <string name="pref_cat_statusbar_colors_title">Cores da Barra de Status</string>
+    <string name="pref_cat_statusbar_colors_title">Cores da barra de status</string>
 
     <!-- Enable icon colors -->
     <string name="pref_statusbar_icon_color_enable_title">Ativação da coloração de indicadores</string>
@@ -384,8 +391,8 @@
     <string name="pref_button_backlight_notifications_summary">EXPERIMENTAL! Permite utilizar a retro-iluminação das teclas de forma intermitente para alerta de notificações. Utilizar caso o dispositivo não possua luz de notificações (pode consumir bateria)</string>
 
     <!-- Hide navigation bar for pie -->
-    <string name="pref_navbar_disable_title">Ocultar Barra de Navegação</string>
-    <string name="pref_navbar_disable_summary">Oculta a Barra de Navegação quando os controlos Pie estão ativados (para dispositivos com Barra de Navegação, necessário reiniciar)</string>
+    <string name="pref_navbar_disable_title">Ocultar barra de navegação</string>
+    <string name="pref_navbar_disable_summary">Oculta a barra de navegação quando os controlos Pie estão ativados (para dispositivos com barra de navegação, necessário reiniciar)</string>
 
     <!--  Dithered Holo background -->
     <string name="pref_holo_bg_dither_title">Fundo pontilhado</string>
@@ -393,7 +400,7 @@
 
     <!-- Disable navigation keys for pie -->
     <string name="pref_hwkeys_disable_title">Desativar botões de navegação</string>
-    <string name="pref_hwkeys_disable_summary">Desativa as ações de toque nos botões da Barra de Navegação quando os controlos Pie estiverem ativados</string>
+    <string name="pref_hwkeys_disable_summary">Desativa as ações de toque nos botões da barra de navegação quando os controlos Pie estiverem ativados</string>
 
     <!-- Option for GB dark theme -->
     <string name="pref_gb_theme_dark_title">Utilizar tema escuro</string>
@@ -451,11 +458,11 @@
 
     <!-- Transparency management -->
     <string name="pref_cat_transparency_manager_title">Gestão de transparências</string>
-    <string name="pref_cat_transparency_manager_summary">Permite definir a transparência da Barra de Status e da Barra de Navegação</string>
-    <string name="pref_tm_statusbar_launcher_title">Barra de Status no inicializador</string>
-    <string name="pref_tm_statusbar_lockscreen_title">Barra de Status no ecrã de bloqueio</string>
-    <string name="pref_tm_navbar_launcher_title">Barra de Navegação no inicializador</string>
-    <string name="pref_tm_navbar_lockscreen_title">Barra de Navegação no ecrã de bloqueio</string>
+    <string name="pref_cat_transparency_manager_summary">Permite definir a transparência da barra de status e da barra de navegação</string>
+    <string name="pref_tm_statusbar_launcher_title">Barra de status no inicializador</string>
+    <string name="pref_tm_statusbar_lockscreen_title">Barra de status no ecrã de bloqueio</string>
+    <string name="pref_tm_navbar_launcher_title">Barra de navegação no inicializador</string>
+    <string name="pref_tm_navbar_lockscreen_title">Barra de navegação no ecrã de bloqueio</string>
 
     <!-- Hide alarm icon -->
     <string name="pref_alarm_icon_hide_title">Ocultar indicador de alarme</string>
@@ -487,9 +494,12 @@
     <string name="hwkey_action_custom_app_none">Nenhuma aplicação definida!</string>
     <string name="hwkey_action_custom_app_missing">Aplicação não encontrada!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Relógio do painel de notificações</string>
-    <string name="pref_clock_link_summary">Associar relógio do painel de notificações a uma aplicação específica em vez das Definições de data e hora</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">Relógio da barra de status</string>
+    <string name="pref_cat_notif_panel_clock_title">Relógio do painel de notificações</string>
+    <string name="pref_clock_link_title">Aplicação ao pressionar</string>
+    <string name="pref_clock_link_summary">Associar a uma aplicação específica em vez das Definições de data e hora</string>
+    <string name="pref_clock_longpress_link_title">Aplicação ao manter pressionado</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">A aguardar resposta da estrutura de sistema do GravityBox&#8230;</string>
@@ -502,8 +512,8 @@
     <!-- Expanded Desktop -->
     <string name="pref_expanded_desktop_title">Modo ambiente de trabalho expandido</string>
     <string name="expanded_desktop_disabled">Desativado</string>
-    <string name="expanded_desktop_statusbar">Ocultar Barra de Status</string>
-    <string name="expanded_desktop_navbar">Ocultar Barra de Navegação</string>
+    <string name="expanded_desktop_statusbar">Ocultar barra de status</string>
+    <string name="expanded_desktop_navbar">Ocultar barra de navegação</string>
     <string name="expanded_desktop_both">Ocultar ambas</string>
     <string name="action_expanded_desktop_title">Ambiente de trabalho expandido</string>
     <string name="action_expanded_desktop_on">Ambiente de trabalho expandido ativado</string>
@@ -520,16 +530,16 @@
     <string name="hwkey_action_expanded_desktop_disabled">O modo ambiente de trabalho expandido está desativado!</string>
 
     <!-- Navigation bar tweaks category -->
-    <string name="pref_cat_navigation_bar_title">Ajustes da Barra de Navegação</string>
-    <string name="pref_cat_navigation_bar_summary">Contém vários ajustes relacionados com a Barra de Navegação</string>
+    <string name="pref_cat_navigation_bar_title">Ajustes da barra de navegação</string>
+    <string name="pref_cat_navigation_bar_summary">Contém vários ajustes relacionados com a barra de navegação</string>
     <string name="pref_navbar_override_title">Ignorar predefinições de sistema</string>
-    <string name="pref_navbar_override_summary">Ativação global dos ajustes (necessário reiniciar)</string>
-    <string name="pref_navbar_enable_title">Ativar Barra de Navegação</string>
-    <string name="pref_navbar_enable_summary">Permite ativar Barra de Navegação (necessário reiniciar)</string>
-    <string name="pref_navbar_height_title">Altura da Barra de Navegação</string>
+    <string name="pref_navbar_override_summary">Gestão dos ajustes (necessário reiniciar)</string>
+    <string name="pref_navbar_enable_title">Ativar barra de navegação</string>
+    <string name="pref_navbar_enable_summary">Permite ativar barra de navegação (necessário reiniciar)</string>
+    <string name="pref_navbar_height_title">Altura da barra de navegação</string>
     <string name="pref_navbar_height_summary">Aplicável à barra horizontal e orientação de ecrã vertical</string>
     <string name="pref_navbar_height_landscape_summary">Aplicável à barra horizontal e orientação de ecrã horizontal</string>
-    <string name="pref_navbar_width_title">Largura da Barra de Navegação</string>
+    <string name="pref_navbar_width_title">Largura da barra de navegação</string>
     <string name="pref_navbar_width_summary">Aplicável à barra vertical</string>
     <string name="pref_navbar_menukey_title">Mostar sempre botão Menu</string>
 
@@ -538,14 +548,14 @@
 
     <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Alvos do anel de desbloqueio</string>
-    <string name="pref_lockscreen_ring_targets_enable_summary">Ativação global dos alvos do anel de desbloqueio</string>
+    <string name="pref_lockscreen_ring_targets_enable_summary">Definição dos alvos do anel de desbloqueio</string>
     <string name="pref_lockscreen_ring_targets_app_title">Alvo número %s</string>
     <string name="pref_lockscreen_ring_vertical_offset_title">Desvio vertical do anel de desbloqueio</string>
     <string name="pref_lockscreen_ring_horizontal_offset_title">Desvio horizontal do anel de desbloqueio</string>
 
     <!-- Statusbar brightness control -->
     <string name="pref_statusbar_brightness_title">Ativar controlo de brilho</string>
-    <string name="pref_statusbar_brightness_summary">Permite ajustar o brilho ao deslizar sobre a Barra de Status (necessário desativar ajuste automático de brilho)</string>
+    <string name="pref_statusbar_brightness_summary">Permite ajustar o brilho ao deslizar sobre a barra de status (necessário desativar ajuste automático de brilho)</string>
 
     <!-- Phone tweaks categories -->
     <string name="pref_cat_phone_telephony_title">Telefone</string>
@@ -590,7 +600,7 @@
     <string name="pie_controls_disabled">Nunca</string>
     <string name="pie_controls_enabled_always">Sempre</string>
     <string name="pie_controls_enabled_expanded">Quando o modo ambiente de trabalho expandido estiver ativado</string>
-    <string name="pie_controls_enabled_expanded_navbar">Quando o modo ambiente de trabalho expandido ocultar a Barra de Navegação</string>
+    <string name="pie_controls_enabled_expanded_navbar">Quando o modo ambiente de trabalho expandido ocultar a barra de navegação</string>
 
     <!-- Icon coloring: preserve stock battery icon -->
     <string name="pref_statusbar_color_skip_battery_title">Não alterar o indicador de bateria</string>
@@ -636,7 +646,7 @@
     <string name="clock_dow_uppercase">Maiúsculas</string>
 
     <!-- Statusbar expand policy -->
-    <string name="pref_statusbar_lock_policy_title">Política de bloqueio da Barra de Status</string>
+    <string name="pref_statusbar_lock_policy_title">Política de bloqueio da barra de status</string>
     <string name="sbl_policy_default">Padrão</string>
     <string name="sbl_policy_unlocked">Desbloqueada quando método de bloqueio for inseguro</string>
     <string name="sbl_policy_locked">Bloqueada</string>
@@ -644,7 +654,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Monitorização de tráfego de dados</string>
     <string name="pref_data_traffic_enable_title">Ativar monitorização</string>
-    <string name="pref_data_traffic_enable_summary">Permite monitorizar o tráfego de dados automaticamente sempre que exista uma ligação de dados estabelecida</string>
     <string name="pref_data_traffic_position_title">Posicionamento</string>
     <string name="dt_position_auto">Automático (centrado ou alinhado à direita, dependendo do posicionamento do relógio)</string>
     <string name="dt_position_left">Alinhado à esquerda</string>
@@ -708,7 +717,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Lançador de aplicações</string>
-    <string name="pref_cat_app_launcher_summary">Permite definir até 8 aplicações como ações para as teclas físicas ou para mostrar em botão adicional na Barra de Navegação</string>
+    <string name="pref_cat_app_launcher_summary">Permite definir até 8 aplicações como ações para as teclas físicas ou para mostrar em botão adicional na barra de navegação</string>
     <string name="pref_app_launcher_slot_title">Aplicação posição %d</string>
     <string name="app_launcher_no_apps">Nenhuma aplicação definida. Aceda a \"GravityBox / Lançador de aplicações\" para definir aplicações.</string>
 
@@ -751,7 +760,7 @@
     <string name="pref_navbar_color_enable_summary">Pode ser necessário reiniciar após desativar</string>
     <string name="pref_navbar_key_color_title">Cor das teclas</string>
     <string name="pref_navbar_key_glow_color_title">Cor das teclas ao pressionar</string>
-    <string name="pref_navbar_bg_color_title">Cor de fundo da Barra de Navegação</string>
+    <string name="pref_navbar_bg_color_title">Cor de fundo da barra de navegação</string>
 
     <!-- Disable lockscreen shade -->
     <string name="pref_lockscreen_shade_disable_title">Remover sombreado</string>
@@ -761,8 +770,8 @@
     <string name="pref_tm_mode_title">Modo de gestão de transparências</string>
     <string name="pref_tm_mode_summary">Permite definir o modo de gestão de transparências (necessário reiniciar)</string>
     <string name="tm_mode_disabled">Desativado</string>
-    <string name="tm_mode_statusbar">Barra de Status</string>
-    <string name="tm_mode_navbar">Barra de Navegação</string>
+    <string name="tm_mode_statusbar">Barra de status</string>
+    <string name="tm_mode_navbar">Barra de navegação</string>
     <string name="tm_mode_full">Ambas</string>
 
     <!-- Secondary signal icon color for MTK Dual SIMs -->
@@ -803,8 +812,8 @@
     <string name="pref_disable_data_network_type_icons_summary">Permite desativar os indicadores 3G/G que se encontram ao lado das barras de sinal</string>
 
     <!-- HW Keys Navigation Bar warning -->
-    <string name="hwkey_navbar_warning">Para ativar ações relacionadas com a Barra de Navegação, é necessário 
-        ignorar predefinições de sistema no menu de ajustes da Barra de Navegação</string>
+    <string name="hwkey_navbar_warning">Para ativar ações relacionadas com a barra de navegação, é necessário 
+        ignorar predefinições de sistema no menu de ajustes da mesma</string>
 
     <!-- Lockscreen Torch -->
     <string name="pref_hwkey_lockscreen_torch_title">Comutar lanterna no ecrã de bloqueio</string>
@@ -813,7 +822,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">Ao manter pressionada a tecla Volume -</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Ativação global da gestão das definições rápidas (necessário reiniciar)</string>
+    <string name="pref_qs_management_enable_summary">Gestão das definições rápidas (necessário reiniciar)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Aplicações</string>
@@ -874,7 +883,7 @@
 
     <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">Teclas de controlo do cursor</string>
-    <string name="pref_navbar_cursor_control_summary">Ativa as teclas de controlo do cursor na Barra de Navegação quando o teclado está visível</string>
+    <string name="pref_navbar_cursor_control_summary">Ativa as teclas de controlo do cursor na barra de navegação quando o teclado está visível</string>
 
     <!-- Volume rocker wake -->
     <string name="pref_volume_rocker_wake_title">Ligar ecrã com teclas de volume</string>
@@ -887,7 +896,7 @@
 
     <!-- Tiles: Hide on change -->
     <string name="pref_qs_hide_on_change_title">Ocultar ao tocar</string>
-    <string name="pref_qs_hide_on_change_summary">Permite ocultar a Barra de Status automaticamente assim que tocar num painel (aplicável aos painéis adicionados pelo GravityBox bem como aos painéis padrão substituídos)</string>
+    <string name="pref_qs_hide_on_change_summary">Permite ocultar a barra de status automaticamente assim que tocar num painel (aplicável aos painéis adicionados pelo GravityBox bem como aos painéis padrão substituídos)</string>
 
     <!-- Power tweaks categories -->
     <string name="pref_cat_power_menu_title">Menu Desligar</string>
@@ -914,10 +923,6 @@
     <string name="hwkey_action_auto_rotation_enabled">Rotação automática ativada</string>
     <string name="hwkey_action_auto_rotation_disabled">Rotação automática desativada</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Permitir qualquer widget</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Permite a colocação de qualquer tipo de widget no ecrã de bloqueio, mesmo aqueles que normalmente só podem ser utilizados no inicializador</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Mostrar Menu Desligar</string>
     <string name="hwkey_action_expand_notifications">Expandir painel de notificações</string>
@@ -925,7 +930,7 @@
 
     <!-- Navigation bar ring targets -->
     <string name="pref_cat_navbar_ring_targets_title">Alvos do anel de navegação</string>
-    <string name="pref_navbar_ring_targets_enable_summary">Ativação global dos alvos do anel de navegação (necessário reiniciar)</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Definição dos alvos do anel de navegação (necessário reiniciar)</string>
     <string name="pref_navbar_ring_target_title">Alvo número %d</string>
 
     <!-- Shortcut activity title -->
@@ -981,7 +986,7 @@
     <string name="bpt_charging_animated">Animada</string>
 
     <!-- Lockscreen statusbar clock visibility -->
-    <string name="pref_lockscreen_sb_clock_title">Visibilidade do relógio da Barra de Status</string>
+    <string name="pref_lockscreen_sb_clock_title">Visibilidade do relógio da barra de status</string>
     <string name="lockscreen_sb_clock_hide_on_widget">Ocultar nos widgets que contenham relógio</string>
     <string name="lockscreen_sb_clock_always_hide">Ocultar sempre</string>
     <string name="lockscreen_sb_clock_always_show">Mostrar sempre</string>
@@ -1024,7 +1029,7 @@
 
     <!-- Navbar: always on bottom -->
     <string name="pref_navbar_always_on_bottom_title">Sempre em baixo</string>
-    <string name="pref_navbar_always_on_bottom_summary">Força a Barra de Navegação a ficar sempre em baixo na orientação de ecrã horizontal (necessário reiniciar)</string>
+    <string name="pref_navbar_always_on_bottom_summary">Força a barra de navegação a ficar sempre em baixo na orientação de ecrã horizontal (necessário reiniciar)</string>
 
     <!-- Summary for Home key long-press action disabled because of navring targets -->
     <string name="pref_hwkey_home_longpress_disabled_summary">Não pode ser utilizado quando os alvos do anel de navegação estão ativados</string>
@@ -1209,7 +1214,7 @@
     <!-- Lockscreen tweaks: option categories -->
     <string name="pref_cat_lockscreen_widgets_title">Widgets</string>
     <string name="pref_cat_lockscreen_sliding_challenge_title">Deslizar para desbloquear</string>
-    <string name="pref_cat_lockscreen_statusbar_title">Barra de Status</string>
+    <string name="pref_cat_lockscreen_statusbar_title">Barra de status</string>
 
     <!-- Quick settings: Auto-switch extended -->
     <string name="qs_auto_switch_disabled">Desativada</string>
@@ -1218,7 +1223,7 @@
 
     <!-- Statusbar: Double-tap to sleep -->
     <string name="pref_statusbar_dt2s_title">Ativar dupla pressão para hibernar</string>
-    <string name="pref_statusbar_dt2s_summary">Permite hibernar o dispositivo após dupla pressão da Barra de Status</string>
+    <string name="pref_statusbar_dt2s_summary">Permite hibernar o dispositivo após dupla pressão da barra de status</string>
 
     <!-- Animation scales -->
     <string name="animation_scale0">Animação desligada</string>
@@ -1229,6 +1234,12 @@
     <string name="animation_scale5">Animação escala 2x</string>
     <string name="animation_scale6">Animação escala 5x</string>
     <string name="animation_scale7">Animação escala 10x</string>
+
+    <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Estilo do texto dos painéis</string>
+    <string name="tile_label_style_normal">Normal</string>
+    <string name="tile_label_style_allcaps">Tudo em maiúsculas</string>
+    <string name="tile_label_style_hidden">Oculto</string>
 
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">Mostrar controlo de brilho</string>
@@ -1241,5 +1252,91 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Àrea de acesso rápido</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Modo do painel Manter ligado</string>
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+    <string name="stay_awake_on">Manter ligado</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Ativar dupla pressão para hibernar</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Permite hibernar o dispositivo após dupla pressão do anel de desbloqueio</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Som de ligação do carregador</string>
+    <string name="pref_charger_plugged_sound_summary">Emite um som quando o carregador é ligado / desligado</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Comutar rádio inteligente</string>
+
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">Interruptor</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">Desativar vibração no ajuste de volume</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">Permite desativar a vibração durante o ajuste do volume das notificações / toques de chamada com as teclas de volume</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">Gestão das definições do relógio (necessário reiniciar)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">Tamanho da letra do dia da semana</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">Tamanho da letra AM/PM</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">Anel da barra de navegação</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">Desativar anel de navegação</string>
+
+    <!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Estilo da monitorização</string>
+    <string name="dt_mode_off">Desativado</string>
+    <string name="dt_mode_simple">Estilo simples</string>
+    <string name="dt_mode_omni">Estilo Omni</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Modo de monitorização</string>
+    <string name="dt_omni_mode_in">Download</string>
+    <string name="dt_omni_mode_out">Upload</string>
+    <string name="dt_omni_mode_in_out">Download e upload</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Mostrar indicador</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Calculatora</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Definições específicas de painéis</string>
+    <string name="pref_cat_qs_tile_settings_summary">Permite alterar configurações específicas dos painéis das definições rápidas</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Definições do painel Modo de Rede</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Definições do painel Alarme</string>
+    <string name="pref_qs_alarm_singletap_app_title">Aplicação ao pressionar</string>
+    <string name="alarm_singletap_app_default">Por defeito</string>
+    <string name="pref_qs_alarm_longpress_app_title">Aplicação ao manter pressionado</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Apenas quando download estiver ativo</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Permite mostrar o medidor de tráfego de dados apenas quando estiver a decorrer algum download</string>
 
 </resources>

@@ -643,7 +643,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">مراقبة حركة البيانات</string>
     <string name="pref_data_traffic_enable_title">تفعيل المراقبة</string>
-    <string name="pref_data_traffic_enable_summary">اظهار المراقبة تلقائياً عندما تكون بيانات الجوال مفعلة</string>
     <string name="pref_data_traffic_position_title">الموقع</string>
     <string name="dt_position_auto">تلقائي</string>
     <string name="dt_position_left">في اليسار</string>

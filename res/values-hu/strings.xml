@@ -104,6 +104,10 @@
     <string name="quick_settings_usb_tether_off">Szétkapcsolva</string>
     <string name="quick_settings_usb_tether_connected">Megosztás kikapcsolva</string>
     <string name="quick_settings_usb_tether_on">Megosztás</string>
+    <string name="quick_settings_smart_radio_on">Okos rádiókapcsolat be</string>
+    <string name="quick_settings_smart_radio_off">Okos rádiókapcsolat ki</string>
+    <string name="quick_settings_lock_screen_on">Zárképernyő bekapcsolva</string>
+    <string name="quick_settings_lock_screen_off">Zárképernyő kikapcsolva</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Állapotsáv Gyorsbeállítások csempéi</string>
@@ -137,6 +141,9 @@
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_camera">Kamera</string>
     <string name="qs_tile_usb_tethering">USB internetmegosztás</string>
+    <string name="qs_tile_smart_radio">Okos rádiókapcsolat</string>
+    <string name="qs_tile_alarm">Ébresztő</string>
+    <string name="qs_tile_lock_screen">Zárképernyő</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Szín választó</string>
@@ -502,9 +509,12 @@
     <string name="hwkey_action_custom_app_none">Nincs engedélyezve egyéni alkalmazás!</string>
     <string name="hwkey_action_custom_app_missing">Az egyéni alkalmazás nem található!</string>
 
-    <!-- Link notification panel clock to Deskclock -->
-    <string name="pref_clock_link_title">Értesítési panel óra alkalmazás</string>
+    <!-- Notification panel clock -->
+    <string name="pref_cat_statusbar_clock_title">Értesítési sáv óra alkalmazás</string>
+    <string name="pref_cat_notif_panel_clock_title">Értesítési panel óra alkalmazás</string>
+    <string name="pref_clock_link_title">Egyszeri érintés alkalmazása</string>
     <string name="pref_clock_link_summary">Az értesítési panel órájának megérintésével egy meghatározott alkalmazás megnyitása a Dátum&amp;Idő beállításai helyett</string>
+    <string name="pref_clock_longpress_link_title">Hosszú érintés alkalmazása</string>
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Várakozás a GravityBox keretrendszer válaszára&#8230;</string>
@@ -538,7 +548,7 @@
     <string name="pref_cat_navigation_bar_title">Navigációs sáv beállítások</string>
     <string name="pref_cat_navigation_bar_summary">Különféle navigációs sáv módosításokat tartalmaz</string>
     <string name="pref_navbar_override_title">Rendszerbeállítások felülírása</string>
-    <string name="pref_navbar_override_summary">Főkapcsoló a navigációs sáv módosításokhoz (újraindítás szükséges)</string>
+    <string name="pref_navbar_override_summary">Navigációs sáv módosítások ki-bekapcsolása (újraindítás szükséges)</string>
     <string name="pref_navbar_enable_title">Navigációs sáv engedélyezése</string>
     <string name="pref_navbar_enable_summary">Újraindítás szükséges</string>
     <string name="pref_navbar_height_title">Navigációs sáv magassága</string>
@@ -553,7 +563,7 @@
 
     <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Feloldó kör célpontok</string>
-    <string name="pref_lockscreen_ring_targets_enable_summary">Feloldó kör célpontok főkapcsoló</string>
+    <string name="pref_lockscreen_ring_targets_enable_summary">Feloldó kör célpontok ki-bekapcsolása</string>
     <string name="pref_lockscreen_ring_targets_app_title">Célpont alkalmazás %s</string>
     <string name="pref_lockscreen_ring_vertical_offset_title">Feloldó kör függőleges eltolása</string>
     <string name="pref_lockscreen_ring_horizontal_offset_title">Feloldó kör vízszintes eltolása</string>
@@ -659,7 +669,6 @@
     <!-- Data traffic monitor -->
     <string name="pref_cat_data_traffic_title">Adatforgalom figyelő</string>
     <string name="pref_data_traffic_enable_title">Monitorozás engedélyezése</string>
-    <string name="pref_data_traffic_enable_summary">Adatforgalom figyelő automatikus mutatása aktív adatkapcsolat esetén</string>
     <string name="pref_data_traffic_position_title">Pozíció</string>
     <string name="dt_position_auto">Automatikus (középen vagy jobbra az óra pozíciójától függően)</string>
     <string name="dt_position_left">Balra</string>
@@ -827,7 +836,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">Hangerő csökkentése gomb hosszú érintésére</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Főkapcsoló a GyorsBeállítások módosításokhoz (újraindítás szükséges)</string>
+    <string name="pref_qs_management_enable_summary">GyorsBeállítások módosításainak ki-bekapcsolása (újraindítás szükséges)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Alkalmazások</string>
@@ -927,18 +936,14 @@
     <string name="hwkey_action_auto_rotation_enabled">Automata elforgatás engedélyezve</string>
     <string name="hwkey_action_auto_rotation_disabled">Automata elforgatás letiltva</string>
 
-    <!-- Allow any widget on Lockscreen -->
-    <string name="pref_lockscreen_allow_any_widget_title">Bármely widget engedélyezése</string>
-    <string name="pref_lockscreen_allow_any_widget_summary">Engedélyezi azon widget-ek használatát a zárképernyőn, amelyek normál esetben csak Indítón belül használhatóak</string>
-
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">Kikapcsoló menü mutatása</string>
     <string name="hwkey_action_expand_notifications">Állapotsáv panel kiterjesztése</string>
     <string name="hwkey_action_expand_quicksettings">Gyorsbeállítások panel kiterjesztése</string>
 
     <!-- Navigation bar ring targets -->
-    <string name="pref_cat_navbar_ring_targets_title">Navigációs sáv kör célpontok</string>
-    <string name="pref_navbar_ring_targets_enable_summary">Főkapcsoló a navigációs sáv kör célpontokhoz (újraindítás szükséges)</string>
+    <string name="pref_cat_navbar_ring_targets_title">Navigációs kör célpontok</string>
+    <string name="pref_navbar_ring_targets_enable_summary">Navigációs kör célpontok ki-bekapcsolása (újraindítás szükséges)</string>
     <string name="pref_navbar_ring_target_title">Kör célpont %d</string>
 
     <!-- Shortcut activity title -->
@@ -1239,6 +1244,12 @@
     <string name="animation_scale5">Animáció lépték 2x</string>
     <string name="animation_scale6">Animáció lépték 5x</string>
     <string name="animation_scale7">Animáció lépték 10x</string>
+    
+     <!-- QS Tiles: Tile label style -->
+    <string name="pref_qs_tile_label_style_title">Csempe felirat stílus</string>
+    <string name="tile_label_style_normal">Normál</string>
+    <string name="tile_label_style_allcaps">Minden nagybetűvel</string>
+    <string name="tile_label_style_hidden">Rejtett</string>
 
     <!-- Key Actions: Show brightness dialog -->
     <string name="hwkey_action_brightness_dialog">Fényerő párbeszédablak mutatása</string>
@@ -1248,5 +1259,94 @@
     <string name="navring_haptic_feedback_default">Alapértelmezett</string>
     <string name="navring_haptic_feedback_enabled">Engedélyezve</string>
     <string name="navring_haptic_feedback_disabled">Letiltva</string>
+
+    <!-- Quick pull down size -->
+    <string name="pref_quick_pulldown_size_title">Gyors legördítés mérete</string>
+
+    <!-- Stay Awake Tile modes -->
+    <string name="pref_qs_stay_awake_title">Ébrentartás csempe mód</string>
+    <string name="stay_awake_15s">15 másodperc</string>
+    <string name="stay_awake_30s">30 másodperc</string>
+    <string name="stay_awake_1m">1 perc</string>
+    <string name="stay_awake_2m">2 perc</string>
+    <string name="stay_awake_5m">5 perc</string>
+    <string name="stay_awake_10m">10 perc</string>
+    <string name="stay_awake_30m">30 perc</string>
+    <string name="stay_awake_on">Ébrentartás bekapcsolva</string>
+
+    <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Dupla érintésre alvás engedélyezése</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">A feloldó körön történő dupla érintés alvó állapotba helyezi a készüléket</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Töltő csatlakoztatása hang</string>
+    <string name="pref_charger_plugged_sound_summary">Hang lejátszása a töltő fel/lecsatlakoztatásakor</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Okos rádiókapcsolat ki-bekapcsolása</string>
+    
+    <!-- Master switch title -->
+    <string name="pref_masterswitch_title">Főkapcsoló</string>
+
+    <!-- Mute volume adjust vibrate -->
+    <string name="pref_volume_adjust_vibrate_mute_title">Hangerő beállításkori rezgés letiltása</string>
+    <string name="pref_volume_adjust_vibrate_mute_summary">Letiltja a rezgést a hangerőszabályzó gombokkal történő értesítési/csengőhang hangererejének beállításakor</string>
+
+    <!-- Clock settings master switch -->
+    <string name="pref_sb_clock_masterswitch_summary">Értesítési sáv óra beállítások ki-bekapcsolása (újraindítás szükséges)</string>
+
+    <!-- Clock: day of week size -->
+    <string name="pref_sb_clock_dow_size_title">A hét napjának mérete</string>
+
+    <!-- Clock: AM/PM size -->
+    <string name="pref_sb_clock_ampm_size_title">De/Du mérete</string>
+
+    <!-- Navigation bar ring category -->
+    <string name="pref_cat_navbar_ring_title">Navigációs sáv kör</string>
+
+    <!-- Navbar ring: option to disable -->
+    <string name="pref_navbar_ring_disable_title">Navigációs kör letiltása</string>
+    
+    	<!-- Data traffic monitor style -->
+    <string name="pref_data_traffic_mode_title">Adatforgalom figyelő stílus</string>
+    <string name="dt_mode_off">Letiltva</string>
+    <string name="dt_mode_simple">Egyszerű stílus</string>
+    <string name="dt_mode_omni">Omni stílus</string>
+
+    <!-- Omni data traffic monitor -->
+    <string name="pref_data_traffic_omni_mode_title">Megjelenítési mód</string>
+    <string name="dt_omni_mode_in">Letöltés</string>
+    <string name="dt_omni_mode_out">Feltöltés</string>
+    <string name="dt_omni_mode_in_out">Letöltés és feltöltés</string>
+    <string name="byte_per_sec_abbr">B/s</string>
+    <string name="bit_per_sec_abbr">b/s</string>
+    <string name="kilo_abbr">k</string>
+    <string name="mega_abbr">M</string>
+    <string name="giga_abbr">G</string>
+    <string name="pref_data_traffic_omni_show_icon_title">Ikon mutatása</string>
+
+    <!--  Icon Picker: additional icons -->
+    <string name="shortcuts_icon_picker_viber">Viber</string>
+    <string name="shortcuts_icon_picker_skype">Skype</string>
+    <string name="shortcuts_icon_picker_calculator">Számológép</string>
+
+    <!-- QS Tiles: tile specific settings categories -->
+    <string name="pref_cat_qs_tile_settings_title">Csempe specifikus beállítások</string>
+    <string name="pref_cat_qs_tile_settings_summary">Csempe specifikus beállításokat tartalmaz</string>
+    <string name="pref_cat_qs_nm_tile_settings_title">Hálózati mód csempe beállítások</string>
+
+    <!-- QS Tiles: Alarm tile settings -->
+    <string name="pref_cat_qs_alarm_tile_settings_title">Ébresztés csempe beállítások</string>
+    <string name="pref_qs_alarm_singletap_app_title">Egyszeri érintés alkalmazása</string>
+    <string name="alarm_singletap_app_default">Alapértelmezett alkalmazás</string>
+    <string name="pref_qs_alarm_longpress_app_title">Hosszú érintés alkalmazása</string>
+
+    <!-- Traffic meter: show only when download active -->
+    <string name="pref_data_traffic_active_dl_only_title">Csak aktív letöltés esetén</string>
+    <string name="pref_data_traffic_active_dl_only_summary">Adatforgalom mérő mutatása, ha van folyamatban lévő letöltés az Android alapértelmezett letöltéskezelőjével</string>
 
 </resources>

@@ -102,6 +102,7 @@ public class AppPickerPreference extends DialogPreference
     private AppInfo mAppInfo;
     private int mAppIconPreviewSizePx;
     private Dialog mIconPickerDialog;
+    private boolean mIconPickerEnabled = true;
 
     private static LruCache<String, BitmapDrawable> sAppIconCache;
     static {
@@ -135,6 +136,10 @@ public class AppPickerPreference extends DialogPreference
         mPackageManager = mContext.getPackageManager();
         mMode = MODE_APP;
         mAppInfo = new AppInfo();
+
+        if (attrs != null) {
+            mIconPickerEnabled = attrs.getAttributeBooleanValue(null, "iconPickerEnabled", true);
+        }
 
         setDialogLayoutResource(R.layout.app_picker_preference);
         setPositiveButtonText(null);
@@ -174,7 +179,11 @@ public class AppPickerPreference extends DialogPreference
         mBtnAppIcon.setScaleType(ScaleType.CENTER_CROP);
         mBtnAppIcon.setImageDrawable(mAppInfo.icon);
         mBtnAppIcon.setFocusable(false);
-        mBtnAppIcon.setOnClickListener(this);
+        if (mIconPickerEnabled) {
+            mBtnAppIcon.setOnClickListener(this);
+        } else {
+            mBtnAppIcon.setEnabled(false);
+        }
         widgetFrameView.addView(mBtnAppIcon);
         widgetFrameView.setVisibility(View.VISIBLE);
     }
@@ -274,7 +283,8 @@ public class AppPickerPreference extends DialogPreference
                             if (intent.hasExtra("icon")) {
                                 intent.removeExtra("icon");
                             }
-                            intent.putExtra("iconResId", item.getIconLeftId());
+                            intent.putExtra("iconResName", mResources.getResourceEntryName(
+                                    item.getIconLeftId()));
                             setValue(intent.toUri(0));
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -419,7 +429,9 @@ public class AppPickerPreference extends DialogPreference
 
         try {
             Intent intent = Intent.parseUri(value, 0);
-            int iconResId = intent.getIntExtra("iconResId", 0);
+            int iconResId = intent.getStringExtra("iconResName") != null ?
+                    mResources.getIdentifier(intent.getStringExtra("iconResName"),
+                    "drawable", mContext.getPackageName()) : 0;
             int mode = intent.getIntExtra("mode", MODE_APP);
             if (mode == MODE_APP) {
                 ComponentName cn = intent.getComponent();

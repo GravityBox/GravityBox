@@ -82,6 +82,7 @@ public class ModDisplay {
     private static Messenger mKisClient;
     private static KeyguardManager mKeyguardManager;
     private static boolean mLsBgLastScreenEnabled;
+    private static boolean mIsUserPresent;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -128,6 +129,8 @@ public class ModDisplay {
                 mLsBgLastScreenEnabled = intent.getStringExtra(GravityBoxSettings.EXTRA_LOCKSCREEN_BG)
                         .equals(GravityBoxSettings.LOCKSCREEN_BG_LAST_SCREEN);
                 if (DEBUG_KIS) log ("mLsBgLastScreenEnabled = " + mLsBgLastScreenEnabled);
+            } else if (intent.getAction().equals(Intent.ACTION_USER_PRESENT)) {
+                mIsUserPresent = true;
             }
         }
     };
@@ -227,7 +230,6 @@ public class ModDisplay {
                         }
     
                         mDisplayPowerController = param.thisObject;
-                        mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
     
                         if (brightnessSettingsEnabled) {
                             mScreenBrightnessRangeMinimum = XposedHelpers.getIntField(
@@ -260,6 +262,7 @@ public class ModDisplay {
                             intentFilter.addAction(ACTION_SET_AUTOBRIGHTNESS_CONFIG);
                         }
                         intentFilter.addAction(GravityBoxSettings.ACTION_PREF_LOCKSCREEN_BG_CHANGED);
+                        intentFilter.addAction(Intent.ACTION_USER_PRESENT);
                         mContext.registerReceiver(mBroadcastReceiver, intentFilter);
                     }
                 });
@@ -364,7 +367,12 @@ public class ModDisplay {
                         CLASS_DISPLAY_POWER_REQUEST, boolean.class, new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                        if (!mLsBgLastScreenEnabled || mKeyguardManager.isKeyguardLocked()) return;
+                        if (!mIsUserPresent || !mLsBgLastScreenEnabled) return;
+
+                        if (mKeyguardManager == null) {
+                            mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                        }
+                        if (mKeyguardManager == null || mKeyguardManager.isKeyguardLocked()) return;
     
                         final boolean waitForNegativeProximity = (Boolean) param.args[1];
                         final boolean pendingWaitForNegativeProximity = 
@@ -412,13 +420,20 @@ public class ModDisplay {
                                     final WakeLock wakeLock = mPm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
                                     wakeLock.acquire(10000);
                                     Bitmap tmpBmp = bmp;
-                                    // scale image if its too large
-                                    if (bmp.getWidth() > 900) {
-                                        tmpBmp = Bitmap.createScaledBitmap(bmp, 900, 1600, true);
+                                    int width = bmp.getWidth();
+                                    int height = bmp.getHeight();
+                                    // scale image (keeping aspect ratio) if it is too large
+                                    if (width * height > 1440000) {
+                                        int newWidth = (width < height) ? 900 : 1600;
+                                        float factor = newWidth / (float) width;
+                                        int newHeight = (int) (height * factor);
+                                        if (DEBUG_KIS) log("requestPowerState: scaled image res (WxH):"
+                                                + newWidth + "x" + newHeight);
+                                        tmpBmp = Bitmap.createScaledBitmap(bmp, newWidth, newHeight, true);
                                     }
-    
+
                                     final ByteArrayOutputStream os = new ByteArrayOutputStream();
-                                    tmpBmp.compress(CompressFormat.PNG, 80, os);
+                                    tmpBmp.compress(CompressFormat.PNG, 100, os);
                                     try {
                                        os.close();
                                     } catch (IOException e1) { }
@@ -524,14 +539,30 @@ public class ModDisplay {
                 mDisplayPowerController, "mUseSoftwareAutoBrightnessConfig");
 
         if (useSwAutobrightness) {
+            // brightness array must have one more element than lux array
+            int[] brightnessAdj = new int[lux.length+1];
+            for (int i = 0; i < brightnessAdj.length; i++) {
+                if (i < brightness.length) {
+                    brightnessAdj[i] = brightness[i];
+                } else {
+                    brightnessAdj[i] = 255;
+                }
+            }
+            if (DEBUG) log("updateAutobrightnessConfig: lux=" + Utils.intArrayToString(lux) + 
+                    "; brightnessAdj=" + Utils.intArrayToString(brightnessAdj));
+
             Object autoBrightnessSpline = XposedHelpers.callMethod(
-                    mDisplayPowerController, "createAutoBrightnessSpline", lux, brightness);
+                    mDisplayPowerController, "createAutoBrightnessSpline", lux, brightnessAdj);
             XposedHelpers.setObjectField(mDisplayPowerController, 
                     "mScreenAutoBrightnessSpline", autoBrightnessSpline);
             if (autoBrightnessSpline != null) {
-                if (brightness[0] < screenBrightnessMinimum) {
-                    screenBrightnessMinimum = brightness[0];
+                if (brightnessAdj[0] < screenBrightnessMinimum) {
+                    screenBrightnessMinimum = brightnessAdj[0];
                 }
+            } else {
+                XposedHelpers.setBooleanField(mDisplayPowerController, "mUseSoftwareAutoBrightnessConfig", false);
+                log("Error computing auto-brightness spline: lux=" + Utils.intArrayToString(lux) + 
+                        "; brightnessAdj=" + Utils.intArrayToString(brightnessAdj));
             }
         }
 

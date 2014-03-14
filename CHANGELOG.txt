@@ -1,4 +1,77 @@
-Changelog 2.9.6 - 09/02/2014
+Changelog 2.9.8 - 04/03/2014
+--------------------------------------
+- Volume Panel: option to disable volume adjust vibrate (thanks to JayT5)
+- Added title line for master switches in GB settings (thanks to Minty123)
+- Don't play Battery charged/Charger plugged/unplugged sounds when Phone's not idle (e.g. while in call)
+- Fixed undesired back/recents keys actions triggering when swiping for navbar ring
+- QuickSettings management:
+--- Ringer Mode Tile: preserve vibrate state when switching to silent mode (thanks to jacknicholson for pointing out)
+- Statusbar tweaks / Clock settings: 
+--- Added master switch for Clock settings
+--- Added option for controlling day of week text size
+--- Added option for controlling AM/PM text size
+- Navigation bar tweaks: option to disable navigation bar ring (disables navbar gesture)
+- Lockscreen tweaks / Unlock ring targets: 
+--- Added 2 more unlock ring targets
+--- Disabled magnetic targets (targets won't snap to current touch position)
+- Compatibility fixes related to signal cluster hiding (thanks to bgcngm, C3C0)
+- Fixed issues with custom carrier texts on certain MTK devices (thanks to bgcngm)
+- Updated Portuguese (PT) translation (thanks to bgcngm)
+- Updated Italian translations (thanks to pesa1234, valerioscifoni)
+- Updated French translation (thanks to ch-vox)
+- Updated Russian translations (thanks to gaich)
+- Updated Chinese (Simplified) translations (thanks to liveasx)
+- Updated Chinese (Traditional) translations (thanks to Eric850130)
+- Updated German translations (thanks to Minty123, calav3ra)
+- Updated Spanish translations (thanks to jvbferrer)
+- Updated Korean translations (thanks to SDKoongchi)
+- Updated Japanese translations (thanks to WedyDQ10)
+- Updated Polish translations (thanks to xtrem007)
+- Updated Slovak and Czech translations
+
+Changelog 2.9.7 - 20/02/2014
+--------------------------------------
+- Fixed mysterious bootloops occurring since 'Last screen' feature was added 
+- Fixed option for enabling/disabling menu overflow button
+- Fixed notification icons overlapping with centered clock
+- QuickSettings management:
+--- Stay Awake tile extended to allow cycling through common screen timeout modes (long-press switches directly to Stay Awake and back)
+--- Added tile for toggling Smart Radio feature on/off on the fly (relevant when Smart Radio master switch is enabled)
+--- Default (English) labels adjusted to be consistent with AOSP tile labels
+--- Fixed coloring on USB tethering tile (thanks to bgcngm)
+- Icon Picker:
+--- Improved alternative icon handling to maintain used icons across GB updates (change requires to set currently used icons again)
+--- Created and added icons for Tapatalk and Whatsapp
+- Lockscreen tweaks:
+--- Added option for double-tap to sleep on unlock ring
+--- Last screen: 
+------- don't reduce image quality
+------- fixed scaled images (thanks to bgcngm)
+- Power tweaks:
+--- Added option for charger plugged/unplugged sound (plugged sound relevant only for AC/USB as wireless has its own sound)
+--- Changed battery charged sound for more audible one
+- Smart radio:
+--- Fixed undesired switching to power saving mode when "Power save when screen off" disabled
+--- Implemented toggle for toggling Smart Radio feature on/off on the fly (using tile or GB action)
+- Statusbar: Added option for assigning app/action to long-press on notification panel clock
+- Brightness settings: Allow lower values for minimum brightness level (changed from 5 to 1 - use with caution)
+- GB Actions:
+--- Added action for toggling Smart Radio feature on/off on the fly (relevant when Smart Radio master switch is enabled)
+- Updated Polish translations (thanks to xtrem007)
+- Updated Italian translations (thanks to pesa1234, valerioscifoni)
+- Updated French translation (thanks to ch-vox)
+- Updated Russian translations (thanks to gaich)
+- Updated Japanese translations (thanks to WedyDQ10)
+- Updated Chinese (Simplified) translations (thanks to liveasx)
+- Updated Spanish translations (thanks to jvbferrer)
+- Updated Chinese (Traditional) translations (thanks to Eric850130)
+- Updated Portuguese (PT) translation (thanks to bgcngm)
+- Updated Indonesian translation (thanks to awaaas)
+- Updated Hungarian translation (thanks to benjoe1)
+- Updated Slovak and Czech translations
+- Updated Vietnamese translations (thanks to alienyd)
+
+Changelog 2.9.6 - 10/02/2014
 --------------------------------------
 - Application picker: added support for alternative icons
 --- allows to assign alternative icons from the predefined list
@@ -28,6 +101,7 @@ Changelog 2.9.6 - 09/02/2014
 --- Fixed bug that prevented the use of custom actions on HOME button on devices running ROW firmware
 - Fixed issues with recents soft key occurring on some devices when key remapped (thanks natezire71 for testing)
 - Fixed issues with recents soft key when double-tap on home enabled
+- Fixed issues with custom carrier texts
 - Added Hebrew translations (thanks to daxgirl)
 - Updated Chinese (Simplified) translations (thanks to liveasx)
 - Updated Spanish translations (thanks to jvbferrer)
@@ -40,6 +114,7 @@ Changelog 2.9.6 - 09/02/2014
 - Updated Japanese translations (thanks to WedyDQ10)
 - Updated Hungarian translation (thanks to benjoe1)
 - Updated Slovak and Czech translations
+- Updated Indonesian translation (thanks to awaaas)
 
 Changelog 2.9.5 - 04/02/2014
 --------------------------------------
