@@ -1392,4 +1392,8 @@
     <string name="pref_virtual_key_vibrate_pattern_title">Virtual key vibration pattern</string>
     <string name="pref_virtual_key_vibrate_pattern_summary">Comma separated list of off/on duration pairs in milliseconds. Leave empty for default vibration pattern.</string>
 
+    <!-- Lockscreen: show pattern error -->
+    <string name="pref_lockscreen_show_pattern_error_title">Show pattern error</string>
+    <string name="pref_lockscreen_show_pattern_error_summary">Show red trail when wrong pattern is entered</string>
+
 </resources>

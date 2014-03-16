@@ -221,6 +221,12 @@
                 android:defaultValue="false" />
 
             <CheckBoxPreference 
+                android:key="pref_lockscreen_show_pattern_error"
+                android:title="@string/pref_lockscreen_show_pattern_error_title"
+                android:summary="@string/pref_lockscreen_show_pattern_error_summary"
+                android:defaultValue="true" />
+
+            <CheckBoxPreference 
                 android:key="pref_lockscreen_menu_key"
                 android:title="@string/pref_lockscreen_menu_key_title"
                 android:summary="@string/pref_lockscreen_menu_key_summary"

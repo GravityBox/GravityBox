@@ -225,6 +225,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_LOCKSCREEN_MAXIMIZE_WIDGETS = "pref_lockscreen_maximize_widgets";
     public static final String PREF_KEY_LOCKSCREEN_WIDGET_LIMIT_DISABLE = "pref_lockscreen_widget_limit_disable";
     public static final String PREF_KEY_LOCKSCREEN_ROTATION = "pref_lockscreen_rotation";
+    public static final String PREF_KEY_LOCKSCREEN_SHOW_PATTERN_ERROR = "pref_lockscreen_show_pattern_error";
     public static final String PREF_KEY_LOCKSCREEN_MENU_KEY = "pref_lockscreen_menu_key";
     public static final String PREF_KEY_LOCKSCREEN_QUICK_UNLOCK = "pref_lockscreen_quick_unlock";
     public static final String PREF_KEY_LOCKSCREEN_STATUSBAR_CLOCK = "pref_lockscreen_statusbar_clock";
