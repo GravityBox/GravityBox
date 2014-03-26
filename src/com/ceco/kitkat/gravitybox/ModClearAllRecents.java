@@ -30,6 +30,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.text.format.Formatter;
+import android.text.format.Time;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -142,55 +143,69 @@ public class ModClearAllRecents {
             XposedHelpers.findAndHookMethod(recentPanelViewClass, "onFinishInflate", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
+                    int caGravity = Integer.valueOf(mPrefs.getString(
+                            GravityBoxSettings.PREF_KEY_RECENTS_CLEAR_ALL, "53"));
+                    final int rbGravity = Integer.valueOf(mPrefs.getString(
+                            GravityBoxSettings.PREF_KEY_RAMBAR, "0"));
+                    Boolean createClearAll = (caGravity != GravityBoxSettings.RECENT_CLEAR_OFF && caGravity != GravityBoxSettings.RECENT_CLEAR_NAVIGATION_BAR);
+                    Boolean createRamBar = (rbGravity != 0);
+                    if (!createClearAll && !createRamBar) {
+                        return;
+                    }
+
                     View view = (View) param.thisObject;
                     Resources res = view.getResources();
                     ViewGroup vg = (ViewGroup) view.findViewById(res.getIdentifier("recents_bg_protect", "id", PACKAGE_NAME));
 
                     // create and inject new ImageView and set onClick listener to handle action
-                    mRecentsClearButton = new ImageView(vg.getContext());
-                    mRecentsClearButton.setImageDrawable(res.getDrawable(res.getIdentifier(
-                            "ic_notify_clear", "drawable", PACKAGE_NAME)));
-                    mRecentsClearButton.setBackground(mGbContext.getResources().getDrawable(
-                            R.drawable.image_view_button_bg));
-                    FrameLayout.LayoutParams lParams = new FrameLayout.LayoutParams(
-                            mClearAllRecentsSizePx, mClearAllRecentsSizePx);
-                    mRecentsClearButton.setLayoutParams(lParams);
-                    mRecentsClearButton.setScaleType(ScaleType.CENTER);
-                    mRecentsClearButton.setClickable(true);
-                    mRecentsClearButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            clearAll(false);
-                        }
-                    });
-                    mRecentsClearButton.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            clearAll(true);
-                            return true;
-                        }
-                    });
-                    mRecentsClearButton.setVisibility(View.GONE);
-                    vg.addView(mRecentsClearButton);
-                    if (DEBUG) log("clearAllButton ImageView injected");
+                    if (createClearAll) {
+                        mRecentsClearButton = new ImageView(vg.getContext());
+                        mRecentsClearButton.setImageDrawable(res.getDrawable(res.getIdentifier(
+                                "ic_notify_clear", "drawable", PACKAGE_NAME)));
+                        mRecentsClearButton.setBackground(mGbContext.getResources().getDrawable(
+                                R.drawable.image_view_button_bg));
+                        FrameLayout.LayoutParams lParams = new FrameLayout.LayoutParams(
+                                mClearAllRecentsSizePx, mClearAllRecentsSizePx);
+                        mRecentsClearButton.setLayoutParams(lParams);
+                        mRecentsClearButton.setScaleType(ScaleType.CENTER);
+                        mRecentsClearButton.setClickable(true);
+                        mRecentsClearButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                               clearAll(false);
+                            }
+                        });
+                        mRecentsClearButton.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View v) {
+                                clearAll(true);
+                                return true;
+                            }
+                        });
+                        mRecentsClearButton.setVisibility(View.GONE);
+                        vg.addView(mRecentsClearButton);
+                        if (DEBUG) log("clearAllButton ImageView injected");
+                    }
 
-                    // create and inject RAM bar
-                    mRamUsageBar = new LinearColorBar(vg.getContext(), null);
-                    mRamUsageBar.setOrientation(LinearLayout.HORIZONTAL);
-                    mRamUsageBar.setClipChildren(false);
-                    mRamUsageBar.setClipToPadding(false);
-                    mRamUsageBar.setPadding(mRamUsageBarPaddings[0], mRamUsageBarPaddings[1],
-                            mRamUsageBarPaddings[2], mRamUsageBarPaddings[3]);
-                    FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(
-                            FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-                    mRamUsageBar.setLayoutParams(flp);
-                    LayoutInflater inflater = LayoutInflater.from(mGbContext);
-                    inflater.inflate(R.layout.linear_color_bar, mRamUsageBar, true);
-                    vg.addView(mRamUsageBar);
-                    mForegroundProcessText = (TextView) mRamUsageBar.findViewById(R.id.foregroundText);
-                    mBackgroundProcessText = (TextView) mRamUsageBar.findViewById(R.id.backgroundText);
-                    mRamUsageBar.setVisibility(View.GONE);
-                    if (DEBUG) log("RAM bar injected");
+                    if (createRamBar) {
+                        // create and inject RAM bar
+                        mRamUsageBar = new LinearColorBar(vg.getContext(), null);
+                        mRamUsageBar.setOrientation(LinearLayout.HORIZONTAL);
+                        mRamUsageBar.setClipChildren(false);
+                        mRamUsageBar.setClipToPadding(false);
+                        mRamUsageBar.setPadding(mRamUsageBarPaddings[0], mRamUsageBarPaddings[1],
+                                mRamUsageBarPaddings[2], mRamUsageBarPaddings[3]);
+                        FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(
+                                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                        mRamUsageBar.setLayoutParams(flp);
+                        LayoutInflater inflater = LayoutInflater.from(mGbContext);
+                        inflater.inflate(R.layout.linear_color_bar, mRamUsageBar, true);
+                        vg.addView(mRamUsageBar);
+                        mForegroundProcessText = (TextView) mRamUsageBar.findViewById(R.id.foregroundText);
+                        mBackgroundProcessText = (TextView) mRamUsageBar.findViewById(R.id.backgroundText);
+                        mRamUsageBar.setVisibility(View.GONE);
+                        if (DEBUG) log("RAM bar injected");
+                    }
                 }
             });
 
@@ -226,12 +241,20 @@ public class ModClearAllRecents {
                     intentFilter.addAction(ModHwKeys.ACTION_RECENTS_CLEAR_ALL_LONGPRESS);
                     ((Activity)param.thisObject).registerReceiver(mBroadcastReceiver, intentFilter);
                     if (DEBUG) log("Broadcast receiver registered");
+
+                    View recentsPanelView = (View) XposedHelpers.getObjectField(param.thisObject, "mRecentsPanel");
+                    boolean showing = XposedHelpers.getBooleanField(param.thisObject, "mShowing");
+                    boolean visible = getClearAllVisible(recentsPanelView);
+                    setRecentsClearAll(showing && visible, recentsPanelView.getContext());
                 }
             });
 
             XposedHelpers.findAndHookMethod(recentActivityClass, "onPause", new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                    View recentsPanelView = (View) XposedHelpers.getObjectField(param.thisObject, "mRecentsPanel");
+                    setRecentsClearAll(false, recentsPanelView.getContext());
+
                     ((Activity)param.thisObject).unregisterReceiver(mBroadcastReceiver);
                     if (DEBUG) log("Broadcast receiver unregistered");
                 }
@@ -254,32 +277,30 @@ public class ModClearAllRecents {
         @Override
         protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
             try {
+                mClearRecentsMode = Integer.valueOf(mPrefs.getString(GravityBoxSettings.PREF_KEY_CLEAR_RECENTS_MODE, "0"));
                 Boolean show = (Boolean) param.args[0];
                 if (show) {
                     mPrefs.reload();
                     updateButtonLayout((View) param.thisObject);
                     updateRamBarLayout();
                 }
-                List<?> recentTaskDescriptions = (List<?>) XposedHelpers.getObjectField(param.thisObject, "mRecentTaskDescriptions");
-                boolean visible = (recentTaskDescriptions != null && recentTaskDescriptions.size() > 0);
-                int gravity = Integer.valueOf(mPrefs.getString(GravityBoxSettings.PREF_KEY_RECENTS_CLEAR_ALL, "53"));
-                setRecentsClearAll(show && visible && gravity == GravityBoxSettings.RECENT_CLEAR_NAVIGATION_BAR, (View) param.thisObject);
+                boolean visible = getClearAllVisible((View) param.thisObject);
+                setRecentsClearAll(show && visible, ((View) param.thisObject).getContext());
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
         }
     };
 
-    private static void setRecentsClearAll(Boolean show, View container) {
+    private static void setRecentsClearAll(Boolean show, Context context) {
         Intent intent = new Intent(NAVBAR_RECENTS_CLEAR_ALL);
         intent.putExtra(EXTRA_NAVBAR_RECENTS_CLEAR_ALL, show);
-        container.getContext().sendBroadcast(intent);
+        context.sendOrderedBroadcast(intent, null);
+        if (DEBUG) log("setRecentsClearAll broadcast sent");
     }
 
     private static void updateButtonLayout(View container) {
         if (mRecentsClearButton == null) return;
-
-        mClearRecentsMode = Integer.valueOf(mPrefs.getString(GravityBoxSettings.PREF_KEY_CLEAR_RECENTS_MODE, "0"));
 
         final Context context = mRecentsClearButton.getContext();
         int gravity = Integer.valueOf(mPrefs.getString(
@@ -472,4 +493,11 @@ public class ModClearAllRecents {
             XposedBridge.log(t);
         }
     }
+
+	private static final boolean getClearAllVisible(final View recentsPanelView) {
+		List<?> recentTaskDescriptions = (List<?>) XposedHelpers.getObjectField(recentsPanelView, "mRecentTaskDescriptions");
+		int caGravity = Integer.valueOf(mPrefs.getString(GravityBoxSettings.PREF_KEY_RECENTS_CLEAR_ALL, "53"));
+		boolean visible = (caGravity == GravityBoxSettings.RECENT_CLEAR_NAVIGATION_BAR && recentTaskDescriptions != null && recentTaskDescriptions.size() > 0);
+		return visible;
+	}
 }

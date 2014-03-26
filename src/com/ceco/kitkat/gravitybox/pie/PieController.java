@@ -749,6 +749,16 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
             mBackAltIcon.setColorFilter(mColorInfo.fgColor, Mode.SRC_ATOP);
         }
 
+        if (mRecentIcon != null) {
+        	mRecentIcon.setColorFilter(null);
+        	mRecentIcon.setColorFilter(mColorInfo.fgColor, Mode.SRC_ATOP);
+        }
+
+        if (mRecentAltIcon != null) {
+        	mRecentAltIcon.setColorFilter(null);
+        	mRecentAltIcon.setColorFilter(mColorInfo.fgColor, Mode.SRC_ATOP);
+        }
+
         if (mNavigationSlice != null) {
             for (PieItem pi : mNavigationSlice.getItems()) {
                 pi.setColor(mColorInfo);

@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.text.format.Time;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.HapticFeedbackConstants;
@@ -230,7 +231,7 @@ public class ModNavigationBar {
                 mRecentAlt = intent.getBooleanExtra(ModClearAllRecents.EXTRA_NAVBAR_RECENTS_CLEAR_ALL, false);
                 if (DEBUG) log("mRecentAlt = " + mRecentAlt);
                 if (recentAltCurrent != mRecentAlt) {
-                    setRecentAlt(context);
+                    setRecentAlt();
                 }
             }
         }
@@ -513,7 +514,7 @@ public class ModNavigationBar {
                         if (DEBUG) log("getRecentsButton method doesn't exist");
                     }
                	    mNavbarVertical = XposedHelpers.getBooleanField(param.thisObject, "mVertical");
-                    setRecentAlt(context);
+                    setRecentAlt();
                 }
             });
 
@@ -836,8 +837,8 @@ public class ModNavigationBar {
         
     }
 
-    private static void setRecentAlt(Context context) {
-        if (mRecentBtn == null || context == null) return;
+    private static void setRecentAlt() {
+        if (mRecentBtn == null) return;
 
         if (mRecentAlt) {
             mRecentBtn.setImageDrawable(mNavbarVertical ? mRecentAltLandIcon : mRecentAltIcon);
@@ -849,10 +850,10 @@ public class ModNavigationBar {
                     mRecentsLongpressAction != GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS) {
                 mRecentsLongpressActionBck = mRecentsLongpressAction;
             }
-            broadcastRecentsActions(context, GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_SINGLETAP, 
+            broadcastRecentsActions(mRecentBtn.getContext(), GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_SINGLETAP, 
                     GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS);
         } else {
-            mRecentBtn.postDelayed(resetRecentKeyStateRunnable, 200);
+            mRecentBtn.post(resetRecentKeyStateRunnable);
         }
     }
 
@@ -875,12 +876,12 @@ public class ModNavigationBar {
         intent = new Intent();
         intent.setAction(GravityBoxSettings.ACTION_PREF_HWKEY_RECENTS_SINGLETAP_CHANGED);
         intent.putExtra(GravityBoxSettings.EXTRA_HWKEY_VALUE, singleTapAction);
-        context.sendBroadcast(intent);
+        context.sendOrderedBroadcast(intent, null);
 
         intent = new Intent();
         intent.setAction(GravityBoxSettings.ACTION_PREF_HWKEY_RECENTS_LONGPRESS_CHANGED);
         intent.putExtra(GravityBoxSettings.EXTRA_HWKEY_VALUE, longPressAction);
-        context.sendBroadcast(intent);
+        context.sendOrderedBroadcast(intent, null);
     }
 
     private static void setDpadKeyVisibility() {
