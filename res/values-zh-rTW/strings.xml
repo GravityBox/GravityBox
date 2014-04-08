@@ -1,20 +1,19 @@
-<?xml version="1。0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
  * Copyright (C) 2013 Peter Gregus for GravityBox Project (C3C076@xda)
- * Licensed under the Apache License，Version 2。0 (the "License");
- * you may not use this file except in compliance with the License。
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www。apache。org/licenses/LICENSE-2。0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing，software
- * distributed under the License is distributed on an "AS IS" BASIS，
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND，either express or implied。
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License。
+ * limitations under the License.
 -->
-
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1。2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">GravityBox [KK]</string>
 
@@ -430,11 +429,11 @@
 
     <!-- Transparency management -->
     <string name="pref_cat_transparency_manager_title">透明度調整</string>
-    <string name="pref_cat_transparency_manager_summary">包含導航列與狀態列透明度個性化配置選項</string>
+    <string name="pref_cat_transparency_manager_summary">包含海苔條與狀態列透明度個性化配置選項</string>
     <string name="pref_tm_statusbar_launcher_title">啟動器下的狀態列</string>
     <string name="pref_tm_statusbar_lockscreen_title">鎖定螢幕下的狀態列</string>
-    <string name="pref_tm_navbar_launcher_title">啟動器下的導航列</string>
-    <string name="pref_tm_navbar_lockscreen_title">鎖定螢幕下的導航列</string>
+    <string name="pref_tm_navbar_launcher_title">啟動器下的海苔條</string>
+    <string name="pref_tm_navbar_lockscreen_title">鎖定螢幕下的海苔條</string>
 
     <!-- Hide alarm icon -->
     <string name="pref_alarm_icon_hide_title">隱藏時鐘圖示</string>
@@ -471,7 +470,7 @@
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">正在等待 GravityBox 系統框架回應&#8230;</string>
-    <string name="gb_startup_error">GravityBox 系統框架沒有回應，正在退出。</string>
+    <string name="gb_startup_error">GravityBox 系統框架沒有回應，正在退出.</string>
 
     <!-- National data roaming -->
     <string name="pref_national_roaming_title">國內資料漫遊</string>
@@ -480,8 +479,8 @@
     <!-- Expanded Desktop -->
     <string name="pref_expanded_desktop_title">全螢幕模式</string>
     <string name="expanded_desktop_disabled">關閉</string>
-    <string name="expanded_desktop_navbar">隱藏導航列</string>
-    <string name="expanded_desktop_both">隱藏狀態列與導航列</string>
+    <string name="expanded_desktop_navbar">隱藏海苔條</string>
+    <string name="expanded_desktop_both">隱藏狀態列與海苔條</string>
     <string name="action_expanded_desktop_title">全螢幕功能</string>
     <string name="action_expanded_desktop_on">全螢幕功能現在為開啟狀態</string>
     <string name="action_expanded_desktop_off">全螢幕功能現在為關閉狀態</string>
@@ -498,16 +497,16 @@
 
 
     <!-- Navigation bar tweaks category -->
-    <string name="pref_cat_navigation_bar_title">導航列調整</string>
-    <string name="pref_cat_navigation_bar_summary">包含各種有關導航列的個性配置選項</string>
-    <string name="pref_navbar_override_summary">新增導航列校正的主控鍵（需要重新啟動）</string>
-    <string name="pref_navbar_enable_title">啟用導航列功能</string>
+    <string name="pref_cat_navigation_bar_title">海苔條調整</string>
+    <string name="pref_cat_navigation_bar_summary">包含各種有關海苔條的個性配置選項</string>
+    <string name="pref_navbar_override_summary">新增海苔條校正的主控鍵（需要重新啟動）</string>
+    <string name="pref_navbar_enable_title">啟用海苔條功能</string>
     <string name="pref_navbar_enable_summary">需要重新啟動</string>
-    <string name="pref_navbar_height_title">導航列高度</string>
-    <string name="pref_navbar_height_summary">套用於水平的導航列和縱向</string>
-    <string name="pref_navbar_height_landscape_summary">套用於水平的導航列和橫向</string>
-    <string name="pref_navbar_width_title">導航列寬度</string>
-    <string name="pref_navbar_width_summary">套用於垂直導航列</string>
+    <string name="pref_navbar_height_title">海苔條高度</string>
+    <string name="pref_navbar_height_summary">套用於水平的海苔條和縱向</string>
+    <string name="pref_navbar_height_landscape_summary">套用於水平的海苔條和橫向</string>
+    <string name="pref_navbar_width_title">海苔條寬度</string>
+    <string name="pref_navbar_width_summary">套用於垂直海苔條</string>
     <string name="pref_navbar_menukey_title">永遠顯示選單鍵</string>
 
 
@@ -576,11 +575,11 @@
     <!-- Ongoing notifications -->
     <string name="pref_ongoing_notifications_title">運行中的程式通知封鎖</string>
     <string name="pref_ongoing_notifications_summary">允許封鎖已選擇的運行中的通知</string>
-    <string name="ongoing_notif_info">該清單將為每個正在運行中的通知自動植入封鎖程序。
-        然後，您可以決定是否封鎖運行中的通知下一次出現。請謹慎使用。</string>
+    <string name="ongoing_notif_info">該清單將為每個正在運行中的通知自動植入封鎖程序.
+        然後，您可以決定是否封鎖運行中的通知下一次出現。請謹慎使用.</string>
     <string name="ongoing_notif_reset_list">重設清單</string>
     <string name="ongoing_notif_reset_alert">您確定要重設清單嗎? 
-        這將會清除當前清單中已被封鎖的通知，並且已被封鎖的通知將會在稍後重新出現。</string>
+        這將會清除當前清單中已被封鎖的通知，並且已被封鎖的通知將會在稍後重新出現.</string>
     <string name="ongoing_notif_list_empty">(清單是空的)</string>
 
     <!-- Quick unlock -->
@@ -619,9 +618,9 @@
     <string name="pref_lockscreen_widget_limit_disable_summary">允許無限數量的螢幕鎖定小工具</string>
 
     <!--  RAM Bar -->
-    <!-- [CHAR LIMIT=10] Running services，summary of background processes -->
+    <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
     <string name="service_background_processes"><xliff:g id="memory">%1$s</xliff:g> 空閒</string>
-    <!-- [CHAR LIMIT=10] Running services，summary of foreground processes -->
+    <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
     <string name="service_foreground_processes"><xliff:g id="memory">%1$s</xliff:g> 已使用</string>
     <string name="pref_rambar_title">RAM 使用狀況欄</string>
     <string name="rambar_off">關閉</string>
@@ -653,7 +652,7 @@
     <string name="pref_hwkey_singletap_title">單擊操作</string>
     <string name="pref_hwkey_doubletap_title">雙擊操作</string>
 
-    <!-- Disable double-tap (e。g。for Home Key on Android 4。3+) -->
+    <!-- Disable double-tap (e.g. for Home Key on Android 4.3+) -->
     <string name="pref_hwkey_doubletap_disable_title">停用雙擊操作</string>
 
     <!-- Color mode for statusbar signal icons -->
@@ -664,9 +663,9 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">應用程式啟動器</string>
-    <string name="pref_cat_app_launcher_summary">對話框允許最多 8 個應用程式分配到硬體按鍵操作上或是做為額外的導航列按鍵</string>
+    <string name="pref_cat_app_launcher_summary">對話框允許最多 8 個應用程式分配到硬體按鍵操作上或是做為額外的海苔條按鍵</string>
     <string name="pref_app_launcher_slot_title">應用程式槽 %d</string>
-    <string name="app_launcher_no_apps">沒有應用程式被分配。使用 GravityBox / 程式啟動器選單來分配應用程式。</string>
+    <string name="app_launcher_no_apps">沒有應用程式被分配. 使用 GravityBox / 程式啟動器選單來分配應用程式.</string>
 
     <!-- HW Key Actions: application launcher -->
     <string name="hwkey_action_app_launcher">顯示應用程式啟動器</string>
@@ -693,28 +692,28 @@
     <string name="caller_unkown_photo_result_not_successful">照片未更改</string>
 
     <!-- Minimum screen brightness warning -->
-    <string name="screen_brightness_min_warning">您的裝置可能不支援低於 20 的數值，如果您的裝置螢幕亮不起來，您可以按住音量鍵 + 至少 7 秒，然後將會還原亮度，並請設定較高的數值。</string>
+    <string name="screen_brightness_min_warning">您的裝置可能不支援低於 20 的數值，如果您的裝置螢幕亮不起來，您可以按住音量鍵 + 至少 7 秒，然後將會還原亮度，並請設定較高的數值.</string>
 
     <!-- Navbar tweaks categories -->
     <string name="pref_cat_navbar_general_title">一般</string>
-    <string name="pref_cat_navbar_keys_title">導航列按鍵</string>
+    <string name="pref_cat_navbar_keys_title">海苔條按鍵</string>
     <string name="pref_cat_navbar_color_title">顏色</string>
     <string name="pref_cat_navbar_dimen_title">尺寸</string>
     
     
     <!-- Navigation bar colors -->
-    <string name="pref_navbar_color_enable_title">啟用導航列顏色</string>
+    <string name="pref_navbar_color_enable_title">啟用海苔條顏色</string>
     <string name="pref_navbar_color_enable_summary">停用後需要重新啟動</string>
-    <string name="pref_navbar_key_color_title">導航列顏色</string>
-    <string name="pref_navbar_key_glow_color_title">導航列光暈顏色</string>
-    <string name="pref_navbar_bg_color_title">導航列背景顏色</string>
+    <string name="pref_navbar_key_color_title">海苔條顏色</string>
+    <string name="pref_navbar_key_glow_color_title">海苔條光暈顏色</string>
+    <string name="pref_navbar_bg_color_title">海苔條背景顏色</string>
 
     <!-- Transparency manager mode -->
     <string name="pref_tm_mode_title">透明度管理器模式</string>
     <string name="pref_tm_mode_summary">重新啟動裝置</string>
     <string name="tm_mode_disabled">停用</string>
     <string name="tm_mode_statusbar">狀態列</string>
-    <string name="tm_mode_navbar">導航列</string>
+    <string name="tm_mode_navbar">海苔條</string>
     <string name="tm_mode_full">兩者</string>
     
     <!-- Secondary signal icon color for MTK Dual SIMs -->
@@ -725,7 +724,7 @@
  
     <!-- Status icon style -->
     <string name="pref_status_icon_style_title">狀態列圖示風格</string>
-    <string name="pref_status_icon_style_summary">套用於無聲，震動，報警等狀態圖示。</string>
+    <string name="pref_status_icon_style_summary">套用於無聲，震動，報警等狀態圖示.</string>
     <string name="icon_style_jb">JellyBean</string>
     <string name="icon_style_kk">KitKat</string>
     
@@ -747,14 +746,14 @@
     <string name="pref_network_mode_tile_lte_title">允許 LTE 網路模式</string>
 
     <!-- HW Keys Navigation Bar warning -->
-    <string name="hwkey_navbar_warning">為了能夠支援導航列操作控制，在導航列調整選單中覆蓋系統預設值是必須的</string>
+    <string name="hwkey_navbar_warning">為了能夠支援海苔條操作控制，在海苔條調整選單中覆蓋系統預設值是必須的</string>
 
     <!-- Old GB to new GB one-time dialog -->
-    <string name="gb_new_package_dialog">已偵測到舊版的 GravityBox 被安裝。
-        舊版必須要被解除安裝才能安裝新版的 GB 。新版 GB 將要嘗試解除安裝舊版，
-        從 GB 傳輸您的配置與設定到新版 GB，然後解除安裝舊版 GB。您必須在出現
-        "解除安裝"提示時按下"確認"。解除安裝後，請前往 Xposed 安裝器啟用新模組
-        然後重新啟動 IMMEDIATELLY 否則，您將有可能遭遇到系統相容穩定性的問題。</string>
+    <string name="gb_new_package_dialog">已偵測到舊版的 GravityBox 被安裝. 
+        舊版必須要被解除安裝才能安裝新版的 GB . 新版 GB 將要嘗試解除安裝舊版，
+        從 GB 傳輸您的配置與設定到新版 GB，然後解除安裝舊版 GB. 您必須在出現
+        "解除安裝"提示時按下"確認". 解除安裝後，請前往 Xposed 安裝器啟用新模組
+        然後重新啟動 IMMEDIATELLY 否則，您將有可能遭遇到系統相容穩定性的問題.</string>
     <string name="gb_new_package_settings_transfer_ok">GravityBox 設定傳輸成功</string>
     <string name="gb_new_package_settings_transfer_failed">GravityBox 設定傳輸失敗</string>
 
@@ -815,7 +814,7 @@
     <string name="pref_cat_launcher_tweaks_title">啟動器模組</string>
     <string name="pref_cat_launcher_tweaks_summary">僅套用於原生啟動器與 Google Experience 啟動器</string>
     <string name="pref_cat_launcher_desktop_grid_title">桌面網格</string>
-    <string name="pref_launcher_desktop_grid_info_title">預設數值將有可能導致小工具版面發生崩潰，請使用其他數值，請謹慎使用(需要重新啟動)。</string>
+    <string name="pref_launcher_desktop_grid_info_title">預設數值將有可能導致小工具版面發生崩潰，請使用其他數值，請謹慎使用(需要重新啟動).</string>
     <string name="pref_launcher_desktop_grid_rows_title">行數</string>
     <string name="pref_launcher_desktop_grid_cols_title">列數</string>
     <string name="desktop_grid_default">預設</string>
@@ -844,7 +843,7 @@
 
     <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">方向控制鍵</string>
-    <string name="pref_navbar_cursor_control_summary">在導航列上與鍵盤上啟用方向控制鍵</string>
+    <string name="pref_navbar_cursor_control_summary">在海苔條上與鍵盤上啟用方向控制鍵</string>
     
     <!-- Volume rocker wake -->
     <string name="pref_volume_rocker_wake_title">音量鍵喚醒</string>
@@ -857,7 +856,7 @@
 
     <!-- Tiles: Hide on change -->
     <string name="pref_qs_hide_on_change_title">點擊後隱藏</string>
-    <string name="pref_qs_hide_on_change_summary">單擊瓷貼後，狀態列會自動收合。適用於 GravityBox 所推出的瓷貼與原生瓷貼。</string>
+    <string name="pref_qs_hide_on_change_summary">單擊瓷貼後，狀態列會自動收合。適用於 GravityBox 所推出的瓷貼與原生瓷貼.</string>
 
     <!-- Power tweaks categories -->
     <string name="pref_cat_power_menu_title">電源選單</string>
@@ -891,7 +890,7 @@
     <string name="hwkey_action_auto_rotation_enabled">自動旋轉已啟用</string>
     <string name="hwkey_action_auto_rotation_disabled">自動旋轉已停用</string>
 
-    <!-- HW Key Actions: Show power menu，expand notifications，expand quick settings -->
+    <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
     <string name="hwkey_action_show_power_menu">顯示電源選單</string>
     <string name="hwkey_action_expand_notifications">展開通知面板</string>
     <string name="hwkey_action_expand_quicksettings">展開快速設定面板</string>
@@ -1005,7 +1004,7 @@
  
     <!-- Navbar: always on bottom -->
     <string name="pref_navbar_always_on_bottom_title">總是在底部</string>
-    <string name="pref_navbar_always_on_bottom_summary">強制讓導航列顯示在橫向底部 (需要重新啟動)</string>
+    <string name="pref_navbar_always_on_bottom_summary">強制讓海苔條顯示在橫向底部 (需要重新啟動)</string>
 
     <!-- Summary for Home key long-press action disabled because of navring targets -->
     <string name="pref_hwkey_home_longpress_disabled_summary">當導航環目標被啟用將無法使用</string>
@@ -1015,12 +1014,11 @@
     
     <!-- Phone: Non-intrusive incoming call -->
     <string name="pref_phone_nonintrusive_incoming_call_title">非侵入性來電</string>
-    <string name="pref_phone_nonintrusive_incoming_call_summary">當您使用裝置時，來電會顯示成一個通知</string>
+    <string name="pref_phone_nonintrusive_incoming_call_summary">使用者互動過程中保持背景來電</string>
    
     <!-- Smart Radio -->
     <string name="smart_radio_action_undefined">未定義</string>
-	<string name="pref_cat_smart_radio_title">Smart radio</string>
-    <string name="pref_smart_radio_enable_summary">根據行動數據和無線網絡連接狀態，這會自動切換您自訂的省電模式或正常模式（需要重新啟動）</string>
+    <string name="pref_smart_radio_enable_summary">根據行動數據和無線網絡連接狀態，這會自動切換您自訂的省電模式或正常模式 (需要重新啟動)</string>
     <string name="pref_smart_radio_normal_mode_title">正常網路模式</string>
     <string name="pref_smart_radio_power_saving_mode_title">節省電力網路模式</string>
     <string name="pref_smart_radio_screen_off_title">當螢幕關閉</string>
@@ -1031,7 +1029,7 @@
     <string name="pref_smart_radio_mode_change_delay_summary">設定指定的秒數來延遲變更網路模式</string>
 
      <!-- Lockscreen: custom carrier text -->
-    <string name="pref_lockscreen_carrier_text_title">自訂電訊商標題文字</string>
+    <string name="pref_lockscreen_carrier_text_title">自訂第一卡槽標題文字</string>
     <string name="carrier_text_default">預設</string>
     <string name="carrier_text_empty">空的</string>
 
@@ -1054,8 +1052,8 @@
 
     <!--  Clear recents modes -->
     <string name="pref_clear_recents_mode_title">清除所有近期任務操作</string>
-    <string name="pref_clear_recents_mode_0">點選清除全部，長按清除全部，除了當前操作</string>
-    <string name="pref_clear_recents_mode_1">點選清除全部，除了當前操作，長按清除全部</string>
+    <string name="pref_clear_recents_mode_0">點選清除全部, 長按清除全部，除了當前操作</string>
+    <string name="pref_clear_recents_mode_1">點選清除全部，除了當前操作, 長按清除全部</string>
 
     <!-- Power menu: disable on lockscreen -->
     <string name="pref_powermenu_disable_on_lockscreen_title">鎖定畫面停用電源選單</string>
@@ -1077,7 +1075,7 @@
     <!-- Smart radio: independent delay for screen off power save event -->
     <string name="pref_smart_radio_screen_off_delay_title">延遲省電</string>
     <string name="pref_smart_radio_screen_off_delay_summary">當螢幕關閉時，延遲切換到省電模式。
-      如果數值不為零，替代預設網路模式改變的延遲。</string>
+      如果數值不為零，替代預設網路模式改變的延遲.</string>
 
     <!-- Backup and restore settings -->
     <string name="pref_settings_backup_title">備份設定</string>
@@ -1085,8 +1083,8 @@
     <string name="settings_backup_failed">備份失敗</string>
     <string name="settings_backup_no_prefs">自訂文件未找到</string>
     <string name="settings_backup_success">備份成功</string>
-    <string name="settings_restore_no_backup">這裡沒有任何備份檔案可供還原</string>
-    <string name="settings_restore_confirm">您目前的GravityBox設定將被取代。您確定嗎？</string>
+    <string name="settings_restore_no_backup">這裡沒有任何備份與還原檔案</string>
+    <string name="settings_restore_confirm">您當前的自訂文件將被更換. 您確定嗎?</string>
     <string name="settings_restore_failed">還原失敗</string>
     <string name="settings_restore_success">還原成功</string>
     <string name="settings_restore_reboot">請重啟您的裝置</string>
@@ -1094,20 +1092,20 @@
     <!-- Web service client strings -->
     <string name="wsc_hash_creation_failed">錯誤產生應用程式特定的散列碼</string>
     <string name="wsc_parse_response_error">從 Web 服務獲得的錯誤剖析資料</string>
-    <string name="wsc_hash_invalid">由於散列碼不符，Web 服務拒絕通信。這通常發生在以下情況：
-      您運行非官方版或 GravityBox APK 已經被第三方修改。</string>
+    <string name="wsc_hash_invalid">由於散列碼不符 Web 遭服務拒絕通信。這通常發生在以下情況
+      您運行非官方版或 GravityBox APK 已經被第三方修改.</string>
     <string name="wsc_please_wait">請稍後&#8230;</string>
     <string name="wsc_error">與 Web 服務通信錯誤: %s</string>
     <string name="wsc_task_cancelled">Web 服務操作取消</string>
 
     <!-- Transaction verification -->
     <string name="wsc_trans_parse_response_error">從Web服務獲得的錯誤剖析交易資料</string>
-    <string name="wsc_trans_valid">交易ID驗證成功。進階功能將於GravityBox重新啟動後被解鎖。</string>
+    <string name="wsc_trans_valid">交易ID驗證成功。 進階功能將於GravityBox重新啟動後被解鎖.</string>
     <string name="wsc_trans_invalid">無法找到指定的交易ID記錄</string>
-    <string name="wsc_trans_violation">指定的交易ID已經註冊過很多次。請聯絡 GravityBox開發者來解決。</string>
-    <string name="wsc_trans_blocked">指定交易ID已被封鎖。請聯絡 GravityBox 開發者來解決。</string>
+    <string name="wsc_trans_violation">指定的交易ID已經註冊過很多次。請聯絡 GravityBox 開發者來解決.</string>
+    <string name="wsc_trans_blocked">指定交易ID已被封鎖。請聯絡 GravityBox 開發者來解決.</string>
     <string name="pref_trans_verification_title">PayPal 交易 ID</string>
-    <string name="pref_trans_verification_summary">如果您想要捐贈，您可以輸入您的 PayPal 捐贈交易 ID來解鎖進階功能</string>
+    <string name="pref_trans_verification_summary">如果您想要捐贈，您可以輸入您的 PayPal 捐贈交易ID來解鎖進階功能</string>
     <string name="wsc_trans_required_summary">此功能需要有效的 PayPal 交易 ID</string>
 
     <!-- Pie: disable system info -->
@@ -1198,15 +1196,15 @@
     <string name="qs_auto_switch_mode2">當沒有清除的通知時</string>
 
     <!-- Statusbar: Double-tap to sleep -->
-    <string name="pref_statusbar_dt2s_title">啟用雙擊休眠</string>
+    <string name="pref_statusbar_dt2s_title">啟用 雙擊 休眠</string>
     <string name="pref_statusbar_dt2s_summary">雙擊狀態列來使裝置休眠</string>
 
     <!-- Animation scales -->
     <string name="animation_scale0">動畫關閉</string>
-    <string name="animation_scale1">動畫刻度 。25x</string>
-    <string name="animation_scale2">動畫刻度 。5x</string>
+    <string name="animation_scale1">動畫刻度 .25x</string>
+    <string name="animation_scale2">動畫刻度 .5x</string>
     <string name="animation_scale3">動畫刻度 1x</string>
-    <string name="animation_scale4">動畫刻度 1。5x</string>
+    <string name="animation_scale4">動畫刻度 1.5x</string>
     <string name="animation_scale5">動畫刻度 2x</string>
     <string name="animation_scale6">動畫刻度 5x</string>
     <string name="animation_scale7">動畫刻度 10x</string>
@@ -1237,7 +1235,7 @@
     <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
 
     <!-- Unlock ring: double-tap to sleep -->
-    <string name="pref_lockscreen_ring_dt2s_title">啟用雙擊休眠</string>
+    <string name="pref_lockscreen_ring_dt2s_title">啟用 雙擊 休眠</string>
     <string name="pref_lockscreen_ring_dt2s_summary">雙擊解鎖環使裝置進入休眠</string>
 
     <!-- Charger plugged/unplugged sound -->
@@ -1248,15 +1246,16 @@
     <string name="shortcut_smart_radio_toggle">切換 Smart Radio</string>
     
     <!-- Master switch title -->
-    <string name="pref_masterswitch_title">主開關</string>
+    <string name="pref_masterswitch_title">主控開關</string>
 
     <!-- Mute volume adjust vibrate -->
        <string name="pref_volume_adjust_vibrate_mute_title">停用音量調節震動</string>
     <string name="pref_volume_adjust_vibrate_mute_summary">停用當使用音量鍵調整通知/鈴聲音量時產生振動</string>
     
     <!-- ScreenRecord: use stock binary -->
-    <string name="pref_screenrecord_use_stock_title">使用預設螢幕錄製元件</string>
-    <string name="pref_screenrecord_use_stock_summary">當啟用時，系統預設的螢幕錄製元件將被用於螢幕錄製。如果您在使用在GravityBox的替代螢幕錄製元件引起問題時請啟用本選項。請注意，使用預設螢幕錄製元件將無法錄製音訊亦沒法錄製超過三分鐘。</string>
+    <string name="pref_screenrecord_use_stock_title">使用預設二進制文件</string>
+    <string name="pref_screenrecord_use_stock_summary">當啟用, 預設的二進制文件將被用於錄影. 
+        使用在替代二進制文件引起的問題情況下. 請注意，使用預設二進制文件將無法錄製超過三分鐘的音訊與視訊檔案.</string>
 
     <!-- Clock settings master switch -->
     <string name="pref_sb_clock_masterswitch_summary">切換狀態列時鐘設定 (需要重新啟動)</string>
@@ -1268,7 +1267,7 @@
     <string name="pref_sb_clock_ampm_size_title">上午/下午 大小</string>
 
     <!-- Navigation bar ring category -->
-    <string name="pref_cat_navbar_ring_title">導航環</string>
+    <string name="pref_cat_navbar_ring_title">海苔條環</string>
 
     <!-- Navbar ring: option to disable -->
     <string name="pref_navbar_ring_disable_title">停用導航環</string>
@@ -1312,7 +1311,7 @@
     <string name="pref_data_traffic_active_dl_only_summary">僅在當 Android 標準下載管理員有下載任務時顯示資料流量指示符</string>
 
     <!-- Led control -->
-    <string name="pref_led_control_title">通知控制</string>
+    <string name="pref_led_control_title">最終通知控制</string>
     <string name="pref_led_control_summary">允許控制每一個應用程式的基礎通知，鈴聲與震動</string>
     <string name="lc_please_wait">請稍後&#8230;</string>
     <string name="lc_disabled">通知控制停用</string>
@@ -1343,7 +1342,7 @@
     <string name="pref_lc_notif_insistent_summary">當啟用時，音效將不斷的播放，直到通知被關閉或開啟通知窗口</string>
     <string name="pref_lc_vibrate_override_title">變更震動</string>
     <string name="pref_lc_vibrate_pattern_title">震動模式</string>
-    <string name="pref_lc_vibrate_pattern_summary">在幾毫秒內關閉/開啟持續時間的逗號分隔清單。設定0為停用振動。</string>
+    <string name="pref_lc_vibrate_pattern_summary">在幾毫秒內關閉/開啟持續時間的逗號分隔清單。設定0為停用振動.</string>
     <string name="lc_vibrate_pattern_invalid">無效的振動模式格式</string>
 
     <!-- Omni data traffic monitor inactivity threshold -->
@@ -1355,44 +1354,14 @@
 
     <!-- Virtual keys vibrate pattern -->
     <string name="pref_virtual_key_vibrate_pattern_title">虛擬按鍵振動模式</string>
-    <string name="pref_virtual_key_vibrate_pattern_summary">在幾毫秒內關閉/開啟持續時間的逗號分隔清單。留空為預設震動模式。</string>
+    <string name="pref_virtual_key_vibrate_pattern_summary">在幾毫秒內關閉/開啟持續時間的逗號分隔清單。留空為預設震動模式.</string>
 
     <!-- Lockscreen: show pattern error -->
     <string name="pref_lockscreen_show_pattern_error_title">顯示模式錯誤</string>
     <string name="pref_lockscreen_show_pattern_error_summary">當進入錯誤模式時顯示紅色足跡</string>
 
     <!-- Premium features: allow trial period -->
-    <string name="trial_info">此功能尚在試用階段，如果您覺得實用並想繼續使用此功能，請使用您的 PayPal ID 來捐贈本開發者帳號，本功能試用期將在您 %d 重啟裝置後結束。</string>
-	 
-    <!-- Navbar: disable camera icon -->
-	<string name="pref_navbar_camera_key_disable_title">停用相機圖示</string>
-	<string name="pref_navbar_camera_key_disable_summary">停用在鎖定畫面內的相機圖示</string>
-	
-	<!-- Notification control: default settings -->
-	<string name="lc_activity_menu_default_settings">預設設定</string>    
-	<string name="pref_lc_default_settings_summary">當啟用後，為所有未有設置過通知控制的應用程式套用下列的設定</string>    
-	<string name="lc_defaults_apply">已套用預設設定</string>    
-	<string name="lc_settings_menu_reset">還原為預設設定</string>
-	
-	<!-- Notification control: Active screen -->
-	<string name="lc_active_screen">主動螢幕喚醒</string>    
-	<string name="lc_active_screen_info">啟用主動螢幕喚醒功能後，任何新的通知都會使螢幕自動亮著（只有當螢幕沒有被覆蓋的情況下，如：您的電話不在口袋裏）。根據鎖定畫面的安全性設定及您的設定，它亦可以自動展開通知面板。請注意，主動螢幕喚醒功能需要啟用鎖定畫面。\n以下的開關只是主開關，當啟用後請按需要為個別應用程式進行設定。</string>    
-	<string name="lc_active_screen_switch_title">啟用主動螢幕喚醒</string>    
-	<string name="lc_expand_notification_panel_title">展開通知面板</string>    
-	<string name="lc_expand_notification_panel_summary">若鎖定面板安全性設定容許的話，當螢幕亮著時自動展開通知面板</string>    
-	
-	<!-- Notification control: Quiet hours -->    
-	<string name="lc_quiet_hours">靜音時間</string>    
-	<string name="pref_lc_qh_enabled_title">啟用靜音時間</string>    
-	<string name="pref_lc_qh_enabled_summary">在設定的時間內，通知鈴聲和震動會被停用。您亦可設定一併停用LED</string>    
-	<string name="pref_lc_qh_start_title">開始時間</string>    
-	<string name="pref_lc_qh_end_title">結束時間</string>    
-	<string name="pref_lc_qh_mute_led_title">停用LED</string>    
-	
-	<!-- Notification control: LED mode -->    
-	<string name="pref_lc_led_mode_title">LED設定</string>    
-	<string name="lc_led_mode_original">由應用程式指定</string>    
-	<string name="lc_led_mode_override">由GravityBox指定</string>    
-	<string name="lc_led_mode_off">停用LED</string>
-
+    <string name="trial_info">此功能尚在試用階段，如果您覺得實用並想繼續使用此功能，請使用您的 PayPal 
+     ID. 來捐贈本開發者帳號，本功能試用期將在您 %d 重啟裝置後結束.</string>
+    
 </resources>
