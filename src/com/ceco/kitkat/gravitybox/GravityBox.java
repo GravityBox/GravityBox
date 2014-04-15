@@ -78,6 +78,8 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
         }
 
         ModLedControl.initZygote();
+
+        ModQuickSettings.initDisableLocationConsent(prefs);
     }
 
     @Override

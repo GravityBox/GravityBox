@@ -84,6 +84,8 @@
     <string name="quick_settings_smart_radio_off">Smart Radio Off</string>
     <string name="quick_settings_lock_screen_on">Lock Screen On</string>
     <string name="quick_settings_lock_screen_off">Lock Screen Off</string>
+    <string name="quick_settings_location_on">Location</string>
+    <string name="quick_settings_location_off">Location Off</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Statusbar QuickSettings tiles</string>
@@ -94,6 +96,7 @@
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">Location</string>
+    <string name="qs_tile_gps_slimkat">Location (SlimKat style)</string>
     <string name="qs_tile_gps_alt">GPS (CM style)</string>
     <string name="qs_tile_mobile_data">Mobile Data</string>
     <string name="qs_tile_network_mode">Network Mode</string>
