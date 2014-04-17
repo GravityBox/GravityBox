@@ -100,6 +100,7 @@
         <item>@string/qs_tile_bluetooth</item>
         <item>@string/qs_tile_nfc</item>
         <item>@string/qs_tile_gps</item>
+        <item>@string/qs_tile_gps_slimkat</item>
         <item>@string/qs_tile_gps_alt</item>
         <item>@string/qs_tile_ringer_mode</item>
         <item>@string/qs_tile_volume</item>
@@ -135,6 +136,7 @@
         <item>bluetooth_textview</item>
         <item>nfc_tileview</item>
         <item>gps_textview</item>
+        <item>location_tileview</item>
         <item>gps_tileview</item>
         <item>ringer_mode_tileview</item>
         <item>volume_tileview</item>

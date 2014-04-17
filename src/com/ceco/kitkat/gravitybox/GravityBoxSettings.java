@@ -1497,13 +1497,16 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             if (!Utils.hasGPS(getActivity())) {
                 qsEntries.remove(getString(R.string.qs_tile_gps));
                 qsEntryValues.remove("gps_tileview");
+                qsEntryValues.remove("location_tileview");
                 if (Utils.isMtkDevice()) {
                     qsEntries.remove(getString(R.string.qs_tile_gps_alt));
+                    qsEntries.remove(getString(R.string.qs_tile_gps_slimkat));
                     qsEntryValues.remove("gps_textview");
                 }
                 if (qsPrefs != null) {
                     if (qsPrefs.contains("gps_tileview")) qsPrefs.remove("gps_tileview");
                     if (qsPrefs.contains("gps_textview")) qsPrefs.remove("gps_textview");
+                    if (qsPrefs.contains("location_textview")) qsPrefs.remove("location_textview");
                 }
             }
             if (Utils.isWifiOnly(getActivity())) {

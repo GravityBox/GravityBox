@@ -15,6 +15,8 @@
 
 package com.ceco.kitkat.gravitybox;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URISyntaxException;
@@ -34,6 +36,7 @@ import com.ceco.kitkat.gravitybox.quicksettings.CameraTile;
 import com.ceco.kitkat.gravitybox.quicksettings.ExpandedDesktopTile;
 import com.ceco.kitkat.gravitybox.quicksettings.GpsTile;
 import com.ceco.kitkat.gravitybox.quicksettings.GravityBoxTile;
+import com.ceco.kitkat.gravitybox.quicksettings.LocationTile;
 import com.ceco.kitkat.gravitybox.quicksettings.LockScreenTile;
 import com.ceco.kitkat.gravitybox.quicksettings.MusicTile;
 import com.ceco.kitkat.gravitybox.quicksettings.NetworkModeTile;
@@ -86,6 +89,7 @@ import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResou
 public class ModQuickSettings {
     private static final String TAG = "GB:ModQuickSettings";
     public static final String PACKAGE_NAME = "com.android.systemui";
+    public static final String DISABLE_LOCATION_CONSENT_PACKAGE_NAME = "com.mohammadag.disablelocationconsent";
     private static final String CLASS_QUICK_SETTINGS = "com.android.systemui.statusbar.phone.QuickSettings";
     private static final String CLASS_PHONE_STATUSBAR = "com.android.systemui.statusbar.phone.PhoneStatusBar";
     private static final String CLASS_PANEL_BAR = "com.android.systemui.statusbar.phone.PanelBar";
@@ -140,6 +144,8 @@ public class ModQuickSettings {
 
     private static List<BroadcastSubReceiver> mBroadcastSubReceivers;
 
+    public static boolean hasDisableLocationConsent = false;
+
     static {
         mCustomGbTileKeys = new ArrayList<Integer>(Arrays.asList(
             R.id.sync_tileview,
@@ -162,7 +168,8 @@ public class ModQuickSettings {
             R.id.quickapp_tileview_2,
             R.id.music_tileview,
             R.id.smart_radio_tileview,
-            R.id.lock_screen_tileview
+            R.id.lock_screen_tileview,
+            R.id.location_tileview
         ));
 
         Map<String, Integer> tmpMap = new HashMap<String, Integer>();
@@ -632,6 +639,24 @@ public class ModQuickSettings {
         }
     }
 
+    public static void initDisableLocationConsent(final XSharedPreferences prefs) {
+        try {
+            if (DEBUG) log("initDisableLocationConsent");
+
+            BufferedReader apks = new BufferedReader(new FileReader(XposedBridge.BASE_DIR + "conf/modules.list"));
+            String apk;
+            while ((apk = apks.readLine()) != null) {
+                if (apk.contains(DISABLE_LOCATION_CONSENT_PACKAGE_NAME)) {
+                    hasDisableLocationConsent = true;
+                    if (DEBUG) log("hasDisableLocationConsent");
+                }
+            }
+            apks.close();
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
+
     private static XC_MethodHook quickSettingsConstructHook = new XC_MethodHook() {
 
         @Override
@@ -696,6 +721,12 @@ public class ModQuickSettings {
                     mTiles.add(gpsTile);
                 }
 
+                if (Utils.hasGPS(mContext)) {
+                    LocationTile locationTile = new LocationTile(mContext, mGbContext, mStatusBar, mPanelBar);
+                    locationTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
+                    mTiles.add(locationTile);
+                }
+                
                 RingerModeTile rmTile = new RingerModeTile(mContext, mGbContext, mStatusBar, mPanelBar);
                 rmTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
                 mTiles.add(rmTile);
@@ -1473,7 +1504,7 @@ public class ModQuickSettings {
                                 final boolean newState = !(Boolean)XposedHelpers.callMethod(
                                         locCtrl, "isLocationEnabled");
                                 if ((Boolean)XposedHelpers.callMethod(locCtrl, "setLocationEnabled", newState)
-                                        && newState) {
+                                        && newState && !hasDisableLocationConsent) {
                                     Intent closeDialog = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
                                     mContext.sendBroadcast(closeDialog);
                                 } else if (mHideOnChange && mStatusBar != null) {
