@@ -118,8 +118,8 @@
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_wifi_alt">Wi-Fi (стиль CM)</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
-    <string name="qs_tile_gps">GPS</string>
-    <string name="qs_tile_gps_alt">GPS (стиль CM)</string>
+    <string name="qs_tile_gps">Геоданные</string>
+    <string name="qs_tile_gps_alt">Геоданные (стиль CM)</string>
     <string name="qs_tile_mobile_data">Моб. данные</string>
     <string name="qs_tile_network_mode">Режим сети</string>
     <string name="qs_tile_data_usage">Мобильные данные</string>
@@ -1457,5 +1457,8 @@
 
     <!-- Force English locale -->
     <string name="pref_force_english_locale_title">Английский принудительно</string>
+
+    <!-- VolumePanel transparency -->
+    <string name="pref_volume_panel_transparency_title">Прозрачность панели громкости</string>
 
 </resources>
