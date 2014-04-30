@@ -1490,4 +1490,10 @@
     <!-- GB Actions: toggle airplane mode -->
     <string name="shortcut_airplane_mode">Interrupteur mode avion</string>
 
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Visibilité icône Bluetooth</string>
+    <string name="sb_bt_default">Lorsque le BT est actif (par défaut)</string>
+    <string name="sb_bt_connected">Lorsque le BT est connecté</string>
+    <string name="sb_bt_hidden">Masqué</string>
+
 </resources>
