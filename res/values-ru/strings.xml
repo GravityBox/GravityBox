@@ -1496,4 +1496,14 @@
     <string name="increasing_ring_interval_5seconds">5 с</string>
     <string name="increasing_ring_interval_10seconds">10 с</string>
 
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Поиск в приложении</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Слева направо принудительно</string>
+    <string name="pref_force_ltr_direction_summary">Необходима перезагрузка</string>
+
 </resources>
