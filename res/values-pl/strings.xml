@@ -1446,4 +1446,37 @@
     <!-- GB Actions: Quiet hours shortcut -->
     <string name="shortcut_quiet_hours_toggle">Przełącz Ciche Godziny</string>
 
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Przełącz Tryb Samolotowy</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Widoczność ikony Bluetooth</string>
+    <string name="sb_bt_default">Gdy BT włączony (domyślnie)</string>
+    <string name="sb_bt_connected">Gdy BT połączony</string>
+    <string name="sb_bt_hidden">Ukryta</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Narastający dzwonek</string>
+    <string name="increasing_ring_enable">Włącz</string>
+    <string name="increasing_ring_min_volume_title">Początkowa głośność dzwonka</string>
+    <string name="increasing_ring_volume_notice">Uwaga:\n Jeśli początkowa głośność jest wyższa od normalnej, to dzwonek będzie odtwarzany przy użyciu głośności normalnej.</string>
+    <string name="increasing_ring_interval_title">Interwał narastania</string>
+    <string name="increasing_ring_interval_eachring">Przy każdym dzwonku</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekund</string>
+    <string name="increasing_ring_interval_10seconds">10 sekund</string>
+
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Wyszukiwanie w aplikacji</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Wymuś kierunek od Lewej do Prawej</string>
+    <string name="pref_force_ltr_direction_summary">Wymusza kierunek tekstu od Lewej do Prawej dla języków z zapisem od Prawej do Lewej (wymagany restart)</string>
+
 </resources>
