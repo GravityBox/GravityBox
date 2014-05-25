@@ -86,6 +86,9 @@
     <string name="quick_settings_lock_screen_off">鎖定畫面 關閉</string>
     <string name="quick_settings_location_on">定位服務 開啟</string>
     <string name="quick_settings_location_off">定位服務 關閉</string>
+    <string name="quick_settings_quiet_hours_off">靜音時段  關閉</string>
+    <string name="quick_settings_quiet_hours_on">靜音時段  開啟</string>
+    <string name="quick_settings_quiet_hours_auto">靜音時段  自動</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">狀態列快速設定瓷貼</string>
