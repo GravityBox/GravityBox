@@ -103,13 +103,9 @@
     <string name="quick_settings_camera_error_connect">無法連結相機</string>
     <string name="quick_settings_usb_tether_off">中斷連結</string>
     <string name="quick_settings_usb_tether_connected">USB 網絡共用 關閉</string>
-<<<<<<< HEAD
-    <string name="quick_settings_usb_tether_on">USB 網絡共用 開啓</string>
-=======
     <string name="quick_settings_usb_tether_on">USB 網絡共用 開啟</string>
     <string name="quick_settings_music_play">播放</string>
     <string name="quick_settings_music_pause">暫停</string>
->>>>>>> 4723d51... Updated translation for Traditional Chinese (zh-rTW) (KK branch)
     <string name="quick_settings_smart_radio_on">智慧型無線網路 開啟</string>
     <string name="quick_settings_smart_radio_off">智慧型無線網路 關閉</string>
     <string name="quick_settings_lock_screen_on">鎖定畫面 開啟</string>
