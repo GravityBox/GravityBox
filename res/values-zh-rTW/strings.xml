@@ -104,12 +104,13 @@
     <string name="quick_settings_usb_tether_off">中斷連結</string>
     <string name="quick_settings_usb_tether_connected">USB 網絡共用 關閉</string>
     <string name="quick_settings_usb_tether_on">USB 網絡共用 開啟</string>
-    <string name="quick_settings_music_play">播放</string>
-    <string name="quick_settings_music_pause">暫停</string>
     <string name="quick_settings_smart_radio_on">智慧型無線網路 開啟</string>
     <string name="quick_settings_smart_radio_off">智慧型無線網路 關閉</string>
     <string name="quick_settings_lock_screen_on">鎖定畫面 開啟</string>
     <string name="quick_settings_lock_screen_off">鎖定畫面 關閉</string>
+    <string name="quick_settings_quiet_hours_off">靜音時段 關閉</string>
+    <string name="quick_settings_quiet_hours_on">靜音時段 開啟</string>
+    <string name="quick_settings_quiet_hours_auto">靜音時段 自動</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">狀態列快速設定磁貼</string>
@@ -763,7 +764,7 @@
     <string name="caller_unkown_photo_result_not_successful">照片未更改</string>
 
     <!-- Minimum screen brightness warning -->
-    <string name="screen_brightness_min_warning">您的裝置可能不支援低於 20 的數值，如果您的裝置螢幕亮不起來，您可以按住音量鍵 + 至少 7 秒，然後將會還原亮度，並請設定較高的數值。</string>
+    <string name="screen_brightness_min_warning">您的裝置可能不支援低於 20 的數值。如果您的裝置螢幕亮不起來，您可以按住音量鍵 + 至少 7 秒，然後將會還原亮度，並請設定較高的數值。</string>
 
     <!-- Navbar tweaks categories -->
     <string name="pref_cat_navbar_general_title">一般</string>
@@ -1440,6 +1441,13 @@
 
     <!-- Battey percent text: charging color -->
     <string name="battery_percent_text_charging_color_title">充電時的顏色</string>
+
+    <!-- Notification control: Quiet hours for weekends-->
+    <string name="pref_lc_qh_cat_weekdays_title">星期一至五</string>
+    <string name="pref_lc_qh_cat_weekend_title">週末</string>
+
+    <!-- Force English locale -->
+    <string name="pref_force_english_locale_title">強制使用英語介面</string>
 
     <!-- VolumePanel transparency -->
     <string name="pref_volume_panel_transparency_title">音量面板透明度</string>
