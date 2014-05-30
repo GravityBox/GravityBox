@@ -35,6 +35,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.preference.DialogPreference;
 import android.provider.Settings;
 import android.util.AttributeSet;
@@ -123,8 +124,11 @@ public class OngoingNotifPreference extends DialogPreference
         mBtnResetList.setVisibility(View.GONE);
         final String prefData = getPersistedString(null);
 
-        final String notifData = Settings.Secure.getString(mContext.getContentResolver(),
-                ModStatusBar.SETTING_ONGOING_NOTIFICATIONS);
+        final String notifData = Build.VERSION.SDK_INT > 16 ? 
+                Settings.Secure.getString(mContext.getContentResolver(),
+                ModStatusBar.SETTING_ONGOING_NOTIFICATIONS) :
+                    Settings.System.getString(mContext.getContentResolver(),
+                            ModStatusBar.SETTING_ONGOING_NOTIFICATIONS);
         if (notifData != null && !notifData.isEmpty()) {
             final String[] notifications = notifData.split("#C3C0#");
             mListData = new ArrayList<IIconCheckListAdapterItem>();

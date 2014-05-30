@@ -196,8 +196,13 @@ public class ModStatusBar {
                     if (DEBUG) log("mOngoingNotif = " + mOngoingNotif);
                 } else if (intent.hasExtra(GravityBoxSettings.EXTRA_ONGOING_NOTIF_RESET)) {
                     mOngoingNotif = "";
-                    Settings.Secure.putString(mContext.getContentResolver(),
-                            SETTING_ONGOING_NOTIFICATIONS, "");
+                    if (Build.VERSION.SDK_INT > 16) {
+                        Settings.Secure.putString(mContext.getContentResolver(),
+                                SETTING_ONGOING_NOTIFICATIONS, "");
+                    } else {
+                        Settings.System.putString(mContext.getContentResolver(),
+                                SETTING_ONGOING_NOTIFICATIONS, "");
+                    }
                     if (DEBUG) log("Ongoing notifications list reset");
                 }
             } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_DATA_TRAFFIC_CHANGED)) {
@@ -594,8 +599,9 @@ public class ModStatusBar {
                     // store if new
                     final String notifData = pkg + "," + n.icon;
                     final ContentResolver cr = mContext.getContentResolver();
-                    String storedNotifs = Settings.Secure.getString(cr,
-                            SETTING_ONGOING_NOTIFICATIONS);
+                    String storedNotifs = Build.VERSION.SDK_INT > 16 ?
+                            Settings.Secure.getString(cr, SETTING_ONGOING_NOTIFICATIONS) :
+                                Settings.System.getString(cr, SETTING_ONGOING_NOTIFICATIONS);
                     if (storedNotifs == null || !storedNotifs.contains(notifData)) {
                         if (storedNotifs == null || storedNotifs.isEmpty()) {
                             storedNotifs = notifData;
@@ -603,7 +609,11 @@ public class ModStatusBar {
                             storedNotifs += "#C3C0#" + notifData;
                         }
                         if (DEBUG) log("New storedNotifs = " + storedNotifs);
-                        Settings.Secure.putString(cr, SETTING_ONGOING_NOTIFICATIONS, storedNotifs);
+                        if (Build.VERSION.SDK_INT > 16) {
+                            Settings.Secure.putString(cr, SETTING_ONGOING_NOTIFICATIONS, storedNotifs);
+                        } else {
+                            Settings.System.putString(cr, SETTING_ONGOING_NOTIFICATIONS, storedNotifs);
+                        }
                     }
 
                     // block if requested

@@ -1,3 +1,29 @@
+Changelog 3.1.4 - 26/05/2014
+--------------------------------------
+- Added alternative way of making a donation via Play Store (About / Get unlocker)
+- QuickSettings:
+--- fixed broken layout of signal tiles on Motorola Razr devices
+--- fixed Quick pulldown misbehavior after orientation change 
+--- made Swipe to QuickSettings optional
+--- Smart Radio tile: added indication of current/upcoming state
+- Fixed couple of issues for Nexus 7:
+--- clear all recents button layout (covered by navigation bar)
+--- QS tiles per row in landscape orientation
+- Navigation bar custom key: added option for using alternate icon
+- Smart Radio: option to ignore mobile data availability
+- GB Actions: added shortcut for toggling Synchronization
+- Proper hide of tweaks not compatible with Acer skinned ROMs (thanks to bgcngm)
+- (Potential) Fix for ongoing notification blocker on Android 4.1
+- Updated Polish translations (thanks to xtrem007)
+- Updated Chinese (Simplified) translations (thanks to liveasx)
+- Updated Chinese (Traditional) translations (thanks to momomok)
+- Updated Japanese translations (thanks to WedyDQ10)
+- Updated French translation (thanks to ch-vox)
+- Updated Russian translations (thanks to gaich, abusalimov)
+- Updated Italian translations (thanks to pesa1234)
+- Updated Portuguese (PT) translation (thanks to bgcngm)
+- Updated Slovak and Czech translations (thanks to Ja_Som)
+
 Changelog 3.1.3 - 21/05/2014
 --------------------------------------
 - Adjusted for compatibility with Xposed Framework 2.6

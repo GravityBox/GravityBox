@@ -1523,4 +1523,23 @@
     <!-- GB Actions: Toggle sync -->
     <string name="shortcut_sync">開關同步</string>
 
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">感謝您的支持。當重新啟動GravityBox後進階功能將會被解鎖。
+      請注意，安裝GravityBox解鎖器後可能要20分鐘才能順利解鎖全部功能。</string>
+    <string name="pref_about_get_unlocker_title">取得解鎖器</string>
+    <string name="pref_about_get_unlocker_summary">沒有PayPal帳號？請按此到Play商店購買GravityBox解鎖器來解鎖所有進階功能</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">使用另一款圖示</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">滑動到快速設定頁</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">忽略行動數據可用性</string>
+    <string name="pref_smart_radio_mda_ignore_summary">即使無法使用行動數據，亦會恢復正常模式</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">開關同步</string>
+
 </resources>
