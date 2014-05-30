@@ -1495,4 +1495,23 @@
     <string name="battery_style_circle_dashed">サークルアイコン(破線)</string>
     <string name="battery_style_circle_dashed_percent">サークルアイコン(破線)＋％</string>
     
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">サポートしてくださりありがとうございます。GravityBoxを再起動するとプレミアム機能が使えるようになります。
+        GravityBox Unlockerを20分以上インストールしたままにしてください。</string>
+    <string name="pref_about_get_unlocker_title">Unlockerを入手</string>
+    <string name="pref_about_get_unlocker_summary">PayPalが嫌いですか? ここをタップするとGravityBoxのプレミアム機能を使えるようにするUnlockerをPlayストアでダウンロードできます。</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">別のアイコンを使う</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">スワイプしてクイック設定へ</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">データ通信接続の可否を無視</string>
+    <string name="pref_smart_radio_mda_ignore_summary">モバイルデータ通信に接続できなくても通常モードに切り替えます。</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">自動同期トグル</string>
+    
 </resources>

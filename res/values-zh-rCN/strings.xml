@@ -1536,12 +1536,22 @@
     <string name="battery_style_circle_dashed_percent">虚线圆圈电池含百分比</string>
     
     <!-- Premium feature unlock via unlocker app -->
-    <string name="premium_unlocked_message">感谢您的支持，高级功能将在GravityBox重新启动后解锁
-        确认GravityBox安装解锁至少要20分钟</string>
-    <string name="pref_about_get_unlocker_title">获取解锁</string>
-    <string name="pref_about_get_unlocker_summary">没有PayPal？只需点击这里从Google Play市场获取解锁GravityBox高级功能</string>
+    <string name="premium_unlocked_message">感谢您的支持，GravityBox高级功能将在重新启动后解锁
+        安装GravityBox解锁器可能需要20分钟才能解锁全部功能</string>
+    <string name="pref_about_get_unlocker_title">获取解锁器</string>
+    <string name="pref_about_get_unlocker_summary">没有PayPal？只需点击这里从Google Play市场购买GravityBox解锁器来解锁高级功能</string>
 
     <!-- Navbar custom key: alternate icon -->
     <string name="pref_navbar_custom_key_icon_title">使用备用图标</string>
+    
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">滑动到快速设置</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">忽略移动数据可用性</string>
+    <string name="pref_smart_radio_mda_ignore_summary">即使移动数据不可用也会切换到正常模式</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">切换同步</string>
     
 </resources>

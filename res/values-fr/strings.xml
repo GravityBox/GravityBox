@@ -1554,4 +1554,7 @@
     <!-- GB Actions: Toggle sync -->
     <string name="shortcut_sync">Interrupteur synchro</string>
 
+    <!-- UNC: timeout for Alert only once -->
+    <string name="pref_lc_notif_sound_only_once_timeout_title">Dans le laps de temps</string>
+
 </resources>

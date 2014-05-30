@@ -180,9 +180,6 @@ public class LedSettingsActivity extends Activity implements OnClickListener {
         if (mLedSettings.getPackageName().equals("default")) {
             mLedSettings.setEnabled(mPrefsFragment.getDefaultSettingsEnabled());
         }
-        boolean activeScreenChanged = mLedSettings.getActiveScreenEnabled() !=
-                mPrefsFragment.getActiveScreenEnabled() || mLedSettings.getActiveScreenExpanded() !=
-                mPrefsFragment.getActiveScreenExpanded();
         mLedSettings.setColor(mPrefsFragment.getColor());
         mLedSettings.setLedOnMs(mPrefsFragment.getLedOnMs());
         mLedSettings.setLedOffMs(mPrefsFragment.getLedOffMs());
@@ -190,6 +187,7 @@ public class LedSettingsActivity extends Activity implements OnClickListener {
         mLedSettings.setSoundOverride(mPrefsFragment.getSoundOverride());
         mLedSettings.setSoundUri(mPrefsFragment.getSoundUri());
         mLedSettings.setSoundOnlyOnce(mPrefsFragment.getSoundOnlyOnce());
+        mLedSettings.setSoundOnlyOnceTimeout(mPrefsFragment.getSoundOnlyOnceTimeout());
         mLedSettings.setInsistent(mPrefsFragment.getInsistent());
         mLedSettings.setVibrateOverride(mPrefsFragment.getVibrateOverride());
         mLedSettings.setVibratePatternFromString(mPrefsFragment.getVibratePatternAsString());
@@ -199,12 +197,7 @@ public class LedSettingsActivity extends Activity implements OnClickListener {
         mLedSettings.setQhIgnore(mPrefsFragment.getQhIgnore());
         mLedSettings.setQhIgnoreList(mPrefsFragment.getQhIgnoreList());
         mLedSettings.serialize();
-        Intent intent;
-        if (activeScreenChanged) {
-            intent = new Intent(ActiveScreenActivity.ACTION_ACTIVE_SCREEN_CHANGED);
-            sendBroadcast(intent);
-        }
-        intent = new Intent();
+        Intent intent = new Intent();
         intent.putExtra(EXTRA_PACKAGE_NAME, mLedSettings.getPackageName());
         setResult(RESULT_OK, intent);
         finish();

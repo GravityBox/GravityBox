@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
@@ -26,6 +27,9 @@ public class LedSettings {
 
     public static final String PREF_KEY_LOCKED = "uncLocked";
     public static final String PREF_KEY_ACTIVE_SCREEN_ENABLED = "activeScreenEnabled";
+
+    public static final String ACTION_UNC_SETTINGS_CHANGED = "gravitybox.intent.action.UNC_SETTINGS_CHANGED";
+    public static final String EXTRA_UNC_AS_ENABLED = "uncActiveScreenEnabled";
 
     public enum LedMode { ORIGINAL, OVERRIDE, OFF };
 
@@ -39,6 +43,7 @@ public class LedSettings {
     private boolean mSoundOverride;
     private Uri mSoundUri;
     private boolean mSoundOnlyOnce;
+    private long mSoundOnlyOnceTimeout;
     private boolean mInsistent;
     private boolean mVibrateOverride;
     private String mVibratePatternStr;
@@ -98,6 +103,8 @@ public class LedSettings {
                 ls.setSoundUri(Uri.parse(data[1]));
             } else if (data[0].equals("soundOnlyOnce")) {
                 ls.setSoundOnlyOnce(Boolean.valueOf(data[1]));
+            } else if (data[0].equals("soundOnlyOnceTimeout")) {
+                ls.setSoundOnlyOnceTimeout(Long.valueOf(data[1]));
             } else if (data[0].equals("insistent")) {
                 ls.setInsistent(Boolean.valueOf(data[1]));
             } else if (data[0].equals("vibrateOverride")) {
@@ -130,6 +137,7 @@ public class LedSettings {
         mSoundOverride = false;
         mSoundUri = null;
         mSoundOnlyOnce = false;
+        mSoundOnlyOnceTimeout = 0;
         mInsistent = false;
         mVibrateOverride = false;
         mVibratePatternStr = null;
@@ -183,6 +191,8 @@ public class LedSettings {
             SharedPreferences prefs = context.getSharedPreferences(
                     "ledcontrol", Context.MODE_WORLD_READABLE);
             prefs.edit().putBoolean(PREF_KEY_LOCKED, lock).commit();
+            Intent intent = new Intent(ACTION_UNC_SETTINGS_CHANGED);
+            context.sendBroadcast(intent);
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -222,6 +232,10 @@ public class LedSettings {
 
     protected void setSoundOnlyOnce(boolean onlyOnce) {
         mSoundOnlyOnce = onlyOnce;
+    }
+
+    protected void setSoundOnlyOnceTimeout(long timeout) {
+        mSoundOnlyOnceTimeout = timeout;
     }
 
     protected void setInsistent(boolean insistent) {
@@ -310,6 +324,10 @@ public class LedSettings {
         return mSoundOnlyOnce;
     }
 
+    public long getSoundOnlyOnceTimeout() {
+        return mSoundOnlyOnceTimeout;
+    }
+
     public boolean getInsistent() {
         return mInsistent;
     }
@@ -359,6 +377,7 @@ public class LedSettings {
                 dataSet.add("sound:" + mSoundUri.toString());
             }
             dataSet.add("soundOnlyOnce:" + mSoundOnlyOnce);
+            dataSet.add("soundOnlyOnceTimeout:" + mSoundOnlyOnceTimeout);
             dataSet.add("insistent:" + mInsistent);
             dataSet.add("vibrateOverride:" + mVibrateOverride);
             if (mVibratePatternStr != null) {
@@ -374,6 +393,8 @@ public class LedSettings {
             SharedPreferences prefs = mContext.getSharedPreferences(
                     "ledcontrol", Context.MODE_WORLD_READABLE);
             prefs.edit().putStringSet(mPackageName, dataSet).commit();
+            Intent intent = new Intent(ACTION_UNC_SETTINGS_CHANGED);
+            mContext.sendBroadcast(intent);
         } catch (Throwable t) {
             t.printStackTrace();
         }

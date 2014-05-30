@@ -87,6 +87,17 @@
             android:defaultValue="false"
             android:persistent="false" />
 
+        <com.ceco.kitkat.gravitybox.preference.SeekBarPreference
+            android:key="pref_lc_notif_sound_only_once_timeout"
+            android:title="@string/pref_lc_notif_sound_only_once_timeout_title"
+            minimum="0"
+            maximum="60"
+            interval="1"
+            monitorBoxEnabled="true"
+            monitorBoxUnit="m" 
+            android:defaultValue="0"
+            android:dependency="pref_lc_notif_sound_only_once" />
+
         <CheckBoxPreference
             android:key="pref_lc_notif_insistent"
             android:title="@string/pref_lc_notif_insistent_title"

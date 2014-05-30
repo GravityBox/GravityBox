@@ -30,11 +30,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 
 public class ActiveScreenActivity extends Activity {
-
-    public static final String ACTION_ACTIVE_SCREEN_CHANGED = 
-            "gravitybox.intent.action.ACTIVE_SCREEN_CHANGED";
-    public static final String EXTRA_ENABLED = "enabled";
-
     private SharedPreferences mPrefs;
     private Switch mMasterSwitch;
 
@@ -57,8 +52,8 @@ public class ActiveScreenActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mPrefs.edit().putBoolean(LedSettings.PREF_KEY_ACTIVE_SCREEN_ENABLED, isChecked).commit();
-                Intent intent = new Intent(ACTION_ACTIVE_SCREEN_CHANGED);
-                intent.putExtra(EXTRA_ENABLED, isChecked);
+                Intent intent = new Intent(LedSettings.ACTION_UNC_SETTINGS_CHANGED);
+                intent.putExtra(LedSettings.EXTRA_UNC_AS_ENABLED, isChecked);
                 sendBroadcast(intent);
             }
         });
