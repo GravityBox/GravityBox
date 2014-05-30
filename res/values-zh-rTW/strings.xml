@@ -1526,4 +1526,7 @@
     <!-- GB Actions: Toggle sync -->
     <string name="shortcut_sync">開關同步</string>
 
+	<!-- UNC: timeout for Alert only once -->
+	<string name="pref_lc_notif_sound_only_once_timeout_title">在設定時限內</string>
+
 </resources>
