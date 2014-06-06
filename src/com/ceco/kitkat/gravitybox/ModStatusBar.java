@@ -130,6 +130,8 @@ public class ModStatusBar {
     private static boolean mBrightnessControl;
     private static float mScreenWidth;
     private static int mMinBrightness;
+    private static int mPeekHeight;
+    private static boolean mJustPeeked;
     private static int mLinger;
     private static int mInitialTouchX;
     private static int mInitialTouchY;
@@ -1023,41 +1025,39 @@ public class ModStatusBar {
                     XposedHelpers.getIntField(mPhoneStatusBar, "mNotificationHeaderHeight");
     
             if (action == MotionEvent.ACTION_DOWN) {
-                mLinger = 0;
-                mInitialTouchX = x;
-                mInitialTouchY = y;
-                mVelocityTracker = VelocityTracker.obtain();
-                handler.removeCallbacks(mLongPressBrightnessChange);
-                if ((y) < notificationHeaderHeight) {
+                if (y < notificationHeaderHeight) {
+                    mLinger = 0;
+                    mInitialTouchX = x;
+                    mInitialTouchY = y;
+                    mJustPeeked = true;
+                    handler.removeCallbacks(mLongPressBrightnessChange);
                     handler.postDelayed(mLongPressBrightnessChange,
                             BRIGHTNESS_CONTROL_LONG_PRESS_TIMEOUT);
                 }
             } else if (action == MotionEvent.ACTION_MOVE) {
-                if ((y) < notificationHeaderHeight) {
-                    mVelocityTracker.computeCurrentVelocity(1000);
-                    float yVel = mVelocityTracker.getYVelocity();
-                    yVel = Math.abs(yVel);
-                    if (yVel < 50.0f) {
-                        if (mLinger > BRIGHTNESS_CONTROL_LINGER_THRESHOLD) {
-                            adjustBrightness(x);
-                        } else {
+                if (y < notificationHeaderHeight && mJustPeeked) {
+                    if (mLinger > BRIGHTNESS_CONTROL_LINGER_THRESHOLD) {
+                        adjustBrightness(x);
+                } else {
+                    final int xDiff = Math.abs(x - mInitialTouchX);
+                    final int yDiff = Math.abs(y - mInitialTouchY);
+                    final int touchSlop = ViewConfiguration.get(mContext).getScaledTouchSlop();
+                    if (xDiff > yDiff) {
                             mLinger++;
                         }
-                    }
-                    int touchSlop = ViewConfiguration.get(mContext).getScaledTouchSlop();
-                    if (Math.abs(x - mInitialTouchX) > touchSlop ||
-                            Math.abs(y - mInitialTouchY) > touchSlop) {
-                        handler.removeCallbacks(mLongPressBrightnessChange);
+                    if (xDiff > touchSlop || yDiff > touchSlop) {
+                            handler.removeCallbacks(mLongPressBrightnessChange);
+                        }
                     }
                 } else {
+                    if (y > mPeekHeight) {
+		        mJustPeeked = false;
+		    }
                     handler.removeCallbacks(mLongPressBrightnessChange);
                 }
             } else if (action == MotionEvent.ACTION_UP
                     || action == MotionEvent.ACTION_CANCEL) {
-                mVelocityTracker.recycle();
-                mVelocityTracker = null;
                 handler.removeCallbacks(mLongPressBrightnessChange);
-                mLinger = 0;
             }
         } catch (Throwable t) {
             XposedBridge.log(t);
