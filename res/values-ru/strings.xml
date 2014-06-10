@@ -1543,4 +1543,14 @@
     <!-- UNC: timeout for Alert only once -->
     <string name="pref_lc_notif_sound_only_once_timeout_title">Через указанное время</string>
 
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">Показывать дату</string>
+
+    <!-- Delete -->
+    <string name="delete">Удалить</string>
+
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">Откл кнопку экстр.вызова</string>
+    <string name="pref_lockscreen_disable_ecb_summary">ИСПОЛЬЗОУЙТЕ НА СВОЙ СТРАХ И РИСК!!!!</string>
+
 </resources>
