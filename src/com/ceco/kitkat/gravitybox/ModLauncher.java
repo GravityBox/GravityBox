@@ -17,9 +17,7 @@ package com.ceco.kitkat.gravitybox;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -28,6 +26,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -35,34 +34,26 @@ import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.XposedHelpers.ClassNotFoundError;
 
 public class ModLauncher {
+	private static final List<String> CLASS_DEVICE_PROFILE; 
     public static final List<String> PACKAGE_NAMES = new ArrayList<String>(Arrays.asList(
-            "com.android.launcher3", "com.google.android.googlequicksearchbox"));
+            "com.android.launcher3", "com.google.android.googlequicksearchbox", "com.cyanogenmod.trebuchet"));
     private static final String TAG = "GB:ModLauncher";
-
-    private static final Map<String, DynamicGrid> CLASS_DYNAMIC_GRID; 
+    
     private static final String CLASS_LAUNCHER = "com.android.launcher3.Launcher";
     private static final String CLASS_APP_WIDGET_HOST_VIEW = "android.appwidget.AppWidgetHostView";
     private static final boolean DEBUG = false;
 
     public static final String ACTION_SHOW_APP_DRAWER = "gravitybox.launcher.intent.action.SHOW_APP_DRAWER";
 
-    private static final class DynamicGrid {
-        Class<?> clazz;
-        String fProfile;
-        String fNumRows;
-        String fNumCols;
-        public DynamicGrid(String fp, String fnr, String fnc) {
-            fProfile = fp;
-            fNumRows = fnr;
-            fNumCols = fnc;
-        }
-    }
+    // http://androidxref.com/4.4.2_r1/xref/packages/apps/Launcher3/src/com/android/launcher3/DynamicGrid.java#99
+    // DeviceProfile(String n, float w, float h, float r, float c, float is, float its, float hs, float his)
+    public static int NUMROWS = 3;
+    public static int NUMCOLUMNS = 4;
 
     static {
-        CLASS_DYNAMIC_GRID = new HashMap<String, DynamicGrid>();
-        CLASS_DYNAMIC_GRID.put("com.android.launcher3.DynamicGrid",
-                new DynamicGrid("mProfile", "numRows", "numColumns"));
-        CLASS_DYNAMIC_GRID.put("nw", new DynamicGrid("Bq", "yx", "yy"));
+    	CLASS_DEVICE_PROFILE = Arrays.asList(
+    			"com.android.launcher3.DeviceProfile",
+    			"mz");
     }
 
     private static void log(String message) {
@@ -83,37 +74,39 @@ public class ModLauncher {
     };
 
     public static void init(final XSharedPreferences prefs, final ClassLoader classLoader) {
-        for (String className : CLASS_DYNAMIC_GRID.keySet()) {
-            final DynamicGrid dynamicGrid;
-            try {
-                Class<?> cls = XposedHelpers.findClass(className, classLoader);
-                if (DEBUG) log("Found DynamicGrid class as: " + className);
-                dynamicGrid = CLASS_DYNAMIC_GRID.get(className);
-                dynamicGrid.clazz = cls;
-            } catch (Throwable t) { continue; }
+    	Class<?> cls = null;
+    	for (String className : CLASS_DEVICE_PROFILE) {
 
-            try {
-                XposedBridge.hookAllConstructors(dynamicGrid.clazz, new XC_MethodHook() { 
-                    @Override
-                    protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                        prefs.reload();
-                        Object profile = XposedHelpers.getObjectField(param.thisObject, dynamicGrid.fProfile);
-                        if (profile != null) {
-                            final int rows = Integer.valueOf(prefs.getString(
-                                    GravityBoxSettings.PREF_KEY_LAUNCHER_DESKTOP_GRID_ROWS, "0"));
-                            if (rows != 0) {
-                                XposedHelpers.setIntField(profile, dynamicGrid.fNumRows, rows);
-                                if (DEBUG) log("Launcher rows set to: " + rows);
-                            }
-                            final int cols = Integer.valueOf(prefs.getString(
-                                    GravityBoxSettings.PREF_KEY_LAUNCHER_DESKTOP_GRID_COLS, "0"));
-                            if (cols != 0) {
-                                XposedHelpers.setIntField(profile, dynamicGrid.fNumCols, cols);
-                                if (DEBUG) log("Launcher cols set to: " + cols);
-                            }
-                        }
-                    }
-                });
+    		try {
+    			cls = XposedHelpers.findClass(className, classLoader);
+    			if (DEBUG) log("Found DeviceProfile class as: " + className);
+    		} catch (Throwable t) {
+    			continue;
+    		}
+
+    		try {
+    			XposedBridge.hookAllConstructors(cls, new XC_MethodHook() {
+
+    				@Override
+    				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+
+    					// making sure to only hook to the appropriate constructor
+    					if (!(param.args[0] instanceof Context)) return;
+
+    					prefs.reload();
+
+    					final int rows = Integer.valueOf(prefs.getString(GravityBoxSettings.PREF_KEY_LAUNCHER_DESKTOP_GRID_ROWS, "0"));
+    					if (rows != 0) {
+    						param.args[NUMROWS] = rows;
+    						if (DEBUG) log("Launcher rows set to: " + rows);
+    					}
+    					final int cols = Integer.valueOf(prefs.getString(GravityBoxSettings.PREF_KEY_LAUNCHER_DESKTOP_GRID_COLS, "0"));
+    					if (cols != 0) {
+    						param.args[NUMCOLUMNS] = cols;
+    						if (DEBUG) log("Launcher cols set to: " + cols);
+    					}
+    				}
+    			});
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
