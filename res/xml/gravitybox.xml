@@ -715,17 +715,19 @@
                     android:dependency="pref_clock_hide" />
 
                 <ListPreference 
+                    android:key="pref_statusbar_clock_date2"
+                    android:title="@string/pref_statusbar_clock_date_title"
+                    android:entries="@array/clock_date_entries"
+                    android:entryValues="@array/clock_date_values"
+                    android:defaultValue="disabled"
+                    android:dependency="pref_clock_hide" />
+
+                <ListPreference 
                     android:key="pref_statusbar_clock_dow2"
                     android:title="@string/pref_statusbar_clock_dow_title"
                     android:entries="@array/clock_dow_entries"
                     android:entryValues="@array/clock_dow_values"
                     android:defaultValue="0"
-                    android:dependency="pref_clock_hide" />
-
-                <CheckBoxPreference 
-                    android:key="pref_statusbar_clock_date"
-                    android:title="@string/pref_statusbar_clock_date_title"
-                    android:defaultValue="false"
                     android:dependency="pref_clock_hide" />
 
                 <com.ceco.gm2.gravitybox.preference.SeekBarPreference

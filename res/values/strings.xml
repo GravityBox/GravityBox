@@ -1564,4 +1564,11 @@
     <string name="pref_pie_control_center_trigger_title">Center trigger</string>
     <string name="pref_pie_control_center_trigger_summary">Triggers pie only when swiping from center of the screen edge</string>
 
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Disabled</string>
+    <string name="clock_date_format_1">Date format: dd/MM</string>
+    <string name="clock_date_format_2">Date format: MM/dd</string>
+    <string name="clock_date_format_3">Date format: d/M</string>
+    <string name="clock_date_format_4">Date format: M/d</string>
+
 </resources>

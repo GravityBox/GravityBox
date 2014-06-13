@@ -45,24 +45,24 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
     private int mDefaultClockColor;
     private int mOriginalPaddingLeft;
     private boolean mAmPmHide;
+    private String mClockShowDate = "disabled";
     private int mClockShowDow = GravityBoxSettings.DOW_DISABLED;
     private boolean mClockHidden;
     private float mDowSize;
     private float mAmPmSize;
-    private boolean mShowDate;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
     }
 
     public StatusbarClock(XSharedPreferences prefs) {
+        mClockShowDate = prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DATE, null);
         mClockShowDow = Integer.valueOf(
                 prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DOW, "0"));
         mAmPmHide = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_AMPM_HIDE, false);
         mClockHidden = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_HIDE, false);
         mDowSize = prefs.getInt(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DOW_SIZE, 70) / 100f;
         mAmPmSize = prefs.getInt(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_AMPM_SIZE, 70) / 100f;
-        mShowDate = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DATE, false);
     }
 
     public TextView getClock() {
@@ -161,10 +161,8 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
                     }
                     CharSequence date = "";
                     // apply date to statusbar clock, not the notification panel clock
-                    if (mShowDate && sbClock != null) {
-                        SimpleDateFormat df = (SimpleDateFormat) SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT);
-                        String pattern = df.toLocalizedPattern().replaceAll(".?[Yy].?", "");
-                        date = new SimpleDateFormat(pattern, Locale.getDefault()).format(calendar.getTime()) + " ";
+                    if (!mClockShowDate.equals("disabled") && sbClock != null) {
+                        date = new SimpleDateFormat(mClockShowDate, Locale.getDefault()).format(calendar.getTime()) + " ";
                     }
                     clockText = date + clockText;
                     CharSequence dow = "";
@@ -246,7 +244,7 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
                 updateExpandedClock();
             }
             if (intent.hasExtra(GravityBoxSettings.EXTRA_CLOCK_DATE)) {
-                mShowDate = intent.getBooleanExtra(GravityBoxSettings.EXTRA_CLOCK_DATE, false);
+                mClockShowDate = intent.getStringExtra(GravityBoxSettings.EXTRA_CLOCK_DATE);
                 updateClock();
             }
         }

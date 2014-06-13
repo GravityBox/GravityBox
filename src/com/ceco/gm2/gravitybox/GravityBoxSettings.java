@@ -183,7 +183,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_STATUSBAR_SIGNAL_COLOR_MODE = "pref_statusbar_signal_color_mode";
     public static final String PREF_KEY_STATUSBAR_CENTER_CLOCK = "pref_statusbar_center_clock";
     public static final String PREF_KEY_STATUSBAR_CLOCK_DOW = "pref_statusbar_clock_dow2";
-    public static final String PREF_KEY_STATUSBAR_CLOCK_DATE = "pref_statusbar_clock_date";
+    public static final String PREF_KEY_STATUSBAR_CLOCK_DATE = "pref_statusbar_clock_date2";
     public static final int DOW_DISABLED = 0;
     public static final int DOW_STANDARD = 1;
     public static final int DOW_LOWERCASE = 2;
@@ -1079,6 +1079,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
         private MultiSelectListPreference mPrefCallVibrations;
         private Preference mPrefQsTileOrder;
         private ListPreference mPrefQsTileLabelStyle;
+        private ListPreference mPrefSbClockDate;
         private ListPreference mPrefSbClockDow;
         private SeekBarPreference mPrefSbClockDowSize;
         private ListPreference mPrefSbLockPolicy;
@@ -1374,6 +1375,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
             mPrefQsTileOrder = (Preference) findPreference(PREF_KEY_QUICK_SETTINGS_TILE_ORDER);
             mPrefQsTileLabelStyle = (ListPreference) findPreference(PREF_KEY_QUICK_SETTINGS_TILE_LABEL_STYLE);
 
+            mPrefSbClockDate = (ListPreference) findPreference(PREF_KEY_STATUSBAR_CLOCK_DATE);
             mPrefSbClockDow = (ListPreference) findPreference(PREF_KEY_STATUSBAR_CLOCK_DOW);
             mPrefSbClockDowSize = (SeekBarPreference) findPreference(PREF_KEY_STATUSBAR_CLOCK_DOW_SIZE);
             mPrefSbLockPolicy = (ListPreference) findPreference(PREF_KEY_STATUSBAR_LOCK_POLICY);
@@ -2030,6 +2032,10 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                 mPrefBatteryPercent.setEnabled(!mtkBatteryPercent);
             }
 
+            if (key == null || key.equals(PREF_KEY_STATUSBAR_CLOCK_DATE)) {
+                mPrefSbClockDate.setSummary(mPrefSbClockDate.getEntry());
+            }
+
             if (key == null || key.equals(PREF_KEY_STATUSBAR_CLOCK_DOW)) {
                 mPrefSbClockDow.setSummary(mPrefSbClockDow.getEntry());
                 mPrefSbClockDowSize.setEnabled(Integer.valueOf(
@@ -2387,7 +2393,7 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                         prefs.getInt(PREF_KEY_STATUSBAR_CLOCK_DOW_SIZE, 70));
             } else if (key.equals(PREF_KEY_STATUSBAR_CLOCK_DATE)) {
                 intent.setAction(ACTION_PREF_CLOCK_CHANGED);
-                intent.putExtra(EXTRA_CLOCK_DATE, prefs.getBoolean(PREF_KEY_STATUSBAR_CLOCK_DATE, false));
+                intent.putExtra(EXTRA_CLOCK_DATE, prefs.getString(PREF_KEY_STATUSBAR_CLOCK_DATE, null));
             } else if (key.equals(PREF_KEY_STATUSBAR_CLOCK_AMPM_HIDE)) {
                 intent.setAction(ACTION_PREF_CLOCK_CHANGED);
                 intent.putExtra(EXTRA_AMPM_HIDE, prefs.getBoolean(

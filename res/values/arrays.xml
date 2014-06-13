@@ -636,6 +636,22 @@
         <item>periodic</item>
     </string-array>
 
+    <string-array name="clock_date_entries" translatable="false">
+        <item>@string/clock_date_disabled</item>
+        <item>@string/clock_date_format_1</item>
+        <item>@string/clock_date_format_2</item>
+        <item>@string/clock_date_format_3</item>
+        <item>@string/clock_date_format_4</item>
+    </string-array>
+
+    <string-array name="clock_date_values" translatable="false">
+        <item>disabled</item>
+        <item>dd/MM</item>
+        <item>MM/dd</item>
+        <item>d/M</item>
+        <item>M/d</item>
+    </string-array>
+
     <string-array name="clock_dow_entries" translatable="false">
         <item>@string/clock_dow_disabled</item>
         <item>@string/clock_dow_standard</item>
