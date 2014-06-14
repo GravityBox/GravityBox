@@ -1537,4 +1537,37 @@
     <string name="pref_lockscreen_disable_ecb_title">停用緊急電話按鈕</string>
     <string name="pref_lockscreen_disable_ecb_summary">請小心考慮一切風險！</string>
 
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">取消更改自訂圖示</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">指南針</string>
+    <string name="quick_settings_compass_off">指南針 關閉</string>
+    <string name="quick_settings_compass_init">初始化中&#8230;</string>
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">北</string>
+    <string name="cd_north_east">東北</string>
+    <string name="cd_east">東</string>
+    <string name="cd_south_east">東南</string>
+    <string name="cd_south">南</string>
+    <string name="cd_south_west">西南</string>
+    <string name="cd_west">西</string>
+    <string name="cd_north_west">西北</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">鏡像按鍵</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">僅在中央觸發</string>
+    <string name="pref_pie_control_center_trigger_summary">只有當從螢幕邊緣中央往內掃才會觸發PIE</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">已停用</string>
+    <string name="clock_date_localized">基於語系來設定日期格式</string>
+    <string name="clock_date_format_1">日期格式：dd/MM</string>
+    <string name="clock_date_format_2">日期格式：MM/dd</string>
+    <string name="clock_date_format_3">日期格式：d MMM</string>
+    <string name="clock_date_format_4">日期格式：MMM d</string>
+
 </resources>
