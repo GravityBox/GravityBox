@@ -1591,7 +1591,7 @@
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
     
-        <!-- Headset plug/unplug actions -->
+    <!-- Headset plug/unplug actions -->
     <string name="pref_cat_headset_actions_title">Kopfhörer Aktion</string>
     <string name="pref_headset_action_plug_title">Kopfhörer verbunden</string>
     <string name="pref_headset_action_unplug_title">Kopfhörer getrennt</string>
@@ -1613,7 +1613,5 @@
     <string name="lc_heads_up_always">Immer</string>
     <string name="lc_heads_up_immersive">Wenn erweiterter Desktop Statusleiste versteckt</string>
     <string name="lc_heads_up_off">Aus</string>
-
-</resources>
 
 </resources>
