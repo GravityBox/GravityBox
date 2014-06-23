@@ -483,14 +483,14 @@
     <string name="expanded_desktop_navbar">Navigationsleiste ausblenden</string>
     <string name="expanded_desktop_immersive_statusbar">Immersive Benachrichtigungsleiste</string>
     <string name="expanded_desktop_immersive_navbar">Immersive Navigationsleiste</string>    
-    <string name="expanded_desktop_both">Semi-Immersiv</string>
+    <string name="expanded_desktop_both">Halb-Immersiv</string>
     <string name="expanded_desktop_immersive">Vollständig immersiv (beide Leisten aus)</string>
     <string name="action_expanded_desktop_title">Erweiterter Desktop</string>
-    <string name="action_expanded_desktop_on">Erweiterter Desktop ist AN</string>
-    <string name="action_expanded_desktop_off">Erweiterter Desktop ist AUS</string>
+    <string name="action_expanded_desktop_on">Erweiterter Desktop ist an</string>
+    <string name="action_expanded_desktop_off">Erweiterter Desktop ist aus</string>
 
     <!-- Power menu screenshot -->
-    <string name="screenshot">Bildschirmfoto</string>
+    <string name="screenshot">Screenshot</string>
 
     <!-- HW Key Action: Show menu -->
     <string name="hwkey_action_menu">Menü anzeigen</string>
@@ -516,7 +516,7 @@
     <string name="pref_navbar_menukey_title">Menü-Taste immer anzeigen</string>
 
     <!-- Screenshot in power menu -->
-    <string name="pref_powermenu_screenshot_title">Bildschirmfoto im Ausschaltmenü</string>
+    <string name="pref_powermenu_screenshot_title">Screenshot im Ausschaltmenü</string>
 
     <!-- Unlock ring settings -->
     <string name="pref_cat_lockscreen_ring_settings_title">Entsperrringanwendungen</string>
@@ -833,8 +833,8 @@
     <string name="battery_percent_text_size_larger">Größer</string>
     <string name="battery_percent_text_size_normal">Normal</string>
     <string name="battery_percent_text_size_smaller">Kleiner</string>
-    <string name="battery_percent_text_size_even_smaller">Noch Kleiner</string>
-    <string name="battery_percent_text_size_smallest">Am Kleinsten</string>
+    <string name="battery_percent_text_size_even_smaller">Noch kleiner</string>
+    <string name="battery_percent_text_size_smallest">Am kleinsten</string>
     <string name="battery_percent_text_style_title">Stil der Prozentanzeige</string>
     <string name="battery_percent_text_style_default">Standard</string>
     <string name="battery_percent_text_style_numbers_only">Nur Nummern (kein Prozentzeichen)</string>
@@ -1069,7 +1069,7 @@
     <string name="overflow_menu_disabled">Aus</string>
 
     <!-- Key Action: Take screenshot -->
-    <string name="hwkey_action_screenshot">Bildschirmfoto aufnehmen</string>
+    <string name="hwkey_action_screenshot">Screenshot aufnehmen</string>
 
     <!-- Key Action: Show volume panel -->
     <string name="hwkey_action_volume_panel">Lautstärkeregler anzeigen</string>
@@ -1255,7 +1255,7 @@
     <string name="scr_size_sd">SD (640x360px)</string>
     <string name="scr_size_hd">HD (1280x720px)</string>
     <string name="scr_size_full_hd">Full HD (1920x1080px)</string>
-    <string name="pref_screenrecord_bitrate_title">Video bitrate</string>
+    <string name="pref_screenrecord_bitrate_title">Video Bitrate</string>
     <string name="pref_screenrecord_timelimit_title">Zeitbegrenzung</string>
     <string name="pref_screenrecord_rotate_title">Bild drehen</string>
     <string name="pref_screenrecord_rotate_summary">Dreht das Bild um 90°</string>
@@ -1534,7 +1534,7 @@
     <string name="pref_smart_radio_mda_ignore_summary">Wechselt zum normalen Modus, sogar wenn mobile Daten momentan nicht verfügbar sind.</string>
 
     <!-- GB Actions: Toggle sync -->
-    <string name="shortcut_sync">Synchronisation an/aus</string>
+    <string name="shortcut_sync">Synchronisieren an/aus</string>
 
     <!-- UNC: timeout for Alert only once -->
     <string name="pref_lc_notif_sound_only_once_timeout_title">Innerhalb des Zeitintervalls</string>
@@ -1601,7 +1601,19 @@
 
     <!-- Quiet Hours: interactive mode -->
     <string name="pref_lc_qh_interactive_title">Interaktiver Modus</string>
-    <string name="pref_lc_qh_interactive_summary">Halte Benachrichtigungen immer still während Benutzerinteraktion during user interaction 
-        (respektiert App spezifische Ignorieren Regel)</string>
+    <string name="pref_lc_qh_interactive_summary">Halte Benachrichtigungen immer still während Benutzerinteraktion 
+        (respektiert App-spezifische Ignorieren Regel)</string>
+        
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">Screenshot löschen an</string>
+
+    <!-- UNC: heads up mode -->
+    <string name="pref_lc_headsup_mode_title">Heads-Up Modus</string>
+    <string name="lc_heads_up_default">Standart</string>
+    <string name="lc_heads_up_always">Immer</string>
+    <string name="lc_heads_up_immersive">Wenn erweiterter Desktop Statusleiste versteckt</string>
+    <string name="lc_heads_up_off">Aus</string>
+
+</resources>
 
 </resources>
