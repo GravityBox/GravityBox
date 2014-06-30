@@ -84,6 +84,11 @@
     <string name="quick_settings_smart_radio_off">Умн.радио выкл</string>
     <string name="quick_settings_lock_screen_on">Экр.блокировки вкл</string>
     <string name="quick_settings_lock_screen_off">Экр.блокировки выкл</string>
+    <string name="quick_settings_location_on">Геоданные</string>
+    <string name="quick_settings_location_off">Геоданные выкл</string>
+    <string name="quick_settings_quiet_hours_off">Тихий час выкл</string>
+    <string name="quick_settings_quiet_hours_on">Тихий час вкл</string>
+    <string name="quick_settings_quiet_hours_auto">Тихий час авто</string>
     
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Плитки быстрых настроек</string>
@@ -93,8 +98,9 @@
     <string name="qs_tile_battery">Состояние батареи</string>
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
-    <string name="qs_tile_gps">GPS</string>
-    <string name="qs_tile_gps_alt">GPS (стиль CM)</string>
+    <string name="qs_tile_gps">Геоданные</string>
+    <string name="qs_tile_gps_slimkat">Геоданные (стиль SlimKat)</string>
+    <string name="qs_tile_gps_alt">Геоданные (стиль CM)</string>
     <string name="qs_tile_mobile_data">Моб. данные</string>
     <string name="qs_tile_network_mode">Режим сети</string>
     <string name="qs_tile_data_usage">Мобильные данные</string>
@@ -667,7 +673,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Запуск приложений</string>
-    <string name="pref_cat_app_launcher_summary">Диалог, позволяющий выбрать до 8 приложений, которые можно назначить для действий физических кнопок или использовать в качестве дополнительной кнопки на панели навигации</string>
+    <string name="pref_cat_app_launcher_summary">Диалог, позволяющий выбрать до 12 приложений, которые можно назначить для действий физических кнопок или использовать в качестве дополнительной кнопки на панели навигации</string>
     <string name="pref_app_launcher_slot_title">Слот приложения %d</string>
     <string name="app_launcher_no_apps">Приложения не выбраны. Используйте меню GravityBox / Запуск приложений для выбора приложений.</string>
 
@@ -884,9 +890,9 @@
     <!-- Signal cluster settings -->
     <string name="pref_cat_signal_cluster_title">Настройки сигнала</string>
     <string name="pref_signal_cluster_connection_state_title">Вкл состояние соединения</string>
-    <string name="pref_signal_cluster_connection_state_summary">Отображение состояния частичного/полного соединения в значках мобильного сигнала и  WiFi (необходима перезагрузка)</string>
+    <string name="pref_signal_cluster_connection_state_summary">Отображение состояния частичного/полного соединения в значках мобильного сигнала и Wi-Fi (необходима перезагрузка)</string>
     <string name="pref_signal_cluster_data_activity_title">Вкл активность данных</string>
-    <string name="pref_signal_cluster_data_activity_summary">Отображение активности данных в значках мобильного сигнала и  WiFi (необходима перезагрузка)</string>
+    <string name="pref_signal_cluster_data_activity_summary">Отображение активности данных в значках мобильного сигнала и Wi-Fi (необходима перезагрузка)</string>
     
     <!-- Network mode tile: CDMA support -->
     <string name="pref_network_mode_tile_cdma_title">Режимы сети CDMA</string>
@@ -916,13 +922,13 @@
     <string name="shortcut_mobile_data">Включение моб. данных</string>
 
     <!-- Toggle WiFi shortcut -->
-    <string name="shortcut_wifi">Включение WiFi</string>
+    <string name="shortcut_wifi">Включение Wi-Fi</string>
 
     <!-- Toggle Bluetooth shortcut -->
     <string name="shortcut_bluetooth">Включение Bluetooth</string>
 
     <!-- Toggle WiFi AP shortcut -->
-    <string name="shortcut_wifi_ap">Включение ТД WiFi</string>
+    <string name="shortcut_wifi_ap">Включение ТД Wi-Fi</string>
 
     <!-- Location mode shortcut -->
     <string name="shortcut_location_mode">Настройка местоположения</string>
@@ -1019,14 +1025,14 @@
     <!-- Smart Radio -->
     <string name="smart_radio_action_undefined">Не определено</string>
     <string name="pref_cat_smart_radio_title">Умное радио</string>
-    <string name="pref_smart_radio_enable_summary">Автоматическое переключение радиомодуля на установленный пользователем экономный или обычный режим, 
-        в зависимости от передачи мобильных данных и состояния соединения WiFi (необходима перезагрузка)</string>
+    <string name="pref_smart_radio_enable_summary">Автоматическое переключение радиомодуля на установленный пользователем экономный или обычный режим 
+        в зависимости от передачи мобильных данных и состояния соединения Wi-Fi (необходима перезагрузка)</string>
     <string name="pref_smart_radio_normal_mode_title">Обычный сетевой режим</string>
     <string name="pref_smart_radio_power_saving_mode_title">Экономный сетевой режим</string>
     <string name="pref_smart_radio_screen_off_title">При отключении экрана</string>
-    <string name="pref_smart_radio_screen_off_summary">Активация экономного режима при отключении экрана, независимо от того, включена или выключена мобильная передача данных</string>
+    <string name="pref_smart_radio_screen_off_summary">Активация экономного режима при отключении экрана независимо от того, включена или выключена мобильная передача данных</string>
     <string name="pref_smart_radio_ignore_locked_title">Игнорир. при блокировке</string>
-    <string name="pref_smart_radio_ignore_locked_summary">При включении экрана экономный режим не активируется, пока экран не будет разблокирован</string>
+    <string name="pref_smart_radio_ignore_locked_summary">При включении экрана экономный режим не деактивируется, пока экран не будет разблокирован</string>
     <string name="pref_smart_radio_mode_change_delay_title">Задержка смены режима</string>
     <string name="pref_smart_radio_mode_change_delay_summary">Задержка при смене сетевого режима на определённое число секунд</string>
 
@@ -1081,9 +1087,9 @@
     <string name="pref_lockscreen_bg_blur_intensity_title">Интенсивность размытия</string>
 
     <!-- Smart radio: independent delay for screen off power save event -->
-    <string name="pref_smart_radio_screen_off_delay_title">Задержка экономн.режима</string>
+    <string name="pref_smart_radio_screen_off_delay_title">Задержка экономн. режима</string>
     <string name="pref_smart_radio_screen_off_delay_summary">Задержка переключения в экономный режим при отключении экрана. 
-        Изменяет задержку смены режима по умолчанию, ели величина не равна нулю.</string>
+        Изменяет задержку смены режима по умолчанию, если не равна нулю.</string>
 
     <!-- Backup and restore settings -->
     <string name="pref_settings_backup_title">Резервное копирование</string>
@@ -1220,6 +1226,8 @@
     <string name="animation_scale5">Масштаб 2x</string>
     <string name="animation_scale6">Масштаб 5x</string>
     <string name="animation_scale7">Масштаб 10x</string>
+    <string name="animation_scale8">Масштаб .75x</string>
+    <string name="animation_scale9">Масштаб 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Стиль ярлыков плиток</string>
@@ -1405,7 +1413,7 @@
     <string name="pref_navbar_camera_key_disable_summary">Отключение отображения значка камеры на экране блокировки</string>
 
     <!-- Notification control: default settings -->
-    <string name="lc_activity_menu_default_settings">Настройки по умолчанию</string>
+    <string name="lc_activity_menu_default_settings">Умолчания</string>
     <string name="pref_lc_default_settings_summary">Если включено, настройки по умолчанию будут применены ко всем приложениям, не имеющим заданных активных параметров</string>
     <string name="lc_defaults_apply">Применение умолчаний</string>
     <string name="lc_settings_menu_reset">Сброс к умолчаниям</string>
@@ -1414,9 +1422,9 @@
     <string name="lc_active_screen">Активный экран</string>
     <string name="lc_active_screen_info">Функция активного экрана автоматически включает экран при 
         получении каждого нового уведомления. Функция не работает, если экран закрыт 
-        (например, когда устройство находится в кармане). Опционально, можно настроить раскрытие панели уведомлений, 
-        в зависимости от текущей политики безопасности экрана блокировки и настроек пользователя. Имейте в виду, что для работы
-        активного экрана требуется, чтобы экран блокировки был включен.\nФункция активируется переключателем ниже. После включения, 
+        (например, когда устройство находится в кармане). Опционально, можно настроить раскрытие панели уведомлений 
+        (в зависимости от текущей политики безопасности экрана блокировки и настроек пользователя). Имейте в виду, что для работы
+        активного экрана требуется, чтобы экран блокировки был включен.\nФункция активируется переключателем ниже. После включения 
         возможно выполнить дополнительную конфигурацию по приложениям</string>
     <string name="lc_active_screen_switch_title">Включение активного экрана</string>
     <string name="lc_expand_notification_panel_title">Раскрытие уведомлений</string>
@@ -1430,7 +1438,7 @@
         индикации для всех уведомлений, поступающих в определённый временной период</string>
     <string name="pref_lc_qh_start_title">Время начала</string>
     <string name="pref_lc_qh_end_title">Время конца</string>
-    <string name="pref_lc_qh_mute_led_title">Откл свет.индикацию</string>
+    <string name="pref_lc_qh_mute_led_title">Откл световую индикацию</string>
 
     <!-- Notification control: LED mode -->
     <string name="pref_lc_led_mode_title">Режим индикатора</string>
@@ -1439,7 +1447,7 @@
     <string name="lc_led_mode_off">Выкл (без индикации)</string>
 
     <!-- Notification control: Quiet hours statusbar icon -->
-    <string name="pref_lc_qh_statusbar_icon_title">Значок в стр.состояния</string>
+    <string name="pref_lc_qh_statusbar_icon_title">Значок в строке состояния</string>
     <string name="pref_lc_qh_statusbar_icon_summary">Отображение во время тихого часа значка в строке состояния</string>
 
     <!-- Battey percent text: charging color -->
@@ -1455,5 +1463,183 @@
 
     <!-- Force English locale -->
     <string name="pref_force_english_locale_title">Английский принудительно</string>
+
+    <!-- VolumePanel transparency -->
+    <string name="pref_volume_panel_transparency_title">Прозрачность панели громкости</string>
+
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Доп. текст для оператора</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">Игноририровать тихий час</string>
+    <string name="pref_lc_qh_ignore_list_title">По ключевым словам</string>
+    <string name="pref_lc_qh_ignore_list_summary">Список разделённых запятыми ключевых слов для игнорирования 
+        тихого часа. Оставьте пустым для сохранения всех уведомлений.</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">Включение тихого часа</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">Вкл индикатор H+</string>
+    <string name="pref_signal_cluster_hplus_summary">Необходима перезагрузка</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">Стиль индикатора LTE</string>
+    <string name="sc_lte_style_default">Системный по умолчанию</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Включение режима полёта</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Видимость значка Bluetooth</string>
+    <string name="sb_bt_default">При включенном BT (по умолчанию)</string>
+    <string name="sb_bt_connected">При сопряжённом BT</string>
+    <string name="sb_bt_hidden">Скрыт</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Нарастающая громкость</string>
+    <string name="increasing_ring_enable">Включить</string>
+    <string name="increasing_ring_min_volume_title">Начальная громкость</string>
+    <string name="increasing_ring_volume_notice">Примечание:\nесли значение начальной громкости превышает громкость звонка, мелодия будет воспроизводиться на уровне громкости звонка.</string>
+    <string name="increasing_ring_interval_title">Интервал нарастания</string>
+    <string name="increasing_ring_interval_eachring">С каждым звонком</string>
+    <string name="increasing_ring_interval_half_second">0.5 с</string>
+    <string name="increasing_ring_interval_1second">1 с</string>
+    <string name="increasing_ring_interval_2seconds">2 с</string>
+    <string name="increasing_ring_interval_3seconds">3 с</string>
+    <string name="increasing_ring_interval_5seconds">5 с</string>
+    <string name="increasing_ring_interval_10seconds">10 с</string>
+
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Поиск в приложении</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Слева направо принудительно</string>
+    <string name="pref_force_ltr_direction_summary">Принудительная установка написания слева направо для языков с письмом справа налево (необходима перезагрузка)</string>
+
+   <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">Непрозрачная при использовании</string>
+    <string name="pref_volume_panel_opaque_summary">Отключение прозрачности при использовании панели громкости</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">Установка режима звонка</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">Только моб.данные</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">Круг из точек</string>
+    <string name="battery_style_circle_dashed_percent">Круг из точек с процентами</string>
+
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">Спасибо за Вашу поддержку. Премиум-функции будут разблокированы после перезапуска GravityBox.
+        Убедитесь, что GravityBox Unlocker установлен и работает более 20 минут.</string>
+    <string name="pref_about_get_unlocker_title">Получить ключ разблокировки</string>
+    <string name="pref_about_get_unlocker_summary">Нет счёта в PayPal? Просто нажмите здесь для получения ключа разблокировки премиум-функций GravityBox из Play Store.</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">Альтернативный значок</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">Сдвиг для быстр. настроек</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">Игнор.доступность моб.данных</string>
+    <string name="pref_smart_radio_mda_ignore_summary">Переключение в обычный режим, даже если мобильные данные в настоящий момент недоступны</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">Включение синхронизации</string>
+
+    <!-- UNC: timeout for Alert only once -->
+    <string name="pref_lc_notif_sound_only_once_timeout_title">Через указанное время</string>
+
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">Показывать дату</string>
+
+    <!-- Delete -->
+    <string name="delete">Удалить</string>
+
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">Откл кнопку экстр.вызова</string>
+    <string name="pref_lockscreen_disable_ecb_summary">ИСПОЛЬЗУЙТЕ НА СВОЙ СТРАХ И РИСК!!!!</string>
+
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">Отмена выбора значка приложением</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">Компас</string>
+    <string name="quick_settings_compass_off">Компас выкл</string>
+    <string name="quick_settings_compass_init">Инициализация&#8230;</string>
+    <string name="quick_settings_compass_value" translatable="false">%1$.0f\u00b0 %2$s</string>
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">С</string>
+    <string name="cd_north_east">СВ</string>
+    <string name="cd_east">В</string>
+    <string name="cd_south_east">ЮВ</string>
+    <string name="cd_south">Ю</string>
+    <string name="cd_south_west">ЮЗ</string>
+    <string name="cd_west">З</string>
+    <string name="cd_north_west">СЗ</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">Зеркальные кнопки</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">Центровка триггера</string>
+    <string name="pref_pie_control_center_trigger_summary">Вызов веерного меню только при при вытягивании из центра края экрана</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Отключено</string>
+    <string name="clock_date_localized">Формат локализации</string>
+    <string name="clock_date_format_1">Формат даты: дд/ММ</string>
+    <string name="clock_date_format_2">Формат даты: ММ/дд</string>
+    <string name="clock_date_format_3">Формат даты: д МММ</string>
+    <string name="clock_date_format_4">Формат даты: МММ д</string>
+    <string name="clock_date_format_5">Формат даты: д</string>
+
+    <!-- Battery tile settings -->
+    <string name="pref_cat_qs_battery_tile_settings_title">Плитка батареи</string>
+    <string name="pref_qs_battery_extended_title">Расширенная плитка</string>
+    <string name="pref_qs_battery_extended_summary">Необходима перезагрузка</string>
+    <string name="pref_qs_battery_temp_unit_title">Единицы температуры</string>
+    <string name="celsius">Цельсий</string>
+    <string name="fahrenheit">Фаренгейт</string>
+
+    <!-- Headset plug/unplug actions -->
+    <string name="pref_cat_headset_actions_title">Гарнитура</string>
+    <string name="pref_headset_action_plug_title">Подключение гарнитуры</string>
+    <string name="pref_headset_action_unplug_title">Отключение гарнитуры</string>
+
+    <!-- Quiet Hours: mute vibrations -->
+    <string name="pref_lc_qh_mute_vibe_title">Откл вибрации</string>
+
+    <!-- Quiet Hours: interactive mode -->
+    <string name="pref_lc_qh_interactive_title">Интерактивный режим</string>
+    <string name="pref_lc_qh_interactive_summary">Тихий час всегда применяется к уведомлениям во время действий пользователя 
+        (с соблюдением настроек игнорирования по приложениям)</string>
+
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">Вкл удаление снимка экрана</string>
+
+    <!-- UNC: heads up mode -->
+    <string name="pref_lc_headsup_mode_title">Режим Всплытие (Heads up)</string>
+    <string name="lc_heads_up_default">По умолчанию</string>
+    <string name="lc_heads_up_always">Всегда</string>
+    <string name="lc_heads_up_immersive">При погружении без стр.состояния</string>
+    <string name="lc_heads_up_off">Выкл</string>
+
+    <!-- Statusbar: notification heads up category -->
+    <string name="pref_cat_notif_heads_up_title">Уведомления режима Всплытие</string>
+    <string name="pref_heads_up_master_switch_summary">Активация стандартной функции Всплытие (Heads up) для AOSP. 
+        Если активировано, станут доступны дополнительные опции для приложений в управлении оповещениями. (Необходима перезагрузка)</string>
+    <string name="pref_heads_up_one_finger_title">Раскрытие пальцем</string>
+    <string name="pref_heads_up_timeout_title">Задержка</string>
+    <string name="pref_heads_up_timeout_summary">Время отображения окна уведомления. 0 = постоянно.</string>
 
 </resources>

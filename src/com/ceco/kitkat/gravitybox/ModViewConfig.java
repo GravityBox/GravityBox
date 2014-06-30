@@ -15,7 +15,9 @@
 
 package com.ceco.kitkat.gravitybox;
 
+import android.content.res.Configuration;
 import android.view.ViewConfiguration;
+import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -23,6 +25,8 @@ import de.robv.android.xposed.XposedHelpers;
 
 public class ModViewConfig {
     private static final String CLASS_ACTIONBAR_POLICY = "com.android.internal.view.ActionBarPolicy";
+    private static final String CLASS_ACTIVITY_MANAGER_SERVICE = "com.android.server.am.ActivityManagerService";
+    private static final String CLASS_ACTIVITY_RECORD = "com.android.server.am.ActivityRecord";
 
     public static void initZygote(final XSharedPreferences prefs) {
         try {
@@ -34,6 +38,23 @@ public class ModViewConfig {
                 final Class<?> actionBarPolicyClass = XposedHelpers.findClass(CLASS_ACTIONBAR_POLICY, null);
                 XposedHelpers.findAndHookMethod(actionBarPolicyClass, "showsOverflowMenuButton",
                         XC_MethodReplacement.returnConstant("enabled".equals(mode)));
+            }
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+
+        try {
+            if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_FORCE_LTR_DIRECTION, false)) {
+                final Class<?> activityManagerSvcClass = XposedHelpers.findClass(CLASS_ACTIVITY_MANAGER_SERVICE, null);
+                XposedHelpers.findAndHookMethod(activityManagerSvcClass, "updateConfigurationLocked", 
+                        Configuration.class, CLASS_ACTIVITY_RECORD, boolean.class, boolean.class, new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                        if (param.args[0] != null) {
+                            ((Configuration) param.args[0]).setLayoutDirection(null);
+                        }
+                    }
+                });
             }
         } catch (Throwable t) {
             XposedBridge.log(t);

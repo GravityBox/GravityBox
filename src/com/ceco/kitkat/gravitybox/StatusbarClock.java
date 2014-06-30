@@ -15,6 +15,7 @@
 
 package com.ceco.kitkat.gravitybox;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -44,6 +45,7 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
     private int mDefaultClockColor;
     private int mOriginalPaddingLeft;
     private boolean mAmPmHide;
+    private String mClockShowDate = "disabled";
     private int mClockShowDow = GravityBoxSettings.DOW_DISABLED;
     private boolean mClockHidden;
     private float mDowSize;
@@ -54,6 +56,7 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
     }
 
     public StatusbarClock(XSharedPreferences prefs) {
+        mClockShowDate = prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DATE, "disabled");
         mClockShowDow = Integer.valueOf(
                 prefs.getString(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_DOW, "0"));
         mAmPmHide = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_CLOCK_AMPM_HIDE, false);
@@ -156,6 +159,15 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
                         amPmIndex = clockText.indexOf(amPm);
                         if (DEBUG) log("AM/PM added. New clockText: '" + clockText + "'; New AM/PM index: " + amPmIndex);
                     }
+                    CharSequence date = "";
+                    // apply date to statusbar clock, not the notification panel clock
+                    if (!mClockShowDate.equals("disabled") && sbClock != null) {
+                        SimpleDateFormat df = (SimpleDateFormat) SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT);
+                        String pattern = mClockShowDate.equals("localized") ?
+                                df.toLocalizedPattern().replaceAll(".?[Yy].?", "") : mClockShowDate;
+                        date = new SimpleDateFormat(pattern, Locale.getDefault()).format(calendar.getTime()) + " ";
+                    }
+                    clockText = date + clockText;
                     CharSequence dow = "";
                     // apply day of week only to statusbar clock, not the notification panel clock
                     if (mClockShowDow != GravityBoxSettings.DOW_DISABLED && sbClock != null) {
@@ -164,13 +176,13 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
                     }
                     clockText = dow + clockText;
                     SpannableStringBuilder sb = new SpannableStringBuilder(clockText);
-                    sb.setSpan(new RelativeSizeSpan(mDowSize), 0, dow.length(), 
+                    sb.setSpan(new RelativeSizeSpan(mDowSize), 0, dow.length() + date.length(), 
                             Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                     if (amPmIndex > -1) {
-                        int offset = Character.isWhitespace(clockText.charAt(dow.length() + amPmIndex - 1)) ?
+                        int offset = Character.isWhitespace(clockText.charAt(dow.length() + date.length() + amPmIndex - 1)) ?
                                 1 : 0;
-                        sb.setSpan(new RelativeSizeSpan(mAmPmSize), dow.length() + amPmIndex - offset, 
-                                dow.length() + amPmIndex + amPm.length(), 
+                        sb.setSpan(new RelativeSizeSpan(mAmPmSize), dow.length() + date.length() + amPmIndex - offset, 
+                                dow.length() + date.length() + amPmIndex + amPm.length(), 
                                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                     }
                     if (DEBUG) log("Final clockText: '" + sb + "'");
@@ -229,6 +241,10 @@ public class StatusbarClock implements IconManagerListener, BroadcastSubReceiver
                 mAmPmSize = intent.getIntExtra(GravityBoxSettings.EXTRA_AMPM_SIZE, 70) / 100f;
                 updateClock();
                 updateExpandedClock();
+            }
+            if (intent.hasExtra(GravityBoxSettings.EXTRA_CLOCK_DATE)) {
+                mClockShowDate = intent.getStringExtra(GravityBoxSettings.EXTRA_CLOCK_DATE);
+                updateClock();
             }
         }
     }

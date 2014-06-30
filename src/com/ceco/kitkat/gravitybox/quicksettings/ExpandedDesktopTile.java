@@ -54,7 +54,7 @@ public class ExpandedDesktopTile extends BasicTile {
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Settings.Global.putInt(mGbContext.getContentResolver(),
+                            Settings.Global.putInt(mContext.getContentResolver(),
                                     ModExpandedDesktop.SETTING_EXPANDED_DESKTOP_STATE,
                                     (mExpanded ? 0 : 1));
                         }

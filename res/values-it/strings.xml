@@ -84,6 +84,11 @@
     <string name="quick_settings_smart_radio_off">Modem Intelligente Off</string>
     <string name="quick_settings_lock_screen_on">Blocco schermo On</string>
     <string name="quick_settings_lock_screen_off">Blocco schermo Off</string>
+    <string name="quick_settings_location_on">GPS</string>
+    <string name="quick_settings_location_off">GPS Spento</string>
+    <string name="quick_settings_quiet_hours_off">Ore Notturne Off</string>
+    <string name="quick_settings_quiet_hours_on">Ore Notturne On</string>
+    <string name="quick_settings_quiet_hours_auto">Ore Notturne Auto</string>
 
     <!-- QuickSettings settings -->
     <string name="quick_settings_title">Caselle QuickSetting</string>
@@ -94,6 +99,7 @@
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">GPS</string>
+    <string name="qs_tile_gps_slimkat">GPS (Stile SlimKat)</string>
     <string name="qs_tile_gps_alt">GPS (stile CM)</string>
     <string name="qs_tile_mobile_data">Dati Mobili</string>
     <string name="qs_tile_network_mode">Modalità Rete</string>
@@ -667,7 +673,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Applicazioni rapide</string>
-    <string name="pref_cat_app_launcher_summary">Consente di definire fino a 8 app che possono essere assegnate a azioni tasti hardware o usate come pulsanti sulla barra di navigazione</string>
+    <string name="pref_cat_app_launcher_summary">Consente di definire fino a 12 app che possono essere assegnate a azioni tasti hardware o usate come pulsanti sulla barra di navigazione</string>
     <string name="pref_app_launcher_slot_title">Slot Applicazione %d</string>
     <string name="app_launcher_no_apps">Nessuna app assegnata. Usa GravityBox / Applicazioni rapide per assegnare le applicazioni.</string>
 
@@ -1220,6 +1226,8 @@
     <string name="animation_scale5">Scala animazione 2x</string>
     <string name="animation_scale6">Scala animazione 5x</string>
     <string name="animation_scale7">Scala animazione 10x</string>
+    <string name="animation_scale8">Scala animazione .75x</string>
+    <string name="animation_scale9">Scala animazione 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Stile testo caselle</string>
@@ -1454,9 +1462,176 @@
     <string name="pref_disable_data_network_type_icons_summary">Permette di disabilitare gli indicatori 3G/G accanto al segnale</string>
 
     <!-- Force English locale -->
-    <string name="pref_force_english_locale_title">Imposta gravitybox in inglese</string>
+    <string name="pref_force_english_locale_title">Imposta Gravitybox in inglese</string>
     
     <!-- VolumePanel transparency -->
     <string name="pref_volume_panel_transparency_title">Trasparenza pannello volume</string>
     
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Testo operatore personalizzato sim2</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">Ignora ore notturne</string>
+    <string name="pref_lc_qh_ignore_list_title">Lista keyword</string>
+    <string name="pref_lc_qh_ignore_list_summary">Separare con una virgola la lista di keyword per ignorare le notifiche
+    durante le ore notturne. Lasciare il campo vuoto per tutte le notifiche.</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">Ore Notturne</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">Abilita indicatore H+</string>
+    <string name="pref_signal_cluster_hplus_summary">Richiede riavvio</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">Stile indicatore LTE</string>
+    <string name="sc_lte_style_default">Predefinito</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+    
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Modalità aereo</string>
+ 
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Visibilità icona Bluetooth</string>
+    <string name="sb_bt_default">Quando BT abilitato(predefinito)</string>
+    <string name="sb_bt_connected">Quando BT connesso</string>
+    <string name="sb_bt_hidden">Nascosta</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Suoneria incrementale</string>
+    <string name="increasing_ring_enable">Abilita</string>
+    <string name="increasing_ring_min_volume_title">Volume di partenza</string>
+    <string name="increasing_ring_volume_notice">Avviso:\n Se il volume di partenza è superiore al volume della suoneria, questa verrà riprodotta utilizzando il volume della suoneria.</string>
+    <string name="increasing_ring_interval_title">Intervallo incremento</string>
+    <string name="increasing_ring_interval_eachring">Ogni squillo</string>
+    <string name="increasing_ring_interval_half_second">0.5 secondi</string>
+    <string name="increasing_ring_interval_1second">1 secondo</string>
+    <string name="increasing_ring_interval_2seconds">2 secondi</string>
+    <string name="increasing_ring_interval_3seconds">3 secondi</string>
+    <string name="increasing_ring_interval_5seconds">5 secondi</string>
+    <string name="increasing_ring_interval_10seconds">10 secondi</string>
+
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Ricerca in-app</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Forza direzione LTR</string>
+    <string name="pref_force_ltr_direction_summary">Forza dislocazione a sinistra per le lingue con dislocazione a destra (richiede riavvio)</string>
+
+    <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">Rendi opaco in interazione</string>
+    <string name="pref_volume_panel_opaque_summary">Rimuove la trasparenza quando si interagisce con il pannello volume</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">Imposta modalità suoneria</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">Solo dati mobili</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">Batteria circolare a trattini</string>
+    <string name="battery_style_circle_dashed_percent">Batteria circolare a trattini con percentuale</string>
+
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">Grazie per il supporto. Le funzioni Premium saranno sbloccate dopo il riavvio di GravityBox. 
+        Assicurarsi di mantenere Gravitybox Unlocker installato per almeno 20 minuti.</string>
+    <string name="pref_about_get_unlocker_title">Scarica Unlocker</string>
+    <string name="pref_about_get_unlocker_summary">Non hai PayPal? Basta toccare qui per ottenere Gravitybox Premium unlocker dal Play Store.</string>
+
+<!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">Usa icone alternative</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">Scorri per i QuickSetting</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">Ignora disponibilità dati mobili</string>
+    <string name="pref_smart_radio_mda_ignore_summary">Cambia a modo normale anche se i dati mobili sono temporaneamente non disponibili.</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">Sincronizzazione</string>
+
+    <!-- UNC: timeout for Alert only once -->
+    <string name="pref_lc_notif_sound_only_once_timeout_title">Nei limiti di tempo</string>
+
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">Mostra data</string>
+
+    <!-- Delete -->
+    <string name="delete">Elimina</string>
+
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">Disabilita tasto chiamata d\'emergenza</string>
+    <string name="pref_lockscreen_disable_ecb_summary">USA A TUO RISCHIO E PERICOLO!!!!</string>
+
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">Scelta icona annullata dall\'app di destinazione</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">Bussola</string>
+    <string name="quick_settings_compass_off">Bussola Spenta</string>
+    <string name="quick_settings_compass_init">Avvio in corso&#8230;</string>
+    <string name="quick_settings_compass_value" translatable="false">%1$.0f\u00b0 %2$s</string>
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">N</string>
+    <string name="cd_north_east">NE</string>
+    <string name="cd_east">E</string>
+    <string name="cd_south_east">SE</string>
+    <string name="cd_south">S</string>
+    <string name="cd_south_west">SO</string>
+    <string name="cd_west">O</string>
+    <string name="cd_north_west">NO</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">Scambia posizione tasti</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">Centra trigger</string>
+    <string name="pref_pie_control_center_trigger_summary">Attiva i Pie Control solo quando si esegue uno swype dal bordo centrale dello schermo</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Disabilitato</string>
+    <string name="clock_date_localized">Formato data in base alla lingua</string>
+    <string name="clock_date_format_1">Formato data: gg/MM</string>
+    <string name="clock_date_format_2">Formato data: MM/gg</string>
+    <string name="clock_date_format_3">Formato data: g MMM</string>
+    <string name="clock_date_format_4">Formato data: MMM g</string>
+    <string name="clock_date_format_5">Formato data: g</string>
+    	
+    <!-- Battery tile settings -->
+    <string name="pref_cat_qs_battery_tile_settings_title">Impostazioni casella batteria</string>
+    <string name="pref_qs_battery_extended_title">Casella batteria avanzata</string>
+    <string name="pref_qs_battery_extended_summary">Richiede riavvio</string>
+    <string name="pref_qs_battery_temp_unit_title">Unità temperatura</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+
+    <!-- Headset plug/unplug actions -->
+    <string name="pref_cat_headset_actions_title">Azione auricolare</string>
+    <string name="pref_headset_action_plug_title">Con auricolare inserito</string>
+    <string name="pref_headset_action_unplug_title">Con auricolare disinserito</string>
+
+    <!-- Quiet Hours: mute vibrations -->
+    <string name="pref_lc_qh_mute_vibe_title">Non permettere vibrazioni</string>
+
+    <!-- Quiet Hours: interactive mode -->
+    <string name="pref_lc_qh_interactive_title">Modalità interazione</string>
+    <string name="pref_lc_qh_interactive_summary">Mantieni sempre silenziose le notifiche durante l\'interazione dell\'utente 
+        (rispettando eccezioni impostate per ogni app)</string>
+
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">Abilita elimina screenshot</string>
+
+    <!-- UNC: heads up mode -->
+    <string name="pref_lc_headsup_mode_title">Notifiche Head up</string>
+    <string name="lc_heads_up_default">Predefinito</string>
+    <string name="lc_heads_up_always">Sempre</string>
+    <string name="lc_heads_up_immersive">Quando desktop esteso nasconde barra di stato</string>
+    <string name="lc_heads_up_off">Off</string>
+
 </resources>

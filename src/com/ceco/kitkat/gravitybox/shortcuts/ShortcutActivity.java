@@ -16,11 +16,14 @@
 package com.ceco.kitkat.gravitybox.shortcuts;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.ceco.kitkat.gravitybox.R;
 import com.ceco.kitkat.gravitybox.Utils;
 import com.ceco.kitkat.gravitybox.adapters.IIconListAdapterItem;
 import com.ceco.kitkat.gravitybox.adapters.IconListAdapter;
+import com.ceco.kitkat.gravitybox.ledcontrol.LedSettings;
 import com.ceco.kitkat.gravitybox.shortcuts.AShortcut.CreateShortcutListener;
 
 import android.app.ListActivity;
@@ -40,6 +43,25 @@ public class ShortcutActivity extends ListActivity {
     private IconListAdapter mListAdapter;
     private Button mBtnCancel;
     private boolean mInvokedFromGb;
+
+    private static List<String> UNSAFE_ACTIONS = new ArrayList<String>(Arrays.asList(
+            ExpandNotificationsShortcut.ACTION,
+            ExpandQuicksettingsShortcut.ACTION,
+            NetworkModeShortcut.ACTION,
+            RecentAppsShortcut.ACTION,
+            MobileDataShortcut.ACTION,
+            WifiShortcut.ACTION,
+            BluetoothShortcut.ACTION,
+            WifiApShortcut.ACTION,
+            NfcShortcut.ACTION,
+            LocationModeShortcut.ACTION,
+            SmartRadioShortcut.ACTION,
+            AirplaneModeShortcut.ACTION
+    ));
+
+    public static boolean isActionSafe(String action) {
+        return (!UNSAFE_ACTIONS.contains(action));
+    }
 
     public static boolean isGbBroadcastShortcut(Intent intent) {
         return (intent != null && intent.getAction() != null &&
@@ -132,6 +154,14 @@ public class ShortcutActivity extends ListActivity {
             BrightnessDialogShortcut.launchAction(mContext, intent);
         } else if (action.equals(SmartRadioShortcut.ACTION)) {
             SmartRadioShortcut.launchAction(mContext, intent);
+        } else if (action.equals(QuietHoursShortcut.ACTION)) {
+            QuietHoursShortcut.launchAction(mContext, intent);
+        } else if (action.equals(AirplaneModeShortcut.ACTION)) {
+            AirplaneModeShortcut.launchAction(mContext, intent);
+        } else if (action.equals(RingerModeShortcut.ACTION)) {
+            RingerModeShortcut.launchAction(mContext, intent);
+        } else if (action.equals(SyncShortcut.ACTION)) {
+            SyncShortcut.launchAction(mContext, intent);
         }
     }
 
@@ -166,14 +196,17 @@ public class ShortcutActivity extends ListActivity {
             list.add(new NetworkModeShortcut(mContext));
             list.add(new SmartRadioShortcut(mContext));
         }
+        list.add(new AirplaneModeShortcut(mContext));
         list.add(new BluetoothShortcut(mContext));
         if (Utils.hasNfc(mContext)) {
             list.add(new NfcShortcut(mContext));
         }
+        list.add(new SyncShortcut(mContext));
         if (mInvokedFromGb) {
             list.add(new MediaControlShortcut(mContext));
         }
         list.add(new VolumePanelShortcut(mContext));
+        list.add(new RingerModeShortcut(mContext));
         list.add(new BrightnessDialogShortcut(mContext));
         list.add(new RecentAppsShortcut(mContext));
         if (mInvokedFromGb) {
@@ -184,6 +217,9 @@ public class ShortcutActivity extends ListActivity {
         list.add(new LauncherDrawerShortcut(mContext));
         list.add(new RotationLockShortcut(mContext));
         list.add(new SleepShortcut(mContext));
+        if (!LedSettings.isUncLocked(mContext)) {
+            list.add(new QuietHoursShortcut(mContext));
+        }
 
         mListAdapter = new IconListAdapter(mContext, list);
         setListAdapter(mListAdapter);

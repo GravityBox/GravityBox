@@ -150,6 +150,9 @@ public class PieLongPressHandler implements PieItem.PieOnLongPressListener {
             case GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS:
                 intent = new Intent(ModHwKeys.ACTION_RECENTS_CLEAR_ALL_LONGPRESS);
                 break;
+            case GravityBoxSettings.HWKEY_ACTION_INAPP_SEARCH:
+                intent = new Intent(ModHwKeys.ACTION_INAPP_SEARCH);
+                break;
             case GravityBoxSettings.HWKEY_ACTION_DEFAULT:
             default: return false;
         }

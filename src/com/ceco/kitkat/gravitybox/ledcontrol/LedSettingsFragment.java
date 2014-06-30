@@ -37,7 +37,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
-import android.text.Editable;
 import android.widget.Toast;
 
 public class LedSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener {
@@ -48,6 +47,7 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
     private static final String PREF_KEY_NOTIF_SOUND_OVERRIDE = "pref_lc_notif_sound_override";
     private static final String PREF_KEY_NOTIF_SOUND = "pref_lc_notif_sound";
     private static final String PREF_KEY_NOTIF_SOUND_ONLY_ONCE = "pref_lc_notif_sound_only_once";
+    private static final String PREF_KEY_NOTIF_SOUND_ONLY_ONCE_TIMEOUT = "pref_lc_notif_sound_only_once_timeout";
     private static final String PREF_KEY_NOTIF_INSISTENT = "pref_lc_notif_insistent";
     private static final String PREF_KEY_VIBRATE_OVERRIDE = "pref_lc_vibrate_override";
     private static final String PREF_KEY_VIBRATE_PATTERN = "pref_lc_vibrate_pattern";
@@ -56,6 +56,11 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
     private static final String PREF_KEY_ACTIVE_SCREEN_ENABLED = "pref_lc_active_screen_enable";
     private static final String PREF_KEY_ACTIVE_SCREEN_EXPANDED = "pref_lc_active_screen_expand";
     private static final String PREF_KEY_LED_MODE = "pref_lc_led_mode";
+    private static final String PREF_CAT_KEY_QH = "pref_cat_lc_quiet_hours";
+    private static final String PREF_KEY_QH_IGNORE = "pref_lc_qh_ignore";
+    private static final String PREF_KEY_QH_IGNORE_LIST = "pref_lc_qh_ignore_list";
+    private static final String PREF_KEY_HEADS_UP_MODE = "pref_lc_headsup_mode";
+    private static final String PREF_CAT_KEY_OTHER = "pref_cat_lc_other";
 
     private static final int REQ_PICK_SOUND = 101;
 
@@ -67,6 +72,7 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
     private CheckBoxPreference mNotifSoundOverridePref;
     private Uri mSoundUri;
     private CheckBoxPreference mNotifSoundOnlyOncePref;
+    private SeekBarPreference mNotifSoundOnlyOnceTimeoutPref;
     private CheckBoxPreference mNotifInsistentPref;
     private CheckBoxPreference mVibratePatternOverridePref;
     private EditTextPreference mVibratePatternPref;
@@ -75,6 +81,11 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
     private CheckBoxPreference mActiveScreenEnabledPref;
     private CheckBoxPreference mActiveScreenExpandedPref;
     private ListPreference mLedModePref;
+    private PreferenceCategory mQhCat;
+    private CheckBoxPreference mQhIgnorePref;
+    private EditTextPreference mQhIgnoreListPref;
+    private ListPreference mHeadsUpModePref;
+    private PreferenceCategory mOtherCat;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +99,7 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
         mNotifSoundOverridePref = (CheckBoxPreference) findPreference(PREF_KEY_NOTIF_SOUND_OVERRIDE);
         mNotifSoundPref = findPreference(PREF_KEY_NOTIF_SOUND);
         mNotifSoundOnlyOncePref = (CheckBoxPreference) findPreference(PREF_KEY_NOTIF_SOUND_ONLY_ONCE);
+        mNotifSoundOnlyOnceTimeoutPref = (SeekBarPreference) findPreference(PREF_KEY_NOTIF_SOUND_ONLY_ONCE_TIMEOUT);
         mNotifInsistentPref = (CheckBoxPreference) findPreference(PREF_KEY_NOTIF_INSISTENT);
         mVibratePatternOverridePref = (CheckBoxPreference) findPreference(PREF_KEY_VIBRATE_OVERRIDE);
         mVibratePatternPref = (EditTextPreference) findPreference(PREF_KEY_VIBRATE_PATTERN);
@@ -98,6 +110,12 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
         mActiveScreenExpandedPref = (CheckBoxPreference) findPreference(PREF_KEY_ACTIVE_SCREEN_EXPANDED);
         mLedModePref = (ListPreference) findPreference(PREF_KEY_LED_MODE);
         mLedModePref.setOnPreferenceChangeListener(this);
+        mQhCat = (PreferenceCategory) findPreference(PREF_CAT_KEY_QH);
+        mQhIgnorePref = (CheckBoxPreference) findPreference(PREF_KEY_QH_IGNORE);
+        mQhIgnoreListPref = (EditTextPreference) findPreference(PREF_KEY_QH_IGNORE_LIST);
+        mHeadsUpModePref = (ListPreference) findPreference(PREF_KEY_HEADS_UP_MODE);
+        mHeadsUpModePref.setOnPreferenceChangeListener(this);
+        mOtherCat = (PreferenceCategory) findPreference(PREF_CAT_KEY_OTHER);
     }
 
     protected void initialize(LedSettings ledSettings) {
@@ -108,6 +126,7 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
         mNotifSoundOverridePref.setChecked(ledSettings.getSoundOverride());
         mSoundUri = ledSettings.getSoundUri();
         mNotifSoundOnlyOncePref.setChecked(ledSettings.getSoundOnlyOnce());
+        mNotifSoundOnlyOnceTimeoutPref.setValue((int)(ledSettings.getSoundOnlyOnceTimeout() / 60000));
         mNotifInsistentPref.setChecked(ledSettings.getInsistent());
         mVibratePatternOverridePref.setChecked(ledSettings.getVibrateOverride());
         if (ledSettings.getVibratePatternAsString() != null) {
@@ -128,6 +147,18 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
         }
         mLedModePref.setValue(ledSettings.getLedMode().toString());
         updateLedModeDependentState();
+        if (!LedSettings.isQuietHoursEnabled(getActivity())) {
+            getPreferenceScreen().removePreference(mQhCat);
+        } else {
+            mQhIgnorePref.setChecked(ledSettings.getQhIgnore());
+            mQhIgnoreListPref.setText(ledSettings.getQhIgnoreList());
+        }
+        if (!LedSettings.isHeadsUpEnabled(getActivity())) {
+            mOtherCat.removePreference(mHeadsUpModePref);
+        } else {
+            mHeadsUpModePref.setValue(ledSettings.getHeadsUpMode().toString());
+            mHeadsUpModePref.setSummary(mHeadsUpModePref.getEntry());
+        }
     }
 
     private void updateSoundPrefSummary() {
@@ -178,6 +209,10 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
         return mNotifSoundOnlyOncePref.isChecked();
     }
 
+    protected long getSoundOnlyOnceTimeout() {
+        return (mNotifSoundOnlyOnceTimeoutPref.getValue() * 60000);
+    }
+
     protected boolean getInsistent() {
         return mNotifInsistentPref.isChecked();
     }
@@ -204,6 +239,18 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
 
     protected LedMode getLedMode() {
         return LedMode.valueOf(mLedModePref.getValue());
+    }
+
+    protected boolean getQhIgnore() {
+        return mQhIgnorePref.isChecked();
+    }
+
+    protected String getQhIgnoreList() {
+        return mQhIgnoreListPref.getText();
+    }
+
+    protected String getHeadsUpMode() {
+        return mHeadsUpModePref.getValue();
     }
 
     @Override
@@ -247,6 +294,9 @@ public class LedSettingsFragment extends PreferenceFragment implements OnPrefere
         } else if (preference == mLedModePref) {
             mLedModePref.setValue((String)newValue);
             updateLedModeDependentState();
+        } else if (preference == mHeadsUpModePref) {
+            mHeadsUpModePref.setValue((String)newValue);
+            mHeadsUpModePref.setSummary(mHeadsUpModePref.getEntry());
         }
         return true;
     }

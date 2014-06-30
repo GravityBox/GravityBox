@@ -14,10 +14,6 @@
  */
 package com.ceco.kitkat.gravitybox.preference;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
@@ -27,8 +23,8 @@ import android.view.View;
 import android.widget.TimePicker;
 
 public class TimePreference extends DialogPreference {
-    private Calendar mCalendar;
     private TimePicker mPicker = null;
+    private int mValue;
 
     public TimePreference(Context context) {
         this(context, null);
@@ -43,7 +39,6 @@ public class TimePreference extends DialogPreference {
 
         setPositiveButtonText(android.R.string.ok);
         setNegativeButtonText(android.R.string.cancel);
-        mCalendar = new GregorianCalendar();
     }
 
     @Override
@@ -56,8 +51,10 @@ public class TimePreference extends DialogPreference {
     @Override
     protected void onBindDialogView(View v) {
         super.onBindDialogView(v);
-        mPicker.setCurrentHour(mCalendar.get(Calendar.HOUR_OF_DAY));
-        mPicker.setCurrentMinute(mCalendar.get(Calendar.MINUTE));
+        int hours = (int) (mValue / 60);
+        int minutes = mValue - hours*60;
+        mPicker.setCurrentHour(hours);
+        mPicker.setCurrentMinute(minutes);
     }
 
     @Override
@@ -65,12 +62,10 @@ public class TimePreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            mCalendar.set(Calendar.HOUR_OF_DAY, mPicker.getCurrentHour());
-            mCalendar.set(Calendar.MINUTE, mPicker.getCurrentMinute());
-
+            mValue = mPicker.getCurrentHour() * 60 + mPicker.getCurrentMinute();
             setSummary(getSummary());
-            if (callChangeListener(mCalendar.getTimeInMillis())) {
-                persistLong(mCalendar.getTimeInMillis());
+            if (callChangeListener(mValue)) {
+                persistInt(mValue);
                 notifyChanged();
             }
         }
@@ -84,12 +79,11 @@ public class TimePreference extends DialogPreference {
     @Override
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
         if (restoreValue) {
-            mCalendar.setTimeInMillis(getPersistedLong(System.currentTimeMillis()));
+            mValue = getPersistedInt(0);
         } else {
-            mCalendar.setTimeInMillis(defaultValue == null ?
-                    System.currentTimeMillis() : Long.parseLong((String) defaultValue));
+            mValue = defaultValue == null ? 0 : Integer.parseInt((String) defaultValue);
             if (shouldPersist()) {
-                persistLong(mCalendar.getTimeInMillis());
+                persistInt(mValue);
             }
         }
         setSummary(getSummary());
@@ -97,9 +91,8 @@ public class TimePreference extends DialogPreference {
 
     @Override
     public CharSequence getSummary() {
-        if (mCalendar == null) {
-            return null;
-        }
-        return DateFormat.getTimeFormat(getContext()).format(new Date(mCalendar.getTimeInMillis()));
+        int hours = (int) (mValue / 60);
+        int minutes = mValue - hours*60;
+        return (String.format("%02d:%02d", hours, minutes));
     }
 }

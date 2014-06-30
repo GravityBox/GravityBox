@@ -95,6 +95,10 @@ public class LedListItem implements IBaseListAdapterItem {
                     mLedSettings.getActiveScreenEnabled()) {
                 buf += "; " + mContext.getString(R.string.lc_active_screen);
             }
+            if (LedSettings.isQuietHoursEnabled(mContext) &&
+                    mLedSettings.getQhIgnore()) {
+                buf += "; " + mContext.getString(R.string.pref_lc_qh_ignore_title);
+            }
             if (mLedSettings.getOngoing()) {
                 buf += "; " + mContext.getString(R.string.lc_item_summary_ongoing);
             }

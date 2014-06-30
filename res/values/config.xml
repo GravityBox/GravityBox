@@ -20,6 +20,7 @@
     <string name="url_donate" translatable="false">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=9MZNBXYEN5S68&amp;lc=SK&amp;item_name=GravityBox&amp;currency_code=EUR&amp;bn=PP%%2dDonationsBF%%3abtn_donateCC_LG\%2egif%%3aNonHosted</string>
     <string name="url_gplus" translatable="false">https://plus.google.com/communities/100769200378960963264</string>
     <string name="url_web_service" translatable="false">http://gravitybox.ceco.sk.eu.org/service.php</string>
+    <string name="url_gravitybox_unlocker" translatable="false">https://play.google.com/store/apps/details?id=com.ceco.gravitybox.unlocker</string>
 
     <!-- Limits for screen brightness settings -->
     <integer name="screen_brightness_min">1</integer>

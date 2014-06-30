@@ -667,7 +667,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Application launcher</string>
-    <string name="pref_cat_app_launcher_summary">Dialog allowing to define up to 8 apps which can be assigned as HW Key Action or used as additional navigation bar key</string>
+    <string name="pref_cat_app_launcher_summary">Dialog allowing to define up to 12 apps which can be assigned as HW Key Action or used as additional navigation bar key</string>
     <string name="pref_app_launcher_slot_title">Application slot %d</string>
     <string name="app_launcher_no_apps">No apps assigned. Use GravityBox / Application launcher menu to assign apps.</string>
 
@@ -1220,6 +1220,8 @@
     <string name="animation_scale5">Animation scale 2x</string>
     <string name="animation_scale6">Animation scale 5x</string>
     <string name="animation_scale7">Animation scale 10x</string>
+    <string name="animation_scale8">Animation scale .75x</string>
+    <string name="animation_scale9">Animation scale 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Tile label style</string>

@@ -218,13 +218,13 @@ public class AutoBrightnessDialogPreference extends DialogPreference
             boolean ascendingViolation = false;
             boolean descendingViolation = false;
             for (int i = position + 1; i < mLuxArray.length; i++) {
-                ascendingViolation |= (lux > mLuxArray[i]);
+                ascendingViolation |= (lux >= mLuxArray[i]);
             }
             for (int i = position + 1; i < mBrightnessArray.length; i++) {
                 ascendingViolation |= (brightness > mBrightnessArray[i]);
             }
             for (int i = position - 1; i >= 0; i--) {
-                descendingViolation |= (lux < mLuxArray[i]);
+                descendingViolation |= (lux <= mLuxArray[i]);
                 descendingViolation |= (brightness < mBrightnessArray[i]);
             }
             if (ascendingViolation) {

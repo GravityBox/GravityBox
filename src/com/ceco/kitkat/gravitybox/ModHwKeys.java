@@ -15,11 +15,13 @@
 
 package com.ceco.kitkat.gravitybox;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import android.app.ActivityManager;
+import android.app.KeyguardManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -49,6 +51,8 @@ import android.view.ViewConfiguration;
 import android.widget.Toast;
 
 import com.ceco.kitkat.gravitybox.R;
+import com.ceco.kitkat.gravitybox.ledcontrol.QuietHoursActivity;
+import com.ceco.kitkat.gravitybox.shortcuts.RingerModeShortcut;
 import com.ceco.kitkat.gravitybox.shortcuts.ShortcutActivity;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -61,7 +65,6 @@ import de.robv.android.xposed.callbacks.XCallback;
 public class ModHwKeys {
     private static final String TAG = "GB:ModHwKeys";
     private static final String CLASS_PHONE_WINDOW_MANAGER = "com.android.internal.policy.impl.PhoneWindowManager";
-    private static final String CLASS_ACTIVITY_MANAGER_NATIVE = "android.app.ActivityManagerNative";
     private static final String CLASS_WINDOW_STATE = "android.view.WindowManagerPolicy$WindowState";
     private static final String CLASS_WINDOW_MANAGER_FUNCS = "android.view.WindowManagerPolicy.WindowManagerFuncs";
     private static final String CLASS_IWINDOW_MANAGER = "android.view.IWindowManager";
@@ -92,11 +95,17 @@ public class ModHwKeys {
     public static final String ACTION_SHOW_BRIGHTNESS_DIALOG = "gravitybox.intent.action.SHOW_BRIGHTNESS_DIALOG";
     public static final String ACTION_RECENTS_CLEAR_ALL_SINGLETAP = "gravitybox.intent.action.ACTION_RECENTS_CLEARALL";
     public static final String ACTION_RECENTS_CLEAR_ALL_LONGPRESS = "gravitybox.intent.action.ACTION_RECENTS_CLEARALL_LONGPRESS";
+    public static final String ACTION_TOGGLE_QUIET_HOURS = "gravitybox.intent.action.ACTION_TOGGLE_QUIET_HOURS";
+    public static final String ACTION_TOGGLE_AIRPLANE_MODE = "gravitybox.intent.action.TOGGLE_AIRPLANE_MODE";
+    public static final String ACTION_INAPP_SEARCH = "gravitybox.intent.action.INAPP_SEARCH";
+    public static final String ACTION_SET_RINGER_MODE = "gravitybox.intent.action.SET_RINGER_MODE";
+    public static final String EXTRA_RINGER_MODE = "ringerMode";
 
     public static final String SYSTEM_DIALOG_REASON_GLOBAL_ACTIONS = "globalactions";
     public static final String SYSTEM_DIALOG_REASON_RECENT_APPS = "recentapps";
 
-    private static Class<?> classActivityManagerNative;
+    public static final String SETTING_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
+
     private static Object mPhoneWindowManager;
     private static Context mContext;
     private static Context mGbContext;
@@ -145,6 +154,7 @@ public class ModHwKeys {
     private static boolean mCustomKeyPressed = false;
     private static long[] mVkVibePattern;
     private static long[] mVkVibePatternDefault;
+    private static String[] mHeadsetUri = new String[2]; // index 0 = unplugged, index 1 = plugged
 
     private static List<String> mKillIgnoreList = new ArrayList<String>(Arrays.asList(
             "com.android.systemui",
@@ -344,6 +354,26 @@ public class ModHwKeys {
             } else if (action.equals(GravityBoxSettings.ACTION_PREF_VK_VIBRATE_PATTERN_CHANGED)) {
                 setVirtualKeyVibePattern(intent.getStringExtra(
                         GravityBoxSettings.EXTRA_VK_VIBRATE_PATTERN));
+            } else if (action.equals(ACTION_TOGGLE_QUIET_HOURS)) {
+                toggleQuietHours(intent.getStringExtra(QuietHoursActivity.EXTRA_QH_MODE));
+            } else if (action.equals(ACTION_TOGGLE_AIRPLANE_MODE)) {
+                toggleAirplaneMode();
+            } else if (action.equals(ACTION_INAPP_SEARCH)) {
+                injectKey(KeyEvent.KEYCODE_SEARCH);
+            } else if (action.equals(ACTION_SET_RINGER_MODE)) {
+                setRingerMode(intent.getIntExtra(EXTRA_RINGER_MODE, RingerModeShortcut.MODE_RING_VIBRATE));
+            } else if (action.equals(GravityBoxService.ACTION_TOGGLE_SYNC)) {
+                toggleSync();
+            } else if (action.equals(GravityBoxSettings.ACTION_PREF_HEADSET_ACTION_CHANGED)) {
+                int state = intent.getIntExtra(GravityBoxSettings.EXTRA_HSA_STATE, 0);
+                if (state == 0 || state == 1) {
+                    mHeadsetUri[state] = intent.getStringExtra(GravityBoxSettings.EXTRA_HSA_URI);
+                }
+            } else if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
+                int state = intent.getIntExtra("state", 0);
+                if (state == 0 || state == 1) {
+                    launchCustomApp(mHeadsetUri[state]);
+                }
             }
         }
     };
@@ -404,8 +434,10 @@ public class ModHwKeys {
                 log("Invalid value for PREF_KEY_EXPANDED_DESKTOP preference");
             }
 
+            mHeadsetUri[0] = prefs.getString(GravityBoxSettings.PREF_KEY_HEADSET_ACTION_UNPLUG, null);
+            mHeadsetUri[1] = prefs.getString(GravityBoxSettings.PREF_KEY_HEADSET_ACTION_PLUG, null);
+
             final Class<?> classPhoneWindowManager = XposedHelpers.findClass(CLASS_PHONE_WINDOW_MANAGER, null);
-            classActivityManagerNative = XposedHelpers.findClass(CLASS_ACTIVITY_MANAGER_NATIVE, null);
 
             XposedHelpers.findAndHookMethod(classPhoneWindowManager, "init",
                 Context.class, CLASS_IWINDOW_MANAGER, CLASS_WINDOW_MANAGER_FUNCS, phoneWindowManagerInitHook);
@@ -839,6 +871,13 @@ public class ModHwKeys {
             intentFilter.addAction(ACTION_SHOW_VOLUME_PANEL);
             intentFilter.addAction(ACTION_SHOW_BRIGHTNESS_DIALOG);
             intentFilter.addAction(GravityBoxSettings.ACTION_PREF_VK_VIBRATE_PATTERN_CHANGED);
+            intentFilter.addAction(ACTION_TOGGLE_QUIET_HOURS);
+            intentFilter.addAction(ACTION_TOGGLE_AIRPLANE_MODE);
+            intentFilter.addAction(ACTION_INAPP_SEARCH);
+            intentFilter.addAction(ACTION_SET_RINGER_MODE);
+            intentFilter.addAction(GravityBoxService.ACTION_TOGGLE_SYNC);
+            intentFilter.addAction(GravityBoxSettings.ACTION_PREF_HEADSET_ACTION_CHANGED);
+            intentFilter.addAction(Intent.ACTION_HEADSET_PLUG);
             mContext.registerReceiver(mBroadcastReceiver, intentFilter);
 
             if (DEBUG) log("Phone window manager initialized");
@@ -1072,6 +1111,8 @@ public class ModHwKeys {
             clearAllRecents(false);
         } else if (action == GravityBoxSettings.HWKEY_ACTION_CLEAR_ALL_RECENTS_LONGPRESS) {
             clearAllRecents(true);
+        } else if (action == GravityBoxSettings.HWKEY_ACTION_INAPP_SEARCH) {
+            injectKey(KeyEvent.KEYCODE_SEARCH);
         }
     }
 
@@ -1104,18 +1145,15 @@ public class ModHwKeys {
                         final PackageManager pm = mContext.getPackageManager();
                         String defaultHomePackage = "com.android.launcher";
                         intent.addCategory(Intent.CATEGORY_HOME);
-                        
+
                         final ResolveInfo res = pm.resolveActivity(intent, 0);
                         if (res.activityInfo != null && !res.activityInfo.packageName.equals("android")) {
                             defaultHomePackage = res.activityInfo.packageName;
                         }
-        
-                        Object mgr = XposedHelpers.callStaticMethod(classActivityManagerNative, "getDefault");
-        
-                        @SuppressWarnings("unchecked")
-                        List<RunningAppProcessInfo> apps = (List<RunningAppProcessInfo>) 
-                                XposedHelpers.callMethod(mgr, "getRunningAppProcesses");
-        
+
+                        ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+                        List<RunningAppProcessInfo> apps = am.getRunningAppProcesses();
+
                         String targetKilled = null;
                         for (RunningAppProcessInfo appInfo : apps) {  
                             int uid = appInfo.uid;  
@@ -1124,21 +1162,28 @@ public class ModHwKeys {
                             if (uid >= Process.FIRST_APPLICATION_UID && uid <= Process.LAST_APPLICATION_UID  
                                     && appInfo.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
                                     !mKillIgnoreList.contains(appInfo.processName) &&
-                                    !appInfo.processName.equals(defaultHomePackage)) {  
-                                if (DEBUG) log("Killing process ID " + appInfo.pid + ": " + appInfo.processName);
-                                Process.killProcess(appInfo.pid);
-                                targetKilled = appInfo.processName;
-                                try {
-                                    targetKilled = (String) pm.getApplicationLabel(
-                                            pm.getApplicationInfo(targetKilled, 0));
-                                } catch (PackageManager.NameNotFoundException nfe) {
-                                    //
+                                    !appInfo.processName.equals(defaultHomePackage)) {
+                                if (appInfo.pkgList != null && appInfo.pkgList.length > 0) {
+                                    for (String pkg : appInfo.pkgList) {
+                                        if (DEBUG) log("Force stopping: " + pkg);
+                                        XposedHelpers.callMethod(am, "forceStopPackage", pkg);
+                                    }
+                                } else {
+                                    if (DEBUG) log("Killing process ID " + appInfo.pid + ": " + appInfo.processName);
+                                    Process.killProcess(appInfo.pid);
                                 }
+                                targetKilled = appInfo.processName;
                                 break;
-                            }  
+                            }
                         }
         
                         if (targetKilled != null) {
+                            try {
+                                targetKilled = (String) pm.getApplicationLabel(
+                                        pm.getApplicationInfo(targetKilled, 0));
+                            } catch (PackageManager.NameNotFoundException nfe) {
+                                //
+                            }
                             Class<?>[] paramArgs = new Class<?>[3];
                             paramArgs[0] = XposedHelpers.findClass(CLASS_WINDOW_STATE, null);
                             paramArgs[1] = int.class;
@@ -1222,34 +1267,72 @@ public class ModHwKeys {
         }
     }
 
-    private static void launchCustomApp(final int action) {
+    private static void launchCustomApp(int action) {
+        mPrefs.reload();
+        String appInfo = (action == GravityBoxSettings.HWKEY_ACTION_CUSTOM_APP) ?
+                mPrefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_CUSTOM_APP, null) :
+                    mPrefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_CUSTOM_APP2, null);
+        if (appInfo == null) {
+            try {
+                Handler handler = (Handler) XposedHelpers.getObjectField(mPhoneWindowManager, "mHandler");
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(mContext, mStrCustomAppNone, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Throwable t) { }
+            return;
+        }
+
+        launchCustomApp(appInfo);
+    }
+
+    private static void launchCustomApp(String uri) {
+        if (uri == null) return;
+
+        try {
+            Intent i = Intent.parseUri(uri, 0);
+            launchCustomApp(i);
+        } catch (URISyntaxException e) {
+            log("launchCustomApp: error parsing uri: " + e.getMessage());
+        }
+    }
+
+    private static void launchCustomApp(final Intent intent) {
         Handler handler = (Handler) XposedHelpers.getObjectField(mPhoneWindowManager, "mHandler");
         if (handler == null) return;
-        mPrefs.reload();
 
         handler.post(
             new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        String appInfo = (action == GravityBoxSettings.HWKEY_ACTION_CUSTOM_APP) ?
-                                mPrefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_CUSTOM_APP, null) :
-                                    mPrefs.getString(GravityBoxSettings.PREF_KEY_HWKEY_CUSTOM_APP2, null);
-                        if (appInfo == null) {
-                            Toast.makeText(mContext, mStrCustomAppNone, Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        Intent i = Intent.parseUri(appInfo, 0);
                         // if intent is a GB action of broadcast type, handle it directly here
-                        if (ShortcutActivity.isGbBroadcastShortcut(i)) {
-                            Intent newIntent = new Intent(i.getStringExtra(ShortcutActivity.EXTRA_ACTION));
-                            newIntent.putExtras(i);
+                        if (ShortcutActivity.isGbBroadcastShortcut(intent)) {
+                            boolean isLaunchBlocked = false;
+                            try {
+                                KeyguardManager kgManager = 
+                                        (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                                isLaunchBlocked = kgManager != null && 
+                                    kgManager.isKeyguardLocked() && kgManager.isKeyguardSecure() &&
+                                        !ShortcutActivity.isActionSafe(intent.getStringExtra(
+                                                ShortcutActivity.EXTRA_ACTION));
+                            } catch (Throwable t) { }
+                            if (DEBUG) log("isLaunchBlocked: " + isLaunchBlocked);
+                            Intent newIntent = new Intent(intent.getStringExtra(ShortcutActivity.EXTRA_ACTION));
+                            newIntent.putExtras(intent);
                             mContext.sendBroadcast(newIntent);
-                        // otherwise start activity
+                        // otherwise start activity (dismissing keyguard if necessary)
                         } else {
-                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            mContext.startActivity(i);
+                            try {
+                                Class<?> amnCls = XposedHelpers.findClass("android.app.ActivityManagerNative",
+                                        mContext.getClassLoader());
+                                Object amn = XposedHelpers.callStaticMethod(amnCls, "getDefault");
+                                XposedHelpers.callMethod(amn, "dismissKeyguardOnNextActivity");
+                            } catch (Throwable t) { }
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            mContext.startActivity(intent);
                         }
                     } catch (ActivityNotFoundException e) {
                         Toast.makeText(mContext, mStrCustomAppMissing, Toast.LENGTH_SHORT).show();
@@ -1580,6 +1663,70 @@ public class ModHwKeys {
             if (vp != null) {
                 XposedHelpers.setObjectField(mPhoneWindowManager, "mVirtualKeyVibePattern", vp);
             }
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
+
+    private static void toggleQuietHours(String mode) {
+        try {
+            Intent intent = new Intent(mGbContext, GravityBoxService.class);
+            intent.setAction(QuietHoursActivity.ACTION_SET_QUIET_HOURS_MODE);
+            if (mode != null) {
+                intent.putExtra(QuietHoursActivity.EXTRA_QH_MODE, mode);
+            }
+            mGbContext.startService(intent);
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
+
+    private static void toggleAirplaneMode() {
+        try {
+            ContentResolver cr = mContext.getContentResolver();
+            boolean enabled = Settings.Global.getInt(cr, Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
+            Settings.Global.putInt(cr, Settings.Global.AIRPLANE_MODE_ON, enabled ? 0 : 1);
+            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+            intent.putExtra("state", !enabled);
+            mContext.sendBroadcast(intent);
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
+
+    private static void setRingerMode(int mode)
+    {
+        try {
+            AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+            ContentResolver cr = mContext.getContentResolver();
+            switch (mode) {
+                case RingerModeShortcut.MODE_RING:
+                    am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                    Settings.System.putInt(cr, SETTING_VIBRATE_WHEN_RINGING, 0);
+                    break;
+                case RingerModeShortcut.MODE_RING_VIBRATE:
+                    am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                    Settings.System.putInt(cr, SETTING_VIBRATE_WHEN_RINGING, 1);
+                    break;
+                case RingerModeShortcut.MODE_SILENT:
+                    am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                    break;
+                case RingerModeShortcut.MODE_VIBRATE:
+                    am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                    Settings.System.putInt(cr, SETTING_VIBRATE_WHEN_RINGING, 1);
+                    break;
+            }
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
+
+    private static void toggleSync() {
+        try {
+            Intent si = new Intent(mGbContext, GravityBoxService.class);
+            si.setAction(GravityBoxService.ACTION_TOGGLE_SYNC);
+            si.putExtra(GravityBoxService.EXTRA_SYNC_SHOW_TOAST, true);
+            mGbContext.startService(si);
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

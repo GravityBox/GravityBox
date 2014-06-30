@@ -69,6 +69,9 @@
     <string name="quick_settings_lock_screen_off">Obrazovka uzamčení vyp</string>
     <string name="quick_settings_location_on">Poloha</string>
     <string name="quick_settings_location_off">Poloha vyp</string>
+    <string name="quick_settings_quiet_hours_off">Tiché hodiny vyp</string>
+    <string name="quick_settings_quiet_hours_on">Tiché hodiny zap</string>
+    <string name="quick_settings_quiet_hours_auto">Tiché hodiny auto</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Dlaždice QuickSettings panelu</string>
@@ -1085,7 +1088,7 @@
     <string name="pref_trans_verification_title">ID PayPal transakce</string>
     <string name="pref_trans_verification_summary">V případě, že jste podpořili projekt příspěvkem přes PayPal, 
         můžete použít ID PayPal transakce k odemčení prémiových funkcí</string>
-    <string name="wsc_trans_required_summary">Tato funkce vyžaduje platné ID PayPal transakce</string>
+    <string name="wsc_trans_required_summary">Tato funkce je prémiová a vyžaduje odemknutí</string>
 
     <!-- Pie: disable system info -->
     <string name="pref_pie_sysinfo_disable_title">Vypnout systémové informace</string>
@@ -1191,6 +1194,8 @@
     <string name="animation_scale5">Měřítko animace 2x</string>
     <string name="animation_scale6">Měřítko animace 5x</string>
     <string name="animation_scale7">Měřítko animace 10x</string>
+    <string name="animation_scale8">Měřítko animace .75x</string>
+    <string name="animation_scale9">Měřítko animace 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Styl textu dlaždice</string>
@@ -1369,7 +1374,7 @@
     <string name="pref_lockscreen_show_pattern_error_summary">Zobrazí červenou stopu po zadání nesprávného odemykacího vzorce</string>
 
     <!-- Premium features: allow trial period -->
-    <string name="trial_info">Tato funkce je ve zkušebním režimu. V případě, že vyhovuje Vašim potřebám je možné ji aktivovat zadáním platného ID PayPal transakce. 
+    <string name="trial_info">Tato funkce je ve zkušebním režimu. V případě, že vyhovuje Vašim potřebám je možné ji aktivovat odemknutím prémiových funkcí. 
         Počet restartů do skončení zkušebního režimu: %d</string>
 
     <!-- Navbar: disable camera icon -->
@@ -1430,5 +1435,172 @@
 
     <!-- VolumePanel transparency -->
     <string name="pref_volume_panel_transparency_title">Průhlednost panelu hlasitosti</string>
+
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Vlastní text operátora 2</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">Ignorovat tiché hodiny</string>
+    <string name="pref_lc_qh_ignore_list_title">Pro zadaná klíčová slova</string>
+    <string name="pref_lc_qh_ignore_list_summary">Seznam čárkou oddělených klíčových slov, 
+         pro které ignorovat tiché hodiny. Ponechte prázdné pro všechny oznámení.</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">Přepnout tiché hodiny</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">Povolit H+ indikátor</string>
+    <string name="pref_signal_cluster_hplus_summary">Vyžaduje restart</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">Styl indikátoru LTE</string>
+    <string name="sc_lte_style_default">Původní</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Přepnout režim v letadle</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Viditelnost Bluetooth ikony</string>
+    <string name="sb_bt_default">Pokud je BT zapnuto (výchozí)</string>
+    <string name="sb_bt_connected">Pokud je BT připojeno</string>
+    <string name="sb_bt_hidden">Skrýt</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Zvyšování hlasitosti vyzvánění</string>
+    <string name="increasing_ring_enable">Povolit</string>
+    <string name="increasing_ring_min_volume_title">Počáteční hlasitost vyzvánění</string>
+    <string name="increasing_ring_volume_notice">Poznámka:\nPočáteční úroveň hlasitosti je větší než hlasitost vyzvánění.</string>
+    <string name="increasing_ring_interval_title">Interval zvyšování hlasitosti</string>
+    <string name="increasing_ring_interval_eachring">Pro každé zvonění</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekund</string>
+    <string name="increasing_ring_interval_10seconds">10 sekund</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Hledat v aplikaci</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Vynutit LTR rozložení</string>
+    <string name="pref_force_ltr_direction_summary">Vynutí rozložení LTR pro všechny jazyky (vyžaduje restart)</string>
+
+    <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">Neprůhledné při interakci</string>
+    <string name="pref_volume_panel_opaque_summary">Odstraní neprůhlednost při interakci s panelem nastavení hlasitosti</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">Nastavit režim vyzvánění</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">Pouze pro mobilní data</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">Čárkovaný kruh</string>
+    <string name="battery_style_circle_dashed_percent">Čárkovaný kruh s procenty</string>
+
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">Děkujeme za podporu. Prémiové funkce budou odemknuty po restartování GravityBox. 
+        Ponechte GravityBox Unlocker nainstalován po dobu minimálně 20 minut.</string>
+    <string name="pref_about_get_unlocker_title">Získat odemykací aplikaci</string>
+    <string name="pref_about_get_unlocker_summary">Nemáte PayPal? Jednoduše klepněte sem pro získání odemykací aplikace prémiových funkcí z obchodu Play.</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">Použít alternativní ikonu</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">Potažením zobrazit QuickSettings</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">Ignorovat dostupnost mobilních dat</string>
+    <string name="pref_smart_radio_mda_ignore_summary">Přepne do normálního režimu bez ohledu na dostupnost mobilních dat</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">Přepnout synchronizaci</string>
+
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">Zobrazit datum</string>
+
+    <!-- Delete -->
+    <string name="delete">Vymazat</string>
+
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">Skrýt tlačítko tísňového volání</string>
+    <string name="pref_lockscreen_disable_ecb_summary">NA VLASTNÍ RIZIKO!!!!</string>
+
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">Výběr ikony byl zrušen cílovou aplikací</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">Kompas</string>
+    <string name="quick_settings_compass_off">Kompas vyp</string>
+    <string name="quick_settings_compass_init">Inicializace&#8230;</string>
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">S</string>
+    <string name="cd_north_east">SV</string>
+    <string name="cd_east">V</string>
+    <string name="cd_south_east">JV</string>
+    <string name="cd_south">J</string>
+    <string name="cd_south_west">JZ</string>
+    <string name="cd_west">Z</string>
+    <string name="cd_north_west">SZ</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">Zrkladlové tlačítka</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">Středový aktivátor</string>
+    <string name="pref_pie_control_center_trigger_summary">Aktivuje koláč jen v případě potažení ze středu okraje obrazovky</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Vypnuto</string>
+    <string name="clock_date_localized">Regionální</string>
+    <string name="clock_date_format_1">dd/MM</string>
+    <string name="clock_date_format_2">MM/dd</string>
+    <string name="clock_date_format_3">d MMM</string>
+    <string name="clock_date_format_4">MMM d</string>
+    <string name="clock_date_format_5">d</string>
+
+    <!-- Battery tile settings -->
+    <string name="pref_cat_qs_battery_tile_settings_title">Nastavení dlaždice Stav baterie</string>
+    <string name="pref_qs_battery_extended_title">Rozšířený stav baterie</string>
+    <string name="pref_qs_battery_extended_summary">Vyžaduje restart</string>
+    <string name="pref_qs_battery_temp_unit_title">Jednotka teploty</string>
+    <string name="celsius">Celzius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+
+    <!-- Headset plug/unplug actions -->
+    <string name="pref_cat_headset_actions_title">Akce sluchátek</string>
+    <string name="pref_headset_action_plug_title">Po připojení sluchátek</string>
+    <string name="pref_headset_action_unplug_title">Po odpojení sluchátek</string>
+
+    <!-- Quiet Hours: mute vibrations -->
+    <string name="pref_lc_qh_mute_vibe_title">Zakázat vibrace</string>
+
+    <!-- Quiet Hours: interactive mode -->
+    <string name="pref_lc_qh_interactive_title">Interaktivní režim</string>
+    <string name="pref_lc_qh_interactive_summary">Vždy ztlumí oznámení během interakce uživatele se zařízením</string>
+
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">Povolit vymazání screenshot</string>
+
+    <!-- UNC: heads up mode -->
+    <string name="pref_lc_headsup_mode_title">Heads up režim</string>
+    <string name="lc_heads_up_default">Výchozí</string>
+    <string name="lc_heads_up_always">Vždy zapnutý</string>
+    <string name="lc_heads_up_immersive">V případě, že režim rozšířené plochy skryje stavovou lištu</string>
+    <string name="lc_heads_up_off">Vypnutý</string>
+
+    <!-- Statusbar: notification heads up category -->
+    <string name="pref_cat_notif_heads_up_title">Heads up notifikace</string>
+    <string name="pref_heads_up_master_switch_summary">Aktivuje standardní AOSP \"heads up\" funkcionalitu. 
+        Pokud zapnuto, dodatečná nastavení pro jednotlivé aplikace samostatně budou dostupné v rámci nabídky Nastavení oznámení. (vyžaduje restart)</string>
+    <string name="pref_heads_up_one_finger_title">Rozšíření jedním prstem</string>
+    <string name="pref_heads_up_timeout_title">Časovač zobrazení</string>
+    <string name="pref_heads_up_timeout_summary">Po jaké době zavřít notifikační okno. 0 = nikdy.</string>
 
 </resources>

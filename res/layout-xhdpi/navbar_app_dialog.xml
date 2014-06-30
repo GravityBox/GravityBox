@@ -97,4 +97,45 @@
 
     </LinearLayout>
 
+    <View 
+        android:id="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/appRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView 
+            style="@style/AppLauncherTextView"
+            android:id="@+id/quickapp9"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView 
+            style="@style/AppLauncherTextView"
+            android:id="@+id/quickapp10"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView 
+            style="@style/AppLauncherTextView"
+            android:id="@+id/quickapp11"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView 
+            style="@style/AppLauncherTextView"
+            android:id="@+id/quickapp12"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
 </LinearLayout>

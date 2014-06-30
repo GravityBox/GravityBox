@@ -973,6 +973,8 @@
     <string name="animation_scale5">애니메이션 2 배속</string>
     <string name="animation_scale6">애니메이션 5 배속</string>
     <string name="animation_scale7">애니메이션 10 배속</string>
+    <string name="animation_scale8">애니메이션 0.75 배속</string>
+    <string name="animation_scale9">애니메이션 1.25 배속</string>
 
     <string name="pref_qs_tile_label_style_title">타일 이름 스타일</string>
     <string name="tile_label_style_normal">기본</string>

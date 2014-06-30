@@ -400,7 +400,7 @@
     <string name="signal_color_mode_stock">Використовувати стандартні іконки</string>
     <string name="signal_color_mode_disabled">Не застосовувати колір</string>
     <string name="pref_cat_app_launcher_title">Запуск додатків</string>
-    <string name="pref_cat_app_launcher_summary">Діалог, що дозволяє вибрати до 8 додатків, які можна призначити для дій кнопок або помістити на панель навігації</string>
+    <string name="pref_cat_app_launcher_summary">Діалог, що дозволяє вибрати до 12 додатків, які можна призначити для дій кнопок або помістити на панель навігації</string>
     <string name="pref_app_launcher_slot_title">Слот додатки %d</string>
     <string name="app_launcher_no_apps">Додатки не вибрані. Використовуйте GravityBox/Запуск додатків для вибору додатків.</string>
     <string name="hwkey_action_app_launcher">Запустити програму</string>

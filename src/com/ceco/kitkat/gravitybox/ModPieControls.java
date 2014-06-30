@@ -83,6 +83,7 @@ public class ModPieControls {
     private static int mPieSize;
     private static int mPieTriggerSize;
     private static int mExpandedDesktopMode;
+    private static boolean mCenterTrigger;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -165,6 +166,14 @@ public class ModPieControls {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_LONGPRESS_DELAY)) {
                     mPieController.setLongpressDelay(intent.getIntExtra(
                             GravityBoxSettings.EXTRA_PIE_LONGPRESS_DELAY, 0));
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_MIRRORED_KEYS)) {
+                    mPieController.setMirroredKeys(intent.getBooleanExtra(
+                            GravityBoxSettings.EXTRA_PIE_MIRRORED_KEYS, false));
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_PIE_CENTER_TRIGGER)) {
+                    mCenterTrigger = intent.getBooleanExtra(GravityBoxSettings.EXTRA_PIE_CENTER_TRIGGER, false);
+                    attachPie();
                 }
             } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_EXPANDED_DESKTOP_MODE_CHANGED)) {
                 mExpandedDesktopMode = intent.getIntExtra(
@@ -275,6 +284,7 @@ public class ModPieControls {
             mPieTriggerSlots = getTriggerSlotsFromArray(triggerSet.toArray(new String[triggerSet.size()]));
             mPieSize = prefs.getInt(GravityBoxSettings.PREF_KEY_PIE_CONTROL_SIZE, 1000);
             mPieTriggerSize = prefs.getInt(GravityBoxSettings.PREF_KEY_PIE_CONTROL_TRIGGER_SIZE, 5);
+            mCenterTrigger = prefs.getBoolean(GravityBoxSettings.PREF_KEY_PIE_CENTER_TRIGGER, false);
 
             mExpandedDesktopMode = GravityBoxSettings.ED_DISABLED;
             try {
@@ -302,6 +312,7 @@ public class ModPieControls {
                         log("Invalid value for PREF_KEY_PIE_CONTROL_CUSTOM_KEY preference");
                     }
                     mPieController.setCustomKeyMode(customKeyMode);
+                    mPieController.setMirroredKeys(prefs.getBoolean(GravityBoxSettings.PREF_KEY_PIE_MIRRORED_KEYS, false));
 
                     mPieController.attachTo(param.thisObject);
 
@@ -483,8 +494,11 @@ public class ModPieControls {
     private static WindowManager.LayoutParams getPieTriggerLayoutParams(Position position) {
         final Resources res = mContext.getResources();
 
-        int width = (int) (res.getDisplayMetrics().widthPixels * 0.8f);
-        int height = (int) (res.getDisplayMetrics().heightPixels * 0.8f);
+        int triggerLength = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, 
+                res.getDisplayMetrics());
+        int width = mCenterTrigger ? triggerLength : (int) (res.getDisplayMetrics().widthPixels * 0.8f);
+        int height = mCenterTrigger ? triggerLength : (int) (res.getDisplayMetrics().heightPixels * 0.8f);
+
         int triggerThickness = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, mPieTriggerSize, 
                         res.getDisplayMetrics());

@@ -25,7 +25,7 @@ import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -314,13 +314,26 @@ public class ModPowerMenu {
                 @Override
                 protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
                     prefs.reload();
-                    if ((Boolean) param.args[0] && prefs.getBoolean(
-                            GravityBoxSettings.PREF_KEY_POWERMENU_DISABLE_ON_LOCKSCREEN, false)) {
-                        Dialog d = (Dialog) XposedHelpers.getObjectField(param.thisObject, "mDialog");
-                        if (d == null) {
-                            XposedHelpers.callMethod(param.thisObject, "createDialog");
+                    if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWERMENU_DISABLE_ON_LOCKSCREEN, false)) {
+                        boolean locked = (Boolean) param.args[0];
+                        if (!locked) {
+                            // double-check using keyguard manager
+                            try {
+                                Context context = (Context) XposedHelpers.getObjectField(
+                                        param.thisObject, "mContext");
+                                KeyguardManager km = (KeyguardManager) context.getSystemService(
+                                        Context.KEYGUARD_SERVICE);
+                                locked = km.isKeyguardLocked();
+                            } catch (Throwable t) { }
                         }
-                        param.setResult(null);
+
+                        if (locked) {
+                            Dialog d = (Dialog) XposedHelpers.getObjectField(param.thisObject, "mDialog");
+                            if (d == null) {
+                                XposedHelpers.callMethod(param.thisObject, "createDialog");
+                            }
+                            param.setResult(null);
+                        }
                     }
                 }
             });

@@ -17,24 +17,17 @@ package com.ceco.kitkat.gravitybox;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.Toast;
 
 public class SettingsManager {
     private static final String BACKUP_PATH = Environment.getExternalStorageDirectory() + "/GravityBox/backup";
     private static final String BACKUP_OK_FLAG = BACKUP_PATH + "/.backup_ok";
+    private static final String BACKUP_NO_MEDIA = BACKUP_PATH + "/.nomedia";
 
     private static Context mContext;
     private static SettingsManager mInstance;
@@ -57,6 +50,14 @@ public class SettingsManager {
                 Toast.makeText(mContext, R.string.settings_backup_failed, Toast.LENGTH_LONG).show();
                 return false;
             }
+        }
+
+        // create .nomedia file to disable media scanning on backup folder
+        File noMediaFile = new File(BACKUP_NO_MEDIA);
+        if (!noMediaFile.exists()) {
+            try {
+                noMediaFile.createNewFile();
+            } catch (IOException ioe) { }
         }
 
         // delete backup OK flag file first (if exists)
@@ -243,5 +244,23 @@ public class SettingsManager {
             prefs.edit().putString("settings_uuid", uuid).commit();
         }
         return uuid;
+    }
+
+    public void resetUuid() {
+        String prefsName = mContext.getPackageName() + "_preferences";
+        SharedPreferences prefs = mContext.getSharedPreferences(prefsName, Context.MODE_WORLD_READABLE);
+        prefs.edit().putString("settings_uuid", null).commit();
+    }
+
+    public long getUnlockerTimestamp() {
+        String prefsName = mContext.getPackageName() + "_preferences";
+        SharedPreferences prefs = mContext.getSharedPreferences(prefsName, Context.MODE_WORLD_READABLE);
+        return prefs.getLong("gb_unlocker_tstamp", 0);
+    }
+
+    public void setUnlockerTimestamp(long ms) {
+        String prefsName = mContext.getPackageName() + "_preferences";
+        SharedPreferences prefs = mContext.getSharedPreferences(prefsName, Context.MODE_WORLD_READABLE);
+        prefs.edit().putLong("gb_unlocker_tstamp", ms).commit();
     }
 }

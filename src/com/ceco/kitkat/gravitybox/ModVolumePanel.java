@@ -69,6 +69,7 @@ public class ModVolumePanel {
     private static boolean mShouldRunDropTranslucentAnimation = false;
     private static boolean mRunningDropTranslucentAnimation = false;
     private static View mPanel;
+    private static boolean mOpaqueOnInteraction;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -103,6 +104,10 @@ public class ModVolumePanel {
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_TRANSPARENCY)) {
                     mPanelAlpha = Utils.alphaPercentToInt(intent.getIntExtra(GravityBoxSettings.EXTRA_TRANSPARENCY, 0));
                     applyTranslucentWindow();
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_OPAQUE_ON_INTERACTION)) {
+                    mOpaqueOnInteraction = intent.getBooleanExtra(GravityBoxSettings.EXTRA_OPAQUE_ON_INTERACTION, true);
+                    mShouldRunDropTranslucentAnimation = mOpaqueOnInteraction && mPanelAlpha < 255;
                 }
             } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_LINK_VOLUMES_CHANGED)) {
                 mVolumesLinked = intent.getBooleanExtra(GravityBoxSettings.EXTRA_LINKED, true);
@@ -145,6 +150,7 @@ public class ModVolumePanel {
             mVolumeAdjustMuted = prefs.getBoolean(GravityBoxSettings.PREF_KEY_VOLUME_ADJUST_MUTE, false);
             mVolumeAdjustVibrateMuted = prefs.getBoolean(GravityBoxSettings.PREF_KEY_VOLUME_ADJUST_VIBRATE_MUTE, false);
             mPanelAlpha = Utils.alphaPercentToInt(prefs.getInt(GravityBoxSettings.PREF_KEY_VOLUME_PANEL_TRANSPARENCY, 0));
+            mOpaqueOnInteraction = prefs.getBoolean(GravityBoxSettings.PREF_KEY_VOLUME_PANEL_OPAQUE_ON_INTERACTION, true);
 
             XposedBridge.hookAllConstructors(classVolumePanel, new XC_MethodHook() {
 
@@ -445,7 +451,7 @@ public class ModVolumePanel {
 
         if (mPanel.getBackground() != null) {
             mPanel.getBackground().setAlpha(mPanelAlpha);
-            mShouldRunDropTranslucentAnimation = mPanelAlpha < 255;
+            mShouldRunDropTranslucentAnimation = mOpaqueOnInteraction && mPanelAlpha < 255;
         }
     }
 

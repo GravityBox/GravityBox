@@ -15,12 +15,12 @@
 
 package com.ceco.kitkat.gravitybox;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ceco.kitkat.gravitybox.TrafficMeterAbstract.TrafficMeterMode;
-import com.ceco.kitkat.gravitybox.ledcontrol.QuietHoursActivity;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -29,7 +29,12 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LayoutInflated;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
+import android.app.ActivityOptions;
+import android.app.KeyguardManager;
 import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -37,21 +42,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.content.res.XModuleResources;
+import android.content.res.XResources;
 import android.database.ContentObserver;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
-import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -69,10 +78,13 @@ public class ModStatusBar {
     private static final String CLASS_NETWORKTYPE = Utils.hasLenovoVibeUI() ?
             "com.android.systemui.lenovo.ext.NetworkType" :
             "com.mediatek.systemui.ext.NetworkType";
-    private static final String CLASS_NETWORK_CONTROLLER = "com.android.systemui.statusbar.policy.NetworkController";
+    private static final String CLASS_NETWORK_CONTROLLER = Utils.hasGeminiSupport() ? 
+            "com.android.systemui.statusbar.policy.NetworkControllerGemini" :
+            "com.android.systemui.statusbar.policy.NetworkController";
     private static final String CLASS_EXPANDABLE_NOTIF_ROW = "com.android.systemui.statusbar.ExpandableNotificationRow";
     private static final String CLASS_PHONE_STATUSBAR_VIEW = "com.android.systemui.statusbar.phone.PhoneStatusBarView";
     private static final String CLASS_ICON_MERGER = "com.android.systemui.statusbar.phone.IconMerger";
+    private static final String CLASS_SAVE_IMG_TASK = "com.android.systemui.screenshot.SaveImageInBackgroundTask";
     private static final boolean DEBUG = false;
 
     private static final float BRIGHTNESS_CONTROL_PADDING = 0.15f;
@@ -82,6 +94,10 @@ public class ModStatusBar {
     public static final String SETTING_ONGOING_NOTIFICATIONS = "gb_ongoing_notifications";
 
     public static final String ACTION_START_SEARCH_ASSIST = "gravitybox.intent.action.START_SEARCH_ASSIST";
+
+    private static final String ACTION_DELETE_SCREENSHOT = "com.android.systemui.DELETE_SCREENSHOT";
+    private static final String SCREENSHOT_URI = "com.android.systemui.SCREENSHOT_URI";
+    private static final int SCREENSHOT_NOTIFICATION_ID = 789;
 
     private static ViewGroup mIconArea;
     private static ViewGroup mRootView;
@@ -106,25 +122,30 @@ public class ModStatusBar {
     private static boolean mDisableDataNetworkTypeIcons = false;
     private static Object mStatusBarPlugin;
     private static Object mGetDataNetworkTypeIconGeminiHook;
-    private static TextView mCarrierTextView;
-    private static String mCarrierText;
+    private static TextView[] mCarrierTextView;
+    private static ImageView mCarrierDividerImageView;
+    private static String[] mCarrierText;
+    private static int[] mCarrierTextViewOrigVisibility;
+    private static int[] mCarrierTextViewOrigGravity;
     private static boolean mNotifExpandAll;
     private static boolean mDt2sEnabled;
     private static GestureDetector mDoubletapGesture;
     private static View mIconMergerView;
     private static String mClockLongpressLink;
     private static XSharedPreferences mPrefs;
+    private static int mDeleteIconId;
 
     // Brightness control
     private static boolean mBrightnessControlEnabled;
     private static boolean mBrightnessControl;
     private static float mScreenWidth;
     private static int mMinBrightness;
+    private static int mPeekHeight;
+    private static boolean mJustPeeked;
     private static int mLinger;
     private static int mInitialTouchX;
     private static int mInitialTouchY;
     private static int BRIGHTNESS_ON = 255;
-    private static VelocityTracker mVelocityTracker;
 
     private static List<BroadcastSubReceiver> mBroadcastSubReceivers = new ArrayList<BroadcastSubReceiver>();
 
@@ -200,9 +221,12 @@ public class ModStatusBar {
                 }
             } else if (intent.getAction().equals(ACTION_START_SEARCH_ASSIST)) {
                 startSearchAssist();
-            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_NOTIF_CARRIER_TEXT_CHANGED) &&
-                    intent.hasExtra(GravityBoxSettings.EXTRA_NOTIF_CARRIER_TEXT)) {
-                mCarrierText = intent.getStringExtra(GravityBoxSettings.EXTRA_NOTIF_CARRIER_TEXT);
+            } else if (intent.getAction().equals(GravityBoxSettings.ACTION_NOTIF_CARRIER_TEXT_CHANGED) ||
+                    intent.getAction().equals(GravityBoxSettings.ACTION_NOTIF_CARRIER2_TEXT_CHANGED)) {
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_NOTIF_CARRIER_TEXT))
+                    mCarrierText[0] = intent.getStringExtra(GravityBoxSettings.EXTRA_NOTIF_CARRIER_TEXT);
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_NOTIF_CARRIER2_TEXT))
+                    mCarrierText[1] = intent.getStringExtra(GravityBoxSettings.EXTRA_NOTIF_CARRIER2_TEXT);
                 updateCarrierTextView();
             } else if (intent.getAction().equals(GravityBoxSettings.ACTION_NOTIF_EXPAND_ALL_CHANGED) &&
                     intent.hasExtra(GravityBoxSettings.EXTRA_NOTIF_EXPAND_ALL)) {
@@ -210,6 +234,14 @@ public class ModStatusBar {
             } else if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_STATUSBAR_DT2S_CHANGED) &&
                     intent.hasExtra(GravityBoxSettings.EXTRA_SB_DT2S)) {
                 mDt2sEnabled = intent.getBooleanExtra(GravityBoxSettings.EXTRA_SB_DT2S, false);
+            } else if (intent.getAction().equals(ACTION_DELETE_SCREENSHOT)) {
+                Uri screenshotUri = Uri.parse(intent.getStringExtra(SCREENSHOT_URI));
+                if (screenshotUri != null) {
+                    mContext.getContentResolver().delete(screenshotUri, null, null);
+                }
+                NotificationManager notificationManager =
+                        (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.cancel(SCREENSHOT_NOTIFICATION_ID);
             }
         }
     };
@@ -302,9 +334,14 @@ public class ModStatusBar {
                     // inject Quiet Hours view
                     StatusbarQuietHoursView qhv = new StatusbarQuietHoursView(liparam.view.getContext());
                     mIconArea.addView(qhv, 0);
-                    mBroadcastSubReceivers.add(qhv);
                 }
             });
+
+            StatusbarSignalCluster.initResources(prefs, resparam);
+
+            XModuleResources modRes = XModuleResources.createInstance(GravityBox.MODULE_PATH, resparam.res);
+            mDeleteIconId = XResources.getFakeResId(modRes, R.drawable.ic_menu_delete);
+            resparam.res.setReplacement(mDeleteIconId, modRes.fwd(R.drawable.ic_menu_delete));
         } catch (Throwable t) {
             XposedBridge.log(t);
         }
@@ -339,7 +376,10 @@ public class ModStatusBar {
             mBrightnessControlEnabled = prefs.getBoolean(
                     GravityBoxSettings.PREF_KEY_STATUSBAR_BRIGHTNESS, false);
             mOngoingNotif = prefs.getString(GravityBoxSettings.PREF_KEY_ONGOING_NOTIFICATIONS, "");
-            mCarrierText = prefs.getString(GravityBoxSettings.PREF_KEY_NOTIF_CARRIER_TEXT, null);
+            mCarrierText = new String[] {
+                    prefs.getString(GravityBoxSettings.PREF_KEY_NOTIF_CARRIER_TEXT, ""),
+                    prefs.getString(GravityBoxSettings.PREF_KEY_NOTIF_CARRIER2_TEXT, "")
+            };
             mNotifExpandAll = prefs.getBoolean(GravityBoxSettings.PREF_KEY_NOTIF_EXPAND_ALL, false);
             mDt2sEnabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_DT2S, false);
 
@@ -375,13 +415,30 @@ public class ModStatusBar {
                     mAnimPushDownIn = res.getIdentifier("push_down_in", "anim", "android");
                     mAnimFadeIn = res.getIdentifier("fade_in", "anim", "android");
 
-                    Object carrierTextView = XposedHelpers.getObjectField(param.thisObject, "mCarrierLabel");
-                    if (carrierTextView instanceof TextView[]) {
-                        if (((TextView[])carrierTextView).length > 0) {
-                            mCarrierTextView = (TextView) ((TextView[])carrierTextView)[0];
+                    if (Utils.hasGeminiSupport()) {
+                        LinearLayout carrierLabelGemini = (LinearLayout) XposedHelpers.getObjectField(
+                                param.thisObject, "mCarrierLabelGemini");
+                        mCarrierTextView = new TextView[] {
+                                (TextView) carrierLabelGemini.findViewById(
+                                        res.getIdentifier("carrier1", "id", PACKAGE_NAME)),
+                                (TextView) carrierLabelGemini.findViewById(
+                                        res.getIdentifier("carrier2", "id", PACKAGE_NAME))
+                        };
+                        mCarrierDividerImageView = (ImageView) carrierLabelGemini.findViewById(
+                                res.getIdentifier("carrier_divider", "id", PACKAGE_NAME));
+                    } else {
+                        Object carrierTextView = XposedHelpers.getObjectField(param.thisObject, "mCarrierLabel");
+                        if (carrierTextView instanceof TextView[]) {
+                            if (((TextView[])carrierTextView).length > 0) {
+                                mCarrierTextView = new TextView[] {
+                                        (TextView) ((TextView[])carrierTextView)[0]
+                                };
+                            }
+                        } else if (carrierTextView instanceof TextView) {
+                            mCarrierTextView = new TextView[] {
+                                    (TextView) carrierTextView
+                            };
                         }
-                    } else if (carrierTextView instanceof TextView) {
-                        mCarrierTextView = (TextView) carrierTextView;
                     }
 
                     try {
@@ -402,6 +459,8 @@ public class ModStatusBar {
                     mScreenWidth = (float) res.getDisplayMetrics().widthPixels;
                     mMinBrightness = res.getInteger(res.getIdentifier(
                             "config_screenBrightnessDim", "integer", "android"));
+                    mPeekHeight = res.getDimensionPixelSize(res.getIdentifier(
+                            "peek_height", "dimen", PACKAGE_NAME));
                     BRIGHTNESS_ON = XposedHelpers.getStaticIntField(powerManagerClass, "BRIGHTNESS_ON");
 
                     try {
@@ -420,10 +479,11 @@ public class ModStatusBar {
                     intentFilter.addAction(GravityBoxSettings.ACTION_DISABLE_DATA_NETWORK_TYPE_ICONS_CHANGED);
                     intentFilter.addAction(ACTION_START_SEARCH_ASSIST);
                     intentFilter.addAction(GravityBoxSettings.ACTION_NOTIF_CARRIER_TEXT_CHANGED);
+                    intentFilter.addAction(GravityBoxSettings.ACTION_NOTIF_CARRIER2_TEXT_CHANGED);
                     intentFilter.addAction(GravityBoxSettings.ACTION_NOTIF_EXPAND_ALL_CHANGED);
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_STATUSBAR_DT2S_CHANGED);
-                    intentFilter.addAction(QuietHoursActivity.ACTION_QUIET_HOURS_CHANGED);
-                    intentFilter.addAction(Intent.ACTION_TIME_TICK);
+                    intentFilter.addAction(GravityBoxSettings.ACTION_PREF_STATUSBAR_BT_VISIBILITY_CHANGED);
+                    intentFilter.addAction(ACTION_DELETE_SCREENSHOT);
                     mContext.registerReceiver(mBroadcastReceiver, intentFilter);
 
                     mSettingsObserver = new SettingsObserver(
@@ -552,15 +612,79 @@ public class ModStatusBar {
             XposedHelpers.findAndHookMethod(networkControllerClass, "refreshViews", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    if (mCarrierTextView == null || mCarrierText == null ||
-                            mCarrierText.isEmpty()) return;
+                    if (mCarrierTextView == null || mCarrierText == null) return;
 
-                    if (mCarrierText.trim().isEmpty()) {
-                        mCarrierTextView.setText("");
-                        mCarrierTextView.setVisibility(View.GONE);
-                    } else {
-                        mCarrierTextView.setText(mCarrierText);
-                        mCarrierTextView.setVisibility(View.VISIBLE);
+                    if (Utils.hasGeminiSupport()) {
+                        String[] networkName = new String[2];
+                        Object name = XposedHelpers.getObjectField(param.thisObject, "mNetworkName");
+                        if (name instanceof String[]) {
+                            networkName[0] = (String) ((String[])name)[0];
+                            networkName[1] = (String) ((String[])name)[1];
+                        } else {
+                            networkName[0] = (String) name;
+                            networkName[1] = (String) XposedHelpers.getObjectField(
+                                    param.thisObject, "mNetworkNameGemini");
+                        }
+
+                        if (mCarrierTextViewOrigVisibility == null) {
+                            mCarrierTextViewOrigVisibility = new int[] {
+                                mCarrierTextView[0] == null ? View.GONE : mCarrierTextView[0].getVisibility(),
+                                mCarrierTextView[1] == null ? View.GONE : mCarrierTextView[1].getVisibility()
+                            };
+                        }
+                        if (mCarrierTextViewOrigGravity == null) {
+                            mCarrierTextViewOrigGravity = new int[] {
+                                mCarrierTextView[0] == null ? Gravity.CENTER : mCarrierTextView[0].getGravity(),
+                                mCarrierTextView[1] == null ? Gravity.CENTER : mCarrierTextView[1].getGravity()
+                            };
+                        }
+
+                        for (int i=0; i<2; i++) {
+                            if (mCarrierTextView[i] == null) continue;
+                            if (mCarrierText[i].isEmpty()) {
+                                mCarrierTextView[i].setText(networkName[i]);
+                                mCarrierTextView[i].setVisibility(mCarrierTextViewOrigVisibility[i]);
+                                mCarrierTextView[i].setGravity(mCarrierTextViewOrigGravity[i]);
+                            } else {
+                                if (mCarrierText[i].trim().isEmpty()) {
+                                    mCarrierTextView[i].setText("");
+                                    mCarrierTextView[i].setVisibility(View.GONE);
+                                } else {
+                                    mCarrierTextView[i].setText(mCarrierText[i]);
+                                    mCarrierTextView[i].setVisibility(View.VISIBLE);
+                                }
+                            }
+                        }
+                        if ((mCarrierTextView[0] != null &&
+                             mCarrierTextView[0].getVisibility() == View.VISIBLE) &&
+                             (mCarrierTextView[1] != null && 
+                              mCarrierTextView[1].getVisibility() == View.VISIBLE)) {
+                            mCarrierTextView[0].setGravity(Gravity.RIGHT);
+                            mCarrierTextView[1].setGravity(Gravity.LEFT);
+                            if (mCarrierDividerImageView != null) {
+                                mCarrierDividerImageView.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            if (mCarrierDividerImageView != null) {
+                                mCarrierDividerImageView.setVisibility(View.GONE);
+                            }
+                            if (mCarrierTextView[0] != null) {
+                                mCarrierTextView[0].setGravity(Gravity.CENTER);
+                            }
+                            if (mCarrierTextView[1] != null) {
+                                mCarrierTextView[1].setGravity(Gravity.CENTER);
+                            }
+                        }
+                    } else if (mCarrierTextView[0] != null) {
+                        if (mCarrierText[0].isEmpty()) return;
+
+                        if (mCarrierText[0].trim().isEmpty()) {
+                            mCarrierTextView[0].setText("");
+                            mCarrierTextView[0].setVisibility(View.GONE);
+                        } else {
+                            mCarrierTextView[0].setText(mCarrierText[0]);
+                            mCarrierTextView[0].setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             });
@@ -712,6 +836,44 @@ public class ModStatusBar {
                 });
             } catch (Throwable t) {
                 XposedBridge.log(t);;
+            }
+
+            // Status bar Bluetooth icon policy
+            mBroadcastSubReceivers.add(new StatusbarBluetoothIcon(classLoader, prefs));
+
+            // Delete action for screenshot notification
+            try {
+                XposedBridge.hookAllMethods(XposedHelpers.findClass(CLASS_SAVE_IMG_TASK, classLoader),
+                        "doInBackground", new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        Object result = param.getResult();
+                        if (result == null || (Integer) XposedHelpers.getIntField(result, "result") != 0)
+                            return;
+
+                        Notification.Builder builder = (Notification.Builder)
+                                XposedHelpers.getObjectField(param.thisObject, "mNotificationBuilder");
+                        if (XposedHelpers.getAdditionalInstanceField(builder, "gbDeleteActionAdded") != null)
+                            return;
+
+                        prefs.reload();
+                        if (!prefs.getBoolean(GravityBoxSettings.PREF_KEY_SCREENSHOT_DELETE, false))
+                            return;
+
+                        Uri uri = (Uri) XposedHelpers.getObjectField(result, "imageUri");
+                        Intent deleteIntent = new Intent(ACTION_DELETE_SCREENSHOT);
+                        deleteIntent.putExtra(SCREENSHOT_URI, uri.toString());
+                        Context context = (Context) XposedHelpers.getObjectField(result, "context");
+                        Context gbContext = context.createPackageContext(GravityBox.PACKAGE_NAME, 0);
+                        builder.addAction(mDeleteIconId, gbContext.getString(R.string.delete),
+                                PendingIntent.getBroadcast(context, 0, deleteIntent,
+                                        PendingIntent.FLAG_CANCEL_CURRENT));
+
+                        XposedHelpers.setAdditionalInstanceField(builder, "gbDeleteActionAdded", true);
+                    }
+                });
+            } catch (Throwable t) {
+                XposedBridge.log(t);
             }
         }
         catch (Throwable t) {
@@ -922,41 +1084,39 @@ public class ModStatusBar {
                     XposedHelpers.getIntField(mPhoneStatusBar, "mNotificationHeaderHeight");
     
             if (action == MotionEvent.ACTION_DOWN) {
-                mLinger = 0;
-                mInitialTouchX = x;
-                mInitialTouchY = y;
-                mVelocityTracker = VelocityTracker.obtain();
-                handler.removeCallbacks(mLongPressBrightnessChange);
-                if ((y) < notificationHeaderHeight) {
+                if (y < notificationHeaderHeight) {
+                    mLinger = 0;
+                    mInitialTouchX = x;
+                    mInitialTouchY = y;
+                    mJustPeeked = true;
+                    handler.removeCallbacks(mLongPressBrightnessChange);
                     handler.postDelayed(mLongPressBrightnessChange,
                             BRIGHTNESS_CONTROL_LONG_PRESS_TIMEOUT);
                 }
             } else if (action == MotionEvent.ACTION_MOVE) {
-                if ((y) < notificationHeaderHeight) {
-                    mVelocityTracker.computeCurrentVelocity(1000);
-                    float yVel = mVelocityTracker.getYVelocity();
-                    yVel = Math.abs(yVel);
-                    if (yVel < 50.0f) {
-                        if (mLinger > BRIGHTNESS_CONTROL_LINGER_THRESHOLD) {
-                            adjustBrightness(x);
-                        } else {
+                if (y < notificationHeaderHeight && mJustPeeked) {
+                    if (mLinger > BRIGHTNESS_CONTROL_LINGER_THRESHOLD) {
+                        adjustBrightness(x);
+                    } else {
+                        final int xDiff = Math.abs(x - mInitialTouchX);
+                        final int yDiff = Math.abs(y - mInitialTouchY);
+                        final int touchSlop = ViewConfiguration.get(mContext).getScaledTouchSlop();
+                        if (xDiff > yDiff) {
                             mLinger++;
                         }
-                    }
-                    int touchSlop = ViewConfiguration.get(mContext).getScaledTouchSlop();
-                    if (Math.abs(x - mInitialTouchX) > touchSlop ||
-                            Math.abs(y - mInitialTouchY) > touchSlop) {
-                        handler.removeCallbacks(mLongPressBrightnessChange);
+                        if (xDiff > touchSlop || yDiff > touchSlop) {
+                            handler.removeCallbacks(mLongPressBrightnessChange);
+                        }
                     }
                 } else {
+                    if (y > mPeekHeight) {
+                        mJustPeeked = false;
+                    }
                     handler.removeCallbacks(mLongPressBrightnessChange);
                 }
-            } else if (action == MotionEvent.ACTION_UP
-                    || action == MotionEvent.ACTION_CANCEL) {
-                mVelocityTracker.recycle();
-                mVelocityTracker = null;
+            } else if (action == MotionEvent.ACTION_UP ||
+                        action == MotionEvent.ACTION_CANCEL) {
                 handler.removeCallbacks(mLongPressBrightnessChange);
-                mLinger = 0;
             }
         } catch (Throwable t) {
             XposedBridge.log(t);
@@ -964,13 +1124,53 @@ public class ModStatusBar {
     }
 
     private static void startSearchAssist() {
-        if (mPhoneStatusBar == null) return;
-
         try {
-            final Object searchPanelView = 
-                    XposedHelpers.getObjectField(mPhoneStatusBar, "mSearchPanelView");
+            Object searchPanelView = null;
+            if (mPhoneStatusBar != null) {
+                searchPanelView = XposedHelpers.getObjectField(mPhoneStatusBar, "mSearchPanelView");
+            }
             if (searchPanelView != null) {
                 XposedHelpers.callMethod(searchPanelView, "startAssistActivity");
+            } else if (mContext != null) {
+                boolean isKeyguardShowing = false;
+                try {
+                    KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                    isKeyguardShowing = km.isKeyguardLocked();
+                } catch (Throwable t) { }
+
+                if (isKeyguardShowing) {
+                    // Have keyguard show the bouncer and launch the activity if the user succeeds.
+                    Class<?> kgtDelCls = XposedHelpers.findClass(
+                            "com.android.systemui.statusbar.phone.KeyguardTouchDelegate",
+                            mContext.getClassLoader());
+                    Object kgtDel = XposedHelpers.callStaticMethod(kgtDelCls, "getInstance", mContext);
+                    XposedHelpers.callMethod(kgtDel, "showAssistant");
+                } else {
+                    // Otherwise, keyguard isn't showing so launch it from here.
+                    SearchManager sm = (SearchManager) mContext.getSystemService(Context.SEARCH_SERVICE);
+                    Intent intent = (Intent) XposedHelpers.callMethod(sm, "getAssistIntent", mContext, true, -2);
+                    if (intent == null) return;
+
+                    try {
+                        Class<?> amnCls = XposedHelpers.findClass("android.app.ActivityManagerNative",
+                                mContext.getClassLoader());
+                        Object amn = XposedHelpers.callStaticMethod(amnCls, "getDefault");
+                        XposedHelpers.callMethod(amn, "dismissKeyguardOnNextActivity");
+                    } catch (Throwable t) { }
+
+                    try {
+                        Resources res = mContext.getResources();
+                        int animEnter = res.getIdentifier("search_launch_enter", "anim", PACKAGE_NAME);
+                        int animExit = res.getIdentifier("search_launch_exit", "anim", PACKAGE_NAME);
+                        ActivityOptions opts = ActivityOptions.makeCustomAnimation(mContext, animEnter, animExit);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Constructor<?> uhConst = XposedHelpers.findConstructorExact(UserHandle.class, int.class);
+                        UserHandle uh = (UserHandle) uhConst.newInstance(-2);
+                        XposedHelpers.callMethod(mContext, "startActivityAsUser", intent, opts.toBundle(), uh);
+                    } catch (ActivityNotFoundException e) {
+                        log("Activity not found for " + intent.getAction());
+                    }
+                }
             }
         } catch (Throwable t) {
             XposedBridge.log(t);
@@ -981,7 +1181,8 @@ public class ModStatusBar {
         if (mPhoneStatusBar == null) return;
 
         try {
-            Object nwCtrl = XposedHelpers.getObjectField(mPhoneStatusBar, "mNetworkController");
+            Object nwCtrl = XposedHelpers.getObjectField(mPhoneStatusBar, Utils.hasGeminiSupport() ? 
+                    "mNetworkControllerGemini" : "mNetworkController");
             if (nwCtrl != null) {
                 XposedHelpers.callMethod(nwCtrl, "refreshViews");
             }

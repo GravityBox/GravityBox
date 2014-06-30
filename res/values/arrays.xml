@@ -22,6 +22,8 @@
         <item>@string/battery_style_circle_percent</item>
         <item>@string/battery_style_kitkat</item>
         <item>@string/battery_style_kitkat_percent</item>
+        <item>@string/battery_style_circle_dashed</item>
+        <item>@string/battery_style_circle_dashed_percent</item>
         <item>@string/battery_style_none</item>
     </string-array>
 
@@ -31,6 +33,8 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
         <item>0</item>
     </string-array>
 
@@ -122,6 +126,8 @@
         <item>@string/qs_tile_music</item>
         <item>@string/qs_tile_alarm</item>
         <item>@string/qs_tile_lock_screen</item>
+        <item>@string/lc_quiet_hours</item>
+        <item>@string/qs_tile_compass</item>
     </string-array>
 
     <string-array name="qs_tile_aosp_values_kk" translatable="false">
@@ -158,6 +164,8 @@
         <item>music_tileview</item>
         <item>alarm_textview</item>
         <item>lock_screen_tileview</item>
+        <item>quiet_hours_tileview</item>
+        <item>compass_tileview</item>
     </string-array>
 
     <string-array name="qs_tile_override_entries" translatable="false">
@@ -166,6 +174,7 @@
         <item>@string/qs_tile_data_usage</item>
         <item>@string/qs_tile_airplane_mode</item>
         <item>@string/qs_tile_gps</item>
+        <item>@string/qs_tile_gps_slimkat</item>
         <item>@string/qs_tile_autorotation</item>
         <item>@string/qs_tile_settings</item>
         <item>@string/qs_tile_brightness</item>
@@ -177,6 +186,7 @@
         <item>rssi_textview</item>
         <item>airplane_mode_textview</item>
         <item>gps_textview</item>
+        <item>location_tileview</item>
         <item>auto_rotate_textview</item>
         <item>settings</item>
         <item>brightness_textview</item>
@@ -200,6 +210,7 @@
         <item>@string/hwkey_action_default</item>
         <item>@string/hwkey_action_search</item>
         <item>@string/hwkey_action_voice_search</item>
+        <item>@string/hwkey_action_inapp_search</item>
         <item>@string/hwkey_action_prev_app</item>
         <item>@string/hwkey_action_kill</item>
         <item>@string/hwkey_action_sleep</item>
@@ -227,6 +238,7 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>24</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
@@ -311,7 +323,9 @@
         <item>@string/animation_scale0</item>
         <item>@string/animation_scale1</item>
         <item>@string/animation_scale2</item>
+        <item>@string/animation_scale8</item>
         <item>@string/animation_scale3</item>
+        <item>@string/animation_scale9</item>
         <item>@string/animation_scale4</item>
         <item>@string/animation_scale5</item>
         <item>@string/animation_scale6</item>
@@ -323,7 +337,9 @@
         <item>0</item>
         <item>.25</item>
         <item>.5</item>
+        <item>.75</item>
         <item>1</item>
+        <item>1.25</item>
         <item>1.5</item>
         <item>2</item>
         <item>5</item>
@@ -335,7 +351,9 @@
         <item>@string/animation_scale0</item>
         <item>@string/animation_scale1</item>
         <item>@string/animation_scale2</item>
+        <item>@string/animation_scale8</item>
         <item>@string/animation_scale3</item>
+        <item>@string/animation_scale9</item>
         <item>@string/animation_scale4</item>
         <item>@string/animation_scale5</item>
         <item>@string/animation_scale6</item>
@@ -347,7 +365,9 @@
         <item>0</item>
         <item>.25</item>
         <item>.5</item>
+        <item>.75</item>
         <item>1</item>
+        <item>1.25</item>
         <item>1.5</item>
         <item>2</item>
         <item>5</item>
@@ -359,7 +379,9 @@
         <item>@string/animation_scale0</item>
         <item>@string/animation_scale1</item>
         <item>@string/animation_scale2</item>
+        <item>@string/animation_scale8</item>
         <item>@string/animation_scale3</item>
+        <item>@string/animation_scale9</item>
         <item>@string/animation_scale4</item>
         <item>@string/animation_scale5</item>
         <item>@string/animation_scale6</item>
@@ -371,7 +393,9 @@
         <item>0</item>
         <item>.25</item>
         <item>.5</item>
+        <item>.75</item>
         <item>1</item>
+        <item>1.25</item>
         <item>1.5</item>
         <item>2</item>
         <item>5</item>
@@ -526,6 +550,26 @@
         <item>disconnected</item>
         <item>waiting</item>
         <item>periodic</item>
+    </string-array>
+
+    <string-array name="clock_date_entries" translatable="false">
+        <item>@string/clock_date_disabled</item>
+        <item>@string/clock_date_localized</item>
+        <item>@string/clock_date_format_1</item>
+        <item>@string/clock_date_format_2</item>
+        <item>@string/clock_date_format_3</item>
+        <item>@string/clock_date_format_4</item>
+        <item>@string/clock_date_format_5</item>
+    </string-array>
+
+    <string-array name="clock_date_values" translatable="false">
+        <item>disabled</item>
+        <item>localized</item>
+        <item>dd/MM</item>
+        <item>MM/dd</item>
+        <item>d MMM</item>
+        <item>MMM d</item>
+        <item>d</item>
     </string-array>
 
     <string-array name="clock_dow_entries" translatable="false">
@@ -955,6 +999,85 @@
     <string-array name="lc_led_mode_values" translatable="false">
         <item>ORIGINAL</item>
         <item>OVERRIDE</item>
+        <item>OFF</item>
+    </string-array>
+
+    <string-array name="sc_lte_style_entries" translatable="false">
+        <item>@string/sc_lte_style_default</item>
+        <item>@string/sc_lte_style_lte</item>
+        <item>@string/sc_lte_style_4g</item>
+    </string-array>
+
+    <string-array name="sc_lte_style_values" translatable="false">
+        <item>DEFAULT</item>
+        <item>LTE</item>
+        <item>4G</item>
+    </string-array>
+
+    <string-array name="sb_bt_entries" translatable="false">
+        <item>@string/sb_bt_default</item>
+        <item>@string/sb_bt_connected</item>
+        <item>@string/sb_bt_hidden</item>
+    </string-array>
+
+    <string-array name="sb_bt_values" translatable="false">
+        <item>DEFAULT</item>
+        <item>CONNECTED</item>
+        <item>HIDDEN</item>
+    </string-array>
+
+    <string-array name="increasing_ring_interval_entries" translatable="false">
+        <item>@string/increasing_ring_interval_eachring</item>
+        <item>@string/increasing_ring_interval_half_second</item>
+        <item>@string/increasing_ring_interval_1second</item>
+        <item>@string/increasing_ring_interval_2seconds</item>
+        <item>@string/increasing_ring_interval_3seconds</item>
+        <item>@string/increasing_ring_interval_5seconds</item>
+        <item>@string/increasing_ring_interval_10seconds</item>
+    </string-array>
+
+    <integer-array name="increasing_ring_interval_values" translatable="false">
+        <item>0</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </integer-array>
+
+    <string-array name="cardinal_directions">
+        <item>@string/cd_north</item>
+        <item>@string/cd_north_east</item>
+        <item>@string/cd_east</item>
+        <item>@string/cd_south_east</item>
+        <item>@string/cd_south</item>
+        <item>@string/cd_south_west</item>
+        <item>@string/cd_west</item>
+        <item>@string/cd_north_west</item>
+    </string-array>
+
+    <string-array name="temperature_unit_entries" translatable="false">
+        <item>@string/celsius</item>
+        <item>@string/fahrenheit</item>
+    </string-array>
+
+    <string-array name="temperature_unit_values" translatable="false">
+        <item>C</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="lc_heads_up_entries" translatable="false">
+        <item>@string/lc_heads_up_default</item>
+        <item>@string/lc_heads_up_always</item>
+        <item>@string/lc_heads_up_immersive</item>
+        <item>@string/lc_heads_up_off</item>
+    </string-array>
+
+    <string-array name="lc_heads_up_values" translatable="false">
+        <item>DEFAULT</item>
+        <item>ALWAYS</item>
+        <item>IMMERSIVE</item>
         <item>OFF</item>
     </string-array>
 

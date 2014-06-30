@@ -84,6 +84,11 @@
     <string name="quick_settings_smart_radio_off">Okos rádiókapcsolat ki</string>
     <string name="quick_settings_lock_screen_on">Zárképernyő bekapcsolva</string>
     <string name="quick_settings_lock_screen_off">Zárképernyő kikapcsolva</string>
+    <string name="quick_settings_location_on">Helyzetmeghatározás</string>
+    <string name="quick_settings_location_off">Helyzetmeghatározás kikapcsolva</string>
+    <string name="quick_settings_quiet_hours_off">Csendes Időszak kikapcsolva</string>
+    <string name="quick_settings_quiet_hours_on">Csendes Időszak bekapcsolva</string>
+    <string name="quick_settings_quiet_hours_auto">Automatikus Csendes Időszak</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Állapotsáv Gyorsbeállítások csempéi</string>
@@ -94,6 +99,7 @@
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
     <string name="qs_tile_gps">Helymeghatározás</string>
+    <string name="qs_tile_gps_slimkat">Helyzetmeghatározás (SlimKat stílus)</string>
     <string name="qs_tile_gps_alt">GPS (CM stílus)</string>
     <string name="qs_tile_mobile_data">Mobil adatátvitel</string>
     <string name="qs_tile_network_mode">Hálózati üzemmód</string>
@@ -667,7 +673,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Alkalmazás Indító</string>
-    <string name="pref_cat_app_launcher_summary">Alkalmazás ablak 8 beállítható applikációval, melynek a megjelenítése hozzárendelhető hardver gomb művelethez vagy egy külön navigációs sáv gombhoz</string>
+    <string name="pref_cat_app_launcher_summary">Alkalmazás ablak 12 beállítható applikációval, melynek a megjelenítése hozzárendelhető hardver gomb művelethez vagy egy külön navigációs sáv gombhoz</string>
     <string name="pref_app_launcher_slot_title">Alkalmazás hely %d</string>
     <string name="app_launcher_no_apps">Nincs beállítva alkalmazás. Applikációk hozzárendeléséhez használja a GravityBox / Alkalmazás Indító menüt. </string>
 
@@ -1110,7 +1116,7 @@
     <string name="wsc_trans_blocked">A megadott tranzakció-azonosító blokkolásra került. A probléma megoldásához lépjen kapcsolatba a GravityBox fejlesztőivel.</string>
     <string name="pref_trans_verification_title">PayPal tranzakció-azonosító</string>
     <string name="pref_trans_verification_summary">Amennyiben adományozott, beírhatja a PayPal adományozási tranzakció-azonosítóját a prémium funkciók feloldásához.</string>
-    <string name="wsc_trans_required_summary">Ehhez a funkcióhoz érvényes PayPal tranzakció-azonosító szükséges</string>
+    <string name="wsc_trans_required_summary">Ez prémium funkció, melyhez feloldás szükséges</string>
 
     <!-- Pie: disable system info -->
     <string name="pref_pie_sysinfo_disable_title">Rendszerinformációs gomb letiltása</string>
@@ -1216,6 +1222,8 @@
     <string name="animation_scale5">Animáció lépték 2x</string>
     <string name="animation_scale6">Animáció lépték 5x</string>
     <string name="animation_scale7">Animáció lépték 10x</string>
+    <string name="animation_scale8">Animáció lépték .75x</string>
+    <string name="animation_scale9">Animáció lépték 1.25x</string>
     
      <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Csempe felirat stílus</string>
@@ -1391,7 +1399,7 @@
     <string name="pref_lockscreen_show_pattern_error_summary">Piros mintanyom mutatása hibás feloldó minta megadásakor</string>
 
     <!-- Premium features: allow trial period -->
-    <string name="trial_info">Ez a funkció próba üzemmódban van. Ha hasznosnak találja, tovább használhatja a funkciót a PayPal adományozási tranzakció azonosító regisztrációja után. A próba üzemmód %d újraindítás után véget ér.</string>
+    <string name="trial_info">Ez a funkció próba üzemmódban van. Ha hasznosnak találja, tovább használhatja a prémium funkciók feloldása után. A próba üzemmód %d újraindítás után véget ér.</string>
 
     <!-- Navbar: disable camera icon -->
     <string name="pref_navbar_camera_key_disable_title">Kamera ikon letiltása</string>
@@ -1441,5 +1449,79 @@
 
     <!-- Force English locale -->
     <string name="pref_force_english_locale_title">Angol lokalicázió kényszerítése</string>
+    
+    <!-- VolumePanel transparency -->
+    <string name="pref_volume_panel_transparency_title">Hangerő panel átlátszóság</string>
+    
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Egyéni másodlagos szolgáltatónév</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">Csendes Időszak figyelmen kívül hagyása</string>
+    <string name="pref_lc_qh_ignore_list_title">Meghatározott kulcsszavaknál</string>
+    <string name="pref_lc_qh_ignore_list_summary">Kulcsszavak vesszővel elválasztott listája, melyek figyelmen kívül hagyják a Csendes Időszakot. Hagyd üresen az összes értesítéshez.</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">Csendes Időszak ki-bekapcsolása</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">H+ mutató engedélyezése</string>
+    <string name="pref_signal_cluster_hplus_summary">Újraindítás szükséges</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">LTE mutató stílusa</string>
+    <string name="sc_lte_style_default">Rendszer alapértelmezett</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Repülő üzemmód ki-bekapcsolása</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Bluetooth ikon láthatósága</string>
+    <string name="sb_bt_default">BT engedélyezésekor (alapértelmezett)</string>
+    <string name="sb_bt_connected">BT csatlakozásakor</string>
+    <string name="sb_bt_hidden">Elrejtve</string>
+    
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Növekvő hangerejű csengőhang</string>
+    <string name="increasing_ring_enable">Engedélyezve</string>
+    <string name="increasing_ring_min_volume_title">Csengés kezdő hangerő</string>
+    <string name="increasing_ring_volume_notice">Megjegyzés:\nHa a kezdő hangerő magasabb értékre kerül beállításra, mint a csengés hangerő, a csengőhang a csengés hangerőn kerül lejátszásra</string>
+    <string name="increasing_ring_interval_title">Növekedés intervalluma</string>
+    <string name="increasing_ring_interval_eachring">Minden csengésnél</string>
+    <string name="increasing_ring_interval_half_second">0.5 másodperc</string>
+    <string name="increasing_ring_interval_1second">1 másodperc</string>
+    <string name="increasing_ring_interval_2seconds">2 másodperc</string>
+    <string name="increasing_ring_interval_3seconds">3 másodperc</string>
+    <string name="increasing_ring_interval_5seconds">5 másodperc</string>
+    <string name="increasing_ring_interval_10seconds">10 másodperc</string>
+
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Alkalmazáson belüli keresés</string>
+    
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Balról jobbra irány kényszerítése</string>
+    <string name="pref_force_ltr_direction_summary">Balról jobbra elrendezés kényszerítése a jobbról balra lokalizációkhoz (újraindítás szükséges)</string>
+    
+    <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">Átlátszóság interakciónál</string>
+    <string name="pref_volume_panel_opaque_summary">Eltávolítja az átlátszóságot a hangerő panel aktív használatakor</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">Csengés üzemmód beállítása</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">Csak mobil adatkapcsolatnál</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">Szaggatott kör akkumlátor</string>
+    <string name="battery_style_circle_dashed_percent">Szaggatott kör akkumlátor százalékkal</string>
+
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">Köszönöm a támogatását. A prémium funkciók a Gravitybox újraindítása után kerülnek feloldásra.</string>
 
 </resources>

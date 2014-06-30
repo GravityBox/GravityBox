@@ -71,6 +71,9 @@
     <string name="quick_settings_lock_screen_off">ロック画面オフ</string>
     <string name="quick_settings_location_on">位置情報オン</string>
     <string name="quick_settings_location_off">位置情報オフ</string>
+    <string name="quick_settings_quiet_hours_off">お休みモードオフ</string>
+    <string name="quick_settings_quiet_hours_on">お休みモードオン</string>
+    <string name="quick_settings_quiet_hours_auto">お休みモード自動</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">ステータスバークイック設定タイル</string>
@@ -1056,9 +1059,6 @@
     <string name="pref_smart_radio_screen_off_delay_summary">画面がオフになった時の省電力モードへの切り替えを遅らせます。
         値が0以外の場合はデフォルトの遅延を上書きします。</string>
 
-    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
-    <string name="pref_lockscreen_carrier2_text_title">カスタムセカンダリキャリアラベル</string>
-
     <!-- Backup and restore settings -->
     <string name="pref_settings_backup_title">設定のバックアップ</string>
     <string name="pref_settings_restore_title">設定のリストア</string>
@@ -1194,6 +1194,8 @@
     <string name="animation_scale5">アニメーション速度2倍</string>
     <string name="animation_scale6">アニメーション速度5倍</string>
     <string name="animation_scale7">アニメーション速度10倍</string>
+    <string name="animation_scale8">アニメーション速度.75倍</string>
+    <string name="animation_scale9">アニメーション速度1.25倍</string>
     
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">タイルのラベル表示</string>
@@ -1425,5 +1427,163 @@
 
     <!-- VolumePanel transparency -->
     <string name="pref_volume_panel_transparency_title">音量パネルの透過度</string>
+    
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">カスタム第二キャリアラベル</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">お休みモードを無視</string>
+    <string name="pref_lc_qh_ignore_list_title">キーワード設定</string>
+    <string name="pref_lc_qh_ignore_list_summary">お休みモードを無視するキーワードをコンマで分けて入力してください。空白にすると全ての通知を対象にします。</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">お休みモードトグル</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">H+表示の有効化</string>
+    <string name="pref_signal_cluster_hplus_summary">再起動してください。</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">LTE表示スタイル</string>
+    <string name="sc_lte_style_default">デフォルト</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">機内モードトグル</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Bluetoothアイコン表示</string>
+    <string name="sb_bt_default">BT有効時(デフォルト)</string>
+    <string name="sb_bt_connected">BT接続時</string>
+    <string name="sb_bt_hidden">非表示</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">ステップアップ着信音量</string>
+    <string name="increasing_ring_enable">有効</string>
+    <string name="increasing_ring_min_volume_title">開始音量</string>
+    <string name="increasing_ring_volume_notice">注意:\n開始音量が着信音の音量設定より大きい場合は着信音の音量を使います。</string>
+    <string name="increasing_ring_interval_title">大きくする間隔</string>
+    <string name="increasing_ring_interval_eachring">ループ毎</string>
+    <string name="increasing_ring_interval_half_second">0.5秒</string>
+    <string name="increasing_ring_interval_1second">1秒</string>
+    <string name="increasing_ring_interval_2seconds">2秒</string>
+    <string name="increasing_ring_interval_3seconds">3秒</string>
+    <string name="increasing_ring_interval_5seconds">5秒</string>
+    <string name="increasing_ring_interval_10seconds">10秒</string>
+    
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">アプリ内検索</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">LTRレイアウト方向を強制</string>
+    <string name="pref_force_ltr_direction_summary">RTL言語でLTRレイアウト方向を使うようにします。(要再起動)</string>
+    
+    <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">操作時の不透明効果</string>
+    <string name="pref_volume_panel_opaque_summary">音量パネル操作時の透過を削除します。</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">着信音モードの変更</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">モバイルデータ通信のみ</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">サークルアイコン(破線)</string>
+    <string name="battery_style_circle_dashed_percent">サークルアイコン(破線)＋％</string>
+    
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">サポートしてくださりありがとうございます。GravityBoxを再起動するとプレミアム機能が使えるようになります。
+        GravityBox Unlockerを20分以上インストールしたままにしてください。</string>
+    <string name="pref_about_get_unlocker_title">Unlockerを入手</string>
+    <string name="pref_about_get_unlocker_summary">PayPalが嫌いですか? ここをタップするとGravityBoxのプレミアム機能を使えるようにするUnlockerをPlayストアでダウンロードできます。</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">別のアイコンを使う</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">スワイプしてクイック設定へ</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">データ通信接続の可否を無視</string>
+    <string name="pref_smart_radio_mda_ignore_summary">モバイルデータ通信に接続できなくても通常モードに切り替えます。</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">自動同期トグル</string>
+    
+    <!-- UNC: timeout for Alert only once -->
+    <string name="pref_lc_notif_sound_only_once_timeout_title">再度通知するまでの間隔</string>
+
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">日付を表示</string>
+
+    <!-- Delete -->
+    <string name="delete">削除</string>
+    
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">緊急通報ボタンを無効化</string>
+    <string name="pref_lockscreen_disable_ecb_summary">自己責任でお願いします!!!!</string>
+
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">ターゲットアプリによりアイコン選択がキャンセルされました</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">コンパス</string>
+    <string name="quick_settings_compass_off">コンパスオフ</string>
+    <string name="quick_settings_compass_init">初期化中&#8230;</string>
+    
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">N</string>
+    <string name="cd_north_east">NE</string>
+    <string name="cd_east">E</string>
+    <string name="cd_south_east">SE</string>
+    <string name="cd_south">S</string>
+    <string name="cd_south_west">SW</string>
+    <string name="cd_west">W</string>
+    <string name="cd_north_west">NW</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">キーをミラー表示(位置変更)</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">中央トリガー</string>
+    <string name="pref_pie_control_center_trigger_summary">画面端の中央からスワイプしたときだけパイを表示するようにします。</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">無効</string>
+    <string name="clock_date_localized">言語に応じた日付形式</string>
+    <string name="clock_date_format_1">日付形式: dd/MM</string>
+    <string name="clock_date_format_2">日付形式: MM/dd</string>
+    <string name="clock_date_format_3">日付形式: d MMM</string>
+    <string name="clock_date_format_4">日付形式: MMM d</string>
+    
+    <!-- Battery tile settings -->
+    <string name="pref_cat_qs_battery_tile_settings_title">バッテリータイル設定</string>
+    <string name="pref_qs_battery_extended_title">拡張バッテリータイル</string>
+    <string name="pref_qs_battery_extended_summary">有効化したら再起動してください。</string>
+    <string name="pref_qs_battery_temp_unit_title">温度単位</string>
+    <string name="celsius">摂氏</string>
+    <string name="fahrenheit">華氏</string>
+
+    <!-- Headset plug/unplug actions -->
+    <string name="pref_cat_headset_actions_title">ヘッドセットアクション</string>
+    <string name="pref_headset_action_plug_title">ヘッドセット接続時</string>
+    <string name="pref_headset_action_unplug_title">ヘッドセット接続解除時</string>
+
+    <!-- Quiet Hours: mute vibrations -->
+    <string name="pref_lc_qh_mute_vibe_title">バイブのミュート</string>
+
+    <!-- Quiet Hours: interactive mode -->
+    <string name="pref_lc_qh_interactive_title">操作時に静かにさせる</string>
+    <string name="pref_lc_qh_interactive_summary">操作時は常に通知を静かにさせるようにします。
+        (アプリ別設定を優先します)</string>
+
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">スクリーンショットの通知に削除ボタンを追加</string>
     
 </resources>

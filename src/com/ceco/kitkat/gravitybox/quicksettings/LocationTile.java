@@ -1,4 +1,22 @@
+/*
+ * Copyright (C) 2013 The SlimRoms Project
+ * Copyright (C) 2014 Peter Gregus for GravityBox Project (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ceco.kitkat.gravitybox.quicksettings;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -8,9 +26,11 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 
+import com.ceco.kitkat.gravitybox.GravityBoxSettings;
 import com.ceco.kitkat.gravitybox.ModQuickSettings;
 import com.ceco.kitkat.gravitybox.R;
 
+import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 
 public class LocationTile extends BasicTile {
@@ -19,6 +39,7 @@ public class LocationTile extends BasicTile {
 
     private boolean mLocationEnabled;
     private int mLocationMode;
+    private boolean mBehaviorOverriden;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -33,19 +54,38 @@ public class LocationTile extends BasicTile {
         mOnClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocationEnabled(!mLocationEnabled);
+                if (mBehaviorOverriden) {
+                    if (mLocationEnabled) {
+                        switchLocationMode(mLocationMode);
+                    }
+                } else {
+                    setLocationEnabled(!mLocationEnabled);
+                }
             }
         };
 
         mOnLongClick = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (mLocationEnabled) {
-                    switchLocationMode(mLocationMode);
+                if (mBehaviorOverriden) {
+                    setLocationEnabled(!mLocationEnabled);
+                } else {
+                    if (mLocationEnabled) {
+                        switchLocationMode(mLocationMode);
+                    }
                 }
                 return true;
             }
         };
+    }
+
+    @Override
+    protected void onPreferenceInitialize(XSharedPreferences prefs) {
+        super.onPreferenceInitialize(prefs);
+
+        Set<String> overridenTileKeys = prefs.getStringSet(
+                GravityBoxSettings.PREF_KEY_QS_TILE_BEHAVIOUR_OVERRIDE, new HashSet<String>());
+        mBehaviorOverriden = overridenTileKeys.contains("location_tileview");
     }
 
     @Override

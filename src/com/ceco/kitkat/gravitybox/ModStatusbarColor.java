@@ -83,6 +83,10 @@ public class ModStatusbarColor {
         }
     }
 
+    public static StatusBarIconManager getIconManager() {
+        return mIconManager;
+    }
+
     private static BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
 
         @Override

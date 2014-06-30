@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.ceco.kitkat.gravitybox.GravityBoxSettings.PrefsFragment;
+import com.ceco.kitkat.gravitybox.GravityBoxSettings.PrefsFragment.IconPickHandler;
 import com.ceco.kitkat.gravitybox.GravityBoxSettings.PrefsFragment.ShortcutHandler;
 import com.ceco.kitkat.gravitybox.R;
 import com.ceco.kitkat.gravitybox.Utils;
@@ -77,7 +78,8 @@ import android.widget.Toast;
 public class AppPickerPreference extends DialogPreference 
                                  implements OnItemClickListener, 
                                             OnItemSelectedListener,
-                                            View.OnClickListener {
+                                            View.OnClickListener,
+                                            View.OnLongClickListener {
     private static final String TAG = "GB:AppPickerPreference";
     public static final String SEPARATOR = "#C3C0#";
 
@@ -103,6 +105,7 @@ public class AppPickerPreference extends DialogPreference
     private int mAppIconPreviewSizePx;
     private Dialog mIconPickerDialog;
     private boolean mIconPickerEnabled = true;
+    private int mIconPickSizePx;
 
     private static LruCache<String, BitmapDrawable> sAppIconCache;
     static {
@@ -132,6 +135,8 @@ public class AppPickerPreference extends DialogPreference
         mAppIconSizePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, 
                 mResources.getDisplayMetrics());
         mAppIconPreviewSizePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, 
+                mResources.getDisplayMetrics());
+        mIconPickSizePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, 
                 mResources.getDisplayMetrics());
         mPackageManager = mContext.getPackageManager();
         mMode = MODE_APP;
@@ -181,6 +186,7 @@ public class AppPickerPreference extends DialogPreference
         mBtnAppIcon.setFocusable(false);
         if (mIconPickerEnabled) {
             mBtnAppIcon.setOnClickListener(this);
+            mBtnAppIcon.setOnLongClickListener(this);
         } else {
             mBtnAppIcon.setEnabled(false);
         }
@@ -302,6 +308,50 @@ public class AppPickerPreference extends DialogPreference
         }
 
         mIconPickerDialog.show();
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (v != mBtnAppIcon || sPrefsFragment == null ||
+                getPersistedString(null) == null) return true;
+
+        sPrefsFragment.pickIcon(mIconPickSizePx, new IconPickHandler() {
+            @Override
+            public void onIconPicked(Bitmap icon) {
+                try {
+                    Intent intent = Intent.parseUri(getPersistedString(null), 0);
+                    final Context context = AppPickerPreference.this.mContext;
+                    final String dir = context.getFilesDir() + "/app_picker";
+                    final String fileName = dir + "/" + UUID.randomUUID().toString();
+                    File d = new File(dir);
+                    d.mkdirs();
+                    d.setReadable(true, false);
+                    d.setExecutable(true, false);
+                    File f = new File(fileName);
+                    FileOutputStream fos = new FileOutputStream(f);
+                    if (icon.compress(CompressFormat.PNG, 100, fos)) {
+                        if (intent.hasExtra("iconResName")) {
+                            intent.removeExtra("iconResName");
+                        }
+                        intent.putExtra("icon", f.getAbsolutePath());
+                        f.setReadable(true, false);
+                    }
+                    fos.close();
+                    setValue(intent.toUri(0));
+                    sPrefsFragment.onSharedPreferenceChanged(getSharedPreferences(), getKey());
+                } catch (Exception e) {
+                    Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onIconPickCancelled() {
+                Toast.makeText(mContext, R.string.app_picker_icon_pick_cancelled, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return true;
     }
 
     private String convertOldValueFormat(String oldValue) {
@@ -429,32 +479,34 @@ public class AppPickerPreference extends DialogPreference
 
         try {
             Intent intent = Intent.parseUri(value, 0);
+
             int iconResId = intent.getStringExtra("iconResName") != null ?
                     mResources.getIdentifier(intent.getStringExtra("iconResName"),
                     "drawable", mContext.getPackageName()) : 0;
-            int mode = intent.getIntExtra("mode", MODE_APP);
-            if (mode == MODE_APP) {
-                ComponentName cn = intent.getComponent();
-                ActivityInfo ai = mPackageManager.getActivityInfo(cn, 0);
-                appInfo.name = (ai.loadLabel(mPackageManager).toString());
-                if (iconResId != 0) {
-                    appInfo.icon = mResources.getDrawable(iconResId);
-                } else {
-                    appInfo.icon = ai.loadIcon(mPackageManager);
-                }
-            } else if (mode == MODE_SHORTCUT) {
-                appInfo.name = intent.getStringExtra("prefLabel");
-                if (iconResId != 0) {
-                    appInfo.icon = mResources.getDrawable(iconResId);
-                } else if (intent.hasExtra("icon")) {
-                    final String appIconPath = intent.getStringExtra("icon");
-                    if (appIconPath != null) {
-                        File f = new File(appIconPath);
+            if (iconResId != 0) {
+                appInfo.icon = mResources.getDrawable(iconResId);
+            } else if (intent.hasExtra("icon")) {
+                final String appIconPath = intent.getStringExtra("icon");
+                if (appIconPath != null) {
+                    File f = new File(appIconPath);
+                    if (f.exists() && f.canRead()) {
                         FileInputStream fis = new FileInputStream(f);
                         appInfo.icon = new BitmapDrawable(mResources, BitmapFactory.decodeStream(fis));
                         fis.close();
                     }
                 }
+            }
+
+            int mode = intent.getIntExtra("mode", MODE_APP);
+            if (mode == MODE_APP) {
+                ComponentName cn = intent.getComponent();
+                ActivityInfo ai = mPackageManager.getActivityInfo(cn, 0);
+                appInfo.name = (ai.loadLabel(mPackageManager).toString());
+                if (appInfo.icon == null) {
+                    appInfo.icon = ai.loadIcon(mPackageManager);
+                }
+            } else if (mode == MODE_SHORTCUT) {
+                appInfo.name = intent.getStringExtra("prefLabel");
             }
             return appInfo;
         } catch (Exception e) {

@@ -526,9 +526,9 @@ public class ModDisplay {
 
             Object autoBrightnessSpline = XposedHelpers.callMethod(
                     mDisplayPowerController, "createAutoBrightnessSpline", lux, brightnessAdj);
-            XposedHelpers.setObjectField(mDisplayPowerController, 
-                    "mScreenAutoBrightnessSpline", autoBrightnessSpline);
             if (autoBrightnessSpline != null) {
+                XposedHelpers.setObjectField(mDisplayPowerController, 
+                    "mScreenAutoBrightnessSpline", autoBrightnessSpline);
                 if (brightnessAdj[0] < screenBrightnessMinimum) {
                     screenBrightnessMinimum = brightnessAdj[0];
                 }

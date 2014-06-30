@@ -134,31 +134,33 @@ public class QuickAppTile extends BasicTile {
                     return;
                 }
                 final int mode = mIntent.getIntExtra("mode", AppPickerPreference.MODE_APP);
+
+                Bitmap appIcon = null;
                 final int iconResId = mIntent.getStringExtra("iconResName") != null ?
                         mGbResources.getIdentifier(mIntent.getStringExtra("iconResName"),
                         "drawable", mGbContext.getPackageName()) : 0;
-                Bitmap appIcon = null;
-                if (mode == AppPickerPreference.MODE_APP) {
-                    ActivityInfo ai = mPm.getActivityInfo(mIntent.getComponent(), 0);
-                    mAppName = ai.loadLabel(mPm).toString();
-                    if (iconResId != 0) {
-                        appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
-                    } else {
-                        appIcon = Utils.drawableToBitmap(ai.loadIcon(mPm));
-                    }
-                } else if (mode == AppPickerPreference.MODE_SHORTCUT) {
-                    mAppName = mIntent.getStringExtra("label");
-                    if (iconResId != 0) {
-                        appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
-                    } else {
-                        final String appIconPath = mIntent.getStringExtra("icon");
-                        if (appIconPath != null) {
-                            File f = new File(appIconPath);
+                if (iconResId != 0) {
+                    appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
+                } else {
+                    final String appIconPath = mIntent.getStringExtra("icon");
+                    if (appIconPath != null) {
+                        File f = new File(appIconPath);
+                        if (f.exists() && f.canRead()) {
                             FileInputStream fis = new FileInputStream(f);
                             appIcon = BitmapFactory.decodeStream(fis);
                             fis.close();
                         }
                     }
+                }
+
+                if (mode == AppPickerPreference.MODE_APP) {
+                    ActivityInfo ai = mPm.getActivityInfo(mIntent.getComponent(), 0);
+                    mAppName = ai.loadLabel(mPm).toString();
+                    if (appIcon == null) {
+                        appIcon = Utils.drawableToBitmap(ai.loadIcon(mPm));
+                    }
+                } else if (mode == AppPickerPreference.MODE_SHORTCUT) {
+                    mAppName = mIntent.getStringExtra("label");
                 }
                 if (appIcon != null) {
                     int sizePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, 
@@ -257,7 +259,8 @@ public class QuickAppTile extends BasicTile {
             public boolean onLongClick(View v) {
                 LayoutInflater inflater = LayoutInflater.from(mGbContext);
                 View appv = inflater.inflate(R.layout.quick_settings_app_dialog, null);
-                boolean atLeastOne = false;
+                int count = 0;
+                AppInfo lastAppInfo = null;
                 for (AppInfo ai : mAppSlots) {
                     TextView tv = (TextView) appv.findViewById(ai.getResId());
                     if (ai.getValue() == null) {
@@ -272,22 +275,30 @@ public class QuickAppTile extends BasicTile {
                     tv.setCompoundDrawablesWithIntrinsicBounds(null, ai.getAppIcon(), null, null);
                     tv.setClickable(true);
                     tv.setOnClickListener(mOnClick);
-                    atLeastOne = true;
+                    count++;
+                    lastAppInfo = ai;
                 }
-                if (!atLeastOne) return true;
 
-                mDialog = new Dialog(mContext);
-                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                mDialog.setContentView(appv);
-                mDialog.setCanceledOnTouchOutside(true);
-                mDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL);
-                int pf = XposedHelpers.getIntField(mDialog.getWindow().getAttributes(), "privateFlags");
-                pf |= 0x00000010;
-                XposedHelpers.setIntField(mDialog.getWindow().getAttributes(), "privateFlags", pf);
-                mDialog.getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
-                mDialog.show();
-                mHandler.removeCallbacks(mDismissDialogRunnable);
-                mHandler.postDelayed(mDismissDialogRunnable, 4000);
+                if (count == 1) {
+                    try {
+                        startActivity(lastAppInfo.getIntent());
+                    } catch (Throwable t) {
+                        log("Unable to start activity: " + t.getMessage());
+                    }
+                } else if (count > 1) {
+                    mDialog = new Dialog(mContext);
+                    mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    mDialog.setContentView(appv);
+                    mDialog.setCanceledOnTouchOutside(true);
+                    mDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL);
+                    int pf = XposedHelpers.getIntField(mDialog.getWindow().getAttributes(), "privateFlags");
+                    pf |= 0x00000010;
+                    XposedHelpers.setIntField(mDialog.getWindow().getAttributes(), "privateFlags", pf);
+                    mDialog.getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
+                    mDialog.show();
+                    mHandler.removeCallbacks(mDismissDialogRunnable);
+                    mHandler.postDelayed(mDismissDialogRunnable, 4000);
+                }
                 return true;
             }
         };

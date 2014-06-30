@@ -63,7 +63,7 @@ public class SystemWideResources {
             int pulseNotificationDelay = prefs.getInt(GravityBoxSettings.PREF_KEY_PULSE_NOTIFICATION_DELAY, -1);
             if (pulseNotificationDelay != -1) {
                 XResources.setSystemWideReplacement("android", "integer", "config_defaultNotificationLedOff",
-                        (pulseNotificationDelay*1000));;
+                        (pulseNotificationDelay));;
             }
 
             XResources.setSystemWideReplacement("android", "bool", "config_sip_wifi_only", false);

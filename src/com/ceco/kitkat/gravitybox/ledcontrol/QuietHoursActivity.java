@@ -31,15 +31,55 @@ import android.preference.PreferenceFragment;
 public class QuietHoursActivity extends Activity {
 
     public static final String PREF_KEY_QH_ENABLED = "pref_lc_qh_enabled";
-    public static final String PREF_KEY_QH_START = "pref_lc_qh_start";
-    public static final String PREF_KEY_QH_END = "pref_lc_qh_end";
-    public static final String PREF_KEY_QH_START_ALT = "pref_lc_qh_start_alt";
-    public static final String PREF_KEY_QH_END_ALT = "pref_lc_qh_end_alt";
+    public static final String PREF_KEY_QH_START = "pref_lc_qh_start2";
+    public static final String PREF_KEY_QH_END = "pref_lc_qh_end2";
+    public static final String PREF_KEY_QH_START_ALT = "pref_lc_qh_start_alt2";
+    public static final String PREF_KEY_QH_END_ALT = "pref_lc_qh_end_alt2";
     public static final String PREF_KEY_QH_MUTE_LED = "pref_lc_qh_mute_led";
+    public static final String PREF_KEY_QH_MUTE_VIBE = "pref_lc_qh_mute_vibe";
     public static final String PREF_KEY_QH_STATUSBAR_ICON = "pref_lc_qh_statusbar_icon";
+    public static final String PREF_KEY_QH_MODE = "pref_lc_qh_mode";
+    public static final String PREF_KEY_QH_INTERACTIVE = "pref_lc_qh_interactive";
 
     public static final String ACTION_QUIET_HOURS_CHANGED = 
             "gravitybox.intent.action.QUIET_HOURS_CHANGED";
+    public static final String ACTION_SET_QUIET_HOURS_MODE = 
+            "gravitybox.intent.action.SET_QUIET_HOURS_MODE";
+    public static final String EXTRA_QH_MODE = "qhMode";
+
+    public static void setQuietHoursMode(Context context, String mode) {
+        try {
+            SharedPreferences prefs = context.getSharedPreferences("ledcontrol", Context.MODE_WORLD_READABLE);
+            QuietHours qh = new QuietHours(prefs);
+            if (qh.uncLocked || !qh.enabled) {
+                return;
+            }
+
+            QuietHours.Mode qhMode;
+            if (mode != null) {
+                qhMode = QuietHours.Mode.valueOf(mode);
+            } else {
+                switch (qh.mode) {
+                    default:
+                    case ON:
+                        qhMode = QuietHours.Mode.OFF;
+                        break;
+                    case AUTO:
+                        qhMode = qh.quietHoursActive() ? 
+                                QuietHours.Mode.OFF : QuietHours.Mode.ON;
+                        break;
+                    case OFF:
+                        qhMode = QuietHours.Mode.ON;
+                        break;
+                }
+            }
+            prefs.edit().putString(QuietHoursActivity.PREF_KEY_QH_MODE, qhMode.toString()).commit();
+            Intent intent = new Intent(ACTION_QUIET_HOURS_CHANGED);
+            context.sendBroadcast(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

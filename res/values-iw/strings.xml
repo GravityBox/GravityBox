@@ -655,7 +655,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">הפעלת יישומים</string>
-    <string name="pref_cat_app_launcher_summary">תיבת דו שיח המאפשרת לקבוע עד 8 יישומים שיוקצו לכפתורים חומרתיים או פתיחתם תאופשר כחלק משורת הניווט</string>
+    <string name="pref_cat_app_launcher_summary">תיבת דו שיח המאפשרת לקבוע עד 12 יישומים שיוקצו לכפתורים חומרתיים או פתיחתם תאופשר כחלק משורת הניווט</string>
     <string name="pref_app_launcher_slot_title">מיקום יישום %d</string>
     <string name="app_launcher_no_apps">לא הוקצו יישומים. השתמש ב-GravityBox בתפריט \'הפעלת יישומים\' על מנת להקצות יישומים.</string>
 

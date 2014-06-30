@@ -29,13 +29,17 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
+import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.res.XModuleResources;
+import android.content.res.XResources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.telephony.TelephonyManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +52,13 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
     private static final boolean DEBUG = false;
 
     protected static XSharedPreferences sPrefs;
+
+    // HSPA+
+    protected static int sQsHpResId;
+    protected static int sQsHpFullResId;
+    protected static int sSbHpResId;
+    protected static int[][] DATA_HP;
+    protected static int[] QS_DATA_HP;
 
     protected LinearLayout mView;
     protected StatusBarIconManager mIconManager;
@@ -72,7 +83,7 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
         XposedBridge.log(TAG + ": " + message);
     }
 
-    private void logAndMute(String key, Throwable t) {
+    protected void logAndMute(String key, Throwable t) {
         if (!mErrorsLogged.contains(key)) {
             XposedBridge.log(t);
             mErrorsLogged.add(key);
@@ -114,8 +125,12 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
             }
         }
 
-        public void update() throws Throwable {
-            update(enabled, fullyConnected, activityIn, activityOut);
+        public void update() {
+            try {
+                update(enabled, fullyConnected, activityIn, activityOut);
+            } catch (Throwable t) {
+                logAndMute("SignalActivity.update", t);
+            }
         }
 
         public void update(boolean enabled, boolean fully, boolean in, boolean out) throws Throwable {
@@ -184,6 +199,31 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
             }
         }
     } 
+
+    public static void initResources(XSharedPreferences prefs, InitPackageResourcesParam resparam) {
+        if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_SIGNAL_CLUSTER_HPLUS, false)) {
+            XModuleResources modRes = XModuleResources.createInstance(GravityBox.MODULE_PATH, resparam.res);
+            sQsHpResId = XResources.getFakeResId(modRes, R.drawable.ic_qs_signal_hp);
+            sQsHpFullResId = XResources.getFakeResId(modRes, R.drawable.ic_qs_signal_full_hp);
+            sSbHpResId = XResources.getFakeResId(modRes, R.drawable.stat_sys_data_fully_connected_hp);
+    
+            resparam.res.setReplacement(sQsHpResId, modRes.fwd(R.drawable.ic_qs_signal_hp));
+            resparam.res.setReplacement(sQsHpFullResId, modRes.fwd(R.drawable.ic_qs_signal_full_hp));
+            resparam.res.setReplacement(sSbHpResId, modRes.fwd(R.drawable.stat_sys_data_fully_connected_hp));
+    
+            DATA_HP = new int[][] {
+                    { sSbHpResId, sSbHpResId, sSbHpResId, sSbHpResId },
+                    { sSbHpResId, sSbHpResId, sSbHpResId, sSbHpResId }
+            };
+            QS_DATA_HP = new int[] { sQsHpResId, sQsHpFullResId };
+        }
+
+        String lteStyle = prefs.getString(GravityBoxSettings.PREF_KEY_SIGNAL_CLUSTER_LTE_STYLE, "DEFAULT");
+        if (!lteStyle.equals("DEFAULT")) {
+            resparam.res.setReplacement(ModStatusBar.PACKAGE_NAME, "bool", "config_show4GForLTE",
+                    lteStyle.equals("4G"));
+        }
+    }
 
     public static StatusbarSignalCluster create(LinearLayout view, StatusBarIconManager iconManager,
             XSharedPreferences prefs) {
@@ -300,6 +340,37 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
                 });
             } catch (Throwable t) {
                 log("Error hooking SignalActivity related methods: " + t.getMessage());
+            }
+        }
+
+        if (sPrefs.getBoolean(GravityBoxSettings.PREF_KEY_SIGNAL_CLUSTER_HPLUS, false)) {
+            try {
+                final Class<?> networkCtrlClass = XposedHelpers.findClass(
+                        "com.android.systemui.statusbar.policy.NetworkController", 
+                        mView.getContext().getClassLoader());
+                XposedHelpers.findAndHookMethod(networkCtrlClass, "updateDataNetType", new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        if (!(XposedHelpers.getBooleanField(param.thisObject, "mIsWimaxEnabled") &&
+                                XposedHelpers.getBooleanField(param.thisObject, "mWimaxConnected")) &&
+                                XposedHelpers.getIntField(param.thisObject, "mDataNetType") ==
+                                    TelephonyManager.NETWORK_TYPE_HSPAP) {
+                            int inetCondition = XposedHelpers.getIntField(param.thisObject, "mInetCondition");
+                            XposedHelpers.setObjectField(param.thisObject, "mDataIconList", DATA_HP[inetCondition]);
+                            boolean isCdmaEri = (Boolean) XposedHelpers.callMethod(param.thisObject, "isCdma") &&
+                                    (Boolean) XposedHelpers.callMethod(param.thisObject, "isCdmaEri");
+                            boolean isRoaming = ((TelephonyManager) XposedHelpers.getObjectField(
+                                    param.thisObject, "mPhone")).isNetworkRoaming();
+                            if (!isCdmaEri && !isRoaming) {
+                                XposedHelpers.setIntField(param.thisObject, "mDataTypeIconId", sSbHpResId);
+                                XposedHelpers.setIntField(param.thisObject, "mQSDataTypeIconId",
+                                        QS_DATA_HP[inetCondition]);
+                            }
+                        }
+                    }
+                });
+            } catch (Throwable t) {
+                logAndMute("updateDataNetType", t);
             }
         }
     }

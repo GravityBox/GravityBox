@@ -45,6 +45,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TypedValue;
@@ -55,6 +56,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -86,6 +88,7 @@ public class ModLockscreen {
     private static final String ENUM_SECURITY_MODE = CLASS_PATH + ".KeyguardSecurityModel.SecurityMode";
     private static final String CLASS_LOCK_PATTERN_VIEW = "com.android.internal.widget.LockPatternView";
     private static final String ENUM_DISPLAY_MODE = "com.android.internal.widget.LockPatternView.DisplayMode";
+    private static final String CLASS_LOCK_PATTERN_UTILS = "com.android.internal.widget.LockPatternUtils";
 
     private static final boolean DEBUG = false;
     private static final boolean DEBUG_ARC = false;
@@ -355,6 +358,7 @@ public class ModLockscreen {
                             mArcPaint = new Paint();
                             mArcPaint.setStrokeWidth(10.0f);
                             mArcPaint.setStyle(Paint.Style.STROKE); 
+                            mArcPaint.setAntiAlias(true);
                             mArcRect = new RectF(mHandleDrawable.getPositionX() - mHandleDrawable.getWidth()/2, 
                                     mHandleDrawable.getPositionY() - mHandleDrawable.getHeight()/2,
                                     mHandleDrawable.getPositionX() + mHandleDrawable.getWidth()/2, 
@@ -450,20 +454,44 @@ public class ModLockscreen {
                             mGlowPadView, "mTargetDrawables");
                     final Object td = targets.get(index);
 
-                    AppInfo appInfo = (AppInfo) XposedHelpers.getAdditionalInstanceField(td, "mGbAppInfo");
+                    final AppInfo appInfo = (AppInfo) XposedHelpers.getAdditionalInstanceField(td, "mGbAppInfo");
                     if (appInfo != null) {
+                        boolean isSecure = false;
+                        final Object lockPatternUtils = XposedHelpers.getObjectField(
+                                XposedHelpers.getSurroundingThis(param.thisObject), "mLockPatternUtils");
+                        if (lockPatternUtils != null) {
+                            isSecure = (Boolean) XposedHelpers.callMethod(lockPatternUtils, "isSecure");
+                        }
                         // if intent is a GB action of broadcast type, handle it directly here
                         if (ShortcutActivity.isGbBroadcastShortcut(appInfo.intent)) {
-                            Intent newIntent = new Intent(appInfo.intent.getStringExtra(ShortcutActivity.EXTRA_ACTION));
-                            newIntent.putExtras(appInfo.intent);
-                            mGlowPadView.getContext().sendBroadcast(newIntent);
+                            if (isSecure && !ShortcutActivity.isActionSafe(appInfo.intent.getStringExtra(
+                                                ShortcutActivity.EXTRA_ACTION))) {
+                                if (DEBUG) log("Keyguard is secured - ignoring GB action");
+                            } else {
+                                Intent newIntent = new Intent(appInfo.intent.getStringExtra(
+                                        ShortcutActivity.EXTRA_ACTION));
+                                newIntent.putExtras(appInfo.intent);
+                                mGlowPadView.getContext().sendBroadcast(newIntent);
+                            }
+                            XposedHelpers.setIntField(mGlowPadView, "mActiveTarget", -1);
                             XposedHelpers.callMethod(mGlowPadView, "doFinish");
                         // otherwise start activity
                         } else {
                             final Object activityLauncher = XposedHelpers.getObjectField(
                                     XposedHelpers.getSurroundingThis(param.thisObject), "mActivityLauncher");
-                            XposedHelpers.callMethod(activityLauncher, "launchActivity", mLaunchActivityArgs,
-                                    appInfo.intent, false, true, null, null);
+                            if (isSecure && prefs.getBoolean(
+                                    GravityBoxSettings.PREF_KEY_LOCKSCREEN_SLIDE_BEFORE_UNLOCK, false)) {
+                                Class<?> amnCls = XposedHelpers.findClass("android.app.ActivityManagerNative",
+                                        mGlowPadView.getContext().getClassLoader());
+                                Object amn = XposedHelpers.callStaticMethod(amnCls, "getDefault");
+                                XposedHelpers.callMethod(amn, "dismissKeyguardOnNextActivity");
+                                appInfo.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                mGlowPadView.getContext().startActivity(appInfo.intent);
+                            } else {
+                                XposedHelpers.callMethod(activityLauncher, "launchActivity", mLaunchActivityArgs,
+                                        appInfo.intent, false, true, null, null);
+                            }
                         }
                     }
                 }
@@ -642,6 +670,16 @@ public class ModLockscreen {
                 }
             });
 
+            XposedHelpers.findAndHookMethod(CLASS_LOCK_PATTERN_UTILS, classLoader, "updateEmergencyCallButtonState",
+                    Button.class, int.class, boolean.class, boolean.class, new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                    if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_LOCKSCREEN_DISABLE_ECB, false) &&
+                            (Integer) param.args[1] != TelephonyManager.CALL_STATE_OFFHOOK) {
+                        param.args[2] = false;
+                    }
+                }
+            });
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

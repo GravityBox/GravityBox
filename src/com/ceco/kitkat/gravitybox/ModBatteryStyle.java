@@ -263,10 +263,17 @@ public class ModBatteryStyle {
 
             if (mCircleBattery != null) {
                 mCircleBattery.setVisibility((mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE ||
-                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_PERCENT) ?
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_PERCENT ||
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_DASHED ||
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_DASHED_PERCENT) ?
                                 View.VISIBLE : View.GONE);
                 mCircleBattery.setPercentage(
-                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_PERCENT);
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_PERCENT ||
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_DASHED_PERCENT);
+                mCircleBattery.setStyle(
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_DASHED ||
+                        mBatteryStyle == GravityBoxSettings.BATTERY_STYLE_CIRCLE_DASHED_PERCENT ?
+                                CmCircleBattery.Style.DASHED : CmCircleBattery.Style.SOLID);
             }
 
             if (mKitKatBattery != null) {

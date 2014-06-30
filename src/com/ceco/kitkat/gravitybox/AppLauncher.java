@@ -28,6 +28,7 @@ import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import android.app.Dialog;
+import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -40,6 +41,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -89,10 +91,23 @@ public class AppLauncher {
                     if (DEBUG) log("appSlot=" + slot + "; app=" + app);
                     updateAppSlot(slot, app);
                 }
-            } else if(intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-                for (int i = 0; i < GravityBoxSettings.PREF_KEY_APP_LAUNCHER_SLOT.size(); i++) {
-                    updateAppSlot(i, mPrefs.getString(
-                            GravityBoxSettings.PREF_KEY_APP_LAUNCHER_SLOT.get(i), null));
+            }
+        }
+    };
+
+    private BroadcastReceiver mPackageRemoveReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (DEBUG) log("Broadcast received: " + intent.toString());
+
+            Uri data = intent.getData();
+            String pkgName = data == null ? null : data.getSchemeSpecificPart();
+            if (pkgName != null) {
+                for (AppInfo ai : mAppSlots) {
+                    if (pkgName.equals(ai.getPackageName())) {
+                        ai.initAppInfo(null);
+                        if (DEBUG) log("Removed package: " + pkgName);
+                    }
                 }
             }
         }
@@ -121,16 +136,18 @@ public class AppLauncher {
         mAppSlots.add(new AppInfo(R.id.quickapp6));
         mAppSlots.add(new AppInfo(R.id.quickapp7));
         mAppSlots.add(new AppInfo(R.id.quickapp8));
-
-        for (int i = 0; i < GravityBoxSettings.PREF_KEY_APP_LAUNCHER_SLOT.size(); i++) {
-            updateAppSlot(i, mPrefs.getString(
-                    GravityBoxSettings.PREF_KEY_APP_LAUNCHER_SLOT.get(i), null));
-        }
+        mAppSlots.add(new AppInfo(R.id.quickapp9));
+        mAppSlots.add(new AppInfo(R.id.quickapp10));
+        mAppSlots.add(new AppInfo(R.id.quickapp11));
+        mAppSlots.add(new AppInfo(R.id.quickapp12));
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(GravityBoxSettings.ACTION_PREF_APP_LAUNCHER_CHANGED);
-        intentFilter.addAction(Intent.ACTION_BOOT_COMPLETED);
         mContext.registerReceiver(mBroadcastReceiver, intentFilter);
+
+        intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_FULLY_REMOVED);
+        intentFilter.addDataScheme("package");
+        mContext.registerReceiver(mPackageRemoveReceiver, intentFilter);
     }
 
     public boolean dismissDialog() {
@@ -150,6 +167,10 @@ public class AppLauncher {
             }
 
             if (mDialog == null) {
+                for (int i = 0; i < GravityBoxSettings.PREF_KEY_APP_LAUNCHER_SLOT.size(); i++) {
+                  updateAppSlot(i, mPrefs.getString(
+                          GravityBoxSettings.PREF_KEY_APP_LAUNCHER_SLOT.get(i), null));
+                }
                 LayoutInflater inflater = LayoutInflater.from(mGbContext);
                 mAppView = inflater.inflate(R.layout.navbar_app_dialog, null);
                 mDialog = new Dialog(mContext);
@@ -165,10 +186,13 @@ public class AppLauncher {
 
             View appRow1 = mAppView.findViewById(R.id.appRow1);
             View appRow2 = mAppView.findViewById(R.id.appRow2);
+            View appRow3 = mAppView.findViewById(R.id.appRow3);
             View separator = mAppView.findViewById(R.id.separator);
+            View separator2 = mAppView.findViewById(R.id.separator2);
             int appCount = 0;
             boolean appRow1Visible = false;
             boolean appRow2Visible = false;
+            boolean appRow3Visible = false;
             TextView lastVisible = null;
             for (AppInfo ai : mAppSlots) {
                 TextView tv = (TextView) mAppView.findViewById(ai.getResId());
@@ -187,6 +211,8 @@ public class AppLauncher {
                         ai.getResId() == R.id.quickapp3 || ai.getResId() == R.id.quickapp4;
                 appRow2Visible |= ai.getResId() == R.id.quickapp5 || ai.getResId() == R.id.quickapp6 || 
                         ai.getResId() == R.id.quickapp7 || ai.getResId() == R.id.quickapp8;
+                appRow3Visible |= ai.getResId() == R.id.quickapp9 || ai.getResId() == R.id.quickapp10 || 
+                        ai.getResId() == R.id.quickapp11 || ai.getResId() == R.id.quickapp12;
 
                 appCount++;
             }
@@ -199,8 +225,11 @@ public class AppLauncher {
             } else {
                 appRow1.setVisibility(appRow1Visible ? View.VISIBLE : View.GONE);
                 appRow2.setVisibility(appRow2Visible ? View.VISIBLE : View.GONE);
+                appRow3.setVisibility(appRow3Visible ? View.VISIBLE : View.GONE);
                 separator.setVisibility(appRow1Visible && appRow2Visible ?
                         View.VISIBLE : View.GONE);
+                separator2.setVisibility(appRow2Visible && appRow3Visible ||
+                        appRow1Visible && appRow3Visible ? View.VISIBLE : View.GONE);
                 mDialog.show();
                 mHandler.postDelayed(mDismissAppDialogRunnable, 4000);
             }
@@ -214,21 +243,15 @@ public class AppLauncher {
         public void onClick(View v) {
             dismissDialog();
 
-            AppInfo aiProcessing = null;
             try {
                 for(AppInfo ai : mAppSlots) {
-                    aiProcessing = ai;
                     if (v.getId() == ai.getResId()) {
                         startActivity(v.getContext(), ai.getIntent());
                         return;
                     }
                 }
-                aiProcessing = null;
             } catch (Exception e) {
                 log("Unable to start activity: " + e.getMessage());
-                if (aiProcessing != null) {
-                    aiProcessing.initAppInfo(null);
-                }
             }
         }
     };
@@ -236,11 +259,30 @@ public class AppLauncher {
     private void startActivity(Context context, Intent intent) {
         // if intent is a GB action of broadcast type, handle it directly here
         if (ShortcutActivity.isGbBroadcastShortcut(intent)) {
-            Intent newIntent = new Intent(intent.getStringExtra(ShortcutActivity.EXTRA_ACTION));
-            newIntent.putExtras(intent);
-            context.sendBroadcast(newIntent);
-        // otherwise start activity
+            boolean isLaunchBlocked = false;
+            try {
+                KeyguardManager kgManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+                isLaunchBlocked = kgManager != null && 
+                    kgManager.isKeyguardLocked() && kgManager.isKeyguardSecure() &&
+                        !ShortcutActivity.isActionSafe(intent.getStringExtra(
+                                ShortcutActivity.EXTRA_ACTION));
+            } catch (Throwable t) { }
+            if (DEBUG) log("isLaunchBlocked: " + isLaunchBlocked);
+
+            if (!isLaunchBlocked) {
+                Intent newIntent = new Intent(intent.getStringExtra(ShortcutActivity.EXTRA_ACTION));
+                newIntent.putExtras(intent);
+                context.sendBroadcast(newIntent);
+            }
+        // otherwise start activity dismissing keyguard
         } else {
+            try {
+                Class<?> amnCls = XposedHelpers.findClass("android.app.ActivityManagerNative",
+                        mContext.getClassLoader());
+                Object amn = XposedHelpers.callStaticMethod(amnCls, "getDefault");
+                XposedHelpers.callMethod(amn, "dismissKeyguardOnNextActivity");
+            } catch (Throwable t) { }
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
         }
@@ -259,6 +301,7 @@ public class AppLauncher {
         private String mValue;
         private int mResId;
         private Intent mIntent;
+        private String mPkgName;
 
         public AppInfo(int resId) {
             mResId = resId;
@@ -285,10 +328,15 @@ public class AppLauncher {
             return mIntent;
         }
 
+        public String getPackageName() {
+            return mPkgName;
+        }
+
         private void reset() {
             mValue = mAppName = null;
             mAppIcon = null;
             mIntent = null;
+            mPkgName = null;
         }
 
         public void initAppInfo(String value) {
@@ -304,32 +352,37 @@ public class AppLauncher {
                     reset();
                     return;
                 }
+                if (mIntent.getComponent() != null) {
+                    mPkgName = mIntent.getComponent().getPackageName();
+                }
                 final int mode = mIntent.getIntExtra("mode", AppPickerPreference.MODE_APP);
+
+                Bitmap appIcon = null;
                 final int iconResId = mIntent.getStringExtra("iconResName") != null ?
                         mGbResources.getIdentifier(mIntent.getStringExtra("iconResName"),
                         "drawable", mGbContext.getPackageName()) : 0;
-                Bitmap appIcon = null;
-                if (mode == AppPickerPreference.MODE_APP) {
-                    ActivityInfo ai = mPm.getActivityInfo(mIntent.getComponent(), 0);
-                    mAppName = ai.loadLabel(mPm).toString();
-                    if (iconResId != 0) {
-                        appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
-                    } else {
-                        appIcon = Utils.drawableToBitmap(ai.loadIcon(mPm));
-                    }
-                } else if (mode == AppPickerPreference.MODE_SHORTCUT) {
-                    mAppName = mIntent.getStringExtra("label");
-                    if (iconResId != 0) {
-                        appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
-                    } else {
-                        final String appIconPath = mIntent.getStringExtra("icon");
-                        if (appIconPath != null) {
-                            File f = new File(appIconPath);
+                if (iconResId != 0) {
+                    appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
+                } else if (mIntent.hasExtra("icon")) {
+                    final String appIconPath = mIntent.getStringExtra("icon");
+                    if (appIconPath != null) {
+                        File f = new File(appIconPath);
+                        if (f.exists() && f.canRead()) {
                             FileInputStream fis = new FileInputStream(f);
                             appIcon = BitmapFactory.decodeStream(fis);
                             fis.close();
                         }
                     }
+                }
+
+                if (mode == AppPickerPreference.MODE_APP) {
+                    ActivityInfo ai = mPm.getActivityInfo(mIntent.getComponent(), 0);
+                    mAppName = ai.loadLabel(mPm).toString();
+                    if (appIcon == null) {
+                        appIcon = Utils.drawableToBitmap(ai.loadIcon(mPm));
+                    }
+                } else if (mode == AppPickerPreference.MODE_SHORTCUT) {
+                    mAppName = mIntent.getStringExtra("label");
                 }
                 if (appIcon != null) {
                     int sizePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, 
@@ -337,7 +390,7 @@ public class AppLauncher {
                     Bitmap scaledIcon = Bitmap.createScaledBitmap(appIcon, sizePx, sizePx, true);
                     mAppIcon = new BitmapDrawable(mResources, scaledIcon);
                 }
-                if (DEBUG) log("AppInfo initialized for: " + getAppName());
+                if (DEBUG) log("AppInfo initialized for: " + getAppName() + " [" + mPkgName + "]");
             } catch (NameNotFoundException e) {
                 log("App not found: " + mIntent);
                 reset();

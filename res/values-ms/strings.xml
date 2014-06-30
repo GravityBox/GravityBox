@@ -667,7 +667,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Pelancar aplikasi</string>
-    <string name="pref_cat_app_launcher_summary">Dialog untuk set pelancar aplikasi maximum sehingga 8 aplikasi atau guna sebagai bar navigasi tambahan</string>
+    <string name="pref_cat_app_launcher_summary">Dialog untuk set pelancar aplikasi maximum sehingga 12 aplikasi atau guna sebagai bar navigasi tambahan</string>
     <string name="pref_app_launcher_slot_title">Slot applikasi %d</string>
     <string name="app_launcher_no_apps">Tiada aplikasi diset. Guna GravityBox / Menu pelancar aplikasi untuk set aplikasi.</string>
 
@@ -1220,6 +1220,8 @@
     <string name="animation_scale5">Kadar Animasi 2x</string>
     <string name="animation_scale6">Kadar Animasi 5x</string>
     <string name="animation_scale7">Kadar Animasi 10x</string>
+    <string name="animation_scale8">Kadar Animasi .75x</string>
+    <string name="animation_scale9">Kadar Animasi 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Jenis label tile</string>

@@ -1,7 +1,6 @@
 package com.ceco.kitkat.gravitybox;
 
 import de.robv.android.xposed.XSharedPreferences;
-import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import android.content.Context;
 import android.content.Intent;
@@ -74,7 +73,7 @@ public class StatusbarSignalClusterMtk extends StatusbarSignalCluster {
                 }
             }
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            logAndMute("updateWiFiIcon", t);
         }
     }
 
@@ -191,7 +190,7 @@ public class StatusbarSignalClusterMtk extends StatusbarSignalCluster {
                 }
             }
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            logAndMute("updateMobileIcon", t);
         }
     }
 
@@ -211,7 +210,7 @@ public class StatusbarSignalClusterMtk extends StatusbarSignalCluster {
                 airplaneModeIcon.setImageDrawable(d);
             }
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            logAndMute("updateAirplaneModeIcon", t);
         }
     }
 
@@ -240,7 +239,7 @@ public class StatusbarSignalClusterMtk extends StatusbarSignalCluster {
                 }
             }
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            logAndMute("updateRoamingIndicator", t);
         }
     }
 }

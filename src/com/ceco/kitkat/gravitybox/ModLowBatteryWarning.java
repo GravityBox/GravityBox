@@ -17,6 +17,10 @@ package com.ceco.kitkat.gravitybox;
 
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import static de.robv.android.xposed.XposedHelpers.findClass;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 
 import com.ceco.kitkat.gravitybox.Utils.MethodState;
 
@@ -34,9 +38,39 @@ public class ModLowBatteryWarning {
     public static final boolean DEBUG = false;
 
     private static ThreadLocal<MethodState> mUpdateLightsMethodState;
+    private static Object mBatteryLed;
+    private static boolean mFlashingLedDisabled;
+    private static boolean mChargingLedDisabled;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
+    }
+
+    private static BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(GravityBoxSettings.ACTION_BATTERY_LED_CHANGED)) {
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_BLED_FLASHING_DISABLED)) {
+                    mFlashingLedDisabled = intent.getBooleanExtra(
+                            GravityBoxSettings.EXTRA_BLED_FLASHING_DISABLED, false);
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_BLED_CHARGING_DISABLED)) {
+                    mChargingLedDisabled = intent.getBooleanExtra(
+                            GravityBoxSettings.EXTRA_BLED_CHARGING_DISABLED, false);
+                }
+                updateLightsLocked();
+            }
+        }
+    };
+
+    private static void updateLightsLocked() {
+        if (mBatteryLed == null) return;
+
+        try {
+            XposedHelpers.callMethod(mBatteryLed, "updateLightsLocked");
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
     }
 
     public static void initZygote(final XSharedPreferences prefs) {
@@ -47,6 +81,21 @@ public class ModLowBatteryWarning {
             mUpdateLightsMethodState = new ThreadLocal<MethodState>();
             mUpdateLightsMethodState.set(MethodState.UNKNOWN);
 
+            mFlashingLedDisabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_FLASHING_LED_DISABLE, false);
+            mChargingLedDisabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_CHARGING_LED_DISABLE, false);
+
+            XposedBridge.hookAllConstructors(batteryServiceClass, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    mBatteryLed = param.thisObject;
+                    Context context = (Context) XposedHelpers.getObjectField(
+                            XposedHelpers.getSurroundingThis(param.thisObject), "mContext");
+                    IntentFilter intentFilter = new IntentFilter();
+                    intentFilter.addAction(GravityBoxSettings.ACTION_BATTERY_LED_CHANGED);
+                    context.registerReceiver(mBroadcastReceiver, intentFilter);
+                }
+            });
+
             XposedHelpers.findAndHookMethod(batteryServiceClass, "updateLightsLocked", new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
@@ -55,7 +104,8 @@ public class ModLowBatteryWarning {
                         log("BatteryService LED: updateLightsLocked ENTERED");
                         // for debugging purposes - simulate low battery
                         Object o = XposedHelpers.getSurroundingThis(param.thisObject);
-                        XposedHelpers.setIntField(o, "mBatteryLevel", 10);
+                        Object batteryProps = XposedHelpers.getObjectField(o, "mBatteryProps");
+                        XposedHelpers.setIntField(batteryProps, "batteryLevel", 10);
                     }
                 }
                 @Override
@@ -73,8 +123,7 @@ public class ModLowBatteryWarning {
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     if (mUpdateLightsMethodState.get() != null &&
                             mUpdateLightsMethodState.get().equals(MethodState.METHOD_ENTERED)) {
-                        prefs.reload();
-                        if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_FLASHING_LED_DISABLE, false)) {
+                        if (mFlashingLedDisabled) {
                             if (DEBUG) {
                                 log("LightService: setFlashing called from BatteryService - ignoring");
                             }
@@ -90,8 +139,7 @@ public class ModLowBatteryWarning {
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     if (mUpdateLightsMethodState.get() != null &&
                             mUpdateLightsMethodState.get().equals(MethodState.METHOD_ENTERED)) {
-                        prefs.reload();
-                        if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_CHARGING_LED_DISABLE, false)) {
+                        if (mChargingLedDisabled) {
                             if (DEBUG) {
                                 log("LightService: setColor called from BatteryService - ignoring");
                             }

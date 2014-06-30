@@ -69,6 +69,11 @@
     <string name="quick_settings_smart_radio_off">Smart Radio Wyłączone</string>
     <string name="quick_settings_lock_screen_on">Ekran Blokady Włączony</string>
     <string name="quick_settings_lock_screen_off">Ekran Blokady Wyłączony</string>
+    <string name="quick_settings_location_on">Lokalizacja Włączona</string>
+    <string name="quick_settings_location_off">Lokalizacja Wyłączona</string>
+    <string name="quick_settings_quiet_hours_off">Ciche Godziny Wyłączone</string>
+    <string name="quick_settings_quiet_hours_on">Ciche Godziny Włączone</string>
+    <string name="quick_settings_quiet_hours_auto">Ciche Godziny Auto</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Kafelki Szybkich Ustawień</string>
@@ -650,7 +655,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Uruchamianie aplikacji</string>
-    <string name="pref_cat_app_launcher_summary">Dialog pozwala na zdefiniowanie do 8 aplikacji, które mogą być przypisane jako akcje klawiszy sprzętowych lub użyte jako dodatkowe przyciski paska nawigacyjnego</string>
+    <string name="pref_cat_app_launcher_summary">Dialog pozwala na zdefiniowanie do 12 aplikacji, które mogą być przypisane jako akcje klawiszy sprzętowych lub użyte jako dodatkowe przyciski paska nawigacyjnego</string>
     <string name="pref_app_launcher_slot_title">Slot aplikacji %d</string>
     <string name="app_launcher_no_apps">Brak przypisanych aplikacji. Użyj GravityBox / menu Uruchamiania aplikacji aby przypisać aplikacje.</string>
 
@@ -1194,6 +1199,8 @@
     <string name="animation_scale5">Skala animacji 2x</string>
     <string name="animation_scale6">Skala animacji 5x</string>
     <string name="animation_scale7">Skala animacji 10x</string>
+    <string name="animation_scale8">Skala animacji .75x</string>
+    <string name="animation_scale9">Skala animacji 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Styl etykiety kafelka</string>
@@ -1424,5 +1431,182 @@
 
     <!-- Force English locale -->
     <string name="pref_force_english_locale_title">Wymuś język angielski</string>
+
+    <!-- VolumePanel transparency -->
+    <string name="pref_volume_panel_transparency_title">Przezroczystość panelu głośności</string>
+
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Własny tekst drugiego operatora</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">Ignoruj Ciche Godziny</string>
+    <string name="pref_lc_qh_ignore_list_title">Dla określonych słów kluczowych</string>
+    <string name="pref_lc_qh_ignore_list_summary">Oddzielona przecinkami lista słów kluczowych, dla których będą ignorowane Ciche Godziny. Pozostaw puste dla wszystkich powiadomień.</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">Przełącz Ciche Godziny</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">Włącz wskaźnik H+ </string>
+    <string name="pref_signal_cluster_hplus_summary">Wymaga ponownego uruchomienia</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">Styl wskaźnika LTE</string>
+    <string name="sc_lte_style_default">Systemowy</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Przełącz Tryb Samolotowy</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Widoczność ikony Bluetooth</string>
+    <string name="sb_bt_default">Gdy BT włączony (domyślnie)</string>
+    <string name="sb_bt_connected">Gdy BT połączony</string>
+    <string name="sb_bt_hidden">Ukryta</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Narastający dzwonek</string>
+    <string name="increasing_ring_enable">Włącz</string>
+    <string name="increasing_ring_min_volume_title">Początkowa głośność dzwonka</string>
+    <string name="increasing_ring_volume_notice">Uwaga:\n Jeśli początkowa głośność jest wyższa od normalnej, to dzwonek będzie odtwarzany przy użyciu głośności normalnej.</string>
+    <string name="increasing_ring_interval_title">Interwał narastania</string>
+    <string name="increasing_ring_interval_eachring">Przy każdym dzwonku</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekund</string>
+    <string name="increasing_ring_interval_10seconds">10 sekund</string>
+
+    <!-- Icon picker: Snapchat icon -->
+    <string name="shortcuts_icon_picker_snapchat">Snapchat</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Wyszukiwanie w aplikacji</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Wymuś kierunek od Lewej do Prawej</string>
+    <string name="pref_force_ltr_direction_summary">Wymusza kierunek tekstu od Lewej do Prawej dla języków z zapisem od Prawej do Lewej (wymagany restart)</string>
+
+    <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">Nieprzezroczysty przy interakcji</string>
+    <string name="pref_volume_panel_opaque_summary">Usuwa przezroczystość panelu głośności podczas interakcji</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">Ustaw tryb dzwonka</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">Tylko dane mobilne</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">Przerywane koło</string>
+    <string name="battery_style_circle_dashed_percent">Przerywane koło z procentami</string>
+
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">Dziękujemy za wsparcie. Funkcje premium zostaną odblokowane po ponownym uruchomieniu GravityBox. 
+        Pozostaw GravityBox Unlocker zainstalowany na co najmniej 20 minut.</string>
+    <string name="pref_about_get_unlocker_title">Pobierz GB Unlocker</string>
+    <string name="pref_about_get_unlocker_summary">Nie posiadasz PayPal? Wystarczy kliknąć tutaj, aby pobrać ze sklepu Google Play aplikację do odblokowania funkcji premium GravityBox.</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">Użyj alternatywnej ikony</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">Szybkie Ustawienia przez przeciągnięcie</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">Ignoruj dostępność danych mobilnych</string>
+    <string name="pref_smart_radio_mda_ignore_summary">Przełączenie do trybu normalnego niezależnie od dostępności danych mobilnych</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">Przełącznik synchronizacji</string>
+
+    <!-- UNC: timeout for Alert only once -->
+    <string name="pref_lc_notif_sound_only_once_timeout_title">W przedziale czasu</string>
+
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">Pokaż datę</string>
+
+    <!-- Delete -->
+    <string name="delete">Usuń</string>
+
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">Wyłącz przycisk połączenia alarmowego</string>
+    <string name="pref_lockscreen_disable_ecb_summary">UŻYWAJ NA WŁASNE RYZYKO!!!</string>
+
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">Wybór ikony anulowany przez aplikację docelową</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">Kompas</string>
+    <string name="quick_settings_compass_off">Kompas Wyłączony</string>
+    <string name="quick_settings_compass_init">Inicjowanie&#8230;</string>
+    <string name="quick_settings_compass_value" translatable="false">%1$.0f\u00b0 %2$s</string>
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">N</string>
+    <string name="cd_north_east">NE</string>
+    <string name="cd_east">E</string>
+    <string name="cd_south_east">SE</string>
+    <string name="cd_south">S</string>
+    <string name="cd_south_west">SW</string>
+    <string name="cd_west">W</string>
+    <string name="cd_north_west">NW</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">Odbicie lustrzane klawiszy</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">Aktywacja pośrodku</string>
+    <string name="pref_pie_control_center_trigger_summary">Aktywuje Pie tylko przy przesunięciu palcem ze środka krawędzi ekranu</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Wyłączony</string>
+    <string name="clock_date_localized">Regionalny format daty</string>
+    <string name="clock_date_format_1">Format daty: dd/MM</string>
+    <string name="clock_date_format_2">Format daty: MM/dd</string>
+    <string name="clock_date_format_3">Format daty: d MMM</string>
+    <string name="clock_date_format_4">Format daty: MMM d</string>
+    <string name="clock_date_format_5">Format daty: d</string>
+
+    <!-- Battery tile settings -->
+    <string name="pref_cat_qs_battery_tile_settings_title">Ustawienia kafelka baterii</string>
+    <string name="pref_qs_battery_extended_title">Rozszerzony kafelek baterii</string>
+    <string name="pref_qs_battery_extended_summary">Wymaga ponownego uruchomienia</string>
+    <string name="pref_qs_battery_temp_unit_title">Jednostka temperatury</string>
+    <string name="celsius">Celsjusz</string>
+    <string name="fahrenheit">Fahrenheit</string>
+
+    <!-- Headset plug/unplug actions -->
+    <string name="pref_cat_headset_actions_title">Akcje dla słuchawek</string>
+    <string name="pref_headset_action_plug_title">Przy podłączeniu słuchawek</string>
+    <string name="pref_headset_action_unplug_title">Przy odłączeniu słuchawek</string>
+
+    <!-- Quiet Hours: mute vibrations -->
+    <string name="pref_lc_qh_mute_vibe_title">Wycisz wibracje</string>
+
+    <!-- Quiet Hours: interactive mode -->
+    <string name="pref_lc_qh_interactive_title">Tryb interaktywny</string>
+    <string name="pref_lc_qh_interactive_summary">Zawsze wyciszaj powiadomienia podczas interakcji użytkownika 
+        (respektując zasady ignorowania dla danej aplikacji)</string>
+
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">Włącz usuwanie zrzutu ekranu</string>
+
+    <!-- UNC: heads up mode -->
+    <string name="pref_lc_headsup_mode_title">Tryb Heads up</string>
+    <string name="lc_heads_up_default">Domyślny</string>
+    <string name="lc_heads_up_always">Zawsze</string>
+    <string name="lc_heads_up_immersive">Gdy rozszerzony pulpit ukrywa pasek stanu</string>
+    <string name="lc_heads_up_off">Wyłączony</string>
+
+    <!-- Statusbar: notification heads up category -->
+    <string name="pref_cat_notif_heads_up_title">Powiadomienie Heads up</string>
+    <string name="pref_heads_up_master_switch_summary">Włącza standardową funkcjonalność AOSP Heads up. 
+        Gdy jest włączona, dodatkowe opcje dla danej aplikacji będą dostępne poprzez Nadrzędne ustawienia powiadomień. (wymaga restartu)</string>
+    <string name="pref_heads_up_one_finger_title">Rozwijanie jednym palcem</string>
+    <string name="pref_heads_up_timeout_title">Limit czasu</string>
+    <string name="pref_heads_up_timeout_summary">Czas wyświetlania okna powiadomienia. 0=trwale</string>
 
 </resources>

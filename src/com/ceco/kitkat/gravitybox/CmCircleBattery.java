@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Rect;
@@ -39,6 +40,8 @@ import android.widget.ImageView;
 public class CmCircleBattery extends ImageView implements IconManagerListener, BatteryStatusListener {
     private static final String TAG = "GB:CircleBattery";
     private static final boolean DEBUG = false;
+
+    public enum Style { SOLID, DASHED };
 
     private Handler mHandler;
 
@@ -67,6 +70,10 @@ public class CmCircleBattery extends ImageView implements IconManagerListener, B
     private Paint   mPaintGray;
     private Paint   mPaintSystem;
     private Paint   mPaintRed;
+
+    // style
+    private float mStrokeWidthFactor;
+    private DashPathEffect mPathEffect;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -137,10 +144,29 @@ public class CmCircleBattery extends ImageView implements IconManagerListener, B
         mPaintFont.setTextAlign(Align.CENTER);
         mPaintFont.setFakeBoldText(true);
         mPercentage = false;
+
+        setStyle(Style.SOLID);
     }
 
     public void setPercentage(boolean enable) {
         mPercentage = enable;
+        if (mAttached) {
+            invalidate();
+        }
+    }
+
+    public void setStyle(Style style) {
+        switch (style) {
+            case SOLID:
+                mStrokeWidthFactor = 9.5f;
+                mPathEffect = null;
+                break;
+            case DASHED:
+                mStrokeWidthFactor = 7f;
+                mPathEffect = new DashPathEffect(new float[]{3,2},0);
+                break;
+        }
+        mRectLeft = null;
         if (mAttached) {
             invalidate();
         }
@@ -178,11 +204,9 @@ public class CmCircleBattery extends ImageView implements IconManagerListener, B
     }
 
     private void drawCircle(Canvas canvas, int level, int animOffset, float textX, RectF drawRect) {
-        Paint usePaint = mPaintSystem;
-        // turn red at 14% - same level android battery warning appears
-        if (level <= 14) {
-            usePaint = mPaintRed;
-        }
+        final Paint usePaint = level <= 14 ? mPaintRed : mPaintSystem;
+        usePaint.setAntiAlias(true);
+        usePaint.setPathEffect(mPathEffect);
 
         // pad circle percentage to 100% once it reaches 97%
         // for one, the circle looks odd with a too small gap,
@@ -260,7 +284,7 @@ public class CmCircleBattery extends ImageView implements IconManagerListener, B
 
         mPaintFont.setTextSize(mCircleSize / 1.8f);
 
-        float strokeWidth = mCircleSize / 9.5f;
+        float strokeWidth = mCircleSize / mStrokeWidthFactor;
         mPaintRed.setStrokeWidth(strokeWidth);
         mPaintSystem.setStrokeWidth(strokeWidth);
         mPaintGray.setStrokeWidth(strokeWidth / 3.5f);

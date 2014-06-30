@@ -19,7 +19,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,10 +28,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.ceco.kitkat.gravitybox.BatteryInfoManager.BatteryData;
 import com.ceco.kitkat.gravitybox.R;
 import com.ceco.kitkat.gravitybox.Utils.MethodState;
 import com.ceco.kitkat.gravitybox.quicksettings.AQuickSettingsTile;
 import com.ceco.kitkat.gravitybox.quicksettings.CameraTile;
+import com.ceco.kitkat.gravitybox.quicksettings.CompassTile;
 import com.ceco.kitkat.gravitybox.quicksettings.ExpandedDesktopTile;
 import com.ceco.kitkat.gravitybox.quicksettings.GpsTile;
 import com.ceco.kitkat.gravitybox.quicksettings.GravityBoxTile;
@@ -43,6 +44,7 @@ import com.ceco.kitkat.gravitybox.quicksettings.NetworkModeTile;
 import com.ceco.kitkat.gravitybox.quicksettings.NfcTile;
 import com.ceco.kitkat.gravitybox.quicksettings.QuickAppTile;
 import com.ceco.kitkat.gravitybox.quicksettings.QuickRecordTile;
+import com.ceco.kitkat.gravitybox.quicksettings.QuietHoursTile;
 import com.ceco.kitkat.gravitybox.quicksettings.RingerModeTile;
 import com.ceco.kitkat.gravitybox.quicksettings.ScreenshotTile;
 import com.ceco.kitkat.gravitybox.quicksettings.SleepTile;
@@ -79,6 +81,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -139,6 +142,7 @@ public class ModQuickSettings {
     private static boolean mTrackingSwipe;
     private static boolean mSwipeTriggered;
     private static PointF mQuickPulldownSize = new PointF(0.85f, 0.15f);
+    private static boolean mQsSwipeEnabled;
 
     private static ArrayList<AQuickSettingsTile> mTiles;
     private static Map<String, View> mAllTileViews;
@@ -170,7 +174,9 @@ public class ModQuickSettings {
             R.id.music_tileview,
             R.id.smart_radio_tileview,
             R.id.lock_screen_tileview,
-            R.id.location_tileview
+            R.id.location_tileview,
+            R.id.quiet_hours_tileview,
+            R.id.compass_tileview
         ));
 
         Map<String, Integer> tmpMap = new HashMap<String, Integer>();
@@ -238,6 +244,9 @@ public class ModQuickSettings {
                 }
                 if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_ALARM_LONGPRESS_APP)) {
                     mAlarmLongpressApp = intent.getStringExtra(GravityBoxSettings.EXTRA_QS_ALARM_LONGPRESS_APP);
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_QS_SWIPE)) {
+                    mQsSwipeEnabled = intent.getBooleanExtra(GravityBoxSettings.EXTRA_QS_SWIPE, false);
                 }
             }
 
@@ -462,7 +471,9 @@ public class ModQuickSettings {
                 // update views we found
                 if (tileTextView != null) {
                     tileTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, tl.textSize);
-                    tileTextView.setAllCaps(tl.labelStyle == TileLayout.LabelStyle.ALLCAPS);
+                    tileTextView.setAllCaps(tl.labelStyle == TileLayout.LabelStyle.ALLCAPS &&
+                            !("battery_textview".equals(key) && 
+                                    mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_QS_BATTERY_EXTENDED, false)));
                     tileTextView.setVisibility(tl.labelStyle == TileLayout.LabelStyle.HIDDEN ?
                             View.GONE : View.VISIBLE);
                 }
@@ -533,6 +544,8 @@ public class ModQuickSettings {
 
             float size = mPrefs.getInt(GravityBoxSettings.PREF_KEY_QUICK_PULLDOWN_SIZE, 15) / 100f;
             mQuickPulldownSize.set(1-size, size);
+            mQsSwipeEnabled = mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_QUICK_SETTINGS_SWIPE, true)
+                    && !Utils.isTablet();
 
             try {
                 mQuickPulldown = Integer.valueOf(mPrefs.getString(
@@ -549,6 +562,7 @@ public class ModQuickSettings {
             final Class<?> panelBarClass = XposedHelpers.findClass(CLASS_PANEL_BAR, classLoader);
             mQuickSettingsTileViewClass = XposedHelpers.findClass(CLASS_QS_TILEVIEW, classLoader);
             methodGetColumnSpan = mQuickSettingsTileViewClass.getDeclaredMethod("getColumnSpan");
+            methodGetColumnSpan.setAccessible(true);
             final Class<?> notifPanelViewClass = XposedHelpers.findClass(CLASS_NOTIF_PANELVIEW, classLoader);
             final Class<?> quickSettingsContainerViewClass = XposedHelpers.findClass(CLASS_QS_CONTAINER_VIEW, classLoader);
 
@@ -812,6 +826,16 @@ public class ModQuickSettings {
                 lsTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
                 mTiles.add(lsTile);
 
+                QuietHoursTile qhTile = new QuietHoursTile(mContext, mGbContext, mStatusBar, mPanelBar);
+                qhTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
+                mTiles.add(qhTile);
+
+                if (Utils.hasCompass(mContext)) {
+                    CompassTile cTile = new CompassTile(mContext, mGbContext, mStatusBar, mPanelBar);
+                    cTile.setupQuickSettingsTile(mContainerView, inflater, mPrefs, mQuickSettings);
+                    mTiles.add(cTile);
+                }
+
                 mBroadcastSubReceivers = new ArrayList<BroadcastSubReceiver>();
                 for (AQuickSettingsTile t : mTiles) {
                     mBroadcastSubReceivers.add(t);
@@ -866,16 +890,16 @@ public class ModQuickSettings {
                     final boolean justPeeked = (Boolean) XposedHelpers.getBooleanField(param.thisObject, "mJustPeeked");
 
                     final View thisView = (View) param.thisObject;
-                    final int width = thisView.getWidth();
+                    final int width = ((View)XposedHelpers.getObjectField(mStatusBar, "mStatusBarView")).getWidth();
                     final int height = thisView.getHeight();
-                    final int paddingBottom = thisView.getPaddingBottom();
+                    //final int paddingBottom = thisView.getPaddingBottom();
 
                     switch (event.getActionMasked()) {
                         case MotionEvent.ACTION_DOWN:
                             mGestureStartX = event.getX(0);
                             mGestureStartY = event.getY(0);
-                            mTrackingSwipe = isFullyExpanded &&
-                                    mGestureStartY > height - handleBarHeight - paddingBottom;
+                            mTrackingSwipe = isFullyExpanded && mQsSwipeEnabled;
+                                    //mGestureStartY > height - handleBarHeight - paddingBottom;
                             okToFlip = (expandedHeight == 0);
                             XposedHelpers.setBooleanField(param.thisObject, "mOkToFlip", okToFlip);
                             if (mAutoSwitch == 1 && !notifDataHasVisibleItems(notificationData)) {
@@ -1410,7 +1434,50 @@ public class ModQuickSettings {
                     CLASS_QS_TILEVIEW, CLASS_QS_MODEL_RCB, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                    ((View)param.args[0]).setTag(mAospTileTags.get("battery_textview"));
+                    final View tile = (View) param.args[0];
+                    tile.setTag(mAospTileTags.get("battery_textview"));
+                    if (mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_QS_BATTERY_EXTENDED, false)) {
+                        int imgResId = tile.getResources().getIdentifier("image", "id", PACKAGE_NAME);
+                        if (imgResId != 0) {
+                            View batteryImg = tile.findViewById(imgResId);
+                            if (batteryImg != null) {
+                                ViewGroup tileContent = (ViewGroup) ((ViewGroup) tile).getChildAt(0);
+                                KitKatBattery kkb = new KitKatBattery(tile.getContext());
+                                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                                        (LinearLayout.LayoutParams) batteryImg.getLayoutParams());
+                                kkb.setId(imgResId);
+                                kkb.setLayoutParams(lp);
+                                kkb.setPadding(batteryImg.getPaddingLeft(), batteryImg.getPaddingTop(), 
+                                        batteryImg.getPaddingRight(), batteryImg.getPaddingBottom());
+                                tileContent.removeView(batteryImg);
+                                tileContent.addView(kkb, 0);
+                                ModStatusbarColor.getIconManager().getBatteryInfoManager().registerListener(kkb);
+                            }
+                        }
+                        XposedBridge.hookAllMethods(param.args[1].getClass(), "refreshView", new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(final MethodHookParam param2) throws Throwable {
+                                int textResId = tile.getResources().getIdentifier("text", "id", PACKAGE_NAME);
+                                if (textResId != 0) {
+                                    TextView tileTv = (TextView) tile.findViewById(textResId);
+                                    if (tileTv != null) {
+                                        BatteryInfoManager biMng = ModStatusbarColor
+                                                .getIconManager().getBatteryInfoManager();
+                                        BatteryData bd = biMng.getCurrentBatteryData();
+                                        String tempUnit = mPrefs.getString(
+                                                GravityBoxSettings.PREF_KEY_QS_BATTERY_TEMP_UNIT, "C");
+                                        float temp = tempUnit.equals("C") ? 
+                                                bd.getTempCelsius() : bd.getTempFahrenheit();
+                                        String text = bd.charging ? String.format("%d%%, %.1f\u00b0%s, %dmV",
+                                                bd.level, temp, tempUnit, bd.voltage) :
+                                                    String.format("%.1f\u00b0%s, %dmV",
+                                                            temp, tempUnit, bd.voltage);
+                                        tileTv.setText(text);
+                                    }
+                                }
+                            }
+                        });
+                    }
                 }
             });
         } catch (Throwable t) {

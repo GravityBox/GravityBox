@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import com.ceco.kitkat.gravitybox.GravityBoxSettings;
 import com.ceco.kitkat.gravitybox.ModStatusBar;
 import com.ceco.kitkat.gravitybox.R;
+import com.ceco.kitkat.gravitybox.Utils;
 import com.ceco.kitkat.gravitybox.adapters.IIconCheckListAdapterItem;
 import com.ceco.kitkat.gravitybox.adapters.IconCheckListAdapter;
 
@@ -32,10 +33,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.preference.DialogPreference;
 import android.provider.Settings;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -55,12 +59,15 @@ public class OngoingNotifPreference extends DialogPreference
     private AlertDialog mAlertDialog;
     private TextView mDescription;
     private View mDivider;
+    private int mIconSizePx;
 
     public OngoingNotifPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mContext = context;
         mResources = context.getResources();
+        mIconSizePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25,
+                mResources.getDisplayMetrics());
         setDialogLayoutResource(R.layout.ongoing_notif_preference);
     }
 
@@ -182,7 +189,12 @@ public class OngoingNotifPreference extends DialogPreference
                 }
 
                 try {
-                    mIcon = res.getDrawable(mIconId);
+                    Drawable d = res.getDrawable(mIconId);
+                    if (d != null) {
+                        Bitmap b = Utils.drawableToBitmap(d.mutate());
+                        b = Bitmap.createScaledBitmap(b, mIconSizePx, mIconSizePx, true);
+                        mIcon = new BitmapDrawable(mResources, b);
+                    }
                 } catch (Resources.NotFoundException nfe) {
                     //
                 }

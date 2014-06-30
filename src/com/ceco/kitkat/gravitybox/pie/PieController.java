@@ -50,8 +50,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
-import com.ceco.kitkat.gravitybox.AppLauncher;
-import com.ceco.kitkat.gravitybox.GravityBox;
 import com.ceco.kitkat.gravitybox.GravityBoxSettings;
 import com.ceco.kitkat.gravitybox.ModClearAllRecents;
 import com.ceco.kitkat.gravitybox.ModHwKeys;
@@ -99,7 +97,6 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
     private Context mGbContext;
     private Resources mGbResources;
     private PieLayout mPieContainer;
-    private AppLauncher mAppLauncher;
     /**
      * This is only needed for #toggleRecentApps()
      */
@@ -129,6 +126,7 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
     private Drawable mRecentAltIcon;
     private boolean mRecentAlt = false;
     private int mRecentLongPressAction = 0;
+    private boolean mMirroredKeys;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -409,27 +407,55 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
         int minimumImageSize = (int)mGbResources.getDimension(R.dimen.pie_item_size);
 
         mNavigationSlice.clear();
-        mNavigationSlice.addItem(constructItem(2, ButtonType.BACK,
-                mBackIcon,
-                minimumImageSize));
-        mNavigationSlice.addItem(constructItem(2, ButtonType.HOME,
-                res.getDrawable(res.getIdentifier("ic_sysbar_home", "drawable", PACKAGE_NAME)),
-                minimumImageSize));
-        mNavigationSlice.addItem(constructItem(2, ButtonType.RECENT,
-                mRecentIcon,
-                minimumImageSize));
-        if (mCustomKeyMode == GravityBoxSettings.PIE_CUSTOM_KEY_SEARCH) {
-            mNavigationSlice.addItem(constructItem(1, ButtonType.SEARCH,
-                    mGbResources.getDrawable(R.drawable.ic_sysbar_search_side), minimumImageSize));
-        } else if (mCustomKeyMode == GravityBoxSettings.PIE_CUSTOM_KEY_APP_LAUNCHER) {
-            mNavigationSlice.addItem(constructItem(1, ButtonType.APP_LAUNCHER,
-                    mGbResources.getDrawable(R.drawable.ic_sysbar_apps), minimumImageSize));
-        }
 
-        mMenuButton = constructItem(1, ButtonType.MENU,
-                res.getDrawable(res.getIdentifier("ic_sysbar_menu", "drawable", PACKAGE_NAME)),
-                minimumImageSize);
-        mNavigationSlice.addItem(mMenuButton);
+        if (mMirroredKeys) {
+            mMenuButton = constructItem(1, ButtonType.MENU,
+                    res.getDrawable(res.getIdentifier("ic_sysbar_menu", "drawable", PACKAGE_NAME)),
+                    minimumImageSize);
+            mNavigationSlice.addItem(mMenuButton);
+    
+            if (mCustomKeyMode == GravityBoxSettings.PIE_CUSTOM_KEY_SEARCH) {
+                mNavigationSlice.addItem(constructItem(1, ButtonType.SEARCH,
+                        mGbResources.getDrawable(R.drawable.ic_sysbar_search_side), minimumImageSize));
+            } else if (mCustomKeyMode == GravityBoxSettings.PIE_CUSTOM_KEY_APP_LAUNCHER) {
+                mNavigationSlice.addItem(constructItem(1, ButtonType.APP_LAUNCHER,
+                        mGbResources.getDrawable(R.drawable.ic_sysbar_apps), minimumImageSize));
+            }
+    
+            mNavigationSlice.addItem(constructItem(2, ButtonType.RECENT,
+                    mRecentIcon,
+                    minimumImageSize));
+    
+            mNavigationSlice.addItem(constructItem(2, ButtonType.HOME,
+                    res.getDrawable(res.getIdentifier("ic_sysbar_home", "drawable", PACKAGE_NAME)),
+                    minimumImageSize));
+    
+            mNavigationSlice.addItem(constructItem(2, ButtonType.BACK,
+                    mBackIcon,
+                    minimumImageSize));
+        } else {
+            mNavigationSlice.addItem(constructItem(2, ButtonType.BACK,
+                    mBackIcon,
+                    minimumImageSize));
+            mNavigationSlice.addItem(constructItem(2, ButtonType.HOME,
+                    res.getDrawable(res.getIdentifier("ic_sysbar_home", "drawable", PACKAGE_NAME)),
+                    minimumImageSize));
+            mNavigationSlice.addItem(constructItem(2, ButtonType.RECENT,
+                    mRecentIcon,
+                    minimumImageSize));
+            if (mCustomKeyMode == GravityBoxSettings.PIE_CUSTOM_KEY_SEARCH) {
+                mNavigationSlice.addItem(constructItem(1, ButtonType.SEARCH,
+                        mGbResources.getDrawable(R.drawable.ic_sysbar_search_side), minimumImageSize));
+            } else if (mCustomKeyMode == GravityBoxSettings.PIE_CUSTOM_KEY_APP_LAUNCHER) {
+                mNavigationSlice.addItem(constructItem(1, ButtonType.APP_LAUNCHER,
+                        mGbResources.getDrawable(R.drawable.ic_sysbar_apps), minimumImageSize));
+            }
+
+            mMenuButton = constructItem(1, ButtonType.MENU,
+                    res.getDrawable(res.getIdentifier("ic_sysbar_menu", "drawable", PACKAGE_NAME)),
+                    minimumImageSize);
+            mNavigationSlice.addItem(mMenuButton);
+        }
 
         setNavigationIconHints(mNavigationIconHints, true);
         setMenuVisibility(mShowMenu);
@@ -476,21 +502,9 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
 
         mNavigationIconHints = hints;
 
-        PieItem item = findItem(ButtonType.HOME);
+        PieItem item = findItem(ButtonType.BACK);
         if (item != null) {
-            boolean isNop = (hints & (1 << 1)) != 0;
-            item.setAlpha(isNop ? 0.5f : 1.0f);
-        }
-        item = findItem(ButtonType.RECENT);
-        if (item != null) {
-            boolean isNop = (hints & (1 << 2)) != 0;
-            item.setAlpha(isNop ? 0.5f : 1.0f);
-        }
-        item = findItem(ButtonType.BACK);
-        if (item != null) {
-            boolean isNop = (hints & (1 << 0)) != 0;
-            boolean isAlt = (hints & (1 << 3)) != 0;
-            item.setAlpha(isNop ? 0.5f : 1.0f);
+            boolean isAlt = (hints & (1 << 0)) != 0;
             item.setImageDrawable(isAlt ? mBackAltIcon : mBackIcon);
         }
         setDisabledFlags(mDisabledFlags, true);
@@ -553,6 +567,11 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
 
     public void setCustomKeyMode(int mode) {
         mCustomKeyMode = mode;
+        setupNavigationItems();
+    }
+
+    public void setMirroredKeys(boolean mirrored) {
+        mMirroredKeys = mirrored;
         setupNavigationItems();
     }
 
@@ -650,18 +669,8 @@ public class PieController implements PieLayout.OnSnapListener, PieItem.PieOnCli
     }
 
     private void showAppLauncher() {
-        if (mAppLauncher == null) {
-            try {
-                mAppLauncher = new AppLauncher(mContext, 
-                        new XSharedPreferences(GravityBox.PACKAGE_NAME));
-            } catch (Throwable t) {
-                log ("Error creating app launcher: " + t.getMessage());
-            }
-        }
-
-        if (mAppLauncher != null) {
-            mAppLauncher.showDialog();
-        }
+        Intent intent = new Intent(ModHwKeys.ACTION_SHOW_APP_LAUCNHER);
+        mContext.sendBroadcast(intent);
     }
 
     private void setRecentAlt() {

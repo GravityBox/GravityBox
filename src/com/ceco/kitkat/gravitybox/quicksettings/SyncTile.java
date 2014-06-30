@@ -72,7 +72,12 @@ public class SyncTile extends BasicTile {
             public void onReceiveResult(int resultCode, Bundle resultData) {
                 if (resultCode == GravityBoxService.RESULT_SYNC_STATUS) {
                     mSyncState = resultData.getBoolean(GravityBoxService.KEY_SYNC_STATUS);
-                    updateResources();
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            updateResources();
+                        }
+                    });
                 }
             }
             

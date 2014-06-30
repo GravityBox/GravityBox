@@ -144,7 +144,7 @@
     <string name="pref_cat_lockscreen_summary">Berisi berbagai tweak lockscreen</string>
     <string name="pref_cat_lockscreen_background_title">Latar belakang Lockscreen</string>
     <string name="pref_lockscreen_background_title">Gaya latar belakang</string>
-    <string name="lockscreen_bg_default">Wallpaper bawaan</string>
+    <string name="lockscreen_bg_default">Gambar latar belakang bawaan</string>
     <string name="lockscreen_bg_color">Diisi warna</string>
     <string name="lockscreen_bg_image">Gambar kustom</string>
     <string name="pref_lockscreen_bg_color_title">Tentukan warna kustom</string>
@@ -175,7 +175,7 @@
 
     <!--  Autobrightness levels -->
     <string name="pref_ab_title">Level Autobrightness</string>
-    <string name="pref_ab_summary">Membolehkan anda untuk men-set nilai level cahaya ambien dan cahaya latar LCD yang terkai</string>
+    <string name="pref_ab_summary">Membolehkan anda untuk men-set nilai level cahaya ambien dan cahaya latar LCD yang sesuai</string>
     <string name="level">Level</string>
     <string name="pref_ab_lux_max_label">Lux max</string>
     <string name="pref_ab_brighness_label">Kecerahan (%d &#8211; 255)</string>
@@ -641,7 +641,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Launcher aplikasi</string>
-    <string name="pref_cat_app_launcher_summary">Dialog yang memperbolehkan pengguna menetapkan sampai 8 aplikasi yang bisa ditetapkan sebagai aksi tombol fisik atau tombol tambahan di navbar.</string>
+    <string name="pref_cat_app_launcher_summary">Dialog yang memperbolehkan pengguna menetapkan sampai 12 aplikasi yang bisa ditetapkan sebagai aksi tombol fisik atau tombol tambahan di navbar.</string>
     <string name="pref_app_launcher_slot_title">Aplikasi slot %d</string>
     <string name="app_launcher_no_apps">Tidak ada aplikasi yang ditetapkan. Gunakan GravityBox / menu Launcher Aplikasi untuk menetapkan aplikasi.</string>
 

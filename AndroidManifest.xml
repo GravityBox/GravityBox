@@ -16,8 +16,8 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ceco.kitkat.gravitybox"
-    android:versionCode="73"
-    android:versionName="3.0.3" >
+    android:versionCode="91"
+    android:versionName="3.2.1" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -35,12 +35,18 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <permission
+        android:name="gravitybox.permission.UNLOCK"
+        android:label="Permission to unlock GravityBox premium features"
+        android:protectionLevel="signature" />
+
     <application
         android:name="com.ceco.kitkat.gravitybox.GravityBoxApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true" >
         <activity
             android:name="com.ceco.kitkat.gravitybox.GravityBoxSettings"
             android:label="@string/app_name" >
@@ -87,10 +93,21 @@
             android:label="@string/lc_quiet_hours" >
         </activity>
 
+        <activity
+            android:name="com.ceco.kitkat.gravitybox.UnlockActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:stateNotNeeded="true"
+            android:permission="gravitybox.permission.UNLOCK">
+        </activity>
+
         <service android:name="com.ceco.kitkat.gravitybox.GravityBoxService">
             <intent-filter>
                 <action android:name="gravitybox.intent.action.TOGGLE_SYNC" />
                 <action android:name="gravitybox.intent.action.GET_SYNC_STATUS" />
+                <action android:name="gravitybox.intent.action.SET_QUIET_HOURS_MODE" />
             </intent-filter>
         </service>
 
@@ -121,6 +138,27 @@
             android:exported="false">
             <intent-filter>
                  <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver 
+            android:name=".UnlockActivity$UnlockReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="gravitybox.permission.UNLOCK">
+            <intent-filter>
+                 <action android:name="gravitybox.intent.action.UNLOCK" />
+            </intent-filter>
+        </receiver>
+
+        <receiver 
+            android:name=".UnlockActivity$PkgManagerReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                 <action android:name="android.intent.action.PACKAGE_ADDED" />
+                 <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
 

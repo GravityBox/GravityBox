@@ -18,7 +18,10 @@ package com.ceco.kitkat.gravitybox.ledcontrol;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.ceco.kitkat.gravitybox.GravityBoxSettings;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
@@ -27,7 +30,11 @@ public class LedSettings {
     public static final String PREF_KEY_LOCKED = "uncLocked";
     public static final String PREF_KEY_ACTIVE_SCREEN_ENABLED = "activeScreenEnabled";
 
+    public static final String ACTION_UNC_SETTINGS_CHANGED = "gravitybox.intent.action.UNC_SETTINGS_CHANGED";
+    public static final String EXTRA_UNC_AS_ENABLED = "uncActiveScreenEnabled";
+
     public enum LedMode { ORIGINAL, OVERRIDE, OFF };
+    public enum HeadsUpMode { DEFAULT, ALWAYS, IMMERSIVE, OFF };
 
     private Context mContext;
     private String mPackageName;
@@ -39,6 +46,7 @@ public class LedSettings {
     private boolean mSoundOverride;
     private Uri mSoundUri;
     private boolean mSoundOnlyOnce;
+    private long mSoundOnlyOnceTimeout;
     private boolean mInsistent;
     private boolean mVibrateOverride;
     private String mVibratePatternStr;
@@ -46,6 +54,9 @@ public class LedSettings {
     private boolean mActiveScreenEnabled;
     private boolean mActiveScreenExpanded;
     private LedMode mLedMode;
+    private boolean mQhIgnore;
+    private String mQhIgnoreList;
+    private HeadsUpMode mHeadsUpMode;
 
     protected static LedSettings deserialize(Context context, String packageName) {
         try {
@@ -96,6 +107,8 @@ public class LedSettings {
                 ls.setSoundUri(Uri.parse(data[1]));
             } else if (data[0].equals("soundOnlyOnce")) {
                 ls.setSoundOnlyOnce(Boolean.valueOf(data[1]));
+            } else if (data[0].equals("soundOnlyOnceTimeout")) {
+                ls.setSoundOnlyOnceTimeout(Long.valueOf(data[1]));
             } else if (data[0].equals("insistent")) {
                 ls.setInsistent(Boolean.valueOf(data[1]));
             } else if (data[0].equals("vibrateOverride")) {
@@ -108,6 +121,12 @@ public class LedSettings {
                 ls.setActiveScreenExpanded(Boolean.valueOf(data[1]));
             } else if (data[0].equals("ledMode")) {
                 ls.setLedMode(LedMode.valueOf(data[1]));
+            } else if (data[0].equals("qhIgnore")) {
+                ls.setQhIgnore(Boolean.valueOf(data[1]));
+            } else if (data[0].equals("qhIgnoreList")) {
+                ls.setQhIgnoreList(data[1]);
+            } else if (data[0].equals("headsUpMode")) {
+                ls.setHeadsUpMode(data[1]);
             }
         }
         return ls;
@@ -124,6 +143,7 @@ public class LedSettings {
         mSoundOverride = false;
         mSoundUri = null;
         mSoundOnlyOnce = false;
+        mSoundOnlyOnceTimeout = 0;
         mInsistent = false;
         mVibrateOverride = false;
         mVibratePatternStr = null;
@@ -131,6 +151,9 @@ public class LedSettings {
         mActiveScreenEnabled = false;
         mActiveScreenExpanded = false;
         mLedMode = LedMode.OVERRIDE;
+        mQhIgnore = false;
+        mQhIgnoreList = null;
+        mHeadsUpMode = HeadsUpMode.DEFAULT;
     }
 
     protected static LedSettings getDefault(Context context) {
@@ -145,6 +168,52 @@ public class LedSettings {
         } catch (Throwable t) {
             t.printStackTrace();
             return false;
+        }
+    }
+
+    protected static boolean isQuietHoursEnabled(Context context) {
+        try {
+            SharedPreferences prefs = context.getSharedPreferences(
+                    "ledcontrol", Context.MODE_WORLD_READABLE);
+            return prefs.getBoolean(QuietHoursActivity.PREF_KEY_QH_ENABLED, false);
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return false;
+        }
+    }
+
+    protected static boolean isHeadsUpEnabled(Context context) {
+        try {
+            final String prefsName = context.getPackageName() + "_preferences";
+            SharedPreferences prefs = context.getSharedPreferences(
+                    prefsName, Context.MODE_WORLD_READABLE);
+            return prefs.getBoolean(GravityBoxSettings.PREF_KEY_HEADS_UP_MASTER_SWITCH, false);
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isUncLocked(Context context) {
+        try {
+            SharedPreferences prefs = context.getSharedPreferences(
+                    "ledcontrol", Context.MODE_WORLD_READABLE);
+            return prefs.getBoolean(PREF_KEY_LOCKED, false);
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return true;
+        }
+    }
+
+    public static void lockUnc(Context context, boolean lock) {
+        try {
+            SharedPreferences prefs = context.getSharedPreferences(
+                    "ledcontrol", Context.MODE_WORLD_READABLE);
+            prefs.edit().putBoolean(PREF_KEY_LOCKED, lock).commit();
+            Intent intent = new Intent(ACTION_UNC_SETTINGS_CHANGED);
+            context.sendBroadcast(intent);
+        } catch (Throwable t) {
+            t.printStackTrace();
         }
     }
 
@@ -182,6 +251,10 @@ public class LedSettings {
 
     protected void setSoundOnlyOnce(boolean onlyOnce) {
         mSoundOnlyOnce = onlyOnce;
+    }
+
+    protected void setSoundOnlyOnceTimeout(long timeout) {
+        mSoundOnlyOnceTimeout = timeout;
     }
 
     protected void setInsistent(boolean insistent) {
@@ -226,6 +299,26 @@ public class LedSettings {
         mLedMode = ledMode;
     }
 
+    protected void setQhIgnore(boolean ignore) {
+        mQhIgnore = ignore;
+    }
+
+    protected void setQhIgnoreList(String ignoreList) {
+        mQhIgnoreList = ignoreList;
+    }
+
+    protected void setHeadsUpMode(HeadsUpMode mode) {
+        mHeadsUpMode = mode;
+    }
+
+    protected void setHeadsUpMode(String mode) {
+        try {
+            setHeadsUpMode(HeadsUpMode.valueOf(mode));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getPackageName() {
         return mPackageName;
     }
@@ -262,6 +355,10 @@ public class LedSettings {
         return mSoundOnlyOnce;
     }
 
+    public long getSoundOnlyOnceTimeout() {
+        return mSoundOnlyOnceTimeout;
+    }
+
     public boolean getInsistent() {
         return mInsistent;
     }
@@ -290,6 +387,18 @@ public class LedSettings {
         return mLedMode;
     }
 
+    public boolean getQhIgnore() {
+        return mQhIgnore;
+    }
+
+    public String getQhIgnoreList() {
+        return mQhIgnoreList;
+    }
+
+    public HeadsUpMode getHeadsUpMode() {
+        return mHeadsUpMode;
+    }
+
     protected void serialize() {
         try {
             Set<String> dataSet = new HashSet<String>();
@@ -303,6 +412,7 @@ public class LedSettings {
                 dataSet.add("sound:" + mSoundUri.toString());
             }
             dataSet.add("soundOnlyOnce:" + mSoundOnlyOnce);
+            dataSet.add("soundOnlyOnceTimeout:" + mSoundOnlyOnceTimeout);
             dataSet.add("insistent:" + mInsistent);
             dataSet.add("vibrateOverride:" + mVibrateOverride);
             if (mVibratePatternStr != null) {
@@ -311,9 +421,16 @@ public class LedSettings {
             dataSet.add("activeScreenEnabled:" + mActiveScreenEnabled);
             dataSet.add("activeScreenExpanded:" + mActiveScreenExpanded);
             dataSet.add("ledMode:" + mLedMode);
+            dataSet.add("qhIgnore:" + mQhIgnore);
+            if (mQhIgnoreList != null) {
+                dataSet.add("qhIgnoreList:" + mQhIgnoreList);
+            }
+            dataSet.add("headsUpMode:" + mHeadsUpMode.toString());
             SharedPreferences prefs = mContext.getSharedPreferences(
                     "ledcontrol", Context.MODE_WORLD_READABLE);
             prefs.edit().putStringSet(mPackageName, dataSet).commit();
+            Intent intent = new Intent(ACTION_UNC_SETTINGS_CHANGED);
+            mContext.sendBroadcast(intent);
         } catch (Throwable t) {
             t.printStackTrace();
         }

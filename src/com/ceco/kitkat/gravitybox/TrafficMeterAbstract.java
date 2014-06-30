@@ -25,6 +25,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -51,6 +53,10 @@ public abstract class TrafficMeterAbstract extends TextView
     protected boolean mIsScreenOn = true;
     protected boolean mShowOnlyWhenDownloadActive;
     protected boolean mIsDownloadActive;
+    private PhoneStateListener mPhoneStateListener;
+    private TelephonyManager mPhone;
+    protected boolean mMobileDataConnected;
+    protected boolean mShowOnlyForMobileData;
 
     protected static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -79,6 +85,22 @@ public abstract class TrafficMeterAbstract extends TextView
         setTextAppearance(context, context.getResources().getIdentifier(
                 "TextAppearance.StatusBar.Clock", "style", PACKAGE_NAME));
         setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+
+        if (!Utils.isWifiOnly(getContext())) {
+            mPhone = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
+            mPhoneStateListener = new PhoneStateListener() {
+                @Override
+                public void onDataConnectionStateChanged(int state, int networkType) {
+                    final boolean connected = state == TelephonyManager.DATA_CONNECTED;
+                    if (mMobileDataConnected != connected) {
+                        mMobileDataConnected = connected;
+                        if (DEBUG) log("onDataConnectionStateChanged: mMobileDataConnected=" + mMobileDataConnected);
+                        updateState();
+                    }
+                    
+                }
+            };
+        }
     }
 
     public void initialize(XSharedPreferences prefs) {
@@ -99,6 +121,11 @@ public abstract class TrafficMeterAbstract extends TextView
 
         mShowOnlyWhenDownloadActive = prefs.getBoolean(
                 GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_ACTIVE_DL_ONLY, false);
+
+        if (mPhone != null) {
+            mShowOnlyForMobileData = prefs.getBoolean(
+                    GravityBoxSettings.PREF_KEY_DATA_TRAFFIC_ACTIVE_MOBILE_ONLY, false);
+        }
 
         onInitialize(prefs);
     }
@@ -137,6 +164,11 @@ public abstract class TrafficMeterAbstract extends TextView
             filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
             filter.addAction(ModDownloadProvider.ACTION_DOWNLOAD_STATE_CHANGED);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
+ 
+            if (mPhone != null) {
+                mPhone.listen(mPhoneStateListener, PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
+            }
+
             updateState();
         }
     }
@@ -148,6 +180,11 @@ public abstract class TrafficMeterAbstract extends TextView
             mAttached = false;
             if (DEBUG) log("detached from window");
             getContext().unregisterReceiver(mIntentReceiver);
+
+            if (mPhone != null) {
+                mPhone.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+            }
+
             updateState();
         }
     }
@@ -180,6 +217,10 @@ public abstract class TrafficMeterAbstract extends TextView
                 mShowOnlyWhenDownloadActive = intent.getBooleanExtra(
                         GravityBoxSettings.EXTRA_DT_ACTIVE_DL_ONLY, false);
             }
+            if (intent.hasExtra(GravityBoxSettings.EXTRA_DT_ACTIVE_MOBILE_ONLY)) {
+                mShowOnlyForMobileData = intent.getBooleanExtra(
+                        GravityBoxSettings.EXTRA_DT_ACTIVE_MOBILE_ONLY, false);
+            }
 
             onPreferenceChanged(intent);
             updateState();
@@ -200,6 +241,9 @@ public abstract class TrafficMeterAbstract extends TextView
         boolean shouldStart = mAttached && mIsScreenOn && getConnectAvailable();
         if (mShowOnlyWhenDownloadActive) {
             shouldStart &= mIsDownloadActive;
+        }
+        if (mShowOnlyForMobileData) {
+            shouldStart &= mMobileDataConnected;
         }
         return shouldStart;
     }

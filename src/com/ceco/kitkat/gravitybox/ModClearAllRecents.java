@@ -387,7 +387,8 @@ public class ModClearAllRecents {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                final int count = mLinearLayout.getChildCount();
+                final int count = Utils.isXperiaDevice() ? (mLinearLayout.getChildCount() - 1) :
+                    mLinearLayout.getChildCount();
                 for (int i = 0; i < count; i++) {
                     final View child = mLinearLayout.getChildAt(i);
                     final int index = i;

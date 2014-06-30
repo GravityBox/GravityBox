@@ -70,10 +70,13 @@
     <string name="quick_settings_lock_screen_off">Obrazovka uzamknutia vyp</string>
     <string name="quick_settings_location_on">Poloha</string>
     <string name="quick_settings_location_off">Poloha vyp</string>
+    <string name="quick_settings_quiet_hours_off">Tiché hodiny vyp</string>
+    <string name="quick_settings_quiet_hours_on">Tiché hodiny zap</string>
+    <string name="quick_settings_quiet_hours_auto">Tiché hodiny auto</string>
 
     <!--  QuickSettings settings -->
-    <string name="quick_settings_title">Dlaždice QuickSettings panelu</string>
-    <string name="quick_settings_summary">Umožní zobrazenie/skrytie jednotlivých dlaždíc v QuickSettings panely stavového riadku</string>
+    <string name="quick_settings_title">Dlaždice rýchlych nastavení</string>
+    <string name="quick_settings_summary">Umožní zobrazenie/skrytie jednotlivých dlaždíc v panely rýchlych nastavení stavového riadku</string>
     <string name="qs_tile_user_profile">Profil používateľa</string>
     <string name="qs_tile_airplane_mode">Režim v lietadle</string>
     <string name="qs_tile_battery">Stav batérie</string>
@@ -158,8 +161,8 @@
     <string name="lockscreen_background_result_successful">Pozadie zmenené</string>
     <string name="lockscreen_background_result_not_successful">Pozadie nebolo zmenené</string>
     <string name="pref_cat_lockscreen_other_title">Iné</string>
-    <string name="pref_lockscreen_maximize_widgets_title">Maximalizovať widgety</string>
-    <string name="pref_lockscreen_maximize_widgets_summary">Umožní zobrazenie widgetov v maximalizovanom stave automaticky po zobrazení obrazovky uzamknutia</string>
+    <string name="pref_lockscreen_maximize_widgets_title">Maximalizovať miniaplikácie</string>
+    <string name="pref_lockscreen_maximize_widgets_summary">Umožní zobrazenie miniaplikácií v maximalizovanom stave automaticky po zobrazení obrazovky uzamknutia</string>
 
     <!--  Power tweaks category -->
     <string name="pref_cat_power_title">Nastavenia napájania</string>
@@ -257,7 +260,7 @@
 
     <!-- QuickSettings tiles per row -->
     <string name="pref_qs_tiles_per_row_title">Počet dlaždíc na riadok</string>
-    <string name="pref_qs_tiles_per_row_summary">Definuje počet QuickSettings dlaždíc zobrazených na 1 riadok. Veľkosť dlaždíc bude upravená podľa potreby. Aplikovateľné na portrét režim.</string>
+    <string name="pref_qs_tiles_per_row_summary">Definuje počet dlaždíc rýchlych nastavení zobrazených na 1 riadok. Veľkosť dlaždíc bude upravená podľa potreby. Aplikovateľné na portrét režim.</string>
 
     <!--  Status bar clock - show day of week -->
     <string name="pref_statusbar_clock_dow_title">Zobraziť deň v týždni</string>
@@ -271,12 +274,12 @@
     <string name="pref_link_volumes_summary">Ak je vypnuté, umožňuje nastaviť úrovne hlasitosti zvlášť pre vyzváňanie a notifikácie</string>
 
     <!-- Auto-switch QuickSettings -->
-    <string name="pref_auto_switch_qs_title">Automatické zobrazenie QuickSettings</string>
-    <string name="pref_auto_switch_qs_summary">QuickSettings budú zobrazené automaticky ak sa v notifikačnom panely nenachádzajú žiadne notifikácie</string>
+    <string name="pref_auto_switch_qs_title">Automatické rýchle nastavenia</string>
+    <string name="pref_auto_switch_qs_summary">Rýchle nastavenia budú zobrazené automaticky ak sa v notifikačnom panely nenachádzajú žiadne notifikácie</string>
 
     <!-- Quick pulldown -->
-    <string name="pref_quick_pulldown_title">Rýchle zobrazenie QuickSettings</string>
-    <string name="pref_quick_pulldown_summary">Stiahnutie stavového riadku v oblasti definovaného okraja zobrazí QuickSettings</string>
+    <string name="pref_quick_pulldown_title">Rýchle zobrazenie nastavení</string>
+    <string name="pref_quick_pulldown_summary">Stiahnutie stavového riadku v oblasti definovaného okraja zobrazí rýchle nastavenia</string>
     <string name="quick_pulldown_off">Vypnuté</string>
     <string name="quick_pulldown_right">Pravý okraj</string>
     <string name="quick_pulldown_left">Ľavý okraj</string>
@@ -296,7 +299,7 @@
     <string name="pref_statusbar_data_activity_color_summary">Nastaví farbu pre indikátory dátovej aktivity</string>
 
     <!-- QuickSettings management category -->
-    <string name="pref_cat_statusbar_qs_title">QuickSettings nastavenia</string>
+    <string name="pref_cat_statusbar_qs_title">Rýchle nastavenia</string>
 
     <!-- Notification drawer style -->
     <string name="pref_cat_notification_drawer_style_title">Nastavenia notifikačného panelu</string>
@@ -374,13 +377,13 @@
     <string name="app_picker_none">(Žiadna)</string>
 
     <!-- QuickApp tile settings -->
-    <string name="qs_tile_quickapp">Quick App</string>
-    <string name="pref_cat_quickapp_tile_title">Nastavenia QuickApp dlaždice</string>
+    <string name="qs_tile_quickapp">Rýchla aplikácia</string>
+    <string name="pref_cat_quickapp_tile_title">Rýchla aplikácia</string>
     <string name="pref_quickapp_default_title">Hlavná aplikácia</string>
-    <string name="pref_quickapp_slot1_title">Dlhé stlačenie - app slot 1</string>
-    <string name="pref_quickapp_slot2_title">Dlhé stlačenie - app slot 2</string>
-    <string name="pref_quickapp_slot3_title">Dlhé stlačenie - app slot 3</string>
-    <string name="pref_quickapp_slot4_title">Dlhé stlačenie - app slot 4</string>
+    <string name="pref_quickapp_slot1_title">Dlhé stlačenie - slot 1</string>
+    <string name="pref_quickapp_slot2_title">Dlhé stlačenie - slot 2</string>
+    <string name="pref_quickapp_slot3_title">Dlhé stlačenie - slot 3</string>
+    <string name="pref_quickapp_slot4_title">Dlhé stlačenie - slot 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
     <string name="qs_tile_gps_enabled">GPS zap</string>
@@ -587,8 +590,8 @@
     <string name="dt_size_smallest">Najmenšia</string>
 
     <!-- Disable lockscreen widget limit -->
-    <string name="pref_lockscreen_widget_limit_disable_title">Vypnúť limit widgetov</string>
-    <string name="pref_lockscreen_widget_limit_disable_summary">Umožní neobmedzený počet widgetov obrazovky uzamknutia</string>
+    <string name="pref_lockscreen_widget_limit_disable_title">Vypnúť limit miniaplikácií</string>
+    <string name="pref_lockscreen_widget_limit_disable_summary">Umožní neobmedzený počet miniaplikácií obrazovky uzamknutia</string>
 
     <!--  RAM Bar -->
     <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
@@ -742,7 +745,7 @@
     <string name="hwkey_ls_torch_voldown_longpress">Na dlhé podržanie Hlasitosť-</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Hlavný prepínač pre QuickSettings nastavenia (vyžaduje reštart)</string>
+    <string name="pref_qs_management_enable_summary">Hlavný prepínač pre rýchle nastavenia (vyžaduje reštart)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Aplikácie</string>
@@ -792,7 +795,7 @@
     <string name="pref_cat_launcher_tweaks_title">Nastavenia spúšťača</string>
     <string name="pref_cat_launcher_tweaks_summary">Vzťahuje sa na štandardný KitKat spúšťač alebo Google Experience spúšťač</string>
     <string name="pref_cat_launcher_desktop_grid_title">Mriežka plochy</string>
-    <string name="pref_launcher_desktop_grid_info_title">Použitie iných ako východzích hodnôt môže spôsobiť narušenie vzhľadu widgetov. Zmeny vyžadujú reštart spúšťača.</string>
+    <string name="pref_launcher_desktop_grid_info_title">Použitie iných ako východzích hodnôt môže spôsobiť narušenie vzhľadu miniaplikácií. Zmeny vyžadujú reštart spúšťača.</string>
     <string name="pref_launcher_desktop_grid_rows_title">Počet riadkov</string>
     <string name="pref_launcher_desktop_grid_cols_title">Počet stĺpcov</string>
     <string name="desktop_grid_default">Štandardný</string>
@@ -938,13 +941,13 @@
 
     <!-- Lockscreen statusbar clock visibility -->
     <string name="pref_lockscreen_sb_clock_title">Viditeľnosť hodín stavového riadku</string>
-    <string name="lockscreen_sb_clock_hide_on_widget">Skryť pre známe widgety hodín</string>
+    <string name="lockscreen_sb_clock_hide_on_widget">Skryť pre známe miniaplikácie hodín</string>
     <string name="lockscreen_sb_clock_always_hide">Vždy skryť</string>
     <string name="lockscreen_sb_clock_always_show">Vždy zobraziť</string>
 
     <!-- QuickApp Tile #2 -->
-    <string name="pref_cat_quickapp_tile_2_title">Nastavenia QuickApp dlaždice 2</string>
-    <string name="qs_tile_quickapp_2">Quick App 2</string>
+    <string name="pref_cat_quickapp_tile_2_title">Rýchla aplikácia 2</string>
+    <string name="qs_tile_quickapp_2">Rýchla aplikácia 2</string>
 
     <!-- Force music volume control -->
     <string name="pref_vol_force_music_control_title">Vynútiť ovládanie hlasitosti médií</string>
@@ -1083,7 +1086,7 @@
     <string name="pref_trans_verification_title">ID PayPal transakcie</string>
     <string name="pref_trans_verification_summary">V prípade, ak ste podporili projekt príspevkom cez PayPal, 
         môžete použiť ID PayPal transakcie na odomknutie prémiových funkcií</string>
-    <string name="wsc_trans_required_summary">Táto funkcia vyžaduje platné ID PayPal transakcie</string>
+    <string name="wsc_trans_required_summary">Táto funkcia je prémiová a vyžaduje odomknutie</string>
 
     <!-- Pie: disable system info -->
     <string name="pref_pie_sysinfo_disable_title">Vypnúť systémové informácie</string>
@@ -1100,8 +1103,8 @@
 
     <!-- Launcher tweaks: resize any widget -->
     <string name="pref_cat_launcher_other_title">Iné</string>
-    <string name="pref_launcher_resize_widget_title">Zmena veľkosti widgetov</string>
-    <string name="pref_launcher_resize_widget_summary">Povolí zmenu veľkosti widgetov na obrazovkách spúšťača (vyžaduje reštart spúšťača)</string>
+    <string name="pref_launcher_resize_widget_title">Zmena veľkosti miniaplikácií</string>
+    <string name="pref_launcher_resize_widget_summary">Povolí zmenu veľkosti miniaplikácií na obrazovkách spúšťača (vyžaduje reštart spúšťača)</string>
 
     <!-- Icon picker -->
     <string name="icon_picker_choose_icon_title">Vyberte ikonu</string>
@@ -1163,7 +1166,7 @@
     <string name="pref_lockscreen_slide_before_unlock_summary">Umožňuje použiť odomykací prstenec a jeho skratky aj v prípade bezpečnostného zámku</string>
 
     <!-- Lockscreen tweaks: option categories -->
-    <string name="pref_cat_lockscreen_widgets_title">Widgety</string>
+    <string name="pref_cat_lockscreen_widgets_title">Miniaplikácie</string>
     <string name="pref_cat_lockscreen_sliding_challenge_title">Odomykací prstenec</string>
     <string name="pref_cat_lockscreen_statusbar_title">Stavová lišta</string>
 
@@ -1189,6 +1192,8 @@
     <string name="animation_scale5">Mierka animácie 2x</string>
     <string name="animation_scale6">Mierka animácie 5x</string>
     <string name="animation_scale7">Mierka animácie 10x</string>
+    <string name="animation_scale8">Mierka animácie .75x</string>
+    <string name="animation_scale9">Mierka animácie 1.25x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Štýl textu dlaždice</string>
@@ -1367,7 +1372,7 @@
     <string name="pref_lockscreen_show_pattern_error_summary">Zobrazí červenú stopu po zadaní nesprávneho odomykacieho vzorca</string>
 
     <!-- Premium features: allow trial period -->
-    <string name="trial_info">Táto funkcia je v skúšobnom režime. V prípade, ak vyhovuje Vašim potrebám je možné ju aktivovať zadaním platného ID PayPal transakcie. 
+    <string name="trial_info">Táto funkcia je v skúšobnom režime. V prípade, ak vyhovuje Vašim potrebám je možné ju aktivovať odomknutím prémiových funkcií. 
         Počet reštartov do skončenia skúšobného režimu: %d</string>
 
     <!-- Navbar: disable camera icon -->
@@ -1401,7 +1406,7 @@
         pre všetky oznámenia obdržané v definovanom časovom okne</string>
     <string name="pref_lc_qh_start_title">Začiatok</string>
     <string name="pref_lc_qh_end_title">Koniec</string>
-    <string name="pref_lc_qh_mute_led_title">Zakázať aj LED</string>
+    <string name="pref_lc_qh_mute_led_title">Zakázať LED</string>
 
     <!-- Notification control: LED mode -->
     <string name="pref_lc_led_mode_title">Režim LED</string>
@@ -1429,5 +1434,173 @@
 
     <!-- VolumePanel transparency -->
     <string name="pref_volume_panel_transparency_title">Priehľadnosť panela hlasitosti</string>
+
+    <!-- Lockscreen: secondary custom carrier text (MTK only) -->
+    <string name="pref_lockscreen_carrier2_text_title">Vlastný text operátora 2</string>
+
+    <!-- UNC Quiet Hours: ignore on per-app basis -->
+    <string name="pref_lc_qh_ignore_title">Ignorovať tiché hodiny</string>
+    <string name="pref_lc_qh_ignore_list_title">Pre zadané kľúčové slová</string>
+    <string name="pref_lc_qh_ignore_list_summary">Zoznam čiarkou oddelených kľúčových slov, 
+        pre ktoré ignorovať tiché hodiny. Ponechajte prázdne pre všetky oznámenia.</string>
+
+    <!-- GB Actions: Quiet hours shortcut -->
+    <string name="shortcut_quiet_hours_toggle">Prepnúť tiché hodiny</string>
+
+    <!-- Signal cluster: H+ indicator -->
+    <string name="pref_signal_cluster_hplus_title">Povoliť H+ indikátor</string>
+    <string name="pref_signal_cluster_hplus_summary">Vyžaduje reštart</string>
+
+    <!-- Signal cluster: LTE/4G indicator style -->
+    <string name="pref_signal_cluster_lte_style_title">Štýl indikátora LTE</string>
+    <string name="sc_lte_style_default">Pôvodný</string>
+    <string name="sc_lte_style_lte">LTE</string>
+    <string name="sc_lte_style_4g">4G</string>
+
+    <!-- GB Actions: toggle airplane mode -->
+    <string name="shortcut_airplane_mode">Prepnúť režim v lietadle</string>
+
+    <!-- Statusbar BT icon visibility -->
+    <string name="pref_sb_bt_visibility_title">Viditeľnosť Bluetooth ikony</string>
+    <string name="sb_bt_default">Ak je BT zapnuté (predvolené)</string>
+    <string name="sb_bt_connected">Ak je BT pripojené</string>
+    <string name="sb_bt_hidden">Skryť</string>
+
+    <!-- Increasing ringtone volume -->
+    <string name="pref_increasing_ring_title">Zvyšovanie hlasitosti vyzváňania</string>
+    <string name="increasing_ring_enable">Povoliť</string>
+    <string name="increasing_ring_min_volume_title">Počiatočná hlasitosť vyzváňania</string>
+    <string name="increasing_ring_volume_notice">Poznámka:\nAk je počiatočná hlasitosť nastavená na vyššiu hodnotu než je hlasitosť vyzváňania, 
+        vyzváňanie bude prehraté hlasitosťou vyzváňania.</string>
+    <string name="increasing_ring_interval_title">Interval zvyšovania hlasitosti</string>
+    <string name="increasing_ring_interval_eachring">Pri každom zazvonení</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekúnd</string>
+    <string name="increasing_ring_interval_10seconds">10 sekúnd</string>
+
+    <!-- HW Key Action: In-app search -->
+    <string name="hwkey_action_inapp_search">Hľadať v aplikácii</string>
+
+    <!-- Misc: Force LTR direction -->
+    <string name="pref_force_ltr_direction_title">Vynútiť LTR rozloženie</string>
+    <string name="pref_force_ltr_direction_summary">Vynúti rozloženie LTR pre všetky jazyky (vyžaduje reštart)</string>
+
+    <!-- Volume panel transparency: opaque on interaction -->
+    <string name="pref_volume_panel_opaque_title">Nepriehľadné pri interakcii</string>
+    <string name="pref_volume_panel_opaque_summary">Odstráni nepriehľadnosť pri interakcii s panelom nastavenia hlasitosti</string>
+
+    <!-- Ringer mode shortcut -->
+    <string name="shortcut_ringer_mode">Nastaviť režim zvonenia</string>
+
+    <!-- Data traffic monitor: Only for mobile data -->
+    <string name="pref_data_traffic_active_mobile_only_title">Len pre mobilné dáta</string>
+
+    <!-- Dashed circle battery style -->
+    <string name="battery_style_circle_dashed">Čiarkovaný kruh</string>
+    <string name="battery_style_circle_dashed_percent">Čiarkovaný kruh s percentami</string>
+
+    <!-- Premium feature unlock via unlocker app -->
+    <string name="premium_unlocked_message">Ďakujeme za podporu. Prémiové funkcie budú odomknuté po reštartovaní GravityBox. 
+        Ponechajte GravityBox Unlocker nainštalovaný po dobu minimálne 20 minút.</string>
+    <string name="pref_about_get_unlocker_title">Získať odomykaciu aplikáciu</string>
+    <string name="pref_about_get_unlocker_summary">Nemáte PayPal? Jednoducho ťuknite sem pre získanie odomykacej aplikácie prémiových funkcií z obchodu Play.</string>
+
+    <!-- Navbar custom key: alternate icon -->
+    <string name="pref_navbar_custom_key_icon_title">Použiť alternatívnu ikonu</string>
+
+    <!-- QS: swipe to Quick Settings -->
+    <string name="pref_qs_swipe_enable_title">Potiahnutím na rýchle nastavenia</string>
+
+    <!-- Smart Radio: ignore mobile data availability -->
+    <string name="pref_smart_radio_mda_ignore_title">Ignorovať dostupnosť mobilných dát</string>
+    <string name="pref_smart_radio_mda_ignore_summary">Prepne do normálneho režimu bez ohľadu na dostupnosť mobilných dát</string>
+
+    <!-- GB Actions: Toggle sync -->
+    <string name="shortcut_sync">Prepnúť synchronizáciu</string>
+
+    <!-- Statusbar clock: show date -->
+    <string name="pref_statusbar_clock_date_title">Zobraziť dátum</string>
+
+    <!-- Delete -->
+    <string name="delete">Vymazať</string>
+
+    <!-- Lockscreen: disable emergency call button -->
+    <string name="pref_lockscreen_disable_ecb_title">Skryť tlačidlo tiesňového hovoru</string>
+    <string name="pref_lockscreen_disable_ecb_summary">NA VLASTNÉ RIZIKO!!!!</string>
+
+    <!-- AppPicker: icon pick cancelled -->
+    <string name="app_picker_icon_pick_cancelled">Výber ikony bol zrušený cieľovou aplikáciou</string>
+
+    <!-- QS: Compass tile -->
+    <string name="qs_tile_compass">Kompas</string>
+    <string name="quick_settings_compass_off">Kompas vyp</string>
+    <string name="quick_settings_compass_init">Inicializácia&#8230;</string>
+
+    <!-- Cardinal directions -->
+    <string name="cd_north">S</string>
+    <string name="cd_north_east">SV</string>
+    <string name="cd_east">V</string>
+    <string name="cd_south_east">JV</string>
+    <string name="cd_south">J</string>
+    <string name="cd_south_west">JZ</string>
+    <string name="cd_west">Z</string>
+    <string name="cd_north_west">SZ</string>
+
+    <!-- Pie: mirrored keys -->
+    <string name="pref_pie_control_mirrored_keys_title">Zrkladlové tlačidlá</string>
+
+    <!-- Pie: center trigger -->
+    <string name="pref_pie_control_center_trigger_title">Stredový aktivátor</string>
+    <string name="pref_pie_control_center_trigger_summary">Aktivuje koláč len v prípade potiahnutia zo stredu okraja obrazovky</string>
+
+    <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Vypnuté</string>
+    <string name="clock_date_localized">Regionálny</string>
+    <string name="clock_date_format_1">dd/MM</string>
+    <string name="clock_date_format_2">MM/dd</string>
+    <string name="clock_date_format_3">d MMM</string>
+    <string name="clock_date_format_4">MMM d</string>
+    <string name="clock_date_format_5">d</string>
+
+    <!-- Battery tile settings -->
+    <string name="pref_cat_qs_battery_tile_settings_title">Nastavenia dlaždice Stav batérie</string>
+    <string name="pref_qs_battery_extended_title">Rozšírený stav batérie</string>
+    <string name="pref_qs_battery_extended_summary">Vyžaduje reštart</string>
+    <string name="pref_qs_battery_temp_unit_title">Jednotka teploty</string>
+    <string name="celsius">Celzius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+
+    <!-- Headset plug/unplug actions -->
+    <string name="pref_cat_headset_actions_title">Akcie slúchadiel</string>
+    <string name="pref_headset_action_plug_title">Po pripojení slúchadiel</string>
+    <string name="pref_headset_action_unplug_title">Po odpojení slúchadiel</string>
+
+    <!-- Quiet Hours: mute vibrations -->
+    <string name="pref_lc_qh_mute_vibe_title">Zakázať vibrácie</string>
+
+    <!-- Quiet Hours: interactive mode -->
+    <string name="pref_lc_qh_interactive_title">Interaktívny režim</string>
+    <string name="pref_lc_qh_interactive_summary">Vždy stlmí oznámenia počas interakcie používateľa so zariadením</string>
+
+    <!-- Screenshot delete -->
+    <string name="pref_screenshot_delete_title">Povoliť vymazanie screenshot</string>
+
+    <!-- UNC: heads up mode -->
+    <string name="pref_lc_headsup_mode_title">Heads up režim</string>
+    <string name="lc_heads_up_default">Predvolený</string>
+    <string name="lc_heads_up_always">Vždy zapnutý</string>
+    <string name="lc_heads_up_immersive">V prípade ak režim rozšírenej plochy skryje stavovú lištu</string>
+    <string name="lc_heads_up_off">Vypnutý</string>
+
+    <!-- Statusbar: notification heads up category -->
+    <string name="pref_cat_notif_heads_up_title">Heads up notifikácie</string>
+    <string name="pref_heads_up_master_switch_summary">Aktivuje štandardnú AOSP \"heads up\" funkcionalitu. 
+        Ak zapnuté, dodatočné nastavenia pre jednotlivé aplikácie samostatne budú dostupné v rámci ponuky Nastavenia oznámení. (vyžaduje reštart)</string>
+    <string name="pref_heads_up_one_finger_title">Rozšírenie jedným prstom</string>
+    <string name="pref_heads_up_timeout_title">Časovač zobrazenia</string>
+    <string name="pref_heads_up_timeout_summary">Po akej dobe zavrieť notifikačné okno. 0 = nikdy.</string>
 
 </resources>

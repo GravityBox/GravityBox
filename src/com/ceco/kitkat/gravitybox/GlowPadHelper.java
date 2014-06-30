@@ -106,34 +106,36 @@ public class GlowPadHelper {
                 return null;
             }
             final int mode = appInfo.intent.getIntExtra("mode", AppPickerPreference.MODE_APP);
+
+            Bitmap appIcon = null;
             final int iconResId = appInfo.intent.getStringExtra("iconResName") != null ?
                     mGbResources.getIdentifier(appInfo.intent.getStringExtra("iconResName"),
                     "drawable", GravityBox.PACKAGE_NAME) : 0;
-            Bitmap appIcon = null;
+            if (iconResId != 0) {
+                appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
+            } else {
+                final String appIconPath = appInfo.intent.getStringExtra("icon");
+                if (appIconPath != null) {
+                    File f = new File(appIconPath);
+                    if (f.exists() && f.canRead()) {
+                        FileInputStream fis = new FileInputStream(f);
+                        appIcon = BitmapFactory.decodeStream(fis);
+                        fis.close();
+                    }
+                }
+            }
+
             final Resources res = context.getResources();
             boolean isGbShortcut = false;
             if (mode == AppPickerPreference.MODE_APP) {
                 PackageManager pm = context.getPackageManager();
                 ActivityInfo ai = pm.getActivityInfo(appInfo.intent.getComponent(), 0);
                 appInfo.name = (String) ai.loadLabel(pm);
-                if (iconResId != 0) {
-                    appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
-                } else {
+                if (appIcon == null) {
                     appIcon = Utils.drawableToBitmap(ai.loadIcon(pm));
                 }
             } else if (mode == AppPickerPreference.MODE_SHORTCUT) {
                 appInfo.name = appInfo.intent.getStringExtra("label");
-                if (iconResId != 0) {
-                    appIcon = Utils.drawableToBitmap(mGbResources.getDrawable(iconResId));
-                } else {
-                    final String appIconPath = appInfo.intent.getStringExtra("icon");
-                    if (appIconPath != null) {
-                        File f = new File(appIconPath);
-                        FileInputStream fis = new FileInputStream(f);
-                        appIcon = BitmapFactory.decodeStream(fis);
-                        fis.close();
-                    }
-                }
                 isGbShortcut = appInfo.intent.getAction().equals(ShortcutActivity.ACTION_LAUNCH_ACTION);
             }
             if (appIcon != null) {
@@ -209,10 +211,13 @@ public class GlowPadHelper {
                 mGbResources = context.createPackageContext(GravityBox.PACKAGE_NAME, 0).getResources();
             }
 
-            Paint paint = null;
+            Paint paint = new Paint();
+            paint.setAntiAlias(true);
+            paint.setFilterBitmap(true);
             if (appInfo.intent.getStringExtra("iconResName") != null) {
-                paint = new Paint();
                 paint.setColorFilter(new LightingColorFilter(0xFF585858, 1));
+            } else {
+                paint.setColorFilter(new LightingColorFilter(0xFF999999, 1));
             }
 
             Bitmap bg = Utils.drawableToBitmap(mGbResources.getDrawable(R.drawable.target_background));
@@ -223,7 +228,10 @@ public class GlowPadHelper {
 
             Bitmap bNormal = Bitmap.createBitmap(bg.getWidth(), bg.getHeight(), Config.ARGB_8888);
             Canvas canvasNormal = new Canvas(bNormal);
-            canvasNormal.drawBitmap(fg, null, fgRect, null);
+            Paint normalPaint = new Paint();
+            normalPaint.setAntiAlias(true);
+            normalPaint.setFilterBitmap(true);
+            canvasNormal.drawBitmap(fg, null, fgRect, normalPaint);
             Drawable normalDrawable = new BitmapDrawable(context.getResources(), bNormal);
 
             Bitmap bActive = Bitmap.createBitmap(bg.getWidth(), bg.getHeight(), Config.ARGB_8888);

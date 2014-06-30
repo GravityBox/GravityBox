@@ -662,7 +662,7 @@
 
     <!-- Application launcher -->
     <string name="pref_cat_app_launcher_title">Εκκίνηση εφαρμογών</string>
-    <string name="pref_cat_app_launcher_summary">Διάλογος που επιτρέπει τον ορισμό μέχρι 8 εφαρμογών που μπορεί να ανατεθεί ως λειτουργία φυσικού πλήκτρου ή ως εξτρά κουμπί στην γραμμή πλοήγησης</string>
+    <string name="pref_cat_app_launcher_summary">Διάλογος που επιτρέπει τον ορισμό μέχρι 12 εφαρμογών που μπορεί να ανατεθεί ως λειτουργία φυσικού πλήκτρου ή ως εξτρά κουμπί στην γραμμή πλοήγησης</string>
     <string name="pref_app_launcher_slot_title">Θέση εφαρμογής %d</string>
     <string name="app_launcher_no_apps">Καμία εφαρμογή. Χρησιμοποιήστε το μενού GravityBox / Εκκίνηση εφαρμογών να ορίσετε εφαρμογές.</string>
 
@@ -1211,5 +1211,7 @@
     <string name="animation_scale5">Κλίμακα κίνησης 2x</string>
     <string name="animation_scale6">Κλίμακα κίνησης 5x</string>
     <string name="animation_scale7">Κλίμακα κίνησης 10x</string>
+    <string name="animation_scale8">Κλίμακα κίνησης .75x</string>
+    <string name="animation_scale9">Κλίμακα κίνησης 1.25x</string>
 
 </resources>

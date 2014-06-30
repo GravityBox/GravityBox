@@ -65,6 +65,7 @@
         <item>@string/shortcuts_icon_picker_rss</item>
         <item>@string/shortcuts_icon_picker_sdcard</item>
         <item>@string/shortcuts_icon_picker_search</item>
+        <item>@string/shortcuts_icon_picker_snapchat</item>
         <item>@string/shortcuts_icon_picker_skype</item>
         <item>@string/shortcuts_icon_picker_sms</item>
         <item>@string/shortcuts_icon_picker_spotify</item>
@@ -127,6 +128,7 @@
         <item>@drawable/ic_shortcut_rss</item>
         <item>@drawable/ic_shortcut_sdcard</item>
         <item>@drawable/ic_shortcut_search</item>
+        <item>@drawable/ic_shortcut_snapchat</item>
         <item>@drawable/ic_shortcut_skype</item>
         <item>@drawable/ic_shortcut_sms</item>
         <item>@drawable/ic_shortcut_spotify</item>

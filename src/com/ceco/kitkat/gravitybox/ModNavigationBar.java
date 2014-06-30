@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -89,6 +90,7 @@ public class ModNavigationBar {
     private static boolean mNavbarVertical;
     private static boolean mNavbarRingDisabled;
     private static boolean mCameraKeyDisabled;
+    private static KeyguardManager mKeyguard;
 
     // Custom key
     private static boolean mCustomKeyEnabled;
@@ -96,6 +98,7 @@ public class ModNavigationBar {
     private static Context mGbContext;
     private static NavbarViewInfo[] mNavbarViewInfo = new NavbarViewInfo[2];
     private static boolean mCustomKeySwapEnabled;
+    private static boolean mCustomKeyAltIcon;
 
     // Colors
     private static boolean mNavbarColorsEnabled;
@@ -203,6 +206,11 @@ public class ModNavigationBar {
                             XposedBridge.log(t);
                         }
                     }
+                }
+                if (intent.hasExtra(GravityBoxSettings.EXTRA_NAVBAR_CUSTOM_KEY_ICON)) {
+                    mCustomKeyAltIcon = intent.getBooleanExtra(
+                            GravityBoxSettings.EXTRA_NAVBAR_CUSTOM_KEY_ICON, false);
+                    updateCustomKeyIcon();
                 }
             } else if (intent.getAction().equals(
                     GravityBoxSettings.ACTION_PREF_HWKEY_RECENTS_SINGLETAP_CHANGED)) {
@@ -328,6 +336,15 @@ public class ModNavigationBar {
             mCameraKeyDisabled = prefs.getBoolean(
                     GravityBoxSettings.PREF_KEY_NAVBAR_CAMERA_KEY_DISABLE, false);
 
+            // for HTC GPE devices having capacitive keys
+            if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_NAVBAR_ENABLE, false)) {
+                try {
+                    Class<?> sbFlagClass = XposedHelpers.findClass(
+                            "com.android.systemui.statusbar.StatusBarFlag", classLoader);
+                    XposedHelpers.setStaticBooleanField(sbFlagClass, "supportHWNav", false);
+                } catch (Throwable t) { }
+            }
+
             XposedBridge.hookAllConstructors(navbarViewClass, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -351,6 +368,11 @@ public class ModNavigationBar {
                     if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_NAVBAR_CAMERA_KEY_DISABLE, false)) {
                         XposedHelpers.setBooleanField(param.thisObject, "mCameraDisabledByDpm", true);
                     }
+                    mCustomKeyAltIcon = prefs.getBoolean(GravityBoxSettings.PREF_KEY_NAVBAR_CUSTOM_KEY_ICON, false);
+
+                    try {
+                        mKeyguard = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+                    } catch (Throwable t) { log("Error getting keyguard manager: " + t.getMessage()); }
 
                     mNavigationBarView = (View) param.thisObject;
                     IntentFilter intentFilter = new IntentFilter();
@@ -429,7 +451,8 @@ public class ModNavigationBar {
                         KeyButtonView appKey = new KeyButtonView(context);
                         appKey.setScaleType(ScaleType.FIT_CENTER);
                         appKey.setClickable(true);
-                        appKey.setImageDrawable(gbRes.getDrawable(R.drawable.ic_sysbar_apps));
+                        appKey.setImageDrawable(gbRes.getDrawable(mCustomKeyAltIcon ?
+                                R.drawable.ic_sysbar_apps2 : R.drawable.ic_sysbar_apps));
                         appKey.setKeyCode(KeyEvent.KEYCODE_SOFT_LEFT);
 
                         KeyButtonView dpadLeft = new KeyButtonView(context);
@@ -457,7 +480,8 @@ public class ModNavigationBar {
                     if (vRot != null) {
                         KeyButtonView appKey = new KeyButtonView(context);
                         appKey.setClickable(true);
-                        appKey.setImageDrawable(gbRes.getDrawable(R.drawable.ic_sysbar_apps));
+                        appKey.setImageDrawable(gbRes.getDrawable(mCustomKeyAltIcon ?
+                                R.drawable.ic_sysbar_apps2 : R.drawable.ic_sysbar_apps));
                         appKey.setKeyCode(KeyEvent.KEYCODE_SOFT_LEFT);
 
                         KeyButtonView dpadLeft = new KeyButtonView(context);
@@ -493,6 +517,13 @@ public class ModNavigationBar {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     setCustomKeyVisibility();
                     setMenuKeyVisibility();
+
+                    if (mNavbarRingDisabled) {
+                        View v = (View) XposedHelpers.callMethod(param.thisObject, "getSearchLight");
+                        if (v != null) {
+                            v.setVisibility(View.GONE);
+                        }
+                    }
                 }
             });
 
@@ -514,8 +545,6 @@ public class ModNavigationBar {
                     int.class, boolean.class, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    final Context context = ((View) param.thisObject).getContext();
-
                     if (mNavbarColorsEnabled) {
                         final int navigationIconHints = XposedHelpers.getIntField(
                                 param.thisObject, "mNavigationIconHints");
@@ -643,9 +672,16 @@ public class ModNavigationBar {
                             Intent intent = appInfo.intent;
                             // if intent is a GB action of broadcast type, handle it directly here
                             if (ShortcutActivity.isGbBroadcastShortcut(intent)) {
-                                Intent newIntent = new Intent(intent.getStringExtra(ShortcutActivity.EXTRA_ACTION));
-                                newIntent.putExtras(intent);
-                                mGlowPadView.getContext().sendBroadcast(newIntent);
+                                if (mKeyguard != null && 
+                                        mKeyguard.isKeyguardLocked() && mKeyguard.isKeyguardSecure() &&
+                                            !ShortcutActivity.isActionSafe(intent.getStringExtra(
+                                                    ShortcutActivity.EXTRA_ACTION))) {
+                                    if (DEBUG) log("Keyguard is locked & secured - ignoring GB action");
+                                } else {
+                                    Intent newIntent = new Intent(intent.getStringExtra(ShortcutActivity.EXTRA_ACTION));
+                                    newIntent.putExtras(intent);
+                                    mGlowPadView.getContext().sendBroadcast(newIntent);
+                                }
                             // otherwise start activity
                             } else {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -764,10 +800,12 @@ public class ModNavigationBar {
                 // determine layout from layout of placeholder view we found
                 ViewGroup.LayoutParams ovlp = mNavbarViewInfo[index].originalView.getLayoutParams();
                 if (DEBUG) log("originalView: lpWidth=" + ovlp.width + "; lpHeight=" + ovlp.height);
-                if (ovlp.width >= 0) {
-                    lp = new LinearLayout.LayoutParams(size, LinearLayout.LayoutParams.MATCH_PARENT, 0);
+                if (ovlp instanceof LinearLayout.LayoutParams) {
+                    lp = (LinearLayout.LayoutParams) ovlp;
+                } else if (ovlp.width >= 0) {
+                    lp = new LinearLayout.LayoutParams(ovlp.width, LinearLayout.LayoutParams.MATCH_PARENT, 0);
                 } else if (ovlp.height >= 0) {
-                    lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, size, 0);
+                    lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ovlp.height, 0);
                 } else {
                     log("Weird layout of placeholder view detected");
                 }
@@ -779,9 +817,9 @@ public class ModNavigationBar {
                     if (back != null) {
                         ViewGroup.LayoutParams blp = back.getLayoutParams();
                         if (blp.width >= 0) {
-                            lp = new LinearLayout.LayoutParams(size, LinearLayout.LayoutParams.MATCH_PARENT, 0);
+                            lp = new LinearLayout.LayoutParams(blp.width, LinearLayout.LayoutParams.MATCH_PARENT, 0);
                         } else if (blp.height >= 0) {
-                            lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, size, 0);
+                            lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, blp.height, 0);
                         } else {
                             log("Weird layout of back button view detected");
                         }
@@ -854,8 +892,8 @@ public class ModNavigationBar {
             for (int i = 0; i <= 1; i++) {
                 View v = mNavbarViewInfo[i].navButtons.findViewById(menuResId);
                 if (v != null) {
-                    v.setVisibility(visible ? View.VISIBLE : 
-                        mDpadKeysVisible ? View.GONE : View.INVISIBLE);
+                    v.setVisibility(mDpadKeysVisible ? View.GONE :
+                        visible ? View.VISIBLE : View.INVISIBLE);
                 }
             }
         } catch (Throwable t) {
@@ -1200,6 +1238,18 @@ public class ModNavigationBar {
             }
             XposedHelpers.setIntField(mGlowPadView, "mVibrationDuration", vibrateDuration);
             XposedHelpers.callMethod(mGlowPadView, "setVibrateEnabled", vibrateDuration > 0);
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
+    }
+
+    private static void updateCustomKeyIcon() {
+        try {
+            Resources res = mGbContext.getResources();
+            for (NavbarViewInfo nvi : mNavbarViewInfo) {
+                nvi.customKey.setImageDrawable(res.getDrawable(mCustomKeyAltIcon ?
+                        R.drawable.ic_sysbar_apps2 : R.drawable.ic_sysbar_apps));
+            }
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

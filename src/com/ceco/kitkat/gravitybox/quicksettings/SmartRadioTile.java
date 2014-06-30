@@ -29,6 +29,7 @@ import android.view.View;
 public class SmartRadioTile extends BasicTile {
 
     private boolean mSmartRadioEnabled;
+    private ModSmartRadio.State mSmartRadioState;
     private SettingsObserver mSettingsObserver;
 
     public SmartRadioTile(Context context, Context gbContext, Object statusBar, Object panelBar) {
@@ -60,10 +61,14 @@ public class SmartRadioTile extends BasicTile {
     protected synchronized void updateTile() {
         mSmartRadioEnabled = Settings.System.getInt(mContext.getContentResolver(),
                 ModSmartRadio.SETTING_SMART_RADIO_ENABLED, 1) == 1;
+        String state = Settings.System.getString(mContext.getContentResolver(), 
+                ModSmartRadio.SETTING_SMART_RADIO_STATE);
+        mSmartRadioState = ModSmartRadio.State.valueOf(state == null ? "UNKNOWN" : state);
 
         if (mSmartRadioEnabled) {
             mLabel = mGbContext.getString(R.string.quick_settings_smart_radio_on);
-            mDrawableId = R.drawable.ic_qs_smart_radio_on;
+            mDrawableId = mSmartRadioState == ModSmartRadio.State.POWER_SAVING ?
+                    R.drawable.ic_qs_smart_radio_on : R.drawable.ic_qs_smart_radio_on_normal;
         } else {
             mLabel = mGbContext.getString(R.string.quick_settings_smart_radio_off);
             mDrawableId = R.drawable.ic_qs_smart_radio_off;
@@ -81,6 +86,8 @@ public class SmartRadioTile extends BasicTile {
             ContentResolver cr = mContext.getContentResolver();
             cr.registerContentObserver(Settings.System.getUriFor(
                    ModSmartRadio.SETTING_SMART_RADIO_ENABLED), false, this);
+            cr.registerContentObserver(Settings.System.getUriFor(
+                   ModSmartRadio.SETTING_SMART_RADIO_STATE), false, this);
         }
 
         @Override 
