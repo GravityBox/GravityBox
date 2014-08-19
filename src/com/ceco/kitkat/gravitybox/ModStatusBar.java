@@ -480,7 +480,7 @@ public class ModStatusBar {
 
                     mScreenWidth = (float) res.getDisplayMetrics().widthPixels;
                     mMinBrightness = res.getInteger(res.getIdentifier(
-                            "config_screenBrightnessDim", "integer", "android"));
+                            "config_screenBrightnessSettingMinimum", "integer", "android"));
                     mPeekHeight = res.getDimensionPixelSize(res.getIdentifier(
                             "peek_height", "dimen", PACKAGE_NAME));
                     BRIGHTNESS_ON = XposedHelpers.getStaticIntField(powerManagerClass, "BRIGHTNESS_ON");
