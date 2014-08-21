@@ -1000,7 +1000,7 @@
     <string name="pref_lockscreen_bg_blur_effect_title">Efeito borrado</string>
 
     <!-- Tiles: Disable tile spanning -->
-    <string name="pref_qs_tile_span_disable_title">Disable tile spanning</string>
-    <string name="pref_qs_tile_span_disable_summary">Disables spanning of user, brightness and settings tiles in landscape</string>
+    <string name="pref_qs_tile_span_disable_title">Desativar telha spanning</string>
+    <string name="pref_qs_tile_span_disable_summary">Desabilita divisão dos usuários, Brilho e azulejos na paisagem</string>
 
 </resources>
