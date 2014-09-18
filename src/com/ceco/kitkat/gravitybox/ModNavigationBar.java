@@ -677,7 +677,7 @@ public class ModNavigationBar {
                     }
                 });
 
-                XposedHelpers.findAndHookMethod(glowPasViewClass, "showTargets", boolean.class, new XC_MethodHook() {
+                XC_MethodHook glowPadViewShowTargetsHook = new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         if (param.thisObject == mGlowPadView) {
@@ -686,7 +686,13 @@ public class ModNavigationBar {
                             }
                         }
                     }
-                });
+                };
+                if (Utils.isXperiaDevice()) {
+                	XposedHelpers.findAndHookMethod(glowPasViewClass, "showTargets", boolean.class, int.class, glowPadViewShowTargetsHook);
+                }
+                else {
+                	XposedHelpers.findAndHookMethod(glowPasViewClass, "showTargets", boolean.class, glowPadViewShowTargetsHook);
+                }
 
                 XposedHelpers.findAndHookMethod(navbarViewClass, "reorient", new XC_MethodHook() {
                     @Override
