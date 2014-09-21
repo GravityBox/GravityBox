@@ -1280,14 +1280,14 @@
     <!-- Data traffic monitor style -->
     <string name="pref_data_traffic_mode_title">Štýl monitora dátového toku</string>
     <string name="dt_mode_off">Vypnutý</string>
-    <string name="dt_mode_simple">Jenoduchý štýl</string>
+    <string name="dt_mode_simple">Jednoduchý štýl</string>
     <string name="dt_mode_omni">Omni štýl</string>
 
     <!-- Omni data traffic monitor -->
     <string name="pref_data_traffic_omni_mode_title">Režim monitorovania</string>
-    <string name="dt_omni_mode_in">Download</string>
-    <string name="dt_omni_mode_out">Upload</string>
-    <string name="dt_omni_mode_in_out">Download a upload</string>
+    <string name="dt_omni_mode_in">Sťahovanie</string>
+    <string name="dt_omni_mode_out">Nahrávanie</string>
+    <string name="dt_omni_mode_in_out">Sťahovanie a nahrávanie</string>
     <string name="byte_per_sec_abbr">B/s</string>
     <string name="bit_per_sec_abbr">b/s</string>
     <string name="kilo_abbr">k</string>
@@ -1312,9 +1312,9 @@
     <string name="pref_qs_alarm_longpress_app_title">Aplikácia na dlhé podržanie</string>
 
     <!-- Traffic meter: show only when download active -->
-    <string name="pref_data_traffic_active_dl_only_title">Len pre Download Manager</string>
+    <string name="pref_data_traffic_active_dl_only_title">Len pre správcu sťahovaní</string>
     <string name="pref_data_traffic_active_dl_only_summary">Zobrazí monitor prietoku dát len v prípade aktívnych 
-        downloadov cez štandardný Android Download Manager</string>
+        sťahovaní cez štandardného správcu sťahovaní v Androide</string>
 
     <!-- Led control -->
     <string name="pref_led_control_title">Nastavenia oznámení</string>
