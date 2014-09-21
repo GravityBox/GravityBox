@@ -1694,5 +1694,9 @@
     <string name="headsup_snooze_all_apps">Ustaw dla wszystkich aplikacji</string>
     <string name="headsup_snooze_app">Ustaw drzemkę heads up dla %s</string>
     <string name="pref_heads_up_snooze_reset_title">Wyzeruj liczniki czasu drzemki</string>
+    <string name="pref_heads_up_snooze_timer_title">Domyślny czas drzemki</string>
+    <string name="pref_heads_up_snooze_timer_summary">Czas drzemki, który zostanie ustawiony automatycznie po kliknięciu ikony heads up drzemki.
+        Długie naciśnięcie ikony drzemki otwiera okno dialogowe ustawień licznika czasu.</string>
+    <string name="headsup_snooze_timer_set">Domyślny czas drzemki ustawiony na %s</string>
 
 </resources>
