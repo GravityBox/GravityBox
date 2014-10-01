@@ -1722,4 +1722,18 @@
 
     <!-- Proximty wake: ignore for incoming call -->
     <string name="pref_power_proximity_wake_ignore_call_title">Ignorar em chamada recebida</string>
+    
+    <!-- Status bar: show download progress -->
+    <string name="pref_statusbar_download_progress_title">Barra de progresso de Download</string>
+    <string name="pref_statusbar_download_progress_summary">Mostra barra de progresso do download na barra de status para transferências efetuadas através do gerenciador de download padrão</string>
+    <string name="sb_download_progress_off">Desativar</string>
+    <string name="sb_download_progress_top">Acima da barra de status</string>
+    <string name="sb_download_progress_bottom">Abaixo da barra de status</string>
+
+    <!-- Status bar: disable notification ticker -->
+    <string name="pref_statusbar_ticker_policy_title">Notificação ticker</string>
+    <string name="sb_ticker_policy_default">Padrão</string>
+    <string name="sb_ticker_policy_locked">Desativar na tela de bloqueio</string>
+    <string name="sb_ticker_policy_secured">Desativar na tela de bloqueio protegida</string>
+    <string name="sb_ticker_policy_disabled">Sempre desativar</string>
 </resources>
