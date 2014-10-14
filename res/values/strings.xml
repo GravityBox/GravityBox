@@ -1634,7 +1634,7 @@
     <!-- UNC HeadsUp category + additional options -->
     <string name="pref_cat_lc_heads_up_title">Heads up</string>
     <string name="pref_lc_headsup_expanded_title">Show expanded</string>
-    <string name="pref_lc_headsup_expanded_summary">Please note that this option will be overrided by Universal Notification Control</string>
+    <string name="pref_lc_headsup_expanded_summary">Please note that this option can be overrided by Universal Notification Control</string>
     <string name="pref_lc_headsup_dnd_title">Do not disturb</string>
     <string name="pref_lc_headsup_dnd_summary">Won\'t show any heads up while this app is in the foreground</string>
 
