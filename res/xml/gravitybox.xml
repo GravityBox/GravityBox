@@ -738,6 +738,7 @@
             <CheckBoxPreference
                 android:key="pref_heads_up_expanded"
                 android:title="@string/pref_lc_headsup_expanded_title"
+                android:summary="@string/pref_lc_headsup_expanded_summary"
                 android:defaultValue="false"
                 android:dependency="pref_heads_up_master_switch" />
 
