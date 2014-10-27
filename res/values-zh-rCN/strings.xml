@@ -1571,6 +1571,7 @@
     <string name="qs_tile_compass">指南针</string>
     <string name="quick_settings_compass_off">指南针已关闭</string>
     <string name="quick_settings_compass_init">正在初始化&#8230;</string>
+    <string name="quick_settings_compass_value" translatable="false">%1$.0f\u00b0 %2$s</string>
 
     <!-- Cardinal directions -->
     <string name="cd_north">北</string>
@@ -1640,6 +1641,7 @@
     <!-- UNC HeadsUp category + additional options -->
     <string name="pref_cat_lc_heads_up_title">浮动通知</string>
     <string name="pref_lc_headsup_expanded_title">显示扩展</string>
+    <string name="pref_lc_headsup_expanded_summary">请注意，此选项可以通过终极通知控制内的设置覆盖</string>
     <string name="pref_lc_headsup_dnd_title">勿扰模式</string>
     <string name="pref_lc_headsup_dnd_summary">当程序在前台将不会显示任何通知</string>
 
@@ -1695,7 +1697,7 @@
 
     <!-- Fake ID patch -->
     <string name="pref_patch_fake_id_title">修补假身份漏洞(Fake ID)</string>
-    <string name="pref_patch_fake_id_summary">注意，从GravityBox应用该补丁Security Scanners软件不能检测到,它们的报告将显示为不确定（需要重新启动）</string>
+    <string name="pref_patch_fake_id_summary">注意，从GravityBox应用该补丁Security Scanners软件并不能检测到,它们的报告仍会显示为未修补（需要重新启动）</string>
 
 
     <!-- MTK tiles: Audio profile -->
@@ -1777,9 +1779,46 @@
     
     <!-- Heads up: importance threshold -->
     <string name="pref_heads_up_importance_title">浮动通知重要性</string>
+    <string name="pref_heads_up_importance_summary">浮动通知重要定义阈值低于(%s)将不会显示</string>
+    
     <string name="headsup_importance_disabled">禁用</string>
     <string name="headsup_importance_low">低</string>
     <string name="headsup_importance_medium">中</string>
     <string name="headsup_importance_high">高</string>
+    
+    <!-- QS: network mode tile 2g+3g mode -->
+    <string name="pref_network_mode_tile_2g3g_mode_title">2G+3G模式</string>
+    <string name="nmt_2g3g_mode_wcdma">GSM/WCDMA 优先(3G/2G)</string>
+    <string name="nmt_2g3g_mode_auto">GSM/WCDMA 自动(2G/3G)</string>
+
+    <!-- Power menu: expanded desktop in power menu -->
+    <string name="pref_powermenu_expanded_desktop_title">在电源键菜单显示扩展桌面按钮</string>
+    <string name="pref_powermenu_expanded_desktop_summary">请确认扩展桌面是可用的然后再替换！</string>
+
+    <!-- UNC HeadsUp: ignore for updated notification -->
+    <string name="pref_lc_headsup_ignore_update_title">忽略浮动通知更新</string>
+    <string name="pref_lc_headsup_ignore_update_summary">当有通知更新时不显示浮动通知</string>
+
+    <!-- QuickRecord tile settings -->
+    <string name="pref_cat_quickrecord_tile_title">快速录像瓷砖设置</string>
+    <string name="pref_quickrecord_quality_title">音频质量</string>
+    <string name="qr_audio_quality_low">低(16kHz)</string>
+    <string name="qr_audio_quality_medium">中(22kHz)</string>
+    <string name="qr_audio_quality_high">高(44kHz)</string>
+    <string name="pref_quickrecord_autostop_title">自动停止录制</string>
+    <string name="pref_quickrecord_autostop_summary">设置时间自动停止录制，设置为0将禁用</string>
+
+    <!-- Clear notifications shortcut -->
+    <string name="shortcut_clear_notifications">清除通知</string>
+
+    <!-- Toggle auto brightness shortcut -->
+    <string name="shortcut_auto_brightness">切换自动亮度</string>
+
+    <!-- Signal cluster: use lollipop icons -->
+    <string name="pref_signal_cluster_lollipop_icons_title">使用Lollipop图标</string>
+    <string name="pref_signal_cluster_lollipop_icons_summary">需要重新启动</string>
+
+    <!-- Messaging -->
+    <string name="pref_cat_phone_messaging_title">消息</string>
 
 </resources>
