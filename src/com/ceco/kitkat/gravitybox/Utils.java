@@ -69,6 +69,7 @@ public class Utils {
     private static Boolean mIsMtkDevice = null;
     private static Boolean mIsXperiaDevice = null;
     private static Boolean mIsMotoXtDevice = null;
+    private static Boolean mIsGPeDevice = null;
     private static Boolean mIsExynosDevice = null;
     private static Boolean mHasLenovoCustomUI = null;
     private static Boolean mHasLenovoVibeUI = null;
@@ -183,6 +184,14 @@ public class Utils {
                 (Build.MODEL.toLowerCase().startsWith("xt") ||
                  Build.MODEL.toLowerCase().contains("razr"));
         return mIsMotoXtDevice;
+    }
+
+    public static boolean mIsGPeDevice() {
+        if (mIsGPeDevice != null) return mIsGPeDevice;
+        String deviceName = SystemProp.get("ro.product.name").toLowerCase();
+        mIsGPeDevice = Build.DEVICE.toLowerCase().contains("gpe") || deviceName.contains("google")
+                || deviceName.contains("ged");
+        return mIsGPeDevice;
     }
 
     public static boolean isExynosDevice() {
