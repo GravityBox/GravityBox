@@ -161,20 +161,10 @@ public class Utils {
     public static boolean isXperiaDevice() {
         if (mIsXperiaDevice != null) return mIsXperiaDevice;
 
-        boolean isXperiaDevice = Build.MANUFACTURER.equalsIgnoreCase("sony")
+        mIsXperiaDevice = Build.MANUFACTURER.equalsIgnoreCase("sony")
                 && !isMtkDevice() && !isGpeDevice();
 
-        if (isXperiaDevice) {
-            // doublecheck - hacky workaround to determine whether device is running GPE ROM
-            try {
-                XposedHelpers.findMethodExact("com.android.internal.widget.multiwaveview.GlowPadView",
-                        null, "showTargets", boolean.class, int.class);
-            } catch (Throwable t) {
-                isXperiaDevice = false;
-            }
-        }
-
-        return (mIsXperiaDevice = isXperiaDevice);
+        return mIsXperiaDevice;
     }
 
     public static boolean isMotoXtDevice() {
