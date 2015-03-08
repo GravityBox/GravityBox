@@ -1750,5 +1750,12 @@
 
     <!-- QS: Hide brightness slider -->
     <string name="pref_qs_hide_brightness_title">Hide brightness slider</string>
+    
+    <!-- Signal cluster settings -->
+    <string name="pref_signal_cluster_hide_icons_title">Hide System Icons</string>
+    <string name="pref_signal_cluster_hide_vpn">VPN</string>
+    <string name="pref_signal_cluster_hide_wifi">Wi-Fi</string>
+    <string name="pref_signal_cluster_hide_signal">Signal</string>
+    <string name="pref_signal_cluster_hide_airplane">Airplane Mode</string>
 
 </resources>

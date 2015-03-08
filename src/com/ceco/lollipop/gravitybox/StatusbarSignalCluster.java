@@ -73,6 +73,11 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
     private Field mFldWifiView;
     private Field mFldAirplaneView;
     private List<String> mErrorsLogged = new ArrayList<String>();
+    
+    private boolean mHideVPN;
+    private boolean mHideWifi;
+    private boolean mHideSignal;
+    private boolean mHideAirplane;
 
     // Data activity
     protected boolean mDataActivityEnabled;
@@ -247,6 +252,11 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
         mFldMobileTypeView = resolveField("mMobileType", "mMobileTypeView");
         mFldWifiView = resolveField("mWifi", "mWifiStrengthView");
         mFldAirplaneView = resolveField("mAirplane", "mAirplaneView");
+        
+        mHideVPN = sPrefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_HIDE_VPN, false);
+        mHideWifi = sPrefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_HIDE_WIFI, false);
+        mHideSignal = sPrefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_HIDE_SIGNAL, false);
+        mHideAirplane = sPrefs.getBoolean(GravityBoxSettings.PREF_KEY_STATUSBAR_HIDE_AIRPLANE, false);
 
         initPreferences();
         createHooks();
@@ -361,7 +371,28 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
     }
 
     @Override
-    public void onBroadcastReceived(Context context, Intent intent) { }
+    public void onBroadcastReceived(Context context, Intent intent) {
+    	if (intent.getAction().equals(GravityBoxSettings.ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED)) {
+        	
+        	if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_VPN_VISIBILITY)) {
+        		mHideVPN = intent.getBooleanExtra(GravityBoxSettings.EXTRA_SB_VPN_VISIBILITY, false);
+        	}
+        	
+        	if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_WIFI_VISIBILITY)) {
+        		mHideWifi = intent.getBooleanExtra(GravityBoxSettings.EXTRA_SB_WIFI_VISIBILITY, false);
+        	}
+        	
+        	if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_SIGNAL_VISIBILITY)) {
+        		mHideSignal = intent.getBooleanExtra(GravityBoxSettings.EXTRA_SB_SIGNAL_VISIBILITY, false);
+        	}
+        	
+        	if (intent.hasExtra(GravityBoxSettings.EXTRA_SB_AIRPLANE_VISIBILITY)) {
+        		mHideAirplane = intent.getBooleanExtra(GravityBoxSettings.EXTRA_SB_AIRPLANE_VISIBILITY, false);
+        	}
+        	
+        	update();
+        }
+    }
 
     protected void initPreferences() { 
         mDataActivityEnabled = mContainerType != ContainerType.HEADER && 
@@ -412,6 +443,27 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
             }
         } catch (Throwable t) {
             logAndMute("apply", t);
+        }
+        
+        Object mVpn = XposedHelpers.getObjectField(mView, "mVpn");
+        Object mWifiGroup = XposedHelpers.getObjectField(mView, "mWifiGroup");
+        Object mMobileGroup = XposedHelpers.getObjectField(mView, "mMobileGroup");
+        Object mAirplane = XposedHelpers.getObjectField(mView, "mAirplane");
+        
+        if (mVpn != null && mHideVPN) {
+            XposedHelpers.callMethod(mVpn, "setVisibility", View.GONE);
+        }
+        
+        if (mWifiGroup != null && mHideWifi) {
+            XposedHelpers.callMethod(mWifiGroup, "setVisibility", View.GONE);
+        }
+        
+        if (mMobileGroup != null &&  mHideSignal) {
+            XposedHelpers.callMethod(mMobileGroup, "setVisibility", View.GONE);
+        }
+        
+        if (mAirplane != null &&  mHideAirplane) {
+            XposedHelpers.callMethod(mAirplane, "setVisibility", View.GONE);
         }
     }
 

@@ -420,7 +420,31 @@
                 android:title="@string/pref_signal_cluster_hide_sim_labels_title"
                 android:summary="@string/pref_signal_cluster_hide_sim_labels_summary"
                 android:defaultValue="false" />
-
+            
+            <PreferenceCategory
+                android:title="@string/pref_signal_cluster_hide_icons_title">
+                
+	            <CheckBoxPreference 
+	                android:key="pref_signal_cluster_hide_vpn"
+	                android:title="@string/pref_signal_cluster_hide_vpn"
+	                android:defaultValue="false" />
+	            
+	            <CheckBoxPreference 
+	                android:key="pref_signal_cluster_hide_wifi"
+	                android:title="@string/pref_signal_cluster_hide_wifi"
+	                android:defaultValue="false" />
+	            
+	            <CheckBoxPreference 
+	                android:key="pref_signal_cluster_hide_signal"
+	                android:title="@string/pref_signal_cluster_hide_signal"
+	                android:defaultValue="false" />
+	            
+	            <CheckBoxPreference 
+	                android:key="pref_signal_cluster_hide_airplane"
+	                android:title="@string/pref_signal_cluster_hide_airplane"
+	                android:defaultValue="false" />
+            </PreferenceCategory>
+            
         </PreferenceScreen>
 
         <PreferenceScreen 

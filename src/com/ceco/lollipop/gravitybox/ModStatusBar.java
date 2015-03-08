@@ -429,6 +429,7 @@ public class ModStatusBar {
                 LinearLayout view = (LinearLayout) container.findViewById(scResId);
                 if (view != null) {
                     StatusbarSignalCluster sc = StatusbarSignalCluster.create(containerType, view, mPrefs);
+                    mBroadcastSubReceivers.add(sc);
                     sc.setNetworkController(XposedHelpers.getObjectField(
                             mPhoneStatusBar, "mNetworkController"));
                     mBroadcastSubReceivers.add(sc);
@@ -577,6 +578,7 @@ public class ModStatusBar {
                     intentFilter.addAction(ACTION_START_SEARCH_ASSIST);
                     intentFilter.addAction(GravityBoxSettings.ACTION_NOTIF_EXPAND_ALL_CHANGED);
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_STATUSBAR_BT_VISIBILITY_CHANGED);
+                    intentFilter.addAction(GravityBoxSettings.ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED);
                     intentFilter.addAction(ACTION_DELETE_SCREENSHOT);
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_STATUSBAR_DOWNLOAD_PROGRESS_CHANGED);
                     intentFilter.addAction(GravityBoxSettings.ACTION_PREF_STATUSBAR_TICKER_POLICY_CHANGED);

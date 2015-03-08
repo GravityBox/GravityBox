@@ -181,6 +181,10 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR = "pref_signal_cluster_data_activity_color";
     public static final String PREF_KEY_STATUSBAR_DATA_ACTIVITY_COLOR_SECONDARY = 
             "pref_signal_cluster_data_activity_color_secondary";
+    public static final String PREF_KEY_STATUSBAR_HIDE_VPN = "pref_signal_cluster_hide_vpn";
+    public static final String PREF_KEY_STATUSBAR_HIDE_WIFI = "pref_signal_cluster_hide_wifi";
+    public static final String PREF_KEY_STATUSBAR_HIDE_SIGNAL = "pref_signal_cluster_hide_signal";
+    public static final String PREF_KEY_STATUSBAR_HIDE_AIRPLANE = "pref_signal_cluster_hide_airplane";
     public static final String PREF_KEY_STATUSBAR_SIGNAL_COLOR_MODE = "pref_statusbar_signal_color_mode";
     public static final String PREF_KEY_STATUSBAR_CENTER_CLOCK = "pref_statusbar_center_clock";
     public static final String PREF_KEY_STATUSBAR_CLOCK_DOW = "pref_statusbar_clock_dow2";
@@ -711,6 +715,13 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
     public static final String ACTION_PREF_STATUSBAR_BT_VISIBILITY_CHANGED = 
             "gravitybox.intent.action.STATUSBAR_BT_VISIBILITY_CHANGED";
     public static final String EXTRA_SB_BT_VISIBILITY = "sbBtVisibility";
+    
+    public static final String ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED = 
+            "gravitybox.intent.action.ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED";
+    public static final String EXTRA_SB_VPN_VISIBILITY = "sbVPNVisibility";
+    public static final String EXTRA_SB_WIFI_VISIBILITY = "sbWifiVisibility";
+    public static final String EXTRA_SB_SIGNAL_VISIBILITY = "sbSignalVisibility";
+    public static final String EXTRA_SB_AIRPLANE_VISIBILITY = "sbAirplaneVisibility";
 
     public static final String PREF_KEY_INCREASING_RING = "pref_increasing_ring";
 
@@ -2896,6 +2907,22 @@ public class GravityBoxSettings extends Activity implements GravityBoxResultRece
                 intent.setAction(ACTION_PREF_STATUSBAR_BT_VISIBILITY_CHANGED);
                 intent.putExtra(EXTRA_SB_BT_VISIBILITY,
                         prefs.getString(PREF_KEY_STATUSBAR_BT_VISIBILITY, "DEFAULT"));
+            } else if (key.equals(PREF_KEY_STATUSBAR_HIDE_VPN)) {
+                intent.setAction(ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED);
+                intent.putExtra(EXTRA_SB_VPN_VISIBILITY,
+                		prefs.getBoolean(PREF_KEY_STATUSBAR_HIDE_VPN, false));
+            } else if (key.equals(PREF_KEY_STATUSBAR_HIDE_WIFI)) {
+                intent.setAction(ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED);
+                intent.putExtra(EXTRA_SB_WIFI_VISIBILITY,
+                		prefs.getBoolean(PREF_KEY_STATUSBAR_HIDE_WIFI, false));
+            } else if (key.equals(PREF_KEY_STATUSBAR_HIDE_SIGNAL)) {
+                intent.setAction(ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED);
+                intent.putExtra(EXTRA_SB_SIGNAL_VISIBILITY,
+                		prefs.getBoolean(PREF_KEY_STATUSBAR_HIDE_SIGNAL, false));
+            } else if (key.equals(PREF_KEY_STATUSBAR_HIDE_AIRPLANE)) {
+                intent.setAction(ACTION_PREF_STATUSBAR_ICON_VISIBILITY_CHANGED);
+                intent.putExtra(EXTRA_SB_AIRPLANE_VISIBILITY,
+                		prefs.getBoolean(PREF_KEY_STATUSBAR_HIDE_AIRPLANE, false));
             } else if (key.equals(PREF_KEY_FLASHING_LED_DISABLE)) {
                 intent.setAction(ACTION_BATTERY_LED_CHANGED);
                 intent.putExtra(EXTRA_BLED_FLASHING_DISABLED,
