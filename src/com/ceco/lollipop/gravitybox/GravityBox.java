@@ -26,6 +26,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackageResources, IXposedHookLoadPackage {
     public static final String PACKAGE_NAME = GravityBox.class.getPackage().getName();
+    public static final boolean UNSUPPORTED_ANDROID_VERSION = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) ? true : false;
     public static String MODULE_PATH = null;
     private static XSharedPreferences prefs;
 
@@ -54,7 +55,10 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
         XposedBridge.log("GB:Android SDK: " + Build.VERSION.SDK_INT);
         XposedBridge.log("GB:Android Release: " + Build.VERSION.RELEASE);
         XposedBridge.log("GB:ROM: " + Build.DISPLAY);
-
+        if (UNSUPPORTED_ANDROID_VERSION) {
+            XposedBridge.log("GB:Android " + Build.VERSION.RELEASE + " is not supported yet");
+            return;
+        }
         SystemWideResources.initResources(prefs);
 
         // Common
@@ -76,7 +80,7 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
 
     @Override
     public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
-
+        if (UNSUPPORTED_ANDROID_VERSION) return;
         if (resparam.packageName.equals(ModNavigationBar.PACKAGE_NAME) &&
                 prefs.getBoolean(GravityBoxSettings.PREF_KEY_NAVBAR_OVERRIDE, false)) {
             ModNavigationBar.initResources(prefs, resparam);
@@ -97,7 +101,7 @@ public class GravityBox implements IXposedHookZygoteInit, IXposedHookInitPackage
 
     @Override
     public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {
-
+        if (UNSUPPORTED_ANDROID_VERSION) return;
         if (lpparam.packageName.equals("android") &&
                 lpparam.processName.equals("android")) {
             PermissionGranter.initAndroid(lpparam.classLoader);
