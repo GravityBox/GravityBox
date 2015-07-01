@@ -1831,4 +1831,8 @@
     <string name="pref_statusbar_dt2s_title">Дв. нажатие для сна</string>
     <string name="pref_statusbar_dt2s_summary">Необходимо отключение просмотра</string>
 
+    <!-- Cellular tile: Dual mode -->
+    <string name="pref_cell_tile_dual_mode_title">Двойной режим</string>
+    <string name="pref_cell_tile_dual_mode_summary">Одинаковое поведение для плиток WiFi и Bluetooth</string>
+
 </resources>
