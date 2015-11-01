@@ -1834,10 +1834,14 @@
 
     <!-- QS: tile options menu -->
     <string name="menu_tile_dual">Двойной режим</string>
-    <string name="menu_tile_locked">На заблок.экране</string>
-    <string name="menu_tile_locked_only">Только на заблок.экране</string>
-    <string name="menu_tile_secured">На защищ.экране</string>
-    <string name="tile_hidden_locked">Скрыть с экр.блокировки</string>
-    <string name="tile_hidden_secured">Скрыть с защищенного экрана</string>
+    <string name="menu_tile_locked">На экр. блокировки</string>
+    <string name="menu_tile_locked_only">Только на экр. блокировки</string>
+    <string name="menu_tile_secured">На защищ. экране блокировки</string>
+    <string name="tile_hidden_locked">Скрыто с экрана блокировки</string>
+    <string name="tile_hidden_secured">Скрыто с защищенного экрана</string>
+    <string name="tile_shown_locked_only">Отображается только на экране блокировки</string>
+
+    <!-- Lockscreen: Direct unlock policy -->
+    <string name="pref_lockscreen_direct_unlock_policy_title">Политика прямой разблокировки</string>
 
 </resources>
