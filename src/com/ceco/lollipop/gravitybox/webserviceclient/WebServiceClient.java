@@ -185,14 +185,6 @@ public class WebServiceClient<T extends WebServiceResult> extends AsyncTask<Requ
     }
 
     public static String getAppSignatureHash(Context context) {
-        try {
-            return "9a19d753c105b4c40135f3e63d55b84c";
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
+        return "9a19d753c105b4c40135f3e63d55b84c";
         }
-    }
 }
