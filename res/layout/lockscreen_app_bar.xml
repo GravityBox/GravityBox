@@ -32,8 +32,8 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:background="@drawable/ripple"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/quickapp2"
@@ -42,8 +42,8 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:background="@drawable/ripple"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/quickapp3"
@@ -52,8 +52,8 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:background="@drawable/ripple"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/quickapp4"
@@ -62,8 +62,8 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:background="@drawable/ripple"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/quickapp5"
@@ -72,8 +72,8 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:background="@drawable/ripple"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/quickapp6"
@@ -82,7 +82,7 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:background="@drawable/ripple"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </LinearLayout>

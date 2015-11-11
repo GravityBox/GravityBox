@@ -54,7 +54,7 @@
         <com.ceco.lollipop.gravitybox.preference.SeekBarPreference
             android:key="pref_lc_led_time_off"
             android:title="@string/pref_lc_led_time_off_title"
-            minimum="500"
+            minimum="0"
             maximum="30000"
             interval="100"
             monitorBoxEnabled="true"
