@@ -98,7 +98,7 @@
     <string name="qs_tile_network_mode">Chế độ mạng</string>
     <string name="qs_tile_data_usage">Kiểu ô</string>
     <string name="qs_tile_autorotation">Tự động xoay</string>
-    <string name="qs_tile_sync">Động bộ</string>
+    <string name="qs_tile_sync">Đồng bộ</string>
     <string name="qs_tile_wifi_ap">Hotspot</string>
     <string name="qs_tile_torch_aosp">Đèn pin (Gốc)</string>
     <string name="qs_tile_torch_gb">Đèn pin (GravityBox)</string>
@@ -633,7 +633,7 @@
     <string name="caller_unkown_photo_result_not_successful">Chưa đổi được ảnh</string>
 
     <!-- Minimum screen brightness warning -->
-    <string name="screen_brightness_min_warning">Màn hình của bạn có thể không hỗ độ sáng thấp hơn 20. Nếu màn hình không sáng lên,
+    <string name="screen_brightness_min_warning">Màn hình của bạn có thể không hỗ trợ độ sáng thấp hơn 20. Nếu màn hình không sáng lên,
         giữ phím Tăng âm lượng trong ít nhất 7 giây để đặt lại độ sáng và sau đó chỉnh lại độ sáng tối thiểu sử dụng giá trị cao hơn.</string>
 
     <!-- Navbar tweaks categories -->
@@ -1201,7 +1201,7 @@
     <!-- Led control -->
     <string name="pref_led_control_title">Điều khiển thông báo mở rộng</string>
     <string name="pref_led_control_summary">Cho phép kiểm soát thông báo đèn, âm báo và rung của mỗi ứng dụng</string>
-    <string name="lc_please_wait">Trần Thanh Đạt&#8230;</string>
+    <string name="lc_please_wait">Trần Thành Đạt&#8230;</string>
     <string name="lc_disabled">Tắt điều khiển thông báo</string>
     <string name="pref_lc_led_color_title">Màu LED</string>
     <string name="pref_lc_led_time_on_title">Thời gian LED sáng</string>
@@ -1300,7 +1300,7 @@
     <string name="pref_lc_qh_ignore_title">Bỏ qua Giờ im lặng</string>
     <string name="pref_lc_qh_ignore_list_title">Cho các ký tự đặc biệt</string>
     <string name="pref_lc_qh_ignore_list_summary">Dấu phẩy ngăn cách danh sách của các từ khóa để bỏ qua 
-        Giờ im lặng. Bỏ trống để áp dụng chp tất cả các thông báo.</string>
+        Giờ im lặng. Bỏ trống để áp dụng cho tất cả các thông báo.</string>
 
     <!-- GB Actions: Quiet hours shortcut -->
     <string name="shortcut_quiet_hours_toggle">Toggle Giờ im lặng</string>
@@ -1391,14 +1391,14 @@
     <string name="quick_settings_compass_init">Đang khởi tạo&#8230;</string>
 
     <!-- Cardinal directions -->
-    <string name="cd_north">N</string>
-    <string name="cd_north_east">NE</string>
-    <string name="cd_east">E</string>
-    <string name="cd_south_east">SE</string>
-    <string name="cd_south">S</string>
-    <string name="cd_south_west">SW</string>
-    <string name="cd_west">W</string>
-    <string name="cd_north_west">NW</string>
+    <string name="cd_north">B</string>
+    <string name="cd_north_east">ĐB</string>
+    <string name="cd_east">Đ</string>
+    <string name="cd_south_east">ĐN</string>
+    <string name="cd_south">N</string>
+    <string name="cd_south_west">TN</string>
+    <string name="cd_west">T</string>
+    <string name="cd_north_west">TB</string>
 
     <!-- Pie: mirrored keys -->
     <string name="pref_pie_control_mirrored_keys_title">Phím đối xứng</string>
@@ -1806,12 +1806,12 @@
     <string name="pref_lockscreen_dt2s_title">Bấm đúp để tắt màn hình</string>
 
     <!-- Status bar: disable peek -->
-    <string name="pref_statusbar_disable_peek_title">Tắt mở rộng</string>
+    <string name="pref_statusbar_disable_peek_title">Không mở rộng</string>
     <string name="pref_statusbar_disable_peek_summary">Không mở rộng thanh trạng thái khi bấm vào</string>
 
     <!-- Status bar: Double-tap to sleep -->
     <string name="pref_statusbar_dt2s_title">Bấm đúp để tắt màn hình</string>
-    <string name="pref_statusbar_dt2s_summary">Yêu cầu tắt tính năng Tắt mở rộng</string>
+    <string name="pref_statusbar_dt2s_summary">Yêu cầu tắt tính năng Không mở rộng</string>
 
     <!-- Pie trigger indicator -->
     <string name="pref_pie_control_trigind_title">Chỉ thị hành động nhanh</string>
