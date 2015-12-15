@@ -1806,12 +1806,12 @@
     <string name="pref_lockscreen_dt2s_title">Bấm đúp để tắt màn hình</string>
 
     <!-- Status bar: disable peek -->
-    <string name="pref_statusbar_disable_peek_title">Tắt xổ</string>
+    <string name="pref_statusbar_disable_peek_title">Không mở rộng</string>
     <string name="pref_statusbar_disable_peek_summary">Không mở rộng thanh trạng thái khi bấm vào</string>
 
     <!-- Status bar: Double-tap to sleep -->
     <string name="pref_statusbar_dt2s_title">Bấm đúp để tắt màn hình</string>
-    <string name="pref_statusbar_dt2s_summary">Yêu cầu tắt tính năng Tắt xổ</string>
+    <string name="pref_statusbar_dt2s_summary">Yêu cầu tắt tính năng Không mở rộng</string>
 
     <!-- Pie trigger indicator -->
     <string name="pref_pie_control_trigind_title">Chỉ thị hành động nhanh</string>
