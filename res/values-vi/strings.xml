@@ -633,7 +633,7 @@
     <string name="caller_unkown_photo_result_not_successful">Chưa đổi được ảnh</string>
 
     <!-- Minimum screen brightness warning -->
-    <string name="screen_brightness_min_warning">Màn hình của bạn có thể không hỗ độ trợ độ sáng thấp hơn 20. Nếu màn hình không sáng lên,
+    <string name="screen_brightness_min_warning">Màn hình của bạn có thể không hỗ trợ độ sáng thấp hơn 20. Nếu màn hình không sáng lên,
         giữ phím Tăng âm lượng trong ít nhất 7 giây để đặt lại độ sáng và sau đó chỉnh lại độ sáng tối thiểu sử dụng giá trị cao hơn.</string>
 
     <!-- Navbar tweaks categories -->
@@ -1128,7 +1128,7 @@
     <string name="scr_size_full_hd">Full HD (1080x1920px)</string>
     <string name="pref_screenrecord_bitrate_title">Tỷ lệ Bit của Video</string>
     <string name="pref_screenrecord_timelimit_title">Thời gian giới hạn</string>
-    <string name="pref_screenrecord_rotate_title">Xuay ảnh</string>
+    <string name="pref_screenrecord_rotate_title">Xoay ảnh</string>
     <string name="pref_screenrecord_rotate_summary">Xoay ảnh xuất ra 1 góc 90 độ</string>
     <string name="pref_screenrecord_microphone_title">Sử dụng microphone</string>
     <string name="pref_screenrecord_microphone_summary">Sử dụng microphone cho âm thanh đầu ra</string>
