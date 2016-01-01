@@ -37,8 +37,8 @@
 
   <string name="reboot_required">Verandering zal na een herstart worden toegepast</string>
 
-    <string name="poweroff_advanced_title">Geavanceerde herstart menu</string>
-    <string name="poweroff_advanced_summary">Maakt geavanceerde herstart menu met opties om te herstarten naar recovery</string>
+    <string name="poweroff_advanced_title">Geavanceerd herstartmenu</string>
+    <string name="poweroff_advanced_summary">Maakt geavanceerd herstartmenu met opties om te herstarten naar recovery</string>
     <string name="poweroff_recovery">Recovery</string>
     <string name="poweroff_bootloader">Bootloader</string>
 
@@ -142,9 +142,9 @@
     <string name="about_donate_summary">Raak aan om ontwikkeling te ondersteunen via PayPal</string>
 
     <!-- Reboot confirmation -->
-    <string name="reboot_confirm">Uw %s zal herstarten.</string>
-    <string name="reboot_confirm_recovery">Uw %s zal herstarten in recovery.</string>
-    <string name="reboot_confirm_bootloader">Uw %s zal herstarten in bootloader.</string>
+    <string name="reboot_confirm">Uw telefoon zal herstarten.</string>
+    <string name="reboot_confirm_recovery">Uw telefoon zal herstarten in recoverymodus</string>
+    <string name="reboot_confirm_bootloader">Uw telefoon zal herstarten in bootloadermodus</string>
 
     <!-- CRT effect screen off animation -->
     <string name="crt_off_effect_title">CRT scherm uit effect</string>
