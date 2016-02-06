@@ -72,7 +72,7 @@ public class TrafficMeterOmni extends TrafficMeterAbstract {
     private boolean mShowIcon;
     private boolean mAutoHide;
     private int mAutoHideThreshold;
-
+	
     private Handler mTrafficHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -90,9 +90,17 @@ public class TrafficMeterOmni extends TrafficMeterAbstract {
             }
             lastUpdateTime = SystemClock.elapsedRealtime();
 
+            long newTotalRxBytes;
+            long newTotalTxBytes;
             // Calculate the data rate from the change in total bytes and time
-            long newTotalRxBytes = TrafficStats.getTotalRxBytes();
-            long newTotalTxBytes = TrafficStats.getTotalTxBytes();
+            if (mCanReadFromFile) {
+                long[] newTotalRxTxBytes = getTotalRxTxBytes();
+                newTotalRxBytes = newTotalRxTxBytes[0];
+                newTotalTxBytes = newTotalRxTxBytes[1];
+            } else {
+                newTotalRxBytes = TrafficStats.getTotalRxBytes();
+                newTotalTxBytes = TrafficStats.getTotalTxBytes();
+            }
             long rxData = newTotalRxBytes - totalRxBytes;
             long txData = newTotalTxBytes - totalTxBytes;
 
@@ -276,4 +284,5 @@ public class TrafficMeterOmni extends TrafficMeterAbstract {
             updateTrafficDrawable();
         }
     }
+	
 }

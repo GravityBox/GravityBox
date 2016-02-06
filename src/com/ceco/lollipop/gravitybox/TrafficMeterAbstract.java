@@ -16,6 +16,11 @@
 
 package com.ceco.lollipop.gravitybox;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import com.ceco.lollipop.gravitybox.ProgressBarController.Mode;
 import com.ceco.lollipop.gravitybox.ProgressBarController.ProgressInfo;
 import com.ceco.lollipop.gravitybox.managers.StatusBarIconManager;
@@ -64,6 +69,7 @@ public abstract class TrafficMeterAbstract extends TextView
     protected boolean mShowOnlyForMobileData;
     protected boolean mIsTrackingProgress;
     protected boolean mAllowInLockscreen;
+    protected boolean mCanReadFromFile;
 
     protected static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
@@ -108,6 +114,8 @@ public abstract class TrafficMeterAbstract extends TextView
                 }
             };
         }
+        
+        mCanReadFromFile = canReadFromFile();
     }
 
     public void initialize(XSharedPreferences prefs) throws Throwable {
@@ -309,4 +317,48 @@ public abstract class TrafficMeterAbstract extends TextView
     protected abstract void onPreferenceChanged(Intent intent);
     protected abstract void startTrafficUpdates();
     protected abstract void stopTrafficUpdates();
+	
+    protected static boolean isCountedInterface(String iface) {
+        return (iface != "lo") && (!iface.startsWith("tun"));
+    }
+    
+    private static long tryParseLong(String obj) {
+        try {
+            return Long.parseLong(obj);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    protected static long[] getTotalRxTxBytes() {
+        String line;
+        String[] segs;
+        String iface;
+        long rxBytes = 0;
+        long txBytes = 0;
+        try {
+            FileReader fr = new FileReader("/proc/net/dev");
+            BufferedReader in = new BufferedReader(fr);
+            while ((line = in.readLine()) != null) {
+                line = line.trim();
+                if (line.contains(":")) {
+                    segs = line.split(":");
+                    iface = segs[0];
+                    if (isCountedInterface(iface)) {
+                        segs = segs[1].split(" ");
+                        rxBytes += tryParseLong(segs[0]);
+                        txBytes += tryParseLong(segs[8]);
+                    }
+                }
+            }
+            in.close();
+        } catch (IOException e) {
+            return new long[]{0, 0};
+        }
+        return new long[]{rxBytes, txBytes};
+    }
+
+    private boolean canReadFromFile() {
+        return new File("/proc/net/dev").exists();
+    }
 }
