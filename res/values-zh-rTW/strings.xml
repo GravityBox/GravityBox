@@ -536,6 +536,23 @@
     <string name="dt_size_smaller">較小</string>
     <string name="dt_size_smallest">最小</string>
 
+    <!-- Battery bar -->
+    <string name="pref_cat_battery_bar_title">電量列</string>
+    <string name="pref_battery_bar_show_title">顯示電量列</string>
+    <string name="pref_battery_bar_position_title">位置</string>
+    <string name="bbar_position_top">頂部邊緣</string>
+    <string name="bbar_position_bottom">底部邊緣</string>
+    <string name="pref_battery_bar_margin_title">邊緣空白</string>
+    <string name="pref_battery_bar_thickness_title">厚度</string>
+    <string name="pref_battery_bar_charge_anim_title">充電動畫</string>
+    <string name="pref_battery_bar_dynacolor_title">動態顏色</string>
+    <string name="pref_battery_bar_dynacolor_summary">從當前電池電量自動確定顏色</string>
+    <string name="pref_battery_bar_color_title">顏色</string>
+    <string name="pref_battery_bar_color_low_title">低電量顏色</string>
+    <string name="pref_battery_bar_color_critical_title">危急電量顏色</string>
+    <string name="pref_battery_bar_centered_title">居中</string>
+    <string name="pref_battery_bar_color_charging_title">充電顏色</string>
+
     <!--  RAM Bar -->
     <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
     <string name="service_background_processes"><xliff:g id="memory">%1$s</xliff:g> 可用</string>
@@ -698,8 +715,17 @@
     <string name="pref_launcher_desktop_grid_cols_title">列數</string>
     <string name="desktop_grid_default">預設</string>
 
+    <!-- QS: Hide brightness slider -->
+    <string name="pref_qs_hide_brightness_title">隱藏亮度調整列</string>
+
     <!-- HW Key Acctions: toggle screen recording -->
     <string name="hwkey_action_screen_recording">開關螢幕錄製</string>
+
+    <!-- Battery style: Stock battery with percentage -->
+    <string name="battery_style_stock_percent">含百分比的預設電量指示器</string>
+
+    <!-- Lockscreen: doubletap to sleep -->
+    <string name="pref_lockscreen_dt2s_title">雙擊睡眠</string>
 
     <!-- Battery percent text -->
     <string name="battery_percent_text_title">電池電量百分比文字</string>
