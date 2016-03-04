@@ -28,8 +28,8 @@
     <string name="vol_music_controls_summary">当屏幕关闭时长按音量键以切换歌曲</string>
 
     <string name="low_battery_warning_policy_title">低电量警告</string>
-	<string name="low_battery_warning_default">默认</string>
-	<string name="low_battery_warning_nonintrusive">不打扰</string>
+    <string name="low_battery_warning_default">默认</string>
+    <string name="low_battery_warning_nonintrusive">不打扰</string>
     <string name="low_battery_warning_off">关闭</string>
 
     <string name="reboot_required">重新启动以后设置才会启用</string>
@@ -98,7 +98,7 @@
     <string name="qs_tile_autorotation">自动旋转</string>
     <string name="qs_tile_sync">同步</string>
     <string name="qs_tile_wifi_ap">Wi-Fi接入点</string>
-	<string name="qs_tile_torch_aosp">手电筒(原厂)</string>
+    <string name="qs_tile_torch_aosp">手电筒(原厂)</string>
     <string name="qs_tile_torch_gb">手电筒(GravityBox)</string>
     <string name="qs_tile_gravitybox">GravityBox</string>
     <string name="qs_tile_sleep">睡眠</string>
@@ -114,7 +114,7 @@
     <string name="qs_tile_lock_screen">锁屏</string>
     <string name="qs_tile_inversion">反转</string>
     <string name="qs_tile_battery">电量</string>
-	<string name="qs_tile_dnd">请勿打扰</string>
+    <string name="qs_tile_dnd">请勿打扰</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">颜色选择器</string>
@@ -199,7 +199,7 @@
 
     <!-- Lockscreen rotation -->
     <string name="pref_lockscreen_rotation_title">启用锁屏画面旋转</string>
-	<string name="pref_lockscreen_rotation_summary">需要重新启动</string>
+    <string name="pref_lockscreen_rotation_summary">需要重新启动</string>
 
     <!-- Lockscreen menu key -->
     <string name="pref_lockscreen_menu_key_title">启用菜单键</string>
@@ -275,7 +275,7 @@
     <string name="quick_pulldown_off">关闭</string>
     <string name="quick_pulldown_right">右侧</string>
     <string name="quick_pulldown_left">左侧</string>
-	<string name="quick_pulldown_both">两者</string>
+    <string name="quick_pulldown_both">两者</string>
 
     <!-- Statusbar colors category -->
     <string name="pref_cat_statusbar_colors_title">状态栏颜色</string>
@@ -748,7 +748,7 @@
     <!-- Tiles: Hide on change -->
     <string name="pref_qs_hide_on_change_title">更改时隐藏</string>
     <string name="pref_qs_hide_on_change_summary">在状态栏上单击自动折叠
-		适用于简单的两行磁贴</string>
+	适用于简单的两行磁贴</string>
 
     <!-- Power tweaks categories -->
     <string name="pref_cat_power_menu_title">电源键菜单</string>
@@ -1071,7 +1071,7 @@
     <string name="stay_awake_5m">5分钟</string>
     <string name="stay_awake_10m">10分钟</string>
     <string name="stay_awake_30m">30分钟</string>
-	<string name="stay_awake_on">保持唤醒</string>
+    <string name="stay_awake_on">保持唤醒</string>
 
     <!-- Screen recording options -->
     <string name="pref_cat_screenrecord_options_title">屏幕录制</string>
@@ -1118,8 +1118,8 @@
 
     <!-- Clock: AM/PM size -->
     <string name="pref_sb_clock_ampm_size_title">上午/下午 大小</string>
-
-	<!-- Data traffic monitor style -->
+    
+    <!-- Data traffic monitor style -->
     <string name="pref_data_traffic_mode_title">数据流量监控风格</string>
     <string name="dt_mode_off">禁用</string>
     <string name="dt_mode_simple">简约风格</string>
@@ -1199,7 +1199,7 @@
 
     <!-- Premium features: allow trial period -->
     <string name="trial_info">此功能是试用模式！如果您觉得它有用您可以解锁高级功能
-		在%d重启后将结束试用期</string>
+	在%d重启后将结束试用期</string>
 
     <!-- Notification control: default settings -->
     <string name="lc_activity_menu_default_settings">默认设置</string>
@@ -1277,9 +1277,9 @@
     <string name="increasing_ring_enable">启用</string>
     <string name="increasing_ring_min_volume_title">开始振铃音量</string>
     <string name="increasing_ring_volume_notice">注意：由于设置音量比铃声音量大，将使用铃声音量播放</string>
-	<string name="increasing_ring_ramp_up_duration_title">过渡时间</string>
-	<string name="increasing_ring_interval_0">5秒</string>
-	<string name="increasing_ring_interval_1">10秒</string>
+    <string name="increasing_ring_ramp_up_duration_title">过渡时间</string>
+    <string name="increasing_ring_interval_0">5秒</string>
+    <string name="increasing_ring_interval_1">10秒</string>
     <string name="increasing_ring_interval_2">15秒</string>
     <string name="increasing_ring_interval_3">20秒</string>
     <string name="increasing_ring_interval_4">25秒</string>
@@ -1371,7 +1371,9 @@
     <string name="pref_headset_action_unplug_title">当拨出耳机时</string>
 
     <!-- Quiet Hours: mute vibrations -->
-    <string name="pref_lc_qh_mute_vibe_title">无声震动</string>
+    <string name="pref_lc_qh_mute_vibe_title">通知静音震动</string>
+    <string name="pref_lc_qh_mute_vibe_summary">此设备上所有配对的Android Wear设备
+	关闭通知震动</string>
 
     <!-- Quiet Hours: interactive mode -->
     <string name="pref_lc_qh_interactive_title">交互模式</string>
@@ -1403,7 +1405,7 @@
     <string name="lc_active_screen_mode_nothing">仅唤醒屏幕</string>
 
     <!-- QS: Remote display tile -->
-    <string name="qs_tile_remote_display">远程显示</string>
+    <string name="qs_tile_remote_display">投射屏幕</string>
     
     <!-- UNC: main screen -->
     <string name="pref_unc_default_settings_title">@string/lc_activity_menu_default_settings</string>
@@ -1463,7 +1465,7 @@
     <string name="system_sound_touch">触摸音效</string>
     <string name="system_sound_screen_lock">锁屏音效</string>
     <string name="system_sound_charger">GravityBox充电音效</string>
-	<string name="system_sound_ringer">手机铃声</string>
+    <string name="system_sound_ringer">手机铃声</string>
     
     <!-- Proximty wake: ignore for incoming call -->
     <string name="pref_power_proximity_wake_ignore_call_title">忽略来电</string>
@@ -1471,8 +1473,8 @@
     <!-- Status bar: show download progress -->
     <string name="pref_statusbar_download_progress_title">进度条</string>
     <string name="pref_statusbar_download_progress_summary">在状态栏显示进度条
-		标准的Android下载管理器,蓝牙传输和其它应用程序
-		需要启用终极通知控制进度条跟踪</string>
+	标准的Android下载管理器,蓝牙传输和其它应用程序
+	需要启用终极通知控制进度条跟踪</string>
     <string name="sb_download_progress_off">禁用</string>
     <string name="sb_download_progress_top">顶部</string>
     <string name="sb_download_progress_bottom">底部</string>
@@ -1502,13 +1504,13 @@
 
     <!-- Messaging -->
     <string name="pref_cat_phone_messaging_title">信息</string>
-	
-	<!-- Compatibility warning -->
+    
+    <!-- Compatibility warning -->
     <string name="compat_warning_title">警告</string>
     <string name="compat_warning_message">仅适用原生Android或Google Play Edition设备使用！\n\n	
-		使用其它品牌或者定制ROM像:Touchwiz, Sense, Xperia可能会导致意想不到的结果\n\n如果需要继续,
-		那么您确认这是您自己的风险，并没有任何技术支持与期望。有关兼容性的详细信息,
-		请看<a href="http://forum.xda-developers.com/showthread.php?t=3251148">XDA论坛</a>的支持页面</string>
+	使用其它品牌或者定制ROM像:Touchwiz, Sense, Xperia可能会导致意想不到的结果\n\n如果需要继续,
+	那么您确认这是您自己的风险，并没有任何技术支持与期望。有关兼容性的详细信息,
+	请看<a href="http://forum.xda-developers.com/showthread.php?t=3251148">XDA论坛</a>的支持页面</string>
     <string name="compat_warning_ok_stage1">我明白了</string>
     <string name="compat_warning_ok_stage2">我真的明白了</string>
 
@@ -1561,8 +1563,8 @@
     <string name="pref_battery_bar_color_critical_title">危急电量颜色</string>
     <string name="pref_battery_bar_centered_title">居中</string>
     <string name="pref_battery_bar_color_charging_title">充电颜色</string>
-	
-	<!-- Status bar: progress bar -->
+    
+    <!-- Status bar: progress bar -->
     <string name="pref_statusbar_download_progress_mode_title">模式</string>
     <string name="pref_statusbar_download_progress_animated_title">动画</string>
     <string name="pref_statusbar_download_progress_centered_title">居中</string>
@@ -1577,8 +1579,8 @@
 
     <!-- Key actions: double-tap for recents button -->
     <string name="hwkey_recents_doubletap_dialog_title">最近任务键双击动作</string>
-	
-	<!-- Volume panel: default timeout -->
+    
+    <!-- Volume panel: default timeout -->
     <string name="volume_panel_timeout_default">默认</string>
 
     <!-- Tri state pref -->
@@ -1603,11 +1605,11 @@
     <!-- Navigation bar: use larger icons -->
     <string name="pref_navbar_larger_icons_title">使用大图标</string>
     <string name="pref_navbar_larger_icons_summary">需要重新启动</string>
-	
-	<!-- Power menu: allow soft reboot -->
+    
+    <!-- Power menu: allow soft reboot -->
     <string name="pref_reboot_allow_softreboot_title">允许软重启</string>
     <string name="pref_reboot_allow_softreboot_summary">注意,软重启会引起
-意想不到的电池消耗或不稳定问题,最好的方法是使用正常重启</string>
+	意想不到的电池消耗或不稳定问题,最好的方法是使用正常重启</string>
 
     <!-- Recents panel search bar -->
     <string name="pref_recents_searchbar_title">搜索栏可见性</string>
@@ -1618,12 +1620,12 @@
     <!-- Old GB to new GB one-time dialog -->
     <string name="gb_new_package_dialog_title">注意</string>
     <string name="gb_new_package_dialog_message">发现GravityBox已安装Lollipop版本
-在新版本可以使用之前必须卸载旧的,按确认开始卸载
-卸载后,不要忘记在Xposed安装器中激活新模块并重新启动</string>
+	在新版本可以使用之前必须卸载旧的,按确认开始卸载
+	卸载后,不要忘记在Xposed安装器中激活新模块并重新启动</string>
 
     <!-- Restore settings: warn if old backup exists -->
     <string name="settings_restore_backup_obsolete">由于系统差异
-旧版本的备份不能恢复,强烈建议从头开始配置gravitybox</string>
+	旧版本的备份不能恢复,强烈建议从头开始配置gravitybox</string>
 
     <!-- Traffic meter: show in lock screen -->
     <string name="pref_data_traffic_lockscreen_title">在锁屏显示</string>
@@ -1631,15 +1633,15 @@
 
     <!-- QS: Hide brightness slider -->
     <string name="pref_qs_hide_brightness_title">隐藏亮度滑块</string>
-	
-	<!-- SignalCluster: reduce icon spacing -->
+    
+    <!-- SignalCluster: reduce icon spacing -->
     <string name="pref_signal_cluster_narrow_title">减少图标间距</string>
     <string name="pref_signal_cluster_narrow_summary">减少信号图标间距</string>
 
     <!-- Navigation bar: hide IME switcher -->
     <string name="pref_navbar_hide_ime_title">隐藏输入法切换器</string>
-	
-	<!-- Lockscreen: direct unlock -->
+    
+    <!-- Lockscreen: direct unlock -->
     <string name="pref_lockscreen_direct_unlock_title">直接解锁</string>
     <string name="pref_lockscreen_direct_unlock_summary">当屏幕开启时跳过安全锁直接显示</string>
     <string name="direct_unlock_off">关闭</string>
@@ -1704,7 +1706,14 @@
     <string name="pref_lc_sound_vibrate_title">禁用转换声音时振动</string>
     <string name="pref_lc_sound_vibrate_summary">通知关闭时防止振动,只在铃声模式时才振动</string>
     
-
+	
+    <!-- UNC: QuietHours: mute system level vibrations -->
+    <string name="pref_lc_qh_mute_system_vibe_title">静音设备振动</string>
+    <string name="pref_lc_qh_mute_system_vibe_summary">关闭所有系统级振动
+	包括在此设备上的通知振动,配对Android Wear设备上的通知仍然可以
+ 	在震动的情况下开启通知振动
+    </string>
+	
     <!-- Recents: clear visible only -->
     <string name="pref_recents_clear_all_visible_title">仅清除可见</string>
 
@@ -1718,8 +1727,8 @@
     <!-- Status bar: Double-tap to sleep -->
     <string name="pref_statusbar_dt2s_title">双击睡眠</string>
     <string name="pref_statusbar_dt2s_summary">需要禁用偷看</string>
-
-	<!-- Pie trigger indicator -->
+    
+    <!-- Pie trigger indicator -->
     <string name="pref_pie_control_trigind_title">触发指示器</string>
     <string name="pref_pie_control_trigind_color_title">触发指示器颜色</string>
 
@@ -1754,8 +1763,8 @@
 	
     <!-- Permission denial message -->
     <string name="permission_denied_msg">您已经决定拒绝某些权限的设置
-      请注意,这会阻止相关功能无法正常工作</string>
-	<string name="permission_denied_hide_title">不再显示</string>
+	请注意,这会阻止相关功能无法正常工作</string>
+    <string name="permission_denied_hide_title">不再显示</string>
 
     <!-- Cellular tile Mobile data toggle -->
     <string name="pref_cell_tile_data_toggle_title">切换移动数据</string>
@@ -1772,8 +1781,8 @@
     <string name="pref_lockscreen_bleft_action_title">左下动作</string>
     <string name="ls_bleft_action_default">默认</string>
     <string name="ls_bleft_action_phone">手机</string>
-	
-	<!-- Lockscreen: Quick unlock PIN length -->
+    
+    <!-- Lockscreen: Quick unlock PIN length -->
     <string name="pref_lockscreen_pin_length_title">PIN长度</string>
     <string name="pref_lockscreen_pin_length_summary">快速解锁需要知道您的PIN长度才能可靠地工作</string>
 
@@ -1781,9 +1790,9 @@
     <string name="pref_power_camera_vibrate_pattern_title">相机振动模式</string>
     <string name="pref_power_camera_vibrate_pattern_summary">用逗号分隔列表的形式定义振动模式
         电源键关闭/开启(毫秒)启动相机持续时间
-		留空为默认,设置为0禁用振动</string>
-		
-	<!-- QS: common quick mode option -->
+	留空为默认,设置为0禁用振动</string>
+	
+    <!-- QS: common quick mode option -->
     <string name="pref_tile_quick_mode_title">启用快速模式</string>
     <string name="pref_tile_enabled_modes_title">启用模式</string>
 
@@ -1829,19 +1838,22 @@
     <string name="network_mode_21">全局TD-SCDMA (2G/3G)</string>
     <string name="network_mode_22">全局TD-SCDMA LTE (4G/2G/3G)</string>
     <string name="network_mode_unknown">未知</string>
-
+    
     <!-- Network mode tile settings -->
-    <string name="pref_nm_tile_enabled_modes_summary">定义哪些瓷砖应该支持网络模式</string>
+    <string name="pref_nm_tile_enabled_modes_summary">在瓷砖中定义支持哪些网络模式</string>
     <string name="pref_nm_tile_quick_mode_summary">允许通过单击瓷砖循环选定的网络模式</string>
-
+    
     <!-- Ringer mode tile settings -->
     <string name="pref_cat_qs_rm_tile_title">闹钟模式瓷砖设置</string>
-    <string name="pref_rm_tile_enabled_modes_summary">定义哪些瓷砖应该支持闹钟模式</string>
+    <string name="pref_rm_tile_enabled_modes_summary">在瓷砖中定义支持哪些闹钟模式</string>
     <string name="pref_rm_tile_quick_mode_summary">允许通过单击瓷砖循环选定的闹钟模式</string>
-
+    
     <!-- Stay awake tile settings -->
     <string name="pref_cat_qs_sa_tile_title">保持唤醒瓷砖设置</string>
-    <string name="pref_sa_tile_enabled_modes_summary">定义哪些瓷砖应该支持屏幕超时</string>
+    <string name="pref_sa_tile_enabled_modes_summary">在瓷砖中定义支持哪些屏幕超时</string>
     <string name="pref_sa_tile_quick_mode_summary">允许通过单击瓷砖循环选定的屏幕超时</string>
+    
+    <!-- Lockscreen: Smart unlock policy -->
+    <string name="pref_lockscreen_smart_unlock_policy_title">智能锁策略</string>
 
 </resources>

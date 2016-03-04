@@ -715,7 +715,7 @@
     <string name="desktop_grid_default">По умолчанию</string>
 
     <!-- HW Key Acctions: toggle screen recording -->
-    <string name="hwkey_action_screen_recording">Указатель записи</string>
+    <string name="hwkey_action_screen_recording">Запись экрана</string>
 
     <!-- Battery percent text -->
     <string name="battery_percent_text_title">Проценты заряда</string>

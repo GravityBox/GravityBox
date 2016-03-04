@@ -660,8 +660,8 @@
     <string name="pref_about_gplus_summary">Торкніться для переходу до спільноти Google+</string>
 
     <!-- HW Keys Navigation Bar warning -->
-    <string name="hwkey_navbar_warning">При включенні підтримки дії для панелі навігації необхідно переписати типові налаштування 
-в меню налаштування панелі навігації</string>
+    <string name="hwkey_navbar_warning">При включенні підтримки дії для панелі навігації необхідно переписати типові налаштування в меню «налаштування панелі навігації»</string>
+
 
     <!-- Lockscreen Torch -->
     <string name="pref_hwkey_lockscreen_torch_title">Ліхтарик на екрані блокування</string>
@@ -869,8 +869,8 @@
     <!-- Smart Radio -->
     <string name="smart_radio_action_undefined">Не визначено</string>
     <string name="pref_cat_smart_radio_title">Розумне радіо</string>
-    <string name="pref_smart_radio_enable_summary">Автоматичне перемикання радіо-модуля на встановлений користувачем економічний чи звичайний режим, 
-        в залежності від передачі мобільних даних та стану з\'єднання Wi-Fi\n(необхідне перезавантаження)</string>
+    <string name="pref_smart_radio_enable_summary">Автоматичне перемикання радіо-модуля на встановлений користувачем економічний чи звичайний режим, в залежності від передачі мобільних даних та стану з\'єднання Wi-Fi\n(необхідне перезавантаження)</string>
+
     <string name="pref_smart_radio_normal_mode_title">Звичайний режим мережі</string>
     <string name="pref_smart_radio_power_saving_mode_title">Економний режим мережі</string>
     <string name="pref_smart_radio_screen_off_title">Коли екран вимкнено</string>
@@ -926,8 +926,8 @@
 
     <!-- Smart radio: independent delay for screen off power save event -->
     <string name="pref_smart_radio_screen_off_delay_title">Затримка економ. режиму</string>
-    <string name="pref_smart_radio_screen_off_delay_summary">Затримка перемикання в економний режим при вимиканні екрану. 
-        Змінює типову затримку зміни режиму, якщо не дорівнює нулю.</string>
+    <string name="pref_smart_radio_screen_off_delay_summary">Затримка перемикання в економний режим при вимиканні екрану. Змінює типову затримку зміни режиму, якщо не дорівнює нулю.</string>
+
 
     <!-- Backup and restore settings -->
     <string name="pref_settings_backup_title">Резервне копіювання</string>
@@ -1107,8 +1107,8 @@
 
     <!-- ScreenRecord: use stock binary -->
     <string name="pref_screenrecord_use_stock_title">Стоковий бінарний файл</string>
-    <string name="pref_screenrecord_use_stock_summary">Якщо увімкнуто, для запису екрана буде використано стоковий бінарний фал. 
-        Активуйте при проблемах з альтернативним бінарним файлом. Майте на увазі, що стоковий файл не підтримує аудіо та тривалість запису більше 3-х хвилин.</string>
+    <string name="pref_screenrecord_use_stock_summary">Якщо увімкнуто, для запису екрана буде використано стоковий бінарний фал. Активуйте при проблемах з альтернативним бінарним файлом. Майте на увазі, що стоковий файл не підтримує аудіо та тривалість запису більше 3-х хвилин.</string>
+
 
     <!-- Clock settings master switch -->
     <string name="pref_sb_clock_masterswitch_summary">Увімкнення налаштувань годинників в панелі стану\n(необхідне перезавантаження)</string>
@@ -1293,7 +1293,7 @@
 
     <!-- Misc: Force LTR direction -->
     <string name="pref_force_ltr_direction_title">Примусово зліва-на-право</string>
-    <string name="pref_force_ltr_direction_summary">Примусове встановлення написання зліва-на-право для мов з письмом з права-на-ліво\n(необхідне перезавантаження)</string>
+    <string name="pref_force_ltr_direction_summary">Примусове встановлення написання зліва-на-право для мов з письмом зправа-на-ліво\n(необхідне перезавантаження)</string>
 
     <!-- Ringer mode shortcut -->
     <string name="shortcut_ringer_mode">Встановити режим дзвінку</string>
@@ -1371,7 +1371,9 @@
     <string name="pref_headset_action_unplug_title">Від\'єднання гарнітури</string>
 
     <!-- Quiet Hours: mute vibrations -->
-    <string name="pref_lc_qh_mute_vibe_title">Приглушення вібрації</string>
+    <string name="pref_lc_qh_mute_vibe_title">Приглушити вібрацію сповіщень</string>
+    <string name="pref_lc_qh_mute_vibe_summary">Вимикає вібрацію сповіщень на пристрої та на будь-якому зв\'язаному пристрої Android Wear</string>
+
 
     <!-- Quiet Hours: interactive mode -->
     <string name="pref_lc_qh_interactive_title">Інтерактивний режим</string>
@@ -1704,6 +1706,14 @@
     <string name="pref_lc_sound_vibrate_title">Перетворення звуку у вібрацію</string>
     <string name="pref_lc_sound_vibrate_summary">Запобігання вібрації сповіщень з раніше вимкнутою вібрацією при виборі режиму дзвінка «Лише вібрація»</string>
 
+
+    <!-- UNC: QuietHours: mute system level vibrations -->
+    <string name="pref_lc_qh_mute_system_vibe_title">Приглушити вібрацію пристрою</string>
+    <string name="pref_lc_qh_mute_system_vibe_summary">Вимикає ВСІ тактильні відгуки на системному рівні,
+        та вібрацію сповіщень включно на ДАНОМУ пристрої. Сповіщення на зв\'язаному Android Wear пристрої
+        лишаться в тому ж стані, як і були.
+    </string>
+
     <!-- Recents: clear visible only -->
     <string name="pref_recents_clear_all_visible_title">Очистити лише видиме</string>
 
@@ -1783,7 +1793,7 @@
         Лишіть порожнім для типового значення. Встановіть нуль для вимкнення вібрації.</string>
 
     <!-- QS: common quick mode option -->
-    <string name="pref_tile_quick_mode_title">Увімкнути щвидкий режим</string>
+    <string name="pref_tile_quick_mode_title">Увімкнути швидкий режим</string>
     <string name="pref_tile_enabled_modes_title">Увімкнути режими</string>
 
     <!-- DND tile settings -->
@@ -1842,5 +1852,8 @@
     <string name="pref_cat_qs_sa_tile_title">Налаштування плитки «Не засинати»</string>
     <string name="pref_sa_tile_enabled_modes_summary">Визначає доступні часові затримки</string>
     <string name="pref_sa_tile_quick_mode_summary">Дозволяє циклічно змінювати затримку при одиничному дотику по плитці</string>
+
+    <!-- Lockscreen: Smart unlock policy -->
+    <string name="pref_lockscreen_smart_unlock_policy_title">Політика розумного розблокування</string>
 
 </resources>
