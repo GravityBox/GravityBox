@@ -17,10 +17,6 @@ package com.ceco.marshmallow.gravitybox;
 
 import java.lang.reflect.Method;
 
-import com.ceco.marshmallow.gravitybox.ledcontrol.QuietHours;
-import com.ceco.marshmallow.gravitybox.preference.IncreasingRingPreference;
-import com.ceco.marshmallow.gravitybox.preference.IncreasingRingPreference.ConfigStore;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +25,11 @@ import android.media.AudioManager;
 import android.media.Ringtone;
 import android.net.Uri;
 import android.os.Handler;
+
+import com.ceco.marshmallow.gravitybox.ledcontrol.QuietHours;
+import com.ceco.marshmallow.gravitybox.preference.IncreasingRingPreference;
+import com.ceco.marshmallow.gravitybox.preference.IncreasingRingPreference.ConfigStore;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -38,8 +39,6 @@ public class ModRinger {
     public static final String PACKAGE_NAME = "com.android.server.telecom";
     private static final String TAG = "GB:ModRinger";
     private static final boolean DEBUG = false;
-
-    private static final String CLASS_RINGTONE_PLAYER = "com.android.server.telecom.AsyncRingtonePlayer";
 
     private static ConfigStore mRingerConfig;
     private static float mIncrementAmount;
@@ -86,6 +85,9 @@ public class ModRinger {
 
     public static void init(final XSharedPreferences prefs, final ClassLoader classLoader) {
         try {
+			final String CLASS_RINGTONE_PLAYER = Utils.isSamsungRom() ? "com.android.server.telecom.secutils.SecAsyncRingtonePlayer"
+					: "com.android.server.telecom.AsyncRingtonePlayer";
+
             final XSharedPreferences qhPrefs = new XSharedPreferences(GravityBox.PACKAGE_NAME, "quiet_hours");
             qhPrefs.makeWorldReadable();
             final Class<?> clsRingtonePlayer = XposedHelpers.findClass(CLASS_RINGTONE_PLAYER, classLoader);

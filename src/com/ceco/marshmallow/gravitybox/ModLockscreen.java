@@ -453,8 +453,14 @@ public class ModLockscreen {
                         }
                     }
                 };
-                XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT, classLoader, "updateCarrierText",
-                        carrierTextHook);
+
+				if (Utils.isSamsungRom()) {
+					XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT, classLoader, "updateCarrierText", Intent.class,
+							carrierTextHook);
+				} else {
+					XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT, classLoader, "updateCarrierText",
+							carrierTextHook);
+				}
             }
 
             XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
@@ -667,7 +673,11 @@ public class ModLockscreen {
     private static void updateCarrierText() {
         if (mCarrierTextView == null) return;
         try {
-            XposedHelpers.callMethod(mCarrierTextView, "updateCarrierText");
+			if (Utils.isSamsungRom()) {
+				XposedHelpers.callMethod(mCarrierTextView, "updateCarrierText", (Intent) null);
+			} else {
+				XposedHelpers.callMethod(mCarrierTextView, "updateCarrierText");
+			}
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

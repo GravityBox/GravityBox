@@ -214,13 +214,21 @@ public class ModStatusbarColor {
         if (mPhoneStatusBar == null || SysUiManagers.IconManager == null) return;
         try {
             Object header = XposedHelpers.getObjectField(mPhoneStatusBar, "mHeader");
-            ImageButton settingsButton = (ImageButton) XposedHelpers.getObjectField(header, "mSettingsButton");
-            if (SysUiManagers.IconManager.isColoringEnabled()) {
-                settingsButton.setColorFilter(SysUiManagers.IconManager.getIconColor(),
-                        PorterDuff.Mode.SRC_IN);
-            } else {
-                settingsButton.clearColorFilter();
-            }
+			if (Utils.isSamsungRom()) {
+				ImageView settingsButton = (ImageView) XposedHelpers.getObjectField(header, "mSettingButton");
+				if (SysUiManagers.IconManager.isColoringEnabled()) {
+					settingsButton.setColorFilter(SysUiManagers.IconManager.getIconColor(), PorterDuff.Mode.SRC_IN);
+				} else {
+					settingsButton.clearColorFilter();
+				}
+			} else {
+				ImageButton settingsButton = (ImageButton) XposedHelpers.getObjectField(header, "mSettingsButton");
+				if (SysUiManagers.IconManager.isColoringEnabled()) {
+					settingsButton.setColorFilter(SysUiManagers.IconManager.getIconColor(), PorterDuff.Mode.SRC_IN);
+				} else {
+					settingsButton.clearColorFilter();
+				}
+			}
         } catch (Throwable t) {
             XposedBridge.log(t);
         }

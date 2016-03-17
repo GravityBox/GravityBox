@@ -74,11 +74,12 @@ public class BatteryStyleController implements BroadcastSubReceiver {
         mContext = container.getContext();
         mSystemIcons = (ViewGroup) mContainer.findViewById(
                 mContext.getResources().getIdentifier("system_icons", "id", PACKAGE_NAME));
-
-        initPreferences(prefs);
-        initLayout();
-        createHooks();
-        updateBatteryStyle();
+		if (mSystemIcons != null) {
+			initPreferences(prefs);
+			initLayout();
+			createHooks();
+			updateBatteryStyle();
+		}
     }
 
     private void initPreferences(XSharedPreferences prefs) {

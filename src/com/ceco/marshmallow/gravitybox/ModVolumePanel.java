@@ -36,7 +36,8 @@ import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResou
 public class ModVolumePanel {
     private static final String TAG = "GB:ModVolumePanel";
     public static final String PACKAGE_NAME = "com.android.systemui";
-    private static final String CLASS_VOLUME_PANEL = "com.android.systemui.volume.VolumeDialog";
+	private static final String CLASS_VOLUME_PANEL = Utils.isSamsungRom() ? "com.android.systemui.volume.SecVolumeDialog"
+			: "com.android.systemui.volume.VolumeDialog";
     private static final String CLASS_VOLUME_ROW = CLASS_VOLUME_PANEL + ".VolumeRow";
     private static final String CLASS_VOLUME_PANEL_CTRL = "com.android.systemui.volume.VolumeDialogController";
     private static final boolean DEBUG = false;
@@ -140,14 +141,16 @@ public class ModVolumePanel {
                 }
             });
 
-            XposedHelpers.findAndHookMethod(CLASS_VOLUME_PANEL_CTRL, classLoader, "vibrate", new XC_MethodHook() {
-                @Override
-                protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                    if (mVolumeAdjustVibrateMuted) {
-                        param.setResult(null);
-                    }
-                }
-            });
+			if (!Utils.isSamsungRom()) {
+				XposedHelpers.findAndHookMethod(CLASS_VOLUME_PANEL_CTRL, classLoader, "vibrate", new XC_MethodHook() {
+					@Override
+					protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+						if (mVolumeAdjustVibrateMuted) {
+							param.setResult(null);
+						}
+					}
+				});
+			}
 
             XposedHelpers.findAndHookMethod(classVolumePanel, "isVisibleH",
                     CLASS_VOLUME_ROW, boolean.class, new XC_MethodHook() {
