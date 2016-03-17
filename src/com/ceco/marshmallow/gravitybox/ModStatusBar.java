@@ -331,7 +331,7 @@ public class ModStatusBar {
     private static void prepareHeaderTimeView() {
         try {
             Object header = XposedHelpers.getObjectField(mPhoneStatusBar, "mHeader");
-            View timeView = (View) XposedHelpers.getObjectField(header, "mTime");
+			View timeView = (View) XposedHelpers.getObjectField(header, Utils.isSamsungRom() ? "mDate" : "mTime");
             if (timeView != null) {
                 timeView.setOnClickListener(new View.OnClickListener() {
                     @Override

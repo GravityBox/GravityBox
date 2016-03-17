@@ -676,4 +676,12 @@ public class Utils {
             }
         }
     }
+
+	public static boolean isSamsungRom() {
+		if (new File("/system/framework/twframework.jar").isFile()) {
+			return true;
+		}
+
+		return false;
+	}
 }

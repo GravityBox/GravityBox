@@ -25,7 +25,8 @@ import de.robv.android.xposed.XposedHelpers;
 public class ModMms {
     public static final String PACKAGE_NAME = "com.android.mms";
     private static final String TAG = "GB:ModMms";
-    private static final String CLASS_COMPOSE_MSG_ACTIVITY = "com.android.mms.ui.ComposeMessageActivity";
+	private static final String CLASS_COMPOSE_MSG_ACTIVITY = Utils.isSamsungRom() ? "com.android.mms.ui.ComposeMessageActivityNoLockScreen"
+			: "com.android.mms.ui.ComposeMessageActivity";
     private static final String CLASS_DIALOG_MODE_ACTIVITY = "com.android.mms.ui.DialogModeActivity";
     private static final boolean DEBUG = false;
 

@@ -16,16 +16,6 @@
 
 package com.ceco.marshmallow.gravitybox;
 
-import de.robv.android.xposed.XposedBridge;
-
-import com.ceco.marshmallow.gravitybox.ModStatusBar.ContainerType;
-import com.ceco.marshmallow.gravitybox.managers.StatusBarIconManager;
-import com.ceco.marshmallow.gravitybox.managers.SysUiManagers;
-import com.ceco.marshmallow.gravitybox.managers.BatteryInfoManager.BatteryData;
-import com.ceco.marshmallow.gravitybox.managers.BatteryInfoManager.BatteryStatusListener;
-import com.ceco.marshmallow.gravitybox.managers.StatusBarIconManager.ColorInfo;
-import com.ceco.marshmallow.gravitybox.managers.StatusBarIconManager.IconManagerListener;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -39,6 +29,16 @@ import android.os.Handler;
 import android.util.TypedValue;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+
+import com.ceco.marshmallow.gravitybox.ModStatusBar.ContainerType;
+import com.ceco.marshmallow.gravitybox.managers.BatteryInfoManager.BatteryData;
+import com.ceco.marshmallow.gravitybox.managers.BatteryInfoManager.BatteryStatusListener;
+import com.ceco.marshmallow.gravitybox.managers.StatusBarIconManager;
+import com.ceco.marshmallow.gravitybox.managers.StatusBarIconManager.ColorInfo;
+import com.ceco.marshmallow.gravitybox.managers.StatusBarIconManager.IconManagerListener;
+import com.ceco.marshmallow.gravitybox.managers.SysUiManagers;
+
+import de.robv.android.xposed.XposedBridge;
 
 public class CmCircleBattery extends ImageView implements IconManagerListener, BatteryStatusListener {
     private static final String TAG = "GB:CircleBattery";
@@ -242,7 +242,12 @@ public class CmCircleBattery extends ImageView implements IconManagerListener, B
         // always skip percentage when 100, so layout doesnt break
         if (level < 100 && mPercentage) {
             mPaintFont.setColor(usePaint.getColor());
+            // Workarround for drawing bug on Samsung Roms
+			if (Utils.isSamsungRom())
+				mPaintFont.setStyle(Paint.Style.FILL);
             canvas.drawText(Integer.toString(level), textX, mTextY, mPaintFont);
+			if (Utils.isSamsungRom())
+				mPaintFont.setStyle(Paint.Style.STROKE);
         }
 
     }
@@ -332,8 +337,8 @@ public class CmCircleBattery extends ImageView implements IconManagerListener, B
      */
     private void initSizeMeasureIconHeight() {
         final Resources res = getResources();
-        mCircleSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                17, res.getDisplayMetrics());
+		mCircleSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, Utils.isSamsungRom() ? 15 : 17,
+				res.getDisplayMetrics());
         if (DEBUG) log("mCircleSize = " + mCircleSize + "px");
     }
 
