@@ -226,7 +226,7 @@
     <string name="hwkey_menu_longpress_dialog_title">Aksi ketika kunci menu ditekan lama</string>
     <string name="hwkey_menu_doubletap_dialog_title">Aksi ketika kunci menu ditekan dua kali</string>
     <string name="hwkey_back_longpress_dialog_title">Aksi ketika kunci kembali ditekan</string>
-    <string name="hwkey_action_default">Asal</string>
+    <string name="hwkey_action_default">Tetapan asal</string>
     <string name="hwkey_action_search">Carian</string>
     <string name="hwkey_action_voice_search">Carian suara</string>
     <string name="hwkey_action_prev_app">Pergi ke applikasi sebelum</string>
@@ -256,7 +256,7 @@
 
     <!-- QuickSettings tiles per row -->
     <string name="pref_qs_tiles_per_row_title">Tile dalam baris</string>
-    <string name="pref_qs_tiles_per_row_summary">Tentukan berapa tile untuk setiap baris, betulkan size tile (hanya untuk potrait dan lanscape untuk semua peranti)</string>
+    <string name="pref_qs_tiles_per_row_summary">Tentukan berapa tile untuk setiap baris, betulkan size tile (hanya untuk potret dan landskap untuk semua peranti)</string>
 
     <!--  Status bar clock - show day of week -->
     <string name="pref_statusbar_clock_dow_title">Tunjukkan hari dalam seminggu</string>
@@ -1211,7 +1211,7 @@
     <string name="lc_active_screen">Skrin aktif</string>
     <string name="lc_active_screen_info">Skrin aktif akan automatik hidupkan skrin 
         ketika notifikasi tiba. Ia akan memaparkan heads up bergantung kepada 
-        sekuriti polisi skrin kunci. perlu diingat bahawa ia memerlukan skrin kunci
+        sekuriti polisi skrin kunci. perlu di ingat bahawa ia memerlukan skrin kunci
         diaktifkan.\nSuis dibawah adalah suis utama. Selepas ianya diaktifkan,tetapan tambahan akan terbuka</string>
     <string name="lc_active_screen_switch_title">Hidupkan skrin aktif</string>
 
@@ -1334,11 +1334,12 @@
     <string name="app_picker_icon_pick_cancelled">Pilihan ikon dibatalkan</string>
 
     <!-- QS: Compass tile -->
-    <string name="qs_tile_compass">Compass</string>
-    <string name="quick_settings_compass_off">Compass dimatikan</string>
+    <string name="qs_tile_compass">Kompas</string>
+    <string name="quick_settings_compass_off">Kompas dimatikan</string>
     <string name="quick_settings_compass_init">Memeriksa#8230;</string>
 
-    <!-- Cardinal directions -->
+    
+	<!-- Cardinal directions -->
     <string name="cd_north">N</string>
     <string name="cd_north_east">NE</string>
     <string name="cd_east">E</string>
@@ -1381,7 +1382,7 @@
 
     <!-- UNC: heads up mode -->
     <string name="pref_lc_headsup_mode_title">Mod Heads up</string>
-    <string name="lc_heads_up_default">Asal</string>
+    <string name="lc_heads_up_default">Tetapan asal</string>
     <string name="lc_heads_up_always">Sentiasa</string>
     <string name="lc_heads_up_immersive">Ketika status bar tersembunyi</string>
     <string name="lc_heads_up_off">Dimatikan</string>
@@ -1580,7 +1581,7 @@
     <string name="hwkey_recents_doubletap_dialog_title">Butang recents dua kali tekan</string>
 
     <!-- Volume panel: default timeout -->
-    <string name="volume_panel_timeout_default">Tetapan sal</string>
+    <string name="volume_panel_timeout_default">Tetapan asal</string>
 
     <!-- Tri state pref -->
     <string name="state_default">Tetapan asal</string>
@@ -1595,7 +1596,7 @@
     <string name="battery_percent_text_statusbar_summary">Tunjuk di bar status(ketika henfon tidak dikunci)</string>
     <string name="battery_percent_text_keyguard_title">Mod kekunci</string>
     <string name="battery_percent_text_keyguard_summary">Tentukan teks peratus di bar status</string>
-    <string name="keyguard_percent_text_default">Asal (ketika cas)</string>
+    <string name="keyguard_percent_text_default">Tetapan asal (ketika cas)</string>
     <string name="keyguard_percent_text_show_always">Sentiasa tunjuk</string>
     <string name="keyguard_percent_text_hide">Sembunyi</string>
     <string name="battery_percent_text_header_hide_title">Sembunyi di kepala bar status</string>
@@ -1612,7 +1613,7 @@
 
     <!-- Recents panel search bar -->
     <string name="pref_recents_searchbar_title">Pamer bar carian</string>
-    <string name="recents_searchbar_default">Asal</string>
+    <string name="recents_searchbar_default">Tetapan asal</string>
     <string name="recents_searchbar_hide_keep_space">Sembunyi dan kekalkan ruang</string>
     <string name="recents_searchbar_hide_remove_space">Sembunyi dan buang ruang</string>
 
@@ -1750,7 +1751,7 @@
     <string name="pref_signal_cluster_nosim_summary">Perlukan reboot</string>
 
     <!-- QS: tile options menu -->
-    <string name="menu_tile_dual">Mod dual</string>
+    <string name="menu_tile_dual">Mod pendua</string>
     <string name="menu_tile_locked">Tunjuk di skrin kunci</string>
     <string name="menu_tile_locked_only">Hanya di skrin kunci</string>
     <string name="menu_tile_secured">Tunjuk di skrin kunci yang dikunci</string>
@@ -1896,5 +1897,9 @@
     <string name="pref_lc_notif_hide_persistent_title">Sembunyi notifikasi tetap</string>
     <string name="pref_lc_notif_hide_persistent_summary">Sembunyi notifikasi tetap 
         yang datang dari aplikasi ini</string>
+	
+	<!-- Navbar: Auto-fade keys -->
+    <string name="pref_navbar_autofade_keys_title">Kekunci auto pudar</string>
+    <string name="pref_navbar_autofade_keys_summary">Pudar kekunci secara automatik selepas tamat masa tamat. Set 0 untuk tidak aktif</string>
 
 </resources>
