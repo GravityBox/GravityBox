@@ -1897,4 +1897,8 @@
     <string name="pref_lc_notif_hide_persistent_summary">Скрытие всех текущих и других неочищаемых 
         уведомлений данного приложения</string>
 
+    <!-- Navbar: Auto-fade keys -->
+    <string name="pref_navbar_autofade_keys_title">Автоисчезновение кнопок</string>
+    <string name="pref_navbar_autofade_keys_summary">Кнопки автоматически исчезают после истечения установленной задержки. Введите для 0 отключения.</string>
+
 </resources>
