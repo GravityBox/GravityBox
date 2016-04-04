@@ -52,9 +52,9 @@
     <string name="caller_fullscreen_photo_title">Фото вызывающего на весь экран</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">Синхр. вкл.</string>
-    <string name="quick_settings_sync_off">Синхр. выкл.</string>
-    <string name="quick_settings_torch_on">Фонарик вкл.</string>
+    <string name="quick_settings_sync_on">Синхр. вкл</string>
+    <string name="quick_settings_sync_off">Синхр. выкл</string>
+    <string name="quick_settings_torch_on">Фонарик вкл</string>
     <string name="quick_settings_torch_off">Фонарик выкл</string>
     <string name="quick_settings_torch_off_notif">Нажмите для выключения</string>
     <string name="quick_settings_qr_playing">Воспроизведение&#8230;</string>
@@ -65,7 +65,7 @@
     <string name="quick_settings_expanded_desktop_disabled">Отключено</string>
     <string name="quick_settings_expanded_desktop_normal">Нормальный</string>
     <string name="quick_settings_expanded_desktop_expanded">Расширенный</string>
-    <string name="quick_settings_stay_awake_on">Бодрствование вкл.</string>
+    <string name="quick_settings_stay_awake_on">Бодрствование вкл</string>
     <string name="quick_settings_nfc_on">NFC вкл</string>
     <string name="quick_settings_nfc_off">NFC выкл</string>
     <string name="quick_settings_usb_tether_off">Отключено</string>
@@ -135,9 +135,9 @@
     <string name="about_donate_summary">Пожертвуйте через PayPal для поддержки разработки</string>
 
     <!-- Reboot confirmation -->
-    <string name="reboot_confirm">%s будет перезагружен.</string>
-    <string name="reboot_confirm_recovery">%s будет перезагружен в режим восстановления.</string>
-    <string name="reboot_confirm_bootloader">%s будет перезагружен в загрузчик.</string>
+    <string name="reboot_confirm">%s будет перезагружен</string>
+    <string name="reboot_confirm_recovery">%s будет перезагружен в режим восстановления</string>
+    <string name="reboot_confirm_bootloader">%s будет перезагружен в загрузчик</string>
 
     <!-- Engineering mode shortcut -->
     <string name="engineering_mode_title">Инженерный режим</string>
@@ -233,7 +233,7 @@
     <string name="hwkey_action_kill">Завершить текущее приложение</string>
     <string name="hwkey_action_sleep">Отключить экран</string>
     <string name="pref_hwkey_kill_delay_title">Время удержания для завершения</string>
-    <string name="pref_hwkey_kill_delay_summary">Применимо к действию Завершить текущее приложение. Определяет, как долго нужно удерживать нажатие на кнопке, чтобы завершить приложение</string>
+    <string name="pref_hwkey_kill_delay_summary">Применимо к действию Завершить текущее приложение. Определяет, как долго нужно удерживать нажатие на кнопке, чтобы завершить приложение.</string>
     <string name="pref_hwkey_doubletap_speed_title">Скорость двойного нажатия</string>
     <string name="pref_hwkey_doubletap_speed_summary">Определяет, как быстро нужно нажать на кнопку для срабатывания двойного нажатия</string>
     <string name="app_killed">Приложение %s завершено</string>
@@ -453,8 +453,8 @@
     <string name="hwkey_action_menu">Показать меню</string>
 
     <!-- HW Key Action: Expanded desktop -->
-    <string name="hwkey_action_expanded_desktop">Вкл расшир.рабочий стол</string>
-    <string name="hwkey_action_expanded_desktop_disabled">Расшир.рабочий стол отключен!</string>
+    <string name="hwkey_action_expanded_desktop">Вкл расш. рабочий стол</string>
+    <string name="hwkey_action_expanded_desktop_disabled">Расш. рабочий стол отключен!</string>
 
     <!-- Navigation bar tweaks category -->
     <string name="pref_cat_navigation_bar_title">Настройки панели навигации</string>
@@ -500,7 +500,7 @@
     <string name="pie_controls_disabled">Никогда</string>
     <string name="pie_controls_enabled_always">Всегда</string>
     <string name="pie_controls_enabled_expanded">При вкл расш.рабочем столе</string>
-    <string name="pie_controls_enabled_expanded_navbar">Когда расшир.раб.стол без панели навигации</string>
+    <string name="pie_controls_enabled_expanded_navbar">Когда расш.раб.стол без панели навигации</string>
 
     <!-- Unplug turns on screen -->
     <string name="pref_unplug_turns_on_screen_title">Вкл. экран при подключении</string>
@@ -747,7 +747,7 @@
 
     <!-- Tiles: Hide on change -->
     <string name="pref_qs_hide_on_change_title">Скрыть после изменения</string>
-    <string name="pref_qs_hide_on_change_summary">Скрытие строки состояния по одиночному нажатию на плитке 
+    <string name="pref_qs_hide_on_change_summary">Скрытие строки состояния по одиночному нажатию на плитке. 
         Применимо к простым плиткам с 2 состояниями.</string>
 
     <!-- Power tweaks categories -->
@@ -846,7 +846,7 @@
     <string name="pref_cat_misc_other_title">Другие настройки</string>
 
     <!-- Disable fullscreen keyboard -->
-    <string name="pref_ime_fullscreen_disable_title">Откл клавиатуру на полн.экране</string>
+    <string name="pref_ime_fullscreen_disable_title">Откл.клавиатуру на полн.экране</string>
 
     <!-- Torch auto-off -->
     <string name="pref_torch_auto_off_title">Автоотключение фонарика</string>
@@ -908,7 +908,7 @@
     <string name="pref_pulse_notification_delay_summary">Необходима перезагрузка</string>
 
     <!-- Powe menu: disable on lockscreen -->
-    <string name="pref_powermenu_disable_on_lockscreen_title">Откл на экране блокировки</string>
+    <string name="pref_powermenu_disable_on_lockscreen_title">Откл. на экране блокировки</string>
 
     <!-- Extended force overflow menu button option -->
     <string name="overflow_menu_default">По умолчанию</string>
@@ -961,7 +961,7 @@
     <string name="wsc_trans_required_summary">Функция требует действительного ID транзакции PayPal</string>
 
     <!-- Pie: disable system info -->
-    <string name="pref_pie_sysinfo_disable_title">Откл системн.информацию</string>
+    <string name="pref_pie_sysinfo_disable_title">Откл. системн.информацию</string>
 
     <!-- Pie: long press delay -->
     <string name="pref_pie_longpress_delay_title">Задержка удержания</string>
@@ -1222,7 +1222,7 @@
         индикации для всех уведомлений, поступающих в определённый временной период</string>
     <string name="pref_lc_qh_start_title">Время начала</string>
     <string name="pref_lc_qh_end_title">Время конца</string>
-    <string name="pref_lc_qh_mute_led_title">Откл световую индикацию</string>
+    <string name="pref_lc_qh_mute_led_title">Откл. световую индикацию</string>
 
     <!-- Notification control: LED mode -->
     <string name="pref_lc_led_mode_title">Режим индикатора</string>
@@ -1276,7 +1276,7 @@
     <string name="pref_increasing_ring_title">Нарастающая громкость</string>
     <string name="increasing_ring_enable">Включить</string>
     <string name="increasing_ring_min_volume_title">Начальная громкость</string>
-    <string name="increasing_ring_volume_notice">Примечание:\nесли значение начальной громкости превышает громкость звонка, мелодия будет воспроизводиться на уровне громкости звонка.</string>
+    <string name="increasing_ring_volume_notice">Примечание:\nесли значение начальной громкости превышает громкость звонка, мелодия будет воспроизводиться на уровне громкости звонка</string>
     <string name="increasing_ring_ramp_up_duration_title">Длительность нарастания</string>
     <string name="increasing_ring_interval_0">5 с</string>
     <string name="increasing_ring_interval_1">10 c</string>
@@ -1370,7 +1370,7 @@
     <string name="pref_headset_action_unplug_title">Отключение гарнитуры</string>
 
     <!-- Quiet Hours: mute vibrations -->
-    <string name="pref_lc_qh_mute_vibe_title">Откл вибрацию уведомлений</string>
+    <string name="pref_lc_qh_mute_vibe_title">Откл. вибрацию уведомлений</string>
     <string name="pref_lc_qh_mute_vibe_summary">Отключение вибрации уведомлений на этом устройстве
         и на сопряженном устройстве Android Wear</string>
 
@@ -1483,7 +1483,7 @@
     <string name="pref_signal_cluster_hide_sim_labels_summary">Необходима перезагрузка</string>
 
     <!-- Power menu: expanded desktop in power menu -->
-    <string name="pref_powermenu_expanded_desktop_title">Расш.рабочий стол в меню выключения</string>
+    <string name="pref_powermenu_expanded_desktop_title">Расш. рабочий стол в меню</string>
     <string name="pref_powermenu_expanded_desktop_summary">Убедитесь, что доступен альтернативный метод отключения расширенного рабочего стола!!!</string>
 
     <!-- QuickRecord tile settings -->
@@ -1694,7 +1694,7 @@
     <string name="pref_battery_tile_swap_actions_summary">Смена действий на нажатие/длительное нажатие</string>
 
     <!-- Power: Disable battery saver indication -->
-    <string name="pref_battery_saver_indication_disable_title">Отключить индикацию энергосбережения</string>
+    <string name="pref_battery_saver_indication_disable_title">Откл.индикацию энергосбережения</string>
     <string name="pref_battery_saver_indication_disable_summary">Отключение оранжевого цвета системных полос 
         при активности энергосбережения</string>
 
@@ -1703,12 +1703,12 @@
     <string name="pref_signal_cluster_dem_summary">Необходима перезагрузка</string>
 
     <!-- UNC: Disable sound to vibrate conversion -->
-    <string name="pref_lc_sound_vibrate_title">Откл конверсию звука в вибрацию</string>
+    <string name="pref_lc_sound_vibrate_title">Откл.конверсию звука в вибрацию</string>
     <string name="pref_lc_sound_vibrate_summary">Предотвращение вибрации уведомлений с ранее отключенной
         вибрацией при выборе режиме звонка \"Только вибрация\"</string>
 
     <!-- UNC: QuietHours: mute system level vibrations -->
-    <string name="pref_lc_qh_mute_system_vibe_title">Откл вибрацию на устройстве</string>
+    <string name="pref_lc_qh_mute_system_vibe_title">Откл. вибрацию на устройстве</string>
     <string name="pref_lc_qh_mute_system_vibe_summary">Отключение ВСЕХ вибраций на системном уровне,
        включаю вибрацию уведомлений на ДАННОМ устройстве. Вибрации на сопряженном устройстве Android Wear
        могут работать, если вибрация включена.
@@ -1718,14 +1718,14 @@
     <string name="pref_recents_clear_all_visible_title">Очистить только видимые</string>
 
     <!-- Lockscreen: doubletap to sleep -->
-    <string name="pref_lockscreen_dt2s_title">Дв. нажатие для сна</string>
+    <string name="pref_lockscreen_dt2s_title">Двойное нажатие для сна</string>
 
     <!-- Status bar: disable peek -->
-    <string name="pref_statusbar_disable_peek_title">Откл просмотр</string>
+    <string name="pref_statusbar_disable_peek_title">Откл. просмотр</string>
     <string name="pref_statusbar_disable_peek_summary">Строка состояния не будет раскрываться при одиночном нажатии</string>
 
     <!-- Status bar: Double-tap to sleep -->
-    <string name="pref_statusbar_dt2s_title">Дв. нажатие для сна</string>
+    <string name="pref_statusbar_dt2s_title">Двойное нажатие для сна</string>
     <string name="pref_statusbar_dt2s_summary">Необходимо отключение просмотра</string>
 
     <!-- Pie trigger indicator -->
@@ -1863,7 +1863,7 @@
     <string name="battery_percent_text_position_left">Слева от значка батареи</string>
 
     <!-- Disable Imprint vibrations -->
-    <string name="pref_imprint_vibe_disable_title">Откл вибрацию отпечатка</string>
+    <string name="pref_imprint_vibe_disable_title">Откл. вибрацию отпечатка</string>
     <string name="imprint_vibe_disable_success">При успешной аутентификации</string>
     <string name="imprint_vibe_disable_error">При ошибке аутентификации</string>
 
