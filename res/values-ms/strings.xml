@@ -1338,8 +1338,8 @@
     <string name="quick_settings_compass_off">Kompas dimatikan</string>
     <string name="quick_settings_compass_init">Memeriksa#8230;</string>
 
-    
-	<!-- Cardinal directions -->
+
+    <!-- Cardinal directions -->
     <string name="cd_north">N</string>
     <string name="cd_north_east">NE</string>
     <string name="cd_east">E</string>
@@ -1634,7 +1634,7 @@
     <!-- QS: Hide brightness slider -->
     <string name="pref_qs_hide_brightness_title">Sembunyi butang kecerahan</string>
 	
-	<!-- SignalCluster: reduce icon spacing -->
+    <!-- SignalCluster: reduce icon spacing -->
     <string name="pref_signal_cluster_narrow_title">Kurangkan jarak ikon</string>
     <string name="pref_signal_cluster_narrow_summary">Kurangkan jarak ikon signal</string>
 
@@ -1715,7 +1715,7 @@
         masih aktif jika getaran notifikasi aktif.
     </string>
 	
-	<!-- Recents: clear visible only -->
+    <!-- Recents: clear visible only -->
     <string name="pref_recents_clear_all_visible_title">Hapuskan yang jelas sahaja</string>
 
     <!-- Lockscreen: doubletap to sleep -->
@@ -1898,8 +1898,12 @@
     <string name="pref_lc_notif_hide_persistent_summary">Sembunyi notifikasi tetap 
         yang datang dari aplikasi ini</string>
 	
-	<!-- Navbar: Auto-fade keys -->
+    <!-- Navbar: Auto-fade keys -->
     <string name="pref_navbar_autofade_keys_title">Kekunci auto pudar</string>
     <string name="pref_navbar_autofade_keys_summary">Pudar kekunci secara automatik selepas tamat masa tamat. Set 0 untuk tidak aktif</string>
-
+	
+    <!-- QS: StayAwake tile Auto-reset -->
+    <string name="pref_sa_tile_auto_reset_title">Set semula automatik</string>
+    <string name="pref_sa_tile_auto_reset_summary">Set tetapan asal masa skrin ketika skrin dimatikan</string>
+    
 </resources>
