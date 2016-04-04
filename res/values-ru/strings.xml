@@ -55,11 +55,11 @@
     <string name="caller_fullscreen_photo_title">Фото вызывающего на весь экран</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">Синхр. вкл.</string>
-    <string name="quick_settings_sync_off">Синхр. выкл.</string>
-    <string name="quick_settings_wifi_ap_on">ТД Wi-Fi вкл.</string>
-    <string name="quick_settings_wifi_ap_off">ТД Wi-Fi выкл.</string>
-    <string name="quick_settings_torch_on">Фонарик вкл.</string>
+    <string name="quick_settings_sync_on">Синхр. вкл</string>
+    <string name="quick_settings_sync_off">Синхр. выкл</string>
+    <string name="quick_settings_wifi_ap_on">ТД Wi-Fi вкл</string>
+    <string name="quick_settings_wifi_ap_off">ТД Wi-Fi выкл</string>
+    <string name="quick_settings_torch_on">Фонарик вкл</string>
     <string name="quick_settings_torch_off">Фонарик выкл</string>
     <string name="quick_settings_torch_off_notif">Нажмите для выключения</string>
     <string name="quick_settings_qr_playing">Воспроизведение&#8230;</string>
@@ -70,8 +70,8 @@
     <string name="quick_settings_expanded_desktop_disabled">Отключено</string>
     <string name="quick_settings_expanded_desktop_normal">Нормальный</string>
     <string name="quick_settings_expanded_desktop_expanded">Расширенный</string>
-    <string name="quick_settings_stay_awake_on">Бодрствование вкл.</string>
-    <string name="quick_settings_stay_awake_off">Бодрствование выкл.</string>
+    <string name="quick_settings_stay_awake_on">Бодрствование вкл</string>
+    <string name="quick_settings_stay_awake_off">Бодрствование выкл</string>
     <string name="quick_settings_nfc_on">NFC вкл</string>
     <string name="quick_settings_nfc_off">NFC выкл</string>
     <string name="quick_settings_camera_error_connect">Не удалось подключиться к камере</string>
@@ -148,9 +148,9 @@
     <string name="about_donate_summary">Пожертвуйте через PayPal для поддержки разработки</string>
 
     <!-- Reboot confirmation -->
-    <string name="reboot_confirm">%s будет перезагружен.</string>
-    <string name="reboot_confirm_recovery">%s будет перезагружен в режим восстановления.</string>
-    <string name="reboot_confirm_bootloader">%s будет перезагружен в загрузчик.</string>
+    <string name="reboot_confirm">%s будет перезагружен</string>
+    <string name="reboot_confirm_recovery">%s будет перезагружен в режим восстановления</string>
+    <string name="reboot_confirm_bootloader">%s будет перезагружен в загрузчик</string>
 
     <!-- Screen off effect -->
     <string name="crt_off_effect_title">Эффект выключения экрана</string>
@@ -250,9 +250,9 @@
     <string name="hwkey_action_kill">Завершить текущее приложение</string>
     <string name="hwkey_action_sleep">Отключить экран</string>
     <string name="pref_hwkey_kill_delay_title">Время удержания для завершения</string>
-    <string name="pref_hwkey_kill_delay_summary">Применимо к действию Завершить текущее приложение. Определяет, как долго нужно удерживать нажатие на кнопке, чтобы завершить приложение</string>
+    <string name="pref_hwkey_kill_delay_summary">Применимо к действию Завершить текущее приложение. Определяет, как долго нужно удерживать нажатие на кнопке, чтобы завершить приложение.</string>
     <string name="pref_hwkey_doubletap_speed_title">Скорость двойного нажатия</string>
-    <string name="pref_hwkey_doubletap_speed_summary">Определяет, как быстро нужно нажать на кнопку для срабатывания двойного нажатия.</string>
+    <string name="pref_hwkey_doubletap_speed_summary">Определяет, как быстро нужно нажать на кнопку для срабатывания двойного нажатия</string>
     <string name="app_killed">Приложение %s завершено</string>
     <string name="nothing_to_kill">Нет приложений для завершения</string>
     <string name="no_previous_app_found">Предыдущее приложение не найдено</string>
@@ -376,7 +376,7 @@
 
     <!-- Disable hardware keys for pie -->
     <string name="pref_hwkeys_disable_title">Отключить нав. кнопки</string>
-    <string name="pref_hwkeys_disable_summary">Отключение одиночных нажатий на навигационных кнопках при включенном веерном меню.</string>
+    <string name="pref_hwkeys_disable_summary">Отключение одиночных нажатий на навигационных кнопках при включенном веерном меню</string>
 
     <!-- Option for GB dark theme -->
     <string name="pref_gb_theme_dark_title">Использовать тему Holo Dark</string>
@@ -488,8 +488,8 @@
     <string name="hwkey_action_menu">Показать меню</string>
 
     <!-- HW Key Action: Expanded desktop -->
-    <string name="hwkey_action_expanded_desktop">Вкл расшир.рабочий стол</string>
-    <string name="hwkey_action_expanded_desktop_disabled">Расшир.рабочий стол отключен!</string>
+    <string name="hwkey_action_expanded_desktop">Вкл расш. рабочий стол</string>
+    <string name="hwkey_action_expanded_desktop_disabled">Расш. рабочий стол отключен!</string>
 
     <!-- Navigation bar tweaks category -->
     <string name="pref_cat_navigation_bar_title">Настройки панели навигации</string>
@@ -985,7 +985,7 @@
     <string name="pref_lockscreen_bg_blur_effect_title">Эффект размытия</string>
 
     <!-- Tiles: Disable tile spanning -->
-    <string name="pref_qs_tile_span_disable_title">Откл расширение плиток</string>
+    <string name="pref_qs_tile_span_disable_title">Откл. расширение плиток</string>
     <string name="pref_qs_tile_span_disable_summary">Предотвращение расширения плиток пользователя, яркости и настроек в ландшафтном режиме</string>
 
     <!-- Force overflow menu button -->
@@ -1050,7 +1050,7 @@
     <string name="pref_clear_recents_mode_1">Нажатие для очистки всего, кроме текущей задачи, удержание для очистки всего</string>
 
     <!-- Powe menu: disable on lockscreen -->
-    <string name="pref_powermenu_disable_on_lockscreen_title">Откл на экране блокировки</string>
+    <string name="pref_powermenu_disable_on_lockscreen_title">Откл. на экране блокировки</string>
 
     <!-- Extended force overflow menu button option -->
     <string name="overflow_menu_default">По умолчанию</string>
@@ -1409,7 +1409,7 @@
         индикации для всех уведомлений, поступающих в определённый временной период</string>
     <string name="pref_lc_qh_start_title">Время начала</string>
     <string name="pref_lc_qh_end_title">Время конца</string>
-    <string name="pref_lc_qh_mute_led_title">Откл световую индикацию</string>
+    <string name="pref_lc_qh_mute_led_title">Откл. световую индикацию</string>
 
     <!-- Notification control: LED mode -->
     <string name="pref_lc_led_mode_title">Режим индикатора</string>
@@ -1429,7 +1429,7 @@
     <string name="pref_lc_qh_cat_weekend_title">Выходные</string>
 
     <!-- Disable data network type icons -->
-    <string name="pref_disable_data_network_type_icons_title">Откл индикаторы типа сети</string>
+    <string name="pref_disable_data_network_type_icons_title">Откл. индикаторы типа сети</string>
     <string name="pref_disable_data_network_type_icons_summary">Отключение индикаторов 3G/G рядом с сигналом</string>
 
     <!-- Force English locale -->
@@ -1536,7 +1536,7 @@
     <string name="delete">Удалить</string>
 
     <!-- Lockscreen: disable emergency call button -->
-    <string name="pref_lockscreen_disable_ecb_title">Откл кнопку экстр.вызова</string>
+    <string name="pref_lockscreen_disable_ecb_title">Откл. кнопку экстр.вызова</string>
     <string name="pref_lockscreen_disable_ecb_summary">ИСПОЛЬЗУЙТЕ НА СВОЙ СТРАХ И РИСК!!!!</string>
 
     <!-- AppPicker: icon pick cancelled -->
@@ -1587,7 +1587,7 @@
     <string name="pref_headset_action_unplug_title">Отключение гарнитуры</string>
 
     <!-- Quiet Hours: mute vibrations -->
-    <string name="pref_lc_qh_mute_vibe_title">Откл вибрацию уведомлений</string>
+    <string name="pref_lc_qh_mute_vibe_title">Откл. вибрацию уведомлений</string>
     <string name="pref_lc_qh_mute_vibe_summary">Отключение вибрации уведомлений на этом устройстве
         и на сопряженном устройстве Android Wear</string>
 
@@ -1747,9 +1747,9 @@
     <!-- Status bar: disable notification ticker -->
     <string name="pref_statusbar_ticker_policy_title">Строка уведомлений</string>
     <string name="sb_ticker_policy_default">По умолчанию</string>
-    <string name="sb_ticker_policy_locked">Откл на экране блокировки</string>
-    <string name="sb_ticker_policy_secured">Откл на защищённом экране блокировки</string>
-    <string name="sb_ticker_policy_disabled">Откл всегда</string>
+    <string name="sb_ticker_policy_locked">Откл. на экране блокировки</string>
+    <string name="sb_ticker_policy_secured">Откл. на защищённом экране блокировки</string>
+    <string name="sb_ticker_policy_disabled">Откл. всегда</string>
 
     <!-- MSIM signal cluster: Hide SIM labels -->
     <string name="pref_signal_cluster_hide_sim_labels_title">Скрыть ярлыки SIM</string>
@@ -1765,7 +1765,7 @@
     <string name="headsup_importance_high">Высокий</string>
 
     <!-- Power menu: expanded desktop in power menu -->
-    <string name="pref_powermenu_expanded_desktop_title">Расш.рабочий стол в меню выключения</string>
+    <string name="pref_powermenu_expanded_desktop_title">Расш. рабочий стол в меню</string>
     <string name="pref_powermenu_expanded_desktop_summary">Убедитесь, что доступен альтернативный метод отключения расширенного рабочего стола!!!</string>
 
     <!-- UNC HeadsUp: ignore for updated notification -->
@@ -1880,12 +1880,12 @@
     <string name="hwkey_recents_doubletap_dialog_title">Нажатие на кнопку Недавние</string>
 
     <!-- UNC: Disable sound to vibrate conversion -->
-    <string name="pref_lc_sound_vibrate_title">Откл конверсию звука в вибрацию</string>
+    <string name="pref_lc_sound_vibrate_title">Откл.конверсию звука в вибрацию</string>
     <string name="pref_lc_sound_vibrate_summary">Предотвращение вибрации уведомлений с ранее отключенной
         вибрацией при выборе режиме звонка \"Только вибрация\"</string>
 
     <!-- UNC: QuietHours: mute system level vibrations -->
-    <string name="pref_lc_qh_mute_system_vibe_title">Откл вибрацию на устройстве</string>
+    <string name="pref_lc_qh_mute_system_vibe_title">Откл. вибрацию на устройстве</string>
     <string name="pref_lc_qh_mute_system_vibe_summary">Отключение ВСЕХ вибраций на системном уровне,
        включаю вибрацию уведомлений на ДАННОМ устройстве. Вибрации на сопряженном устройстве Android Wear
        могут работать, если вибрация включена.
