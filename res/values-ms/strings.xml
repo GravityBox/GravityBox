@@ -24,8 +24,8 @@
     <string name="battery_style_circle_percent">Jenis bulat dengan peratusan</string>
     <string name="battery_style_none">Tiada</string>
 
-    <string name="vol_music_controls_title">Butang volume melangkau track lagu</string>
-    <string name="vol_music_controls_summary">Langkau track dengan menekan lama butang volume ketika screen off</string>
+    <string name="vol_music_controls_title">Butang volume langkau trek lagu</string>
+    <string name="vol_music_controls_summary">Langkau trek dengan menekan lama butang volume ketika skrin dimatikan</string>
 
     <string name="low_battery_warning_policy_title">Amaran bateri rendah</string>
     <string name="low_battery_warning_default">Tetapan asal</string>
@@ -39,9 +39,9 @@
     <string name="poweroff_recovery">Recovery</string>
     <string name="poweroff_bootloader">Bootloader</string>
 
-    <string name="vol_key_cursor_control_title">Kekunci volume kawal anak panah</string>
+    <string name="vol_key_cursor_control_title">Kunci volume kawal anak panah</string>
     <string name="vol_key_cursor_control_summary">Kawal anak panah dalam teks</string>
-    <string name="vol_key_cursor_control_off">Dimatikan</string>
+    <string name="vol_key_cursor_control_off">Tidak aktif</string>
     <string name="vol_key_cursor_control_on">Volume atas/bawah gerakkan anak panah kiri/kanan</string>
     <string name="vol_key_cursor_control_on_reverse">Volume atas/bawah gerakkan anak panah kiri/kanan</string>
 
@@ -52,8 +52,8 @@
     <string name="caller_fullscreen_photo_title">Skrin penuh gambar pemanggil</string>
 
     <!-- QuickSettings strings -->
-    <string name="quick_settings_sync_on">Hidupkan Sync</string>
-    <string name="quick_settings_sync_off">Matikan sync</string>
+    <string name="quick_settings_sync_on">Hidupkan penyegera</string>
+    <string name="quick_settings_sync_off">Matikan penyegera</string>
     <string name="quick_settings_torch_on">Hidupkan lampu</string>
     <string name="quick_settings_torch_off">Matikan lampu</string>
     <string name="quick_settings_torch_off_notif">Sentuh untuk tutup</string>
@@ -72,20 +72,20 @@
     <string name="quick_settings_usb_tether_connected">Tutup sambungan USB</string>
     <string name="quick_settings_usb_tether_on">Sambungan USB</string>
     <string name="quick_settings_music_play">Main</string>
-    <string name="quick_settings_music_pause">Pause</string>
-    <string name="quick_settings_smart_radio_on">Radio pintar dihidupkan</string>
-    <string name="quick_settings_smart_radio_off">Radio pintar dimatikan</string>
+    <string name="quick_settings_music_pause">Jeda</string>
+    <string name="quick_settings_smart_radio_on">Radio pintar diaktifkan</string>
+    <string name="quick_settings_smart_radio_off">Radio pintar tidak aktif</string>
     <string name="quick_settings_lock_screen_on">Kunci skrin dihidupkan</string>
-    <string name="quick_settings_lock_screen_off">Kunciskrin dimatikan</string>
+    <string name="quick_settings_lock_screen_off">Kunci skrin dimatikan</string>
     <string name="quick_settings_location_on">Lokasi</string>
-    <string name="quick_settings_location_off">Lokasi dimatikan</string>
-    <string name="quick_settings_quiet_hours_off">Waktu tiada gangguan dimatikan</string>
-    <string name="quick_settings_quiet_hours_on">Waktu tiada gangguan hidup</string>
+    <string name="quick_settings_location_off">Lokasi tidak aktif</string>
+    <string name="quick_settings_quiet_hours_off">Waktu tiada gangguan tidak aktif</string>
+    <string name="quick_settings_quiet_hours_on">Waktu tiada gangguan dihidupkan</string>
     <string name="quick_settings_quiet_hours_auto">Waktu tiada gangguan automatik</string>
 
     <!--  QuickSettings settings -->
     <string name="quick_settings_title">Statusbar tile</string>
-    <string name="quick_settings_summary">Bolehkan tunjuk atau sembunyi quickseeting tile di statusbar</string>
+    <string name="quick_settings_summary">Bolehkan tunjuk atau sembunyi tile QuickSettings di bar status</string>
     <string name="qs_tile_airplane_mode">Mod kapal terbang</string>
     <string name="qs_tile_wifi">Wi-Fi</string>
     <string name="qs_tile_bluetooth">Bluetooth</string>
@@ -95,18 +95,18 @@
     <string name="qs_tile_mobile_data">Data telefon</string>
     <string name="qs_tile_network_mode">Jenis rangkaian</string>
     <string name="qs_tile_data_usage">Penggunaan data</string>
-    <string name="qs_tile_autorotation">Putaran Auto</string>
-    <string name="qs_tile_sync">Synchronisasi</string>
+    <string name="qs_tile_autorotation">Putaran automatik</string>
+    <string name="qs_tile_sync">Penyegerakan</string>
     <string name="qs_tile_wifi_ap">Kongsi data</string>
     <string name="qs_tile_torch_aosp">Lampu picit (asal)</string>
-    <string name="qs_tile_torch_gb">Lampu picit(GravityBox)</string>
+    <string name="qs_tile_torch_gb">Lampu picit (GravityBox)</string>
     <string name="qs_tile_gravitybox">GravityBox</string>
     <string name="qs_tile_sleep">Tidur</string>
     <string name="qs_tile_quickrecord">Rakaman cepat</string>
     <string name="qs_tile_volume">Nada</string>
     <string name="qs_tile_expanded_desktop">Desktop penuh</string>
     <string name="qs_tile_stay_awake">Kekal terjaga</string>
-    <string name="qs_tile_screenshot">Screenshot</string>
+    <string name="qs_tile_screenshot">Tangkapan skrin</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_usb_tethering">Sambungan USB</string>
     <string name="qs_tile_music">Muzik</string>
@@ -121,13 +121,13 @@
     <string name="press_color_to_apply">Tekan warna untuk set</string>
 
     <!-- Main preference categories -->
-    <string name="pref_cat_statusbar_title">Modifikasi statusbar</string>
-    <string name="pref_cat_statusbar_summary">Mengandungi pelbagai modifikasi untuk statusbar</string>
+    <string name="pref_cat_statusbar_title">Modifikasi bar status</string>
+    <string name="pref_cat_statusbar_summary">Mengandungi pelbagai modifikasi untuk bar status</string>
     <string name="pref_cat_misc_title">Modifikasi lain-lain</string>
-    <string name="pref_cat_misc_summary">Mengandungi modifikasi yang tidak specific atas kategori</string>
+    <string name="pref_cat_misc_summary">Mengandungi modifikasi yang tidak spesifik atas kategori</string>
 
     <!-- About -->
-    <string name="pref_cat_about_title">Tentang</string>
+    <string name="pref_cat_about_title">Mengenai aplikasi</string>
     <string name="about_gb_summary">Diprogramkan oleh C3C076@XDA. Tekan untuk lihat post asal.</string>
     <string name="about_xposed_title">Xposed framework</string>
     <string name="about_xposed_summary">Dikodkan oleh rovo89@XDA. Tekan untuk lihat post asal.</string>
@@ -145,11 +145,11 @@
 
     <!-- Dual SIM ringer -->
     <string name="dual_sim_ringer_title">Pembunyi Dual SIM</string>
-    <string name="dual_sim_ringer_summary">Lancarkan app yang membenarkan untuk set ringtone dan bunyi notifikasi berbeza mengikut SIM</string>
+    <string name="dual_sim_ringer_summary">Lancarkan aplikasi yang membenarkan untuk set bunyi nada dan bunyi notifikasi berbeza mengikut SIM</string>
 
     <!--  Lockscreen tweaks -->
-    <string name="pref_cat_lockscreen_title">Modifikasi skrin kekunci</string>
-    <string name="pref_cat_lockscreen_summary">Mengandungi pelbagai modifikasi skrin kekunci</string>
+    <string name="pref_cat_lockscreen_title">Modifikasi skrin kunci</string>
+    <string name="pref_cat_lockscreen_summary">Mengandungi pelbagai modifikasi skrin kunci</string>
     <string name="pref_cat_lockscreen_background_title">Latar belakang skrin kunci</string>
     <string name="pref_lockscreen_background_title">Gaya latar belakang</string>
     <string name="lockscreen_bg_default">Latar belakang asal</string>
@@ -157,9 +157,9 @@
     <string name="lockscreen_bg_image">Gambar</string>
     <string name="lockscreen_bg_last_screen">Skrin terakhir</string>
     <string name="pref_lockscreen_bg_color_title">Set warna lain</string>
-    <string name="pref_lockscreen_bg_color_summary">Benarkan untuk set warna lain untuk skrin kunci</string>
+    <string name="pref_lockscreen_bg_color_summary">Aktifkan untuk set warna lain untuk skrin kunci</string>
     <string name="pref_lockscreen_bg_image_title">Set imej</string>
-    <string name="pref_lockscreen_bg_image_summary">Benarkan untuk set gambar lain untuk skrin kunci</string>
+    <string name="pref_lockscreen_bg_image_summary">Aktifkan untuk set gambar lain untuk skrin kunci</string>
     <string name="lockscreen_background_result_successful">Latar belakang telah berubah</string>
     <string name="lockscreen_background_result_not_successful">Latar belakang tidak berubah</string>
     <string name="pref_cat_lockscreen_other_title">Lain-lain</string>
@@ -170,7 +170,7 @@
 
     <!--  Low battery LED flashing -->
     <string name="pref_flashing_led_disable_title">Matikan kelipan LED</string>
-    <string name="pref_flashing_led_disable_summary">Matikan kelipan ketika bateri rendah ketika tidak dicas</string>
+    <string name="pref_flashing_led_disable_summary">Matikan kelipan ketika bateri rendah dan tidak dicas</string>
 
     <!-- Display tweaks category -->
     <string name="pref_cat_display_title">Modifikasi paparan</string>
@@ -178,23 +178,23 @@
 
     <!-- Minimum brightness level -->
     <string name="pref_brightness_min_title">Tahap kecerahan minimum</string>
-    <string name="pref_brightness_min_summary">Benarkan tahap kecerahan minimum. Hanya untuk kecerahan manual. (perlukan reboot)</string>
+    <string name="pref_brightness_min_summary">Aktifkan tahap kecerahan minimum. Hanya untuk kecerahan manual. (perlukan reboot)</string>
 
     <!--  Autobrightness levels -->
-    <string name="pref_ab_title">Tahap kecerahan auto</string>
-    <string name="pref_ab_summary">Benarkan set kecerahan ambient mengikut cahaya LED</string>
+    <string name="pref_ab_title">Tahap kecerahan automatik</string>
+    <string name="pref_ab_summary">Aktifkan set kecerahan ambien mengikut cahaya LED</string>
     <string name="level">Tahap</string>
     <string name="pref_ab_lux_max_label">Lux maximum</string>
     <string name="pref_ab_brighness_label">Kecerahan (%d &#8211; 255)</string>
     <string name="pref_ab_number_error_general">Nombor tidak sah</string>
-    <string name="pref_ab_brightness_too_low">Tidak dicadangkan untuk menetapkan kecerahan di bawah %d</string>
+    <string name="pref_ab_brightness_too_low">Tidak digalakkan untuk set kecerahan di bawah %d</string>
     <string name="pref_ab_brightness_too_high">Kecerahan tidak boleh melebihi 255</string>
     <string name="pref_ab_number_error_negative">Nilai tidak boleh lebih rendah atau sama dengan sifar</string>
-    <string name="pref_ab_number_not_ascending">Nilai rendah tidak boleh lebih dari yang tinggi</string>
+    <string name="pref_ab_number_not_ascending">Nilai rendah tidak boleh lebih dari yang nilai yang paling tinggi</string>
     <string name="pref_ab_number_not_descending">Nilai rendah tidak boleh rendah dari nilai yang paling rendah</string>
     <string name="pref_ab_values_set">Nilai untuk %s telah ditetapkan</string>
-    <string name="pref_ab_config_saved">Konfigurasi kecerahan auto yang baru telah disimpan</string>
-    <string name="pref_ab_config_cancelled">Konfigurasi kecerahan auto yang baru tidak disimpan</string>
+    <string name="pref_ab_config_saved">Konfigurasi kecerahan automatik yang baru telah disimpan</string>
+    <string name="pref_ab_config_cancelled">Konfigurasi kecerahan automatik yang baru tidak disimpan</string>
     <string name="pref_ab_button_set">Tetapkan</string>
 
     <!-- Lockscreen rotation -->
@@ -202,8 +202,8 @@
     <string name="pref_lockscreen_rotation_summary">Perlukan reboot</string>
 
     <!-- Lockscreen menu key -->
-    <string name="pref_lockscreen_menu_key_title">Membolehkan kekunci menu</string>
-    <string name="pref_lockscreen_menu_key_summary">Benarkan guna kunci menu untuk buka fon dengan cepat (perlukan reboot)</string>
+    <string name="pref_lockscreen_menu_key_title">Membolehkan kunci menu</string>
+    <string name="pref_lockscreen_menu_key_summary">Aktifkan guna kunci menu untuk buka peranti dengan cepat (perlukan reboot)</string>
 
     <!-- Statusbar center clock -->
     <string name="pref_statusbar_center_clock_title">Jam di tengah</string>
@@ -214,7 +214,7 @@
 
     <!-- More music volume steps -->
     <string name="pref_music_volume_steps_title">Tambah volume muzik</string>
-    <string name="pref_music_volume_steps_summary">Tambah jarak volume muzik (perlukan reboot)</string>
+    <string name="pref_music_volume_steps_summary">Tambah skala volume muzik (perlukan reboot)</string>
 
     <!-- Safe headset media volume -->
     <string name="pref_safe_media_volume_title">Tahap nada yang selamat untuk earfon</string>
@@ -222,32 +222,32 @@
 
     <!-- Hardware key actions -->
     <string name="pref_cat_hwkey_actions_title">Aksi untuk butang navigasi</string>
-    <string name="pref_cat_hwkey_actions_summary">Benarkan untuk set pelbagai aksi untuk butang navigasi(hardware dan software)</string>
+    <string name="pref_cat_hwkey_actions_summary">Aktifkan untuk set pelbagai aksi untuk butang navigasi (perkakasan dan perisian)</string>
     <string name="hwkey_menu_longpress_dialog_title">Aksi ketika kunci menu ditekan lama</string>
     <string name="hwkey_menu_doubletap_dialog_title">Aksi ketika kunci menu ditekan dua kali</string>
     <string name="hwkey_back_longpress_dialog_title">Aksi ketika kunci kembali ditekan</string>
     <string name="hwkey_action_default">Tetapan asal</string>
     <string name="hwkey_action_search">Carian</string>
     <string name="hwkey_action_voice_search">Carian suara</string>
-    <string name="hwkey_action_prev_app">Pergi ke applikasi sebelum</string>
+    <string name="hwkey_action_prev_app">Pergi ke applikasi sebelumnya</string>
     <string name="hwkey_action_kill">Matikan aplikasi di belakang</string>
     <string name="hwkey_action_sleep">Tidur</string>
-    <string name="pref_hwkey_kill_delay_title">Jarak masa sebelum aplikasi dimatikan </string>
+    <string name="pref_hwkey_kill_delay_title">Jarak masa sebelum aplikasi tidak aktif</string>
     <string name="pref_hwkey_kill_delay_summary">Hanya set untuk matikan aplikasi di belakang. Tentukan jarak masa yang diperlukan untuk matikan aplikasi</string>
     <string name="pref_hwkey_doubletap_speed_title">Kelajuan dua kali tekan</string>
     <string name="pref_hwkey_doubletap_speed_summary">Tentukan kelajuan dua kali tekan sebelum ia berlaku</string>
     <string name="app_killed">%s dihapuskan</string>
     <string name="nothing_to_kill">Tiada apa untuk dihapuskan</string>
-    <string name="no_previous_app_found">Tiada applikasi sebelum dijumpai</string>
+    <string name="no_previous_app_found">Applikasi sebelum tidak dijumpai</string>
 
     <!--  Phone tweaks category -->
-    <string name="pref_cat_phone_title">Modifikasi telefon</string>
-    <string name="pref_cat_phone_summary">Mengandungi pelbagai modifikasi telefon</string>
+    <string name="pref_cat_phone_title">Modifikasi peranti</string>
+    <string name="pref_cat_phone_summary">Mengandungi pelbagai modifikasi peranti</string>
 
     <!-- Flip action while ringing -->
     <string name="pref_phone_flip_title">Putaran ketika dering</string>
     <string name="pref_phone_flip_summary">Aksi ketika skrin berada dibawah ketika dering</string>
-    <string name="phone_flip_action_none">Tidak berbuat apa-apa</string>
+    <string name="phone_flip_action_none">Tiada</string>
     <string name="phone_flip_action_mute">Deringan senyap</string>
     <string name="phone_flip_action_dismiss">Panggilan tidak dilayan</string>
 
@@ -266,13 +266,13 @@
     <string name="pref_link_volumes_summary">Bila dimatikan,nada ringtone dan notifikasi boleh di set berasingan</string>
 
     <!-- Auto-switch QuickSettings -->
-    <string name="pref_auto_switch_qs_title">Auto-tukar QuickSettings</string>
-    <string name="pref_auto_switch_qs_summary">QuickSettings akan ditunjuk secara auto jika tiada notifikasi</string>
+    <string name="pref_auto_switch_qs_title">Automatik-tukar QuickSettings</string>
+    <string name="pref_auto_switch_qs_summary">QuickSettings akan ditunjuk secara automatik jika tiada notifikasi</string>
 
     <!-- Quick pulldown -->
     <string name="pref_quick_pulldown_title">Tarik di hujung</string>
-    <string name="pref_quick_pulldown_summary">Hujung status bar keluarkan QuickSettings</string>
-    <string name="quick_pulldown_off">Dimatikan</string>
+    <string name="pref_quick_pulldown_summary">Hujung bar status keluarkan QuickSettings</string>
+    <string name="quick_pulldown_off">Tidak aktif</string>
     <string name="quick_pulldown_right">Kanan</string>
     <string name="quick_pulldown_left">Kiri</string>
     <string name="quick_pulldown_both">Dua-dua</string>
@@ -281,7 +281,7 @@
     <string name="pref_cat_statusbar_colors_title">Warna bar status</string>
 
     <!-- Enable icon colors -->
-    <string name="pref_statusbar_icon_color_enable_title">Terdapat warna ikon</string>
+    <string name="pref_statusbar_icon_color_enable_title">Warna ikon di aktifkan</string>
 
     <!-- Statusbar icon color -->
     <string name="pref_statusbar_icon_color_title">Warna ikon di bar status</string>
@@ -305,11 +305,11 @@
     <string name="pref_notif_color_title">Set warna latar belakang</string>
     <string name="pref_notif_image_portrait_title">Set imej potret</string>
     <string name="pref_notif_image_landscape_title">Set imej lanskap</string>
-    <string name="pref_notif_background_alpha_title">Latar belakang bayang (transparent)</string>
+    <string name="pref_notif_background_alpha_title">Latar belakang bayang (telus)</string>
 
     <!-- Disable roaming indicators -->
-    <string name="pref_disable_roaming_indicators_title">Matikan tanda roaming</string>
-    <string name="pref_disable_roaming_indicators_summary">Apabila debenarkan tanda R akan tersembunyi. Guna dengan berhati2</string>
+    <string name="pref_disable_roaming_indicators_title">Matikan tanda perayauan</string>
+    <string name="pref_disable_roaming_indicators_summary">Apabila debenarkan tanda R akan tersembunyi. Guna dengan berhati-hati</string>
 
     <!-- Battery status in pie controls -->
     <string name="pie_battery_status_charging">Mengecas (<xliff:g id="percent">%d</xliff:g>%%)</string>
@@ -318,12 +318,12 @@
 
     <!-- Phone status in pie controls -->
     <string name="pie_phone_status_no_service">Tiada servis</string>
-    <string name="pie_phone_status_airplane_mode">Mod kapal terbang dihidupkan</string>
+    <string name="pie_phone_status_airplane_mode">Mod kapal terbang diaktifkan</string>
     <string name="pie_phone_status_emergency_only">Panggilan kecemasan sahaja</string>
 
     <!-- Pie Controls settings -->
-    <string name="pie_control_title">Pie</string>
-    <string name="pie_control_enable_title">Benarkan pie</string>
+    <string name="pie_control_title">Pai</string>
+    <string name="pie_control_enable_title">Aktifkan pai</string>
     <string name="pie_control_size_title">Saiz bar navigasi</string>
     <string name="pie_control_trigger_positions_title">Kawasan navigasi</string>
     <string name="pie_control_trigger_left">Di kiri skrin</string>
@@ -337,23 +337,23 @@
     <string name="button_backlight_mode_disable">Matikan lampu belakang</string>
     <string name="button_backlight_mode_always_on">Sentiasa hidupkan ketika skrin hidup</string>
     <string name="pref_button_backlight_notifications_title">Notifikasi lampu belakang</string>
-    <string name="pref_button_backlight_notifications_summary">PERCUBAAN! kelipkan lampu belakang jika ada notifikasi. Guna jika fon anda tiada LED. Boleh serap bateri secara rabak.</string>
+    <string name="pref_button_backlight_notifications_summary">PERCUBAAN! kelipkan lampu belakang jika ada notifikasi. Guna jika fon anda tiada LED. Memberi kesan kepada kelansungan bateri.</string>
 
     <!-- Disable navigation keys for pie -->
     <string name="pref_hwkeys_disable_title">Matikan bar navigasi</string>
-    <string name="pref_hwkeys_disable_summary">Matikan sekali sentuh ketika pie dibenarkan</string>
+    <string name="pref_hwkeys_disable_summary">Matikan sekali sentuh ketika pai dibenarkan</string>
 
     <!-- Option for GB dark theme -->
     <string name="pref_gb_theme_dark_title">Gunakan tema gelap</string>
     <string name="pref_gb_theme_dark_summary">Gunakan tema gelap untuk GB</string>
 
     <!-- Clear all recents positions -->
-    <string name="recent_clear_off">Matikan</string>
+    <string name="recent_clear_off">Tidak aktif</string>
     <string name="recent_clear_top_left">Kiri atas</string>
     <string name="recent_clear_top_right">Kanan atas</string>
     <string name="recent_clear_bottom_left">Kiri bawah</string>
     <string name="recent_clear_bottom_right">Kanan bawah</string>
-    <string name="recent_clear_navigation_bar">Bar navigasi (Perlukan modifikasi navigasi bar dibenarkan)</string>
+    <string name="recent_clear_navigation_bar">Bar navigasi (modifikasi bar navigasi perlu diaktifkan)</string>
 
     <!-- Clear all recents top margin -->
     <string name="pref_recent_clear_margin_top_title">Set ukuran atas</string>
@@ -372,8 +372,8 @@
     <string name="pref_quickapp_slot4_title">Aplikasi slot 4</string>
 
     <!-- GPS Tile (for non-MTK) -->
-    <string name="qs_tile_gps_enabled">GPS dihidupkan</string>
-    <string name="qs_tile_gps_disabled">GPS dimatikan</string>
+    <string name="qs_tile_gps_enabled">GPS aktif</string>
+    <string name="qs_tile_gps_disabled">GPS tidak aktif</string>
     <string name="qs_tile_gps_locked">GPS dikunci</string>
 
     <!-- Pie control: always show menu button -->
@@ -395,11 +395,11 @@
     <string name="pie_control_trigger_size_title">Saiz kawasan</string>
 
     <!-- Hide alarm icon -->
-    <string name="pref_alarm_icon_hide_title">Sembunyikan ikon Alarm</string>
+    <string name="pref_alarm_icon_hide_title">Sembunyikan ikon penggera</string>
 
     <!-- Screen dim level -->
     <string name="pref_screen_dim_level_title">Tahap kemalapan skrin</string>
-    <string name="pref_screen_dim_level_summary">Jumlah kecerahan untuk kemalapan skrin - Ketika skrin nak mati.(perlukan reboot)</string>
+    <string name="pref_screen_dim_level_summary">Jumlah kecerahan untuk kemalapan skrin - Ketika skrin hampir mati. (perlukan reboot)</string>
 
     <!-- Device type -->
     <string name="device_phone">Handphone</string>
@@ -407,16 +407,16 @@
 
     <!-- Brightness preference category -->
     <string name="pref_cat_brightness_title">Tetapan kecerahan</string>
-    <string name="pref_brightness_master_switch_summary">Guna jika handphone anda support tahap kecerahan standard. (perlukan reboot)</string>
+    <string name="pref_brightness_master_switch_summary">Guna jika peranti anda menyokong tahap kecerahan biasa. (perlukan reboot)</string>
 
     <!-- HW Key Action: Recent apps -->
     <string name="hwkey_action_recent_apps">Tunjukkan aplikasi sebelum ini</string>
 
     <!-- HW Key Action: Home long-press -->
-    <string name="hwkey_home_longpress_dialog_title">Aksi butang home ditekan lama</string>
+    <string name="hwkey_home_longpress_dialog_title">Aksi butang rumah ditekan lama</string>
 
     <!-- HW Key Action: Launch cutom app -->
-    <string name="hwkey_action_custom_app_none">Tiada aplikasi di setkan!</string>
+    <string name="hwkey_action_custom_app_none">Tiada aplikasi disetkan!</string>
     <string name="hwkey_action_custom_app_missing">Aplikasi tidak dijumpai!</string>
 
     <!-- Notification panel clock -->
@@ -428,7 +428,7 @@
 
     <!-- GravityBox settings startup handling -->
     <string name="gb_startup_progress">Menunggu respon dari sistem framework Gravitybox&#8230;</string>
-    <string name="gb_startup_error">Tiada respon dari sistem framework Gravitybox. Tolong reboot dulu ye gais!.</string>
+    <string name="gb_startup_error">Tiada respon dari sistem framework Gravitybox. Sila reboot terlebih dahulu.</string>
 
     <!-- National data roaming -->
     <string name="pref_national_roaming_title">Data antarabangsa</string>
@@ -436,15 +436,15 @@
 
     <!-- Expanded Desktop -->
     <string name="pref_expanded_desktop_title">Mod skrin penuh</string>
-    <string name="expanded_desktop_disabled">Matikan</string>
+    <string name="expanded_desktop_disabled">Tidak aktif</string>
     <string name="expanded_desktop_navbar">Sembunyi bar navigasi</string>
-    <string name="expanded_desktop_immersive_statusbar">Sembunyi sementara bar status</string>
-    <string name="expanded_desktop_immersive_navbar">Sembunyi sementara bar navigasi</string>
-    <string name="expanded_desktop_both">Separuh sembunyi</string>
-    <string name="expanded_desktop_immersive">Sembunyi sementara</string>
+    <string name="expanded_desktop_immersive_statusbar">Sembunyi bar status buat sementara</string>
+    <string name="expanded_desktop_immersive_navbar">Sembunyi bar navigasi buat sementara</string>
+    <string name="expanded_desktop_both">Sembunyi separuh sahaja</string>
+    <string name="expanded_desktop_immersive">Sembunyi buat sementara</string>
     <string name="action_expanded_desktop_title">Skrin penuh</string>
-    <string name="action_expanded_desktop_on">Skrin penuh dihidupkan</string>
-    <string name="action_expanded_desktop_off">Skrin penuh dimatikan</string>
+    <string name="action_expanded_desktop_on">Skrin penuh diaktifkan</string>
+    <string name="action_expanded_desktop_off">Skrin penuh tidak aktif</string>
 
     <!-- Power menu screenshot -->
     <string name="screenshot">Tangkap skrin</string>
@@ -459,36 +459,36 @@
     <!-- Navigation bar tweaks category -->
     <string name="pref_cat_navigation_bar_title">Modifikasi bar navigasi</string>
     <string name="pref_cat_navigation_bar_summary">Mengandungi pelbagai modifikasi bar navigasi</string>
-    <string name="pref_navbar_override_summary">Butang modifikasi bar navigasi(perlukan reboot)</string>
-    <string name="pref_navbar_enable_title">Benarkan bar navigasi</string>
+    <string name="pref_navbar_override_summary">Butang modifikasi bar navigasi (perlukan reboot)</string>
+    <string name="pref_navbar_enable_title">Aktifkan bar navigasi</string>
     <string name="pref_navbar_enable_summary">Perlukan reboot</string>
     <string name="pref_navbar_height_title">Ketinggian bar navigasi</string>
-    <string name="pref_navbar_height_summary">Hanya berlaku untuk navigasi bar potrait</string>
-    <string name="pref_navbar_height_landscape_summary">Hanya berlaku untuk navigasi bar potrait dan lanskap</string>
+    <string name="pref_navbar_height_summary">Hanya berlaku untuk navigasi bar potret</string>
+    <string name="pref_navbar_height_landscape_summary">Hanya berlaku untuk navigasi bar potret dan lanskap</string>
     <string name="pref_navbar_width_title">Lebar bar navigasi</string>
     <string name="pref_navbar_width_summary">Berlaku untuk bar nagivasi memanjang ke atas</string>
     <string name="pref_navbar_menukey_title">Sentiasa tunjuk butang menu</string>
 
     <!-- Screenshot in power menu -->
-    <string name="pref_powermenu_screenshot_title">Tile tangkap screen di menu power</string>
+    <string name="pref_powermenu_screenshot_title">Tile tangkap skrin di menu kuasa</string>
 
     <!-- Statusbar brightness control -->
-    <string name="pref_statusbar_brightness_title">Benarkan kawal kecerahan</string>
-    <string name="pref_statusbar_brightness_summary">Kawal kecerahan dengan slide di bar status(Kecerahan auto perlu dimatikan)</string>
+    <string name="pref_statusbar_brightness_title">Aktifkan kawal kecerahan</string>
+    <string name="pref_statusbar_brightness_summary">Kawal kecerahan dengan gelonsor di bar status (kecerahan automatik perlu dimatikan)</string>
 
     <!-- Phone tweaks categories -->
     <string name="pref_cat_phone_telephony_title">Telefon</string>
     <string name="pref_cat_phone_mobile_data_title">Paket data</string>
 
     <!-- Messaging: Strip unicode -->
-    <string name="pref_mms_unicode_stripping_title">Strip unicode</string>
-    <string name="pref_mms_unicode_stripping_summary">Tukar unicode kepada mesej biasa.Saiz mesej akan berkurang</string>
+    <string name="pref_mms_unicode_stripping_title">Strip unikod</string>
+    <string name="pref_mms_unicode_stripping_summary">Tukar unikod kepada mesej biasa.Saiz mesej akan berkurang</string>
     <string name="unicode_stripping_leave_intact">Biarkan huruf seperti biasa</string>
-    <string name="unicode_stripping_non_encodable">Stripcode yang tidak boleh dileraikan</string>
-    <string name="unicode_stripping_all">Strip semua huruf unicode</string>
+    <string name="unicode_stripping_non_encodable">Stripkod yang tidak boleh dileraikan</string>
+    <string name="unicode_stripping_all">Strip semua huruf unikod</string>
 
     <!-- Display: allow all rotations -->
-    <string name="pref_display_allow_all_rotations_title">Benarkan semua pusingan</string>
+    <string name="pref_display_allow_all_rotations_title">Aktifkan semua pusingan</string>
 
     <!-- QuickSettings: SIM Slot for network mode tile -->
     <string name="pref_qs_network_mode_sim_slot_title">Tile mod rangkaian slot SIM</string>
@@ -508,8 +508,8 @@
 
     <!-- Call vibrations -->
     <string name="pref_call_vibrations_title">Getar ketika panggilan</string>
-    <string name="call_vibration_connected">Ketika panggilan disambung</string>
-    <string name="call_vibration_disconnected">Ketika panggilan putus</string>
+    <string name="call_vibration_connected">Ketika panggilan disambungkan</string>
+    <string name="call_vibration_disconnected">Ketika panggilan diputuskan</string>
     <string name="call_vibration_waiting">Ketika menunggu panggilan</string>
     <string name="call_vibration_periodic">Setiap 45 saat ketika panggilan dibuat</string>
 
@@ -520,7 +520,7 @@
         Anda boleh samada mahu halang lagi ketika ia berlaku lagi. Guna dengan berhati-hati.</string>
     <string name="ongoing_notif_reset_list">Set senarai asal</string>
     <string name="ongoing_notif_reset_alert">Adakah anda pasti untuk set senarai asal? 
-        Ini akan hapuskan semua dalam senarai dan notifikasi tidak akan dihalang.</string>
+        Ini akan menghapuskan semua di dalam senarai dan notifikasi yang tidak akan dihalang.</string>
     <string name="ongoing_notif_list_empty">(Kosong dalam senarai)</string>
 
     <!-- Quick unlock -->
@@ -554,13 +554,13 @@
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
     <string name="service_foreground_processes"><xliff:g id="memory">%1$s</xliff:g> Diguna</string>
     <string name="pref_rambar_title">Bar RAM</string>
-    <string name="rambar_off">Dimatikan</string>
+    <string name="rambar_off">Tidak aktif</string>
     <string name="rambar_top">Atas</string>
     <string name="rambar_bottom">Bawah</string>
 
     <!-- HW Key actions for recents button -->
     <string name="hwkey_recents_singletap_dialog_title">Butang recents sekali tekan</string>
-    <string name="hwkey_recents_longpress_dialog_title">Butang recents tekan dua kali</string>
+    <string name="hwkey_recents_longpress_dialog_title">Butang recents dua kali tekan</string>
 
     <!-- HW Key Actions: toggle torch -->
     <string name="hwkey_action_torch">Butang lampu picit</string>
@@ -591,7 +591,7 @@
     <string name="pref_cat_app_launcher_title">Pelancar aplikasi</string>
     <string name="pref_cat_app_launcher_summary">Dialog untuk set pelancar aplikasi maximum sehingga 12 aplikasi atau guna sebagai bar navigasi tambahan</string>
     <string name="pref_app_launcher_slot_title">Slot applikasi %d</string>
-    <string name="app_launcher_no_apps">Tiada aplikasi diset. Guna GravityBox / Menu pelancar aplikasi untuk set aplikasi.</string>
+    <string name="app_launcher_no_apps">Tiada aplikasi di set. Guna GravityBox / Menu pelancar aplikasi untuk set aplikasi.</string>
 
     <!-- HW Key Actions: application launcher -->
     <string name="hwkey_action_app_launcher">Tunjuk pelancar aplikasi</string>
@@ -603,7 +603,7 @@
     <string name="pie_custom_key_app_launcher">Pelancar aplikasi</string>
 
     <!-- Pie colors -->
-    <string name="pref_cat_pie_colors_title">Warna pie</string>
+    <string name="pref_cat_pie_colors_title">Warna pai</string>
     <string name="pref_pie_color_bg_title">Warna latarbelakang</string>
     <string name="pref_pie_color_fg_title">Warna atas belakang</string>
     <string name="pref_pie_color_outline_title">Warna garisan</string>
@@ -618,8 +618,8 @@
     <string name="caller_unkown_photo_result_not_successful">Gambar tidak ditukar</string>
 
     <!-- Minimum screen brightness warning -->
-    <string name="screen_brightness_min_warning">Skrin anda tidak mampu untuk nilai dibawah 20. Jika skrin anda tidak hidup,
-        Tahan butang nada+ selama 7 saat untuk set semula kecerahan dan set semula kecerahan maximum.</string>
+    <string name="screen_brightness_min_warning">Skrin anda tidak menyokong nilai dibawah 20. Jika skrin anda tidak hidup,
+        Tahan butang volume+ selama 7 saat untuk set semula kecerahan dan set semula kecerahan maximum.</string>
 
     <!-- Navbar tweaks categories -->
     <string name="pref_cat_navbar_general_title">Umum</string>
@@ -629,7 +629,7 @@
 
     <!-- Navigation bar colors -->
     <string name="pref_navbar_color_enable_title">Aktifkan warna bar navigasi</string>
-    <string name="pref_navbar_color_enable_summary">Mungkin perlukan reboot setelah dinyah aktif</string>
+    <string name="pref_navbar_color_enable_summary">Mungkin perlukan reboot setelah di nyah aktif</string>
     <string name="pref_navbar_key_color_title">Warna bar navigasi</string>
     <string name="pref_navbar_key_glow_color_title">Warna glow untuk bar navigasi</string>
 
@@ -660,16 +660,16 @@
     <string name="pref_about_gplus_summary">Tekan untuk lawat komuniti Google+ GravityBox</string>
 
     <!-- HW Keys Navigation Bar warning -->
-    <string name="hwkey_navbar_warning">Demi untuk membenarkan aksi keatas bar navigasi, adalah perlu
+    <string name="hwkey_navbar_warning">Demi untuk membenarkan aksi ke atas bar navigasi, adalah perlu
         untuk tukar tetapan asal bar navigasi di modifikasi bar navigasi</string>
 
     <!-- Lockscreen Torch -->
-    <string name="pref_hwkey_lockscreen_torch_title">Lampu di skrinkunci</string>
+    <string name="pref_hwkey_lockscreen_torch_title">Lampu di skrin kunci</string>
     <string name="hwkey_ls_torch_disabled">Matikan</string>
     <string name="hwkey_ls_torch_home_longpress">Di rumah ketika tekan lama</string>
 
     <!-- QuickSettings management master switch -->
-    <string name="pref_qs_management_enable_summary">Pengurus Butang Setting cepat (perlukan reboot)</string>
+    <string name="pref_qs_management_enable_summary">Pengurus butang setting cepat (perlukan reboot)</string>
 
     <!-- AppPickerPreference: shortcut support -->
     <string name="app_picker_applications">Aplikasi</string>
@@ -709,7 +709,7 @@
     <string name="pref_cat_launcher_tweaks_title">Modifikasi pelancar</string>
     <string name="pref_cat_launcher_tweaks_summary">Hanya untuk pelancar asal dan GEL sahaja</string>
     <string name="pref_cat_launcher_desktop_grid_title">Grid desktop</string>
-    <string name="pref_launcher_desktop_grid_info_title">Nilai selain asal boleh merosakkan widget\' layout. gunakan sebaiknya. pelancar perlu di restart</string>
+    <string name="pref_launcher_desktop_grid_info_title">Nilai selain asal boleh merosakkan widget\' susun atur. Gunakan sebaiknya. Pelancar perlu di restart</string>
     <string name="pref_launcher_desktop_grid_rows_title">Bilangan baris</string>
     <string name="pref_launcher_desktop_grid_cols_title">Bilangan kolum</string>
     <string name="desktop_grid_default">Tetapan asal</string>
@@ -734,12 +734,12 @@
 
     <!-- Cursor control in navigation bar -->
     <string name="pref_navbar_cursor_control_title">Kawalan anak panah</string>
-    <string name="pref_navbar_cursor_control_summary">Benarkan kawalan anak panah di bar navigasi ketika keyboard muncul</string>
+    <string name="pref_navbar_cursor_control_summary">Aktifkan kawalan anak panah di bar navigasi ketika keyboard muncul</string>
 
     <!-- Volume rocker wake -->
     <string name="pref_volume_rocker_wake_title">Butang volume hidupkan skrin</string>
-    <string name="volume_rocker_wake_default">Tetapan asal system</string>
-    <string name="volume_rocker_wake_enabled">Benarkan</string>
+    <string name="volume_rocker_wake_default">Tetapan asal sistem</string>
+    <string name="volume_rocker_wake_enabled">Aktifkan</string>
     <string name="volume_rocker_wake_disabled">Matikan</string>
 
     <!-- Advanced reboot menu: require confirmation -->
@@ -751,11 +751,11 @@
         Juga automatik pada 2 tile utama.</string>
 
     <!-- Power tweaks categories -->
-    <string name="pref_cat_power_menu_title">Menu power</string>
-    <string name="pref_cat_power_other_title">Lain2</string>
+    <string name="pref_cat_power_menu_title">Menu kuasa</string>
+    <string name="pref_cat_power_other_title">Lain-lain</string>
 
     <!-- Advanced reboot menu: Allow on lockscreen -->
-    <string name="pref_reboot_allow_on_lockscreen_title">Benarkan reboot di skrin kunci</string>
+    <string name="pref_reboot_allow_on_lockscreen_title">Aktifkan reboot di skrin kunci</string>
 
     <!-- Data traffic monitor enhancements -->
     <string name="pref_data_traffic_inactivity_mode_title">Mod tidak aktif</string>
@@ -764,21 +764,21 @@
     <string name="inactivity_mode_summary">Tunjuk ulasan sahaja</string>
 
     <!-- Navigation bar custom key (previously as App launcher key) -->
-    <string name="pref_cat_navbar_custom_key_title">Tetapan butang lain2</string>
-    <string name="pref_navbar_custom_key_enable_title">Aktifkan butang lain2</string>
+    <string name="pref_cat_navbar_custom_key_title">Tetapan butang lain-lain</string>
+    <string name="pref_navbar_custom_key_enable_title">Aktifkan butang lain-lain</string>
 
     <!-- Signal cluster settings -->
-    <string name="pref_cat_signal_cluster_title">Tetapan signal cluster</string>
+    <string name="pref_cat_signal_cluster_title">Tetapan kelompok isyarat</string>
     <string name="pref_signal_cluster_data_activity_title">Aktifkan aktiviti data</string>
-    <string name="pref_signal_cluster_data_activity_summary">Tunjuk aktiviti data pada ikon paket data dan wifi (perlukan reboot)</string>
+    <string name="pref_signal_cluster_data_activity_summary">Tunjuk aktiviti data pada ikon data paket dan wifi (perlukan reboot)</string>
 
     <!--  HW Key Action: Toggle auto rotation -->
-    <string name="hwkey_action_auto_rotation">Butang auto pusingan</string>
+    <string name="hwkey_action_auto_rotation">Butang pusingan automatik</string>
     <string name="hwkey_action_auto_rotation_enabled">Auto pusingan diaktifkan</string>
-    <string name="hwkey_action_auto_rotation_disabled">Auto pusingan dimatikan</string>
+    <string name="hwkey_action_auto_rotation_disabled">Auto pusingan tidak aktif</string>
 
     <!-- HW Key Actions: Show power menu, expand notifications, expand quick settings -->
-    <string name="hwkey_action_show_power_menu">Tunjuk menu power</string>
+    <string name="hwkey_action_show_power_menu">Tunjuk menu butang kuasa</string>
     <string name="hwkey_action_expand_notifications">Besarkan panel notifikasi</string>
 
     <!-- Shortcut activity title -->
@@ -788,7 +788,7 @@
     <string name="shortcut_network_mode">Tukar mod rangkaian</string>
 
     <!-- Toggle mobile data shortcut -->
-    <string name="shortcut_mobile_data">Butang paket data</string>
+    <string name="shortcut_mobile_data">Butang data paket</string>
 
     <!-- Toggle WiFi shortcut -->
     <string name="shortcut_wifi">Butang wifi</string>
@@ -804,13 +804,13 @@
     <string name="location_mode_high_accuracy">Paling tepat</string>
     <string name="location_mode_battery_saving">Jimat bateri</string>
     <string name="location_mode_device_only">Telefon sahaja</string>
-    <string name="location_mode_off">Matikan lokasi</string>
+    <string name="location_mode_off">Tidak aktif</string>
 
     <!-- Toggle NFC shortcut -->
     <string name="shortcut_nfc">Butang NFC</string>
 
     <!-- Pie category summary -->
-    <string name="pie_control_summary">Mengandungi tetapan pie</string>
+    <string name="pie_control_summary">Mengandungi tetapan pai</string>
 
     <!-- Shortcut for Google Now -->
     <string name="shortcut_google_now">Google Now</string>
@@ -822,7 +822,7 @@
     <!-- GB Actions: Media control shorctut -->
     <string name="shortcut_media_control">Kawalan media</string>
     <string name="shortcut_media_play_pause">Main/Henti sekejap</string>
-    <string name="shortcut_media_previous">Sebelum</string>
+    <string name="shortcut_media_previous">Sebelumnya</string>
     <string name="shortcut_media_next">Seterusnya</string>
 
     <!-- Battery percent text: charging indication -->
@@ -837,7 +837,7 @@
 
     <!-- Force music volume control -->
     <string name="pref_vol_force_music_control_title">Paksa kawalan nada untuk media</string>
-    <string name="pref_vol_force_music_control_summary">Apabila aktif, butang nada kawal media selain ringtone</string>
+    <string name="pref_vol_force_music_control_summary">Apabila aktif, butang nada kawal media selain bunyi nada</string>
 
     <!-- Misc tweaks: category for recents panel related tweaks -->
     <string name="pref_cat_misc_recents_panel_title">Panel baru-baru</string>
@@ -846,11 +846,11 @@
     <string name="pref_cat_misc_other_title">Tetapan lain</string>
 
     <!-- Disable fullscreen keyboard -->
-    <string name="pref_ime_fullscreen_disable_title">Matikan keyboard skrin penuh</string>
+    <string name="pref_ime_fullscreen_disable_title">Matikan papan kekunci pada skrin penuh</string>
 
     <!-- Torch auto-off -->
-    <string name="pref_torch_auto_off_title">Lampu auto mati</string>
-    <string name="pref_torch_auto_off_summary">Matikan lampu setelah beberapa seketika. set kepada 0 untuk matikan (tidak disarankan)</string>
+    <string name="pref_torch_auto_off_title">Lampu automatik mati</string>
+    <string name="pref_torch_auto_off_summary">Matikan lampu setelah beberapa seketika. Set kepada 0 untuk matikan (tidak disarankan)</string>
 
     <!-- Swap volume keys when the screen is rotated -->
     <string name="pref_vol_swap_keys_title">Pusingan butang nada</string>
@@ -860,7 +860,7 @@
     <string name="pref_lockscreen_bg_blur_effect_title">Efek blur</string>
 
     <!-- Force overflow menu button -->
-    <string name="pref_force_overflow_menu_button_title">Paksa butang menu (3titik)</string>
+    <string name="pref_force_overflow_menu_button_title">Paksa butang menu (3 titik)</string>
     <string name="pref_force_overflow_menu_button_summary">Perlukan reboot</string>
 
     <!-- Navbar custom key: swap with menu key -->
@@ -874,7 +874,7 @@
     <string name="pref_smart_radio_normal_mode_title">Mod rangkaian asal</string>
     <string name="pref_smart_radio_power_saving_mode_title">Mod rangkaian jimat bateri</string>
     <string name="pref_smart_radio_screen_off_title">Apabila skrin dimatikan</string>
-    <string name="pref_smart_radio_screen_off_summary">Aktif mod jimat bateri tanpa mengira paket data aktif atau tidak</string>
+    <string name="pref_smart_radio_screen_off_summary">Aktifkan mod jimat bateri tanpa mengira data paket aktif atau tidak</string>
     <string name="pref_smart_radio_ignore_locked_title">Dibiarkan ketika berkunci</string>
     <string name="pref_smart_radio_ignore_locked_summary">Ketika skrin hidup, mod jimat bateri tidak akan dihapuskan selagi skrin kunci tidak aktif</string>
     <string name="pref_smart_radio_mode_change_delay_title">Kadar perubahan mod rangkaian</string>
@@ -901,14 +901,14 @@
     <string name="pref_translucent_decor_title">Dekorasi tembus</string>
     <string name="pref_translucent_decor_default">Tetapan asal</string>
     <string name="pref_translucent_decor_enabled">Aktifkan</string>
-    <string name="pref_translucent_decor_disabled">Matikan</string>
+    <string name="pref_translucent_decor_disabled">Tidak aktif</string>
 
     <!-- Pulse notification delay -->
     <string name="pref_pulse_notification_delay_title">Kadar kelipan notifikasi LED</string>
     <string name="pref_pulse_notification_delay_summary">Perlukan reboot</string>
 
     <!-- Powe menu: disable on lockscreen -->
-    <string name="pref_powermenu_disable_on_lockscreen_title">Matikan butang power di skrin kunci</string>
+    <string name="pref_powermenu_disable_on_lockscreen_title">Matikan butang kuasa di skrin kunci</string>
 
     <!-- Extended force overflow menu button option -->
     <string name="overflow_menu_default">Tetapan asal</string>
@@ -939,23 +939,23 @@
     <string name="settings_restore_confirm">Tetapan anda akan ditukar. Adakah anda pasti?</string>
     <string name="settings_restore_failed">Gagal dikembalikan</string>
     <string name="settings_restore_success">Berjaya dikembalikan</string>
-    <string name="settings_restore_reboot">Tolong, reboot henfon anda</string>
+    <string name="settings_restore_reboot">Sila reboot henfon anda</string>
 
     <!-- Web service client strings -->
-    <string name="wsc_hash_creation_failed">Gagal mencipta mendapatkan hash code untuk aplikasi</string>
+    <string name="wsc_hash_creation_failed">Gagal mendapatkan hash code untuk aplikasi</string>
     <string name="wsc_parse_response_error">Gagal memproses data dari web</string>
-    <string name="wsc_hash_invalid">Web gagal berkomunikasi kerana hash code telah sama. Ini berlaku kerana 
+    <string name="wsc_hash_invalid">Web gagal berkomunikasi kerana hash code tidak sama. Ini berlaku kerana 
         anda menggunakan Gravitybox yang tidak asli atau diubah oleh individu tertentu</string>
     <string name="wsc_please_wait">Sila tunggu&#8230;</string>
     <string name="wsc_error">Gagal berkomunikasi dengan servis web: %s</string>
     <string name="wsc_task_cancelled">Operasi web servis dibatalkan</string>
 
     <!-- Transaction verification -->
-    <string name="wsc_trans_parse_response_error">Gagal memdapatkan transaksi data dari web</string>
+    <string name="wsc_trans_parse_response_error">Gagal mendapatkan transaksi data dari web</string>
     <string name="wsc_trans_valid">Verifikasi ID berjaya. Kelebihan PREMIUM GravityBox akan aktif setelah di restart</string>
     <string name="wsc_trans_invalid">Rekod simpanan ID tidak berjaya ditemui</string>
     <string name="wsc_trans_violation">ID telah didaftar banyak kali. Hubungi pemaju Gravitybox untuk selesaikan.</string>
-    <string name="wsc_trans_blocked">ID di block.Hubungi pemaju Gravitybox untuk selesaikan.</string>
+    <string name="wsc_trans_blocked">ID di block. Hubungi pemaju Gravitybox untuk selesaikan.</string>
     <string name="pref_trans_verification_title">Paypal transaksi ID</string>
     <string name="pref_trans_verification_summary">Jika anda telah menderma, anda boleh masukkan ID transaksi untuk membuka kelebihan PREMIUM</string>
     <string name="wsc_trans_required_summary">Kelebihan ini memerlukan ID transaksi yang sah</string>
@@ -975,8 +975,8 @@
 
     <!-- Launcher tweaks: resize any widget -->
     <string name="pref_cat_launcher_other_title">Lain-lain</string>
-    <string name="pref_launcher_resize_widget_title">Saizkan mana2 widget</string>
-    <string name="pref_launcher_resize_widget_summary">Saizkan mana2 widget di skrin utama (perlukan pelancar untuk restart)</string>
+    <string name="pref_launcher_resize_widget_title">Saizkan mana-mana widget</string>
+    <string name="pref_launcher_resize_widget_summary">Saizkan mana-mana widget di skrin utama (perlukan pelancar untuk restart)</string>
 
     <!-- Icon picker -->
     <string name="icon_picker_choose_icon_title">Pilih ikon</string>
@@ -1003,11 +1003,11 @@
     <string name="shortcuts_icon_picker_gallery">Galeri</string>
     <string name="shortcuts_icon_picker_gears">Gears</string>
     <string name="shortcuts_icon_picker_google_small">Google</string>
-    <string name="shortcuts_icon_picker_gplus">Google Plus</string>
+    <string name="shortcuts_icon_picker_gplus">Google+</string>
     <string name="shortcuts_icon_picker_gtalk">Hangouts</string>
     <string name="shortcuts_icon_picker_help">Bantuan</string>
     <string name="shortcuts_icon_picker_joystick">Joystick</string>
-    <string name="shortcuts_icon_picker_key">Butang/Account</string>
+    <string name="shortcuts_icon_picker_key">Butang/Akaun</string>
     <string name="shortcuts_icon_picker_laptop">Laptop</string>
     <string name="shortcuts_icon_picker_notes">Nota</string>
     <string name="shortcuts_icon_picker_luggage">Perjalanan</string>
@@ -1023,7 +1023,7 @@
     <string name="shortcuts_icon_picker_pocket">Poket</string>
     <string name="shortcuts_icon_picker_quicksettings">Tetapan cepat</string>
     <string name="shortcuts_icon_picker_rss">RSS Feed</string>
-    <string name="shortcuts_icon_picker_sdcard">SDCard</string>
+    <string name="shortcuts_icon_picker_sdcard">Kad SD</string>
     <string name="shortcuts_icon_picker_search">Cari</string>
     <string name="shortcuts_icon_picker_sms">Mesej</string>
     <string name="shortcuts_icon_picker_tasks">Tugasan</string>
@@ -1034,13 +1034,13 @@
     <string name="shortcuts_icon_picker_unlock">Buka</string>
 
     <!-- Quick settings: Auto-switch extended -->
-    <string name="qs_auto_switch_disabled">Dimatikan</string>
+    <string name="qs_auto_switch_disabled">Tidak aktif</string>
     <string name="qs_auto_switch_mode1">Bila tiada notifikasi</string>
     <string name="qs_auto_switch_mode2">Bila tiada notifikasi untuk dibuang</string>
 
     <!-- Notification drawer: expand all notifications -->
     <string name="pref_notif_expand_all_title">Kembangkan semua notifikasi</string>
-    <string name="pref_notif_expand_all_summary">Kembangkan semua notifikasi secara auto jika aktif</string>
+    <string name="pref_notif_expand_all_summary">Kembangkan semua notifikasi secara automatik jika aktif</string>
 
     <!-- Animation scales -->
     <string name="animation_scale0">Tiada animasi</string>
@@ -1121,7 +1121,7 @@
 
     <!-- Data traffic monitor style -->
     <string name="pref_data_traffic_mode_title">Jenis penunjuk data trafik</string>
-    <string name="dt_mode_off">Matikan</string>
+    <string name="dt_mode_off">Tidak aktif</string>
     <string name="dt_mode_simple">Jenis biasa</string>
     <string name="dt_mode_omni">Jenis Omni</string>
 
@@ -1149,9 +1149,9 @@
 
     <!-- Led control -->
     <string name="pref_led_control_title">Kawalan notifikasi terhebat</string>
-    <string name="pref_led_control_summary">Benarkan kawal LED, bunyi, gegaran mengikut aplikasi</string>
+    <string name="pref_led_control_summary">Aktifkan kawal LED, bunyi, gegaran mengikut aplikasi</string>
     <string name="lc_please_wait">Sila tunggu</string>
-    <string name="lc_disabled">Kawalan notifikasi dimatikan</string>
+    <string name="lc_disabled">Kawalan notifikasi tidak aktif</string>
     <string name="pref_lc_led_color_title">Warna LED</string>
     <string name="pref_lc_led_time_on_title">Durasi LED menyala</string>
     <string name="pref_lc_led_time_off_title">Durasi LED mati</string>
@@ -1160,7 +1160,7 @@
     <string name="lc_btn_preview">Pretunjuk</string>
     <string name="lc_btn_save">Simpan</string>
     <string name="lc_item_summary_on">Aktif</string>
-    <string name="lc_item_summary_off">Matikan</string>
+    <string name="lc_item_summary_off">Tidak aktif</string>
     <string name="lc_item_summary_ongoing">Sedang berjalan</string>
     <string name="lc_preview_notif_title">Kawalan notifikasi GravityBox</string>
     <string name="lc_preview_notif_text">Percubaan untuk %s</string>
@@ -1183,7 +1183,7 @@
     <string name="lc_vibrate_pattern_invalid">Format jenis getaran tidak sah</string>
 
     <!-- Omni data traffic monitor inactivity threshold -->
-    <string name="pref_data_traffic_omni_autohide_threshold_title">Threshold tidak aktif</string>
+    <string name="pref_data_traffic_omni_autohide_threshold_title">Ambang tidak aktif</string>
 
     <!-- Icon Picker: additional icons -->
     <string name="shortcuts_icon_picker_chrome">Chrome</string>
@@ -1191,10 +1191,10 @@
 
     <!-- Virtual keys vibrate pattern -->
     <string name="pref_virtual_key_vibrate_pattern_title">Jenis getaran butang navigasi asal</string>
-    <string name="pref_virtual_key_vibrate_pattern_summary">Koma membezakan pasangan samada aktif atau tidak dalam milliseconds. Biarkan kosong untuk tetapan asal.</string>
+    <string name="pref_virtual_key_vibrate_pattern_summary">Koma membezakan pasangan sama ada aktif atau tidak dalam mili saat. Biarkan kosong untuk tetapan asal.</string>
 
     <!-- Lockscreen: show pattern error -->
-    <string name="pref_lockscreen_show_pattern_error_title">Tunjuk kesalahan pattern</string>
+    <string name="pref_lockscreen_show_pattern_error_title">Tunjuk kesalahan corak</string>
     <string name="pref_lockscreen_show_pattern_error_summary">Tunjuk jejak kesalahan dalam garisan merah</string>
 
     <!-- Premium features: allow trial period -->
@@ -1203,15 +1203,15 @@
 
     <!-- Notification control: default settings -->
     <string name="lc_activity_menu_default_settings">Tetapan asal</string>
-    <string name="pref_lc_default_settings_summary">Ketika aktif, tetapan akan di auto set</string>
+    <string name="pref_lc_default_settings_summary">Ketika aktif, tetapan akan di set secara automatik</string>
     <string name="lc_defaults_apply">Tetapan asal diset</string>
-    <string name="lc_settings_menu_reset">Set asal</string>
+    <string name="lc_settings_menu_reset">Set tetapan asal</string>
 
     <!-- Notification control: Active screen -->
     <string name="lc_active_screen">Skrin aktif</string>
     <string name="lc_active_screen_info">Skrin aktif akan automatik hidupkan skrin 
         ketika notifikasi tiba. Ia akan memaparkan heads up bergantung kepada 
-        sekuriti polisi skrin kunci. perlu di ingat bahawa ia memerlukan skrin kunci
+        sekuriti polisi skrin kunci. Perlu di ingat bahawa ia memerlukan skrin kunci
         diaktifkan.\nSuis dibawah adalah suis utama. Selepas ianya diaktifkan,tetapan tambahan akan terbuka</string>
     <string name="lc_active_screen_switch_title">Hidupkan skrin aktif</string>
 
@@ -1268,7 +1268,7 @@
 
     <!-- Statusbar BT icon visibility -->
     <string name="pref_sb_bt_visibility_title">Paparan ikon Bluetooth</string>
-    <string name="sb_bt_default">ketika BT dihidupkan (asal)</string>
+    <string name="sb_bt_default">Ketika BT dihidupkan (asal)</string>
     <string name="sb_bt_connected">Ketika BT disambung</string>
     <string name="sb_bt_hidden">Tersembunyi</string>
 
@@ -1276,7 +1276,7 @@
     <string name="pref_increasing_ring_title">Nada menaik</string>
     <string name="increasing_ring_enable">Aktifkan</string>
     <string name="increasing_ring_min_volume_title">Bunyi mula nada</string>
-    <string name="increasing_ring_volume_notice">Notis:\nJika nada dimainkan lebih tinggi dari asal, sound dari sistem akan dimainkan.</string>
+    <string name="increasing_ring_volume_notice">Notis:\nJika nada dimainkan lebih tinggi dari asal, bunyi dari sistem akan dimainkan.</string>
     <string name="increasing_ring_ramp_up_duration_title">Durasi Ramp-up</string>
     <string name="increasing_ring_interval_0">5 saat</string>
     <string name="increasing_ring_interval_1">10 saat</string>
@@ -1302,14 +1302,14 @@
     <string name="pref_data_traffic_active_mobile_only_title">Data paket sahaja</string>
 
     <!-- Dashed circle battery style -->
-    <string name="battery_style_circle_dashed">Bateri bulat dashed</string>
-    <string name="battery_style_circle_dashed_percent">Bateri bulat dashed dengan peratus</string>
+    <string name="battery_style_circle_dashed">Bateri bulat silang</string>
+    <string name="battery_style_circle_dashed_percent">Bateri bulat silang dengan peratus</string>
 
     <!-- Premium feature unlock via unlocker app -->
-    <string name="premium_unlocked_message">Terima kasih atas sokongan anda. Modifikasi Premium akan dibuka selepas sistem direstart. 
+    <string name="premium_unlocked_message">Terima kasih atas sokongan anda. Modifikasi Premium akan dibuka selepas sistem di restart. 
         Gravitybox akan tetap premium walapun selepas kunci premium tiada.</string>
     <string name="pref_about_get_unlocker_title">Dapatkan kunci premium</string>
-    <string name="pref_about_get_unlocker_summary">Tiada PayPal? klik disini untuk dapatkan di playstore.</string>
+    <string name="pref_about_get_unlocker_summary">Tiada PayPal? klik disini untuk dapatkannya di playstore.</string>
 
     <!-- Navbar custom key: alternate icon -->
     <string name="pref_navbar_custom_key_icon_title">Guna ikon lain</string>
@@ -1319,7 +1319,7 @@
     <string name="pref_smart_radio_mda_ignore_summary">Tukar ke mod biasa walaupun data tidak aktif</string>
 
     <!-- GB Actions: Toggle sync -->
-    <string name="shortcut_sync">Suis sync</string>
+    <string name="shortcut_sync">Suis penyegera</string>
 
     <!-- UNC: timeout for Alert only once -->
     <string name="pref_lc_notif_sound_only_once_timeout_title">Dalam jangka masa</string>
@@ -1335,29 +1335,29 @@
 
     <!-- QS: Compass tile -->
     <string name="qs_tile_compass">Kompas</string>
-    <string name="quick_settings_compass_off">Kompas dimatikan</string>
+    <string name="quick_settings_compass_off">Kompas tidak aktif</string>
     <string name="quick_settings_compass_init">Memeriksa#8230;</string>
 
 
     <!-- Cardinal directions -->
-    <string name="cd_north">N</string>
-    <string name="cd_north_east">NE</string>
-    <string name="cd_east">E</string>
-    <string name="cd_south_east">SE</string>
+    <string name="cd_north">U</string>
+    <string name="cd_north_east">TL</string>
+    <string name="cd_east">T</string>
+    <string name="cd_south_east">TG</string>
     <string name="cd_south">S</string>
-    <string name="cd_south_west">SW</string>
-    <string name="cd_west">W</string>
-    <string name="cd_north_west">NW</string>
+    <string name="cd_south_west">BD</string>
+    <string name="cd_west">B</string>
+    <string name="cd_north_west">BL</string>
 
     <!-- Pie: mirrored keys -->
     <string name="pref_pie_control_mirrored_keys_title">Kunci cerminan</string>
 
     <!-- Pie: center trigger -->
     <string name="pref_pie_control_center_trigger_title">Tengah</string>
-    <string name="pref_pie_control_center_trigger_summary">Aktifkan pie di bucu tengah skrin</string>
+    <string name="pref_pie_control_center_trigger_summary">Aktifkan pai di bucu tengah skrin</string>
 
     <!-- Statusbar clock: date format options -->
-    <string name="clock_date_disabled">Dimatikan</string>
+    <string name="clock_date_disabled">Tidak aktif</string>
     <string name="clock_date_localized">Format tarikh tempatan</string>
     <string name="clock_date_format_1">Format tarikh: dd/MM</string>
     <string name="clock_date_format_2">Format tarikh: MM/dd</string>
@@ -1366,9 +1366,9 @@
     <string name="clock_date_format_5">Format tarikh: d</string>
 
     <!-- Headset plug/unplug actions -->
-    <string name="pref_cat_headset_actions_title">Aksi Headset</string>
-    <string name="pref_headset_action_plug_title">Aksi Headset ketika dimasukkan</string>
-    <string name="pref_headset_action_unplug_title">Aksi Headset ketika dikeluarkan</string>
+    <string name="pref_cat_headset_actions_title">Aksi headset</string>
+    <string name="pref_headset_action_plug_title">Aksi headset ketika dimasukkan</string>
+    <string name="pref_headset_action_unplug_title">Aksi headset ketika dikeluarkan</string>
 
     <!-- Quiet Hours: mute vibrations -->
     <string name="pref_lc_qh_mute_vibe_title">Matikan getaran</string>
@@ -1381,11 +1381,11 @@
         (hormati aplikasi tertentu)</string>
 
     <!-- UNC: heads up mode -->
-    <string name="pref_lc_headsup_mode_title">Mod Heads up</string>
+    <string name="pref_lc_headsup_mode_title">Mod heads up</string>
     <string name="lc_heads_up_default">Tetapan asal</string>
-    <string name="lc_heads_up_always">Sentiasa</string>
+    <string name="lc_heads_up_always">Sentiasa aktif</string>
     <string name="lc_heads_up_immersive">Ketika status bar tersembunyi</string>
-    <string name="lc_heads_up_off">Dimatikan</string>
+    <string name="lc_heads_up_off">Tidak aktif</string>
 
     <!-- Statusbar: notification heads up category -->
     <string name="pref_cat_notif_heads_up_title">Notifikasi heads up</string>
@@ -1401,7 +1401,7 @@
 
     <!-- UNC Active Screen Mode -->
     <string name="pref_lc_active_screen_mode_title">Mod skrin aktif</string>
-    <string name="lc_active_screen_mode_disabled">Dimatikan</string>
+    <string name="lc_active_screen_mode_disabled">Tidak aktif</string>
     <string name="lc_active_screen_mode_nothing">Hidupkan skrin sahaja</string>
 
     <!-- QS: Remote display tile -->
@@ -1434,8 +1434,8 @@
     <string name="pref_cat_mtk_fixes_summary">Mangandungi pemulihan untuk MTK. Guna ketika perlu.</string>
 
     <!-- MTK Advanced Developer Options -->
-    <string name="pref_mtk_fix_dev_opts_title">Tetapan developer tambahan</string>
-    <string name="pref_mtk_fix_dev_opts_summary">Buka tetapan developer tambahan (perlukan reboot)</string>
+    <string name="pref_mtk_fix_dev_opts_title">Tetapan tambahan pemaju</string>
+    <string name="pref_mtk_fix_dev_opts_summary">Buka tetapan tambahan pemaju (perlukan reboot)</string>
 
     <!-- MTK Fix speech settings -->
     <string name="pref_mtk_fix_tts_settings_title">Baiki tetapan suara</string>
@@ -1447,24 +1447,24 @@
     <string name="imgpick_crop_error">Ralat ketika memotong imej</string>
 
     <!-- Proximity wake -->
-    <string name="pref_power_proximity_wake_title">Proximity hidup</string>
-    <string name="pref_power_proximity_wake_summary">Guna sensor proximity untuk hidupkan fon</string>
+    <string name="pref_power_proximity_wake_title">Jarak hidup</string>
+    <string name="pref_power_proximity_wake_summary">Guna sensor jarak untuk hidupkan fon</string>
 
     <!-- Battery Charging LED -->
     <string name="pref_charging_led_title">Battery LED</string>
     <string name="charging_led_default">Tetapan asal</string>
     <string name="charging_led_emulated">Berkelip</string>
-    <string name="charging_led_disabled">Dimatikan</string>
+    <string name="charging_led_disabled">Tidak aktif</string>
 
     <!-- Quiet hours week days -->
     <string name="pref_lc_qh_weekdays_title">Set hari biasa</string>
 
     <!-- QuietHours: mute system sounds -->
     <string name="pref_lc_qh_mute_system_sounds_title">Matikan bunyi sistem</string>
-    <string name="system_sound_dialpad">Bunyi pad kekunci</string>
+    <string name="system_sound_dialpad">Bunyi pad kunci</string>
     <string name="system_sound_touch">Bunyi sentuh</string>
     <string name="system_sound_screen_lock">Bunyi skrin kunci</string>
-    <string name="system_sound_charger">Bunyi GravityBox charger</string>
+    <string name="system_sound_charger">Bunyi GravityBox</string>
     <string name="system_sound_ringer">Bunyi nada</string>
 
     <!-- Proximty wake: ignore for incoming call -->
@@ -1475,7 +1475,7 @@
     <string name="pref_statusbar_download_progress_summary">Tunjukkan bar kemajuan di status bar untuk
         download, bluetooth dan semua aplikasi yang mengandungi
         bar kemajuan di kawalan notifikasi ultimet</string>
-    <string name="sb_download_progress_off">Dimatikan</string>
+    <string name="sb_download_progress_off">Tidak aktif</string>
     <string name="sb_download_progress_top">Paling atas</string>
     <string name="sb_download_progress_bottom">Paling bawah</string>
 
@@ -1484,7 +1484,7 @@
     <string name="pref_signal_cluster_hide_sim_labels_summary">Perlukan reboot</string>
 
     <!-- Power menu: expanded desktop in power menu -->
-    <string name="pref_powermenu_expanded_desktop_title">Modifikasi skrin penuh di butang power</string>
+    <string name="pref_powermenu_expanded_desktop_title">Modifikasi skrin penuh di butang kuasa</string>
     <string name="pref_powermenu_expanded_desktop_summary">Paparkan Modifikasi skrin penuh!!!</string>
 
     <!-- QuickRecord tile settings -->
@@ -1493,31 +1493,31 @@
     <string name="qr_audio_quality_low">Rendah (16kHz)</string>
     <string name="qr_audio_quality_medium">Normal (22kHz)</string>
     <string name="qr_audio_quality_high">Tinggi(44kHz)</string>
-    <string name="pref_quickrecord_autostop_title">Auto henti rakaman</string>
-    <string name="pref_quickrecord_autostop_summary">Matikan rakaman dlm jangka masa tertentu. set =0 untuk dimatikan</string>
+    <string name="pref_quickrecord_autostop_title">Hentikan rakaman secara automatik</string>
+    <string name="pref_quickrecord_autostop_summary">Matikan rakaman dlm jangka masa tertentu. Set =0 untuk tidak aktif</string>
 
     <!-- Clear notifications shortcut -->
     <string name="shortcut_clear_notifications">Buang notifikasi</string>
 
     <!-- Toggle auto brightness shortcut -->
-    <string name="shortcut_auto_brightness">Suis kecerahan auto</string>
+    <string name="shortcut_auto_brightness">Suis kecerahan automatik</string>
 
     <!-- Messaging -->
     <string name="pref_cat_phone_messaging_title">Mesej</string>
 
     <!-- Compatibility warning -->
     <string name="compat_warning_title">AMARAN</string>
-    <string name="compat_warning_message">HANYA UNTUK PURE ANDROID DAN PERANTI EDISI GGOGLE. Sistem lain seperti
+    <string name="compat_warning_message">HANYA UNTUK ANDROID TULEN DAN PERANTI EDISI GOOGLE. Sistem lain seperti
         Touchwiz, Sense, Xperia, atau custom ROM, tidak disokong.\n\nJika anda teruskan,
-        anda akan menanggung risiko sendiri dan tanpa mana2 sokongan. Untuk maklumat lanjut,
+        anda akan menanggung risiko sendiri dan tanpa mana-mana sokongan. Untuk maklumat lanjut,
         lihat <a href="http://forum.xda-developers.com/showthread.php?t=3251148">forum sokongan di XDA</a>.</string>
     <string name="compat_warning_ok_stage1">OK. Saya faham.</string>
-    <string name="compat_warning_ok_stage2">Saya BETUL2 faham!</string>
+    <string name="compat_warning_ok_stage2">Saya BETUL-BETUL faham!</string>
 
     <!-- UNC Active screen: Pocket mode -->
     <string name="pref_unc_as_pocket_mode_title">Mod poket</string>
-    <string name="pref_unc_as_pocket_mode_summary">Skrin tidak akan hidup jika sensor proximity ditutup</string>
-    <string name="pref_unc_as_pocket_mode_summary_overriden">Tetapan ini tersedia di modifikasi power</string>
+    <string name="pref_unc_as_pocket_mode_summary">Skrin tidak akan hidup jika sensor jarak ditutup</string>
+    <string name="pref_unc_as_pocket_mode_summary_overriden">Tetapan ini tersedia di modifikasi kuasa</string>
 
     <!-- Navbar: Left handed mode -->
     <string name="pref_navbar_left_handed_title">Mod tangan kiri</string>
@@ -1530,7 +1530,7 @@
     <!-- Smart Radio: Adaptive delay for delayed power save -->
     <string name="pref_smart_radio_adaptive_delay_title">Jangka masa Adaptive</string>
     <string name="pref_smart_radio_adaptive_delay_summary">Set masa automatik 
-        jika paket data melebihi threshold (Set 0 untuk dimatikan)</string>
+        jika data paket melebihi threshold (Set 0 untuk tidak aktif)</string>
 
     <!-- UNC: Progress bar tracking -->
     <string name="pref_lc_progress_tracking_title">Pengesan bar kemajuan</string>
@@ -1541,7 +1541,7 @@
     <string name="pref_data_traffic_display_mode_title">Mod paparan</string>
     <string name="dt_display_mode_always">Sentiasa (Jika ada data aktif)</string>
     <string name="dt_display_mode_dm">Untuk muat turun sahaja</string>
-    <string name="dt_display_mode_pt">Ketika status bar ditunjukkan</string>
+    <string name="dt_display_mode_pt">Ketika bar status ditunjukkan</string>
 
     <!-- Wi-Fi priority -->
     <string name="pref_wifi_priority_title">Keutamaan Wi-Fi</string>
@@ -1549,7 +1549,7 @@
 
     <!-- Battery bar -->
     <string name="pref_cat_battery_bar_title">Bar bateri</string>
-    <string name="pref_battery_bar_show_title">Tunjukkan Bar bateri</string>
+    <string name="pref_battery_bar_show_title">Tunjukkan bar bateri</string>
     <string name="pref_battery_bar_position_title">Posisi</string>
     <string name="bbar_position_top">Paling atas</string>
     <string name="bbar_position_bottom">Paling bawah</string>
@@ -1586,28 +1586,28 @@
     <!-- Tri state pref -->
     <string name="state_default">Tetapan asal</string>
     <string name="state_enabled">Aktif</string>
-    <string name="state_disabled">Dimatikan</string>
+    <string name="state_disabled">Tidak aktif</string>
 
     <!-- Battery style: Stock battery with percentage -->
-    <string name="battery_style_stock_percent">Bateri asal dengan peratus</string>
+    <string name="battery_style_stock_percent">Bateri asal dengan peratusan</string>
 
     <!-- Battery percent text -->
     <string name="battery_percent_text_statusbar_title">Tunjuk di bar status</string>
-    <string name="battery_percent_text_statusbar_summary">Tunjuk di bar status(ketika henfon tidak dikunci)</string>
-    <string name="battery_percent_text_keyguard_title">Mod kekunci</string>
+    <string name="battery_percent_text_statusbar_summary">Tunjuk di bar status (ketika henfon tidak dikunci)</string>
+    <string name="battery_percent_text_keyguard_title">Mod kunci</string>
     <string name="battery_percent_text_keyguard_summary">Tentukan teks peratus di bar status</string>
     <string name="keyguard_percent_text_default">Tetapan asal (ketika cas)</string>
     <string name="keyguard_percent_text_show_always">Sentiasa tunjuk</string>
     <string name="keyguard_percent_text_hide">Sembunyi</string>
-    <string name="battery_percent_text_header_hide_title">Sembunyi di kepala bar status</string>
+    <string name="battery_percent_text_header_hide_title">Sembunyi di atas bar status</string>
     <string name="battery_percent_text_size_default">Tetapan asal</string>
 
     <!-- Navigation bar: use larger icons -->
-    <string name="pref_navbar_larger_icons_title">Guna ikon lebih besar</string>
+    <string name="pref_navbar_larger_icons_title">Guna ikon yang lebih besar</string>
     <string name="pref_navbar_larger_icons_summary">Perlukan reboot</string>
 
     <!-- Power menu: allow soft reboot -->
-    <string name="pref_reboot_allow_softreboot_title">Benarkan soft reboot</string>
+    <string name="pref_reboot_allow_softreboot_title">Aktifkan soft reboot</string>
     <string name="pref_reboot_allow_softreboot_summary">Amaran! soft reboot boleh menyebabkan peranti
         tidak stabil. Biasakan guna reboot biasa.</string>
 
@@ -1652,7 +1652,7 @@
     <string name="pref_cat_notif_visibility_title">Penampakan</string>
     <string name="pref_lc_notif_visibility_title">Penampakan kandungan</string>
     <string name="pref_lc_notif_visibility_summary">Khaskan penampakan notifikasi pada skrin kunci. 
-        hanya apabila \"sembunyi notifikasi sensitif\" polisi skrin kunci aktif</string>
+        Hanya apabila \"sembunyi notifikasi sensitif\" polisi skrin kunci aktif</string>
     <string name="lc_notif_visibility_default">Tetapan asal</string>
     <string name="lc_notif_visibility_public">Tunjukkan semua kandungan</string>
     <string name="lc_notif_visibility_private">Sembunyi kandungan sensitif</string>
@@ -1663,11 +1663,11 @@
 
     <!-- Cellular tile: data off icon -->
     <string name="pref_cell_tile_data_off_icon_title">Ikon data tidak aktif</string>
-    <string name="pref_cell_tile_data_off_icon_summary">Tunjukkan ikon ketika paket data tidak aktif</string>
+    <string name="pref_cell_tile_data_off_icon_summary">Tunjukkan ikon ketika data paket tidak aktif</string>
 
     <!-- Lockscreen: app shortcuts -->
     <string name="pref_lockscreen_shortcuts_title">Jalan pintas</string>
-    <string name="pref_lockscreen_shortcuts_summary">Benarkan jalan pintas untuk skrin kunci</string>
+    <string name="pref_lockscreen_shortcuts_summary">Aktifkan jalan pintas untuk skrin kunci</string>
 
     <!-- Lockscreen: app shortcuts safe launch -->
     <string name="pref_lockscreen_shortcuts_safe_launch_title">Lancaran selamat</string>
@@ -1722,12 +1722,12 @@
     <string name="pref_lockscreen_dt2s_title">Sentuh 2 kali untuk matikan</string>
 
     <!-- Status bar: disable peek -->
-    <string name="pref_statusbar_disable_peek_title">Matikan peek</string>
+    <string name="pref_statusbar_disable_peek_title">Matikan pengintip</string>
     <string name="pref_statusbar_disable_peek_summary">Tidak akan kembangkan bar status pada satu kali sentuh</string>
 
     <!-- Status bar: Double-tap to sleep -->
     <string name="pref_statusbar_dt2s_title">Sentuh 2 kali untuk matikan</string>
-    <string name="pref_statusbar_dt2s_summary">Perlukan peek untuk tidak aktif</string>
+    <string name="pref_statusbar_dt2s_summary">Pengintip tidak aktif perlu di aktifkan</string>
     
     <!-- Pie trigger indicator -->
     <string name="pref_pie_control_trigind_title">Penunjuk penggera</string>
@@ -1769,7 +1769,7 @@
 
     <!-- Cellular tile Mobile data toggle -->
     <string name="pref_cell_tile_data_toggle_title">Togel data paket</string>
-    <string name="tile_data_toggle_disabled">Dimatikan</string>
+    <string name="tile_data_toggle_disabled">Tidak aktif</string>
     <string name="tile_data_toggle_singlepress">Sekali tekan</string>
     <string name="tile_data_toggle_longpress">Tekan lama</string>
 
@@ -1790,8 +1790,8 @@
     <!-- Power: Camera vibration pattern -->
     <string name="pref_power_camera_vibrate_pattern_title">Corak getaran kamera</string>
     <string name="pref_power_camera_vibrate_pattern_summary">Corak getaran dibahagikan mengikut koma, 
-        durasi tidak aktif/aktif dalam milliseconds untuk kamera yang diaktifkan di menu power.
-        tinggal kosong untuk tetapan asal. Set 0 untuk matikan getaran.</string>
+        durasi tidak aktif/aktif dalam mili saat untuk kamera yang diaktifkan di menu kuasa.
+        Tinggal kosong untuk tetapan asal. Set 0 untuk matikan getaran.</string>
 
     <!-- QS: common quick mode option -->
     <string name="pref_tile_quick_mode_title">Aktifkan mod cepat</string>
@@ -1860,8 +1860,8 @@
     <!-- BatteryPercentText position -->
     <string name="pref_battery_percent_text_position_title">Kedudukan di bar status</string>
     <string name="pref_battery_percent_text_position_summary">Perlukan reboot</string>
-    <string name="battery_percent_text_position_right">Dikanan ikon bateri</string>
-    <string name="battery_percent_text_position_left">Dikiri ikon bateri</string>
+    <string name="battery_percent_text_position_right">Di kanan ikon bateri</string>
+    <string name="battery_percent_text_position_left">Di kiri ikon bateri</string>
 
     <!-- Disable Imprint vibrations -->
     <string name="pref_imprint_vibe_disable_title">Matikan getaran jejak</string>
