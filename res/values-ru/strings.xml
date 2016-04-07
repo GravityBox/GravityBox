@@ -1922,4 +1922,16 @@
     <string name="pref_lc_notif_hide_persistent_summary">Скрытие всех текущих и других неочищаемых 
         уведомлений данного приложения</string>
 
+    <!-- Navbar: Auto-fade keys -->
+    <string name="pref_navbar_autofade_keys_title">Автоисчезновение кнопок</string>
+    <string name="pref_navbar_autofade_keys_summary">Кнопки автоматически исчезают после истечения установленной задержки. Введите для 0 отключения.</string>
+
+    <!-- QS: StayAwake tile Auto-reset -->
+    <string name="pref_sa_tile_auto_reset_title">Автосброс</string>
+    <string name="pref_sa_tile_auto_reset_summary">Автоматическая установка задержки отключения экрана по умолчанию при выключении экрана</string>
+
+    <!-- Lockscreen: PIN scramble -->
+    <string name="pref_lockscreen_pin_sramble_title">Перемешивание цифр PIN</string>
+    <string name="pref_lockscreen_pin_sramble_summary">Изменение расположения цифр для набора PIN-кода при разблокировке устройства</string>
+
 </resources>
