@@ -1905,5 +1905,9 @@
     <!-- QS: StayAwake tile Auto-reset -->
     <string name="pref_sa_tile_auto_reset_title">Set semula automatik</string>
     <string name="pref_sa_tile_auto_reset_summary">Set tetapan asal masa skrin ketika skrin dimatikan</string>
+	
+    <!-- Lockscreen: PIN scramble -->
+    <string name="pref_lockscreen_pin_sramble_title">PIN campuran</string>
+    <string name="pref_lockscreen_pin_sramble_summary">Campur susunan PIN ketika membuka peranti</string>
     
 </resources>
