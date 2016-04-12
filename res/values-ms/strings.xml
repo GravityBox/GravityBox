@@ -1909,5 +1909,10 @@
     <!-- Lockscreen: PIN scramble -->
     <string name="pref_lockscreen_pin_sramble_title">PIN campuran</string>
     <string name="pref_lockscreen_pin_sramble_summary">Campur susunan PIN ketika membuka peranti</string>
+	
+    <!-- UNC: LED DND -->
+    <string name="pref_lc_led_dnd_title">Tiada gangguan</string>
+    <string name="pref_lc_led_dnd_summary">Sekat LED untuk mod tiada gangguan</string>
+    <string name="pref_lc_led_dnd_dialog_title">Pilih jenis mod tiada gangguan untuk biarkan LED dimatikan</string>
     
 </resources>
