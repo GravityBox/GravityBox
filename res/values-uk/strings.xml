@@ -819,7 +819,7 @@
     <string name="shortcut_bluetooth">Увімкнення Bluetooth</string>
 
     <!-- Toggle WiFi AP shortcut -->
-    <string name="shortcut_wifi_ap">Увімкнення ТД Wi-Fi</string>
+    <string name="shortcut_wifi_ap">Увімкнення точки доступу</string>
 
     <!-- Location mode shortcut -->
     <string name="shortcut_location_mode">Налаштування позиціювання</string>
@@ -1084,6 +1084,7 @@
     <string name="animation_scale9">Масштаб 1.25x</string>
     <string name="animation_scale10">Масштаб .35x</string>
     <string name="animation_scale11">Масштаб .4x</string>
+    <string name="animation_scale11">Масштаб .3x</string>
 
     <!-- QS Tiles: Tile label style -->
     <string name="pref_qs_tile_label_style_title">Стиль ярликів плиток</string>
@@ -1919,7 +1920,84 @@
 
     <!-- UNC: Hide persistent notifications -->
     <string name="pref_lc_notif_hide_persistent_title">Приховати постійні сповіщення</string>
-    <string name="pref_lc_notif_hide_persistent_summary">Приховати всі спливаючі та інші сопвіщення, що не прибираються,
-        які надходять від вказаного додатку</string>
+    <string name="pref_lc_notif_hide_persistent_summary">Приховувати всі сповіщення, що не очищаються, 
+        від даного додатку</string>
+
+    <!-- Navbar: Auto-fade keys -->
+    <string name="pref_navbar_autofade_keys_title">Приховувати кнопки</string>
+    <string name="pref_navbar_autofade_keys_summary">Кнопки автоматично зникають через вказаний час. Встановіть 0 для вимкнення.</string>
+    <string name="pref_navbar_autofade_show_keys_title">Показувати кнопки на</string>
+    <string name="autofade_show_keys_navbar">Сенсорній навігаційній панелі</string>
+    <string name="autofade_show_keys_screen">Сенсорному екрані</string>
+
+    <!-- QS: StayAwake tile Auto-reset -->
+    <string name="pref_sa_tile_auto_reset_title">Автоматичне скидання</string>
+    <string name="pref_sa_tile_auto_reset_summary">Встановлює типову затримку вимкнення екрану після вимкнення екрану</string>
+
+    <!-- Lockscreen: PIN scramble -->
+    <string name="pref_lockscreen_pin_sramble_title">Рандомізувати PIN</string>
+    <string name="pref_lockscreen_pin_sramble_summary">Рандомізує положення кнопок PIN при розблокуванні пристрою</string>
+
+    <!-- UNC: LED DND -->
+    <string name="pref_lc_led_dnd_title">Не турбувати</string>
+    <string name="pref_lc_led_dnd_summary">Приховати LED, якщо обрано режим «Не турбувати»</string>
+    <string name="pref_lc_led_dnd_dialog_title">Оберіть для яких режимів буде вимикатися LED</string>
+    <string name="dnd_priority_interruptions">Пріоритетні переривання</string>
+    <string name="dnd_no_interruptions">Без переривань</string>
+
+    <!-- WiFi shortcut -->
+    <string name="wifi_on">WiFi увімкнено</string>
+    <string name="wifi_off">WiFi вимкнено</string>
+
+    <!-- Airplane mode shortcut -->
+    <string name="airplane_mode_on">Режим «в літаку» увімкнено</string>
+    <string name="airplane_mode_off">Режим «в літаку» вимкнено</string>
+
+    <!-- Autobrightness mode shortcut -->
+    <string name="autobrightness_on">Авто-яскравість увімкнено</string>
+    <string name="autobrightness_off">Авто-яскравість вимкнено</string>
+
+    <!-- Bluetooth shortcut -->
+    <string name="bluetooth_on">Bluetooth увімкнено</string>
+    <string name="bluetooth_off">Bluetooth вимкнено</string>
+
+    <!-- Expanded desktop shortcut -->
+    <string name="expanded_desktop_on">Розширений стіл увімкнено</string>
+    <string name="expanded_desktop_off">Розширений стіл вимкнено</string>
+
+    <!-- Mobile data shortcut -->
+    <string name="mobile_data_on">Мобільні дані увімкнено</string>
+    <string name="mobile_data_off">Мобільні дані вимкнено</string>
+
+    <!-- NGC shortcut -->
+    <string name="nfc_on">NFC увімкнено</string>
+    <string name="nfc_off">NFC вимкнено</string>
+
+    <!-- Quiet hours shortcut -->
+    <string name="quiet_hours_on">Тихі години увімкнено</string>
+    <string name="quiet_hours_off">Тихі години вимкнено</string>
+    <string name="quiet_hours_auto">Тихі години автоматично</string>
+
+    <!-- Auto rotation shortcut -->
+    <string name="auto_rotation_on">Авто-поворот увімкнено</string>
+    <string name="auto_rotation_off">Авто-поворот вимкнено</string>
+
+    <!-- Smart radio shortcut -->
+    <string name="smart_radio_on">Розумне радіо увімкнено</string>
+    <string name="smart_radio_off">Розумне радіо вимкнено</string>
+
+    <!-- Sync shortcut -->
+    <string name="sync_on">Синхронізацію увімкнено</string>
+    <string name="sync_off">Синхронізацію вимкнено</string>
+
+    <!-- Hotspot shortcut -->
+    <string name="hotspot_on">Точку доступу увімкнено</string>
+    <string name="hotspot_off">Точку доступу вимкнено</string>
+
+    <!-- Statusbar: Hide vibrate icon -->
+    <string name="pref_sb_hide_vibrate_icon_title">Приховати піктограму вібрації</string>
+
+    <!-- Shortcut: Show toast option -->
+    <string name="shortcut_show_toast">Показати повідомлення стану</string>
 
 </resources>
