@@ -667,6 +667,7 @@
     <string name="pref_hwkey_lockscreen_torch_title">Фонарик на экране блокировки</string>
     <string name="hwkey_ls_torch_disabled">Отключен</string>
     <string name="hwkey_ls_torch_home_longpress">При удержании Домой</string>
+    <string name="hwkey_ls_torch_power_longpress">При удержании питания</string>
     
     <!-- QuickSettings management master switch -->
     <string name="pref_qs_management_enable_summary">Включение быстрых настроек (необходима перезагрузка)</string>
@@ -1900,6 +1901,9 @@
     <!-- Navbar: Auto-fade keys -->
     <string name="pref_navbar_autofade_keys_title">Автоисчезновение кнопок</string>
     <string name="pref_navbar_autofade_keys_summary">Кнопки автоматически исчезают после истечения установленной задержки. Введите для 0 отключения.</string>
+    <string name="pref_navbar_autofade_show_keys_title">Включение показа кнопок</string>
+    <string name="autofade_show_keys_navbar">Касание нав. панели</string>
+    <string name="autofade_show_keys_screen">Касание экрана</string>
 
     <!-- QS: StayAwake tile Auto-reset -->
     <string name="pref_sa_tile_auto_reset_title">Автосброс</string>
@@ -1908,5 +1912,65 @@
     <!-- Lockscreen: PIN scramble -->
     <string name="pref_lockscreen_pin_sramble_title">Перемешивание цифр PIN</string>
     <string name="pref_lockscreen_pin_sramble_summary">Изменение расположения цифр для набора PIN-кода при разблокировке устройства</string>
+
+    <!-- UNC: LED DND -->
+    <string name="pref_lc_led_dnd_title">Не беспокоить</string>
+    <string name="pref_lc_led_dnd_summary">Отключение индикации для выбранных режимов Не беспокоить</string>
+    <string name="pref_lc_led_dnd_dialog_title">Выберите, для каких режимов Не беспокоить отключается световая индикация</string>
+
+    <!-- WiFi shortcut -->
+    <string name="wifi_on">WiFi вкл</string>
+    <string name="wifi_off">WiFi выкл</string>
+
+    <!-- Airplane mode shortcut -->
+    <string name="airplane_mode_on">Режим полета вкл</string>
+    <string name="airplane_mode_off">Режим полета выкл</string>
+
+    <!-- Autobrightness mode shortcut -->
+    <string name="autobrightness_on">Автояркость вкл</string>
+    <string name="autobrightness_off">Автояркость выкл</string>
+
+    <!-- Bluetooth shortcut -->
+    <string name="bluetooth_on">Bluetooth вкл</string>
+    <string name="bluetooth_off">Bluetooth выкл</string>
+
+    <!-- Expanded desktop shortcut -->
+    <string name="expanded_desktop_on">Расш. раб. стол вкл</string>
+    <string name="expanded_desktop_off">Расш. раб. стол выкл</string>
+
+    <!-- Mobile data shortcut -->
+    <string name="mobile_data_on">Моб. интернет вкл</string>
+    <string name="mobile_data_off">Моб. интернет выкл</string>
+
+    <!-- NGC shortcut -->
+    <string name="nfc_on">NFC вкл</string>
+    <string name="nfc_off">NFC выкл</string>
+
+    <!-- Quiet hours shortcut -->
+    <string name="quiet_hours_on">Тихий час вкл</string>
+    <string name="quiet_hours_off">Тихий час выкл</string>
+    <string name="quiet_hours_auto">Тихий час авто</string>
+
+    <!-- Auto rotation shortcut -->
+    <string name="auto_rotation_on">Автоповорот вкл</string>
+    <string name="auto_rotation_off">Автоповорот выкл</string>
+
+    <!-- Smart radio shortcut -->
+    <string name="smart_radio_on">Умное радио вкл</string>
+    <string name="smart_radio_off">Умное радио выкл</string>
+
+    <!-- Sync shortcut -->
+    <string name="sync_on">Синх. вкл</string>
+    <string name="sync_off">Синх. выкл</string>
+
+    <!-- Hotspot shortcut -->
+    <string name="hotspot_on">Точка доступа вкл</string>
+    <string name="hotspot_off">Точка доступа выкл</string>
+
+    <!-- Statusbar: Hide vibrate icon -->
+    <string name="pref_sb_hide_vibrate_icon_title">Скрыть значок вибрации</string>
+
+    <!-- Shortcut: Show toast option -->
+    <string name="shortcut_show_toast">Показать сообщение о состоянии</string>
 
 </resources>
