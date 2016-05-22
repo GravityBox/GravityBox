@@ -1972,4 +1972,33 @@
     <!-- Shortcut: Show toast option -->
     <string name="shortcut_show_toast">Показать сообщение о состоянии</string>
 
+    <!-- Xperia tiles -->
+    <string name="qs_tile_xperia_sync">Xperia автосинх. данных</string>
+    <string name="qs_tile_xperia_roaming">Xperia роуминг данных</string>
+    <string name="qs_tile_xperia_nfc">Xperia NFC</string>
+    <string name="qs_tile_xperia_lte">Xperia LTE</string>
+    <string name="qs_tile_xperia_datatraffic">Xperia моб. данные</string>
+    <string name="qs_tile_xperia_screenmirroring">Xperia зеркало экрана</string>
+    <string name="qs_tile_xperia_throw">Xperia Throw</string>
+    <string name="qs_tile_xperia_volte">Xperia VoLTE</string>
+    <string name="qs_tile_xperia_tethering">Xperia раздача</string>
+    <string name="qs_tile_xperia_detectusbdevice">Xperia обнаружение USB</string>
+
+    <!-- Navbar custom key icon style -->
+    <string name="pref_navbar_custom_key_icon_style_title">Стиль значка</string>
+    <string name="ncki_icon_style1">6 точек</string>
+    <string name="ncki_icon_style2">3 точки</string>
+    <string name="ncki_icon_style3">Прозрачный</string>
+    <string name="ncki_icon_style4">Пользовательский</string>
+    <string name="pref_navbar_custom_key_image_title">Установить польз. изображение</string>
+    <string name="custom_image_success">Пользовательское установлено</string>
+    <string name="custom_image_failure">Ошибка установки пользовательского</string>
+
+    <!-- Key actions: allow volume rocker wake when music active -->
+    <string name="pref_volume_rocker_wake_allow_music_title">Разрешить пробуждение при активной музыке</string>
+
+    <!-- Turn off -->
+    <string name="turn_off">Отключить</string>
+
 </resources>
+
