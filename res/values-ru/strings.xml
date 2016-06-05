@@ -682,6 +682,7 @@
 
     <!-- Volume panel timeout -->
     <string name="pref_volume_panel_timeout_title">Задержка панели громкости</string>
+    <string name="pref_volume_panel_timeout_summary">Оставьте ноль для задержки по умолчанию</string>
 
     <!-- Ringer tile modes -->
     <string name="ringer_mode_silent">Важные</string>
@@ -1997,5 +1998,10 @@
     <!-- Turn off -->
     <string name="turn_off">Отключить</string>
 
-</resources>
+    <!-- Force AOSP -->
+    <string name="pref_force_aosp_title">Принудительно AOSP</string>
+    <string name="pref_force_aosp_summary">Система будет восприниматься как AOSP. 
+        Используйте, если система Вашего устройства идентифицируется как брендовая, хотя на самом
+        деле она является альтернативной прошивкой на основе AOSP (необходима перезагрузка)</string>
 
+</resources>
