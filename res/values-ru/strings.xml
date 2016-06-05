@@ -684,6 +684,7 @@
     <string name="pref_hwkey_lockscreen_torch_title">Фонарик на экране блокировки</string>
     <string name="hwkey_ls_torch_disabled">Отключен</string>
     <string name="hwkey_ls_torch_home_longpress">При удержании Домой</string>
+    <string name="hwkey_ls_torch_power_longpress">При удержании кнопки выключения</string>
     
     <!-- QuickSettings management master switch -->
     <string name="pref_qs_management_enable_summary">Включение быстрых настроек (необходима перезагрузка)</string>
@@ -1998,5 +1999,18 @@
 
     <!-- Shortcut: Show toast option -->
     <string name="shortcut_show_toast">Показать сообщение о состоянии</string>
+
+    <!-- Navbar custom key icon style -->
+    <string name="pref_navbar_custom_key_icon_style_title">Стиль значка</string>
+    <string name="ncki_icon_style1">6 точек</string>
+    <string name="ncki_icon_style2">3 точки</string>
+    <string name="ncki_icon_style3">Прозрачный</string>
+    <string name="ncki_icon_style4">Пользовательский</string>
+    <string name="pref_navbar_custom_key_image_title">Установить польз. изображение</string>
+    <string name="custom_image_success">Пользовательское установлено</string>
+    <string name="custom_image_failure">Ошибка установки пользовательского</string>
+
+    <!-- Key actions: allow volume rocker wake when music active -->
+    <string name="pref_volume_rocker_wake_allow_music_title">Разрешить пробуждение при активной музыке</string>
 
 </resources>
