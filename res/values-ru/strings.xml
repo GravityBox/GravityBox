@@ -1779,6 +1779,7 @@
     <string name="pref_lockscreen_bleft_action_title">Действие кнопки слева</string>
     <string name="ls_bleft_action_default">По умолчанию</string>
     <string name="ls_bleft_action_phone">Телефон</string>
+    <string name="pref_lockscreen_bleft_action_custom_title">Установить действие кнопки слева</string>
 
     <!-- Lockscreen: Quick unlock PIN length -->
     <string name="pref_lockscreen_pin_length_title">Длина ПИН-кода</string>
