@@ -2013,4 +2013,12 @@
     <!-- Key actions: allow volume rocker wake when music active -->
     <string name="pref_volume_rocker_wake_allow_music_title">Разрешить пробуждение при активной музыке</string>
 
+    <!-- Lockscreen: bottom actions -->
+    <string name="pref_lockscreen_bleft_action_title">Действие кнопки слева</string>
+    <string name="pref_lockscreen_bright_action_title">Действие кнопки справа</string>
+
+    <!-- Wireless charger plugged sound -->
+    <string name="pref_charger_plugged_sound_wireless_title">Звук беспроводной зарядки</string>
+    <string name="stock_wireless_sound">Стоковый звук беспроводной зарядки</string>
+
 </resources>
