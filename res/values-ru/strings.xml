@@ -2005,4 +2005,8 @@
         Используйте, если система Вашего устройства идентифицируется как брендовая, хотя на самом
         деле она является альтернативной прошивкой на основе AOSP (необходима перезагрузка)</string>
 
+    <!-- Wireless charger plugged sound -->
+    <string name="pref_charger_plugged_sound_wireless_title">Звук беспроводной зарядки</string>
+    <string name="stock_wireless_sound">Стоковый звук беспроводной зарядки</string>
+
 </resources>
