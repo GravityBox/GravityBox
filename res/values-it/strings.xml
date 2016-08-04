@@ -1238,6 +1238,30 @@
 
     <!-- Quick pull down size -->
     <string name="pref_quick_pulldown_size_title">Dimensione bordo visualizzazione rapida</string>
+    
+<!-- Stay Awake Tile modes -->
+    <string name="stay_awake_15s">15s</string>
+    <string name="stay_awake_30s">30s</string>
+    <string name="stay_awake_1m">1m</string>
+    <string name="stay_awake_2m">2m</string>
+    <string name="stay_awake_5m">5m</string>
+    <string name="stay_awake_10m">10m</string>
+    <string name="stay_awake_30m">30m</string>
+
+        <!-- Icon picker: new icons -->
+    <string name="shortcuts_icon_picker_tapatalk">Tapatalk</string>
+    <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
+
+    <!-- Unlock ring: double-tap to sleep -->
+    <string name="pref_lockscreen_ring_dt2s_title">Doppio-tap spegne schermo</string>
+    <string name="pref_lockscreen_ring_dt2s_summary">Fare doppio-tap sull\'anello di sblocco spegnerà lo schermo</string>
+
+    <!-- Charger plugged/unplugged sound -->
+    <string name="pref_charger_plugged_sound_title">Riproduci suono al collegamento</string>
+    <string name="pref_charger_plugged_sound_summary">Riproduce un suono quando il caricabatterie viene collegato/scollegato</string>
+
+    <!-- GB Actions: Toggle Smart Radio -->
+    <string name="shortcut_smart_radio_toggle">Attiva/disattiva Modem intelligente</string>    
 
     <!-- Stay Awake Tile modes -->
     <string name="pref_qs_stay_awake_title">Modalità casella Timeout display</string>
