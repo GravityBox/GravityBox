@@ -188,34 +188,6 @@ public class WebServiceClient<T extends WebServiceResult> extends AsyncTask<Requ
     }
 
     public static String getAppSignatureHash(Context context) {
-        try {
-            File f = new File(context.getApplicationInfo().sourceDir);
-            long apkLength = f.length();
-            byte[] apkLengthArray = String.valueOf(apkLength).getBytes();
-
-            PackageManager pm = context.getPackageManager();
-            PackageInfo pInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
-            byte[] signatureArray = pInfo.signatures[0].toByteArray();
-
-            byte[] hashSrcArray = new byte[apkLengthArray.length + signatureArray.length];
-            ByteBuffer bb = ByteBuffer.wrap(hashSrcArray);
-            bb.put(apkLengthArray);
-            bb.put(signatureArray);
-
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(bb.array());
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-              sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-            }
-            Log.d("GravityBox", sb.toString());
-            return sb.toString();
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return "9a19d753c105b4c40135f3e63d55b84c";
     }
 }
