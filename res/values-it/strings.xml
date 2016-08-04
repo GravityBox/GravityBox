@@ -1556,8 +1556,13 @@
     <string name="cd_west">O</string>
     <string name="cd_north_west">NO</string>
 
-    <!-- Pie: mirrored keys -->
-    <string name="pref_pie_control_mirrored_keys_title">Scambia posizione tasti</string>
+       <!-- Statusbar clock: date format options -->
+    <string name="clock_date_disabled">Disabilitato</string>
+    <string name="clock_date_localized">Formato data basato sul formato locale</string>
+    <string name="clock_date_format_1">Formato data: gg/MM</string>
+    <string name="clock_date_format_2">Formato data: MM/gg</string>
+    <string name="clock_date_format_3">Formato data: g MMM</string>
+    <string name="clock_date_format_4">Formato data: MMM g</string>
 
     <!-- Pie: center trigger -->
     <string name="pref_pie_control_center_trigger_title">Centra trigger</string>
