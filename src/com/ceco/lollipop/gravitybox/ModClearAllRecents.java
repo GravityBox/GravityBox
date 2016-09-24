@@ -43,7 +43,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
-
+import android.content.res.XResources;
 import com.ceco.lollipop.gravitybox.R;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -148,6 +148,7 @@ public class ModClearAllRecents {
     };
 
     public static void init(final XSharedPreferences prefs, ClassLoader classLoader) {
+        XResources.setSystemWideReplacement("android", "dimen", "recents_search_bar_space_height", 0);
         try {
             Class<?> recentActivityClass = XposedHelpers.findClass(CLASS_RECENT_ACTIVITY, classLoader);
 
