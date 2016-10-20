@@ -2009,4 +2009,20 @@
     <string name="pref_charger_plugged_sound_wireless_title">Звук беспроводной зарядки</string>
     <string name="stock_wireless_sound">Стоковый звук беспроводной зарядки</string>
 
+    <!-- QS: Moto Data tile -->
+    <string name="qs_tile_moto_data">Данные (Moto)</string>
+
+    <!-- Dialer category -->
+    <string name="pref_cat_phone_dialer_title">Набор номера</string>
+
+    <!-- QS: Brightness control -->
+    <string name="pref_qs_brightness_icon_title">Значок яркости</string>
+    <string name="pref_qs_brightness_icon_summary">Показать значок с индикатором текущего режима яркости. 
+        Нажатие включает адаптивную яркость, удержание открывает настройки экрана.</string>
+
+    <!-- UNC: Active screen: Ignore updated notifications -->
+    <string name="pref_lc_active_screen_ignore_update_title">Игнорировать обновлеённые уведомления</string>
+    <string name="pref_lc_active_screen_ignore_update_summary">Активный экран не будет срабатывать при 
+        обновлении существующих уведомлений</string>
+
 </resources>
