@@ -611,7 +611,7 @@
     <string name="pref_pie_color_reset_title">Сбросить цвета</string>
 
     <!-- Custom unknown caller photo -->
-    <string name="pref_caller_unknown_photo_enable_title">Изображ. на контакт без фото</string>
+    <string name="pref_caller_unknown_photo_enable_title">Изображение на контакт без фото</string>
     <string name="pref_caller_unknown_photo_title">Задать изображение</string>
     <string name="caller_unknown_photo_result_successful">Изображение изменено</string>
     <string name="caller_unkown_photo_result_not_successful">Изображение не изменено</string>
@@ -935,11 +935,11 @@
     <string name="pref_settings_restore_title">Восстановление</string>
     <string name="settings_backup_failed">Сбой резервного копирования</string>
     <string name="settings_backup_no_prefs">Файл установок не найден</string>
-    <string name="settings_backup_success">Резервное копирование успешно</string>
+    <string name="settings_backup_success">Резервное копирование выполнено</string>
     <string name="settings_restore_no_backup">Нет резервной копии для восстановления</string>
     <string name="settings_restore_confirm">Ваши текущие установки будут изменены. Вы уверены?</string>
     <string name="settings_restore_failed">Сбой восстановления</string>
-    <string name="settings_restore_success">Восстановление успешно</string>
+    <string name="settings_restore_success">Восстановление выполнено</string>
     <string name="settings_restore_reboot">Пожалуйста, перезагрузите устройство</string>
 
     <!-- Web service client strings -->
@@ -953,7 +953,7 @@
 
     <!-- Transaction verification -->
     <string name="wsc_trans_parse_response_error">Ошибка обработки данных транзакции, полученных от сетевой службы</string>
-    <string name="wsc_trans_valid">Подтверждение ID транзакции успешно. Премиум-функции будут разблокированы после перезагрузки GravityBox.</string>
+    <string name="wsc_trans_valid">Подтверждение ID транзакции выполнено. Премиум-функции будут разблокированы после перезагрузки GravityBox.</string>
     <string name="wsc_trans_invalid">Не удалось найти запись для ID указанной транзакции</string>
     <string name="wsc_trans_violation">Указанный ID транзакции был использован слишком много раз. Свяжитесь с разработчиком GravityBox для решения проблемы.</string>
     <string name="wsc_trans_blocked">Указанный ID транзакции заблокирован. Свяжитесь с разработчиком GravityBox для решения проблемы.</string>
@@ -1639,7 +1639,7 @@
     <string name="pref_navbar_hide_ime_title">Скрыть переключатель IME</string>
 
     <!-- Lockscreen: direct unlock -->
-    <string name="pref_lockscreen_direct_unlock_title">Быстрая разблокировка</string>
+    <string name="pref_lockscreen_direct_unlock_title">Отображение разблокировки</string>
     <string name="pref_lockscreen_direct_unlock_summary">Отображение разблокировки непосредственно при включении экрана</string>
     <string name="direct_unlock_off">Откл</string>
     <string name="direct_unlock_standard">Стандартно</string>
@@ -1757,7 +1757,7 @@
     <string name="tile_shown_locked_only">Отображается только на экране блокировки</string>
 
     <!-- Lockscreen: Direct unlock policy -->
-    <string name="pref_lockscreen_direct_unlock_policy_title">Политика прямой разблокировки</string>
+    <string name="pref_lockscreen_direct_unlock_policy_title">Политика отображения разблокировки</string>
 
     <!-- Permission denial message -->
     <string name="permission_denied_msg">Вы решили отозвать некоторые разрешения.
@@ -2021,8 +2021,13 @@
         Нажатие включает адаптивную яркость, удержание открывает настройки экрана.</string>
 
     <!-- UNC: Active screen: Ignore updated notifications -->
-    <string name="pref_lc_active_screen_ignore_update_title">Игнорировать обновлеённые уведомления</string>
+    <string name="pref_lc_active_screen_ignore_update_title">Игнорировать обновлённые уведомления</string>
     <string name="pref_lc_active_screen_ignore_update_summary">Активный экран не будет срабатывать при 
         обновлении существующих уведомлений</string>
+
+    <!-- UNC: LED: Ignore updated notifications -->
+    <string name="pref_lc_led_ignore_update_title">Игнорировать обновлённые уведомления</string>
+    <string name="pref_lc_led_ignore_update_summary">Светодиод не будет срабатывать для существующих уведомлений,
+        уже просмотренных пользователем, при их обновлении</string>
 
 </resources>
