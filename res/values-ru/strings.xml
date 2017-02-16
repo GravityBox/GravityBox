@@ -1454,6 +1454,7 @@
     <string name="pref_charging_led_title">Индикация зарядки</string>
     <string name="charging_led_default">По умолчанию</string>
     <string name="charging_led_emulated">Эмуляция</string>
+    <string name="charging_led_constant">Постоянно (необходима поддержка драйвера светодиода)</string>
     <string name="charging_led_disabled">Отключено</string>
 
     <!-- Quiet hours week days -->
@@ -2069,5 +2070,12 @@
     <string name="qs_tile_op3t_vpn">OP3T VPN</string>
     <string name="qs_tile_op3t_dataswitch">OP3T переключ. данных</string>
     <string name="qs_tile_op3t_powersaving">OP3T энергосбережение</string>
+
+    <!-- Lockscreen shorcuts: Show badges -->
+    <string name="pref_lockscreen_shortcuts_show_badges_title">Показать значки</string>
+    <string name="pref_lockscreen_shortcuts_show_badges_summary">Показать значки с отображением счётчика уведомлений</string>
+
+    <!-- Clock: Show seconds -->
+    <string name="pref_statusbar_clock_show_seconds_title">Показать секунды</string>
 
 </resources>
