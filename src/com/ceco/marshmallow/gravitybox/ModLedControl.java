@@ -95,6 +95,7 @@ public class ModLedControl {
     private static Object mNotifManagerService;
     private static boolean mProximityWakeUpEnabled;
     private static boolean mScreenOnDueToActiveScreen;
+    private static boolean mVibrateCameraGesture;
     private static AudioManager mAudioManager;
     private static Integer mDefaultNotificationLedColor;
     private static Integer mDefaultNotificationLedOn;
@@ -167,6 +168,7 @@ public class ModLedControl {
         mQuietHours = new QuietHours(mQhPrefs);
 
         mProximityWakeUpEnabled = mainPrefs.getBoolean(GravityBoxSettings.PREF_KEY_POWER_PROXIMITY_WAKE, false);
+        mVibrateCameraGesture = mainPrefs.getBoolean(GravityBoxSettings.PREF_KEY_VIBRATE_CAMERA_GESTURE, false);
 
         try {
             final Class<?> nmsClass = XposedHelpers.findClass(CLASS_NOTIFICATION_MANAGER_SERVICE, classLoader);
@@ -775,6 +777,14 @@ public class ModLedControl {
                     }
 
                     param.setResult(showHeadsUp);
+                }
+            });
+            
+            XposedHelpers.findAndHookMethod(CLASS_PHONE_STATUSBAR, classLoader, "vibrateForCameraGesture",
+                     new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                    if (!mVibrateCameraGesture) param.setResult(null);
                 }
             });
 
