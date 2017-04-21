@@ -2090,4 +2090,12 @@
     <string name="msg_unlocker_old">Похоже, что Ваша версия GravityBox Unlocker устарела. Пожалуйста, обновите её.</string>
     <string name="msg_unlocker_error">Неожиданная ошибка при обращении к GravityBox Unlocker</string>
 
+    <!-- Lockscreen: hide bottom actions -->
+    <string name="pref_lockscreen_bottom_actions_hide_title">Скрыть действия снизу</string>
+    <string name="bottom_action_left">Скрыть действие слева</string>
+    <string name="bottom_action_right">Скрыть действие справа</string>
+
+    <!-- Lockscreen: Direct unlock see through transparency level -->
+    <string name="pref_lockscreen_direct_unlock_trans_level_title">Просмотр через прозрачность</string>
+
 </resources>
