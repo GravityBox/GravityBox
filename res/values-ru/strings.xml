@@ -2098,4 +2098,41 @@
     <!-- Lockscreen: Direct unlock see through transparency level -->
     <string name="pref_lockscreen_direct_unlock_trans_level_title">Просмотр через прозрачность</string>
 
+    <!-- Subscription manager -->
+    <string name="sm_choose_voice_sub">SIM-карта по умолчанию для вызовов</string>
+    <string name="sm_choose_sms_sub">SIM-карта по умолчанию для сообщений</string>
+    <string name="sm_choose_data_sub">SIM-карта по умолчанию для интернета</string>
+    <string name="sm_sub_change_voice_failed">Ошибка установки SIM-карты для вызовов</string>
+    <string name="sm_sub_change_sms_failed">Ошибка установки SIM-карты для сообщений</string>
+    <string name="sm_sub_change_data_failed">Ошибка установки SIM-карты для интернета</string>
+    <string name="sm_sub_change_voice_ok">SIM-карта по умолчанию для вызовов:</string>
+    <string name="sm_sub_change_sms_ok">SIM-карта по умолчанию для сообщений:</string>
+    <string name="sm_sub_change_data_ok">SIM-карта по умолчанию для интернета:</string>
+    <string name="sm_voice_ask">Всегда спрашивать</string>
+
+    <!-- GB Actions: SIM settings -->
+    <string name="shortcut_sm_title">Параметры SIM</string>
+    <string name="shortcut_sm_voice_sim_1">SIM 1 для вызовов</string>
+    <string name="shortcut_sm_voice_sim_2">SIM 2 для вызовов</string>
+    <string name="shortcut_sm_voice_sim_ask">Спрашивать при вызове</string>
+    <string name="shortcut_sm_voice_sim_ui">Выбрать SIM для вызовов</string>
+    <string name="shortcut_sm_sms_sim_1">SIM 1 для СМС</string>
+    <string name="shortcut_sm_sms_sim_2">SIM 2 для СМС</string>
+    <string name="shortcut_sm_sms_sim_ui">Выбрать SIM для СМС</string>
+    <string name="shortcut_sm_data_sim_1">SIM 1 для интернета</string>
+    <string name="shortcut_sm_data_sim_2">SIM 2 for data</string>
+    <string name="shortcut_sm_data_sim_ui">Выбрать SIM для интернета</string>
+
+    <!-- QuickApp Tile #3 and #4 -->
+    <string name="pref_cat_quickapp_tile_3_title">Плитка быстрого запуска 3</string>
+    <string name="qs_tile_quickapp_3">Быстрый запуск 3</string>
+    <string name="pref_cat_quickapp_tile_4_title">Плитка быстрого запуска 4</string>
+    <string name="qs_tile_quickapp_4">Быстрый запуск 4</string>
+
+    <!-- QS Bluetooth Tethering tile -->
+    <string name="qs_tile_bt_tethering">Раздача Bluetooth</string>
+    <string name="qs_tile_bt_tethering_on">Раздача вкл</string>
+    <string name="qs_tile_bt_tethering_off">Раздача выкл</string>
+    <string name="qs_tile_bt_tethering_error">Ошибка</string>
+
 </resources>
