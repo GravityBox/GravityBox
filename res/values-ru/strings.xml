@@ -834,7 +834,7 @@
     <string name="bpt_charging_animated">Анимированная</string>
 
     <!-- QuickApp Tile #2 -->
-    <string name="pref_cat_quickapp_tile_2_title">Доп.плитка быстрого запуска</string>
+    <string name="pref_cat_quickapp_tile_2_title">Плитка быстрого запуска 2</string>
     <string name="qs_tile_quickapp_2">Быстрый запуск 2</string>
 
     <!-- Force music volume control -->
@@ -2120,7 +2120,7 @@
     <string name="shortcut_sm_sms_sim_2">SIM 2 для СМС</string>
     <string name="shortcut_sm_sms_sim_ui">Выбрать SIM для СМС</string>
     <string name="shortcut_sm_data_sim_1">SIM 1 для интернета</string>
-    <string name="shortcut_sm_data_sim_2">SIM 2 for data</string>
+    <string name="shortcut_sm_data_sim_2">SIM 2 для интернета</string>
     <string name="shortcut_sm_data_sim_ui">Выбрать SIM для интернета</string>
 
     <!-- QuickApp Tile #3 and #4 -->
