@@ -93,7 +93,7 @@ public class ModDialer {
                 }
             });
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            //XposedBridge.log(t);
         }
 
         try {
@@ -138,7 +138,7 @@ public class ModDialer {
                         Drawable.class, unknownCallerHook);
             }
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            //XposedBridge.log(t);
         }
 
         try {
@@ -163,7 +163,7 @@ public class ModDialer {
                 }
             });
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            //XposedBridge.log(t);
         }
 
         try {
@@ -185,7 +185,7 @@ public class ModDialer {
                 }
             });
         } catch (Throwable t) {
-            XposedBridge.log(t);
+            //XposedBridge.log(t);
         }
     }
 }
