@@ -532,10 +532,7 @@ public class ModLockscreen {
                     }
                 };
 
-                if (Utils.isSamsungRom()) {
-                    XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT,
-                            classLoader, "updateCarrierText", Intent.class, carrierTextHook);
-                } else if (Utils.isOxygenOsRom()) {
+				if (Utils.isOxygenOsRom()) {
                     XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT,
                             classLoader, "updateCarrierTextInternal", carrierTextHook);
                 } else {
@@ -850,11 +847,7 @@ public class ModLockscreen {
     private static void updateCarrierText() {
         for (TextView tv : mCarrierTextViews) {
             try {
-                if (Utils.isSamsungRom()) {
-                    XposedHelpers.callMethod(tv, "updateCarrierText", (Intent) null);
-                } else {
                     XposedHelpers.callMethod(tv, "updateCarrierText");
-                }
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
