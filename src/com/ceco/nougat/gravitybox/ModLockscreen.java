@@ -576,14 +576,45 @@ public class ModLockscreen {
                            }
                        }
                    });
+            	} else {
+                    XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
+                            "launchPhone", new XC_MethodHook() {
+                        @Override
+                        protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                            if (mLeftAction != null) {
+                                SysUiManagers.AppLauncher.startActivity(mContext, mLeftAction.getIntent());
+                                param.setResult(null);
+                            }
+                        }
+                    });
             	}
     
                 XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
                         "updateCameraVisibility", new XC_MethodHook() {
                     @Override
                     protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                        ImageView v = (ImageView) XposedHelpers.getObjectField(
+                    	ImageView v;
+                    	if (Utils.isSamsungRom())
+                    	{
+                            v = (ImageView) XposedHelpers.getObjectField(
+                                    param.thisObject, "mLeftAffordanceView");
+                            if (mLeftActionHidden) {
+                                v.setVisibility(View.GONE);
+                            } else if (mLeftAction != null) {
+                                v.setVisibility(View.VISIBLE);
+                                if (mLeftActionDrawableOrig == null) {
+                                    mLeftActionDrawableOrig = v.getDrawable();
+                                }
+                                v.setImageDrawable(mLeftAction.getAppIcon());
+                                v.setContentDescription(mLeftAction.getAppName());
+                            } else if (mLeftActionDrawableOrig != null) {
+                                v.setImageDrawable(mLeftActionDrawableOrig);
+                                mLeftActionDrawableOrig = null;
+                            }
+                    	} else {
+                        v = (ImageView) XposedHelpers.getObjectField(
                                 param.thisObject, "mCameraImageView");
+                    	}
                         if (mRightActionHidden) {
                             v.setVisibility(View.GONE);
                         } else if (mRightAction != null) {
