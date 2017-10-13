@@ -114,6 +114,7 @@ public class GravityBoxSettings extends GravityBoxActivity implements GravityBox
     public static final String PREF_KEY_BATTERY_PERCENT_TEXT_STYLE = "pref_battery_percent_text_style";
     public static final String PREF_KEY_BATTERY_PERCENT_TEXT_CHARGING = "battery_percent_text_charging";
     public static final String PREF_KEY_BATTERY_PERCENT_TEXT_CHARGING_COLOR = "pref_battery_percent_text_charging_color";
+    public static final String PREF_KEY_BATTERY_HIDE_DASH_ICON = "pref_battery_hide_dash_icon";
     public static final int BATTERY_STYLE_STOCK = 1;
     public static final int BATTERY_STYLE_STOCK_PERCENT = 4;
     public static final int BATTERY_STYLE_CIRCLE = 2;
@@ -516,6 +517,7 @@ public class GravityBoxSettings extends GravityBoxActivity implements GravityBox
 
     public static final String ACTION_PREF_BATTERY_STYLE_CHANGED = "gravitybox.intent.action.BATTERY_STYLE_CHANGED";
     public static final String EXTRA_BATTERY_STYLE = "batteryStyle";
+    public static final String EXTRA_HIDE_DASH = "hideDash";
     public static final String ACTION_PREF_BATTERY_PERCENT_TEXT_CHANGED =
             "gravitybox.intent.action.BATTERY_PERCENT_TEXT_CHANGED";
     public static final String EXTRA_BATTERY_PERCENT_TEXT_STATUSBAR = "batteryPercentTextSb";
@@ -1748,6 +1750,10 @@ public class GravityBoxSettings extends GravityBoxActivity implements GravityBox
                 mPrefCatPhone.removePreference(mPrefCatPhoneDialer);
                 mBatteryStyle.setEntries(R.array.battery_style_entries_oos);
                 mBatteryStyle.setEntryValues(R.array.battery_style_values_oos);
+            } else {
+                PreferenceScreen ps = (PreferenceScreen) findPreference(PREF_CAT_KEY_BATTERY_SETTINGS);
+                Preference p = findPreference(PREF_KEY_BATTERY_HIDE_DASH_ICON);
+                if (ps != null && p != null) ps.removePreference(p);
             }
 
             // Remove fingerprint related preferences
@@ -2519,6 +2525,9 @@ public class GravityBoxSettings extends GravityBoxActivity implements GravityBox
                 intent.setAction(ACTION_PREF_BATTERY_STYLE_CHANGED);
                 int batteryStyle = Integer.valueOf(prefs.getString(PREF_KEY_BATTERY_STYLE, "1"));
                 intent.putExtra("batteryStyle", batteryStyle);
+            } else if (key.equals(PREF_KEY_BATTERY_HIDE_DASH_ICON)) {
+                intent.setAction(ACTION_PREF_BATTERY_STYLE_CHANGED);
+                intent.putExtra(EXTRA_HIDE_DASH, prefs.getBoolean(key, false));
             } else if (key.equals(PREF_KEY_BATTERY_PERCENT_TEXT_STATUSBAR)) {
                 intent.setAction(ACTION_PREF_BATTERY_PERCENT_TEXT_CHANGED);
                 intent.putExtra(EXTRA_BATTERY_PERCENT_TEXT_STATUSBAR, prefs.getBoolean(key, false));

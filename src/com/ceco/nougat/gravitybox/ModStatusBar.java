@@ -438,7 +438,7 @@ public class ModStatusBar {
             }
             if (container != null) {
                 BatteryStyleController bsc = new BatteryStyleController(
-                        containerType, container, mPrefs);
+                        containerType, container, mPrefs, mPhoneStatusBar);
                 mBroadcastSubReceivers.add(bsc);
             }
         } catch (Throwable t) {

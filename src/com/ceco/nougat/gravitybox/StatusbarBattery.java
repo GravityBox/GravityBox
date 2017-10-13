@@ -32,20 +32,21 @@ public class StatusbarBattery implements IconManagerListener {
     private static final String TAG = "GB:StatusbarBattery";
     private static final boolean DEBUG = false;
 
+    private BatteryStyleController mController;
     private View mBattery;
     private int mDefaultColor;
     private int mDefaultFrameColor;
     private int mFrameAlpha;
     private int mDefaultChargeColor;
     private Drawable mDrawable;
-    private boolean mIsDashCharging;
 
     private static void log(String message) {
         XposedBridge.log(TAG + ": " + message);
     }
 
-    public StatusbarBattery(View batteryView) {
+    public StatusbarBattery(View batteryView, BatteryStyleController controller) {
         mBattery = batteryView;
+        mController = controller;
         backupOriginalColors();
         createHooks();
         if (SysUiManagers.IconManager != null && !Utils.isParanoidRom()) {
@@ -97,24 +98,11 @@ public class StatusbarBattery implements IconManagerListener {
                 log("Error hooking getFillColor(): " + t.getMessage());
             }
         }
-        if (Utils.isOxygenOsRom()) {
-            try {
-                XposedHelpers.findAndHookMethod(mBattery.getClass(), "onFastChargeChanged",
-                        boolean.class, new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                        mIsDashCharging = (boolean)param.args[0];
-                        if (DEBUG) log("onFastChargeChanged: mIsDashCharging=" + mIsDashCharging);
-                    }
-                });
-            } catch (Throwable t) {
-                log("Error hooking onFastChargeChanged(): " + t.getMessage());
-            }
-        }
     }
 
     public void setVisibility(int visibility) {
-        mBattery.setVisibility(mIsDashCharging ? View.GONE : visibility);
+        mBattery.setVisibility((mController.isDashCharging() && !mController.isDashIconHidden()) ?
+                View.GONE : visibility);
     }
 
     private void setColors(int mainColor, int frameColor, int chargeColor) {

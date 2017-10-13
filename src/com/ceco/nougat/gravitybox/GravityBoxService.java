@@ -16,7 +16,6 @@
 package com.ceco.nougat.gravitybox;
 
 import com.ceco.nougat.gravitybox.R;
-import com.ceco.nougat.gravitybox.ledcontrol.QuietHours;
 import com.ceco.nougat.gravitybox.ledcontrol.QuietHoursActivity;
 import com.ceco.nougat.gravitybox.shortcuts.AShortcut;
 
@@ -25,6 +24,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.ResultReceiver;
 import android.widget.Toast;
 
@@ -39,7 +39,7 @@ public class GravityBoxService extends IntentService {
 
     public GravityBoxService() {
         super("GravityBoxService");
-        mHandler = new Handler();
+        mHandler = new Handler(Looper.getMainLooper());
     }
 
     @Override
@@ -64,12 +64,18 @@ public class GravityBoxService extends IntentService {
             data.putBoolean(KEY_SYNC_STATUS, syncStatus);
             receiver.send(RESULT_SYNC_STATUS, data);
         } else if (intent.getAction().equals(QuietHoursActivity.ACTION_SET_QUIET_HOURS_MODE)) {
-            QuietHours.Mode qhMode = QuietHoursActivity.setQuietHoursMode(this, intent.getStringExtra(
-                    QuietHoursActivity.EXTRA_QH_MODE));
-            if (qhMode != null && intent.getBooleanExtra(AShortcut.EXTRA_SHOW_TOAST, false)) {
-                showToast(QuietHoursActivity.getToastResIdFromMode(qhMode));
-            }
+            setQuietHoursMode(intent.getStringExtra(QuietHoursActivity.EXTRA_QH_MODE),
+                    intent.getBooleanExtra(AShortcut.EXTRA_SHOW_TOAST, false));
         }
+    }
+
+    private void setQuietHoursMode(final String mode, final boolean showToast) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                QuietHoursActivity.setQuietHoursMode(getApplicationContext(), mode, showToast);
+            }
+        });
     }
 
     private void showToast(final int messageResId) {

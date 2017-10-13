@@ -418,10 +418,7 @@ public class ModPowerMenu {
                 replaceRecoveryMessage();
                 pm.reboot("recovery");
             } else if (mode == 3) {
-                if (Utils.isSamsungRom())
-                  pm.reboot("download");
-                else
-                  pm.reboot("bootloader");
+                pm.reboot("bootloader");
             }
         }
 
