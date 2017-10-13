@@ -611,6 +611,8 @@ public class ModLockscreen {
                                 v.setImageDrawable(mLeftActionDrawableOrig);
                                 mLeftActionDrawableOrig = null;
                             }
+                            v = (ImageView) XposedHelpers.getObjectField(
+                            		param.thisObject, "mRightAffordanceView");
                     	} else {
                         v = (ImageView) XposedHelpers.getObjectField(
                                 param.thisObject, "mCameraImageView");
