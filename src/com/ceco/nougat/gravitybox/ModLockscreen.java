@@ -880,11 +880,7 @@ public class ModLockscreen {
     private static void updateCarrierText() {
         for (TextView tv : mCarrierTextViews) {
             try {
-                if (Utils.isSamsungRom()) {
-                    XposedHelpers.callMethod(tv, "updateCarrierText", (Intent) null);
-                } else {
-                    XposedHelpers.callMethod(tv, "updateCarrierText");
-                }
+                XposedHelpers.callMethod(tv, "updateCarrierText");
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
