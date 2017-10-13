@@ -998,6 +998,11 @@
 
             </PreferenceScreen>
 
+            <CheckBoxPreference 
+                    android:key="pref_battery_hide_dash_icon"
+                    android:title="@string/pref_battery_hide_dash_icon_title"
+                    android:defaultValue="false" />
+
         </PreferenceScreen>
 
         <PreferenceScreen

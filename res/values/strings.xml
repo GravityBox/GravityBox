@@ -2012,4 +2012,7 @@
     <!-- Volume panel: notification stream label -->
     <string name="notification_stream_name">Notification</string>
 
+    <!-- OOS: hide dash charge icon -->
+    <string name="pref_battery_hide_dash_icon_title">Hide Dash charge icon</string>
+
 </resources>
