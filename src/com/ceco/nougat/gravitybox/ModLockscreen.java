@@ -532,10 +532,7 @@ public class ModLockscreen {
                     }
                 };
 
-                if (Utils.isSamsungRom()) {
-                    XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT,
-                            classLoader, "updateCarrierText", Intent.class, carrierTextHook);
-                } else if (Utils.isOxygenOsRom()) {
+                if (Utils.isOxygenOsRom()) {
                     XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT,
                             classLoader, "updateCarrierTextInternal", carrierTextHook);
                 } else {
@@ -546,71 +543,106 @@ public class ModLockscreen {
 
             // bottom actions
             try {
-                XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
-                        "updateLeftAffordanceIcon", new XC_MethodHook() {
-                    @Override
-                    protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                        ImageView v = (ImageView) XposedHelpers.getObjectField(
-                                param.thisObject, "mLeftAffordanceView");
-                        if (mLeftActionHidden) {
-                            v.setVisibility(View.GONE);
-                        } else if (mLeftAction != null) {
-                            v.setVisibility(View.VISIBLE);
-                            if (mLeftActionDrawableOrig == null) {
-                                mLeftActionDrawableOrig = v.getDrawable();
+                if (!Utils.isSamsungRom()){
+                    XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
+                            "updateLeftAffordanceIcon", new XC_MethodHook() {
+                        @Override
+                        protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
+                            ImageView v = (ImageView) XposedHelpers.getObjectField(
+                                    param.thisObject, "mLeftAffordanceView");
+                            if (mLeftActionHidden) {
+                                v.setVisibility(View.GONE);
+                            } else if (mLeftAction != null) {
+                                v.setVisibility(View.VISIBLE);
+                                if (mLeftActionDrawableOrig == null) {
+                                    mLeftActionDrawableOrig = v.getDrawable();
+                                }
+                                v.setImageDrawable(mLeftAction.getAppIcon());
+                                v.setContentDescription(mLeftAction.getAppName());
+                            } else if (mLeftActionDrawableOrig != null) {
+                                v.setImageDrawable(mLeftActionDrawableOrig);
+                                mLeftActionDrawableOrig = null;
                             }
-                            v.setImageDrawable(mLeftAction.getAppIcon());
-                            v.setContentDescription(mLeftAction.getAppName());
-                        } else if (mLeftActionDrawableOrig != null) {
-                            v.setImageDrawable(mLeftActionDrawableOrig);
-                            mLeftActionDrawableOrig = null;
                         }
-                    }
-                });
-    
-                XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
-                        "launchLeftAffordance", new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                        if (mLeftAction != null) {
-                            SysUiManagers.AppLauncher.startActivity(mContext, mLeftAction.getIntent());
-                            param.setResult(null);
-                        }
-                    }
-                });
-    
-                XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
-                        "updateCameraVisibility", new XC_MethodHook() {
-                    @Override
-                    protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                        ImageView v = (ImageView) XposedHelpers.getObjectField(
-                                param.thisObject, "mCameraImageView");
-                        if (mRightActionHidden) {
-                            v.setVisibility(View.GONE);
-                        } else if (mRightAction != null) {
-                            v.setVisibility(View.VISIBLE);
-                            if (mRightActionDrawableOrig == null) {
-                                mRightActionDrawableOrig = v.getDrawable();
+                    });
+     
+                    XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
+                            "launchLeftAffordance", new XC_MethodHook() {
+                        @Override
+                        protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                            if (mLeftAction != null) {
+                                SysUiManagers.AppLauncher.startActivity(mContext, mLeftAction.getIntent());
+                                param.setResult(null);
                             }
-                            v.setImageDrawable(mRightAction.getAppIcon());
-                            v.setContentDescription(mRightAction.getAppName());
-                        } else if (mRightActionDrawableOrig != null) {
-                            v.setImageDrawable(mRightActionDrawableOrig);
-                            mRightActionDrawableOrig = null;
                         }
-                    }
-                });
+                    });
+                } else {
+                     XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
+                             "launchPhone", new XC_MethodHook() {
+                         @Override
+                         protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                             if (mLeftAction != null) {
+                                 SysUiManagers.AppLauncher.startActivity(mContext, mLeftAction.getIntent());
+                                 param.setResult(null);
+                             }
+                         }
+                     });
+             	}
+     
+                 XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
+                         "updateCameraVisibility", new XC_MethodHook() {
+                     @Override
+                     protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
+                        ImageView v;
+                        if (Utils.isSamsungRom())
+                        {
+                             v = (ImageView) XposedHelpers.getObjectField(
+                                     param.thisObject, "mLeftAffordanceView");
+                             if (mLeftActionHidden) {
+                                 v.setVisibility(View.GONE);
+                             } else if (mLeftAction != null) {
+                                 v.setVisibility(View.VISIBLE);
+                                 if (mLeftActionDrawableOrig == null) {
+                                     mLeftActionDrawableOrig = v.getDrawable();
+                                 }
+                                 v.setImageDrawable(mLeftAction.getAppIcon());
+                                 v.setContentDescription(mLeftAction.getAppName());
+                             } else if (mLeftActionDrawableOrig != null) {
+                                 v.setImageDrawable(mLeftActionDrawableOrig);
+                                 mLeftActionDrawableOrig = null;
+                             }
+                             v = (ImageView) XposedHelpers.getObjectField(
+                             		param.thisObject, "mRightAffordanceView");
+                        } else {
+                             v = (ImageView) XposedHelpers.getObjectField(
+                                    param.thisObject, "mCameraImageView");
+                        }
+                         if (mRightActionHidden) {
+                             v.setVisibility(View.GONE);
+                         } else if (mRightAction != null) {
+                             v.setVisibility(View.VISIBLE);
+                             if (mRightActionDrawableOrig == null) {
+                                 mRightActionDrawableOrig = v.getDrawable();
+                             }
+                             v.setImageDrawable(mRightAction.getAppIcon());
+                             v.setContentDescription(mRightAction.getAppName());
+                         } else if (mRightActionDrawableOrig != null) {
+                             v.setImageDrawable(mRightActionDrawableOrig);
+                             mRightActionDrawableOrig = null;
+                         }
+                     }
+                 });
 
-                XposedBridge.hookAllMethods(XposedHelpers.findClass(CLASS_KG_BOTTOM_AREA_VIEW, classLoader),
-                        "launchCamera", new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                        if (mRightAction != null) {
-                            SysUiManagers.AppLauncher.startActivity(mContext, mRightAction.getIntent());
-                            param.setResult(null);
-                        }
-                    }
-                });
+                 XposedBridge.hookAllMethods(XposedHelpers.findClass(CLASS_KG_BOTTOM_AREA_VIEW, classLoader),
+                         "launchCamera", new XC_MethodHook() {
+                     @Override
+                     protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
+                         if (mRightAction != null) {
+                             SysUiManagers.AppLauncher.startActivity(mContext, mRightAction.getIntent());
+                             param.setResult(null);
+                         }
+                     }
+                 });
 
                 XposedHelpers.findAndHookMethod(CLASS_KG_BOTTOM_AREA_VIEW, classLoader,
                         "onVisibilityChanged", View.class, int.class, new XC_MethodHook() {
@@ -850,11 +882,7 @@ public class ModLockscreen {
     private static void updateCarrierText() {
         for (TextView tv : mCarrierTextViews) {
             try {
-                if (Utils.isSamsungRom()) {
-                    XposedHelpers.callMethod(tv, "updateCarrierText", (Intent) null);
-                } else {
-                    XposedHelpers.callMethod(tv, "updateCarrierText");
-                }
+                XposedHelpers.callMethod(tv, "updateCarrierText");
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }

@@ -119,11 +119,20 @@ public class ModVolumePanel {
             XposedBridge.hookAllConstructors(classVolumePanelCtrl, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
-                    String[] titles = (String[]) XposedHelpers.getObjectField(param.thisObject, "mStreamTitles");
-                    int idx = AudioManager.STREAM_NOTIFICATION;
-                    if (titles.length > idx && (titles[idx] == null || titles[idx].trim().isEmpty())) {
-                        Context ctx = (Context) XposedHelpers.getObjectField(param.thisObject, "mContext");
-                        titles[idx] = Utils.getGbContext(ctx).getString(R.string.notification_stream_name);
+                    if (Utils.isSamsungRom())
+                    {
+                       int[] titles = (int[]) XposedHelpers.getObjectField(param.thisObject, "STREAMTITLES");
+                       int idx = AudioManager.STREAM_NOTIFICATION;
+                       if (titles.length > idx && (titles[idx]==0)) {
+                          titles[idx] = (R.string.notification_stream_name);
+                       }
+                    } else {	
+                       String[] titles = (String[]) XposedHelpers.getObjectField(param.thisObject, "mStreamTitles");
+                       int idx = AudioManager.STREAM_NOTIFICATION;
+                       if (titles.length > idx && (titles[idx] == null || titles[idx].trim().isEmpty())) {
+                           Context ctx = (Context) XposedHelpers.getObjectField(param.thisObject, "mContext");
+                           titles[idx] = Utils.getGbContext(ctx).getString(R.string.notification_stream_name);
+                       }
                     }
                 }
             });
