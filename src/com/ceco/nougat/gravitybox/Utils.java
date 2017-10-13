@@ -296,7 +296,7 @@ public class Utils {
 
         mIsSamsumgRom = (new File("/system/framework/twframework.jar").isFile());
         if (!mIsSamsumgRom)
-        	mIsSamsumgRom = (new File("/system/framework/touchwiz.jar").isFile());
+           mIsSamsumgRom = (new File("/system/framework/touchwiz.jar").isFile());
         return mIsSamsumgRom;
     }
 
