@@ -294,7 +294,7 @@ public class Utils {
     public static boolean isSamsungRom() {
         if (mIsSamsumgRom != null) return mIsSamsumgRom;
 
-        mIsSamsumgRom = (new File("/system/framework/twframework.jar").isFile());
+        mIsSamsumgRom = (new File("/system/framework/twframework.jar").isFile() || new File("/system/framework/touchwiz.jar").isFile());
         return mIsSamsumgRom;
     }
 
