@@ -35,7 +35,8 @@
     <string name="poweroff_advanced_title">Расширенная перезагрузка</string>
     <string name="poweroff_advanced_summary">Включение расширенного меню перезагрузки с возможностью перезагрузки в режим восстановления</string>
     <string name="poweroff_recovery">Режим восстановления</string>
-    <string name="poweroff_bootloader">Загрузчик</string>    
+    <string name="poweroff_bootloader">Загрузчик</string>
+    <string name="poweroff_download">Режим загрузки</string>
 
     <string name="vol_key_cursor_control_title">Управление курсором</string>
     <string name="vol_key_cursor_control_summary">Управление курсором в текстовых полях клавишами громкости</string>
@@ -123,6 +124,7 @@
     <string name="reboot_confirm">%s будет перезагружен</string>
     <string name="reboot_confirm_recovery">%s будет перезагружен в режим восстановления</string>
     <string name="reboot_confirm_bootloader">%s будет перезагружен в загрузчик</string>
+    <string name="reboot_confirm_download">%s будет перезагружен в режим загрузки</string>
 
     <!-- Engineering mode shortcut -->
     <string name="engineering_mode_title">Инженерный режим</string>
@@ -2012,5 +2014,15 @@
     <!-- OOS: hide dash charge icon -->
     <string name="pref_battery_hide_dash_icon_title">Скрыть значок Dash charge</string>
     <string name="pref_battery_hide_dash_icon_summary">Для стокового индикатора батареи</string>
+
+    <!-- OOS: call recording -->
+    <string name="pref_oos_call_recording_title">Включить запись вызовов</string>
+    <string name="pref_oos_call_recording_summary">Имейте в виду, что запись вызовов может быть запрещена в Вашей стране</string>
+
+    <!-- OOS: disable dash charging sound -->
+    <string name="pref_oos_dash_sound_disable_title">Отключить звук Dash charge</string>
+
+    <!-- Storage permission toast -->
+    <string name="permission_storage_denied">Разрешение на доступ к памяти не предоставлено</string>
 
 </resources>
