@@ -650,7 +650,7 @@ public class ModLockscreen {
                         if (param.thisObject == param.args[0] &&
                                 (int)param.args[1] == View.VISIBLE &&
                                 (mLeftAction != null || mLeftActionDrawableOrig != null)) {
-                            XposedHelpers.callMethod(param.thisObject, "updateLeftAffordanceIcon");
+                            XposedHelpers.callMethod(param.thisObject, Utils.isSamsungRom() ? "updateCameraVisibility" : "updateLeftAffordanceIcon");
                         }
                     }
                 });

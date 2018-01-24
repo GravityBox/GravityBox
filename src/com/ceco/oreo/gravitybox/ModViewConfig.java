@@ -46,8 +46,6 @@ public class ModViewConfig {
         try {
             if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_FORCE_LTR_DIRECTION, false)) {
                 final Class<?> activityManagerSvcClass = XposedHelpers.findClass(CLASS_ACTIVITY_MANAGER_SERVICE, classLoader);
-                if (!Utils.isSamsungRom())
-                {
                     XposedHelpers.findAndHookMethod(activityManagerSvcClass, "updateConfigurationLocked", 
                             Configuration.class, CLASS_ACTIVITY_RECORD, boolean.class, boolean.class,
                             int.class, boolean.class, new XC_MethodHook() {
@@ -58,19 +56,6 @@ public class ModViewConfig {
                             }
                         }
                     });
-                }
-                else {
-                    XposedHelpers.findAndHookMethod(activityManagerSvcClass, "updateConfigurationLocked", 
-                            Configuration.class, CLASS_ACTIVITY_RECORD, boolean.class, boolean.class,
-                            int.class, new XC_MethodHook() {
-                        @Override
-                        protected void beforeHookedMethod(final MethodHookParam param) throws Throwable {
-                            if (param.args[0] != null) {
-                                ((Configuration) param.args[0]).setLayoutDirection(null);
-                            }
-                        }
-                    });
-                }
             }
         } catch (Throwable t) {
             GravityBox.log(TAG, t);
