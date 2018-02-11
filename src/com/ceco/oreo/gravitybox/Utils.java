@@ -18,6 +18,7 @@ package com.ceco.oreo.gravitybox;
 import de.robv.android.xposed.XposedHelpers;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -43,6 +44,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.os.Vibrator;
 import android.renderscript.Allocation;
 import android.renderscript.Allocation.MipmapControl;
@@ -99,6 +101,7 @@ public class Utils {
     private static Boolean mIsWifiOnly = null;
     private static String mDeviceCharacteristics = null;
     private static Boolean mIsOxygenOsRom = null;
+    private static Boolean mIsFileBasedEncrypted = null;
 
     // Device features
     private static Boolean mHasGeminiSupport = null;
@@ -291,6 +294,35 @@ public class Utils {
             mIsOxygenOsRom = version != null && !version.isEmpty() &&  !"0".equals(version); 
         }
         return mIsOxygenOsRom;
+    }
+    
+    public static boolean isFileBasedEncrypted(Context con) {
+    	if (mIsFileBasedEncrypted != null) return mIsFileBasedEncrypted;
+    	
+    	try {
+            DevicePolicyManager dpm = (DevicePolicyManager)
+                    con.getSystemService(Context.DEVICE_POLICY_SERVICE);
+            mIsFileBasedEncrypted = dpm.getStorageEncryptionStatus() == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER;
+            return mIsFileBasedEncrypted;
+    	} catch (Throwable t) {
+    		GravityBox.log(TAG, t);
+    		mIsFileBasedEncrypted = null;
+    		return false;
+    	}
+    }
+    
+    public static boolean isUserUnlocked(Context con){
+    	if (!isFileBasedEncrypted(con)) {
+    		return true;
+    	}
+    	
+    	try {
+	    	UserManager um = (UserManager) con.getSystemService(Context.USER_SERVICE);
+	    	return um.isUserUnlocked();
+    	} catch (Throwable t) {
+    		GravityBox.log(TAG, t);
+    		return true;   	
+    	}
     }
 
     public static boolean isParanoidRom() {
