@@ -255,6 +255,12 @@ public class QuickAppTile extends QsTile {
         mAppSlots.add(new AppInfo(R.id.quickapp2));
         mAppSlots.add(new AppInfo(R.id.quickapp3));
         mAppSlots.add(new AppInfo(R.id.quickapp4));
+
+        if (!Utils.isUserUnlocked(mContext)) {
+        	if (DEBUG) log(getKey() + "User has not unlocked yet making credential protected storage unavailable. Skipping updateAllApps().");
+        } else {
+        	updateAllApps();
+        }
     }
 
     private void updateAllApps() {
