@@ -193,7 +193,13 @@ public class StatusbarSignalCluster implements BroadcastSubReceiver, IconManager
                         "config_hspap_data_distinguishable", true);
             }
         }
-
+        
+        // Activity arrows on Motorola devices should be enabled this way
+        if (prefs.getBoolean(GravityBoxSettings.PREF_KEY_SIGNAL_CLUSTER_DATA_ACTIVITY, false) && isMotoXtDevice()) {
+            resparam.res.setReplacement(ModStatusBar.PACKAGE_NAME, "bool", "config_enable_activity_on_wide_statusbar_icons", true);
+            resparam.res.setReplacement(ModStatusBar.PACKAGE_NAME, "bool", "config_enable_carrier_custom_activity_on_wide_quicksettings_icons", true);
+        }
+            
         String lteStyle = prefs.getString(GravityBoxSettings.PREF_KEY_SIGNAL_CLUSTER_LTE_STYLE, "DEFAULT");
         if (!lteStyle.equals("DEFAULT")) {
             resparam.res.setReplacement(ModStatusBar.PACKAGE_NAME, "bool", "config_show4GForLTE",
