@@ -2126,5 +2126,14 @@
     <string name="lc_qh_ranges_detail_label">静音时间 - 时间范围</string>
     <string name="pref_lc_qh_range_days_title">天</string>
     <string name="next_day">下一天</string>
+	
+    <!-- QH: settings categorization -->
+    <string name="pref_lc_qh_cat_general_title">普通</string>
+    <string name="pref_lc_qh_cat_rules_title">规则</string>
+    <string name="pref_lc_qh_manual_title">手动模式</string>
+    <string name="pref_lc_qh_manual_summary">允许为手动静音时间设置规则</string>
+
+    <!-- QH: current mode -->
+    <string name="pref_lc_qh_mode_title">当前模式</string>
 
 </resources>
