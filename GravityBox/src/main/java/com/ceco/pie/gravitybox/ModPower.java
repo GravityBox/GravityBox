@@ -222,42 +222,46 @@ public class ModPower {
         }
 
         // Advanced power menu: Adjust reboot dialog titles
-        try {
-            mAdvancedPowerMenuEnabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWEROFF_ADVANCED, false);
-            final Class<?> classShutdownThread = XposedHelpers.findClass(CLASS_SHUTDOWN_THREAD, classLoader);
-            XposedHelpers.findAndHookMethod(classShutdownThread, "showShutdownDialog",
-                    Context.class, new XC_MethodHook() {
-                @Override
-                protected void afterHookedMethod(MethodHookParam param) {
-                    if (mAdvancedPowerMenuEnabled) {
-                        String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
-                        Dialog d = (Dialog) param.getResult();
-                        if (d != null) {
-                            if ("recovery".equals(reason)) {
-                                d.setTitle("Recovery");
-                            } else if ("bootloader".equals(reason)) {
-                                d.setTitle("Bootloader");
+        if (!Utils.isSamsungRom()) {
+            try {
+                mAdvancedPowerMenuEnabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWEROFF_ADVANCED, false);
+                final Class<?> classShutdownThread = XposedHelpers.findClass(CLASS_SHUTDOWN_THREAD, classLoader);
+                XposedHelpers.findAndHookMethod(classShutdownThread, "showShutdownDialog",
+                        Context.class, new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) {
+                                if (mAdvancedPowerMenuEnabled) {
+                                    String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
+                                    Dialog d = (Dialog) param.getResult();
+                                    if (d != null) {
+                                        if ("recovery".equals(reason)) {
+                                            d.setTitle("Recovery");
+                                        } else if ("bootloader".equals(reason)) {
+                                            d.setTitle("Bootloader");
+                                        }
+                                        if (DEBUG)
+                                            log("showShutdownDialog: mReason=" + reason + "; dialog title replaced");
+                                    }
+                                }
                             }
-                            if (DEBUG) log("showShutdownDialog: mReason=" + reason + "; dialog title replaced");
-                        }
-                    }
-                }
-            });
+                        });
 
-            XposedHelpers.findAndHookMethod(classShutdownThread, "showSysuiReboot", new XC_MethodHook() {
-                @Override
-                protected void beforeHookedMethod(MethodHookParam param) {
-                    if (mAdvancedPowerMenuEnabled) {
-                        String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
-                        if ("recovery".equals(reason) || "bootloader".equals(reason)) {
-                            if (DEBUG) log("showSysuiReboot: mReason=" + reason + "; SysUI dialog disabled");
-                            param.setResult(false);
+                XposedHelpers.findAndHookMethod(classShutdownThread, "showSysuiReboot", new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(MethodHookParam param) {
+                        if (mAdvancedPowerMenuEnabled) {
+                            String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
+                            if ("recovery".equals(reason) || "bootloader".equals(reason)) {
+                                if (DEBUG)
+                                    log("showSysuiReboot: mReason=" + reason + "; SysUI dialog disabled");
+                                param.setResult(false);
+                            }
                         }
                     }
-                }
-            });
-        } catch (Throwable t) {
-            GravityBox.log(TAG, t);
+                });
+            } catch (Throwable t) {
+                GravityBox.log(TAG, t);
+            }
         }
     }
 
