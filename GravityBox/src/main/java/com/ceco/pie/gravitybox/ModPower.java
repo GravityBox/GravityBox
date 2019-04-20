@@ -144,52 +144,51 @@ public class ModPower {
 
             XposedHelpers.findAndHookMethod(pmServiceClass, "wakeUpInternal",
                     long.class, String.class, int.class, String.class, int.class, new XC_MethodHook() {
-                        @Override
-                        protected void beforeHookedMethod(final MethodHookParam param) {
-                            if (Utils.isMotoXtDevice()) {
-                                createMotoSpecificHooks(classLoader);
-                            }
-                            if (!shouldRunProximityCheck())
-                                return;
+                @Override
+                protected void beforeHookedMethod(final MethodHookParam param) {
+                    if (Utils.isMotoXtDevice()) {
+                        createMotoSpecificHooks(classLoader);
+                    }
+                    if (!shouldRunProximityCheck())
+                        return;
 
-                            //noinspection SynchronizeOnNonFinalField
-                            synchronized (mLock) {
-                                if (mHandler.hasMessages(MSG_WAKE_UP)) {
-                                    if (DEBUG)
-                                        log("wakeUpInternal: Wake up message already queued");
-                                    param.setResult(null);
-                                    return;
-                                }
-
-                                mWakeUpRunnable = () -> {
-                                    final long ident = Binder.clearCallingIdentity();
-                                    try {
-                                        if (DEBUG) log("Waking up...");
-                                        XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
-                                    } catch (Throwable ignored) {
-                                    } finally {
-                                        Binder.restoreCallingIdentity(ident);
-                                    }
-                                };
-                                runWithProximityCheck();
-                                param.setResult(null);
-                            }
+                    //noinspection SynchronizeOnNonFinalField
+                    synchronized (mLock) {
+                        if (mHandler.hasMessages(MSG_WAKE_UP)) {
+                            if (DEBUG) log("wakeUpInternal: Wake up message already queued");
+                            param.setResult(null);
+                            return;
                         }
-                    });
+
+                        mWakeUpRunnable = () -> {
+                            final long ident = Binder.clearCallingIdentity();
+                            try {
+                                if (DEBUG) log("Waking up...");
+                                XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
+                            } catch (Throwable ignored) {
+                            } finally {
+                                Binder.restoreCallingIdentity(ident);
+                            }
+                        };
+                        runWithProximityCheck();
+                        param.setResult(null);
+                    }
+                }
+            });
 
             XposedHelpers.findAndHookMethod(pmHandlerClass, "handleMessage",
                     Message.class, new XC_MethodHook() {
-                        @Override
-                        protected void beforeHookedMethod(final MethodHookParam param) {
-                            Message msg = (Message) param.args[0];
-                            if (msg.what == MSG_WAKE_UP) {
-                                mWakeUpRunnable.run();
-                                unregisterProxSensorListener();
-                            } else if (msg.what == MSG_UNREGISTER_PROX_SENSOR_LISTENER) {
-                                unregisterProxSensorListener();
-                            }
-                        }
-                    });
+                @Override
+                protected void beforeHookedMethod(final MethodHookParam param) {
+                    Message msg = (Message) param.args[0];
+                    if (msg.what == MSG_WAKE_UP) {
+                        mWakeUpRunnable.run();
+                        unregisterProxSensorListener();
+                    } else if (msg.what == MSG_UNREGISTER_PROX_SENSOR_LISTENER) {
+                        unregisterProxSensorListener();
+                    }
+                }
+            });
         } catch (Throwable t) {
             GravityBox.log(TAG, t);
         }
@@ -201,13 +200,13 @@ public class ModPower {
 
             XposedHelpers.findAndHookMethod(CLASS_PM_NOTIFIER, classLoader,
                     "playChargingStartedSound", new XC_MethodHook() {
-                        @Override
-                        protected void beforeHookedMethod(final MethodHookParam param) {
-                            if (mIsChargingSoundCustom || mQh.isSystemSoundMuted(QuietHours.SystemSound.CHARGER)) {
-                                param.setResult(null);
-                            }
-                        }
-                    });
+                @Override
+                protected void beforeHookedMethod(final MethodHookParam param) {
+                    if (mIsChargingSoundCustom || mQh.isSystemSoundMuted(QuietHours.SystemSound.CHARGER)) {
+                        param.setResult(null);
+                    }
+                }
+            });
         } catch (Throwable t) {
             GravityBox.log(TAG, t);
         }
@@ -216,53 +215,49 @@ public class ModPower {
         try {
             if (!prefs.getBoolean(GravityBoxSettings.PREF_KEY_UNPLUG_TURNS_ON_SCREEN, true)) {
                 XposedHelpers.findAndHookMethod(pmServiceClass, "shouldWakeUpWhenPluggedOrUnpluggedLocked",
-                        boolean.class, int.class, boolean.class, XC_MethodReplacement.returnConstant(false));
+                    boolean.class, int.class, boolean.class, XC_MethodReplacement.returnConstant(false));
             }
         } catch (Throwable t) {
             GravityBox.log(TAG, t);
         }
 
         // Advanced power menu: Adjust reboot dialog titles
-        if (!Utils.isSamsungRom()) {
-            try {
-                mAdvancedPowerMenuEnabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWEROFF_ADVANCED, false);
-                final Class<?> classShutdownThread = XposedHelpers.findClass(CLASS_SHUTDOWN_THREAD, classLoader);
-                XposedHelpers.findAndHookMethod(classShutdownThread, "showShutdownDialog",
-                        Context.class, new XC_MethodHook() {
-                            @Override
-                            protected void afterHookedMethod(MethodHookParam param) {
-                                if (mAdvancedPowerMenuEnabled) {
-                                    String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
-                                    Dialog d = (Dialog) param.getResult();
-                                    if (d != null) {
-                                        if ("recovery".equals(reason)) {
-                                            d.setTitle("Recovery");
-                                        } else if ("bootloader".equals(reason)) {
-                                            d.setTitle("Bootloader");
-                                        }
-                                        if (DEBUG)
-                                            log("showShutdownDialog: mReason=" + reason + "; dialog title replaced");
-                                    }
-                                }
+        try {
+            mAdvancedPowerMenuEnabled = prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWEROFF_ADVANCED, false);
+            final Class<?> classShutdownThread = XposedHelpers.findClass(CLASS_SHUTDOWN_THREAD, classLoader);
+            XposedHelpers.findAndHookMethod(classShutdownThread, "showShutdownDialog",
+                    Context.class, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) {
+                    if (mAdvancedPowerMenuEnabled) {
+                        String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
+                        Dialog d = (Dialog) param.getResult();
+                        if (d != null) {
+                            if ("recovery".equals(reason)) {
+                                d.setTitle("Recovery");
+                            } else if ("bootloader".equals(reason)) {
+                                d.setTitle("Bootloader");
                             }
-                        });
-
-                XposedHelpers.findAndHookMethod(classShutdownThread, "showSysuiReboot", new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(MethodHookParam param) {
-                        if (mAdvancedPowerMenuEnabled) {
-                            String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
-                            if ("recovery".equals(reason) || "bootloader".equals(reason)) {
-                                if (DEBUG)
-                                    log("showSysuiReboot: mReason=" + reason + "; SysUI dialog disabled");
-                                param.setResult(false);
-                            }
+                            if (DEBUG) log("showShutdownDialog: mReason=" + reason + "; dialog title replaced");
                         }
                     }
-                });
-            } catch (Throwable t) {
-                GravityBox.log(TAG, t);
-            }
+                }
+            });
+
+            XposedHelpers.findAndHookMethod(classShutdownThread, "showSysuiReboot", new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(MethodHookParam param) {
+                    if (mAdvancedPowerMenuEnabled) {
+                        String reason = (String) XposedHelpers.getStaticObjectField(classShutdownThread, "mReason");
+                        if ("recovery".equals(reason) || "bootloader".equals(reason)) {
+                            if (DEBUG) log("showSysuiReboot: mReason=" + reason + "; SysUI dialog disabled");
+                            param.setResult(false);
+                        }
+                    }
+                }
+            });
+        } catch (Throwable t) {
+            GravityBox.log(TAG, t);
         }
     }
 
