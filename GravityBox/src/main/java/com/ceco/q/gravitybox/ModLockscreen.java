@@ -63,6 +63,7 @@ public class ModLockscreen {
     private static final String CLASS_SB_WINDOW_CONTROLLER = "com.android.systemui.statusbar.phone.StatusBarWindowController";
     private static final String CLASS_KG_VIEW_MANAGER = "com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager";
     private static final String CLASS_CARRIER_TEXT_CTRL = CLASS_PATH + ".CarrierTextController";
+    private static final String CLASS_CARRIERQS_TEXT_CTRL = PACKAGE_NAME + ".qs.QSCarrier";
     private static final String CLASS_CARRIER_TEXT_INFO = CLASS_CARRIER_TEXT_CTRL + ".CarrierTextCallbackInfo";
     private static final String CLASS_NOTIF_ROW = "com.android.systemui.statusbar.notification.row.ExpandableNotificationRow";
     private static final String CLASS_KG_BOTTOM_AREA_VIEW = "com.android.systemui.statusbar.phone.KeyguardBottomAreaView";
@@ -491,23 +492,42 @@ public class ModLockscreen {
             GravityBox.log(TAG, "Error setting up DT2S:", t);
         }
 
-        // Carrier text
+        // Carrier text (lockscreen & quicksettings)
         if (!Utils.isXperiaDevice()) {
-            XC_MethodHook carrierTextHook = new XC_MethodHook() {
-                @Override
-                protected void beforeHookedMethod(final MethodHookParam param) {
-                    String text = mPrefs.getString(GravityBoxSettings.PREF_KEY_LOCKSCREEN_CARRIER_TEXT, "");
-                    if (!text.isEmpty()) {
+            String savedCarrierText = mPrefs.getString(GravityBoxSettings.PREF_KEY_LOCKSCREEN_CARRIER_TEXT, "");
+            String customCarrierText = savedCarrierText.trim().isEmpty() ? "" : savedCarrierText;
+
+            if (!savedCarrierText.isEmpty()) {
+
+                // Carrier text lockscreen
+                XC_MethodHook carrierTextHook = new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(final MethodHookParam param) {
                         XposedHelpers.setObjectField(param.args[0], "carrierText",
-                            text.trim().isEmpty() ? "" : text);
+                                customCarrierText);
                     }
+                };
+
+                // Carrier text quicksettings
+                XC_MethodHook carrierTextHookQS = new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(final MethodHookParam param) {
+                        param.args[0] = customCarrierText;
+                    }
+                };
+
+                try {
+                    XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT_CTRL,
+                            classLoader, "postToCallback", CLASS_CARRIER_TEXT_INFO, carrierTextHook);
+                } catch (Throwable t) {
+                    GravityBox.log(TAG, "Error setting up carrier text hook:", t);
                 }
-            };
-            try {
-                XposedHelpers.findAndHookMethod(CLASS_CARRIER_TEXT_CTRL,
-                        classLoader, "postToCallback", CLASS_CARRIER_TEXT_INFO, carrierTextHook);
-            } catch (Throwable t) {
-                GravityBox.log(TAG, "Error setting up carrier text hook:", t);
+                try {
+                    XposedHelpers.findAndHookMethod(CLASS_CARRIERQS_TEXT_CTRL,
+                            classLoader, "setCarrierText", CharSequence.class, carrierTextHookQS);
+                } catch (Throwable t) {
+                    GravityBox.log(TAG, "Error setting up carrier quick settings text hook:", t);
+                }
             }
         }
 
